@@ -1,5 +1,8 @@
 # SinonKabasuji
 <center><b>Kabasuji Sinon</b><center><br />
-Team Members:<br />
-Kartik Thooppal Vasu<br />
+Kyle Sposato <br />
+Kartik Thooppal Vasu <br />
+Josh Desmond <br />
+Brian McCarthy <br />
+Peter Debrine <br />
 
