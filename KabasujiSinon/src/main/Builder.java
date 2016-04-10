@@ -38,10 +38,8 @@ public class Builder {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Builder window = new Builder();
+                	Builder window = new Builder();
                     window.frame.setVisible(true);
-                    
-                    
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
