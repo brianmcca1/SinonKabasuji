@@ -64,7 +64,7 @@ public class GameSplashScreen {
 		
 		JLabel lblNewLabel = new JLabel("Kabasuji");
 		lblNewLabel.setForeground(new Color(51, 102, 255));
-		lblNewLabel.setFont(new Font("GothamBlack", Font.BOLD, 90));
+		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 99));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
 		gbc_lblNewLabel.fill = GridBagConstraints.VERTICAL;
@@ -73,7 +73,7 @@ public class GameSplashScreen {
 		frmKabasuji.getContentPane().add(lblNewLabel, gbc_lblNewLabel);
 		
 		JLabel lblGroupSinonSoftware = new JLabel("Software Engineering D2016");
-		lblGroupSinonSoftware.setFont(new Font("GothamLight", Font.BOLD, 30));
+		lblGroupSinonSoftware.setFont(new Font("Calibri Light", Font.BOLD, 30));
 		GridBagConstraints gbc_lblGroupSinonSoftware = new GridBagConstraints();
 		gbc_lblGroupSinonSoftware.insets = new Insets(0, 0, 5, 0);
 		gbc_lblGroupSinonSoftware.gridx = 1;
@@ -81,7 +81,7 @@ public class GameSplashScreen {
 		frmKabasuji.getContentPane().add(lblGroupSinonSoftware, gbc_lblGroupSinonSoftware);
 		
 		JLabel lblSinon = new JLabel("Sinon");
-		lblSinon.setFont(new Font("GothamLight", Font.PLAIN, 35));
+		lblSinon.setFont(new Font("Calibri Light", Font.PLAIN, 25));
 		GridBagConstraints gbc_lblSinon = new GridBagConstraints();
 		gbc_lblSinon.insets = new Insets(0, 0, 5, 0);
 		gbc_lblSinon.gridx = 1;
