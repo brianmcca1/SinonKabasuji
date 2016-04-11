@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JWindow;
 import javax.swing.Timer;
 import javax.swing.JProgressBar;
-
+//test comment
 public class GameSplashScreen extends JWindow{
 	private JFrame frmKabasuji;
 	private static Timer timer;
