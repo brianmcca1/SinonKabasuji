@@ -1,12 +1,14 @@
 package main;
 
 import java.awt.EventQueue;
-
+import java.awt.SplashScreen;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 import java.awt.TextArea;
 import java.awt.Font;
+import java.awt.Frame;
+
 import javax.swing.JLabel;
 import java.awt.GridLayout;
 import java.awt.FlowLayout;
@@ -15,42 +17,36 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
+import javax.swing.JWindow;
 import javax.swing.SwingConstants;
 import javax.swing.DropMode;
+import javax.swing.Timer;
 
-public class GameSplashScreen {
-
+public class GameSplashScreen extends JWindow{
 	private JFrame frmKabasuji;
+	private static Timer timer;
+	private static GameSplashScreen execute;
+	private static int count;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GameSplashScreen window = new GameSplashScreen();
-					window.frmKabasuji.setVisible(true);
+					execute = new GameSplashScreen();
+					execute.frmKabasuji.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				
+				
 			}
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public GameSplashScreen() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
 		frmKabasuji = new JFrame();
 		frmKabasuji.setTitle("Kabasuji");
 		frmKabasuji.setBounds(100, 100, 800, 600);
@@ -122,6 +118,32 @@ public class GameSplashScreen {
 		gbc_lblPeter.gridx = 1;
 		gbc_lblPeter.gridy = 10;
 		frmKabasuji.getContentPane().add(lblPeter, gbc_lblPeter);
-	}
+		load();
+		//setVisible(true);
 
+	}
+	
+    private void load() {
+        ActionListener al = new ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                count++;
+                System.out.println(count);
+
+                if (count == 30) {
+                    execute.frmKabasuji.setVisible(false);
+                    //execute.dispose();
+                    LevelSelect levelselect = new LevelSelect();
+                    levelselect.frame.setVisible(true);
+                    timer.stop();
+                }
+
+            }
+
+        };
+        timer = new Timer(50, al);
+        timer.start();
+    }
+
+
+	
 }

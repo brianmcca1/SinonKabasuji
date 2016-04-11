@@ -16,7 +16,7 @@ import javax.swing.JTextPane;
 
 public class LevelSelect {
 
-	private JFrame frame;
+	JFrame frame;
 
 	/**
 	 * Launch the application.
