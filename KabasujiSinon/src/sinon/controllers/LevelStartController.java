@@ -12,4 +12,7 @@ public class LevelStartController {
 		this.view = view;
 	}
 	
+	void clicked(int levelNum){
+		kabasuji.levels[levelNum].open();
+	}
 }
