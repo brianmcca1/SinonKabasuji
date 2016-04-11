@@ -1,4 +1,4 @@
-package Controllers;
+package sinon.controllers;
 import sinon.main.Kabasuji;
 import sinon.views.LevelStartView;
 
