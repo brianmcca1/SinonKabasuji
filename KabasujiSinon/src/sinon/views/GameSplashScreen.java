@@ -12,27 +12,14 @@ import java.awt.event.ActionListener;
 import javax.swing.JWindow;
 import javax.swing.Timer;
 import javax.swing.JProgressBar;
-//test comment
+
 public class GameSplashScreen extends JWindow{
-	private JFrame frmKabasuji;
+	public JFrame frmKabasuji;
 	private static Timer timer;
-	private static GameSplashScreen execute;
+	public static GameSplashScreen execute;
 	private static JProgressBar progressBar;
 	private static int count;
 	private static LevelSelectView levelSelectView;
-
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					execute = new GameSplashScreen();
-					execute.frmKabasuji.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	public GameSplashScreen() {
 		
