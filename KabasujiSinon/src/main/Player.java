@@ -21,7 +21,7 @@ import java.awt.SystemColor;
 
 public class Player {
 
-    private JFrame frame;
+	JFrame frame;
     /**
      * @wbp.nonvisual location=282,-31
      */
