@@ -34,6 +34,8 @@ public class BuilderSplashScreen extends JWindow{
 	}
 
 	public BuilderSplashScreen() {
+		
+		//Initialize the frame
 		frmKabasuji = new JFrame();
 		frmKabasuji.setTitle("Kabasuji Builder");
 		frmKabasuji.setBounds(100, 100, 800, 600);
@@ -45,6 +47,7 @@ public class BuilderSplashScreen extends JWindow{
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		frmKabasuji.getContentPane().setLayout(gridBagLayout);
 		
+		// Initialize the labels
 		JLabel lblNewLabel = new JLabel("Kabasuji Builder");
 		lblNewLabel.setForeground(new Color(51, 102, 255));
 		lblNewLabel.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 50));
@@ -121,6 +124,7 @@ public class BuilderSplashScreen extends JWindow{
 		load();
 	}
 	
+	// The progress bar is moved and the builder is loaded when finished
     private void load() {
         ActionListener al = new ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
