@@ -61,9 +61,14 @@ public class LevelSelect {
 		btnNewButton_2.setBackground(new Color(0, 0, 128));
 		btnNewButton_2.setForeground(new Color(127, 255, 0));
 		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+			 public void actionPerformed(java.awt.event.ActionEvent evt) {
+	                
+	                    Player player = new Player();
+	                    player.frame.setVisible(true);
+	                }
+
+	            });
+	
 		panel.add(btnNewButton_2);
 		
 		JButton btnNewButton_8 = new JButton("2");
