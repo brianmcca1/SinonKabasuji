@@ -19,6 +19,7 @@ public class GameSplashScreen extends JWindow{
 	private static GameSplashScreen execute;
 	private static JProgressBar progressBar;
 	private static int count;
+	private static LevelSelect levelSelect;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -118,27 +119,26 @@ public class GameSplashScreen extends JWindow{
 		gbc_progressBar.gridy = 12;
 		frmKabasuji.getContentPane().add(progressBar, gbc_progressBar);
 		
-		load();
+		levelSelect = new LevelSelect(); //begin loading level select menu (hidden)
+		load(); //begin handling timer
 	}
 	
     private void load() {
         ActionListener al = new ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 count++;
-                System.out.println(count);
                 progressBar.setValue(count);
-                if (count == 100) {
-                	timer.stop();
-                    execute.frmKabasuji.setVisible(false);
+                if (count == 100) { 
+                	timer.stop();							
+                    execute.frmKabasuji.setVisible(false); //hide current screen & throw it away
                     execute.dispose();
-                    LevelSelect levelselect = new LevelSelect();
-                    levelselect.frame.setVisible(true);
+                    levelSelect.frame.setVisible(true);    //show level select menu
                 }
 
             }
 
         };
-        timer = new Timer(50, al);
+        timer = new Timer(25, al);
         timer.start();
     }	
 }
