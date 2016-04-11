@@ -1,4 +1,4 @@
-package main;
+package sinon.views;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;

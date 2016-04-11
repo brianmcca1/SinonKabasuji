@@ -1,4 +1,4 @@
-package main;
+package sinon.main;
 
 import java.util.Stack;
 
