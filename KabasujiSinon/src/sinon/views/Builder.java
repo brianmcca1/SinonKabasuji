@@ -25,7 +25,7 @@ import javax.swing.JTextField;
 
 public class Builder {
 
-    private JFrame frame;
+    JFrame frame;
     private JTextField textField;
     /**
      * @wbp.nonvisual location=282,-31

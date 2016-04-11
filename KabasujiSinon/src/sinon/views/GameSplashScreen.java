@@ -35,6 +35,8 @@ public class GameSplashScreen extends JWindow{
 	}
 
 	public GameSplashScreen() {
+		
+		//Initialize the frame
 		frmKabasuji = new JFrame();
 		frmKabasuji.setTitle("Kabasuji");
 		frmKabasuji.setBounds(100, 100, 800, 600);
@@ -46,6 +48,7 @@ public class GameSplashScreen extends JWindow{
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		frmKabasuji.getContentPane().setLayout(gridBagLayout);
 		
+		//Initialize the labels with the text
 		JLabel lblNewLabel = new JLabel("Kabasuji");
 		lblNewLabel.setForeground(new Color(51, 102, 255));
 		lblNewLabel.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 99));
@@ -123,6 +126,7 @@ public class GameSplashScreen extends JWindow{
 		load(); //begin handling timer
 	}
 	
+	// Handles the progress bar and loads the level select 
     private void load() {
         ActionListener al = new ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
