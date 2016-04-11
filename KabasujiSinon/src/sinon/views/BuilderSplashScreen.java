@@ -14,9 +14,9 @@ import javax.swing.Timer;
 import javax.swing.JProgressBar;
 
 public class BuilderSplashScreen extends JWindow{
-	private JFrame frmKabasuji;
+	public JFrame frmKabasuji;
 	private static Timer timer;
-	private static BuilderSplashScreen execute;
+	public static BuilderSplashScreen execute;
 	private static JProgressBar progressBar;
 	private static int count;
 
