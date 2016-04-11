@@ -47,9 +47,9 @@ public class BuilderSplashScreen extends JWindow{
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		frame.getContentPane().setLayout(gridBagLayout);
 		
-		JLabel label = new JLabel("Kabasuji");
+		JLabel label = new JLabel("Kabasuji Builder");
 		label.setForeground(new Color(51, 102, 255));
-		label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 99));
+		label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 50));
 		GridBagConstraints gbc_label = new GridBagConstraints();
 		gbc_label.insets = new Insets(0, 0, 5, 0);
 		gbc_label.gridx = 1;
@@ -128,10 +128,11 @@ public class BuilderSplashScreen extends JWindow{
                 count++;
                 progressBar.setValue(count);
                 if (count == 100) { 
-                	timer.stop();							
+                	timer.stop();	
+                	Builder builder = new Builder();
                     execute.frame.setVisible(false); //hide current screen & throw it away
                     execute.dispose();
-                    //levelSelect.frame.setVisible(true);    //show level select menu
+                    builder.frame.setVisible(true); //Show the builder
                 }
             }
         };
