@@ -1,4 +1,4 @@
-package main;
+package sinon.views;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
@@ -19,7 +19,7 @@ public class GameSplashScreen extends JWindow{
 	private static GameSplashScreen execute;
 	private static JProgressBar progressBar;
 	private static int count;
-	private static LevelSelect levelSelect;
+	private static LevelSelectView levelSelectView;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -119,7 +119,7 @@ public class GameSplashScreen extends JWindow{
 		gbc_progressBar.gridy = 12;
 		frmKabasuji.getContentPane().add(progressBar, gbc_progressBar);
 		
-		levelSelect = new LevelSelect(); //begin loading level select menu (hidden)
+		levelSelectView = new LevelSelectView(); //begin loading level select menu (hidden)
 		load(); //begin handling timer
 	}
 	
@@ -132,7 +132,7 @@ public class GameSplashScreen extends JWindow{
                 	timer.stop();							
                     execute.frmKabasuji.setVisible(false); //hide current screen & throw it away
                     execute.dispose();
-                    levelSelect.frame.setVisible(true);    //show level select menu
+                    levelSelectView.frame.setVisible(true);    //show level select menu
                 }
 
             }
