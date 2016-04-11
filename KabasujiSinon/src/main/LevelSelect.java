@@ -58,7 +58,7 @@ public class LevelSelect {
 		panel.setLayout(new GridLayout(3, 5, 40, 15));
 		
 		JButton btnNewButton_2 = new JButton("1");
-		btnNewButton_2.setBackground(new Color(0, 0, 128));
+		btnNewButton_2.setBackground(Color.BLUE);
 		btnNewButton_2.setForeground(new Color(127, 255, 0));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,12 +182,8 @@ public class LevelSelect {
 		lblLevelPuzzle.setFont(new Font("Dialog", Font.BOLD, 22));
 		lblLevelPuzzle.setForeground(new Color(0, 0, 128));
 		
-		JLabel lblDescription = new JLabel(" Description comes here. ");
-		lblDescription.setBounds(149, 12, 190, 75);
+		JLabel lblDescription = new JLabel("The puzzle level gives you a limited number of moves. ");
+		lblDescription.setBounds(149, 12, 450, 75);
 		panel_3.add(lblDescription);
-		
-		JButton btnStart = new JButton("START");
-		btnStart.setBounds(625, 40, 117, 52);
-		panel_3.add(btnStart);
 	}
 }
