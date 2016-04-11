@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import sinon.views.BuilderSplashScreen;
 
 public class BuilderMain {
+	//main for builder
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
