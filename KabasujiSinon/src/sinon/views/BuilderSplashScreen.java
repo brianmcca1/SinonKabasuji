@@ -1,34 +1,31 @@
 package sinon.views;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
-import javax.swing.JLabel;
-import java.awt.GridBagConstraints;
 import java.awt.Font;
-import java.awt.Color;
+import javax.swing.JLabel;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.Color;
 import java.awt.event.ActionListener;
-import javax.swing.JProgressBar;
 import javax.swing.JWindow;
 import javax.swing.Timer;
+import javax.swing.JProgressBar;
 
 public class BuilderSplashScreen extends JWindow{
-	private JFrame frame;
+	private JFrame frmKabasuji;
 	private static Timer timer;
 	private static BuilderSplashScreen execute;
 	private static JProgressBar progressBar;
 	private static int count;
-	//private static LevelSelect levelSelect; LEVEL BUILDER GUI
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					execute = new BuilderSplashScreen();
-					execute.frame.setVisible(true);
+					execute.frmKabasuji.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -37,87 +34,89 @@ public class BuilderSplashScreen extends JWindow{
 	}
 
 	public BuilderSplashScreen() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 800, 600);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmKabasuji = new JFrame();
+		frmKabasuji.setTitle("Kabasuji Builder");
+		frmKabasuji.setBounds(100, 100, 800, 600);
+		frmKabasuji.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{185, 409, 0};
-		gridBagLayout.rowHeights = new int[]{90, 122, 35, 32, 32, 19, 19, 19, 19, 19, 65, 14, 0};
+		gridBagLayout.columnWidths = new int[]{196, 392, 0};
+		gridBagLayout.rowHeights = new int[]{76, 91, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		frame.getContentPane().setLayout(gridBagLayout);
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		frmKabasuji.getContentPane().setLayout(gridBagLayout);
 		
-		JLabel label = new JLabel("Kabasuji Builder");
-		label.setForeground(new Color(51, 102, 255));
-		label.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 50));
-		GridBagConstraints gbc_label = new GridBagConstraints();
-		gbc_label.insets = new Insets(0, 0, 5, 0);
-		gbc_label.gridx = 1;
-		gbc_label.gridy = 1;
-		frame.getContentPane().add(label, gbc_label);
+		JLabel lblNewLabel = new JLabel("Kabasuji Builder");
+		lblNewLabel.setForeground(new Color(51, 102, 255));
+		lblNewLabel.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 50));
+		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
+		gbc_lblNewLabel.fill = GridBagConstraints.VERTICAL;
+		gbc_lblNewLabel.gridx = 1;
+		gbc_lblNewLabel.gridy = 1;
+		frmKabasuji.getContentPane().add(lblNewLabel, gbc_lblNewLabel);
 		
-		JLabel label_1 = new JLabel("Software Engineering D2016");
-		label_1.setFont(new Font("Century Gothic", Font.BOLD, 25));
-		GridBagConstraints gbc_label_1 = new GridBagConstraints();
-		gbc_label_1.insets = new Insets(0, 0, 5, 0);
-		gbc_label_1.gridx = 1;
-		gbc_label_1.gridy = 3;
-		frame.getContentPane().add(label_1, gbc_label_1);
+		JLabel lblGroupSinonSoftware = new JLabel("Software Engineering D2016");
+		lblGroupSinonSoftware.setFont(new Font("Century Gothic", Font.BOLD, 25));
+		GridBagConstraints gbc_lblGroupSinonSoftware = new GridBagConstraints();
+		gbc_lblGroupSinonSoftware.insets = new Insets(0, 0, 5, 0);
+		gbc_lblGroupSinonSoftware.gridx = 1;
+		gbc_lblGroupSinonSoftware.gridy = 3;
+		frmKabasuji.getContentPane().add(lblGroupSinonSoftware, gbc_lblGroupSinonSoftware);
 		
-		JLabel label_2 = new JLabel("Sinon");
-		label_2.setFont(new Font("Century Gothic", Font.BOLD, 25));
-		GridBagConstraints gbc_label_2 = new GridBagConstraints();
-		gbc_label_2.insets = new Insets(0, 0, 5, 0);
-		gbc_label_2.gridx = 1;
-		gbc_label_2.gridy = 4;
-		frame.getContentPane().add(label_2, gbc_label_2);
+		JLabel lblSinon = new JLabel("Sinon");
+		lblSinon.setFont(new Font("Century Gothic", Font.BOLD, 25));
+		GridBagConstraints gbc_lblSinon = new GridBagConstraints();
+		gbc_lblSinon.insets = new Insets(0, 0, 5, 0);
+		gbc_lblSinon.gridx = 1;
+		gbc_lblSinon.gridy = 4;
+		frmKabasuji.getContentPane().add(lblSinon, gbc_lblSinon);
 		
-		JLabel label_3 = new JLabel("Kyle Sposato");
-		label_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		GridBagConstraints gbc_label_3 = new GridBagConstraints();
-		gbc_label_3.insets = new Insets(0, 0, 5, 0);
-		gbc_label_3.gridx = 1;
-		gbc_label_3.gridy = 5;
-		frame.getContentPane().add(label_3, gbc_label_3);
+		JLabel lblKyleSposato = new JLabel("Kyle Sposato");
+		lblKyleSposato.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		GridBagConstraints gbc_lblKyleSposato = new GridBagConstraints();
+		gbc_lblKyleSposato.insets = new Insets(0, 0, 5, 0);
+		gbc_lblKyleSposato.gridx = 1;
+		gbc_lblKyleSposato.gridy = 5;
+		frmKabasuji.getContentPane().add(lblKyleSposato, gbc_lblKyleSposato);
 		
-		JLabel label_4 = new JLabel("Kartik Thooppal Vasu");
-		label_4.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		GridBagConstraints gbc_label_4 = new GridBagConstraints();
-		gbc_label_4.insets = new Insets(0, 0, 5, 0);
-		gbc_label_4.gridx = 1;
-		gbc_label_4.gridy = 6;
-		frame.getContentPane().add(label_4, gbc_label_4);
+		JLabel lblKartik = new JLabel("Kartik Thooppal Vasu");
+		lblKartik.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		GridBagConstraints gbc_lblKartik = new GridBagConstraints();
+		gbc_lblKartik.insets = new Insets(0, 0, 5, 0);
+		gbc_lblKartik.gridx = 1;
+		gbc_lblKartik.gridy = 6;
+		frmKabasuji.getContentPane().add(lblKartik, gbc_lblKartik);
 		
-		JLabel label_5 = new JLabel("Josh Desmond");
-		label_5.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		GridBagConstraints gbc_label_5 = new GridBagConstraints();
-		gbc_label_5.insets = new Insets(0, 0, 5, 0);
-		gbc_label_5.gridx = 1;
-		gbc_label_5.gridy = 7;
-		frame.getContentPane().add(label_5, gbc_label_5);
+		JLabel lblJosh = new JLabel("Josh Desmond");
+		lblJosh.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		GridBagConstraints gbc_lblJosh = new GridBagConstraints();
+		gbc_lblJosh.insets = new Insets(0, 0, 5, 0);
+		gbc_lblJosh.gridx = 1;
+		gbc_lblJosh.gridy = 7;
+		frmKabasuji.getContentPane().add(lblJosh, gbc_lblJosh);
 		
-		JLabel label_6 = new JLabel("Brian McCarthy");
-		label_6.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		GridBagConstraints gbc_label_6 = new GridBagConstraints();
-		gbc_label_6.insets = new Insets(0, 0, 5, 0);
-		gbc_label_6.gridx = 1;
-		gbc_label_6.gridy = 8;
-		frame.getContentPane().add(label_6, gbc_label_6);
+		JLabel lblBrian = new JLabel("Brian McCarthy");
+		lblBrian.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		GridBagConstraints gbc_lblBrian = new GridBagConstraints();
+		gbc_lblBrian.insets = new Insets(0, 0, 5, 0);
+		gbc_lblBrian.gridx = 1;
+		gbc_lblBrian.gridy = 8;
+		frmKabasuji.getContentPane().add(lblBrian, gbc_lblBrian);
 		
-		JLabel label_7 = new JLabel("Peter DeBrine");
-		label_7.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		GridBagConstraints gbc_label_7 = new GridBagConstraints();
-		gbc_label_7.insets = new Insets(0, 0, 5, 0);
-		gbc_label_7.gridx = 1;
-		gbc_label_7.gridy = 9;
-		frame.getContentPane().add(label_7, gbc_label_7);
+		JLabel lblPeter = new JLabel("Peter DeBrine");
+		lblPeter.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		GridBagConstraints gbc_lblPeter = new GridBagConstraints();
+		gbc_lblPeter.insets = new Insets(0, 0, 5, 0);
+		gbc_lblPeter.gridx = 1;
+		gbc_lblPeter.gridy = 9;
+		frmKabasuji.getContentPane().add(lblPeter, gbc_lblPeter);
 		
-		JProgressBar progressBar = new JProgressBar();
+		progressBar = new JProgressBar();
 		GridBagConstraints gbc_progressBar = new GridBagConstraints();
-		gbc_progressBar.fill = GridBagConstraints.HORIZONTAL;
+		gbc_progressBar.fill = GridBagConstraints.BOTH;
 		gbc_progressBar.gridx = 1;
-		gbc_progressBar.gridy = 11;
-		frame.getContentPane().add(progressBar, gbc_progressBar);
+		gbc_progressBar.gridy = 12;
+		frmKabasuji.getContentPane().add(progressBar, gbc_progressBar);
 		
 		load();
 	}
@@ -126,17 +125,20 @@ public class BuilderSplashScreen extends JWindow{
         ActionListener al = new ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 count++;
+                System.out.println(count);
                 progressBar.setValue(count);
-                if (count == 100) { 
-                	timer.stop();	
-                	Builder builder = new Builder();
-                    execute.frame.setVisible(false); //hide current screen & throw it away
+                if (count == 100) {
+                	timer.stop();
+                    execute.frmKabasuji.setVisible(false);
                     execute.dispose();
-                    builder.frame.setVisible(true); //Show the builder
+                    Builder builder = new Builder();
+                    builder.frame.setVisible(true);
                 }
+
             }
+
         };
-        timer = new Timer(25, al);
+        timer = new Timer(50, al);
         timer.start();
     }	
 }
