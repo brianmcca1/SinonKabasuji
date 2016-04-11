@@ -56,6 +56,14 @@ public class LevelSelectView {
 		frame.getContentPane().add(panel);
 		panel.setLayout(new GridLayout(3, 5, 40, 15));
 		
+		LevelSelectButtonView[] btns =  new LevelSelectButtonView[15];
+		for(int i = 0; i < 15; i++) {
+			btns[i] = new LevelSelectButtonView();
+			String newI = Integer.toString(i+1); 
+			panel.add(btns[i].initialize(newI));
+		}
+		
+		/*
 		JButton btnNewButton_2 = new JButton("1");
 		btnNewButton_2.setBackground(Color.BLUE);
 		btnNewButton_2.setForeground(new Color(127, 255, 0));
@@ -69,76 +77,7 @@ public class LevelSelectView {
 	            });
 	
 		panel.add(btnNewButton_2);
-		
-		JButton btnNewButton_8 = new JButton("2");
-		btnNewButton_8.setBackground(new Color(0, 0, 255));
-		btnNewButton_8.setForeground(new Color(127, 255, 0));
-		panel.add(btnNewButton_8);
-		
-		JButton button = new JButton("3");
-		button.setBackground(new Color(0, 0, 255));
-		button.setForeground(new Color(127, 255, 0));
-		panel.add(button);
-		
-		JButton btnNewButton_7 = new JButton("4");
-		btnNewButton_7.setBackground(new Color(0, 0, 255));
-		btnNewButton_7.setForeground(new Color(127, 255, 0));
-		panel.add(btnNewButton_7);
-		
-		JButton btnNewButton = new JButton("5");
-		btnNewButton.setBackground(new Color(0, 0, 255));
-		btnNewButton.setForeground(new Color(127, 255, 0));
-		panel.add(btnNewButton);
-		
-		JButton btnNewButton_6 = new JButton("6");
-		btnNewButton_6.setBackground(new Color(0, 0, 255));
-		btnNewButton_6.setForeground(new Color(127, 255, 0));
-		panel.add(btnNewButton_6);
-		
-		JButton btnNewButton_5 = new JButton("7");
-		btnNewButton_5.setBackground(new Color(0, 0, 255));
-		btnNewButton_5.setForeground(new Color(127, 255, 0));
-		panel.add(btnNewButton_5);
-		
-		JButton btnNewButton_4 = new JButton("8");
-		btnNewButton_4.setBackground(new Color(0, 0, 255));
-		btnNewButton_4.setForeground(new Color(127, 255, 0));
-		panel.add(btnNewButton_4);
-		
-		JButton btnNewButton_11 = new JButton("9");
-		btnNewButton_11.setBackground(new Color(0, 0, 255));
-		btnNewButton_11.setForeground(new Color(127, 255, 0));
-		panel.add(btnNewButton_11);
-		
-		JButton btnNewButton_3 = new JButton("10");
-		btnNewButton_3.setBackground(new Color(0, 0, 255));
-		btnNewButton_3.setForeground(new Color(127, 255, 0));
-		panel.add(btnNewButton_3);
-		
-		JButton btnNewButton_9 = new JButton("11");
-		btnNewButton_9.setBackground(new Color(0, 0, 255));
-		btnNewButton_9.setForeground(new Color(127, 255, 0));
-		panel.add(btnNewButton_9);
-		
-		JButton btnNewButton_1 = new JButton("12");
-		btnNewButton_1.setBackground(new Color(0, 0, 255));
-		btnNewButton_1.setForeground(new Color(127, 255, 0));
-		panel.add(btnNewButton_1);
-		
-		JButton btnNewButton_10 = new JButton("13");
-		btnNewButton_10.setBackground(new Color(0, 0, 255));
-		btnNewButton_10.setForeground(new Color(127, 255, 0));
-		panel.add(btnNewButton_10);
-		
-		JButton btnNewButton_12 = new JButton("14");
-		btnNewButton_12.setBackground(new Color(0, 0, 255));
-		btnNewButton_12.setForeground(new Color(127, 255, 0));
-		panel.add(btnNewButton_12);
-		
-		JButton btnNewButton_13 = new JButton("15");
-		btnNewButton_13.setBackground(new Color(0, 0, 255));
-		btnNewButton_13.setForeground(new Color(127, 255, 0));
-		panel.add(btnNewButton_13);
+		*/
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(135, 206, 235));
