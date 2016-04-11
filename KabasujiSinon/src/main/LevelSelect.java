@@ -65,6 +65,8 @@ public class LevelSelect {
 	                
 	                    Player player = new Player();
 	                    player.frame.setVisible(true);
+	                    frame.setVisible(false);
+	                    
 	                }
 
 	            });
