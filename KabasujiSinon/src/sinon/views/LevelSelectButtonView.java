@@ -13,6 +13,12 @@ public class LevelSelectButtonView {
 
 	}
 	
+	/**Initializes the LevelSelectButtonView and adds a button to it. 
+	 * Sets attributes like background and foreground
+	 * 
+	 * @param num The number of the level 
+	 * @return Returns the button that is created
+	 */
 	public JButton initialize(String num) {
 		selectbtn = new JButton(num);
 		selectbtn.setBackground(new Color(0, 0, 255));

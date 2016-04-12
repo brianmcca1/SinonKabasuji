@@ -17,7 +17,9 @@ import javax.swing.JTextPane;
 import sinon.controllers.LevelStartController;
 
 public class LevelSelectView {
+	LevelSelectButtonView[] btns = new LevelSelectButtonView[15];
 	JFrame frame;
+	
 
 	/**
 	 * Launch the application.
@@ -46,19 +48,21 @@ public class LevelSelectView {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		//initialize the frame
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(135, 206, 235));
 		frame.setBounds(100, 100, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		//initialize the panel
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(135, 206, 235));
 		panel.setBounds(115, 188, 529, 156);
 		frame.getContentPane().add(panel);
 		panel.setLayout(new GridLayout(3, 5, 40, 15));
 		
-		LevelSelectButtonView[] btns =  new LevelSelectButtonView[15];
+		//initialize all the button views on the screen
 		for(int i = 0; i < 15; i++) {
 			btns[i] = new LevelSelectButtonView();
 			String newI = Integer.toString(i+1); 
@@ -105,10 +109,6 @@ public class LevelSelectView {
 		JLabel lblKabasuji = new JLabel("KABASUJI");
 		lblKabasuji.setBounds(12, 0, 63, 15);
 		panel_2.add(lblKabasuji);
-		
-		JLabel lblX = new JLabel("X");
-		lblX.setBounds(773, 0, 34, 15);
-		panel_2.add(lblX);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(new Color(30, 144, 255));
