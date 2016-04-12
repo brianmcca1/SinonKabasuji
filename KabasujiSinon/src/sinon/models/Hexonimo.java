@@ -9,11 +9,19 @@ public class Hexonimo extends AbsPiece{
 		}
 		
 		void flipHorizontally(){
-			
+			for(int i = 0; i < 6; i++){
+				int temp = otherSquares[i].y;
+				temp = temp*(-1);
+				otherSquares[i].y = temp;
+			}
 		}
 		
 		void flipVertically(){
-			
+			for(int i = 0; i < 6; i++){
+				int temp = otherSquares[i].x;
+				temp = temp*(-1);
+				otherSquares[i].x = temp;
+			}
 		}
 		
 		void rotateC(){
