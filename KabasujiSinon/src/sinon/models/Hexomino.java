@@ -1,13 +1,20 @@
 package sinon.models;
 
 import java.awt.Point;
+import java.util.Arrays;
 
-public class Hexonimo extends AbsPiece{
+public class Hexomino extends AbsPiece{
 	
-		public Hexonimo(Point[] otherSquares, int anchorRow, int anchorColumn){
+		public Hexomino(Point[] otherSquares, int anchorRow, int anchorColumn){
 			super(otherSquares, anchorRow, anchorColumn);
 		}
 		
+		@Override
+		public String toString() {
+			return "Hexonimo [otherSquares=" + Arrays.toString(otherSquares) + ", anchorRow=" + anchorRow
+					+ ", anchorColumn=" + anchorColumn + "]";
+		}
+
 		void flipHorizontally(){
 			for(int i = 0; i < 6; i++){
 				int temp = otherSquares[i].y;

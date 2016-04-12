@@ -4,7 +4,7 @@ public class Tile {
 	int row;
 	int column;
 	boolean playable;
-	Hexonimo hex;
+	Hexomino hex;
 	NumberSet numberSet;
 	//Shadow shadow;
 	//Hint hint;
