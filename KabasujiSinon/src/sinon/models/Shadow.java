@@ -1,6 +1,6 @@
 package sinon.models;
-
 import java.awt.Point;
+@Deprecated
 
 public class Shadow extends AbsPiece{
 	

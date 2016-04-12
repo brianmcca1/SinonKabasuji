@@ -1,13 +1,13 @@
 package sinon.models;
-
+@Deprecated
 public class Tile {
 	int row;
 	int column;
 	boolean playable;
 	Hexonimo hex;
 	NumberSet numberSet;
-	Shadow shadow;
-	Hint hint;
+	//Shadow shadow;
+	//Hint hint;
 	
 	public Tile(int row, int column, boolean playable){
 		this.row = row;

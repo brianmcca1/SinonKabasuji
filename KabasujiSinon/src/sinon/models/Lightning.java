@@ -1,5 +1,5 @@
 package sinon.models;
-
+@Deprecated
 public class Lightning extends Level {
 	int maxTime;
 	int usedTime;

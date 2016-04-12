@@ -1,5 +1,5 @@
 package sinon.models;
-
+@Deprecated
 public class NumberSet {
 	String color;
 	int num;
