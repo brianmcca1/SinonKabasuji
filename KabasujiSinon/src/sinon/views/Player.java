@@ -21,7 +21,7 @@ import java.awt.SystemColor;
 
 public class Player {
 
-	JFrame frame;
+	public JFrame frame;
     /**
      * @wbp.nonvisual location=282,-31
      */
@@ -54,7 +54,7 @@ public class Player {
     /**
      * Initialize the contents of the frame.
      */
-    private void initialize() {
+    public void initialize() {
         frame = new JFrame();
         frame.setMinimumSize(new Dimension(800, 600));
         frame.setPreferredSize(new Dimension(800, 600));

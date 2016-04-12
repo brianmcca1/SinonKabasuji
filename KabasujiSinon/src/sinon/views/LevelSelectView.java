@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextPane;
 
+import sinon.controllers.LevelStartController;
+
 public class LevelSelectView {
 	JFrame frame;
 
@@ -61,6 +63,11 @@ public class LevelSelectView {
 			btns[i] = new LevelSelectButtonView();
 			String newI = Integer.toString(i+1); 
 			panel.add(btns[i].initialize(newI));
+		}
+		
+		LevelStartController[] start = new LevelStartController[15];
+		for(int i = 0; i < 15; i++){
+			start[i] = new LevelStartController(btns[i]);			
 		}
 		
 		/*
