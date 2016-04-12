@@ -7,6 +7,7 @@ public abstract class AbsPiece {
 	int anchorRow;
 	int anchorColumn;
 	
+	
 	public AbsPiece(Point[] otherSquares, int anchorRow, int anchorColumn){
 		this.otherSquares = otherSquares;
 		this.anchorRow = anchorRow;
