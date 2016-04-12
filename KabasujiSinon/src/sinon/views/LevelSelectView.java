@@ -1,41 +1,17 @@
 package sinon.views;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import javax.swing.JButton;
-import java.awt.FlowLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Color;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JTextPane;
+import java.awt.GridLayout;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import sinon.controllers.LevelStartController;
 
-public class LevelSelectView {
-	LevelSelectButtonView[] btns = new LevelSelectButtonView[15];
-	JFrame frame;
-	
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LevelSelectView window = new LevelSelectView();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+public class LevelSelectView extends JPanel{
+	LevelSelectButtonView[] btns = new LevelSelectButtonView[15];	
+
 
 	/**
 	 * Create the application.
@@ -48,25 +24,22 @@ public class LevelSelectView {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		//initialize the frame
-		frame = new JFrame();
-		frame.getContentPane().setBackground(new Color(135, 206, 235));
-		frame.setBounds(100, 100, 800, 600);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		this.setBackground(new Color(135, 206, 235));
+		this.setBounds(0, 0, 800, 600);
+		this.setLayout(null);
 		
 		//initialize the panel
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(135, 206, 235));
-		panel.setBounds(115, 188, 529, 156);
-		frame.getContentPane().add(panel);
-		panel.setLayout(new GridLayout(3, 5, 40, 15));
+		JPanel internalPanelOne = new JPanel();
+		internalPanelOne.setBackground(new Color(135, 206, 235));
+		internalPanelOne.setBounds(115, 188, 529, 156);
+		this.add(internalPanelOne);
+		internalPanelOne.setLayout(new GridLayout(3, 5, 40, 15));
 		
 		//initialize all the button views on the screen
 		for(int i = 0; i < 15; i++) {
 			btns[i] = new LevelSelectButtonView();
 			String newI = Integer.toString(i+1); 
-			panel.add(btns[i].initialize(newI));
+			internalPanelOne.add(btns[i].initialize(newI));
 		}
 		
 		LevelStartController[] start = new LevelStartController[15];
@@ -93,7 +66,7 @@ public class LevelSelectView {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(135, 206, 235));
 		panel_1.setBounds(126, 63, 518, 45);
-		frame.getContentPane().add(panel_1);
+		this.add(panel_1);
 		
 		JLabel lblLevelSelect = new JLabel("LEVEL SELECT\n");
 		lblLevelSelect.setFont(new Font("DejaVu Sans", Font.BOLD, 20));
@@ -103,7 +76,7 @@ public class LevelSelectView {
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(30, 144, 255));
 		panel_2.setBounds(0, 0, 788, 17);
-		frame.getContentPane().add(panel_2);
+		this.add(panel_2);
 		panel_2.setLayout(null);
 		
 		JLabel lblKabasuji = new JLabel("KABASUJI");
@@ -113,7 +86,7 @@ public class LevelSelectView {
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(new Color(30, 144, 255));
 		panel_3.setBounds(0, 432, 800, 140);
-		frame.getContentPane().add(panel_3);
+		this.add(panel_3);
 		panel_3.setLayout(null);
 		
 		JLabel lblPuzzleLevel = new JLabel("PUZZLE LEVEL");
