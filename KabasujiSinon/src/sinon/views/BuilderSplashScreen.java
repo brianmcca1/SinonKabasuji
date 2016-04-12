@@ -19,19 +19,7 @@ public class BuilderSplashScreen extends JWindow{
 	public static BuilderSplashScreen execute;
 	private static JProgressBar progressBar;
 	private static int count;
-
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					execute = new BuilderSplashScreen();
-					execute.frmKabasuji.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private static Builder builder;
 
 	public BuilderSplashScreen() {
 		
@@ -120,7 +108,7 @@ public class BuilderSplashScreen extends JWindow{
 		gbc_progressBar.gridx = 1;
 		gbc_progressBar.gridy = 12;
 		frmKabasuji.getContentPane().add(progressBar, gbc_progressBar);
-		
+		builder = new Builder();
 		load();
 	}
 	
@@ -135,14 +123,13 @@ public class BuilderSplashScreen extends JWindow{
                 	timer.stop();
                     execute.frmKabasuji.setVisible(false);
                     execute.dispose();
-                    Builder builder = new Builder();
                     builder.frame.setVisible(true);
                 }
 
             }
 
         };
-        timer = new Timer(50, al);
+        timer = new Timer(25, al);
         timer.start();
     }	
 }
