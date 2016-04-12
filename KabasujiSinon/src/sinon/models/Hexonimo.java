@@ -25,11 +25,38 @@ public class Hexonimo extends AbsPiece{
 		}
 		
 		void rotateC(){
-			
+			for(int i = 0; i < 6; i++){
+				int x = otherSquares[i].x;
+				int y = otherSquares[i].y;
+				int newX;
+				int newY;
+				
+				// Perform rotation, Matrix is [0  1]
+				//							   [-1 0]
+				newX = y;
+				newY = -x;
+				
+				// set new location
+				otherSquares[i].move(newX, newY);
+				
+				
+			}
 		}
 		
 		void rotateCC(){
-			 
+			for(int i = 0; i < 6; i++){
+				int x = otherSquares[i].x;
+				int y = otherSquares[i].y;
+				int newX;
+				int newY;
+				
+				// Perform rotation, Matrix is [0 -1]
+				//							   [1  0]
+				newX = -y;
+				newY = x;
+				
+				otherSquares[i].move(newX, newY);
+			}
 		}
 		
 }
