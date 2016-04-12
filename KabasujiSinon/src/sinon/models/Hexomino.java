@@ -15,7 +15,8 @@ public class Hexomino extends AbsPiece{
 					+ ", anchorColumn=" + anchorColumn + "]";
 		}
 
-		public void flipHorizontally(){
+		// Flip the hexomino over the X axis
+		public void flipVertically(){
 			for(int i = 0; i < 6; i++){
 				int temp = otherSquares[i].y;
 				temp = temp*(-1);
@@ -23,7 +24,8 @@ public class Hexomino extends AbsPiece{
 			}
 		}
 		
-		public void flipVertically(){
+		// Flip the hexomino over the Y axis
+		public void flipHorizontally(){
 			for(int i = 0; i < 6; i++){
 				int temp = otherSquares[i].x;
 				temp = temp*(-1);

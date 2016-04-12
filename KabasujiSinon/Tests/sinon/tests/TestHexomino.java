@@ -33,6 +33,20 @@ public class TestHexomino {
 		hex.rotateC();
 		
 		assertEquals(points[1].x, -1);
+		assertEquals(points[5].x, -3);
+		assertEquals(points[5].y, -1);
+		System.out.println(hex.toString());
+		
+		hex.flipHorizontally();
+		assertEquals(points[5].x, 3);
+		assertEquals(points[5].y, -1);
+		
+		System.out.println(hex.toString());
+		
+		hex.flipVertically();
+		assertEquals(points[5].x, 3);
+		assertEquals(points[5].y, 1);
+		
 		System.out.println(hex.toString());
 		
 	}
