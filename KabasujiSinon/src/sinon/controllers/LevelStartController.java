@@ -1,18 +1,20 @@
 package sinon.controllers;
 import sinon.main.Kabasuji;
-import sinon.views.LevelStartView;
+import sinon.models.Level;
+import sinon.views.LevelSelectButtonView;
 
-public class LevelStartController {
+
+public class LevelStartController  {
 
 	Kabasuji kabasuji;
-	LevelStartView view;
+	LevelSelectButtonView view;
 	
-	LevelStartController(Kabasuji kabasuji, LevelStartView view){
+	LevelStartController(Kabasuji kabasuji, LevelSelectButtonView view){
 		this.kabasuji = kabasuji;
 		this.view = view;
 	}
 	
-	void clicked(int levelNum){
-		kabasuji.levels[levelNum].open();
+	void clicked(Level level){
+		
 	}
 }

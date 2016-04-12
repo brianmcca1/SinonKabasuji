@@ -1,13 +1,14 @@
 package sinon.main;
 
-import java.util.LinkedList;
 import java.util.Stack;
+
+import sinon.models.Level;
 
 public class Kabasuji {
 
-	Stack undo;
-	Stack redo;
-	LinkedList<Level> levels;
+	Stack undo = new Stack();
+	Stack redo = new Stack();
+	public Level[] levels = new Level[15];
 	
 	
 	Kabasuji(){

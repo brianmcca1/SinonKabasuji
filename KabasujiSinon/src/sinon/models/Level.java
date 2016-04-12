@@ -12,5 +12,9 @@ public class Level {
 		this.bp = bp;
 	}
 	
+	void open(){
+		
+	}
+	
 	
 }

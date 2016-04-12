@@ -9,7 +9,7 @@ public class LevelSelectButtonView {
 	JButton selectbtn;
 	
 	public LevelSelectButtonView() {
-		
+
 	}
 	
 	public JButton initialize(String num) {
