@@ -1,5 +1,5 @@
 package sinon.models;
-@Deprecated
+
 public class Tile {
 	int row;
 	int column;
@@ -13,7 +13,26 @@ public class Tile {
 		this.row = row;
 		this.column = column;
 		this.playable = playable;
+		this.hex = null;
 	}
 	
+	void setHexomino(Hexomino hex){
+		this.hex = hex;		
+	}
+	
+	void removeHex(){
+		this.hex = null;
+	}
+	
+	void setPlayable(boolean bool){
+		this.playable = bool;
+	}
+	
+	boolean hasHex(){
+		if (this.hex.equals(null)){
+			return false;
+		}
+		else return true;
+	}
 	
 }

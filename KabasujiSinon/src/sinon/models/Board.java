@@ -1,7 +1,7 @@
 package sinon.models;
 
 import java.util.ArrayList;
-@Deprecated
+
 public class Board {
 	ArrayList<Tile> tiles;
 	ArrayList<Hint> hints; 
