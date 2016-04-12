@@ -8,4 +8,20 @@ public class Hexonimo extends AbsPiece{
 			super(otherSquares, anchorRow, anchorColumn);
 		}
 		
+		void flipHorizontally(){
+			
+		}
+		
+		void flipVertically(){
+			
+		}
+		
+		void rotateC(){
+			
+		}
+		
+		void rotateCC(){
+			 
+		}
+		
 }
