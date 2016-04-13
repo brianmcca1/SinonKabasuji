@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -24,21 +25,6 @@ public class Builder extends JPanel{
         initialize();
     }
     
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    Player window = new Player();
-                    window.frame.setVisible(true);
-                    
-                    
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
     private void initialize() {
         this.setMinimumSize(new Dimension(800, 600));
         this.setPreferredSize(new Dimension(800, 600));
@@ -85,20 +71,20 @@ public class Builder extends JPanel{
         this.add(InteractionsView, BorderLayout.EAST);
         InteractionsView.setLayout(null);
 
-        JButton button = new JButton("");
-        button.setBounds(23, 11, 150, 149);
-        InteractionsView.add(button);
-
         JScrollBar scrollBar_1 = new JScrollBar();
         scrollBar_1.setBorder(new LineBorder(new Color(0, 0, 0)));
         scrollBar_1.setBounds(0, 0, 17, 540);
         InteractionsView.add(scrollBar_1);
+        
+        JButton button = new JButton("Restart");
+        button.setBounds(23, 11, 150, 149);
+        InteractionsView.add(button);
 
-        JButton button_1 = new JButton("");
+        JButton button_1 = new JButton("Exit");
         button_1.setBounds(23, 171, 150, 149);
         InteractionsView.add(button_1);
 
-        JButton button_2 = new JButton("");
+        JButton button_2 = new JButton("Next Level");
         button_2.setBounds(23, 331, 150, 149);
         InteractionsView.add(button_2);
         

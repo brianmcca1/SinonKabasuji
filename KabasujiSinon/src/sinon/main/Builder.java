@@ -6,7 +6,7 @@ public class Builder extends Kabasuji{
 	
 	public Builder(){
 		super();
-		//startSplash("Kabasuji Builder", new sinon.views.Builder()); BUILDER NEEDS TO BE CHANGED TO A PANEL
+		startSplash("Kabasuji Builder", new sinon.views.Builder());
 	}
 	
 	public static void main(String args[]) {

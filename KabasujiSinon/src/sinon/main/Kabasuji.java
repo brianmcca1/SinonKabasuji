@@ -58,6 +58,7 @@ public abstract class Kabasuji extends JFrame {
 		this.remove(current);
 		this.add(nextPanel);
 		this.validate();
+		this.repaint();
 	}
 	
 	
