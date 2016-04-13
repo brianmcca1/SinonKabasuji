@@ -7,10 +7,12 @@ import sinon.views.LevelSelectView;
 public class Game extends Kabasuji {
 
 	// MODELS AND VIEWS SPECIFIC TO GAME GO HERE
+	Game game;
 	
 	public Game() {
 		super();
-		startSplash("Kabasuji", new LevelSelectView());
+		this.game = this;
+		startSplash("Kabasuji", new LevelSelectView(game));
 	}
 
 	public static void main(String args[]) {
