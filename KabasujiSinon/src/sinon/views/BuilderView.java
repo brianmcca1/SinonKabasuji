@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
@@ -19,9 +20,13 @@ import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.border.LineBorder;
 
-public class Builder extends JPanel{
+import sinon.main.Game;
 
-    public Builder() {
+public class BuilderView extends JPanel{
+
+	sinon.main.Builder b; 
+	
+    public BuilderView() {
         initialize();
     }
     
@@ -83,6 +88,15 @@ public class Builder extends JPanel{
         JButton button_1 = new JButton("Exit");
         button_1.setBounds(23, 171, 150, 149);
         InteractionsView.add(button_1);
+        
+        /*
+        BuilderView current = this;
+        button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				 b.startNextPanel(current, new LevelSelectView(new Game()));
+			 }
+		});
+		*/
 
         JButton button_2 = new JButton("Next Level");
         button_2.setBounds(23, 331, 150, 149);

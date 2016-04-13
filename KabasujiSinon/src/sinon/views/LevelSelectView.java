@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import sinon.controllers.LevelStartController;
+import sinon.main.Builder;
 import sinon.main.Game;
 
 public class LevelSelectView extends JPanel{
@@ -48,10 +49,11 @@ public class LevelSelectView extends JPanel{
 			internalPanelOne.add(buttonPanels[i]);
 		}
 		
+		
 		LevelSelectView current = this;
 		buttonPanels[0].selectbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				 game.startNextPanel(current, new Builder());
+				 game.startNextPanel(current, new BuilderView());
 			 }
 		});
 		

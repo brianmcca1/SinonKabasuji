@@ -6,10 +6,12 @@ public class Builder extends Kabasuji{
 	
 	public Builder(){
 		super();
-		startSplash("Kabasuji Builder", new sinon.views.Builder());
+		startSplash("Kabasuji Builder", new sinon.views.BuilderView());
 	}
 	
+	/*
 	public static void main(String args[]) {
 		Builder game = new Builder();
 	}
+	*/
 }
