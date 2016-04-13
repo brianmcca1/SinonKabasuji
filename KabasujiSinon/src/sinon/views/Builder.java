@@ -18,23 +18,20 @@ import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.border.LineBorder;
 
-public class Builder {
+public class Builder extends JPanel{
 
-    JFrame frame;
-    private JTextField textField;
-    /**
-     * @wbp.nonvisual location=282,-31
-     */
-
-    /**
-     * Launch the application.
-     */
+    public Builder() {
+        initialize();
+    }
+    
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Builder window = new Builder();
+                    Player window = new Player();
                     window.frame.setVisible(true);
+                    
+                    
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -42,28 +39,16 @@ public class Builder {
         });
     }
 
-    /**
-     * Create the application.
-     */
-    public Builder() {
-        initialize();
-    }
-
-    /**
-     * Initialize the contents of the frame.
-     */
     private void initialize() {
-        frame = new JFrame();
-        frame.setMinimumSize(new Dimension(800, 600));
-        frame.setPreferredSize(new Dimension(800, 600));
-        frame.setBounds(100, 100, 450, 300);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(new BorderLayout(0, 0));
+        this.setMinimumSize(new Dimension(800, 600));
+        this.setPreferredSize(new Dimension(800, 600));
+        this.setBounds(100, 100, 450, 300);
+        this.setLayout(new BorderLayout(0, 0));
 
         JPanel LevelView = new JPanel();
         LevelView.setPreferredSize(new Dimension(605, 10));
         LevelView.setBorder(new LineBorder(new Color(0, 0, 0)));
-        frame.getContentPane().add(LevelView, BorderLayout.WEST);
+        this.add(LevelView, BorderLayout.WEST);
         LevelView.setLayout(new BorderLayout(0, 0));
 
         JPanel Bullpen = new JPanel();
@@ -97,7 +82,7 @@ public class Builder {
         InteractionsView.setPreferredSize(new Dimension(180, 800));
         InteractionsView.setMinimumSize(new Dimension(150, 800));
         InteractionsView.setBorder(new LineBorder(new Color(0, 0, 0)));
-        frame.getContentPane().add(InteractionsView, BorderLayout.EAST);
+        this.add(InteractionsView, BorderLayout.EAST);
         InteractionsView.setLayout(null);
 
         JButton button = new JButton("");
@@ -116,9 +101,10 @@ public class Builder {
         JButton button_2 = new JButton("");
         button_2.setBounds(23, 331, 150, 149);
         InteractionsView.add(button_2);
-
+        
+        /*
         JMenuBar menuBar = new JMenuBar();
-        frame.setJMenuBar(menuBar);
+        this.setJMenuBar(menuBar);
 
         JMenu mnFile = new JMenu("File");
         menuBar.add(mnFile);
@@ -157,6 +143,7 @@ public class Builder {
 
         JMenuItem mntmClearBoard = new JMenuItem("Clear Board");
         mnEdit.add(mntmClearBoard);
+        */
 
         System.out.print(LevelView.getHeight());
         System.out.print(LevelView.getWidth());

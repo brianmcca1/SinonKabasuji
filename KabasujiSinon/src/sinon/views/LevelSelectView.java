@@ -48,36 +48,12 @@ public class LevelSelectView extends JPanel{
 			internalPanelOne.add(buttonPanels[i]);
 		}
 		
-		/*
 		LevelSelectView current = this;
 		buttonPanels[0].selectbtn.addActionListener(new ActionListener() {
-			 Builder b = new Builder();
-			 public void actionPerformed(java.awt.event.ActionEvent evt) {
-				 game.startNextPanel(current, b);
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				 game.startNextPanel(current, new Builder());
 			 }
 		});
-		*/
-		/*
-		LevelStartController[] start = new LevelStartController[15];
-		for(int i = 0; i < 15; i++){
-			start[i] = new LevelStartController(btns[i]);			
-		}
-		*/
-		/*
-		JButton btnNewButton_2 = new JButton("1");
-		btnNewButton_2.setBackground(Color.BLUE);
-		btnNewButton_2.setForeground(new Color(127, 255, 0));
-		btnNewButton_2.addActionListener(new ActionListener() {
-			 public void actionPerformed(java.awt.event.ActionEvent evt) {
-	                
-	                    Player player = new Player();
-	                    player.frame.setVisible(true);
-	                }
-
-	            });
-	
-		panel.add(btnNewButton_2);
-		*/
 		
 		JPanel titlePanel = new JPanel();
 		titlePanel.setBackground(new Color(135, 206, 235));

@@ -50,13 +50,16 @@ public abstract class Kabasuji extends JFrame {
 	}
 
 	/**
-	 * Removes SplashScreen panel and replaces it with the nextPanel
-	 * @param s SplashScreen panel that is currently in the frame
+	 * Removes The current panel and replaces it with the nextPanel
+	 * @param current Panel that is currently in the frame
 	 * @param nextPanel Panel to be put into the frame TODO
 	 */
-	public void startNextPanel(JPanel s, JPanel nextPanel) {
-		this.remove(s);
+	public void startNextPanel(JPanel current, JPanel nextPanel) {
+		this.remove(current);
 		this.add(nextPanel);
 		this.validate();
 	}
+	
+	
+	
 }
