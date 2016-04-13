@@ -41,6 +41,22 @@ public class TestHexomino {
 			}
 		}
 		Board board = new Board(tiles);
+		board.getTile(10, 10).setPlayable(false);
+		
+		assertEquals(board.getTile(12, 12), null);
+		
+		assertEquals(board.getTile(0, 0).hasHex(), false);
+		board.getTile(0, 0).removeHex();
+		System.out.println(board.getTile(0, 0).toString());
+		
+		// These should return with errors
+		bp.removeHexomino(hex); 
+		bp.rotateHexominoClockwise(hex);
+		bp.rotateHexominoCounterClockwise(hex);
+		bp.flipHexominoHorizontal(hex);
+		bp.flipHexominoVertical(hex); 
+		
+
 		bp.addHexomino(hex);
 		bp.rotateHexominoClockwise(hex);
 		
@@ -74,13 +90,6 @@ public class TestHexomino {
 		assertEquals(tile.getHexomino(), null);
 		
 		bp.removeHexomino(hex);
-		
-		
-		
-		
-		
-		
-		
 		
 	}
 
