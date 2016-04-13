@@ -15,7 +15,7 @@ public class Hexomino extends AbsPiece{
 					+ ", anchorColumn=" + anchorColumn + "]";
 		}
 		
-		public void addTile(Tile t){
+		public void addToTile(Tile t){
 			t.addHexomino(this);
 		}
 

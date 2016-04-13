@@ -1,7 +1,7 @@
 package sinon.models;
 
 import java.awt.Point;
-@Deprecated
+
 public class Hint extends AbsPiece{
 	
 	public Hint(Point[] otherSquares, int anchorRow, int anchorColumn){
@@ -9,8 +9,7 @@ public class Hint extends AbsPiece{
 	}
 
 	@Override
-	public void addTile(Tile t) {
-		// TODO Auto-generated method stub
-		
+	public void addToTile(Tile t) {
+		t.addHint(this);	
 	}
 }

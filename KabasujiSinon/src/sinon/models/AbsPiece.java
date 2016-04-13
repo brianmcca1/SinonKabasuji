@@ -15,5 +15,5 @@ public abstract class AbsPiece {
 		this.anchorColumn = anchorColumn;
 	}
 	
-	public abstract void addTile(Tile t);
+	public abstract void addToTile(Tile t);
 }
