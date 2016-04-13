@@ -1,7 +1,7 @@
 package sinon.controllers;
 import sinon.main.Kabasuji;
 import sinon.views.LevelSelectButtonView;
-import sinon.views.Player;
+import sinon.views.PlayerView;
 
 
 public class LevelStartController  {
@@ -20,9 +20,9 @@ public class LevelStartController  {
 		//int num = view.levelNum;
 		//kabasuji.levels[num].open();	
 		
-		Player level = new Player();
+		PlayerView level = new PlayerView();
 		level.initialize();
 		//Need to close current screen?
-		level.frame.setVisible(true);
+		//level.frame.setVisible(true);
 	}
 }

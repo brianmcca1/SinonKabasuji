@@ -18,56 +18,19 @@ import javax.swing.JScrollBar;
 import java.awt.Font;
 import javax.swing.JTextPane;
 import java.awt.SystemColor;
-@Deprecated
-public class Player {
 
-	public JFrame frame;
-    /**
-     * @wbp.nonvisual location=282,-31
-     */
+public class PlayerView extends JPanel {
 
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    Player window = new Player();
-                    window.frame.setVisible(true);
-                    
-                    
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
-    /**
-     * Create the application.
-     */
-    public Player() {
+    public PlayerView() {
         initialize();
     }
 
-    /**
-     * Initialize the contents of the frame.
-     */
     public void initialize() {
-        frame = new JFrame();
-        frame.setMinimumSize(new Dimension(800, 600));
-        frame.setPreferredSize(new Dimension(800, 600));
-        frame.setBounds(100, 100, 450, 300);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(new BorderLayout(0, 0));
-        
         JPanel LevelView = new JPanel();
         LevelView.setPreferredSize(new Dimension(605, 10));
         LevelView.setBorder(new LineBorder(new Color(0, 0, 0)));
-        frame.getContentPane().add(LevelView, BorderLayout.WEST);
+        this.add(LevelView, BorderLayout.WEST);
         LevelView.setLayout(new BorderLayout(0, 0));
-        
         
         JPanel Bullpen = new JPanel();
         Bullpen.setPreferredSize(new Dimension(10, 180));
@@ -83,7 +46,6 @@ public class Player {
         scrollBar.setOrientation(JScrollBar.HORIZONTAL);
         scrollBar.setBounds(0, 163, 603, 17);
         Bullpen.add(scrollBar);
-        
         
         JPanel BoardView = new JPanel();
         BoardView.setPreferredSize(new Dimension(10, 300));
@@ -189,7 +151,7 @@ public class Player {
         InteractionsView.setPreferredSize(new Dimension(180, 800));
         InteractionsView.setMinimumSize(new Dimension(150, 800));
         InteractionsView.setBorder(new LineBorder(new Color(0, 0, 0)));
-        frame.getContentPane().add(InteractionsView, BorderLayout.EAST);
+        this.add(InteractionsView, BorderLayout.EAST);
         InteractionsView.setLayout(null);
         
         JButton btnRestart = new JButton("Restart\r\n");
@@ -214,38 +176,5 @@ public class Player {
         txtpnMovesLeft.setText("Moves Left: 10");
         txtpnMovesLeft.setBounds(32, 412, 115, 20);
         InteractionsView.add(txtpnMovesLeft);
-
-        JMenuBar menuBar = new JMenuBar();
-        frame.setJMenuBar(menuBar);
-
-        JMenu mnFile = new JMenu("File");
-        menuBar.add(mnFile);
-
-        JMenuItem mntmOpen = new JMenuItem("Open");
-        mnFile.add(mntmOpen);
-
-        JMenuItem mntmNewLevel = new JMenuItem("New Level");
-        mnFile.add(mntmNewLevel);
-
-        JMenuItem mntmSave = new JMenuItem("Save");
-        mnFile.add(mntmSave);	
-
-        JMenuItem mntmSaveAs = new JMenuItem("Save As");
-        mnFile.add(mntmSaveAs);
-
-        JMenuItem mntmQuit = new JMenuItem("Quit");
-        mnFile.add(mntmQuit);
-
-        JMenu mnEdit = new JMenu("Edit");
-        menuBar.add(mnEdit);
-
-        JMenuItem mntmUndo = new JMenuItem("Undo");
-        mnEdit.add(mntmUndo);
-
-        JMenuItem mntmRedo = new JMenuItem("Redo");
-        mnEdit.add(mntmRedo);
-        
-        System.out.print(LevelView.getHeight());
-        System.out.print(LevelView.getWidth());
     }
 }

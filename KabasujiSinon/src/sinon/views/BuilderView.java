@@ -24,7 +24,7 @@ import sinon.main.Game;
 
 public class BuilderView extends JPanel{
 
-	sinon.main.Builder b; 
+	sinon.main.Builder b;
 	
     public BuilderView() {
         initialize();
