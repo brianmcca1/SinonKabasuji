@@ -60,7 +60,4 @@ public abstract class Kabasuji extends JFrame {
 		this.validate();
 		this.repaint();
 	}
-	
-	
-	
 }

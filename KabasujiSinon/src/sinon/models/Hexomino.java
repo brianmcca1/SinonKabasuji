@@ -37,6 +37,7 @@ public class Hexomino extends AbsPiece{
 			}
 		}
 		
+		// Rotate this hexomino 90 degrees clockwise
 		public void rotateC(){
 			for(int i = 0; i < 6; i++){
 				int x = otherSquares[i].x;
@@ -55,7 +56,7 @@ public class Hexomino extends AbsPiece{
 				
 			}
 		}
-		
+		// Rotate this hexomino 90 degrees counter-clockwise
 		public void rotateCC(){
 			for(int i = 0; i < 6; i++){
 				int x = otherSquares[i].x;

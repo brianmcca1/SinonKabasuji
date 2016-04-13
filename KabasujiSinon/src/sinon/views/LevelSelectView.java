@@ -49,11 +49,10 @@ public class LevelSelectView extends JPanel{
 			internalPanelOne.add(buttonPanels[i]);
 		}
 		
-		
 		LevelSelectView current = this;
 		buttonPanels[0].selectbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				 game.startNextPanel(current, new BuilderView());
+				 game.startNextPanel(current, new PlayerView(game));
 			 }
 		});
 		
