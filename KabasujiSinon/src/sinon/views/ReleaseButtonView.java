@@ -20,9 +20,9 @@ import javax.swing.border.LineBorder;
 public class ReleaseButtonView extends JPanel {
 
     /** The dimensions of the rectangle */
-    private static final Rectangle BOUNDS = new Rectangle(0, 0, 80, 250);
+    private static final Rectangle BOUNDS = new Rectangle(451, 26, 130, 200);
     /** The number of buttons in the grid of buttons */
-    private static final int NUMBER_OF_BUTTONS = 15;
+    private static final int NUMBER_OF_BUTTONS = 18;
     /** The list of 15 buttons */
     List<JButton> buttons = new ArrayList<JButton>(NUMBER_OF_BUTTONS);
 
