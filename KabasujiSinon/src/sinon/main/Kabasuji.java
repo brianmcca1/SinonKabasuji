@@ -41,7 +41,7 @@ public abstract class Kabasuji extends JFrame {
 				SplashScreen.progressBar.setValue(SplashScreen.count);
 				if (SplashScreen.count == 100) {
 					SplashScreen.timer.stop();
-					startLevelSelect(splash, nextPanel);
+					startNextPanel(splash, nextPanel);
 				}
 			}
 		};
@@ -49,7 +49,12 @@ public abstract class Kabasuji extends JFrame {
 		SplashScreen.timer.start();
 	}
 
-	public void startLevelSelect(SplashScreen s, JPanel nextPanel) {
+	/**
+	 * Removes SplashScreen panel and replaces it with the nextPanel
+	 * @param s SplashScreen panel that is currently in the frame
+	 * @param nextPanel Panel to be put into the frame
+	 */
+	public void startNextPanel(SplashScreen s, JPanel nextPanel) {
 		this.remove(s);
 		this.add(nextPanel);
 		nextPanel.validate();
