@@ -11,27 +11,17 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+@SuppressWarnings("serial")
 public class NewLevelWizard extends JDialog {
 
     private final JPanel contentPanel = new JPanel();
 
     /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-        try {
-            NewLevelWizard dialog = new NewLevelWizard();
-            dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-            dialog.setVisible(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * Create the dialog.
      */
     public NewLevelWizard() {
+        this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        this.setVisible(true);
         setBounds(100, 100, 450, 300);
         getContentPane().setLayout(new BorderLayout());
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
