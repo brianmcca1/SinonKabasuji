@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 import sinon.controllers.LevelStartController;
 import sinon.main.Game;
 
-
 public class LevelSelectView extends JPanel{
 	/** These are the buttons on the level select screen  */
 	LevelSelectButtonView[] buttonPanels = new LevelSelectButtonView[15];	
@@ -49,7 +48,15 @@ public class LevelSelectView extends JPanel{
 			internalPanelOne.add(buttonPanels[i]);
 		}
 		
-		
+		/*
+		LevelSelectView current = this;
+		buttonPanels[0].selectbtn.addActionListener(new ActionListener() {
+			 Builder b = new Builder();
+			 public void actionPerformed(java.awt.event.ActionEvent evt) {
+				 game.startNextPanel(current, b);
+			 }
+		});
+		*/
 		/*
 		LevelStartController[] start = new LevelStartController[15];
 		for(int i = 0; i < 15; i++){
