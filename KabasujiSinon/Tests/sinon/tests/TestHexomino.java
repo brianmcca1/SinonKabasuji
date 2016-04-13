@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import sinon.models.Board;
+import sinon.models.BullPen;
 import sinon.models.Hexomino;
 import sinon.models.Tile;
 
@@ -29,6 +30,8 @@ public class TestHexomino {
 		points[5] = new Point();
 		points[5].move(1, -3);
 		
+		ArrayList<Hexomino> bullPenHexominos = new ArrayList<Hexomino>();
+		BullPen bp = new BullPen(bullPenHexominos);
 		Hexomino hex = new Hexomino(points, 5, 5);
 		ArrayList<Tile> tiles = new ArrayList<Tile>();
 		for(int i = 0; i < 12; i++){
@@ -38,21 +41,22 @@ public class TestHexomino {
 			}
 		}
 		Board board = new Board(tiles);
-		hex.rotateC();
+		bp.addHexomino(hex);
+		bp.rotateHexominoClockwise(hex);
 		
 		assertEquals(points[1].x, -1);
 		assertEquals(points[5].x, -3);
 		assertEquals(points[5].y, -1);
 			
-		hex.flipHorizontally();
+		bp.flipHexominoHorizontal(hex);
 		assertEquals(points[5].x, 3);
 		assertEquals(points[5].y, -1);
 	
-		hex.flipVertically();
+		bp.flipHexominoVertical(hex);
 		assertEquals(points[5].x, 3);
 		assertEquals(points[5].y, 1);
 		
-		hex.rotateCC();
+		bp.rotateHexominoCounterClockwise(hex);
 		assertEquals(points[5].x, -1);
 		assertEquals(points[5].y, 3);
 		
@@ -68,6 +72,14 @@ public class TestHexomino {
 		board.removeHexomino(hex);
 		
 		assertEquals(tile.getHexomino(), null);
+		
+		bp.removeHexomino(hex);
+		
+		
+		
+		
+		
+		
 		
 		
 	}

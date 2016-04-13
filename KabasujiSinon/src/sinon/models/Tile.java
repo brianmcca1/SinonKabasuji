@@ -1,6 +1,12 @@
 package sinon.models;
 
 public class Tile {
+	@Override
+	public String toString() {
+		return "Tile [row=" + row + ", column=" + column + ", playable=" + playable + ", hex=" + hex + ", numberSet="
+				+ numberSet + "]";
+	}
+
 	int row;
 	int column;
 	boolean playable;
@@ -16,18 +22,18 @@ public class Tile {
 		this.hex = null;
 	}
 	
-	void setHexomino(Hexomino hex){
+	public void setHexomino(Hexomino hex){
 		this.hex = hex;		
 	}
 	
 	public Hexomino getHexomino(){
 		return this.hex;
 	}
-	void removeHex(){
+	public void removeHex(){
 		this.hex = null;
 	}
 	
-	void setPlayable(boolean bool){
+	public void setPlayable(boolean bool){
 		this.playable = bool;
 	}
 	
