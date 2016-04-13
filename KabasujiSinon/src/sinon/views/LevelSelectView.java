@@ -2,7 +2,11 @@ package sinon.views;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -10,7 +14,6 @@ import sinon.controllers.LevelStartController;
 
 
 public class LevelSelectView extends JPanel{
-	
 	/** These are the buttons on the level select screen  */
 	LevelSelectButtonView[] buttonPanels = new LevelSelectButtonView[15];	
 
@@ -30,7 +33,7 @@ public class LevelSelectView extends JPanel{
 		this.setBounds(0, 0, 800, 600);
 		this.setLayout(null);
 		
-		//initialize the panel that contains the buttons
+		//initialize the panel
 		JPanel internalPanelOne = new JPanel();
 		internalPanelOne.setBackground(new Color(135, 206, 235));
 		internalPanelOne.setBounds(150, 175, 500, 325);
@@ -44,11 +47,27 @@ public class LevelSelectView extends JPanel{
 			internalPanelOne.add(buttonPanels[i]);
 		}
 		
+		
 		/*
 		LevelStartController[] start = new LevelStartController[15];
 		for(int i = 0; i < 15; i++){
 			start[i] = new LevelStartController(btns[i]);			
 		}
+		*/
+		/*
+		JButton btnNewButton_2 = new JButton("1");
+		btnNewButton_2.setBackground(Color.BLUE);
+		btnNewButton_2.setForeground(new Color(127, 255, 0));
+		btnNewButton_2.addActionListener(new ActionListener() {
+			 public void actionPerformed(java.awt.event.ActionEvent evt) {
+	                
+	                    Player player = new Player();
+	                    player.frame.setVisible(true);
+	                }
+
+	            });
+	
+		panel.add(btnNewButton_2);
 		*/
 		
 		JPanel titlePanel = new JPanel();
