@@ -1,15 +1,15 @@
 package sinon.main;
 
-import javax.swing.JFrame;
-import sinon.views.SplashScreen;
+import sinon.views.LevelSelectView;
 
 public class Game extends Kabasuji {
 
 	// MODELS AND VIEWS SPECIFIC TO GAME GO HERE
-	
+
 	public Game() {
 		super();
-		startSplash("Kabasuji", null);
+
+		startSplash("Kabasuji", new LevelSelectView());
 	}
 
 	public static void main(String args[]) {

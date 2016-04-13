@@ -24,8 +24,8 @@ public class SplashScreen extends JPanel {
 	private String labelText;
 
 	public SplashScreen(String text) {
-		initializePanel();
 		this.labelText = text;
+		initializePanel();
 	}
 
 	private void initializePanel() {

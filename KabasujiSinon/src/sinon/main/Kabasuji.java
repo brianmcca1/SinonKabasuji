@@ -20,14 +20,12 @@ public abstract class Kabasuji extends JFrame{
 	}
 	
 	/**
-	 * 
+	 * Creates a SplashScreen with the given information and displays it
 	 * @param nextPanel The next panel that will be displayed after this panel
 	 */
 	public void startSplash(String title, JPanel nextPanel){
 		SplashScreen splash = new SplashScreen(title);
 		this.add(splash);
 	}
-	
 
-	
 }

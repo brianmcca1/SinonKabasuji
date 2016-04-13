@@ -18,7 +18,7 @@ import javax.swing.JScrollBar;
 import java.awt.Font;
 import javax.swing.JTextPane;
 import java.awt.SystemColor;
-
+@Deprecated
 public class Player {
 
 	public JFrame frame;
