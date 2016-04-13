@@ -20,6 +20,9 @@ public class Tile {
 		this.hex = hex;		
 	}
 	
+	public Hexomino getHexomino(){
+		return this.hex;
+	}
 	void removeHex(){
 		this.hex = null;
 	}
@@ -28,7 +31,7 @@ public class Tile {
 		this.playable = bool;
 	}
 	
-	boolean hasHex(){
+	public boolean hasHex(){
 		if (this.hex.equals(null)){
 			return false;
 		}
