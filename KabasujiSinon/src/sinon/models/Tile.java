@@ -29,8 +29,14 @@ public class Tile {
 	public Hexomino getHexomino(){
 		return this.hex;
 	}
+	
 	public void removeHex(){
-		this.hex = null;
+		if(this.hasHex() == true){
+			this.hex = null;
+		} else {
+			System.err.println("Tile does not have a Hexomino");
+		}
+		
 	}
 	
 	public void setPlayable(boolean bool){
@@ -38,7 +44,7 @@ public class Tile {
 	}
 	
 	public boolean hasHex(){
-		if (this.hex.equals(null)){
+		if (this.hex == null){
 			return false;
 		}
 		else return true;
