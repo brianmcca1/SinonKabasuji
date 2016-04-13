@@ -24,7 +24,7 @@ public class BoardView extends JPanel{
 		
 		for(int i = 0; i < 144; i++){
 			TileView temp = new TileView();
-			temp.addMouseListener(new TileController(kabasuji, temp));;
+			temp.addMouseListener(new TileController(kabasuji, temp));
 			board.add(temp);
 		}
 	}
