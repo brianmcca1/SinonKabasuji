@@ -10,6 +10,7 @@ import sinon.controllers.LevelStartController;
 
 
 public class LevelSelectView extends JPanel{
+	/** These are the buttons on the level select screen  */
 	LevelSelectButtonView[] btns = new LevelSelectButtonView[15];	
 
 
@@ -73,6 +74,10 @@ public class LevelSelectView extends JPanel{
 		lblLevelSelect.setForeground(new Color(0, 0, 128));
 		panel_1.add(lblLevelSelect);
 		*/
+		
+		/**
+		 * This is the initialization of the title panel in the level select panel
+		 */
 		JPanel titlePanel = new JPanel();
 		titlePanel.setBackground(new Color(30, 144, 255));
 		titlePanel.setBounds(0, 0, 788, 17);
@@ -83,25 +88,25 @@ public class LevelSelectView extends JPanel{
 		lblKabasuji.setBounds(12, 0, 63, 15);
 		titlePanel.add(lblKabasuji);
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(new Color(30, 144, 255));
-		panel_3.setBounds(0, 432, 800, 140);
-		this.add(panel_3);
-		panel_3.setLayout(null);
+		JPanel levelDescriptionPanel = new JPanel();
+		levelDescriptionPanel.setBackground(new Color(30, 144, 255));
+		levelDescriptionPanel.setBounds(0, 432, 800, 140);
+		this.add(levelDescriptionPanel);
+		levelDescriptionPanel.setLayout(null);
 		
 		JLabel lblPuzzleLevel = new JLabel("PUZZLE LEVEL");
 		lblPuzzleLevel.setForeground(new Color(0, 0, 205));
 		lblPuzzleLevel.setBounds(12, 40, 108, 15);
-		panel_3.add(lblPuzzleLevel);
+		levelDescriptionPanel.add(lblPuzzleLevel);
 		
 		JLabel lblLevelPuzzle = new JLabel("LEVEL 1\n");
 		lblLevelPuzzle.setBounds(12, 0, 178, 48);
-		panel_3.add(lblLevelPuzzle);
+		levelDescriptionPanel.add(lblLevelPuzzle);
 		lblLevelPuzzle.setFont(new Font("Dialog", Font.BOLD, 22));
 		lblLevelPuzzle.setForeground(new Color(0, 0, 128));
 		
 		JLabel lblDescription = new JLabel("The puzzle level gives you a limited number of moves. ");
 		lblDescription.setBounds(149, 12, 450, 75);
-		panel_3.add(lblDescription);
+		levelDescriptionPanel.add(lblDescription);
 	}
 }
