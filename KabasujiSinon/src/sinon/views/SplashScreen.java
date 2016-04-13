@@ -13,12 +13,15 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import javax.swing.JWindow;
 import javax.swing.Timer;
+
+import sinon.main.Kabasuji;
+
 import javax.swing.JProgressBar;
 
 public class SplashScreen extends JPanel {
-	private static Timer timer;
-	private static JProgressBar progressBar;
-	private static int count;
+	public static Timer timer;
+	public static JProgressBar progressBar;
+	public static int count;
 
 	/** "Kabasuji" or "Kabasuji Builder" */
 	private String labelText;
@@ -112,29 +115,5 @@ public class SplashScreen extends JPanel {
 		gbc_progressBar.gridx = 1;
 		gbc_progressBar.gridy = 12;
 		this.add(progressBar, gbc_progressBar);
-		
-		this.setVisible(true);
-
-		//builder = new Builder(); begin loading next panel
-		load();
-	}
-
-	// The progress bar is moved and the builder is loaded when finished
-	private void load() {
-		ActionListener al = new ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				count++;
-				progressBar.setValue(count);
-				if (count == 100) {
-					timer.stop();
-					//this.setVisible(false);
-					//builder.frame.setVisible(true);
-				}
-
-			}
-
-		};
-		timer = new Timer(25, al);
-		timer.start();
 	}
 }
