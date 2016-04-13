@@ -11,17 +11,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import sinon.controllers.LevelStartController;
+import sinon.main.Game;
 
 
 public class LevelSelectView extends JPanel{
 	/** These are the buttons on the level select screen  */
 	LevelSelectButtonView[] buttonPanels = new LevelSelectButtonView[15];	
-
+	Game game;
 
 	/**
 	 * Create the application.
 	 */
-	public LevelSelectView() {
+	public LevelSelectView(Game g) {
+		this.game = g;
 		initialize();
 	}
 
