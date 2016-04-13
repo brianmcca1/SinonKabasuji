@@ -9,9 +9,7 @@ public class Builder extends Kabasuji{
 		startSplash("Kabasuji Builder", new sinon.views.BuilderView());
 	}
 	
-	/*
 	public static void main(String args[]) {
 		Builder game = new Builder();
 	}
-	*/
 }

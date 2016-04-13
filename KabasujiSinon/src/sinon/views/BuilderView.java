@@ -81,26 +81,9 @@ public class BuilderView extends JPanel{
         scrollBar_1.setBounds(0, 0, 17, 540);
         InteractionsView.add(scrollBar_1);
         
-        JButton button = new JButton("Restart");
-        button.setBounds(23, 11, 150, 149);
-        InteractionsView.add(button);
-
-        JButton button_1 = new JButton("Exit");
-        button_1.setBounds(23, 171, 150, 149);
-        InteractionsView.add(button_1);
-        
-        /*
-        BuilderView current = this;
-        button_1.addActionListener(new ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				 b.startNextPanel(current, new LevelSelectView(new Game()));
-			 }
-		});
-		*/
-
-        JButton button_2 = new JButton("Next Level");
-        button_2.setBounds(23, 331, 150, 149);
-        InteractionsView.add(button_2);
+        JLabel tempLabel = new JLabel("BANKVIEW GOES HERE");
+        tempLabel.setBounds(23, 11, 150, 149);
+        InteractionsView.add(tempLabel);
         
         /*
         JMenuBar menuBar = new JMenuBar();
@@ -144,8 +127,5 @@ public class BuilderView extends JPanel{
         JMenuItem mntmClearBoard = new JMenuItem("Clear Board");
         mnEdit.add(mntmClearBoard);
         */
-
-        System.out.print(LevelView.getHeight());
-        System.out.print(LevelView.getWidth());
     }
 }

@@ -20,8 +20,8 @@ public class LevelStartController  {
 		//int num = view.levelNum;
 		//kabasuji.levels[num].open();	
 		
-		PlayerView level = new PlayerView();
-		level.initialize();
+		//PlayerView level = new PlayerView();
+		//level.initialize();
 		//Need to close current screen?
 		//level.frame.setVisible(true);
 	}
