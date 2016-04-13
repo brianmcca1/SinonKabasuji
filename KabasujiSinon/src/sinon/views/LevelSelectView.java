@@ -41,12 +41,12 @@ public class LevelSelectView extends JPanel{
 			String newI = Integer.toString(i+1); 
 			internalPanelOne.add(btns[i].initialize(newI));
 		}
-		
+		/*
 		LevelStartController[] start = new LevelStartController[15];
 		for(int i = 0; i < 15; i++){
 			start[i] = new LevelStartController(btns[i]);			
 		}
-		
+		*/
 		/*
 		JButton btnNewButton_2 = new JButton("1");
 		btnNewButton_2.setBackground(Color.BLUE);
@@ -62,7 +62,7 @@ public class LevelSelectView extends JPanel{
 	
 		panel.add(btnNewButton_2);
 		*/
-		
+		/*
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(135, 206, 235));
 		panel_1.setBounds(126, 63, 518, 45);
@@ -72,16 +72,16 @@ public class LevelSelectView extends JPanel{
 		lblLevelSelect.setFont(new Font("DejaVu Sans", Font.BOLD, 20));
 		lblLevelSelect.setForeground(new Color(0, 0, 128));
 		panel_1.add(lblLevelSelect);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(new Color(30, 144, 255));
-		panel_2.setBounds(0, 0, 788, 17);
-		this.add(panel_2);
-		panel_2.setLayout(null);
+		*/
+		JPanel titlePanel = new JPanel();
+		titlePanel.setBackground(new Color(30, 144, 255));
+		titlePanel.setBounds(0, 0, 788, 17);
+		this.add(titlePanel);
+		titlePanel.setLayout(null);
 		
 		JLabel lblKabasuji = new JLabel("KABASUJI");
 		lblKabasuji.setBounds(12, 0, 63, 15);
-		panel_2.add(lblKabasuji);
+		titlePanel.add(lblKabasuji);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(new Color(30, 144, 255));
