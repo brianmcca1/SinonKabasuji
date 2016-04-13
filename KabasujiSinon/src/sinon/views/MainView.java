@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.border.LineBorder;
@@ -29,7 +28,7 @@ public class MainView extends JPanel {
     private JPanel boardView;
     private ActionListener realTempListener;
 
-    public MainView(ActionListener realTempListener, JPanel infoPanel) {
+    public MainView(ActionListener realTempListener, InfoPanel infoPanel) {
         this.realTempListener = realTempListener;
         initialize();
         setInfoPanel(infoPanel);
@@ -76,52 +75,8 @@ public class MainView extends JPanel {
 
     }
 
-    private void setInfoPanel(JPanel infoPanel) {
+    private void setInfoPanel(InfoPanel infoPanel) {
         this.add(infoPanel, BorderLayout.EAST);
-    }
-
-    public static JPanel createBankView() {
-        JPanel infoPanel = new JPanel();
-        infoPanel.setPreferredSize(new Dimension(180, 800));
-        infoPanel.setMinimumSize(new Dimension(150, 800));
-        infoPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
-
-        infoPanel.setLayout(null);
-
-        // This is specific to the builder /BankView
-        JScrollBar scrollBar_1 = new JScrollBar();
-        scrollBar_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-        scrollBar_1.setBounds(0, 0, 17, 540);
-        infoPanel.add(scrollBar_1);
-
-        JLabel tempLabel = new JLabel("BANKVIEW GOES HERE");
-        tempLabel.setBounds(23, 11, 150, 149);
-        infoPanel.add(tempLabel);
-        return infoPanel;
-    }
-
-    public static JPanel createInteractionsView() {
-        JPanel InteractionsView = new JPanel();
-        InteractionsView.setPreferredSize(new Dimension(180, 800));
-        InteractionsView.setMinimumSize(new Dimension(150, 800));
-        InteractionsView.setBorder(new LineBorder(new Color(0, 0, 0)));
-        InteractionsView.setLayout(null);
-
-        JButton btnRestart = new JButton("Restart\r\n");
-        btnRestart.setBounds(45, 20, 100, 50);
-        InteractionsView.add(btnRestart);
-
-        JButton btnExit = new JButton("Exit\r\n");
-        btnExit.setBounds(45, 100, 100, 50);
-        InteractionsView.add(btnExit);
-
-        JButton button_2 = new JButton("Next Level\r\n");
-        button_2.setBounds(45, 180, 100, 50);
-        InteractionsView.add(button_2);
-
-        // btnExit.addActionListener(realTempListener);
-
-        return InteractionsView;
     }
 
     private void addExampleHexominos() {

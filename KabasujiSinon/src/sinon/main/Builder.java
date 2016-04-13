@@ -10,6 +10,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
+import sinon.views.BankView;
 import sinon.views.MainView;
 import sinon.views.NewLevelWizard;
 
@@ -20,8 +21,7 @@ public class Builder extends Kabasuji {
     public Builder() {
         super();
         createMenuBar();
-        startSplash("Kabasuji Builder",
-                new MainView(null, MainView.createInteractionsView()));
+        startSplash("Kabasuji Builder", new MainView(null, new BankView()));
     }
 
     // TODO add a menubar to this frame
