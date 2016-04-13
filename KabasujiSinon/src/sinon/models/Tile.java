@@ -22,6 +22,21 @@ public class Tile {
 		this.hex = null;
 	}
 	
+	public void addHexomino(Hexomino hex){
+		if(!this.hasHex()){
+			this.setHexomino(hex);
+		} else {
+			System.err.println("Error: Tile already contains Hexomino");
+		}
+	}
+	
+	//public void addHint(Hint hint){
+		
+	//}
+	
+	//public void addShadow(Shadow shadow){
+		
+	//}
 	public void setHexomino(Hexomino hex){
 		this.hex = hex;		
 	}

@@ -16,18 +16,18 @@ public class Board {
 		//this.hints = hints;
 		
 	}
-	public void addHexomino(Hexomino hex){
+	public void addHexomino(AbsPiece piece){
 		
 		for(int i = 0; i < 6; i++){
-			int deltaX = hex.otherSquares[i].x;
-			int deltaY = hex.otherSquares[i].y;
+			int deltaX = piece.otherSquares[i].x;
+			int deltaY = piece.otherSquares[i].y;
 			
-			int row = hex.anchorRow + deltaX;
-			int column = hex.anchorColumn + deltaY;
+			int row = piece.anchorRow + deltaX;
+			int column = piece.anchorColumn + deltaY;
 			
 			Tile t = this.getTile(row,  column);
 			if(t.playable == true){
-				t.setHexomino(hex);
+				piece.addTile(t);
 			} else {
 				System.err.println("Piece is not playable at that location");
 			}
