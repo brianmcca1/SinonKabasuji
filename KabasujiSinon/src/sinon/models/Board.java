@@ -3,6 +3,11 @@ package sinon.models;
 import java.util.ArrayList;
 
 public class Board {
+	@Override
+	public String toString() {
+		return "Board [tiles=" + tiles + ", hints=" + hints + "]";
+	}
+
 	ArrayList<Tile> tiles;
 	ArrayList<Hint> hints; 
 	
@@ -29,7 +34,7 @@ public class Board {
 			
 			
 		}
-	}
+	} 
 	
 	public void removeHexomino(Hexomino hex){
 		
