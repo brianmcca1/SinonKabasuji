@@ -24,7 +24,7 @@ public class Board {
      * @param hex
      *            The Hexomino to be added
      * @param anchorRow
-     *            The row of where the anchor square will go
+     *            The row number where the anchor square will go
      * @param anchorColumn
      *            The column number where the anchor square will go
      * @return True if the move if possible, false otherwise.
@@ -34,18 +34,29 @@ public class Board {
         return false;
     }
 
-    public void addPiece(AbsPiece piece, int anchorRow, int anchorColumn) {
+    /**
+     * Adds the given Hexomino to the board. Must be a valid move.
+     * 
+     * @param hex
+     *            The Hexomino to be added
+     * @param anchorRow
+     *            The row number where the anchor square will go
+     * @param anchorColumn
+     *            * The column number where the anchor square will go
+     * 
+     */
+    public void addHexomino(Hexomino hex, int anchorRow, int anchorColumn) {
 
         for (int i = 0; i < 6; i++) {
-            int deltaX = piece.squares[i].x;
-            int deltaY = piece.squares[i].y;
+            int deltaX = hex.squares[i].x;
+            int deltaY = hex.squares[i].y;
 
             int row = anchorRow + deltaX;
             int column = anchorColumn + deltaY;
 
             Tile t = this.getTile(row, column);
             if (t.playable == true) {
-                piece.addToTile(t);
+                hex.addToTile(t);
             } else {
                 System.err.println("Piece is not playable at that location");
             }
