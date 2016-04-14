@@ -1,23 +1,17 @@
 package sinon.views;
 
-import java.awt.EventQueue;
-import javax.swing.JFrame;
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.Color;
-import java.awt.event.ActionListener;
-import javax.swing.JWindow;
+import javax.swing.JProgressBar;
 import javax.swing.Timer;
 
-import sinon.main.Kabasuji;
-
-import javax.swing.JProgressBar;
-
+@SuppressWarnings("serial")
 public class SplashScreen extends JPanel {
 	public static Timer timer;
 	public static JProgressBar progressBar;

@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
 import sinon.main.Game;
-import sinon.views.LevelSelectView;
+import sinon.views.game.LevelSelectView;
 
 public class ExitGameController implements ActionListener {
 
