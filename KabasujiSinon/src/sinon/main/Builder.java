@@ -21,7 +21,7 @@ public class Builder extends Kabasuji {
     public Builder() {
         super();
         createMenuBar();
-        startSplash("Kabasuji Builder", new MainView(null, new BankView()));
+        startSplash("Kabasuji Builder", new MainView(new BankView()));
     }
 
     // TODO add a menubar to this frame

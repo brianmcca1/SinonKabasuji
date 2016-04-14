@@ -1,17 +1,12 @@
 package sinon.views;
 
-import java.awt.Color;
-import java.awt.Dimension;
-
 import javax.swing.JButton;
-import javax.swing.border.LineBorder;
 
 public class GameInfoView extends InfoPanel {
+    private static final long serialVersionUID = 6327303968003789660L;
+
     public GameInfoView() {
-        this.setPreferredSize(new Dimension(180, 800));
-        this.setMinimumSize(new Dimension(150, 800));
-        this.setBorder(new LineBorder(new Color(0, 0, 0)));
-        this.setLayout(null);
+        super();
 
         JButton btnRestart = new JButton("Restart\r\n");
         btnRestart.setBounds(45, 20, 100, 50);

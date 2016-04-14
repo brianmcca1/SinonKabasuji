@@ -1,20 +1,16 @@
 package sinon.views;
 
 import java.awt.Color;
-import java.awt.Dimension;
 
 import javax.swing.JLabel;
 import javax.swing.JScrollBar;
 import javax.swing.border.LineBorder;
 
 public class BankView extends InfoPanel {
+    private static final long serialVersionUID = 7842781710562282474L;
 
     public BankView() {
-        this.setPreferredSize(new Dimension(180, 800));
-        this.setMinimumSize(new Dimension(150, 800));
-        this.setBorder(new LineBorder(new Color(0, 0, 0)));
-
-        this.setLayout(null);
+        super();
 
         // This is specific to the builder /BankView
         JScrollBar scrollBar_1 = new JScrollBar();
