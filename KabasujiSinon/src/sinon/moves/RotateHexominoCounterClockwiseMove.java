@@ -4,7 +4,7 @@ import sinon.models.BullPen;
 import sinon.models.Hexomino;
 
 /**
- * This is the move class for rotating the hexomino counter clockwise.
+ * Move class for rotating the hexomino counter clockwise.
  * @author kartik
  *
  */
@@ -18,7 +18,7 @@ public class RotateHexominoCounterClockwiseMove extends BullPenMove {
 	@Override
 	public boolean doMove() {
 		if(hex == null) {
-			return false;
+			throw new NullPointerException();
 		}
 		
 		bullPen.rotateHexominoCounterClockwise(hex);
@@ -29,7 +29,7 @@ public class RotateHexominoCounterClockwiseMove extends BullPenMove {
 	@Override
 	public boolean undoMove() {
 		if(hex == null) {
-			return false;
+			throw new NullPointerException();
 		}
 		
 		bullPen.rotateHexominoClockwise(hex);
