@@ -14,6 +14,10 @@ public class Hexomino extends AbsPiece{
 			return "Hexonimo [otherSquares=" + Arrays.toString(otherSquares) + ", anchorRow=" + anchorRow
 					+ ", anchorColumn=" + anchorColumn + "]";
 		}
+		
+		public void addToTile(Tile t){
+			t.addHexomino(this);
+		}
 
 		// Flip the hexomino over the X axis
 		public void flipVertically(){
@@ -67,6 +71,7 @@ public class Hexomino extends AbsPiece{
 				
 				otherSquares[i].move(newX, newY);
 			}
+			
 		}
 		
 }

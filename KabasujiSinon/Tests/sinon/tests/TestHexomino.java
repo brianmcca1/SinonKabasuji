@@ -10,6 +10,8 @@ import org.junit.Test;
 import sinon.models.Board;
 import sinon.models.BullPen;
 import sinon.models.Hexomino;
+import sinon.models.Hint;
+import sinon.models.Shadow;
 import sinon.models.Tile;
 
 public class TestHexomino {
@@ -33,6 +35,10 @@ public class TestHexomino {
 		ArrayList<Hexomino> bullPenHexominos = new ArrayList<Hexomino>();
 		BullPen bp = new BullPen(bullPenHexominos);
 		Hexomino hex = new Hexomino(points, 5, 5);
+		
+		Hint hint = new Hint(points,2,3);
+		Shadow shadow = new Shadow(points,4,4);
+		
 		ArrayList<Tile> tiles = new ArrayList<Tile>();
 		for(int i = 0; i < 12; i++){
 			for(int j = 0; j < 12; j++){
@@ -76,11 +82,20 @@ public class TestHexomino {
 		assertEquals(points[5].x, -1);
 		assertEquals(points[5].y, 3);
 		
-		board.addHexomino(hex);
+		board.addPiece(hex);
+		
+		board.addPiece(hint);
+		board.addPiece(shadow);
 		
 		Tile tile = board.getTile(5, 5);
+		Tile tile2 = board.getTile(2, 3);
+		Tile tile3 = board.getTile(4, 4);
+		
 		assertEquals(tile.getHexomino(), hex);
 		assertEquals(tile.hasHex(), true);
+		assertEquals(tile2.getHint(), hint);
+		assertEquals(tile3.getShadow(), shadow);
+		
 		tile = board.getTile(4, 8);
 		assertEquals(tile.getHexomino(), hex);
 		
