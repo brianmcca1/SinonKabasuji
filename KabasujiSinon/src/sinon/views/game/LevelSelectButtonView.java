@@ -27,7 +27,6 @@ public class LevelSelectButtonView extends JPanel {
 		setLayout(new GridLayout(2, 1, 0, 0));
 
 		JPanel panel = new JPanel();
-		// panel.setBorder(new LineBorder(Color.RED));
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		flowLayout.setVgap(0);
 		flowLayout.setHgap(0);
@@ -42,8 +41,7 @@ public class LevelSelectButtonView extends JPanel {
 	 * Initializes the LevelSelectButtonView and adds a button to it. Sets
 	 * attributes like background and foreground
 	 * 
-	 * @param num
-	 *            The number of the level
+	 * @param num The number of the level
 	 * @return Returns the button that is created
 	 */
 	public JButton makeButton(String num) {
