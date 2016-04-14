@@ -11,6 +11,8 @@ public class Tile {
 	int column;
 	boolean playable;
 	Hexomino hex;
+	Hint hint;
+	Shadow shadow;
 	NumberSet numberSet;
 	//Shadow shadow;
 	//Hint hint;
@@ -20,29 +22,44 @@ public class Tile {
 		this.column = column;
 		this.playable = playable;
 		this.hex = null;
+		this.hint = null;
+		this.shadow = null;
 	}
 	
 	public void addHexomino(Hexomino hex){
 		if(!this.hasHex()){
-			this.setHexomino(hex);
+			this.hex = hex;
 		} else {
 			System.err.println("Error: Tile already contains Hexomino");
 		}
 	}
 	
-	//public void addHint(Hint hint){
-		
-	//}
-	
-	//public void addShadow(Shadow shadow){
-		
-	//}
-	public void setHexomino(Hexomino hex){
-		this.hex = hex;		
+	public void addHint(Hint hint){
+		if(!this.hasHint()){
+			this.hint = hint;
+		} else {
+			System.err.println("Error: Tile already contains Hint");
+		}
 	}
 	
+	public void addShadow(Shadow shadow){
+		if(!this.hasShadow()){
+			this.shadow = shadow;
+		} else {
+			System.err.println("Error: Tile already contains Hint");
+		}
+	}
+
 	public Hexomino getHexomino(){
 		return this.hex;
+	}
+	
+	public Hint getHint(){
+		return this.hint;
+	}
+	
+	public Shadow getShadow(){
+		return this.shadow;
 	}
 	
 	public void removeHex(){
@@ -64,5 +81,20 @@ public class Tile {
 		}
 		else return true;
 	}
+	
+	public boolean hasHint(){
+		if (this.hint == null){
+			return false;
+		}
+		else return true;
+	}
+	
+	public boolean hasShadow(){
+		if (this.shadow == null){
+			return false;
+		}
+		else return true;
+	}
+	
 	
 }

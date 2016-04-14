@@ -16,7 +16,7 @@ public class Board {
 		//this.hints = hints;
 		
 	}
-	public void addHexomino(AbsPiece piece){
+	public void addPiece(AbsPiece piece){
 		
 		for(int i = 0; i < 6; i++){
 			int deltaX = piece.otherSquares[i].x;
@@ -27,7 +27,7 @@ public class Board {
 			
 			Tile t = this.getTile(row,  column);
 			if(t.playable == true){
-				piece.addTile(t);
+				piece.addToTile(t);
 			} else {
 				System.err.println("Piece is not playable at that location");
 			}
