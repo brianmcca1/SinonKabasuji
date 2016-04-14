@@ -4,24 +4,23 @@ import sinon.models.BullPen;
 import sinon.models.Hexomino;
 
 /**
- * Move class for rotating a hexomino clockwise.
+ * Move class for flipping the hexomino vertically.
  * @author kartik
  *
  */
-public class RotateHexominoClockwiseMove extends BullPenMove {
-	
-	public RotateHexominoClockwiseMove(BullPen bp, Hexomino hex) {
+public class FlipVerticalMove extends BullPenMove{
+
+	public FlipVerticalMove(BullPen bp, Hexomino hex) {
 		this.bullPen = bp;
 		this.hex = hex;
 	}
-	
 	@Override
 	public boolean doMove() {
 		if(hex == null) {
 			throw new NullPointerException();
 		}
 		
-		bullPen.rotateHexominoClockwise(hex);
+		bullPen.flipHexominoVertical(hex);
 		return true;
 	}
 
@@ -31,7 +30,7 @@ public class RotateHexominoClockwiseMove extends BullPenMove {
 			throw new NullPointerException();
 		}
 		
-		bullPen.rotateHexominoCounterClockwise(hex);
+		bullPen.flipHexominoVertical(hex);
 		return true;
 	}
 
