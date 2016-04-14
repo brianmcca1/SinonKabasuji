@@ -2,6 +2,7 @@ package sinon.views;
 
 import java.awt.Color;
 
+import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
@@ -26,6 +27,9 @@ public class BullpenView extends JScrollPane {
 
         this.upperPanel = new JPanel();
         upperPanel.setBackground(Color.blue);
+        BoxLayout layout = new BoxLayout(upperPanel, BoxLayout.X_AXIS);
+
+        upperPanel.setLayout(new BoxLayout(upperPanel, BoxLayout.X_AXIS));
         examplePopulateBullpen();
         examplePopulateBullpen();
         examplePopulateBullpen();

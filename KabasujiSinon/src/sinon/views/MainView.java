@@ -18,7 +18,8 @@ import javax.swing.border.LineBorder;
 @SuppressWarnings("serial")
 public class MainView extends JPanel {
 
-    private static final int LEVEL_PANEL_WIDTH = 640;
+    static final int LEVEL_PANEL_WIDTH = 640;
+    static final int MAIN_PANEL_HEIGHT = 545;
 
     /**
      * levelPanel is a high level container, which has the Bullpen & the
@@ -61,7 +62,7 @@ public class MainView extends JPanel {
         initReleaseButtonView();
         // Adds info panel to the right
         this.add(this.infoPanel);
-        infoPanel.setBounds(LEVEL_PANEL_WIDTH, 0, 150, 600);
+        infoPanel.setBounds(LEVEL_PANEL_WIDTH, 0, 150, MAIN_PANEL_HEIGHT);
     }
 
     private void initReleaseButtonView() {
@@ -91,7 +92,7 @@ public class MainView extends JPanel {
     private void initLevelPanel() {
         levelPanel = new LevelPanel(new BullpenView(), gameAreaPanel);
         levelPanel.setBorder(new LineBorder(new Color(255, 0, 0)));
-        levelPanel.setBounds(0, 0, LEVEL_PANEL_WIDTH, 600);
+        levelPanel.setBounds(0, 0, LEVEL_PANEL_WIDTH, MAIN_PANEL_HEIGHT);
         this.add(levelPanel);
     }
 }

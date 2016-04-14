@@ -17,7 +17,7 @@ public class LevelPanel extends JPanel {
      * @param bullpenView
      */
     public LevelPanel(BullpenView bullpenView, JPanel gameAreaPanel) {
-        setPreferredSize(new Dimension(645, 600));
+        setPreferredSize(new Dimension(645, MainView.MAIN_PANEL_HEIGHT));
         GridBagLayout gridBagLayout = new GridBagLayout();
         gridBagLayout.columnWidths = new int[] { 645 };
         gridBagLayout.rowHeights = new int[] { 150, 450 };
