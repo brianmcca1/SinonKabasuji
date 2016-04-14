@@ -14,96 +14,167 @@ public class Tile {
 	boolean playable;
 	Optional<Hexomino> hex;
 	Optional<Hint> hint;
-	Shadow shadow;
+	Optional<Shadow> shadow;
 	NumberSet numberSet;
-	//Shadow shadow;
-	//Hint hint;
-	
-	public Tile(int row, int column, boolean playable){
+	// Shadow shadow;
+	// Hint hint;
+
+	public Tile(int row, int column, boolean playable) {
 		this.row = row;
 		this.column = column;
 		this.playable = playable;
 		this.hint = null;
 		this.shadow = null;
 	}
+
+	/**
+	 * Determines if it is possible to add a Hexomino to the given tile
+	 * 
+	 * @return True if you can add the hex, False if you cannot
+	 */
+	public boolean canAddHex() {
+		if (this.hex.isPresent() || this.playable == false) {
+			return false;
+		} else {
+			return true;
+		}
+
+	}
+
 	/**
 	 * 
-	 * TODO: Describe it
-	 * Throws Runtime Exception if Hexomino is already present
+	 * Adds the given Hexomino to the tile Throws Runtime Exception if Hexomino
+	 * is already present
 	 * 
 	 * @param hex
+	 *            The hexomino to be added
 	 */
-	public void addHexomino(Hexomino hex){
-		if(this.hex.isPresent()){
+	public void addHexomino(Hexomino hex) {
+		if (this.hex.isPresent()) {
 			throw new RuntimeException("Tile already contains a Hexomino");
-			
+
 		} else {
 			this.hex = Optional.of(hex);
 		}
 	}
-	
-	public void addHint(Hint hint){
-		if(this.hint.isPresent()){
+
+	/**
+	 * Adds the given Hint to the tile Throws Runtime Exception if Hint is
+	 * already present
+	 * 
+	 * @param hint
+	 *            The hint to be added
+	 */
+	public void addHint(Hint hint) {
+		if (this.hint.isPresent()) {
 			throw new RuntimeException("Tile already contains a hint");
 		} else {
 			this.hint = Optional.of(hint);
 		}
 	}
-	
-	public void addShadow(Shadow shadow){
-		if(!this.hasShadow()){
-			this.shadow = shadow;
+
+	/**
+	 * Adds the given Shadow to the tile Throws Runtime Exception if Shadow is
+	 * already present
+	 * 
+	 * @param shadow
+	 *            The shadow to be added
+	 */
+	public void addShadow(Shadow shadow) {
+		if (this.shadow.isPresent()) {
+			throw new RuntimeException("Tile already contains a shadow");
 		} else {
-			System.err.println("Error: Tile already contains Hint");
+			this.shadow = Optional.of(shadow);
 		}
 	}
 
-	public Optional<Hexomino> getHexomino(){
-		
+	/**
+	 * Gets the hexomino currently on this tile
+	 * 
+	 * @return The hexomino that is on this tile
+	 */
+	public Optional<Hexomino> getHexomino() {
+
 		return this.hex;
 	}
-	
-	public Optional<Hint> getHint(){
+
+	/**
+	 * Gets the Hint currently on this tile
+	 * 
+	 * @return the hint that is on this tile
+	 */
+	public Optional<Hint> getHint() {
 		return this.hint;
 	}
-	
-	public Shadow getShadow(){
+
+	/**
+	 * Gets the Shadow currently on this tile
+	 * 
+	 * @return the shadow that is on this tile
+	 */
+	public Optional<Shadow> getShadow() {
 		return this.shadow;
 	}
-	
-	public void removeHex(){
-		if(this.hasHex() == true){
+
+	/**
+	 * Removes Hexomino from this tile, if there is one Throws Runtime Exception
+	 * if tile does not contain a Hexomino
+	 * 
+	 */
+	public void removeHex() {
+		if (this.hex.isPresent()) {
 			this.hex = null;
 		} else {
-			System.err.println("Tile does not have a Hexomino");
+			throw new RuntimeException("Tile does not contain a Hexomino");
 		}
-		
+
 	}
-	
-	public void setPlayable(boolean bool){
+
+	/**
+	 * Changes the playability of the tile
+	 * 
+	 * @param bool
+	 *            The playability to give this tile
+	 */
+	public void setPlayable(boolean bool) {
 		this.playable = bool;
 	}
-	
-	public boolean hasHex(){
-		if (this.hex == null){
+
+	/**
+	 * Determines if the tile currently is occupied by a Hexomino
+	 * 
+	 * @return True if the tile is occupied by a Hex, False if not
+	 */
+	public boolean hasHex() {
+		if (this.hex.isPresent()) {
+			return true;
+		} else {
 			return false;
 		}
-		else return true;
 	}
-	
-	public boolean hasHint(){
-		if (this.hint == null){
+
+	/**
+	 * Determines if the tile is currently occupied by a Hint
+	 * 
+	 * @return True if the tile is occupied by a Hint, False if not
+	 */
+	public boolean hasHint() {
+		if (this.hint.isPresent()) {
+			return true;
+		} else
 			return false;
-		}
-		else return true;
 	}
-	
-	public boolean hasShadow(){
-		if (this.shadow == null){
+
+	/**
+	 * Determines if the tile is currently occupied by a Tile
+	 * 
+	 * @return True if the tile is occupied by a Shadow, False if not
+	 */
+	public boolean hasShadow() {
+		if (this.shadow.isPresent()) {
+			return true;
+		} else
 			return false;
-		}
-		else return true;
 	}
-	
-	
+
 }
