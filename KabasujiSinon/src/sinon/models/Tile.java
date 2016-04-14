@@ -1,5 +1,7 @@
 package sinon.models;
 
+import java.util.Optional;
+
 public class Tile {
 	@Override
 	public String toString() {
@@ -10,8 +12,8 @@ public class Tile {
 	int row;
 	int column;
 	boolean playable;
-	Hexomino hex;
-	Hint hint;
+	Optional<Hexomino> hex;
+	Optional<Hint> hint;
 	Shadow shadow;
 	NumberSet numberSet;
 	//Shadow shadow;
@@ -21,24 +23,30 @@ public class Tile {
 		this.row = row;
 		this.column = column;
 		this.playable = playable;
-		this.hex = null;
 		this.hint = null;
 		this.shadow = null;
 	}
-	
+	/**
+	 * 
+	 * TODO: Describe it
+	 * Throws Runtime Exception if Hexomino is already present
+	 * 
+	 * @param hex
+	 */
 	public void addHexomino(Hexomino hex){
-		if(!this.hasHex()){
-			this.hex = hex;
+		if(this.hex.isPresent()){
+			throw new RuntimeException("Tile already contains a Hexomino");
+			
 		} else {
-			System.err.println("Error: Tile already contains Hexomino");
+			this.hex = Optional.of(hex);
 		}
 	}
 	
 	public void addHint(Hint hint){
-		if(!this.hasHint()){
-			this.hint = hint;
+		if(this.hint.isPresent()){
+			throw new RuntimeException("Tile already contains a hint");
 		} else {
-			System.err.println("Error: Tile already contains Hint");
+			this.hint = Optional.of(hint);
 		}
 	}
 	
@@ -50,11 +58,12 @@ public class Tile {
 		}
 	}
 
-	public Hexomino getHexomino(){
+	public Optional<Hexomino> getHexomino(){
+		
 		return this.hex;
 	}
 	
-	public Hint getHint(){
+	public Optional<Hint> getHint(){
 		return this.hint;
 	}
 	

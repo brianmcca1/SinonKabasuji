@@ -1,6 +1,8 @@
 package sinon.models;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class Board {
 	@Override
@@ -8,22 +10,23 @@ public class Board {
 		return "Board [tiles=" + tiles + ", hints=" + hints + "]";
 	}
 
-	ArrayList<Tile> tiles;
+	//Tile[] tiles = new Tile[144];
+	List<Tile> tiles;
 	ArrayList<Hint> hints; 
 	
-	public Board(ArrayList<Tile> tiles ){
+	public Board(List<Tile> tiles){
 		this.tiles = tiles;
 		//this.hints = hints;
 		
 	}
-	public void addPiece(AbsPiece piece){
+	public void addPiece(AbsPiece piece, int anchorRow, int anchorColumn){
 		
 		for(int i = 0; i < 6; i++){
-			int deltaX = piece.otherSquares[i].x;
-			int deltaY = piece.otherSquares[i].y;
+			int deltaX = piece.squares[i].x;
+			int deltaY = piece.squares[i].y;
 			
-			int row = piece.anchorRow + deltaX;
-			int column = piece.anchorColumn + deltaY;
+			int row = anchorRow + deltaX;
+			int column = anchorColumn + deltaY;
 			
 			Tile t = this.getTile(row,  column);
 			if(t.playable == true){
@@ -38,18 +41,11 @@ public class Board {
 	
 	public void removeHexomino(Hexomino hex){
 		
-		for(int i = 0; i < 6; i++){
-			int deltaX = hex.otherSquares[i].x;
-			int deltaY = hex.otherSquares[i].y;
-			
-			int row = hex.anchorRow + deltaX;
-			int column = hex.anchorColumn + deltaY;
-			
-			Tile t = this.getTile(row,  column);
-			if(t != null){
-				t.removeHex();
-			} else {
-				System.err.println("No hex at this location");
+		for(Tile t: tiles){
+			if(t.getHexomino().isPresent()){
+				if(t.getHexomino().get() == hex){
+					t.removeHex();
+				}
 			}
 		}
 		
