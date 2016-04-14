@@ -2,76 +2,79 @@ package sinon.models;
 
 import java.awt.Point;
 import java.util.Arrays;
+import java.util.Optional;
 
-public class Hexomino extends AbsPiece{
-	
-		public Hexomino(Point[] otherSquares, int anchorRow, int anchorColumn){
-			super(otherSquares, anchorRow, anchorColumn);
+public class Hexomino extends AbsPiece {
+
+	public Hexomino(Point[] squares) {
+		super(squares);
+	}
+
+	void addToTile(Tile t) {
+		t.addHexomino(this);
+	}
+
+	// Flip the hexomino over the Y axis
+	public void flipHorizontally() {
+		for (int i = 0; i < 6; i++) {
+			int temp = squares[i].x;
+			temp = temp * (-1);
+			squares[i].x = temp;
 		}
-		
-		@Override
-		public String toString() {
-			return "Hexonimo [otherSquares=" + Arrays.toString(otherSquares) + ", anchorRow=" + anchorRow
-					+ ", anchorColumn=" + anchorColumn + "]";
+	}
+
+	// Flip the hexomino over the X axis
+	public void flipVertically() {
+		for (int i = 0; i < 6; i++) {
+			int temp = squares[i].y;
+			temp = temp * (-1);
+			squares[i].y = temp;
 		}
-		
-		public void addToTile(Tile t){
-			t.addHexomino(this);
+	}
+
+	// Rotate this hexomino 90 degrees clockwise
+	public void rotateC() {
+		for (int i = 0; i < 6; i++) {
+			int x = squares[i].x;
+			int y = squares[i].y;
+			int newX;
+			int newY;
+
+			// Perform rotation, Matrix is
+			// [0 1]
+			// [-1 0]
+			newX = y;
+			newY = -x;
+
+			// set new location
+			squares[i].move(newX, newY);
+
+		}
+	}
+
+	// Rotate this hexomino 90 degrees counter-clockwise
+	public void rotateCC() {
+		for (int i = 0; i < 6; i++) {
+			int x = squares[i].x;
+			int y = squares[i].y;
+			int newX;
+			int newY;
+
+			// Perform rotation, Matrix is
+			// [0 -1]
+			// [1 0]
+			newX = -y;
+			newY = x;
+
+			squares[i].move(newX, newY);
 		}
 
-		// Flip the hexomino over the X axis
-		public void flipVertically(){
-			for(int i = 0; i < 6; i++){
-				int temp = otherSquares[i].y;
-				temp = temp*(-1);
-				otherSquares[i].y = temp;
-			}
-		}
-		
-		// Flip the hexomino over the Y axis
-		public void flipHorizontally(){
-			for(int i = 0; i < 6; i++){
-				int temp = otherSquares[i].x;
-				temp = temp*(-1);
-				otherSquares[i].x = temp;
-			}
-		}
-		
-		// Rotate this hexomino 90 degrees clockwise
-		public void rotateC(){
-			for(int i = 0; i < 6; i++){
-				int x = otherSquares[i].x;
-				int y = otherSquares[i].y;
-				int newX;
-				int newY;
-				
-				// Perform rotation, Matrix is [0  1]
-				//							   [-1 0]
-				newX = y;
-				newY = -x;
-				
-				// set new location
-				otherSquares[i].move(newX, newY);
-				
-				
-			}
-		}
-		// Rotate this hexomino 90 degrees counter-clockwise
-		public void rotateCC(){
-			for(int i = 0; i < 6; i++){
-				int x = otherSquares[i].x;
-				int y = otherSquares[i].y;
-				int newX;
-				int newY;
-				
-				// Perform rotation, Matrix is [0 -1]
-				//							   [1  0]
-				newX = -y;
-				newY = x;
-				
-				otherSquares[i].move(newX, newY);
-			}
-			
-		}
-		
+	}
+
+	@Override
+	public String toString() {
+		return "Hexonimo [otherSquares=" + Arrays.toString(squares) + ", anchorRow=" + anchorRow
+				+ ", anchorColumn=" + anchorColumn + "]";
+	}
+
 }
