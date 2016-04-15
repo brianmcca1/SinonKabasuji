@@ -4,18 +4,22 @@ import java.util.List;
 
 public class Board {
     /** */
-    List<Hint> hints;
-    /** */
     List<Tile> tiles;
+
+    private final static int WIDTH = 12;
+    private final static int HEIGHT = 12;
+    private final static int WIDTH_BY_ZERO = WIDTH - 1;
+    private final static int HEIGHT_BY_ZERO = HEIGHT - 1;
 
     /**
      * 
      * @param tiles
+     *            The list of initialized tiles.
      */
-    public Board(List<Tile> tiles) {
+    Board(List<Tile> tiles) {
+        // TODO this is going to need a factory to actually start up a Board and
+        // get it going.
         this.tiles = tiles;
-        // this.hints = hints;
-
     }
 
     /**
@@ -31,6 +35,7 @@ public class Board {
      */
     public boolean canAddHexomino(Hexomino hex, int anchorRow,
             int anchorColumn) {
+        // TODO
         return false;
     }
 
@@ -46,7 +51,7 @@ public class Board {
      * 
      */
     public void addHexomino(Hexomino hex, int anchorRow, int anchorColumn) {
-
+        // FIXME errors are not handled right.
         for (int i = 0; i < 6; i++) {
             int deltaX = hex.squares[i].x;
             int deltaY = hex.squares[i].y;
@@ -64,14 +69,45 @@ public class Board {
         }
     }
 
-    /** */
+    /**
+     * Gets the Tile at the specified position
+     * 
+     * @param row
+     * @param column
+     * @return The Tile found.
+     */
     public Tile getTile(int row, int column) {
+        // FIXME no error checking.
         for (Tile t : tiles) {
             if ((t.row == row) & (t.column == column)) {
                 return t;
             }
         }
         return null;
+    }
+
+    /**
+     * Returns whether given row and column are in bounds in the existing game
+     * region. I.E. if the given row and column are outside of the 12 by 12
+     * grid, this will return false.
+     * 
+     * Note this has nothing to do with whether a tile is playable or not.
+     * 
+     * @param row
+     * @param column
+     * @return True if the location is in bounds
+     */
+    private boolean isInBounds(int row, int column) {
+        if (row > HEIGHT_BY_ZERO || row > WIDTH_BY_ZERO) {
+            return false;
+        }
+
+        if (row < 0 || column < 0) {
+            return false;
+        }
+
+        else
+            return true;
     }
 
     public void removeHexomino(Hexomino hex) {
@@ -88,7 +124,9 @@ public class Board {
 
     @Override
     public String toString() {
-        return "Board [tiles=" + tiles + ", hints=" + hints + "]";
+        return "Board [tiles=" + tiles;
     }
+
+    // TODO equals and hash
 
 }
