@@ -22,7 +22,7 @@ public class HexominoFactory {
 		points[3] = new Point(d, d1);
 		points[4] = new Point(e, e1);
 		points[5] = new Point(f, f1);
-		return null;
+		return new Hexomino(points);
 	}
 
 
