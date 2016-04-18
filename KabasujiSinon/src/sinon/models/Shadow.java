@@ -3,7 +3,7 @@ package sinon.models;
 import java.awt.Point;
 
 @Deprecated
-public class Shadow extends AbsPiece {
+public class Shadow extends AbstractHexomino {
 
 	public Shadow(Point[] otherSquares) {
 		super(otherSquares);

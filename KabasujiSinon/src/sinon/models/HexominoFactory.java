@@ -2,7 +2,7 @@ package sinon.models;
 
 import java.awt.Point;
 
-public class HexominoFactory<T extends Hexomino> {
+public class HexominoFactory {
 
 	/**
 	 * Is a convenience constructor for quickly building a Hexomino.

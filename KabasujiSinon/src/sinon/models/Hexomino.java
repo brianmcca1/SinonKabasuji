@@ -2,7 +2,7 @@ package sinon.models;
 
 import java.awt.Point;
 
-public class Hexomino extends AbsPiece {
+public class Hexomino extends AbstractHexomino {
 
 	public Hexomino(Point[] squares) {
 		super(squares);

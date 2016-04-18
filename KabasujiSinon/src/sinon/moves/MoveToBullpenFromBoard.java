@@ -1,6 +1,6 @@
 package sinon.moves;
 
-import sinon.models.AbsPiece;
+import sinon.models.AbstractHexomino;
 import sinon.models.Board;
 import sinon.models.BullPen;
 
@@ -19,7 +19,7 @@ public class MoveToBullpenFromBoard extends BoardMove {
 	/**
 	 * This is the hexomino that we are moving.
 	 */
-	AbsPiece hex;
+	AbstractHexomino hex;
 	
 	/**
 	 * This is the board that we are moving from.

@@ -3,11 +3,11 @@ package sinon.models;
 import java.awt.Point;
 import java.util.Arrays;
 
-public abstract class AbsPiece {
+public abstract class AbstractHexomino {
 
 	Point[] squares = new Point[6];
 
-	public AbsPiece(Point[] otherSquares) {
+	public AbstractHexomino(Point[] otherSquares) {
 		this.squares = otherSquares;
 
 	}
@@ -28,7 +28,7 @@ public abstract class AbsPiece {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		AbsPiece other = (AbsPiece) obj;
+		AbstractHexomino other = (AbstractHexomino) obj;
 		if (!Arrays.equals(squares, other.squares))
 			return false;
 		return true;

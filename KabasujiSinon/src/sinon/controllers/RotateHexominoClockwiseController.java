@@ -3,7 +3,7 @@ package sinon.controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import sinon.models.AbsPiece;
+import sinon.models.AbstractHexomino;
 import sinon.models.BullPen;
 
 /** This is the controller that is associated
@@ -20,9 +20,9 @@ public class RotateHexominoClockwiseController implements ActionListener{
 	
 	/** This is the hexomino that is being rotated.
 	 */
-	AbsPiece hex;
+	AbstractHexomino hex;
 	
-	public RotateHexominoClockwiseController(BullPen bullPen, AbsPiece hex) {
+	public RotateHexominoClockwiseController(BullPen bullPen, AbstractHexomino hex) {
 		
 		this.bullPen = bullPen;
 		this.hex = hex;
