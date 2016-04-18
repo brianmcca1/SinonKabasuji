@@ -3,8 +3,8 @@ package sinon.controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import sinon.models.AbsPiece;
 import sinon.models.BullPen;
-import sinon.models.Hexomino;
 
 /** This is the controller that is associated
  * with the rotateHexomino option  that allows the player/builder 
@@ -20,9 +20,9 @@ public class RotateHexominoClockwiseController implements ActionListener{
 	
 	/** This is the hexomino that is being rotated.
 	 */
-	Hexomino hex;
+	AbsPiece hex;
 	
-	public RotateHexominoClockwiseController(BullPen bullPen, Hexomino hex) {
+	public RotateHexominoClockwiseController(BullPen bullPen, AbsPiece hex) {
 		
 		this.bullPen = bullPen;
 		this.hex = hex;

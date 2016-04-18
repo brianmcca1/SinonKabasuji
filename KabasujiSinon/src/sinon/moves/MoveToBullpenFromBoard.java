@@ -1,8 +1,8 @@
 package sinon.moves;
 
+import sinon.models.AbsPiece;
 import sinon.models.Board;
 import sinon.models.BullPen;
-import sinon.models.Hexomino;
 
 /**
  * Move class for moving a hexomino from the bullpen to the board.
@@ -19,7 +19,7 @@ public class MoveToBullpenFromBoard extends BoardMove {
 	/**
 	 * This is the hexomino that we are moving.
 	 */
-	Hexomino hex;
+	AbsPiece hex;
 	
 	/**
 	 * This is the board that we are moving from.

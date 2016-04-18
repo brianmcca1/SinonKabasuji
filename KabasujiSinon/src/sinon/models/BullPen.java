@@ -17,7 +17,7 @@ public class BullPen {
 		pieces.add(hex);
 	}
 	
-	public void removeHexomino(Hexomino hex){
+	public void removeHexomino(AbsPiece hex){
 		if(pieces.contains(hex)){
 			pieces.remove(hex);
 		} else {

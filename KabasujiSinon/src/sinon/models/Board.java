@@ -33,7 +33,7 @@ public class Board {
      *            The column number where the anchor square will go
      * @return True if the move if possible, false otherwise.
      */
-    public boolean canAddHexomino(Hexomino hex, int anchorRow,
+    public boolean canAddHexomino(AbsPiece hex, int anchorRow,
             int anchorColumn) {
         // TODO
         return false;
@@ -50,7 +50,7 @@ public class Board {
      *            * The column number where the anchor square will go
      * 
      */
-    public void addHexomino(Hexomino hex, int anchorRow, int anchorColumn) {
+    public void addHexomino(AbsPiece hex, int anchorRow, int anchorColumn) {
         // FIXME errors are not handled right.
         for (int i = 0; i < 6; i++) {
             int deltaX = hex.squares[i].x;
@@ -110,7 +110,7 @@ public class Board {
             return true;
     }
 
-    public void removeHexomino(Hexomino hex) {
+    public void removeHexomino(AbsPiece hex) {
 
         for (Tile t : tiles) {
             if (t.getHexomino().isPresent()) {
