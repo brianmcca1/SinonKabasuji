@@ -1,7 +1,7 @@
 package sinon.moves;
 
-import sinon.models.BullPen;
 import sinon.models.Hexomino;
+import sinon.models.BullPen;
 
 /** This is the abstract class Move that is used for having moves on the bullpen/board.
  * @author kartik
