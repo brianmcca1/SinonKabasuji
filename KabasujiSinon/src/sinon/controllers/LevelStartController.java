@@ -1,6 +1,6 @@
 package sinon.controllers;
 
-import sinon.views.LevelSelectButtonView;
+import sinon.views.game.LevelSelectButtonView;
 
 public class LevelStartController {
 
