@@ -28,7 +28,7 @@ public class MainView extends JPanel {
     /**Allows global access to top level MainView object.*/
     public static MainView mainView;
     /**Top level Game/Builder object.*/
-    Kabasuji kabasuji;
+    public static Kabasuji kabasuji;
     /**levelPanel contains: Bullpen, GridView, optional ReleaseButtonView, and is on the left side of the screen.*/
     private LevelPanel levelPanel;
     /**Contains GridView and the Optional ReleaseButtonView.*/
