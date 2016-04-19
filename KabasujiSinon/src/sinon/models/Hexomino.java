@@ -28,9 +28,13 @@ public class Hexomino {
         squares[5] = new Point(f, f1);
     }
 
-    public Hexomino(Point[] otherSquares) {
-        // TODO
-        this.squares = otherSquares;
+    /**
+     * TODO
+     * 
+     * @param hexominoNumberSet
+     */
+    public Hexomino(HexominoNumberSet hexominoNumberSet) {
+        this.hexominoNumberSet = hexominoNumberSet;
     }
 
     protected void addToTile(Tile t) {
