@@ -171,6 +171,7 @@ public class Board {
             return true;
     }
 
+  /*
     public void removeHexomino(Hexomino hex) {
 
         for (Tile t : tiles) {
@@ -182,8 +183,7 @@ public class Board {
         }
 
     }
-
-
+*/
     // TODO equals and hash
 
 

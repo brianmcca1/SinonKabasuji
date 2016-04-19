@@ -30,9 +30,13 @@ public class TileController implements MouseListener{
 			col++;
 			hex.anchorColumn = col;
 			hex.anchorRow = row;
-			kabasuji.opened.b.addPiece(hex);
-			kabasuji.selected.empty();
+			if (kabasuji.opened.b.canAddHexomino(hex, row, col)){
+				kabasuji.opened.b.addPiece(hex);	
+				kabasuji.selected.empty();
+			}
+			
 		}
+
 		
 		if (kabasuji.hasSelected() == false){
 			if (kabasuji.opened instanceof Puzzle){
