@@ -1,10 +1,75 @@
 package sinon.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
-    /** */
-    List<Tile> tiles;
+
+	@Override
+	public String toString() {
+		return "Board [tiles=" + tiles + ", hints=" + hints + "]";
+	}
+
+	ArrayList<Tile> tiles;
+	ArrayList<Hint> hints; 
+	
+	public Board(ArrayList<Tile> tiles ){
+		this.tiles = tiles;
+		//this.hints = hints;
+		
+	}
+	public void addPiece(AbstractHexomino piece){
+		
+		for(int i = 0; i < 6; i++){
+			int deltaX = piece.squares[i].x;
+			int deltaY = piece.squares[i].y;
+			
+			int row = piece.anchorRow + deltaX;
+			int column = piece.anchorColumn + deltaY;
+			
+			Tile t = this.getTile(row,  column);
+			if(t.playable == true){
+				piece.addToTile(t);
+			} else {
+				System.err.println("Piece is not playable at that location");
+			}
+			
+			
+		}
+	} 
+	
+	public void removeHexomino(Hexomino hex){
+		
+		for(int i = 0; i < 6; i++){
+			int deltaX = hex.squares[i].x;
+			int deltaY = hex.squares[i].y;
+			
+			int row = hex.anchorRow + deltaX;
+			int column = hex.anchorColumn + deltaY;
+			
+			Tile t = this.getTile(row,  column);
+			if(t != null){
+				t.removeHex();
+			} else {
+				System.err.println("No hex at this location");
+			}
+		}
+		
+	}
+	
+	
+	public boolean hasHex(int row, int column){
+		boolean answer = false;
+		int pos = row * 12;
+		pos = column + pos;
+		if (tiles.get(pos).hasHex()){
+			answer = true;
+		}
+		return answer;
+	}
+	
+
+  
 
     private final static int WIDTH = 12;
     private final static int HEIGHT = 12;
@@ -16,11 +81,7 @@ public class Board {
      * @param tiles
      *            The list of initialized tiles.
      */
-    Board(List<Tile> tiles) {
-        // TODO this is going to need a factory to actually start up a Board and
-        // get it going.
-        this.tiles = tiles;
-    }
+   
 
     /**
      * Determines whether it's possible to add a Hexomino at the given location.
@@ -122,11 +183,8 @@ public class Board {
 
     }
 
-    @Override
-    public String toString() {
-        return "Board [tiles=" + tiles;
-    }
 
     // TODO equals and hash
+
 
 }

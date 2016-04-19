@@ -94,7 +94,6 @@ public class Tile {
 	 * @return The hexomino that is on this tile
 	 */
 	public Optional<Hexomino> getHexomino() {
-
 		return this.hex;
 	}
 

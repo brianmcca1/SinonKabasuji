@@ -1,5 +1,9 @@
 package sinon.views;
 
+//<<<<<<< HEAD
+//public class BullpenView {
+
+//=======
 import java.awt.Color;
 
 import javax.swing.BoxLayout;
@@ -72,4 +76,5 @@ public class BullpenView extends JScrollPane {
         this.upperPanel.add(d);
         this.validate();
     }
+//>>>>>>> master
 }

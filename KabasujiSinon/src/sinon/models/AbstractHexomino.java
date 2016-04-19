@@ -6,6 +6,8 @@ import java.util.Arrays;
 public abstract class AbstractHexomino {
 
 	Point[] squares = new Point[6];
+	public int anchorRow;
+	public int anchorColumn;
 
 	/**
 	 * Is a convenience constructor for quickly building a Hexomino.

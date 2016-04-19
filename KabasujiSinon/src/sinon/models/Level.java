@@ -1,8 +1,8 @@
 package sinon.models;
-@Deprecated
+
 public class Level {
 	int levelNum;
-	Board b;
+	public Board b;
 	BullPen bp;
 	LevelData ld;
 	
