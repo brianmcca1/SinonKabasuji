@@ -1,9 +1,10 @@
 package sinon.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
-<<<<<<< HEAD
+
 	@Override
 	public String toString() {
 		return "Board [tiles=" + tiles + ", hints=" + hints + "]";
@@ -17,11 +18,11 @@ public class Board {
 		//this.hints = hints;
 		
 	}
-	public void addPiece(AbsPiece piece){
+	public void addPiece(AbstractHexomino piece){
 		
 		for(int i = 0; i < 6; i++){
-			int deltaX = piece.otherSquares[i].x;
-			int deltaY = piece.otherSquares[i].y;
+			int deltaX = piece.squares[i].x;
+			int deltaY = piece.squares[i].y;
 			
 			int row = piece.anchorRow + deltaX;
 			int column = piece.anchorColumn + deltaY;
@@ -40,8 +41,8 @@ public class Board {
 	public void removeHexomino(Hexomino hex){
 		
 		for(int i = 0; i < 6; i++){
-			int deltaX = hex.otherSquares[i].x;
-			int deltaY = hex.otherSquares[i].y;
+			int deltaX = hex.squares[i].x;
+			int deltaY = hex.squares[i].y;
 			
 			int row = hex.anchorRow + deltaX;
 			int column = hex.anchorColumn + deltaY;
@@ -56,14 +57,6 @@ public class Board {
 		
 	}
 	
-	public Tile getTile(int row, int column){
-		for(Tile t: tiles){
-			if((t.row == row) & (t.column == column)){
-				return t;
-			}
-		}
-		return null;
-	}
 	
 	public boolean hasHex(int row, int column){
 		boolean answer = false;
@@ -75,9 +68,8 @@ public class Board {
 		return answer;
 	}
 	
-=======
-    /** */
-    List<Tile> tiles;
+
+  
 
     private final static int WIDTH = 12;
     private final static int HEIGHT = 12;
@@ -89,11 +81,7 @@ public class Board {
      * @param tiles
      *            The list of initialized tiles.
      */
-    Board(List<Tile> tiles) {
-        // TODO this is going to need a factory to actually start up a Board and
-        // get it going.
-        this.tiles = tiles;
-    }
+   
 
     /**
      * Determines whether it's possible to add a Hexomino at the given location.
@@ -195,12 +183,8 @@ public class Board {
 
     }
 
-    @Override
-    public String toString() {
-        return "Board [tiles=" + tiles;
-    }
 
     // TODO equals and hash
 
->>>>>>> master
+
 }

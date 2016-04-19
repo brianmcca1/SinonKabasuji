@@ -1,18 +1,16 @@
 package sinon.main;
 
 import java.awt.event.ActionListener;
+import java.util.Optional;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-<<<<<<< HEAD
 import sinon.models.Board;
 import sinon.models.Hexomino;
 import sinon.models.Level;
-import sinon.views.LevelSelectView;
-=======
->>>>>>> master
+//import sinon.views.LevelSelectView;
 import sinon.views.SplashScreen;
 
 /**
@@ -45,6 +43,7 @@ public abstract class Kabasuji extends JFrame {
      * @param nextPanel
      *            The next panel that will be displayed after this panel
      */
+    /*
     public void startSplash(String title, JPanel nextPanel) {
         SplashScreen splash = new SplashScreen(title);
         this.add(splash);
@@ -66,22 +65,23 @@ public abstract class Kabasuji extends JFrame {
         SplashScreen.timer = new Timer(25, al);
         SplashScreen.timer.start();
     }
+*/
 
-<<<<<<< HEAD
 	// COMMON VIEWS AND MODELS BETWEEN BOTH BUILDER AND GAME GO HERE
 	// Stack undo = new Stack();
 	// Stack redo = new Stack();
 	// public Level[] levels = new Level[15];
-	public Hexomino selected;
+	public Optional<Hexomino> selected;
 	public Level opened;
 	
-
+/*
 	public Kabasuji() {
 		this.setBounds(100, 100, 800, 600);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.selected = null;
 	}
+	*/
 
 	/**
 	 * Creates a SplashScreen with the given information and displays it
@@ -121,35 +121,17 @@ public abstract class Kabasuji extends JFrame {
 		this.repaint();
 	}
 	
-	public void select(Hexomino hex){
+	public void select(Optional<Hexomino> hex){
 		this.selected = hex;
 	}
 	
 	public void deselect(){
-		this.selected = null;
+		this.selected.empty();
 	}
 	
 	public boolean hasSelected(){
-		if (this.selected == null){
-			return true;
-		}
-		else return false;
+		return this.selected.isPresent();
 	}
-=======
-    /**
-     * Removes the current panel and replaces it with the nextPanel
-     * 
-     * @param current
-     *            Panel that is currently being displayed
-     * @param nextPanel
-     *            Panel to be put into the frame
-     */
-    public void startNextPanel(JPanel current, JPanel nextPanel) {
-        this.remove(current);
-        this.add(nextPanel);
-        // Validate just seems to really make weird errors go away.
-        this.validate();
-        this.repaint();
-    }
->>>>>>> master
+
+  
 }

@@ -6,6 +6,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JPanel;
 
 import sinon.main.Kabasuji;
+import sinon.models.Hexomino;
 import sinon.models.Puzzle;
 
 public class TileController implements MouseListener{
@@ -20,17 +21,18 @@ public class TileController implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if (kabasuji.hasSelected() == true){
+		if (kabasuji.hasSelected()){
+			Hexomino hex = kabasuji.selected.get();
 			int num = view.num;
 			int row = num / 12;
 			int col = num % 12;
 			col++;
-			kabasuji.selected.anchorColumn = col;
-			kabasuji.selected.anchorRow = row;
-			kabasuji.opened.b.addPiece(kabasuji.selected);
+			hex.anchorColumn = col;
+			hex.anchorRow = row;
+			kabasuji.opened.b.addPiece(hex);
 		}
 		
-		if (kabasuji.hasSelected() == false){
+		if (kabasuji.hasSelected()){
 			if (kabasuji.opened instanceof Puzzle){
 				int num = view.num;
 				int row = num / 12;
