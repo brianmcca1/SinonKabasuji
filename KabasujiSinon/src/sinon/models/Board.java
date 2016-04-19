@@ -64,4 +64,14 @@ public class Board {
 		return null;
 	}
 	
+	public boolean hasHex(int row, int column){
+		boolean answer = false;
+		int pos = row * 12;
+		pos = column + pos;
+		if (tiles.get(pos).hasHex()){
+			answer = true;
+		}
+		return answer;
+	}
+	
 }

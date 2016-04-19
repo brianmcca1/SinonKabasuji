@@ -1,5 +1,5 @@
 package sinon.models;
-@Deprecated
+
 public class Puzzle extends Level{
 	int maxMoves;
 	int usedMoves;

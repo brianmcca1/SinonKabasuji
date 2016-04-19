@@ -1,5 +1,5 @@
 package sinon.models;
-@Deprecated
+
 public class LevelData {
 	int stars;
 	Board b;

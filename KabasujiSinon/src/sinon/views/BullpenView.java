@@ -1,9 +1,9 @@
 package sinon.views;
 
-<<<<<<< HEAD
-public class BullpenView {
+//<<<<<<< HEAD
+//public class BullpenView {
 
-=======
+//=======
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -33,5 +33,5 @@ public class BullpenView extends JPanel {
         this.add(scrollBar);
         // addExampleHexominos();
     }
->>>>>>> master
+//>>>>>>> master
 }

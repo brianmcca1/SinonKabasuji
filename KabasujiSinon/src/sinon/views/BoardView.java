@@ -23,7 +23,7 @@ public class BoardView extends JPanel{
 		board.setLayout(new GridLayout(12, 12));
 		
 		for(int i = 0; i < 144; i++){
-			TileView temp = new TileView();
+			TileView temp = new TileView(i);
 			temp.addMouseListener(new TileController(kabasuji, temp));
 			board.add(temp);
 		}

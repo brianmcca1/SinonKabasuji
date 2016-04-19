@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import sinon.models.Board;
+import sinon.models.Hexomino;
 import sinon.models.Level;
 import sinon.views.LevelSelectView;
 import sinon.views.SplashScreen;
@@ -16,11 +18,15 @@ public abstract class Kabasuji extends JFrame {
 	// Stack undo = new Stack();
 	// Stack redo = new Stack();
 	// public Level[] levels = new Level[15];
+	public Hexomino selected;
+	public Level opened;
+	
 
 	public Kabasuji() {
 		this.setBounds(100, 100, 800, 600);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.selected = null;
 	}
 
 	/**
@@ -29,8 +35,8 @@ public abstract class Kabasuji extends JFrame {
 	 * @param nextPanel
 	 *            The next panel that will be displayed after this panel
 	 */
-	public void startSplash(String title, JPanel nextPanel) {
-		SplashScreen splash = new SplashScreen(title);
+	public void startSplash(String title, final JPanel nextPanel) {
+		final SplashScreen splash = new SplashScreen(title);
 		this.add(splash);
 		
 		this.validate();
@@ -59,5 +65,20 @@ public abstract class Kabasuji extends JFrame {
 		this.add(nextPanel);
 		this.validate();
 		this.repaint();
+	}
+	
+	public void select(Hexomino hex){
+		this.selected = hex;
+	}
+	
+	public void deselect(){
+		this.selected = null;
+	}
+	
+	public boolean hasSelected(){
+		if (this.selected == null){
+			return true;
+		}
+		else return false;
 	}
 }
