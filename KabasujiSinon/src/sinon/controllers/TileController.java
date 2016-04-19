@@ -1,4 +1,4 @@
-package sinon.views;
+package sinon.controllers;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import sinon.main.Kabasuji;
 import sinon.models.Hexomino;
 import sinon.models.Puzzle;
+import sinon.views.TileView;
 
 public class TileController implements MouseListener{
 	
@@ -21,7 +22,7 @@ public class TileController implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if (kabasuji.hasSelected()){
+		if (kabasuji.hasSelected()== true){
 			Hexomino hex = kabasuji.selected.get();
 			int num = view.num;
 			int row = num / 12;
@@ -30,9 +31,10 @@ public class TileController implements MouseListener{
 			hex.anchorColumn = col;
 			hex.anchorRow = row;
 			kabasuji.opened.b.addPiece(hex);
+			kabasuji.selected.empty();
 		}
 		
-		if (kabasuji.hasSelected()){
+		if (kabasuji.hasSelected() == false){
 			if (kabasuji.opened instanceof Puzzle){
 				int num = view.num;
 				int row = num / 12;
@@ -40,6 +42,8 @@ public class TileController implements MouseListener{
 				col++;
 				if (kabasuji.opened.b.hasHex(row, col)){
 					kabasuji.selected = kabasuji.opened.b.getTile(row, col).getHexomino();
+					Hexomino hex = kabasuji.selected.get();
+					kabasuji.opened.b.removeHexomino(hex);
 				}
 			}
 		}
@@ -60,13 +64,13 @@ public class TileController implements MouseListener{
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
+		// TODO shadows
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
+		// TODO shadows
 		
 	}
 
