@@ -2,7 +2,7 @@ package sinon.models;
 
 import java.awt.Point;
 
-public class Hint extends AbstractHexomino {
+public class Hint extends Hexomino {
 
     public Hint(Point[] otherSquares, int anchorRow, int anchorColumn) {
         super(otherSquares);

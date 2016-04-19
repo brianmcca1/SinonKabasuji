@@ -1,7 +1,7 @@
 package sinon.moves;
 
-import sinon.models.BullPen;
 import sinon.models.Hexomino;
+import sinon.models.BullPen;
 
 /**
  * Move class for rotating a hexomino clockwise.

@@ -2,71 +2,72 @@ package sinon.models;
 
 import java.awt.Point;
 
-public class Hexomino extends AbstractHexomino {
+public class Hexomino {
 
-	public Hexomino(Point[] squares) {
-		super(squares);
-	}
+    HexominoNumberSet hexominoNumberSet;
+    Point[] squares = new Point[6];
+    public int anchorRow;
+    public int anchorColumn;
 
-	@Override
-	void addToTile(Tile t) {
-		t.addHexomino(this);
-	}
+    /**
+     * Is a convenience constructor for quickly building a Hexomino.
+     * 
+     * @param a
+     *            The x component of the first coordinate point
+     * @param a1
+     *            the y component of the first coordinate point
+     */
+    public Hexomino(int a, int a1, int b, int b1, int c, int c1, int d, int d1,
+            int e, int e1, int f, int f1) {
+        Point[] squares = new Point[6];
+        squares[0] = new Point(a, a1);
+        squares[1] = new Point(b, b1);
+        squares[2] = new Point(c, c1);
+        squares[3] = new Point(d, d1);
+        squares[4] = new Point(e, e1);
+        squares[5] = new Point(f, f1);
+    }
 
-	// Flip the hexomino over the Y axis
-	public void flipHorizontally() {
-		for (int i = 0; i < 6; i++) {
-			int temp = squares[i].x;
-			temp = temp * (-1);
-			squares[i].x = temp;
-		}
-	}
+    public Hexomino(Point[] otherSquares) {
+        // TODO
+        this.squares = otherSquares;
+    }
 
-	// Flip the hexomino over the X axis
-	public void flipVertically() {
-		for (int i = 0; i < 6; i++) {
-			int temp = squares[i].y;
-			temp = temp * (-1);
-			squares[i].y = temp;
-		}
-	}
+    protected void addToTile(Tile t) {
+        t.addHexomino(this);
+    }
 
-	// Rotate this hexomino 90 degrees clockwise
-	public void rotateC() {
-		for (int i = 0; i < 6; i++) {
-			int x = squares[i].x;
-			int y = squares[i].y;
-			int newX;
-			int newY;
+    public void flipHorizontally() {
+        hexominoNumberSet.flipHorizontally();
 
-			// Perform rotation, Matrix is
-			// [0 1]
-			// [-1 0]
-			newX = y;
-			newY = -x;
+    }
 
-			// set new location
-			squares[i].move(newX, newY);
+    public void flipVertically() {
+        hexominoNumberSet.flipVertically();
 
-		}
-	}
+    }
 
-	// Rotate this hexomino 90 degrees counter-clockwise
-	public void rotateCC() {
-		for (int i = 0; i < 6; i++) {
-			int x = squares[i].x;
-			int y = squares[i].y;
-			int newX;
-			int newY;
+    public void rotateC() {
+        hexominoNumberSet.rotateC();
 
-			// Perform rotation, Matrix is
-			// [0 -1]
-			// [1 0]
-			newX = -y;
-			newY = x;
+    }
 
-			squares[i].move(newX, newY);
-		}
+    public void rotateCC() {
+        hexominoNumberSet.rotateCC();
+        for (int i = 0; i < 6; i++) {
+            int x = squares[i].x;
+            int y = squares[i].y;
+            int newX;
+            int newY;
 
-	}
+            // Perform rotation, Matrix is
+            // [0 -1]
+            // [1 0]
+            newX = -y;
+            newY = x;
+
+            squares[i].move(newX, newY);
+        }
+
+    }
 }

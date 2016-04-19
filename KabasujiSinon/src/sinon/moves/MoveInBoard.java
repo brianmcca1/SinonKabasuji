@@ -1,6 +1,6 @@
 package sinon.moves;
 
-import sinon.models.AbstractHexomino;
+import sinon.models.Hexomino;
 import sinon.models.Board;
 
 /**
@@ -18,7 +18,7 @@ public class MoveInBoard extends BoardMove{
 	/**
 	 * This is the hexomino that we are moving.
 	 */
-	AbstractHexomino hex;
+	Hexomino hex;
 	
 	/**
 	 * These are the source anchor positions on the board.

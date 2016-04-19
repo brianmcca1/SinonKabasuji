@@ -7,7 +7,7 @@ import java.awt.Point;
 import org.junit.Before;
 import org.junit.Test;
 
-import sinon.models.AbstractHexomino;
+import sinon.models.Hexomino;
 import sinon.models.Hexomino;
 import sinon.models.HexominoFactory;
 
@@ -31,7 +31,7 @@ public class HexominoTest {
     public void testFlipHorizontally() {
         Hexomino hex = buildExampleHexomino();
         hex.flipHorizontally();
-        AbstractHexomino expectedFlippedHex = HexominoFactory.buildHexomino(0,
+        Hexomino expectedFlippedHex = HexominoFactory.buildHexomino(0,
                 0, 0, 1, 0, 2, 0, 3, 0, 4, -1, 4);
         assertSame(expectedFlippedHex, hex);
     }
@@ -40,23 +40,23 @@ public class HexominoTest {
     public void testFlipVertically() {
         Hexomino hex = buildExampleHexomino();
         hex.flipVertically();
-        AbstractHexomino expectedFlippedHex = HexominoFactory.buildHexomino(0,
+        Hexomino expectedFlippedHex = HexominoFactory.buildHexomino(0,
                 0, 0, -1, 0, -2, 0, -3, 0, -4, 1, -4);
         assertSame(expectedFlippedHex, hex);
     }
 
     @Test
     public void testNormalEquality() {
-        AbstractHexomino hex1 = buildExampleHexomino();
-        AbstractHexomino hex2 = buildExampleHexomino();
+        Hexomino hex1 = buildExampleHexomino();
+        Hexomino hex2 = buildExampleHexomino();
         assertSame(hex1, hex2);
     }
 
     @Test
     public void testUnorderedEquality() {
-        AbstractHexomino hex1 = HexominoFactory.buildHexomino(0, 0, 0, 1, 0, 2,
+        Hexomino hex1 = HexominoFactory.buildHexomino(0, 0, 0, 1, 0, 2,
                 0, 3, 0, 4, 0, 5);
-        AbstractHexomino hex2 = HexominoFactory.buildHexomino(0, 0, 0, 1, 0, 2,
+        Hexomino hex2 = HexominoFactory.buildHexomino(0, 0, 0, 1, 0, 2,
                 0, 3, 0, 5, 0, 4);
         assertSame(hex1, hex2);
     }
