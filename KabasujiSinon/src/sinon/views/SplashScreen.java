@@ -20,6 +20,10 @@ public class SplashScreen extends JPanel {
 	/** "Kabasuji" or "Kabasuji Builder" */
 	private String labelText;
 
+	/**
+	 * @param text
+	 * 		Large blue text to be displayed on splash screen
+	 */
 	public SplashScreen(String text) {
 		this.labelText = text;
 		initializePanel();

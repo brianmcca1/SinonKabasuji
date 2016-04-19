@@ -16,7 +16,7 @@ public class Builder extends Kabasuji {
 		this.setJMenuBar(menuBar);
 
 		// Start the splash screen.
-		startSplash("Kabasuji Builder", new MainView(new BankView()));
+		startSplash("Kabasuji Builder", new MainView(this, new BankView()));
 	}
 
 	public static void main(String args[]) {

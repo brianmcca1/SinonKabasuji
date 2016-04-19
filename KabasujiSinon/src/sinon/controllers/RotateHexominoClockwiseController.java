@@ -2,9 +2,8 @@ package sinon.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import sinon.models.AbstractHexomino;
-import sinon.models.BullPen;
+import sinon.main.Kabasuji;
+import sinon.views.HexominoBullpenView;
 
 /** This is the controller that is associated
  * with the rotateHexomino option  that allows the player/builder 
@@ -13,25 +12,26 @@ import sinon.models.BullPen;
  *
  */
 public class RotateHexominoClockwiseController implements ActionListener{
-	/** This is the bullpen in which the hexomino is 
-	 * being rotated.
+	
+	/**Top level game/builder object*/
+	Kabasuji kabasuji;
+	/** This is the hexomino view that is being rotated.*/
+	HexominoBullpenView hexBullpenView;
+	
+	/**
+	 * @param k 
+	 * 		Top level game/builder object
+	 * @param h
+	 * 		Hexomino view to be rotated
 	 */
-	BullPen bullPen;
-	
-	/** This is the hexomino that is being rotated.
-	 */
-	AbstractHexomino hex;
-	
-	public RotateHexominoClockwiseController(BullPen bullPen, AbstractHexomino hex) {
-		
-		this.bullPen = bullPen;
-		this.hex = hex;
-	
+	public RotateHexominoClockwiseController(Kabasuji k, HexominoBullpenView h) {
+		this.kabasuji = k;
+		this.hexBullpenView = h;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		System.out.println("ROTATING BULLPEN HEXOMINO CLOCKWISE. . .");
 	}
 
 }

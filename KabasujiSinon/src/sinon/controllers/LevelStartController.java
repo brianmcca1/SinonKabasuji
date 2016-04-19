@@ -1,26 +1,43 @@
 package sinon.controllers;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import sinon.main.Game;
+import sinon.views.MainView;
+import sinon.views.game.GameInfoView;
 import sinon.views.game.LevelSelectButtonView;
+import sinon.views.game.LevelSelectView;
 
-public class LevelStartController {
+public class LevelStartController implements ActionListener{
 
-    // Kabasuji kabasuji;
-    LevelSelectButtonView view;
+	/**LevelSelectView to be removed from the frame */
+    LevelSelectView view;
+    Game game;
 
-    public LevelStartController(LevelSelectButtonView view) {
-        // this.kabasuji = kabasuji;
+    /**
+     * @param g
+     * 		Top level Game/Builder object
+     * @param view
+     * 		LevelSelectView to be removed from the frame
+     */
+    public LevelStartController(Game g, LevelSelectView view) {
         this.view = view;
+        this.game = g;
     }
 
-    public void mouseReleased(java.awt.event.MouseEvent me) {
-
-        // Final implementation?
-        // int num = view.levelNum;
-        // kabasuji.levels[num].open();
-
-        // PlayerView level = new PlayerView();
-        // level.initialize();
-        // Need to close current screen?
-        // level.frame.setVisible(true);
-    }
+	@Override
+	/**
+	 * Response to a LevelSelectButtonView being clicked
+	 * Will instantiate the MainView if it doesn't already exist, otherwise it will use the existing MainView
+	 */
+	public void actionPerformed(ActionEvent e) {
+		System.out.println("STARTING LEVEL . . .");
+		if(MainView.mainView == null){
+			game.startNextPanel(view, new MainView(game, new GameInfoView(game)));
+		}
+		else{
+			game.startNextPanel(view, MainView.mainView);
+		}
+	}
 }

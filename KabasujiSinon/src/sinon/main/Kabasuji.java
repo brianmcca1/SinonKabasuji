@@ -67,6 +67,7 @@ public abstract class Kabasuji extends JFrame {
     }
 */
 
+<<<<<<< HEAD
 	// COMMON VIEWS AND MODELS BETWEEN BOTH BUILDER AND GAME GO HERE
 	// Stack undo = new Stack();
 	// Stack redo = new Stack();
@@ -134,4 +135,21 @@ public abstract class Kabasuji extends JFrame {
 	}
 
   
+=======
+    /**
+     * Removes the current panel and replaces it with the nextPanel
+     * 
+     * @param current
+     *            Panel that is currently being displayed
+     * @param nextPanel
+     *            Panel to be put into the frame
+     */
+    public void startNextPanel(JPanel current, JPanel nextPanel) {
+        this.remove(current);
+        this.add(nextPanel);
+        // Validate just seems to really make weird errors go away.
+        this.revalidate();
+        this.repaint();
+    }
+>>>>>>> master
 }
