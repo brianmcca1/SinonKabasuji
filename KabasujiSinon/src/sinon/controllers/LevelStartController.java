@@ -12,7 +12,9 @@ import sinon.views.game.LevelSelectView;
 public class LevelStartController implements ActionListener{
 
 	/**LevelSelectView to be removed from the frame */
-    LevelSelectView view;
+    LevelSelectView levelSelectView;
+    /**Level number 1-15*/
+    int levelNum;
     Game game;
 
     /**
@@ -21,8 +23,9 @@ public class LevelStartController implements ActionListener{
      * @param view
      * 		LevelSelectView to be removed from the frame
      */
-    public LevelStartController(Game g, LevelSelectView view) {
-        this.view = view;
+    public LevelStartController(Game g, LevelSelectView v, int num) {
+        this.levelSelectView = v;
+        this.levelNum = num;
         this.game = g;
     }
 
@@ -32,12 +35,12 @@ public class LevelStartController implements ActionListener{
 	 * Will instantiate the MainView if it doesn't already exist, otherwise it will use the existing MainView
 	 */
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("STARTING LEVEL . . .");
+		System.out.println("STARTING LEVEL #" + levelNum + ". . .");
 		if(MainView.mainView == null){
-			game.startNextPanel(view, new MainView(game, new GameInfoView(game)));
+			game.startNextPanel(levelSelectView, new MainView(game, new GameInfoView(game)));
 		}
 		else{
-			game.startNextPanel(view, MainView.mainView);
+			game.startNextPanel(levelSelectView, MainView.mainView);
 		}
 	}
 }

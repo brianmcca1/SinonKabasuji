@@ -31,7 +31,7 @@ public class RotateHexominoClockwiseController implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("ROTATING BULLPEN HEXOMINO CLOCKWISE. . .");
+		System.out.println("(TEMP) ROTATING BULLPEN HEXOMINO CLOCKWISE. . .");
 	}
 
 }

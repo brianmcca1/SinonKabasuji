@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -49,7 +50,7 @@ public class LevelSelectView extends JPanel {
 		}
 
 		for(int i = 0; i < 15; i++){
-			buttonPanels[i].selectbtn.addActionListener(new LevelStartController(game, this));
+			buttonPanels[i].selectbtn.addActionListener(new LevelStartController(game, this, i+1));
 		}
 
 		JPanel titlePanel = new JPanel();
@@ -61,6 +62,9 @@ public class LevelSelectView extends JPanel {
 		lblLevelSelect.setFont(new Font("DejaVu Sans", Font.BOLD, 20));
 		lblLevelSelect.setForeground(new Color(0, 0, 128));
 		titlePanel.add(lblLevelSelect);
-
+	}
+	
+	public LevelSelectButtonView getButton(int index){
+		return this.buttonPanels[index];
 	}
 }
