@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
 import sinon.main.Game;
+import sinon.views.MainView;
 import sinon.views.game.LevelSelectView;
 
 /** This is the controller that is responsible for controlling
@@ -19,19 +20,25 @@ public class ExitGameController implements ActionListener {
 	 * responsible for generating a new LevelSelectView
 	 */
     Game game;
-    
     /**
      * This is the current panel that we are trying to exit from
      */
     JPanel mainView;
 
-    public ExitGameController(Game game, JPanel mainView) {
+    /**
+     * @param game
+     * 		Top level Game/Builder object
+     * @param mv
+     * 		MainView that will be removed from the frame
+     */
+    public ExitGameController(Game game, JPanel mv) {
         this.game = game;
-        this.mainView = mainView;
+        this.mainView = mv;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+    	System.out.println("EXITING LEVEL . . .");
         game.startNextPanel(mainView, new LevelSelectView(game));
     }
 

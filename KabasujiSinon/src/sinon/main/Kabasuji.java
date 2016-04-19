@@ -72,7 +72,7 @@ public abstract class Kabasuji extends JFrame {
         this.remove(current);
         this.add(nextPanel);
         // Validate just seems to really make weird errors go away.
-        this.validate();
+        this.revalidate();
         this.repaint();
     }
 }

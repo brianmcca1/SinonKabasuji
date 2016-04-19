@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import sinon.controllers.LevelStartController;
 import sinon.main.Game;
 import sinon.views.MainView;
 
@@ -47,13 +48,9 @@ public class LevelSelectView extends JPanel {
 			internalPanelOne.add(buttonPanels[i]);
 		}
 
-		LevelSelectView current = this;
-		buttonPanels[0].selectbtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				game.startNextPanel(current, new MainView(new GameInfoView()));
-			}
-		});
+		for(int i = 0; i < 15; i++){
+			buttonPanels[i].selectbtn.addActionListener(new LevelStartController(game, this));
+		}
 
 		JPanel titlePanel = new JPanel();
 		titlePanel.setBackground(new Color(135, 206, 235));
