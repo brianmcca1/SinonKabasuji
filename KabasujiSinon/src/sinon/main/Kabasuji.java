@@ -1,11 +1,16 @@
 package sinon.main;
 
 import java.awt.event.ActionListener;
+import java.util.Optional;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import sinon.models.Board;
+import sinon.models.Hexomino;
+import sinon.models.Level;
+//import sinon.views.LevelSelectView;
 import sinon.views.SplashScreen;
 
 /**
@@ -38,6 +43,7 @@ public abstract class Kabasuji extends JFrame {
      * @param nextPanel
      *            The next panel that will be displayed after this panel
      */
+    /*
     public void startSplash(String title, JPanel nextPanel) {
         SplashScreen splash = new SplashScreen(title);
         this.add(splash);
@@ -59,7 +65,64 @@ public abstract class Kabasuji extends JFrame {
         SplashScreen.timer = new Timer(25, al);
         SplashScreen.timer.start();
     }
+*/
 
+	// COMMON VIEWS AND MODELS BETWEEN BOTH BUILDER AND GAME GO HERE
+	// Stack undo = new Stack();
+	// Stack redo = new Stack();
+	// public Level[] levels = new Level[15];
+	public Optional<Hexomino> selected;
+	public Level opened;
+	
+/*
+	public Kabasuji() {
+		this.setBounds(100, 100, 800, 600);
+		this.setVisible(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.selected = null;
+	}
+	*/
+
+	/**
+	 * Creates a SplashScreen with the given information and displays it
+	 * 
+	 * @param nextPanel
+	 *            The next panel that will be displayed after this panel
+	 */
+	public void startSplash(String title, final JPanel nextPanel) {
+		final SplashScreen splash = new SplashScreen(title);
+		this.add(splash);
+		
+		this.validate();
+
+		ActionListener al = new ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				SplashScreen.count++;
+				SplashScreen.progressBar.setValue(SplashScreen.count);
+				if (SplashScreen.count == 100) {
+					SplashScreen.timer.stop();
+					startNextPanel(splash, nextPanel);
+				}
+			}
+		};
+		SplashScreen.timer = new Timer(25, al);
+		SplashScreen.timer.start();
+	}
+
+	
+	public void select(Optional<Hexomino> hex){
+		this.selected = hex;
+	}
+	
+	public void deselect(){
+		this.selected.empty();
+	}
+	
+	public boolean hasSelected(){
+		return this.selected.isPresent();
+	}
+
+  
     /**
      * Removes the current panel and replaces it with the nextPanel
      * 
@@ -75,4 +138,5 @@ public abstract class Kabasuji extends JFrame {
         this.revalidate();
         this.repaint();
     }
+
 }
