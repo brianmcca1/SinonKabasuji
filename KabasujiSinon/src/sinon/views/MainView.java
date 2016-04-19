@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import sinon.controllers.ExitGameController;
+import sinon.controllers.NextLevelController;
+import sinon.controllers.RestartLevelController;
 import sinon.main.Game;
 import sinon.main.Kabasuji;
 
@@ -26,33 +28,33 @@ public class MainView extends JPanel {
     static final int LEVEL_PANEL_WIDTH = 640;
     static final int MAIN_PANEL_HEIGHT = 545;
     
-    /**Allows global access to top level MainView object*/
+    /**Allows global access to top level MainView object.*/
     public static MainView mainView;
-    /**Top level Game/Builder object*/
+    /**Top level Game/Builder object.*/
     Kabasuji kabasuji;
 
     /**
      * levelPanel is a high level container, which has the Bullpen & the
      * GridView & the optional ReleaseButtonView, and is on the left side of the
      * screen.
-*/
+     */
     private LevelPanel levelPanel;
     /**
-     * The high level container which has the GridView and the Optional
+     * The high level container which has the GridView and the Optional.
      * ReleaseButtonView
      */
     private JPanel gameAreaPanel;
     private JPanel bullpenView;
-    /** Will only exist in Builder Mode and Release game play */
+    /** Will only exist in Builder Mode and Release game play. */
     private Optional<ReleaseButtonView> releaseButtonView;
     private InfoPanel infoPanel;
 
 
 	/**
 	 * @param k
-	 * 			Top level Game/Builder object
+	 * 			Top level Game/Builder object.
 	 * @param infoPanel
-	 * 			The InfoPanel to be displayed
+	 * 			The InfoPanel to be displayed.
 	 */
     public MainView(Kabasuji k, InfoPanel infoPanel) {
         releaseButtonView = Optional.of(new ReleaseButtonView());
@@ -66,10 +68,17 @@ public class MainView extends JPanel {
         if(exitBtn != null)
         	exitBtn.addActionListener(new ExitGameController((Game) kabasuji, this));
         
+        JButton restartBtn = infoPanel.getRestartButton();
+        if(restartBtn != null)
+        	restartBtn.addActionListener(new RestartLevelController((Game) kabasuji, this));
+        
+        JButton nextLevelBtn = infoPanel.getNextLevelButton();
+        if(nextLevelBtn != null)
+        	nextLevelBtn.addActionListener(new NextLevelController((Game) kabasuji, this));
         
     }
 
-    /** Initializes all of the components that make up this GUI */
+    /** Initializes all of the components that make up this GUI.*/
     private void initializeViews() {
         this.setLayout(null);
         // Initialize the high level things that have to happen first

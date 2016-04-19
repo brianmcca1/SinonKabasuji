@@ -14,22 +14,17 @@ import sinon.views.game.LevelSelectView;
  * 
  */
 public class ExitGameController implements ActionListener {
-	/**
-	 * The game that is being exited.
-	 * This is used to feed the constructor 
-	 * responsible for generating a new LevelSelectView
-	 */
+	
+	/** Top level game object to manipulate.*/
     Game game;
-    /**
-     * This is the current panel that we are trying to exit from
-     */
+    /** This is the current panel that we are trying to exit from.*/
     JPanel mainView;
 
     /**
      * @param game
-     * 		Top level Game/Builder object
+     * 		Top level Game/Builder object.
      * @param mv
-     * 		MainView that will be removed from the frame
+     * 		MainView that will be removed from the frame.
      */
     public ExitGameController(Game game, JPanel mv) {
         this.game = game;
