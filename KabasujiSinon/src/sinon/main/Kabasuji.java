@@ -67,7 +67,6 @@ public abstract class Kabasuji extends JFrame {
     }
 */
 
-<<<<<<< HEAD
 	// COMMON VIEWS AND MODELS BETWEEN BOTH BUILDER AND GAME GO HERE
 	// Stack undo = new Stack();
 	// Stack redo = new Stack();
@@ -110,17 +109,6 @@ public abstract class Kabasuji extends JFrame {
 		SplashScreen.timer.start();
 	}
 
-	/**
-	 * Removes The current panel and replaces it with the nextPanel
-	 * @param current Panel that is currently in the frame
-	 * @param nextPanel Panel to be put into the frame TODO
-	 */
-	public void startNextPanel(JPanel current, JPanel nextPanel) {
-		this.remove(current);
-		this.add(nextPanel);
-		this.validate();
-		this.repaint();
-	}
 	
 	public void select(Optional<Hexomino> hex){
 		this.selected = hex;
@@ -135,7 +123,6 @@ public abstract class Kabasuji extends JFrame {
 	}
 
   
-=======
     /**
      * Removes the current panel and replaces it with the nextPanel
      * 
@@ -151,5 +138,5 @@ public abstract class Kabasuji extends JFrame {
         this.revalidate();
         this.repaint();
     }
->>>>>>> master
+
 }
