@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import sinon.controllers.TileController;
 import sinon.main.Kabasuji;
 
 public class BoardView extends JPanel{
