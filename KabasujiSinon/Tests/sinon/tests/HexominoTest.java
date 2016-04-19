@@ -1,6 +1,8 @@
 package sinon.tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertSame;
+
+import java.awt.Point;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,68 +13,96 @@ import sinon.models.HexominoFactory;
 
 public class HexominoTest {
 
-	@Before
-	public void setUp() throws Exception {
+    @Before
+    public void setUp() throws Exception {
 
-	}
+    }
 
-	/**
-	 * 
-	 * @return {[0,0],[0,1],[0,2],[0,3],[0,4],[1,4]}
-	 */
-	private static Hexomino buildExampleHexomino() {
-		return HexominoFactory.buildHexomino(0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 1, 4);
-	}
+    /**
+     * 
+     * @return {[0,0],[0,1],[0,2],[0,3],[0,4],[1,4]}
+     */
+    private static Hexomino buildExampleHexomino() {
+        return HexominoFactory.buildHexomino(0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 1,
+                4);
+    }
 
-	@Test
-	public void testFlipHorizontally() {
-		Hexomino hex = buildExampleHexomino();
-		hex.flipHorizontally();
-		AbstractHexomino expectedFlippedHex = HexominoFactory.buildHexomino(0, 0, 0, 1, 0, 2,
-				0, 3, 0, 4, -1, 4);
-		assertSame(expectedFlippedHex, hex);
-	}
+    @Test
+    public void testFlipHorizontally() {
+        Hexomino hex = buildExampleHexomino();
+        hex.flipHorizontally();
+        AbstractHexomino expectedFlippedHex = HexominoFactory.buildHexomino(0,
+                0, 0, 1, 0, 2, 0, 3, 0, 4, -1, 4);
+        assertSame(expectedFlippedHex, hex);
+    }
 
-	@Test
-	public void testFlipVertically() {
-		Hexomino hex = buildExampleHexomino();
-		hex.flipVertically();
-		AbstractHexomino expectedFlippedHex = HexominoFactory.buildHexomino(0, 0, 0, -1, 0,
-				-2, 0, -3, 0, -4, 1, -4);
-		assertSame(expectedFlippedHex, hex);
-	}
+    @Test
+    public void testFlipVertically() {
+        Hexomino hex = buildExampleHexomino();
+        hex.flipVertically();
+        AbstractHexomino expectedFlippedHex = HexominoFactory.buildHexomino(0,
+                0, 0, -1, 0, -2, 0, -3, 0, -4, 1, -4);
+        assertSame(expectedFlippedHex, hex);
+    }
 
-	@Test
-	public void testNormalEquality() {
-		AbstractHexomino hex1 = buildExampleHexomino();
-		AbstractHexomino hex2 = buildExampleHexomino();
-		assertSame(hex1, hex2);
-	}
+    @Test
+    public void testNormalEquality() {
+        AbstractHexomino hex1 = buildExampleHexomino();
+        AbstractHexomino hex2 = buildExampleHexomino();
+        assertSame(hex1, hex2);
+    }
 
-	@Test
-	public void testUnorderedEquality() {
-		AbstractHexomino hex1 = HexominoFactory.buildHexomino(0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 0,
-				5);
-		AbstractHexomino hex2 = HexominoFactory.buildHexomino(0, 0, 0, 1, 0, 2, 0, 3, 0, 5, 0,
-				4);
-		assertSame(hex1, hex2);
-	}
+    @Test
+    public void testUnorderedEquality() {
+        AbstractHexomino hex1 = HexominoFactory.buildHexomino(0, 0, 0, 1, 0, 2,
+                0, 3, 0, 4, 0, 5);
+        AbstractHexomino hex2 = HexominoFactory.buildHexomino(0, 0, 0, 1, 0, 2,
+                0, 3, 0, 5, 0, 4);
+        assertSame(hex1, hex2);
+    }
 
-	@Test
-	public void testFlippingEquaility() {
-		Hexomino hex1 = HexominoFactory.buildHexomino(0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 0,
-				5);
-		Hexomino hex2 = HexominoFactory.buildHexomino(0, 0, 0, 1, 0, 2, 0, 3, 0, 5, 0,
-				4);
+    @Test
+    public void testFlippingEquaility() {
+        Hexomino hex1 = HexominoFactory.buildHexomino(0, 0, 0, 1, 0, 2, 0, 3, 0,
+                4, 0, 5);
+        Hexomino hex2 = HexominoFactory.buildHexomino(0, 0, 0, 1, 0, 2, 0, 3, 0,
+                5, 0, 4);
 
-		hex1.flipHorizontally();
-		hex1.flipHorizontally();
-		assertSame(hex1, hex2);
-		hex2.flipVertically();
-		hex2.flipHorizontally();
-		hex1.flipHorizontally();
-		hex1.flipVertically();
-		assertSame(hex1, hex2);
-	}
+        hex1.flipHorizontally();
+        hex1.flipHorizontally();
+        assertSame(hex1, hex2);
+        hex2.flipVertically();
+        hex2.flipHorizontally();
+        hex1.flipHorizontally();
+        hex1.flipVertically();
+        assertSame(hex1, hex2);
+    }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testNullConstructor() {
+        @SuppressWarnings("unused")
+        Hexomino hex = new Hexomino(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testIllegalPointsSize() {
+        Point[] points = new Point[7];
+        int i = 0;
+        for (Point p : points) {
+            p = new Point(0, i);
+            i++;
+        }
+        @SuppressWarnings("unused")
+        Hexomino hex = new Hexomino(points);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testIllegalPointsContent() {
+        Point[] points = new Point[6];
+        for (Point p : points) {
+            p = new Point(1, 1);
+        }
+        @SuppressWarnings("unused")
+        Hexomino hex = new Hexomino(points);
+    }
 }
