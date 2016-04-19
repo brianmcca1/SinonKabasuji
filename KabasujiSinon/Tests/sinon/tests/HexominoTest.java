@@ -105,4 +105,14 @@ public class HexominoTest {
         @SuppressWarnings("unused")
         Hexomino hex = new Hexomino(points);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNullTile() {
+        Hexomino hex = buildExampleHexomino();
+        // FIXME this class needs to be in a different package I think?
+        // I can't call hex.add(null), because add is package private.
+        // That's the right visibility this test package just needs to be
+        // renamed I think...
+    }
+
 }
