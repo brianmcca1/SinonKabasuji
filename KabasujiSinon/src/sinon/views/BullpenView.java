@@ -1,9 +1,5 @@
 package sinon.views;
 
-//<<<<<<< HEAD
-//public class BullpenView {
-
-//=======
 import java.awt.Color;
 
 import javax.swing.BoxLayout;
@@ -11,70 +7,38 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
+import sinon.controllers.BullpenController;
+import sinon.controllers.HexominoBullpenController;
+
 /**
- * TODO
- * 
  * @author Josh Desmond
  */
 @SuppressWarnings("serial")
 public class BullpenView extends JScrollPane {
 
-    // private static final Dimension DIMENSION = new Dimension(600, 300);
-
     private JPanel upperPanel;
 
-    /**
-     * TODO
-     */
     public BullpenView() {
         this.setBackground(Color.CYAN);
 
         this.upperPanel = new JPanel();
-        upperPanel.setBackground(Color.blue);
-        BoxLayout layout = new BoxLayout(upperPanel, BoxLayout.X_AXIS);
-
+        upperPanel.setBackground(Color.gray);
         upperPanel.setLayout(new BoxLayout(upperPanel, BoxLayout.X_AXIS));
-        examplePopulateBullpen();
-        examplePopulateBullpen();
+        upperPanel.addMouseListener(new BullpenController(MainView.kabasuji, this));
+        
         examplePopulateBullpen();
 
         JScrollBar scrollBar = new JScrollBar(JScrollBar.HORIZONTAL);
         this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
         this.add(scrollBar);
-
+        
         this.setViewportView(upperPanel);
-
-        /*
-         * JScrollPane scroll = new JScrollPane(); scroll.setSize(DIMENSION);
-         * scroll.addImp this.setSize(DIMENSION); this.add(scroll);
-         * 
-         * //examplePopulateBullpen(); // Now add the scrollbar
-         * 
-         * //scrollBar.setOrientation(JScrollBar.HORIZONTAL);
-         * //this.add(scrollBar, BorderLayout.SOUTH);
-         * //scroll.setHorizontalScrollBarPolicy(JScrollPane.
-         * HORIZONTAL_SCROLLBAR_ALWAYS);
-         * //scroll.setHorizontalScrollBar(scrollBar); //
-         * 
-         * 
-         * // TODO remove this. //examplePopulateBullpen(); validate();
-         */
     }
 
     private void examplePopulateBullpen() {
         HexominoBullpenView a = new HexominoBullpenView();
         a.setBackground(Color.red);
         this.upperPanel.add(a);
-        HexominoBullpenView b = new HexominoBullpenView();
-        b.setBackground(Color.blue);
-        this.upperPanel.add(b);
-        HexominoBullpenView c = new HexominoBullpenView();
-        c.setBackground(Color.green);
-        this.upperPanel.add(c);
-        HexominoBullpenView d = new HexominoBullpenView();
-        d.setBackground(Color.black);
-        this.upperPanel.add(d);
-        this.validate();
+        a.addMouseListener(new HexominoBullpenController(MainView.kabasuji, a));
     }
-//>>>>>>> master
 }
