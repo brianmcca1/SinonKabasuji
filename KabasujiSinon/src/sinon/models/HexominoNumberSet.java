@@ -1,14 +1,29 @@
 package sinon.models;
 
+import java.awt.Point;
+import java.util.Set;
+
 public class HexominoNumberSet {
 
-    public void flipHorizontally() {
-        for (int i = 0; i < 6; i++) {
-            int temp = squares[i].x;
-            temp = temp * (-1);
-            squares[i].x = temp;
-        }
+    Set<Point> points;
 
+    public HexominoNumberSet(Set<Point> points) {
+        this.points = points;
+    }
+
+    public void flipHorizontally() {
+
+        for (Point p : points) {
+            p.x = p.x * -1;
+        }
+        /*
+         * for (int i = 0; i < 6; i++) { int temp = squares[i].x; temp = temp *
+         * (-1); squares[i].x = temp; }
+         */
+    }
+
+    public void blah() {
+        points.equals();
     }
 
     public void flipVertically() {
