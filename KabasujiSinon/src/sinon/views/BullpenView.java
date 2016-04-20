@@ -7,11 +7,14 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import sinon.controllers.BullpenController;
 import sinon.controllers.HexominoBullpenController;
+import sinon.models.BullPen;
 
 @SuppressWarnings("serial")
 public class BullpenView extends JScrollPane {
 
     private JPanel bullpenPanel;
+    
+    BullPen bullpen;
 
     public BullpenView() {
         this.setBackground(Color.CYAN);

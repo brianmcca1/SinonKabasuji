@@ -13,6 +13,13 @@ public class BullPen {
 		this.pieces = pieces;
 	}
 	
+	/**
+	 * Getter that returns all the hexominos in the bullpen
+	 */
+	public ArrayList<Hexomino> getPieces(){
+		return pieces;
+	}
+	
 	public void addHexomino(Hexomino hex){
 		pieces.add(hex);
 	}

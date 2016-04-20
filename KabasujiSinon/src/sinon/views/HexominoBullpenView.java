@@ -10,11 +10,13 @@ import sinon.models.Hexomino;
 /** GUI element representing one of the Hexominos in the Bullpen */
 @SuppressWarnings("serial")
 public class HexominoBullpenView extends JPanel {
+	
 	/** The hexomino model object associated with this view */
 	Hexomino hex;
 	
 	/** The bullpen model object associated with this view */
 	BullPen bullpen;
+	
     // TODO This 120 constant should be updated with a reference to the height
     // of a hexomino.
     private static final Dimension SIZE = new Dimension(120, 120);
