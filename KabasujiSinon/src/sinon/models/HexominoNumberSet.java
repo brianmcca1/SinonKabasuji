@@ -6,42 +6,6 @@ import java.util.Set;
 
 public class HexominoNumberSet {
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((points == null) ? 0 : points.hashCode());
-        return result;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        HexominoNumberSet other = (HexominoNumberSet) obj;
-        if (points == null) {
-            if (other.points != null)
-                return false;
-        } else if (points.equals(other.points))
-            return true;
-
-        return true;
-    }
-
     Set<Point> points;
 
     /**
@@ -80,16 +44,6 @@ public class HexominoNumberSet {
         this.points = points;
     }
 
-    /**
-     * Validates the state of any set of points.
-     * 
-     * @return True if the set of points given is in a legal state for a
-     *         HexominoNumberSet.
-     */
-    private static boolean validatePoints(Set<Point> points) {
-        return true;
-    }
-
     public void flipHorizontally() {
         System.out.println("got to HexNumSet");
         for (Point p : points) {
@@ -105,6 +59,16 @@ public class HexominoNumberSet {
         for (Point p : points) {
             p.y = p.y * -1;
         }
+    }
+
+    /**
+     * Validates the state of any set of points.
+     * 
+     * @return True if the set of points given is in a legal state for a
+     *         HexominoNumberSet.
+     */
+    private static boolean validatePoints(Set<Point> points) {
+        return true;
     }
 
     public void rotateC() {
@@ -127,6 +91,42 @@ public class HexominoNumberSet {
         rotateC();
         rotateC();
         rotateC();
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((points == null) ? 0 : points.hashCode());
+        return result;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        HexominoNumberSet other = (HexominoNumberSet) obj;
+        if (points == null) {
+            if (other.points != null)
+                return false;
+        } else if (points.equals(other.points))
+            return true;
+
+        return true;
     }
 
 }
