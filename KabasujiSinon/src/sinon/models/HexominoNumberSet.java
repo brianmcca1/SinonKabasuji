@@ -12,7 +12,7 @@ public class HexominoNumberSet {
      * Convenience constructor. Try to avoid using this except for testing. I
      * think this will eventually be moved to the factory class.
      */
-    @Deprecated
+    
     public HexominoNumberSet(int a, int a1, int b, int b1, int c, int c1, int d,
             int d1, int e, int e1, int f, int f1) {
         points = new HashSet<Point>();
@@ -125,8 +125,47 @@ public class HexominoNumberSet {
                 return false;
         } else if (points.equals(other.points))
             return true;
-
-        return true;
+        else {
+        	for(Point p : other.points){
+        		
+        		HashSet<Point> translatedPoints = new HashSet<Point>();
+        		// Translate all point in the hex to change which square is the anchor
+        		for(Point p2 : other.points){
+        			p2.translate(-1 * p.x, -1 * p.y);
+        			translatedPoints.add(new Point(p2.x - p.x, p2.y - p.y));
+        		}
+        		HexominoNumberSet translatedOther = new HexominoNumberSet(translatedPoints);
+        		
+        		for(int i = 0; i < 4; i++){
+        			if(points.equals(translatedOther.points)){
+        				return true;
+        			} else {
+        				// Check current rotation with just Horizontal flip
+        				translatedOther.flipHorizontally(); 
+        				if(points.equals(translatedOther.points)){
+        					return true;
+        				} else {
+        					// Check current rotation with Horizontal + Vertical flip				
+        					translatedOther.flipVertically();
+        					if(points.equals(translatedOther.points)){
+        						return true;
+        					} else {
+        						// Check current rotation with just vertical flip
+        						translatedOther.flipHorizontally(); // Undo's previous Horizontal flip
+        						if(points.equals(translatedOther.points)){
+        							return true;
+        						}
+        					}       					
+        				}			
+        				
+        			}
+        			// This rotation is not equal in any way, so try the next one
+    				translatedOther.rotateC();
+        		}	
+        		
+        	}
+        }
+        return false;
     }
 
 }

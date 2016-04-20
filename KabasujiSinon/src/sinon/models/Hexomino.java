@@ -1,5 +1,8 @@
 package sinon.models;
 
+import java.awt.Point;
+import java.util.Set;
+
 /**
  * A Hexomino is an entity which is used for standard Kabasuji play.
  * 
@@ -30,6 +33,10 @@ public class Hexomino {
         this.hexominoNumberSet = new HexominoNumberSet(a, a1, b, b1, c, c1, d,
                 d1, e, e1, f, f1);
 
+    }
+    
+    public Hexomino(Set<Point> points){
+    	this.hexominoNumberSet = new HexominoNumberSet(points);
     }
 
     /**

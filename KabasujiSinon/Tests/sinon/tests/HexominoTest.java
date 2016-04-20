@@ -1,8 +1,10 @@
 package sinon.tests;
 
-import static org.junit.Assert.assertSame;
+import static org.junit.Assert.*;
 
 import java.awt.Point;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -33,7 +35,7 @@ public class HexominoTest {
         hex.flipHorizontally();
         Hexomino expectedFlippedHex = new Hexomino(0,
                 0, 0, 1, 0, 2, 0, 3, 0, 4, -1, 4);
-        assertSame(expectedFlippedHex, hex);
+        assertEquals(expectedFlippedHex, hex);
     }
 
     @Test
@@ -42,14 +44,14 @@ public class HexominoTest {
         hex.flipVertically();
         Hexomino expectedFlippedHex = new Hexomino(0,
                 0, 0, -1, 0, -2, 0, -3, 0, -4, 1, -4);
-        assertSame(expectedFlippedHex, hex);
+        assertEquals(expectedFlippedHex, hex);
     }
 
     @Test
     public void testNormalEquality() {
         Hexomino hex1 = buildExampleHexomino();
         Hexomino hex2 = buildExampleHexomino();
-        assertSame(hex1, hex2);
+        assertEquals(hex1, hex2);
     }
 
     @Test
@@ -58,7 +60,7 @@ public class HexominoTest {
                 0, 3, 0, 4, 0, 5);
         Hexomino hex2 = new Hexomino(0, 0, 0, 1, 0, 2,
                 0, 3, 0, 5, 0, 4);
-        assertSame(hex1, hex2);
+        assertEquals(hex1, hex2);
     }
 
     @Test
@@ -70,12 +72,12 @@ public class HexominoTest {
 
         hex1.flipHorizontally();
         hex1.flipHorizontally();
-        assertSame(hex1, hex2);
+        assertEquals(hex1, hex2);
         hex2.flipVertically();
         hex2.flipHorizontally();
         hex1.flipHorizontally();
         hex1.flipVertically();
-        assertSame(hex1, hex2);
+        assertEquals(hex1, hex2);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -86,7 +88,7 @@ public class HexominoTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testIllegalPointsSize() {
-        Point[] points = new Point[7];
+        HashSet<Point> points= new HashSet<Point>();
         int i = 0;
         for (Point p : points) {
             p = new Point(0, i);
@@ -98,7 +100,7 @@ public class HexominoTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testIllegalPointsContent() {
-        Point[] points = new Point[6];
+        HashSet<Point> points = new HashSet<Point>();
         for (Point p : points) {
             p = new Point(1, 1);
         }
