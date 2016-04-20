@@ -19,13 +19,10 @@ public class Hexomino {
      */
     public Hexomino(int a, int a1, int b, int b1, int c, int c1, int d, int d1,
             int e, int e1, int f, int f1) {
-        Point[] squares = new Point[6];
-        squares[0] = new Point(a, a1);
-        squares[1] = new Point(b, b1);
-        squares[2] = new Point(c, c1);
-        squares[3] = new Point(d, d1);
-        squares[4] = new Point(e, e1);
-        squares[5] = new Point(f, f1);
+    	
+       this.hexominoNumberSet = new HexominoNumberSet(a, a1, b, b1, c, c1, d, d1,
+            e, e1, f, f1);
+       
     }
 
     /**
