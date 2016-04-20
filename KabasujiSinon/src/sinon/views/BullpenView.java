@@ -19,9 +19,10 @@ public class BullpenView extends JScrollPane {
         this.bullpenPanel = new JPanel();
         bullpenPanel.setBackground(Color.gray);
         bullpenPanel.setLayout(new BoxLayout(bullpenPanel, BoxLayout.X_AXIS));
+        
         bullpenPanel.addMouseListener(new BullpenController(MainView.kabasuji, this)); //register BullpenController to bullpen
         
-        examplePopulateBullpen();
+        populateBullpen();
 
         JScrollBar scrollBar = new JScrollBar(JScrollBar.HORIZONTAL);
         this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
@@ -31,7 +32,7 @@ public class BullpenView extends JScrollPane {
     }
 
     /** Creates a HexominoBullpenView and registers a HexominoBullpenController to it.*/
-    private void examplePopulateBullpen() {
+    private void populateBullpen() {
         HexominoBullpenView a = new HexominoBullpenView();
         a.setBackground(Color.red);
         this.bullpenPanel.add(a);
