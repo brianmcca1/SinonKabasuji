@@ -41,10 +41,13 @@ public class LevelStartController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("STARTING LEVEL #" + levelNum + ". . .");
 		if(MainView.mainView == null){
-			game.startNextPanel(levelSelectView, new MainView(game, new GameInfoView(game)));
+			MainView mainView = new MainView(game, new GameInfoView(game));
+			game.startNextPanel(levelSelectView, mainView);
+			mainView.mainView.setLevelNum(this.levelNum);
 		}
 		else{
 			game.startNextPanel(levelSelectView, MainView.mainView);
+			MainView.mainView.setLevelNum(this.levelNum);
 		}
 	}
 }
