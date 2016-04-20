@@ -21,8 +21,18 @@ public class HexominoBullpenView extends JPanel {
     // of a hexomino.
     private static final Dimension SIZE = new Dimension(120, 120);
 
-    public HexominoBullpenView() {
+    public HexominoBullpenView(Hexomino hex, BullPen bp) {
         super();
+        this.setMinimumSize(SIZE);
+        this.setMaximumSize(SIZE);
+        this.setPreferredSize(SIZE);
+        this.hex = hex;
+        this.bullpen = bp;
+    }
+    
+    /** temporary constructor */
+    public HexominoBullpenView() {
+    	super();
         this.setMinimumSize(SIZE);
         this.setMaximumSize(SIZE);
         this.setPreferredSize(SIZE);

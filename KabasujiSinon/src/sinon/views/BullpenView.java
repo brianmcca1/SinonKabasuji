@@ -8,12 +8,14 @@ import javax.swing.JScrollPane;
 import sinon.controllers.BullpenController;
 import sinon.controllers.HexominoBullpenController;
 import sinon.models.BullPen;
+import sinon.models.Hexomino;
 
 @SuppressWarnings("serial")
 public class BullpenView extends JScrollPane {
 
     private JPanel bullpenPanel;
     
+    /** This is the bullpen that is associated with the view */
     BullPen bullpen;
 
     public BullpenView() {
@@ -36,9 +38,20 @@ public class BullpenView extends JScrollPane {
 
     /** Creates a HexominoBullpenView and registers a HexominoBullpenController to it.*/
     private void populateBullpen() {
+    	
+    	//temp work
         HexominoBullpenView a = new HexominoBullpenView();
         a.setBackground(Color.red);
         this.bullpenPanel.add(a);
         a.addMouseListener(new HexominoBullpenController(MainView.kabasuji, a));
+        
+    	/* We will actually need this block uncommented when we get the entities working.
+        for(Hexomino hex : bullpen.getPieces()) {
+        	HexominoBullpenView hbpView = new HexominoBullpenView(hex, this.bullpen);
+        	hbpView.setBackground(Color.red);
+        	this.bullpenPanel.add(hbpView);
+        	hbpView.addMouseListener(new HexominoBullpenController(MainView.kabasuji, hbpView));
+        }
+        */
     }
 }

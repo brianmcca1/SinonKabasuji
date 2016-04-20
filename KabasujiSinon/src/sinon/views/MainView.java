@@ -10,6 +10,7 @@ import sinon.controllers.NextLevelController;
 import sinon.controllers.RestartLevelController;
 import sinon.main.Game;
 import sinon.main.Kabasuji;
+import sinon.models.Level;
 
 /**
  * This class controls the entirety of the Builder/Game Views;
@@ -36,7 +37,7 @@ public class MainView extends JPanel {
     private Optional<ReleaseButtonView> releaseButtonView;
     private InfoPanel infoPanel;
     public int levelNum;
-
+    Level level;
 
 	/**
 	 * @param k

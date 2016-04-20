@@ -16,5 +16,13 @@ public class Level {
 		
 	}
 	
+	/** 
+	 * This returns the bullpen from the level.
+	 * @return
+	 */
+	public BullPen getBullpen() {
+		return bullpen;
+	}
+	
 	
 }
