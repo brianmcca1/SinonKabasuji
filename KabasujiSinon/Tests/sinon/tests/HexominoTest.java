@@ -23,7 +23,7 @@ public class HexominoTest {
      * @return {[0,0],[0,1],[0,2],[0,3],[0,4],[1,4]}
      */
     private static Hexomino buildExampleHexomino() {
-        return HexominoFactory.buildHexomino(0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 1,
+        return new Hexomino(0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 1,
                 4);
     }
 
@@ -31,7 +31,7 @@ public class HexominoTest {
     public void testFlipHorizontally() {
         Hexomino hex = buildExampleHexomino();
         hex.flipHorizontally();
-        Hexomino expectedFlippedHex = HexominoFactory.buildHexomino(0,
+        Hexomino expectedFlippedHex = new Hexomino(0,
                 0, 0, 1, 0, 2, 0, 3, 0, 4, -1, 4);
         assertSame(expectedFlippedHex, hex);
     }
@@ -40,7 +40,7 @@ public class HexominoTest {
     public void testFlipVertically() {
         Hexomino hex = buildExampleHexomino();
         hex.flipVertically();
-        Hexomino expectedFlippedHex = HexominoFactory.buildHexomino(0,
+        Hexomino expectedFlippedHex = new Hexomino(0,
                 0, 0, -1, 0, -2, 0, -3, 0, -4, 1, -4);
         assertSame(expectedFlippedHex, hex);
     }
@@ -54,18 +54,18 @@ public class HexominoTest {
 
     @Test
     public void testUnorderedEquality() {
-        Hexomino hex1 = HexominoFactory.buildHexomino(0, 0, 0, 1, 0, 2,
+        Hexomino hex1 = new Hexomino(0, 0, 0, 1, 0, 2,
                 0, 3, 0, 4, 0, 5);
-        Hexomino hex2 = HexominoFactory.buildHexomino(0, 0, 0, 1, 0, 2,
+        Hexomino hex2 = new Hexomino(0, 0, 0, 1, 0, 2,
                 0, 3, 0, 5, 0, 4);
         assertSame(hex1, hex2);
     }
 
     @Test
     public void testFlippingEquaility() {
-        Hexomino hex1 = HexominoFactory.buildHexomino(0, 0, 0, 1, 0, 2, 0, 3, 0,
+        Hexomino hex1 = new Hexomino(0, 0, 0, 1, 0, 2, 0, 3, 0,
                 4, 0, 5);
-        Hexomino hex2 = HexominoFactory.buildHexomino(0, 0, 0, 1, 0, 2, 0, 3, 0,
+        Hexomino hex2 = new Hexomino(0, 0, 0, 1, 0, 2, 0, 3, 0,
                 5, 0, 4);
 
         hex1.flipHorizontally();
