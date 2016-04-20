@@ -1,6 +1,9 @@
 package sinon.models;
 
-import java.util.ArrayList;
+import java.awt.Point;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
 
 /**
  * Entity Class which represents the 12x12 area of game play.
@@ -17,30 +20,28 @@ public class Board {
     private final static int HEIGHT_BY_ZERO = HEIGHT - 1;
 
     // TODO this should be changed to either a double array
-    ArrayList<Tile> tiles;
+    Map<Point, Tile> tilesViaPoints;
 
-    @Deprecated
-    public Board(ArrayList<Tile> tiles) {
-        // TODO this is a pretty lame way of making a Board. Let's make an
-        // actual constructor with some logic in this class.
-        // If there are test cases that need a constructor like this I guess
-        // it's okay though.
-        this.tiles = tiles;
+    /**
+     * Creates a 12 by 12 Board with tiles initialized to all playable tiles.
+     */
+    public Board() {
+        tilesViaPoints = new HashMap<Point, Tile>();
+        for (int x = 0; x < WIDTH; x++) {
+            for (int y = 0; y < HEIGHT; y++) {
+                Point p = new Point(x, y);
+                tilesViaPoints.put(p, new Tile(p, true));
+            }
+        }
     }
 
-    public void addPiece(Hexomino piece) {
-
-        /*
-         * This code is pretty unusable. for (int i = 0; i < 6; i++) { int
-         * deltaX = piece.squares[i].x; int deltaY = piece.squares[i].y;
-         * 
-         * int row = piece.anchorRow + deltaX; int column = piece.anchorColumn +
-         * deltaY;
-         * 
-         * Tile t = this.getTile(row, column); }
-         */
-    }
-
+    /**
+     * Determines if there is a hexomino at the given position.
+     * 
+     * @param row
+     * @param column
+     * @return True if there is a hexomino on this tile
+     */
     public boolean hasHex(int row, int column) {
         return getTile(row, column).hasHex();
     }
@@ -48,32 +49,36 @@ public class Board {
     /**
      * Determines whether it's possible to add a Hexomino at the given location.
      * 
-     * @param hex
-     *            The Hexomino to be added
+     * 
      * @param anchorRow
      *            The row number where the anchor square will go
      * @param anchorColumn
      *            The column number where the anchor square will go
+     * @param hex
+     *            The Hexomino to be added
      * @return True if the move if possible, false otherwise.
      */
-    public boolean canAddHexomino(Hexomino hex, int anchorRow,
-            int anchorColumn) {
+    public boolean canAddHexomino(int anchorRow, int anchorColumn,
+            Hexomino hex) {
         return false;
     }
 
     /**
      * Adds the given Hexomino to the board. Must be a valid move.
      * 
-     * @param hex
-     *            The Hexomino to be added
+     *
      * @param anchorRow
      *            The row number where the anchor square will go
      * @param anchorColumn
      *            The column number where the anchor square will go
+     * @param hex
+     *            The Hexomino to be added
      * 
      */
-    public void addHexomino(Hexomino hex, int anchorRow, int anchorColumn) {
-        // TODO
+    public void addHexomino(int anchorRow, int anchorColumn, Hexomino hex) {
+        if (!canAddHexomino(anchorRow, anchorColumn, hex)) {
+            throw new IllegalArgumentException("TODO"); // TODO
+        }
     }
 
     /**
@@ -84,8 +89,7 @@ public class Board {
      * @return The Tile found.
      */
     public Tile getTile(int row, int column) {
-        // TODO
-        return null;
+        return tilesViaPoints.get(new Point(row, column));
     }
 
     /**
@@ -102,26 +106,34 @@ public class Board {
     private boolean isInBounds(int row, int column) {
         if (row > HEIGHT_BY_ZERO || row > WIDTH_BY_ZERO) {
             return false;
-        }
-
-        if (row < 0 || column < 0) {
+        } else if (row < 0 || column < 0) {
             return false;
-        }
-
-        else
+        } else
             return true;
     }
 
+    /**
+     * Completely removes the specified Hexomino from the board.
+     */
     public void removeHexomino(Hexomino hex) {
-
-        for (Tile t : tiles) {
+        for (Tile t : getTiles()) {
             if (t.getHexomino().isPresent()) {
-                if (t.getHexomino().get() == hex) {
+                if (t.getHexomino().get() == hex) { // TODO is this correct
                     t.removeHex();
                 }
             }
         }
 
+    }
+
+    /**
+     * 
+     * @return An iterable of all of the tiles.
+     */
+    public Iterable<Tile> getTiles() {
+        LinkedList<Tile> tempList = new LinkedList<Tile>();
+        tilesViaPoints.forEach((k, v) -> tempList.add(v));
+        return tempList;
     }
 
     // TODO equals and hash

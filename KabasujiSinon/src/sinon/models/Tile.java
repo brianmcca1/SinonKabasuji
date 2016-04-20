@@ -1,14 +1,17 @@
 package sinon.models;
 
+import java.awt.Point;
 import java.util.Optional;
 
 public class Tile {
 
     boolean playable;
     Optional<Hexomino> hex;
+    Point location;
 
-    public Tile(int row, int column, boolean playable) {
+    public Tile(Point location, boolean playable) {
         this.playable = playable;
+        this.location = location;
     }
 
     /**
