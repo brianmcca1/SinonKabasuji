@@ -12,9 +12,7 @@ import sinon.main.Game;
 import sinon.main.Kabasuji;
 
 /**
- * GameView is the GUI that shows the main screen of both gameplay and level
- * editing.
- * 
+ * This class controls the entirety of the Builder/Game Views;
  * Shows GridView, the Optional ReleaseButtonView, the BullpenView, and the
  * InfoPanel.
  * 
@@ -37,6 +35,7 @@ public class MainView extends JPanel {
     /**Only exists in Builder Mode and Release game play.*/
     private Optional<ReleaseButtonView> releaseButtonView;
     private InfoPanel infoPanel;
+    public int levelNum;
 
 
 	/**
@@ -51,6 +50,16 @@ public class MainView extends JPanel {
         this.infoPanel = infoPanel; 
         this.kabasuji = k;
         initializeViews(); 
+    }
+    
+    /**
+     * This function sets the currently opened level number.
+     * @param num
+     * 		Level number (1 to 15)
+     */
+    public void setLevelNum(int num){
+    	this.levelNum = num;
+    	System.out.println("MAINVIEW HAS RECOGNIZED LEVEL #" + this.levelNum);
     }
 
     /** Initializes all of the components that make up this GUI.*/
@@ -68,11 +77,8 @@ public class MainView extends JPanel {
         infoPanel.setBounds(LEVEL_PANEL_WIDTH, 0, 150, MAIN_PANEL_HEIGHT);
     }
     
-    /**
-     * Get all the buttons from the infoView (all return null if in the builder).
-     */
+    /** Get all the buttons from the infoView (all return null if in Builder mode).*/
     private void initGameInfoButtons(){
-        //
         JButton exitBtn = infoPanel.getExitButton();
         JButton restartBtn = infoPanel.getRestartButton();
         JButton nextLevelBtn = infoPanel.getNextLevelButton();
