@@ -84,6 +84,13 @@ public class Tile {
     }
 
     /**
+     * @return the location
+     */
+    public Point getLocation() {
+        return location;
+    }
+
+    /**
      * Determines if the tile currently is occupied by a Hexomino
      * 
      * @return True if the tile is occupied by a Hex, False if not

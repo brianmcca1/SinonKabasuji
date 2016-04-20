@@ -1,44 +1,58 @@
 package sinon.views;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Point;
 
 import javax.swing.BorderFactory;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import sinon.controllers.TileController;
 import sinon.main.Kabasuji;
+import sinon.models.Board;
+import sinon.models.Tile;
 
-public class BoardView extends JPanel{
+public class BoardView extends JPanel {
 
-	JPanel board;
-	Kabasuji kabasuji;
-	
-	public BoardView(){
-		initialize();
-	}
-	
-	void initialize(){
-		this.board = new JPanel();
-		this.board.setLayout(new GridLayout(12,12));
-        this.board.setBounds(80, 26, 300, 300);
-        this.board.setBackground(Color.BLACK);
-        this.board.setBorder(BorderFactory.createLineBorder(Color.black, 1));
-        
-        int counter = 1;
-        for(int i = 0; i < 12; i++){
-        	for(int j = 0; j < 12; j++){
-        		TileView tempTile = new TileView(kabasuji.openedLevel.board.getTile(i, j));
-        		
-        		tempTile.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
-        		tempTile.setBounds(12*i,12*j,25, 25);
-        		tempTile.addMouseListener(new TileController(kabasuji, tempTile));
-        		board.add(tempTile);
-        		counter++;
-        	}
+    JPanel boardPanel;
+    private Kabasuji kabasuji;
+
+    public BoardView(Kabasuji kabasuji) {
+        initialize();
+    }
+
+    void initialize() {
+        this.boardPanel = new JPanel();
+        this.boardPanel.setLayout(new GridLayout(12, 12));
+        this.boardPanel.setBounds(80, 26, 300, 300);
+        this.boardPanel.setBackground(Color.BLACK);
+        this.boardPanel
+                .setBorder(BorderFactory.createLineBorder(Color.black, 1));
+
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 12; j++) {
+                initializeTile(i, j);
+            }
         }
-	}
+    }
+
+    private void initializeTile(int row, int column) {
+        TileView tileView = new TileView();
+        tileView.addMouseListener(
+                new TileController(kabasuji, tileView, new Point(row, column)));
+
+        tileView.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
+        tileView.setBounds(12 * row, 12 * column, 25, 25); // TODO this is in
+                                                           // absolute
+                                                           // positioning?
+
+        boardPanel.add(tileView);
+    }
+
+    private void intializeTileControllersToBoard(Board b) {
+        for (Tile t : b.getTiles()) {
+            t.getLocation();
+        }
+    }
+
 }

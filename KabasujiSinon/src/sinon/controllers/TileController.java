@@ -1,82 +1,82 @@
 package sinon.controllers;
 
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Optional;
-
-import javax.swing.JPanel;
 
 import sinon.main.Kabasuji;
+import sinon.models.Board;
 import sinon.models.Hexomino;
-import sinon.models.Puzzle;
+import sinon.models.Tile;
 import sinon.views.TileView;
 
-public class TileController implements MouseListener{
-	
-	Kabasuji kabasuji;
-	TileView view;
+public class TileController implements MouseListener {
 
-	public TileController(Kabasuji kabasuji, TileView view) {
-		this.kabasuji = kabasuji;
-		this.view = view;
-	}
+    Kabasuji kabasuji;
+    TileView view;
+    Tile tile;
 
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		System.out.println("I AM A TILE AND I WAS JUST CLICKED ON!");
-		
-		/*THIS IS FOR DETERMINING IF A HEXOMINO IS ON THE CLICKED TILE
-		int num = view.num;
-		int row = num / 12;
-		int col = num % 12;
-		col++;
-		if (kabasuji.hasSelected()== true){
-			Hexomino hex = kabasuji.selected.get();
-			hex.anchorColumn = col;
-			hex.anchorRow = row;
-			if (kabasuji.openedLevel.board.canAddHexomino(hex, row, col)){
-				kabasuji.openedLevel.board.addPiece(hex);	
-				kabasuji.deselect();
-				
-			}
-			
-		}
+    public TileController(Kabasuji kabasuji, TileView view, Point point) {
+        this.kabasuji = kabasuji;
+        this.view = view;
+        this.tile = kabasuji.openedLevel.board.getTile(point.x, point.y);
+    }
 
-		if (kabasuji.hasSelected() == false){
-			if (kabasuji.openedLevel instanceof Puzzle){
-				if (kabasuji.openedLevel.board.hasHex(row, col)){
-					kabasuji.select(kabasuji.openedLevel.board.getTile(row, col).getHexomino());
-					Hexomino hex = kabasuji.selected.get();
-					kabasuji.openedLevel.board.removeHexomino(row, col, hex);
-				}
-			}
-		}
-		*/
-	}
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        System.out.println("I AM A TILE AND I WAS JUST CLICKED ON!");
+        // The possible outcomes from this event are
+        // create a board to board
+        // create a bullpen to board
+        // select a hexomino
+        // or do nothing
 
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+        if (kabasuji.hasSelected()) {
+            final Hexomino selectedHex = kabasuji.selected.get();
 
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+            if (getBoard().canAddHexomino(tile.getLocation(), selectedHex)) {
 
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO shadows
-		
-	}
+                getBoard().addHexomino(tile.getLocation(), selectedHex);
+            }
 
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO shadows
-		
-	}
+            // Else do nothing. TODO maybe one day you could unselect it. for
+            // now this is okay.
+        }
 
+        else {
+            assert (!kabasuji.hasSelected());
+            if (tile.hasHex()) {
+                kabasuji.select(tile.getHexomino());
+            }
+        }
+    }
+
+    private Board getBoard() {
+        return kabasuji.openedLevel.board;
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        // TODO shadows
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        // TODO shadows
+
+    }
 
 }

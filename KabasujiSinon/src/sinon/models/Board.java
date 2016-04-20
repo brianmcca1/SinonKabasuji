@@ -50,16 +50,13 @@ public class Board {
      * Determines whether it's possible to add a Hexomino at the given location.
      * 
      * 
-     * @param anchorRow
-     *            The row number where the anchor square will go
-     * @param anchorColumn
-     *            The column number where the anchor square will go
+     * @param anchorLocation
+     *            Location of where the anchor of the hexomino will go.
      * @param hex
      *            The Hexomino to be added
      * @return True if the move if possible, false otherwise.
      */
-    public boolean canAddHexomino(int anchorRow, int anchorColumn,
-            Hexomino hex) {
+    public boolean canAddHexomino(Point anchorLocation, Hexomino hex) {
         return false;
     }
 
@@ -67,16 +64,14 @@ public class Board {
      * Adds the given Hexomino to the board. Must be a valid move.
      * 
      *
-     * @param anchorRow
-     *            The row number where the anchor square will go
-     * @param anchorColumn
-     *            The column number where the anchor square will go
+     * @param anchorLocation
+     *            Location of where the anchor of the hexomino will go.
      * @param hex
      *            The Hexomino to be added
      * 
      */
-    public void addHexomino(int anchorRow, int anchorColumn, Hexomino hex) {
-        if (!canAddHexomino(anchorRow, anchorColumn, hex)) {
+    public void addHexomino(Point anchorLocation, Hexomino hex) {
+        if (!canAddHexomino(anchorLocation, hex)) {
             throw new IllegalArgumentException("TODO"); // TODO
         }
     }
