@@ -1,13 +1,20 @@
 package sinon.models;
 
-import java.awt.Point;
-
+/**
+ * A Hexomino is an entity which is used for standard Kabasuji play.
+ * 
+ * Most of the logic for the shape of a Kabusuji piece is delegated to the
+ * {@link #hexominoNumberSet} class.
+ * 
+ * @author Brian
+ * @author Josh Desmond
+ */
 public class Hexomino {
 
+    /** @see HexominoNumberSet */
     HexominoNumberSet hexominoNumberSet;
-    Point[] squares = new Point[6];
-    public int anchorRow;
-    public int anchorColumn;
+    int anchorRow;
+    int anchorColumn;
 
     /**
      * Is a convenience constructor for quickly building a Hexomino.
@@ -19,10 +26,10 @@ public class Hexomino {
      */
     public Hexomino(int a, int a1, int b, int b1, int c, int c1, int d, int d1,
             int e, int e1, int f, int f1) {
-    	
-       this.hexominoNumberSet = new HexominoNumberSet(a, a1, b, b1, c, c1, d, d1,
-            e, e1, f, f1);
-       
+
+        this.hexominoNumberSet = new HexominoNumberSet(a, a1, b, b1, c, c1, d,
+                d1, e, e1, f, f1);
+
     }
 
     /**
@@ -40,35 +47,17 @@ public class Hexomino {
 
     public void flipHorizontally() {
         hexominoNumberSet.flipHorizontally();
-
     }
 
     public void flipVertically() {
         hexominoNumberSet.flipVertically();
-
     }
 
     public void rotateC() {
         hexominoNumberSet.rotateC();
-
     }
 
     public void rotateCC() {
         hexominoNumberSet.rotateCC();
-        for (int i = 0; i < 6; i++) {
-            int x = squares[i].x;
-            int y = squares[i].y;
-            int newX;
-            int newY;
-
-            // Perform rotation, Matrix is
-            // [0 -1]
-            // [1 0]
-            newX = -y;
-            newY = x;
-
-            squares[i].move(newX, newY);
-        }
-
     }
 }
