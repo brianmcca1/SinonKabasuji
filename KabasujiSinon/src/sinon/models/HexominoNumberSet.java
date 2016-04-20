@@ -45,7 +45,7 @@ public class HexominoNumberSet {
     }
 
     public void flipHorizontally() {
-        System.out.println("got to HexNumSet");
+
         for (Point p : points) {
             p.x = p.x * -1;
         }
@@ -113,6 +113,8 @@ public class HexominoNumberSet {
      */
     @Override
     public boolean equals(Object obj) {
+    	
+    	
         if (this == obj)
             return true;
         if (obj == null)
@@ -123,15 +125,17 @@ public class HexominoNumberSet {
         if (points == null) {
             if (other.points != null)
                 return false;
-        } else if (points.equals(other.points))
+        } else if (points.equals(other.points)){
+        	
+        	
             return true;
-        else {
+        }else {
+        	
         	for(Point p : other.points){
         		
         		HashSet<Point> translatedPoints = new HashSet<Point>();
         		// Translate all point in the hex to change which square is the anchor
         		for(Point p2 : other.points){
-        			p2.translate(-1 * p.x, -1 * p.y);
         			translatedPoints.add(new Point(p2.x - p.x, p2.y - p.y));
         		}
         		HexominoNumberSet translatedOther = new HexominoNumberSet(translatedPoints);
@@ -159,13 +163,24 @@ public class HexominoNumberSet {
         				}			
         				
         			}
+        			//First, undo the vertical flip
+        			translatedOther.flipVertically();
         			// This rotation is not equal in any way, so try the next one
     				translatedOther.rotateC();
         		}	
         		
         	}
         }
+        
         return false;
     }
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "HexominoNumberSet [points=" + points + "]";
+	}
 
 }

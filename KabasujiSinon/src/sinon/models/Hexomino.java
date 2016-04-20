@@ -35,7 +35,56 @@ public class Hexomino {
 
     }
     
-    public Hexomino(Set<Point> points){
+    /* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Hexomino [hexominoNumberSet=" + hexominoNumberSet + ", anchorRow=" + anchorRow + ", anchorColumn="
+				+ anchorColumn + "]";
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + anchorColumn;
+		result = prime * result + anchorRow;
+		result = prime * result + ((hexominoNumberSet == null) ? 0 : hexominoNumberSet.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Hexomino other = (Hexomino) obj;
+		if (anchorColumn != other.anchorColumn)
+			return false;
+		if (anchorRow != other.anchorRow)
+			return false;
+		if (hexominoNumberSet == null) {
+			if (other.hexominoNumberSet != null)
+				return false;
+		} else if (!hexominoNumberSet.equals(other.hexominoNumberSet)){
+			System.out.println("HexNumberSet said they weren't equal");
+			return false;
+		}
+			
+		return true;
+	}
+
+	public Hexomino(Set<Point> points){
     	this.hexominoNumberSet = new HexominoNumberSet(points);
     }
 
