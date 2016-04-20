@@ -2,12 +2,14 @@ package sinon.views;
 
 import javax.swing.JPanel;
 
+import sinon.models.Tile;
+
 public class TileView extends JPanel {
 
-	public int num;
+	public Tile tile;
 	
-	TileView(int num){
-		this.num = num;
+	TileView(Tile tile){
+		this.tile = tile;
 	}
 
 }

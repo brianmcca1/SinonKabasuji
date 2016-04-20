@@ -31,7 +31,7 @@ public class BoardView extends JPanel{
         int counter = 1;
         for(int i = 0; i < 12; i++){
         	for(int j = 0; j < 12; j++){
-        		TileView tempTile = new TileView(counter);
+        		TileView tempTile = new TileView(kabasuji.openedLevel.board.getTile(i, j));
         		
         		tempTile.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
         		tempTile.setBounds(12*i,12*j,25, 25);

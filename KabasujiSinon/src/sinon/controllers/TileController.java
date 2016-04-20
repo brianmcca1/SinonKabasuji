@@ -47,7 +47,7 @@ public class TileController implements MouseListener{
 				if (kabasuji.openedLevel.board.hasHex(row, col)){
 					kabasuji.select(kabasuji.openedLevel.board.getTile(row, col).getHexomino());
 					Hexomino hex = kabasuji.selected.get();
-					kabasuji.openedLevel.board.removeHexomino(hex);
+					kabasuji.openedLevel.board.removeHexomino(row, col, hex);
 				}
 			}
 		}
