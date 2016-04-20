@@ -51,31 +51,34 @@ public class MainView extends JPanel {
         this.infoPanel = infoPanel; 
         this.kabasuji = k;
         initializeViews(); 
+    }
+
+    /** Initializes all of the components that make up this GUI.*/
+    private void initializeViews() {
+        this.setLayout(null);
+
+        initGameAreaPanel();
+        initLevelPanel();
+        //initBullpenView();
+        initBoard();
+        initReleaseButtonView();
+        initGameInfoButtons();
         
-        //get all the buttons from the infoView (all return null if in the builder)
+        this.add(this.infoPanel);
+        infoPanel.setBounds(LEVEL_PANEL_WIDTH, 0, 150, MAIN_PANEL_HEIGHT);
+    }
+    
+    /**
+     * Get all the buttons from the infoView (all return null if in the builder).
+     */
+    private void initGameInfoButtons(){
+        //
         JButton exitBtn = infoPanel.getExitButton();
         JButton restartBtn = infoPanel.getRestartButton();
         JButton nextLevelBtn = infoPanel.getNextLevelButton();
         if(exitBtn != null) exitBtn.addActionListener(new ExitGameController((Game) kabasuji, this)); 
         if(restartBtn != null) restartBtn.addActionListener(new RestartLevelController((Game) kabasuji, this));
         if(nextLevelBtn != null) nextLevelBtn.addActionListener(new NextLevelController((Game) kabasuji, this));
-    }
-
-    /** Initializes all of the components that make up this GUI.*/
-    private void initializeViews() {
-        this.setLayout(null);
-        // Initialize the high level things that have to happen first
-        // this.setLayout(new BorderLayout(0, 0));
-        initGameAreaPanel();
-        initLevelPanel();
-
-        // Initialize the other stuff
-        // initBullpenView();
-        initBoard();
-        initReleaseButtonView();
-        // Adds info panel to the right
-        this.add(this.infoPanel);
-        infoPanel.setBounds(LEVEL_PANEL_WIDTH, 0, 150, MAIN_PANEL_HEIGHT);
     }
 
     private void initReleaseButtonView() {
@@ -88,16 +91,13 @@ public class MainView extends JPanel {
      * {@link #gameAreaPanel}
      */
     private void initBoard() {
-        JPanel tempBoard = new JPanel();
-        tempBoard.setBounds(141, 26, 300, 298);
-        tempBoard.setBackground(Color.BLACK);
-        gameAreaPanel.add(tempBoard);
+        BoardView tempBoard = new BoardView();
+        gameAreaPanel.add(tempBoard.board);
     }
 
     /** Initializes the {@link #gameAreaPanel} */
     private void initGameAreaPanel() {
         gameAreaPanel = new JPanel();
-        // gameAreaPanel.setPreferredSize(new Dimension(10, 300));
         gameAreaPanel.setLayout(null);
     }
 

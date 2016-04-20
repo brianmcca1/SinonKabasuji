@@ -23,6 +23,9 @@ public class TileController implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		System.out.println("I AM A TILE AND I WAS JUST CLICKED ON!");
+		
+		/*
 		int num = view.num;
 		int row = num / 12;
 		int col = num % 12;
@@ -48,7 +51,7 @@ public class TileController implements MouseListener{
 				}
 			}
 		}
-		
+		*/
 	}
 
 	@Override
