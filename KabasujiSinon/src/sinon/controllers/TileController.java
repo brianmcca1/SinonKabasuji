@@ -25,7 +25,7 @@ public class TileController implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		System.out.println("I AM A TILE AND I WAS JUST CLICKED ON!");
 		
-		/*
+		/*THIS IS FOR DETERMINING IF A HEXOMINO IS ON THE CLICKED TILE
 		int num = view.num;
 		int row = num / 12;
 		int col = num % 12;
