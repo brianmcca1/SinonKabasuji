@@ -2,6 +2,7 @@ package sinon.main;
 
 import java.awt.event.ActionListener;
 import java.util.Optional;
+import java.util.Stack;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -68,11 +69,11 @@ public abstract class Kabasuji extends JFrame {
 */
 
 	// COMMON VIEWS AND MODELS BETWEEN BOTH BUILDER AND GAME GO HERE
-	// Stack undo = new Stack();
+	public Stack undo = new Stack();
 	// Stack redo = new Stack();
 	// public Level[] levels = new Level[15];
 	public Optional<Hexomino> selected;
-	public Level opened;
+	public Level openedLevel;
 	
 /*
 	public Kabasuji() {
@@ -115,7 +116,7 @@ public abstract class Kabasuji extends JFrame {
 	}
 	
 	public void deselect(){
-		this.selected.empty();
+		this.selected = Optional.empty();
 	}
 	
 	public boolean hasSelected(){

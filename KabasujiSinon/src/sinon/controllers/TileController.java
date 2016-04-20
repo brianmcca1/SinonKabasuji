@@ -2,6 +2,7 @@ package sinon.controllers;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Optional;
 
 import javax.swing.JPanel;
 
@@ -22,32 +23,28 @@ public class TileController implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		int num = view.num;
+		int row = num / 12;
+		int col = num % 12;
+		col++;
 		if (kabasuji.hasSelected()== true){
 			Hexomino hex = kabasuji.selected.get();
-			int num = view.num;
-			int row = num / 12;
-			int col = num % 12;
-			col++;
 			hex.anchorColumn = col;
 			hex.anchorRow = row;
-			if (kabasuji.opened.b.canAddHexomino(hex, row, col)){
-				kabasuji.opened.b.addPiece(hex);	
-				kabasuji.selected.empty();
+			if (kabasuji.openedLevel.board.canAddHexomino(hex, row, col)){
+				kabasuji.openedLevel.board.addPiece(hex);	
+				kabasuji.deselect();
+				
 			}
 			
 		}
 
-		
 		if (kabasuji.hasSelected() == false){
-			if (kabasuji.opened instanceof Puzzle){
-				int num = view.num;
-				int row = num / 12;
-				int col = num % 12;
-				col++;
-				if (kabasuji.opened.b.hasHex(row, col)){
-					kabasuji.selected = kabasuji.opened.b.getTile(row, col).getHexomino();
+			if (kabasuji.openedLevel instanceof Puzzle){
+				if (kabasuji.openedLevel.board.hasHex(row, col)){
+					kabasuji.select(kabasuji.openedLevel.board.getTile(row, col).getHexomino());
 					Hexomino hex = kabasuji.selected.get();
-					kabasuji.opened.b.removeHexomino(hex);
+					kabasuji.openedLevel.board.removeHexomino(hex);
 				}
 			}
 		}
