@@ -1,87 +1,49 @@
 package sinon.models;
 
 import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * Entity Class which represents the 12x12 area of game play.
+ *
+ * @author Josh Desmond
+ * @author Brian
+ * 
+ **/
 public class Board {
-
-	@Override
-	public String toString() {
-		return "Board [tiles=" + tiles + ", hints=" + hints + "]";
-	}
-
-	ArrayList<Tile> tiles;
-	ArrayList<Hint> hints; 
-	
-	public Board(ArrayList<Tile> tiles ){
-		this.tiles = tiles;
-		//this.hints = hints;
-		
-	}
-	public void addPiece(Hexomino piece){
-		
-		for(int i = 0; i < 6; i++){
-			int deltaX = piece.squares[i].x;
-			int deltaY = piece.squares[i].y;
-			
-			int row = piece.anchorRow + deltaX;
-			int column = piece.anchorColumn + deltaY;
-			
-			Tile t = this.getTile(row,  column);
-			if(t.playable == true){
-				piece.addToTile(t);
-			} else {
-				System.err.println("Piece is not playable at that location");
-			}
-			
-			
-		}
-	} 
-	
-	public void removeHexomino(Hexomino hex){
-		
-		for(int i = 0; i < 6; i++){
-			int deltaX = hex.squares[i].x;
-			int deltaY = hex.squares[i].y;
-			
-			int row = hex.anchorRow + deltaX;
-			int column = hex.anchorColumn + deltaY;
-			
-			Tile t = this.getTile(row,  column);
-			if(t != null){
-				t.removeHex();
-			} else {
-				System.err.println("No hex at this location");
-			}
-		}
-		
-	}
-	
-	
-	public boolean hasHex(int row, int column){
-		boolean answer = false;
-		int pos = row * 12;
-		pos = column + pos;
-		if (tiles.get(pos).hasHex()){
-			answer = true;
-		}
-		return answer;
-	}
-	
-
-  
 
     private final static int WIDTH = 12;
     private final static int HEIGHT = 12;
     private final static int WIDTH_BY_ZERO = WIDTH - 1;
     private final static int HEIGHT_BY_ZERO = HEIGHT - 1;
 
-    /**
-     * 
-     * @param tiles
-     *            The list of initialized tiles.
-     */
-   
+    // TODO this should be changed to either a double array
+    ArrayList<Tile> tiles;
+
+    @Deprecated
+    public Board(ArrayList<Tile> tiles) {
+        // TODO this is a pretty lame way of making a Board. Let's make an
+        // actual constructor with some logic in this class.
+        // If there are test cases that need a constructor like this I guess
+        // it's okay though.
+        this.tiles = tiles;
+    }
+
+    public void addPiece(Hexomino piece) {
+
+        /*
+         * This code is pretty unusable. for (int i = 0; i < 6; i++) { int
+         * deltaX = piece.squares[i].x; int deltaY = piece.squares[i].y;
+         * 
+         * int row = piece.anchorRow + deltaX; int column = piece.anchorColumn +
+         * deltaY;
+         * 
+         * Tile t = this.getTile(row, column); }
+         */
+    }
+
+    public boolean hasHex(int row, int column) {
+        return getTile(row, column).hasHex();
+    }
 
     /**
      * Determines whether it's possible to add a Hexomino at the given location.
@@ -96,7 +58,6 @@ public class Board {
      */
     public boolean canAddHexomino(Hexomino hex, int anchorRow,
             int anchorColumn) {
-        // TODO
         return false;
     }
 
@@ -108,26 +69,11 @@ public class Board {
      * @param anchorRow
      *            The row number where the anchor square will go
      * @param anchorColumn
-     *            * The column number where the anchor square will go
+     *            The column number where the anchor square will go
      * 
      */
     public void addHexomino(Hexomino hex, int anchorRow, int anchorColumn) {
-        // FIXME errors are not handled right.
-        for (int i = 0; i < 6; i++) {
-            int deltaX = hex.squares[i].x;
-            int deltaY = hex.squares[i].y;
-
-            int row = anchorRow + deltaX;
-            int column = anchorColumn + deltaY;
-
-            Tile t = this.getTile(row, column);
-            if (t.playable == true) {
-                hex.addToTile(t);
-            } else {
-                System.err.println("Piece is not playable at that location");
-            }
-
-        }
+        // TODO
     }
 
     /**
@@ -138,12 +84,7 @@ public class Board {
      * @return The Tile found.
      */
     public Tile getTile(int row, int column) {
-        // FIXME no error checking.
-        for (Tile t : tiles) {
-            if ((t.row == row) & (t.column == column)) {
-                return t;
-            }
-        }
+        // TODO
         return null;
     }
 
@@ -171,7 +112,6 @@ public class Board {
             return true;
     }
 
-  /*
     public void removeHexomino(Hexomino hex) {
 
         for (Tile t : tiles) {
@@ -183,8 +123,7 @@ public class Board {
         }
 
     }
-*/
-    // TODO equals and hash
 
+    // TODO equals and hash
 
 }
