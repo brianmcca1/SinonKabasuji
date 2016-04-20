@@ -3,6 +3,7 @@ package sinon.controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import sinon.main.Kabasuji;
+import sinon.moves.FlipHorizontalMove;
 import sinon.views.HexominoBullpenView;
 
 /**
@@ -29,5 +30,8 @@ public class FlipHexominoHorizontalController implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("(TEMP) FLIPPING BULLPEN HEXOMINO HORIZONTALLY. . .");
+		FlipHorizontalMove flipHmove = new FlipHorizontalMove(hexBullpenView.getBullPen(), hexBullpenView.getHexomino());
+		//we should push this to the stack
+		
 	}
 }
