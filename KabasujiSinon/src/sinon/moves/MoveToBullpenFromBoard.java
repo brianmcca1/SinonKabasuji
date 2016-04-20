@@ -36,6 +36,16 @@ public class MoveToBullpenFromBoard extends BoardMove {
 	 */
 	int srcAnchorColumn;
 	
+	public MoveToBullpenFromBoard (BullPen bp, Hexomino h, Board b, int srcAnchorRow, int srcAnchorColumn) {
+		
+		this.bullpen = bp;
+		this.board = b;
+		this.hex = h;
+		this.srcAnchorRow = srcAnchorRow;
+		this.srcAnchorColumn = srcAnchorColumn;
+		
+	}
+	
 	@Override
 	public boolean doMove() {
 		// TODO Auto-generated method stub
