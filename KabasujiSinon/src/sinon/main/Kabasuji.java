@@ -72,7 +72,6 @@ public abstract class Kabasuji extends JFrame {
 	public Stack undo = new Stack();
 	// Stack redo = new Stack();
 	// public Level[] levels = new Level[15];
-	public Optional<Hexomino> selected;
 	public Level openedLevel;
 	
 /*
@@ -110,18 +109,6 @@ public abstract class Kabasuji extends JFrame {
 		SplashScreen.timer.start();
 	}
 
-	
-	public void select(Optional<Hexomino> hex){
-		this.selected = hex;
-	}
-	
-	public void deselect(){
-		this.selected = Optional.empty();
-	}
-	
-	public boolean hasSelected(){
-		return this.selected.isPresent();
-	}
 
   
     /**
