@@ -2,12 +2,11 @@ package sinon.controllers;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
 import sinon.main.Kabasuji;
 import sinon.views.BullpenView;
 
 /**
- * This class responds to mouse interactions with the BullpenView
+ * This controller responds to mouse interactions with the BullpenView.
  */
 public class BullpenController implements MouseListener{
 
@@ -25,23 +24,11 @@ public class BullpenController implements MouseListener{
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-	}
-
+	public void mousePressed(MouseEvent e) {}
 	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-	}
-
+	public void mouseReleased(MouseEvent e) {}
 	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-	}
-
+	public void mouseEntered(MouseEvent e) {}
 	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-	}
-	
+	public void mouseExited(MouseEvent e) {}
 }

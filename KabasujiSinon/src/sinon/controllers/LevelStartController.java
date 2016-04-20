@@ -9,6 +9,10 @@ import sinon.views.game.GameInfoView;
 import sinon.views.game.LevelSelectButtonView;
 import sinon.views.game.LevelSelectView;
 
+/**
+ * This controller responds to actions with a LevelSelectButtonView and will
+ * removes the LevelSelectView from the frame and adds MainView to the frame.
+ */
 public class LevelStartController implements ActionListener{
 
 	/**LevelSelectView to be removed from the frame */
