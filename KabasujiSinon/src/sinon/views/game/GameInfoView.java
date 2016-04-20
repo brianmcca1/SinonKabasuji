@@ -1,5 +1,7 @@
 package sinon.views.game;
 
+import java.awt.Dimension;
+
 import javax.swing.JButton;
 
 import sinon.controllers.ExitGameController;
@@ -27,43 +29,31 @@ public class GameInfoView extends InfoPanel {
 
 		this.game = g;
 		
-		JButton btnRestart = new JButton("Restart\r\n");
-		btnRestart.setBounds(45, 20, 100, 50);
+		JButton btnRestart = new JButton("Restart level\r\n");
+		btnRestart.setPreferredSize(new Dimension(120, 30));
 		this.add(btnRestart);
 		this.restartButton = btnRestart;
 
-		JButton btnExit = new JButton("Exit\r\n");
-		btnExit.setBounds(45, 100, 100, 50);
-		this.add(btnExit);
-		this.exitButton = btnExit;
-
 		JButton btnNextLevel = new JButton("Next Level\r\n");
-		btnNextLevel.setBounds(45, 180, 100, 50);
+		btnNextLevel.setPreferredSize(new Dimension(120, 30));
 		this.add(btnNextLevel);
 		this.nextLevelButton = btnNextLevel;
+		
+		JButton btnExit = new JButton("Exit Level\r\n");
+		btnExit.setPreferredSize(new Dimension(120, 30));
+		this.add(btnExit);
+		this.exitButton = btnExit;
 	}
 	
 	@Override
-	/**
-	 * @return Returns the JButton object for the exit button.
-	 */
-	public JButton getExitButton(){
-		return this.exitButton;
-	}
+	/**@return Returns the JButton object for the exit button.*/
+	public JButton getExitButton(){ return this.exitButton;}
 	
 	@Override
-	/**
-	 * @return Returns the JButton object for the restart button.
-	 */
-	public JButton getRestartButton(){
-		return this.restartButton;
-	}
+	/**@return Returns the JButton object for the restart button.*/
+	public JButton getRestartButton(){ return this.restartButton;}
 	
 	@Override
-	/**
-	 * @return Returns the JButton object for the next level button.
-	 */
-	public JButton getNextLevelButton(){
-		return this.nextLevelButton;
-	}
+	/**@return Returns the JButton object for the next level button.*/
+	public JButton getNextLevelButton(){ return this.nextLevelButton;}
 }
