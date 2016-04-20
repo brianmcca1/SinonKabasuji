@@ -38,6 +38,15 @@ public class MoveToBoardFromBullpen extends BoardMove{
 	 */
 	int destAnchorColumn;
 	
+	public MoveToBoardFromBullpen (BullPen bp, Board b, Hexomino hex, int destAnchorRow, int destAnchorColumn) {
+		
+		this.bullpen = bp;
+		this.board = b;
+		this.hex = hex;
+		this.destAnchorRow = destAnchorRow;
+		this.destAnchorColumn = destAnchorColumn;
+	
+	}
 	
 	@Override
 	public boolean doMove() {

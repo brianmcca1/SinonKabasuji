@@ -32,6 +32,17 @@ public class MoveInBoard extends BoardMove{
 	int destAnchorRow;
 	int destAnchorColumn;
 	
+	public MoveInBoard(Board b, Hexomino h, int srcAnchorRow, int srcAnchorColumn, int destAnchorRow, int destAnchorColumn) {
+		
+		this.board = b;
+		this.hex = h;
+		this.srcAnchorRow = srcAnchorRow;
+		this.srcAnchorColumn = srcAnchorColumn;
+		this.destAnchorRow = destAnchorRow;
+		this.destAnchorColumn = destAnchorColumn;
+	
+	}
+	
 	@Override
 	public boolean doMove() {
 		// TODO Auto-generated method stub
