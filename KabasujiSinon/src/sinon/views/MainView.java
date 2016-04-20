@@ -98,8 +98,8 @@ public class MainView extends JPanel {
      * {@link #gameAreaPanel}
      */
     private void initBoard() {
-        BoardView tempBoard = new BoardView();
-        gameAreaPanel.add(tempBoard.board);
+        BoardView tempBoard = new BoardView(kabasuji);
+        gameAreaPanel.add(tempBoard.boardPanel);
     }
 
     /** Initializes the {@link #gameAreaPanel} */
