@@ -7,9 +7,8 @@ import sinon.main.Game;
 import sinon.views.MainView;
 
 /**
- * GENERAL NOTE: THIS CLASS MIGHT NEED TO HAVE THE LEVEL MODEL AS A FIELD
+ * GENERAL NOTE: THIS CLASS MIGHT NEED TO HAVE THE LEVEL MODEL AS A FIELD.
  */
-
 public class RestartLevelController implements ActionListener {
 
 	/** Top level game object to manipulate.*/

@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 import sinon.main.Kabasuji;
 import sinon.views.HexominoBullpenView;
 
+/**
+ * This controller responds to mouse interactions with a HexominoBullpenView.
+ */
 public class FlipHexominoVerticalController implements ActionListener{
 
 	/**Top level game/builder object*/

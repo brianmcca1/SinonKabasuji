@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 import sinon.main.Kabasuji;
 import sinon.views.HexominoBullpenView;
 
+/**
+ * This controller responds to actions with a HexominoBullpenView.
+ */
 public class RotateHexominoAnticlockwiseController implements ActionListener {
 
 	/**Top level game/builder object*/

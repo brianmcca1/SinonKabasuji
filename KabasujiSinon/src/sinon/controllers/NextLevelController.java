@@ -6,6 +6,9 @@ import javax.swing.JPanel;
 import sinon.main.Game;
 import sinon.views.MainView;
 
+/**
+ * This controller responds to actions with the next level button in the MainView.
+ */
 public class NextLevelController implements ActionListener{
 
 	/** Top level game object to manipulate.*/

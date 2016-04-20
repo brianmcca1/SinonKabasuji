@@ -5,11 +5,8 @@ import java.awt.event.ActionListener;
 import sinon.main.Kabasuji;
 import sinon.views.HexominoBullpenView;
 
-/** This is the controller that is associated
- * with the rotateHexomino option  that allows the player/builder 
- * to rotate a hexomino within the bullPen.
- * @author kartik
- *
+/**
+ * This controller responds to actions with a HexominoBullpenView.
  */
 public class RotateHexominoClockwiseController implements ActionListener{
 	

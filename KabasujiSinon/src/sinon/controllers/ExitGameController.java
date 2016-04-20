@@ -9,9 +9,8 @@ import sinon.main.Game;
 import sinon.views.MainView;
 import sinon.views.game.LevelSelectView;
 
-/** This is the controller that is responsible for controlling
- * the game exit from the Game. It starts up the Level Select Menu.
- * 
+/**
+ * This controller responds to actions with the exit button in the MainView.
  */
 public class ExitGameController implements ActionListener {
 	
