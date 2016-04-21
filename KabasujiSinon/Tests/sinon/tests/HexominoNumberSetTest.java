@@ -65,4 +65,17 @@ public class HexominoNumberSetTest {
 
         assertEquals(newPoints, points);
     }
+
+    @Test
+    public void testGetNormalizedSetIsACopy() {
+        HexominoNumberSet setOne = new HexominoNumberSet(-3, 0, -2, 0, -1, 0, 0,
+                0, 1, 0, 2, 0);
+        HexominoNumberSet setTwo = new HexominoNumberSet(-3, 0, -2, 0, -1, 0, 0,
+                0, 1, 0, 2, 0);
+
+        List<Point> newPoints = setOne.getNormalizedPoints();
+        newPoints.get(0).translate(5, 3);
+
+        assertEquals("getNormalizedPoints is leaking fields", setOne, setTwo);
+    }
 }

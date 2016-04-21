@@ -110,38 +110,33 @@ public class HexominoNumberSet {
                 mostPositiveX = Integer.MIN_VALUE,
                 mostPositiveY = Integer.MIN_VALUE;
 
+        // FIXME Creates a copy of points since we'll be modifying it.
         List<Point> copy = points;
+
         for (Point p : copy) {
             if (p.x < mostNegativeX) {
                 mostNegativeX = p.x;
-            }
-
-            if (p.x > mostPositiveX) {
+            } else if (p.x > mostPositiveX) {
                 mostPositiveX = p.x;
             }
 
             if (p.y < mostNegativeY) {
                 mostNegativeY = p.y;
-            }
-
-            if (p.y > mostPositiveY) {
+            } else if (p.y > mostPositiveY) {
                 mostPositiveY = p.y;
             }
         }
 
         int addX = -mostNegativeX, addY = -mostNegativeY;
-
         if (mostPositiveX > 5) {
             addX = 5 - mostPositiveX;
         }
-
         if (mostPositiveY > 5) {
             addY = 5 - mostNegativeY;
         }
 
         for (Point p : copy) {
-            p.x += addX;
-            p.y += addY;
+            p.translate(addX, addY);
         }
 
         return copy;
