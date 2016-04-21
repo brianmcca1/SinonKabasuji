@@ -21,10 +21,10 @@ public class Serializer {
 		hexominoesToSerialize.add(new Hexomino(0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5));
 		hexominoesToSerialize.add(new Hexomino(0, 0, 1, 0, 0, 1, 0, 2, 0, 3, 0, 4));
 		hexominoesToSerialize.add(new Hexomino(0, 0, 0, 1, 1, 1, 0, 2, 0, 3, 0, 4));
-		hexominoesToSerialize.add(new Hexomino());
-		hexominoesToSerialize.add(new Hexomino());
-		hexominoesToSerialize.add(new Hexomino());
-		hexominoesToSerialize.add(new Hexomino());
+		hexominoesToSerialize.add(new Hexomino(0, 0, 0, 1, 0, 2, 1, 2, 0, 3, 0, 4));
+		hexominoesToSerialize.add(new Hexomino(0, 0, 0, 1, -1, 1, -1, 2, -1, 3, -1, 4));
+		hexominoesToSerialize.add(new Hexomino(0, 0, 0, 1, 1, 0, 1, 1, 0, 2, 0, 3));
+		hexominoesToSerialize.add(new Hexomino(0, 0, 1, 0, 0, 1, 0, 2, 1, 2, 0, 3));
 		
 		try{
 			FileOutputStream fout = new FileOutputStream("hexominoes.hex");
