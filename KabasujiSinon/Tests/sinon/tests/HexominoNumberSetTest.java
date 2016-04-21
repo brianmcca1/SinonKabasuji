@@ -55,4 +55,15 @@ public class HexominoNumberSetTest {
         HexominoNumberSet set = new HexominoNumberSet(points);
     }
 
+    @Test
+    public void testGetNormalizedSet() {
+        Set<Point> points = new HashSet<Point>();
+        for (int i = 0; i < 6; i++) {
+            points.add(new Point(-3 + i, 0));
+        }
+
+        HexominoNumberSet set = new HexominoNumberSet(-3, 0, -2, 0, -1, 0, 0, 0,
+                1, 0, 2, 0);
+        // FIXME incomplete test am working on this.
+    }
 }
