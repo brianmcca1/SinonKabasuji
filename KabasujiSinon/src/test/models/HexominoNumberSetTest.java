@@ -1,4 +1,4 @@
-package sinon.tests;
+package test.models;
 
 import static org.junit.Assert.fail;
 
@@ -64,6 +64,7 @@ public class HexominoNumberSetTest {
 
         HexominoNumberSet set = new HexominoNumberSet(-3, 0, -2, 0, -1, 0, 0, 0,
                 1, 0, 2, 0);
+
         // FIXME incomplete test am working on this.
     }
 }
