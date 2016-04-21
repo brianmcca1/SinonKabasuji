@@ -1,6 +1,6 @@
 package sinon.tests;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
 
 import java.awt.Point;
 import java.util.HashSet;
@@ -11,11 +11,6 @@ import org.junit.Test;
 import sinon.models.HexominoNumberSet;
 
 public class HexominoNumberSetTest {
-
-    @Test
-    public void test() {
-        fail("Not yet implemented");
-    }
 
     @Test(expected = IllegalArgumentException.class)
     public void testCreateNullSet() {
@@ -57,13 +52,17 @@ public class HexominoNumberSetTest {
 
     @Test
     public void testGetNormalizedSet() {
-        Set<Point> points = new HashSet<Point>();
-        for (int i = 0; i < 6; i++) {
-            points.add(new Point(-3 + i, 0));
-        }
 
         HexominoNumberSet set = new HexominoNumberSet(-3, 0, -2, 0, -1, 0, 0, 0,
                 1, 0, 2, 0);
-        // FIXME incomplete test am working on this.
+
+        Set<Point> newPoints = set.getNormalizedPoints();
+
+        Set<Point> points = new HashSet<Point>();
+        for (int i = 0; i < 6; i++) {
+            points.add(new Point(i, 0));
+        }
+
+        assertEquals(newPoints, points);
     }
 }
