@@ -55,6 +55,9 @@ public class Hexomino implements Serializable {
     }
 
     public void addToTile(Tile t) {
+        if (t == null) {
+            throw new IllegalArgumentException("Given Tile was null");
+        }
         t.addHexomino(this);
     }
 

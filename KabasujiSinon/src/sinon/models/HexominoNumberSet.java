@@ -162,7 +162,6 @@ public class HexominoNumberSet implements Serializable {
      */
     @Override
     public boolean equals(Object obj) {
-
         if (this == obj)
             return true;
         if (obj == null)
@@ -174,7 +173,6 @@ public class HexominoNumberSet implements Serializable {
             if (other.points != null)
                 return false;
         } else if (points.equals(other.points)) {
-
             return true;
         } else {
 
