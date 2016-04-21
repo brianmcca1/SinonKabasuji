@@ -1,40 +1,59 @@
 package sinon.models;
 
-import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * A BullPen is the game entity which stores all Hexominos in the Bullpen.
+ * 
+ *
+ */
 public class BullPen {
 
     /** ArrayList of all the hexominos that will be in this level's bullpen. */
-    ArrayList<Hexomino> pieces;
+    List<Hexomino> pieces;
 
-    public BullPen(ArrayList<Hexomino> pieces) {
+    public BullPen(List<Hexomino> pieces) {
         this.pieces = pieces;
     }
 
-    @Override
-    public String toString() {
-        return "BullPen [pieces=" + pieces + "]";
-    }
-
     /**
-     * Getter that returns all the hexominos in the bullpen
+     * Getter that returns a copy of all the hexominos in the bullpen.
+     * 
+     * @return List of all Hexominos
      */
-    public ArrayList<Hexomino> getPieces() {
+    public List<Hexomino> getPieces() {
+        // FIXME, return a copy, not original. Don't have faith people won't
+        // accidentally destroy the list once given it.
         return this.pieces;
     }
 
+    /**
+     * Appends the given Hexomino to the end of the BullPen.
+     * 
+     * @param hex
+     *            Hexomino to be added.
+     */
     public void addHexomino(Hexomino hex) {
+        if (hex == null) {
+            throw new IllegalArgumentException("Can't add null to Bullpen");
+        }
         pieces.add(hex);
     }
 
-    public void removeHexomino(Hexomino hex) {
-        if (this.pieces.contains(hex)) {
-            this.pieces.remove(hex);
-        } else {
-            System.err.println("Bullpen does not contain that Hexomino");
-        }
+    /**
+     * Removes the first occurrence of the specified element from this list, if
+     * it is present.
+     * 
+     * @param hex
+     *            Hexomino to be removed.
+     * @return True if this list contained the specified element.
+     */
+    public boolean removeHexomino(Hexomino hex) {
+        return this.pieces.remove(hex);
     }
 
+    // FIXME this method is written wrong and is really concerning
+    @Deprecated
     public void rotateHexominoClockwise(Hexomino hex) {
         if (this.pieces.contains(hex)) {
             hex.rotateC();
@@ -43,6 +62,8 @@ public class BullPen {
         }
     }
 
+    // FIXME this method is written wrong and is really concerning
+    @Deprecated
     public void rotateHexominoCounterClockwise(Hexomino hex) {
         if (this.pieces.contains(hex)) {
             hex.rotateCC();
@@ -51,6 +72,8 @@ public class BullPen {
         }
     }
 
+    // FIXME this method is written wrong and is really concerning
+    @Deprecated
     public void flipHexominoVertical(Hexomino hex) {
         if (this.pieces.contains(hex)) {
             hex.flipVertically();
@@ -60,6 +83,8 @@ public class BullPen {
 
     }
 
+    // FIXME this method is written wrong and is really concerning
+    @Deprecated
     public void flipHexominoHorizontal(Hexomino hex) {
         if (this.pieces.contains(hex)) {
             hex.flipHorizontally();
@@ -68,4 +93,10 @@ public class BullPen {
         }
 
     }
+
+    @Override
+    public String toString() {
+        return "BullPen [pieces=" + pieces + "]";
+    }
+
 }
