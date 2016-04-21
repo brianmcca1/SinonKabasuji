@@ -12,6 +12,7 @@ public class Tile {
     public Tile(Point location, boolean playable) {
         this.playable = playable;
         this.location = location;
+        hex = Optional.empty();
     }
 
     /**

@@ -20,16 +20,13 @@ public class TestTile {
 		Point p = new Point(0,0);
 		Tile t1 = new Tile(p, true);
 		
-		//Hexomino hex = new Hexomino(0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 1);
-		//Optional<Hexomino> hex = t1.getHexomino();
-
-		//assertEquals(hex.isPresent(), false);
-		
 		Hexomino hex2 = new Hexomino(0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 1);
 		t1.addHexomino(hex2);
-		assertEquals(t1.getHexomino(), hex2);
+		assertEquals(t1.getHexomino(), Optional.of(hex2));
 		
-	
+		assertEquals(t1.getLocation(), new Point(0,0));
+		
+		
 	}
 
 }

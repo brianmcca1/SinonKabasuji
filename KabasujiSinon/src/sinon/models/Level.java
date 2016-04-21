@@ -13,6 +13,7 @@ public class Level {
 		this.levelNum = levelNum;
 		this.board = b;
 		this.bullpen = bp;
+		selected = Optional.empty();
 	}
 	
 	public void open(){
