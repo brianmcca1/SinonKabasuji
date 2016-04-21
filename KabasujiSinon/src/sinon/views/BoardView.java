@@ -2,7 +2,6 @@ package sinon.views;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.Point;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
@@ -38,8 +37,9 @@ public class BoardView extends JPanel {
 
     private void initializeTile(int row, int column) {
         TileView tileView = new TileView();
+        // FIXME this is just sort of there.
         tileView.addMouseListener(
-                new TileController(kabasuji, tileView, new Point(row, column)));
+                new TileController(kabasuji.openedLevel, tileView, null));
 
         tileView.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
         tileView.setBounds(12 * row, 12 * column, 25, 25); // TODO this is in
