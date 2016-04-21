@@ -1,6 +1,7 @@
 package sinon.models;
 
 import java.awt.Point;
+import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Set;
  * @author Brian
  * @author Josh Desmond
  */
-public class Hexomino {
+public class Hexomino implements Serializable{
 
     /** @see HexominoNumberSet */
     HexominoNumberSet hexominoNumberSet;

@@ -1,23 +1,26 @@
 package sinon.models;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class BullPen {
-	@Override
-	public String toString() {
-		return "BullPen [pieces=" + pieces + "]";
-	}
-
+public class BullPen implements Serializable{	
+	
+	/**ArrayList of all the hexominoes that will be in this level's bullpen. */
 	ArrayList<Hexomino> pieces;
 	
 	public BullPen(ArrayList<Hexomino> pieces){
 		this.pieces = pieces;
 	}
-	
+		
+	@Override
+	public String toString() {
+		return "BullPen [pieces=" + pieces + "]";
+	}
+
 	/**
 	 * Getter that returns all the hexominos in the bullpen
 	 */
 	public ArrayList<Hexomino> getPieces(){
-		return pieces;
+		return this.pieces;
 	}
 	
 	public void addHexomino(Hexomino hex){
@@ -25,15 +28,15 @@ public class BullPen {
 	}
 	
 	public void removeHexomino(Hexomino hex){
-		if(pieces.contains(hex)){
-			pieces.remove(hex);
+		if(this.pieces.contains(hex)){
+			this.pieces.remove(hex);
 		} else {
 			System.err.println("Bullpen does not contain that Hexomino");
 		}
 	}
 	
 	public void rotateHexominoClockwise(Hexomino hex){
-		if(pieces.contains(hex)){
+		if(this.pieces.contains(hex)){
 			hex.rotateC();
 		} else {
 			System.err.println("Bullpen does not contain that Hexomino");
@@ -41,7 +44,7 @@ public class BullPen {
 	}
 	
 	public void rotateHexominoCounterClockwise(Hexomino hex){
-		if(pieces.contains(hex)){
+		if(this.pieces.contains(hex)){
 			hex.rotateCC();
 		} else {
 			System.err.println("Bullpen does not contain that Hexomino");
@@ -49,7 +52,7 @@ public class BullPen {
 	}
 	
 	public void flipHexominoVertical(Hexomino hex){
-		if(pieces.contains(hex)){
+		if(this.pieces.contains(hex)){
 			hex.flipVertically();
 		} else {
 			System.err.println("Bullpen does not contain that Hexomino");
@@ -58,7 +61,7 @@ public class BullPen {
 	}
 	
 	public void flipHexominoHorizontal(Hexomino hex){
-		if(pieces.contains(hex)){
+		if(this.pieces.contains(hex)){
 			hex.flipHorizontally();
 		} else {
 			System.err.println("Bullpen does not contain that Hexomino");

@@ -1,10 +1,11 @@
 package sinon.models;
 
 import java.awt.Point;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class HexominoNumberSet {
+public class HexominoNumberSet implements Serializable {
 
     Set<Point> points;
 

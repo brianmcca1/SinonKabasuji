@@ -1,6 +1,7 @@
 package sinon.models;
 
 import java.awt.Point;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -12,7 +13,7 @@ import java.util.Map;
  * @author Brian
  * 
  **/
-public class Board {
+public class Board implements Serializable{
 
     private final static int WIDTH = 12;
     private final static int HEIGHT = 12;
