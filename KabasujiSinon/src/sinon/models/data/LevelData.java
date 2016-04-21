@@ -1,9 +1,9 @@
-package sinon.models;
+package sinon.models.data;
 
 import java.io.Serializable;
 
-import sinon.models.data.BoardData;
-import sinon.models.data.BullPenData;
+import sinon.models.Board;
+import sinon.models.BullPen;
 
 /**
  * This class holds all of the data necessary to save/load a level.

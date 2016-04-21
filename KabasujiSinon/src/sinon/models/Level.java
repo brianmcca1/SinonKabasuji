@@ -2,6 +2,8 @@ package sinon.models;
 
 import java.util.Optional;
 
+import sinon.models.data.LevelData;
+
 public class Level {
 	int levelNum;
 	public Board board;
