@@ -19,7 +19,7 @@ public class TileController implements MouseListener {
     public TileController(Kabasuji kabasuji, TileView view, Point point) {
         this.kabasuji = kabasuji;
         this.view = view;
-        this.tile = kabasuji.openedLevel.board.getTile(point.x, point.y);
+        //this.tile = kabasuji.openedLevel.board.getTile(point.x, point.y);
     }
 
     @Override

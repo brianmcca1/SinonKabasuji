@@ -18,14 +18,13 @@ import sinon.views.InfoPanel;
 public class BankView extends InfoPanel {
 
     JScrollPane scrollPanel;
-    JPanel contentPanel;
+    JPanel bankViewPanel;
 
     public BankView() {
         super();
 
         initContentPanel();
         initBankViewScrollPanel();
-
         populateBankViewWithHexominoes();
 
         this.setLayout(new GridLayout(1, 1));
@@ -34,9 +33,9 @@ public class BankView extends InfoPanel {
     }
 
     private void initContentPanel() {
-        contentPanel = new JPanel();
-        contentPanel.setBackground(Color.orange);
-        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
+        bankViewPanel = new JPanel();
+        bankViewPanel.setBackground(Color.orange);
+        bankViewPanel.setLayout(new BoxLayout(bankViewPanel, BoxLayout.Y_AXIS));
     }
 
     private void initBankViewScrollPanel() {
@@ -49,24 +48,24 @@ public class BankView extends InfoPanel {
         scrollPanel.setVerticalScrollBarPolicy(
                 JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-        scrollPanel.setViewportView(contentPanel);
+        scrollPanel.setViewportView(bankViewPanel);
 
     }
 
     private void populateBankViewWithHexominoes() {
-    	ArrayList<Hexomino> hexominoesReadFromFile = new ArrayList<Hexomino>();
+    	System.out.println("POPULATING BANKVIEW");
+    	
     	Deserializer deserializer = new Deserializer();
-
+    	ArrayList<Hexomino> hexominoesReadFromFile = new ArrayList<Hexomino>();
     	hexominoesReadFromFile = deserializer.deserializeHexominoesForBankView();
 
     	for(int i = 0; i < hexominoesReadFromFile.size(); i++){
     		HexominoBullpenView tempHexBullpenView = new HexominoBullpenView(hexominoesReadFromFile.get(i));
-    		tempHexBullpenView.setHexominoOnGrid();
 
-            this.contentPanel.add(tempHexBullpenView);
+            this.bankViewPanel.add(tempHexBullpenView.getHexominoPanel());
     	}
 
-        this.contentPanel.doLayout();
+        this.bankViewPanel.doLayout();
         this.validate();
     }
 }

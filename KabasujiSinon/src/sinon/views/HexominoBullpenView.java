@@ -4,7 +4,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Point;
-import java.util.Set;
+import java.util.List;
+
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import sinon.models.BullPen;
 import sinon.models.Hexomino;
@@ -17,8 +19,8 @@ public class HexominoBullpenView extends JPanel {
 	/** The hexomino model object associated with this view */
 	Hexomino hex;
 	
-    public HexominoBullpenView(Hexomino hex) {
-        this.hex = hex;
+    public HexominoBullpenView(Hexomino h) {
+        this.hex = h;
         this.hexominoPanel = new JPanel();
         this.hexominoPanel.setLayout(new GridLayout(6,6));
         
@@ -31,6 +33,8 @@ public class HexominoBullpenView extends JPanel {
         		this.hexominoPanel.add(tempPanel);
         	}
         }
+        
+        this.setHexominoOnGrid();
     }
     
     /** @return Hexomino model associated with this view.*/
@@ -40,18 +44,31 @@ public class HexominoBullpenView extends JPanel {
     
 
     public HexominoBullpenView setHexominoOnGrid(){
-    	//Get the translated points from kartiks algorithm
-    	Set<Point> normalizedPoints = this.hex.getNormalizedPoints();
-
+    	System.out.println("SETTING HEXOMINO ON ITS GRID");
+    	List<Point> normalizedPoints = this.hex.getNormalizedPoints();
+    	
     	JPanel tempHexPanel;
     	int indexForHexJPanel;
+    	boolean flipper = true;
     	for(Point p: normalizedPoints){
     		tempHexPanel = new JPanel();
-    		tempHexPanel.setBackground(Color.black);
-    		indexForHexJPanel = (p.y*6) + p.x;
+    		
+    		if(flipper)
+    			tempHexPanel.setBackground(Color.black);
+    		else
+    			tempHexPanel.setBackground(Color.red);
+    		
+    		//tempHexPanel.setBounds(p.y, p.x, 25, 25);
+    		System.out.println("NORM X: " + p.x + " NORM Y: " + p.y);
+    		indexForHexJPanel = (p.x*6) + p.y;
     		this.hexominoPanel.add(tempHexPanel, indexForHexJPanel);
+    		flipper = !flipper;
     	}
     	
     	return this;
+    }
+    
+    public JPanel getHexominoPanel(){
+    	return this.hexominoPanel;
     }
 }
