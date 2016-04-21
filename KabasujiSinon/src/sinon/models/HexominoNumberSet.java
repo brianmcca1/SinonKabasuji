@@ -100,7 +100,43 @@ public class HexominoNumberSet implements Serializable {
 	 * @return Returns a set of points that describes the Hexomino
 	 */
 	Set<Point> getNormalizedPoints() {
-		return null;
+		int mostNegativeX = 0, mostNegativeY = 0, mostPositiveX = Integer.MIN_VALUE, mostPositiveY = Integer.MIN_VALUE;
+		
+		Set<Point> copy = points;
+		for (Point p : copy) {
+			if(p.x < mostNegativeX) {
+				mostNegativeX = p.x;
+			}
+			
+			if(p.x > mostPositiveX) {
+				mostPositiveX = p.x;
+			}
+			
+			if(p.y < mostNegativeY) {
+				mostNegativeY = p.y;
+			}
+			
+			if(p.y > mostPositiveY) {
+				mostPositiveY = p.y;
+			}
+		}
+			
+			int addX = -mostNegativeX, addY = -mostNegativeY;
+			
+			if (mostPositiveX > 5) {
+				addX = 5 - mostPositiveX;
+			} 
+			if(mostPositiveY > 5) {
+				addY = 5 - mostNegativeY;
+			}
+		
+			for (Point p : copy) {
+				p.x += addX;
+				p.y += addY;
+			}
+		
+		
+		return copy;
 
 	}
 
