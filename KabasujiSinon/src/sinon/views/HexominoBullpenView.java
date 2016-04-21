@@ -1,7 +1,10 @@
 package sinon.views;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Point;
+import java.util.Set;
 import javax.swing.JPanel;
 import sinon.models.BullPen;
 import sinon.models.Hexomino;
@@ -18,16 +21,37 @@ public class HexominoBullpenView extends JPanel {
         this.hex = hex;
         this.hexominoPanel = new JPanel();
         this.hexominoPanel.setLayout(new GridLayout(6,6));
+        
+        //file the entire grid with blank JPanels
+        JPanel tempPanel;
+        for(int i = 0; i < 6; i++){
+        	for(int j = 0; j < 6; j++){
+        		tempPanel = new JPanel();
+        		tempPanel.setBackground(Color.white);
+        		this.hexominoPanel.add(tempPanel);
+        	}
+        }
     }
     
     /** @return Hexomino model associated with this view.*/
     public Hexomino getHexomino() {
-    	return hex;
+    	return this.hex;
     }
     
-    
-}
 
-//remove all JPanels from grid .removeAll()
-//add new JPanels to grid .add(JPanel)
-//add new JPanels with colors corresponding to new coordinates for hexomino .add(comp, index)
+    public HexominoBullpenView setHexominoOnGrid(){
+    	//Get the translated points from kartiks algorithm
+    	Set<Point> normalizedPoints = this.hex.getNormalizedPoints();
+
+    	JPanel tempHexPanel;
+    	int indexForHexJPanel;
+    	for(Point p: normalizedPoints){
+    		tempHexPanel = new JPanel();
+    		tempHexPanel.setBackground(Color.black);
+    		indexForHexJPanel = (p.y*6) + p.x;
+    		this.hexominoPanel.add(tempHexPanel, indexForHexJPanel);
+    	}
+    	
+    	return this;
+    }
+}

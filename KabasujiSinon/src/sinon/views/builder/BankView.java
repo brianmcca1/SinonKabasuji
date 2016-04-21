@@ -58,18 +58,12 @@ public class BankView extends InfoPanel {
     	Deserializer deserializer = new Deserializer();
 
     	hexominoesReadFromFile = deserializer.deserializeHexominoesForBankView();
-    	
-    	boolean flipper = true;
+
     	for(int i = 0; i < hexominoesReadFromFile.size(); i++){
-    		HexominoBullpenView tempHexBullpenView = new HexominoBullpenView();
-    		
-    		if(flipper)
-    			tempHexBullpenView.setBackground(Color.black);
-    		else
-    			tempHexBullpenView.setBackground(Color.red);
-    		
+    		HexominoBullpenView tempHexBullpenView = new HexominoBullpenView(hexominoesReadFromFile.get(i));
+    		tempHexBullpenView.setHexominoOnGrid();
+
             this.contentPanel.add(tempHexBullpenView);
-            flipper = !flipper;
     	}
 
         this.contentPanel.doLayout();

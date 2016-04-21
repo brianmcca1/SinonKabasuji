@@ -19,12 +19,9 @@ public class BullpenView extends JScrollPane {
     BullPen bullpen;
 
     public BullpenView() {
-        this.setBackground(Color.CYAN);
-
         this.bullpenPanel = new JPanel();
         bullpenPanel.setBackground(Color.gray);
         bullpenPanel.setLayout(new BoxLayout(bullpenPanel, BoxLayout.X_AXIS));
-        
         bullpenPanel.addMouseListener(new BullpenController(MainView.kabasuji, this)); //register BullpenController to bullpen
         
         populateBullpen();
@@ -32,7 +29,6 @@ public class BullpenView extends JScrollPane {
         JScrollBar scrollBar = new JScrollBar(JScrollBar.HORIZONTAL);
         this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
         this.add(scrollBar);
-        
         this.setViewportView(bullpenPanel);
     }
 
@@ -40,10 +36,10 @@ public class BullpenView extends JScrollPane {
     private void populateBullpen() {
     	
     	//temp work
-        HexominoBullpenView a = new HexominoBullpenView();
-        a.setBackground(Color.red);
-        this.bullpenPanel.add(a);
-        a.addMouseListener(new HexominoBullpenController(MainView.kabasuji, a));
+    	Hexomino hex = new Hexomino(0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5);
+        HexominoBullpenView hexView = new HexominoBullpenView(hex);
+        this.bullpenPanel.add(hexView);
+        hexView.addMouseListener(new HexominoBullpenController(MainView.kabasuji, hexView));
         
     	/* We will actually need this block uncommented when we get the entities working.
         for(Hexomino hex : bullpen.getPieces()) {
