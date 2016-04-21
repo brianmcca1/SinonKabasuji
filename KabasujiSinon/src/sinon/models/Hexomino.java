@@ -13,12 +13,10 @@ import java.util.Set;
  * @author Brian
  * @author Josh Desmond
  */
-public class Hexomino implements Serializable{
+public class Hexomino implements Serializable {
 
     /** @see HexominoNumberSet */
     HexominoNumberSet hexominoNumberSet;
-    int anchorRow;
-    int anchorColumn;
 
     /**
      * Is a convenience constructor for quickly building a Hexomino.
@@ -35,58 +33,12 @@ public class Hexomino implements Serializable{
                 d1, e, e1, f, f1);
 
     }
-    
-    /* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Hexomino [hexominoNumberSet=" + hexominoNumberSet + ", anchorRow=" + anchorRow + ", anchorColumn="
-				+ anchorColumn + "]";
-	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + anchorColumn;
-		result = prime * result + anchorRow;
-		result = prime * result + ((hexominoNumberSet == null) ? 0 : hexominoNumberSet.hashCode());
-		return result;
-	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Hexomino other = (Hexomino) obj;
-		if (anchorColumn != other.anchorColumn)
-			return false;
-		if (anchorRow != other.anchorRow)
-			return false;
-		if (hexominoNumberSet == null) {
-			if (other.hexominoNumberSet != null)
-				return false;
-		} else if (!hexominoNumberSet.equals(other.hexominoNumberSet)){
-			System.out.println("HexNumberSet said they weren't equal");
-			return false;
-		}
-			
-		return true;
-	}
-
-	public Hexomino(Set<Point> points){
-    	this.hexominoNumberSet = new HexominoNumberSet(points);
+    public Hexomino(Set<Point> points) {
+        if (points == null) {
+            throw new IllegalArgumentException("Points can't be null");
+        }
+        this.hexominoNumberSet = new HexominoNumberSet(points);
     }
 
     /**
@@ -116,5 +68,60 @@ public class Hexomino implements Serializable{
 
     public void rotateCC() {
         hexominoNumberSet.rotateCC();
+    }
+
+    /**
+     * 
+     * 
+     * @return Returns a set of points that describes the Hexomino
+     */
+    public Set<Point> getPoints() {
+        return null;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (!(obj instanceof Hexomino))
+            return false;
+        Hexomino other = (Hexomino) obj;
+        if (hexominoNumberSet == null) {
+            if (other.hexominoNumberSet != null)
+                return false;
+        } else if (!hexominoNumberSet.equals(other.hexominoNumberSet))
+            return false;
+        return true;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((hexominoNumberSet == null) ? 0
+                : hexominoNumberSet.hashCode());
+        return result;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "Hexomino [hexominoNumberSet=" + hexominoNumberSet + "]";
     }
 }

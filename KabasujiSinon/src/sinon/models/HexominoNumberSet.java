@@ -7,13 +7,14 @@ import java.util.Set;
 
 public class HexominoNumberSet implements Serializable {
 
+    private static final int SIZE = 6;
     Set<Point> points;
 
     /**
      * Convenience constructor. Try to avoid using this except for testing. I
      * think this will eventually be moved to the factory class.
      */
-    
+
     public HexominoNumberSet(int a, int a1, int b, int b1, int c, int c1, int d,
             int d1, int e, int e1, int f, int f1) {
         points = new HashSet<Point>();
@@ -50,10 +51,7 @@ public class HexominoNumberSet implements Serializable {
         for (Point p : points) {
             p.x = p.x * -1;
         }
-        /*
-         * for (int i = 0; i < 6; i++) { int temp = squares[i].x; temp = temp *
-         * (-1); squares[i].x = temp; }
-         */
+
     }
 
     public void flipVertically() {
@@ -69,6 +67,9 @@ public class HexominoNumberSet implements Serializable {
      *         HexominoNumberSet.
      */
     private static boolean validatePoints(Set<Point> points) {
+        if (points.size() != SIZE) {
+            return false;
+        }
         return true;
     }
 
@@ -114,8 +115,7 @@ public class HexominoNumberSet implements Serializable {
      */
     @Override
     public boolean equals(Object obj) {
-    	
-    	
+
         if (this == obj)
             return true;
         if (obj == null)
@@ -126,62 +126,71 @@ public class HexominoNumberSet implements Serializable {
         if (points == null) {
             if (other.points != null)
                 return false;
-        } else if (points.equals(other.points)){
-        	
-        	
+        } else if (points.equals(other.points)) {
+
             return true;
-        }else {
-        	
-        	for(Point p : other.points){
-        		
-        		HashSet<Point> translatedPoints = new HashSet<Point>();
-        		// Translate all point in the hex to change which square is the anchor
-        		for(Point p2 : other.points){
-        			translatedPoints.add(new Point(p2.x - p.x, p2.y - p.y));
-        		}
-        		HexominoNumberSet translatedOther = new HexominoNumberSet(translatedPoints);
-        		
-        		for(int i = 0; i < 4; i++){
-        			if(points.equals(translatedOther.points)){
-        				return true;
-        			} else {
-        				// Check current rotation with just Horizontal flip
-        				translatedOther.flipHorizontally(); 
-        				if(points.equals(translatedOther.points)){
-        					return true;
-        				} else {
-        					// Check current rotation with Horizontal + Vertical flip				
-        					translatedOther.flipVertically();
-        					if(points.equals(translatedOther.points)){
-        						return true;
-        					} else {
-        						// Check current rotation with just vertical flip
-        						translatedOther.flipHorizontally(); // Undo's previous Horizontal flip
-        						if(points.equals(translatedOther.points)){
-        							return true;
-        						}
-        					}       					
-        				}			
-        				
-        			}
-        			//First, undo the vertical flip
-        			translatedOther.flipVertically();
-        			// This rotation is not equal in any way, so try the next one
-    				translatedOther.rotateC();
-        		}	
-        		
-        	}
+        } else {
+
+            for (Point p : other.points) {
+
+                HashSet<Point> translatedPoints = new HashSet<Point>();
+                // Translate all point in the hex to change which square is the
+                // anchor
+                for (Point p2 : other.points) {
+                    translatedPoints.add(new Point(p2.x - p.x, p2.y - p.y));
+                }
+                HexominoNumberSet translatedOther = new HexominoNumberSet(
+                        translatedPoints);
+
+                for (int i = 0; i < 4; i++) {
+                    if (points.equals(translatedOther.points)) {
+                        return true;
+                    } else {
+                        // Check current rotation with just Horizontal flip
+                        translatedOther.flipHorizontally();
+                        if (points.equals(translatedOther.points)) {
+                            return true;
+                        } else {
+                            // Check current rotation with Horizontal + Vertical
+                            // flip
+                            translatedOther.flipVertically();
+                            if (points.equals(translatedOther.points)) {
+                                return true;
+                            } else {
+                                // Check current rotation with just vertical
+                                // flip
+                                translatedOther.flipHorizontally(); // Undo's
+                                                                    // previous
+                                                                    // Horizontal
+                                                                    // flip
+                                if (points.equals(translatedOther.points)) {
+                                    return true;
+                                }
+                            }
+                        }
+
+                    }
+                    // First, undo the vertical flip
+                    translatedOther.flipVertically();
+                    // This rotation is not equal in any way, so try the next
+                    // one
+                    translatedOther.rotateC();
+                }
+
+            }
         }
-        
+
         return false;
     }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "HexominoNumberSet [points=" + points + "]";
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "HexominoNumberSet [points=" + points + "]";
+    }
 
 }
