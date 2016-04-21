@@ -32,4 +32,13 @@ public class BullPenData implements Serializable {
     void addHexomino(HexominoCode hex) {
         this.hexominos.add(hex);
     }
+
+    /**
+     * Returns the ArrayList of HexominoCodes
+     * 
+     * @return The list of Hexominos.
+     */
+    public ArrayList<HexominoCode> getHexominos() {
+        return this.hexominos;
+    }
 }

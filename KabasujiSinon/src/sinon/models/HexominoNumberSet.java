@@ -4,6 +4,8 @@ import java.awt.Point;
 import java.util.LinkedList;
 import java.util.List;
 
+import sinon.models.data.HexominoCode;
+
 /**
  * A HexominoNumberSet represents the six coordinate pairs that make up any
  * Hexomino.
@@ -14,6 +16,7 @@ import java.util.List;
 public class HexominoNumberSet {
 
     private static final int SIZE = 6;
+    /** List of six points representing a Hexomino. */
     List<Point> points;
 
     /**
@@ -46,6 +49,16 @@ public class HexominoNumberSet {
         }
 
         this.points = points;
+    }
+
+    /**
+     * Creates a HexominoNumberSet from a HexominoCode.
+     * 
+     * @param code
+     *            The immutable data object representing a HexominoNumberSet.
+     */
+    public HexominoNumberSet(HexominoCode code) {
+        this.points = code.getPoints();
     }
 
     public void flipHorizontally() {

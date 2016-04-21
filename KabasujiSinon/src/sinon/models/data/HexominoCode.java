@@ -3,6 +3,7 @@ package sinon.models.data;
 import java.awt.Point;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A HexominoCode is the ArrayList of six points that represents a
@@ -16,5 +17,14 @@ public final class HexominoCode implements Serializable {
 
     public HexominoCode() {
 
+    }
+
+    /**
+     * Returns the list of points representing a HexominoNumberSet
+     * 
+     * @return The list of points.
+     */
+    public List<Point> getPoints() {
+        return points;
     }
 }

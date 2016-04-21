@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
+import sinon.models.data.BoardData;
+
 /**
  * Entity Class which represents the 12x12 area of game play.
  *
@@ -19,7 +21,6 @@ public class Board {
     private final static int WIDTH_BY_ZERO = WIDTH - 1;
     private final static int HEIGHT_BY_ZERO = HEIGHT - 1;
 
-    // TODO this should be changed to either a double array
     Map<Point, Tile> tilesViaPoints;
 
     /**
@@ -31,6 +32,23 @@ public class Board {
             for (int y = 0; y < HEIGHT; y++) {
                 Point p = new Point(x, y);
                 tilesViaPoints.put(p, new Tile(p, true));
+            }
+        }
+    }
+
+    /**
+     * Creates a 12 by 12 Board with playability set to match the given
+     * BoardData.
+     * 
+     * @param boardData
+     *            BoardData specifying which tiles are playable.
+     */
+    public Board(BoardData boardData) {
+        for (int x = 0; x < WIDTH; x++) {
+            for (int y = 0; y < HEIGHT; y++) {
+                boolean playable = boardData.getPlayableArray()[x][y];
+                Point p = new Point(x, y);
+                tilesViaPoints.put(p, new Tile(p, playable));
             }
         }
     }

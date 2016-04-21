@@ -1,6 +1,10 @@
 package sinon.models;
 
+import java.util.LinkedList;
 import java.util.List;
+
+import sinon.models.data.BullPenData;
+import sinon.models.data.HexominoCode;
 
 /**
  * A BullPen is the game entity which stores all Hexominos in the Bullpen.
@@ -14,6 +18,13 @@ public class BullPen {
 
     public BullPen(List<Hexomino> pieces) {
         this.pieces = pieces;
+    }
+
+    public BullPen(BullPenData bullPenData) {
+        pieces = new LinkedList<Hexomino>();
+        for (HexominoCode code : bullPenData.getHexominos()) {
+            pieces.add(new Hexomino(code));
+        }
     }
 
     /**

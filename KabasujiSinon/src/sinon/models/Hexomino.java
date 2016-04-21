@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import sinon.models.data.HexominoCode;
+
 /**
  * A Hexomino is an entity which is used for standard Kabasuji play.
  * 
@@ -51,6 +53,16 @@ public class Hexomino {
      */
     public Hexomino(HexominoNumberSet hexominoNumberSet) {
         this.hexominoNumberSet = hexominoNumberSet;
+    }
+
+    /**
+     * Creates a Hexomino from a HexominoCode.
+     * 
+     * @param code
+     *            The immutable data object representing a HexominoNumberSet.
+     */
+    public Hexomino(HexominoCode code) {
+        this.hexominoNumberSet = new HexominoNumberSet(code);
     }
 
     public void addToTile(Tile t) {
