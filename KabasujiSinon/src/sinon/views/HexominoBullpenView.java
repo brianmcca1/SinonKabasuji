@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -23,17 +24,6 @@ public class HexominoBullpenView extends JPanel {
         this.hex = h;
         this.hexominoPanel = new JPanel();
         this.hexominoPanel.setLayout(new GridLayout(6,6));
-        
-        //file the entire grid with blank JPanels
-        JPanel tempPanel;
-        for(int i = 0; i < 6; i++){
-        	for(int j = 0; j < 6; j++){
-        		tempPanel = new JPanel();
-        		tempPanel.setBackground(Color.white);
-        		this.hexominoPanel.add(tempPanel);
-        	}
-        }
-        
         this.setHexominoOnGrid();
     }
     
@@ -44,27 +34,30 @@ public class HexominoBullpenView extends JPanel {
     
 
     public HexominoBullpenView setHexominoOnGrid(){
-    	System.out.println("SETTING HEXOMINO ON ITS GRID");
     	List<Point> normalizedPoints = this.hex.getNormalizedPoints();
     	
-    	JPanel tempHexPanel;
-    	int indexForHexJPanel;
-    	boolean flipper = true;
+    	Integer indexForHexJPanel;
+    	ArrayList<Integer> indexList = new ArrayList<Integer>();
+
     	for(Point p: normalizedPoints){
-    		tempHexPanel = new JPanel();
-    		
-    		if(flipper)
-    			tempHexPanel.setBackground(Color.black);
-    		else
-    			tempHexPanel.setBackground(Color.red);
-    		
-    		//tempHexPanel.setBounds(p.y, p.x, 25, 25);
-    		System.out.println("NORM X: " + p.x + " NORM Y: " + p.y);
-    		indexForHexJPanel = (p.x*6) + p.y;
-    		this.hexominoPanel.add(tempHexPanel, indexForHexJPanel);
-    		flipper = !flipper;
+    		indexForHexJPanel = (p.y*6) + p.x;
+    		indexList.add(indexForHexJPanel);    		
     	}
     	
+    	
+    	JPanel tempHexPanel;
+    	for(int i = 0; i < 36; i++){
+    		tempHexPanel = new JPanel();
+    		if(indexList.contains(i)){
+    			tempHexPanel.setBackground(Color.blue);
+    			 this.hexominoPanel.add(tempHexPanel);
+    		}
+    		else{
+    			this.hexominoPanel.add(tempHexPanel);
+    		}
+    		
+    	}
+
     	return this;
     }
     
