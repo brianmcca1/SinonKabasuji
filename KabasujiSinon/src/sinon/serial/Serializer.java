@@ -25,14 +25,14 @@ public class Serializer {
 		
 		
 		
-	   try{
+		try{
 			FileOutputStream fout = new FileOutputStream("hexominoes.hex");
 			ObjectOutputStream oos = new ObjectOutputStream(fout);   
 			oos.writeObject(hexominoesToSerialize);
 			oos.close();
 			System.out.println("ARRAYLIST OF HEXOMINOES HAS BEEN SERIALIZED TO 'hexominoes.hex'");
-	   }catch(Exception ex){
-		   ex.printStackTrace();
-	   }
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
 	}
 }

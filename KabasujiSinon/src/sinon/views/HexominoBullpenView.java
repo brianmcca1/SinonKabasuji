@@ -1,9 +1,8 @@
 package sinon.views;
 
 import java.awt.Dimension;
-
+import java.awt.GridLayout;
 import javax.swing.JPanel;
-
 import sinon.models.BullPen;
 import sinon.models.Hexomino;
 
@@ -11,46 +10,24 @@ import sinon.models.Hexomino;
 @SuppressWarnings("serial")
 public class HexominoBullpenView extends JPanel {
 	
+	JPanel hexominoPanel;
 	/** The hexomino model object associated with this view */
 	Hexomino hex;
 	
-	/** The bullpen model object associated with this view */
-	BullPen bullpen;
-	
-    // TODO This 120 constant should be updated with a reference to the height
-    // of a hexomino.
-    private static final Dimension SIZE = new Dimension(120, 120);
-
-    public HexominoBullpenView(Hexomino hex, BullPen bp) {
-        super();
-        this.setMinimumSize(SIZE);
-        this.setMaximumSize(SIZE);
-        this.setPreferredSize(SIZE);
+    public HexominoBullpenView(Hexomino hex) {
         this.hex = hex;
-        this.bullpen = bp;
+        this.hexominoPanel = new JPanel();
+        this.hexominoPanel.setLayout(new GridLayout(6,6));
     }
     
-    /** temporary constructor */
-    public HexominoBullpenView() {
-    	super();
-        this.setMinimumSize(SIZE);
-        this.setMaximumSize(SIZE);
-        this.setPreferredSize(SIZE);
-    }
-    
-    /**
-     * Getter that returns the hexomino associated with this view element
-     * @return hexomino 
-     */
+    /** @return Hexomino model associated with this view.*/
     public Hexomino getHexomino() {
     	return hex;
     }
     
-    /**
-     * Getter that returns the bullpen associated with this view element
-     * @return bullpen
-     */
-    public BullPen getBullPen() {
-    	return bullpen;
-    }
+    
 }
+
+//remove all JPanels from grid .removeAll()
+//add new JPanels to grid .add(JPanel)
+//add new JPanels with colors corresponding to new coordinates for hexomino .add(comp, index)
