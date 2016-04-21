@@ -8,8 +8,7 @@ import java.io.Serializable;
  * @author Josh Desmond
  *
  */
-public class BoardData implements Serializable {
-    private static final long serialVersionUID = 3862180753482604178L;
+public final class BoardData implements Serializable {
 
     /**
      * An array of 144 values each representing whether the tile is playable or

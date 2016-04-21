@@ -9,14 +9,24 @@ import java.util.List;
 import org.junit.Test;
 
 import sinon.models.HexominoNumberSet;
+import sinon.models.data.HexominoCode;
 
 public class HexominoNumberSetTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testCreateNullSet() {
 
+        List<Point> points = null;
+
         @SuppressWarnings("unused")
-        HexominoNumberSet set = new HexominoNumberSet(null);
+        HexominoNumberSet set = new HexominoNumberSet(points);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testCreateNullCode() {
+        HexominoCode c = null;
+        @SuppressWarnings("unused")
+        HexominoNumberSet set = new HexominoNumberSet(c);
     }
 
     @Test

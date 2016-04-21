@@ -12,7 +12,6 @@ import sinon.models.data.BoardData;
  *
  * @author Josh Desmond
  * @author Brian
- * 
  **/
 public class Board {
 
@@ -67,7 +66,6 @@ public class Board {
     /**
      * Determines whether it's possible to add a Hexomino at the given location.
      * 
-     * 
      * @param anchorLocation
      *            Location of where the anchor of the hexomino will go.
      * @param hex
@@ -81,7 +79,6 @@ public class Board {
     /**
      * Adds the given Hexomino to the board. Must be a valid move.
      * 
-     *
      * @param anchorLocation
      *            Location of where the anchor of the hexomino will go.
      * @param hex
@@ -90,8 +87,11 @@ public class Board {
      */
     public void addHexomino(Point anchorLocation, Hexomino hex) {
         if (!canAddHexomino(anchorLocation, hex)) {
-            throw new IllegalArgumentException("TODO"); // TODO
+            throw new IllegalArgumentException(
+                    "Can't add Hexomino to this location");
         }
+
+        // TODO
     }
 
     /**
@@ -127,6 +127,10 @@ public class Board {
 
     /**
      * Completely removes the specified Hexomino from the board.
+     * 
+     * Note that this removes the Hexomino only if it is the exact same
+     * instance. If the Hexomino given is .equals() but not ==, it doesn't
+     * matter, it won't be removed.
      */
     public void removeHexomino(Hexomino hex) {
         for (Tile t : getTiles()) {
@@ -136,10 +140,14 @@ public class Board {
                 }
             }
         }
-
     }
 
     /**
+     * Gets a iterable of all the tiles.
+     * 
+     * You can use this any time you want to do some kind of operation on all of
+     * the tiles. Please be careful and don't actually edit the tiles with a
+     * controller or something unless it's really needed.
      * 
      * @return An iterable of all of the tiles.
      */

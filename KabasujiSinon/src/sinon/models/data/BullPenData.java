@@ -9,8 +9,7 @@ import java.util.ArrayList;
  * 
  * @author Josh Desmond
  */
-public class BullPenData implements Serializable {
-    private static final long serialVersionUID = -6457296944808697390L;
+public final class BullPenData implements Serializable {
 
     /**
      * The list of hexominos in the order that they are to appear in the BullPen

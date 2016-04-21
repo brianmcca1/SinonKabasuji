@@ -8,11 +8,7 @@ import sinon.models.BullPen;
 /**
  * This class holds all of the data necessary to save/load a level.
  */
-public class LevelData implements Serializable {
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 3147645287701832176L;
+public final class LevelData implements Serializable {
 
     /** Enum representing three types of level */
     enum LevelType {
@@ -35,7 +31,7 @@ public class LevelData implements Serializable {
      * @return a Board for game play.
      */
     public Board getBoard() {
-        return null;
+        return new Board(board);
     }
 
     /**
@@ -45,7 +41,7 @@ public class LevelData implements Serializable {
      * @return a Bullpen for game play.
      */
     public BullPen getBullpen() {
-        return null;
+        return new BullPen(bullpen);
     }
 
     /**

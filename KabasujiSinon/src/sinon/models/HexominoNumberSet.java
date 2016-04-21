@@ -58,6 +58,9 @@ public class HexominoNumberSet {
      *            The immutable data object representing a HexominoNumberSet.
      */
     public HexominoNumberSet(HexominoCode code) {
+        if (code == null)
+            throw new IllegalArgumentException("HexominoCode can't be null");
+
         this.points = code.getPoints();
     }
 

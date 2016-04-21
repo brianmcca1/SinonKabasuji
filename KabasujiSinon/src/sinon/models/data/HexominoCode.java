@@ -10,7 +10,6 @@ import java.util.List;
  * HexominoNumberSet
  */
 public final class HexominoCode implements Serializable {
-    private static final long serialVersionUID = 145174839722692695L;
 
     /** ArrayList of six points representing a HexominoNumberSet */
     ArrayList<Point> points;
