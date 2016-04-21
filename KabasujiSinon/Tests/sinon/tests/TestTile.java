@@ -1,4 +1,4 @@
-package test.models;
+package sinon.tests;
 
 import static org.junit.Assert.*;
 
