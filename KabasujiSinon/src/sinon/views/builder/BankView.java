@@ -2,12 +2,15 @@ package sinon.views.builder;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
+import sinon.models.Hexomino;
+import sinon.serial.Deserializer;
 import sinon.views.HexominoBullpenView;
 import sinon.views.InfoPanel;
 
@@ -23,14 +26,7 @@ public class BankView extends InfoPanel {
         initContentPanel();
         initBankViewScrollPanel();
 
-        examplePopulateBankView();
-        examplePopulateBankView();
-        examplePopulateBankView();
-        examplePopulateBankView();
-        examplePopulateBankView();
-        examplePopulateBankView();
-        examplePopulateBankView();
-        examplePopulateBankView();
+        populateBankViewWithHexominoes();
 
         this.setLayout(new GridLayout(1, 1));
         this.add(scrollPanel);
@@ -57,21 +53,26 @@ public class BankView extends InfoPanel {
 
     }
 
-    private void examplePopulateBankView() {
-        HexominoBullpenView a = new HexominoBullpenView();
-        a.setBackground(Color.black);
-        this.contentPanel.add(a);
-        HexominoBullpenView b = new HexominoBullpenView();
-        b.setBackground(Color.gray);
-        this.contentPanel.add(b);
-        HexominoBullpenView c = new HexominoBullpenView();
-        c.setBackground(Color.black);
-        this.contentPanel.add(c);
-        HexominoBullpenView d = new HexominoBullpenView();
-        d.setBackground(Color.gray);
-        this.contentPanel.add(d);
+    private void populateBankViewWithHexominoes() {
+    	ArrayList<Hexomino> hexominoesReadFromFile = new ArrayList<Hexomino>();
+    	Deserializer deserializer = new Deserializer();
+
+    	hexominoesReadFromFile = deserializer.deserializeHexominoesForBankView();
+    	
+    	boolean flipper = true;
+    	for(int i = 0; i < hexominoesReadFromFile.size(); i++){
+    		HexominoBullpenView tempHexBullpenView = new HexominoBullpenView();
+    		
+    		if(flipper)
+    			tempHexBullpenView.setBackground(Color.black);
+    		else
+    			tempHexBullpenView.setBackground(Color.red);
+    		
+            this.contentPanel.add(tempHexBullpenView);
+            flipper = !flipper;
+    	}
+
         this.contentPanel.doLayout();
         this.validate();
     }
-
 }
