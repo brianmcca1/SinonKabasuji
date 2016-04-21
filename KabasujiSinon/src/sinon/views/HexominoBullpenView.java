@@ -6,7 +6,6 @@ import java.awt.GridLayout;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import sinon.models.BullPen;
