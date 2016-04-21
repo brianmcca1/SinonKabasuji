@@ -3,7 +3,9 @@ package sinon.tests;
 import static org.junit.Assert.*;
 
 import java.awt.Point;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Test;
 
@@ -15,26 +17,17 @@ public class TestTile {
 
 	@Test
 	public void test() {
-		Tile t1 = new Tile(0, 0, true);
+		Point p = new Point(0,0);
+		Tile t1 = new Tile(p, true);
 		
-		Point[] points = new Point[6];
-		points[0] = new Point();
-		points[0].move(0, 0);
-		points[1] = new Point();
-		points[1].move(0, 1);
-		points[2] = new Point();
-		points[2].move(1, 1);
-		points[3] = new Point();
-		points[3].move(1, 2);
-		points[4] = new Point();
-		points[4].move(2, 2);
-		points[5] = new Point();
-		points[5].move(2, 1);
+		//Hexomino hex = new Hexomino(0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 1);
+		//Optional<Hexomino> hex = t1.getHexomino();
+
+		//assertEquals(hex.isPresent(), false);
 		
-		Hexomino hex = new Hexomino(points);
-		
-		t1.addHexomino(hex);
-		assertEquals(t1.getHexomino(), hex);
+		Hexomino hex2 = new Hexomino(0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 1);
+		t1.addHexomino(hex2);
+		assertEquals(t1.getHexomino(), hex2);
 		
 	
 	}
