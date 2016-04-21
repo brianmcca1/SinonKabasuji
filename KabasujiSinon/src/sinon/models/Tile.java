@@ -40,6 +40,8 @@ public class Tile {
         if (this.hex.isPresent()) {
             throw new RuntimeException("Tile already contains a Hexomino");
 
+        } else if(this.playable == false){
+        	throw new RuntimeException("Tile is not playable");
         } else {
             this.hex = Optional.of(hex);
         }

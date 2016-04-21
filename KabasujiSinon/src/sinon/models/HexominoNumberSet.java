@@ -1,11 +1,17 @@
 package sinon.models;
 
 import java.awt.Point;
-import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-public class HexominoNumberSet implements Serializable {
+/**
+ * A HexominoNumberSet represents the six coordinate pairs that make up any
+ * Hexomino.
+ * 
+ * @author Josh Desmond
+ * @author Brian McCarthy
+ */
+public class HexominoNumberSet {
 
     private static final int SIZE = 6;
     List<Point> points;
@@ -14,7 +20,6 @@ public class HexominoNumberSet implements Serializable {
      * Convenience constructor. Try to avoid using this except for testing. I
      * think this will eventually be moved to the factory class.
      */
-
     public HexominoNumberSet(int a, int a1, int b, int b1, int c, int c1, int d,
             int d1, int e, int e1, int f, int f1) {
         points = new LinkedList<Point>();
