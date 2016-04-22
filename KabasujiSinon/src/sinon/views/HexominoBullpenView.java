@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 import sinon.models.Hexomino;
 
-/** GUI element representing one of the Hexominos in the Bullpen */
+/** GUI element representing one of the Hexominos in the Bullpen. */
 @SuppressWarnings("serial")
 public class HexominoBullpenView extends JPanel {
 
