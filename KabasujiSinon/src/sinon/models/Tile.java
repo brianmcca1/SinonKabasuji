@@ -30,13 +30,15 @@ public class Tile {
 
     /**
      * 
-     * Adds the given Hexomino to the tile Throws Runtime Exception if Hexomino
-     * is already present
+     * Adds the given Hexomino to the tile
+     * 
+     *  Throws Runtime Exception if Hexomino is already present
      * 
      * @param hex
      *            The hexomino to be added
      */
     public void addHexomino(Hexomino hex) {
+    	
         if (this.hex.isPresent()) {
             throw new RuntimeException("Tile already contains a Hexomino");
 
@@ -57,22 +59,18 @@ public class Tile {
     }
 
     /**
-     * Removes Hexomino from this tile, if there is one Throws Runtime Exception
-     * if tile does not contain a Hexomino
+     * Removes Hexomino from this tile, if there is one
      * 
+     * @return True if a hexomino was removed, false if there was none to remove
      * 
      */
-    public void removeHex() {
-        /*
-         * TODO not sure if it's cool to be throwing an error here. We could
-         * like, return false or true or something instead? What if you just
-         * want to clear the board for example, and remove everything off every
-         * tile.
-         */
+    public boolean removeHex() {
+        
         if (this.hex.isPresent()) {
             this.hex = Optional.empty();
+            return true;
         } else {
-            throw new RuntimeException("Tile does not contain a Hexomino");
+            return false;
         }
     }
 
