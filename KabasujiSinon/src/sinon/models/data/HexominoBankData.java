@@ -36,7 +36,7 @@ public class HexominoBankData {
         hexList.add(new Hexomino(0, 0, 0, 1, -1, 1, -1, 2, -1, 3, -1, 4));
         hexList.add(new Hexomino(0, 0, 0, 1, 1, 0, 1, 1, 0, 2, 0, 3));
         hexList.add(new Hexomino(0, 0, 1, 0, 0, 1, 0, 2, 1, 2, 0, 3));
-        hexList.add(new Hexomino(0, 0, 1, 0, 0, 1, 0, 2, 1, 2, 0, 3));
+        hexList.add(new Hexomino(0, 0, 1, 0, 0, 1, 0, 2, 0, 3, 1, 3));
         hexList.add(new Hexomino(0, 0, 0, 1, 1, 1, 0, 2, 1, 2, 0, 3));
         //9 done
         hexList.add(new Hexomino(0, 0, 0, 1, 0, 2, 0, 3, 1, 0, 2, 0));
@@ -49,7 +49,19 @@ public class HexominoBankData {
         hexList.add(new Hexomino(0, 0, 1, 0, 0, 1, 0, 2, 0, 3, -1, 3));
         //15
         hexList.add(new Hexomino(0, 0, 0, 1, 1, 1, 0, 2, -1, 2, 0, 3));
-        
+        hexList.add(new Hexomino(0, 0, 0, 1, 1, 1, -1, 1, 0, 2, 0, 3));
+        //17
+        hexList.add(new Hexomino(0, 0, 1, 0, 1, -1, 2, 0, 0, 1, 0, 2));
+        hexList.add(new Hexomino(0, 0, 1, 0, 1, -1, 0, 1, 0, 2, 1, 2));
+        //19
+        hexList.add(new Hexomino(0, 0, 0, 1, 0, 2, -1, 2, -1, 3, -1, 4));
+        hexList.add(new Hexomino(0, 0, 1, 0, 1, -1, 0, 1, 1, 1, 0, 2));
+        //21
+        hexList.add(new Hexomino(0, 0, 0, 1, 0, 2, 1, 0, 1, 1, 1, 2));
+        hexList.add(new Hexomino(0, 0, 1, 0, 2, 0, 2, -1, 1, 1, 1, 2));
+        //23
+        hexList.add(new Hexomino(0, 0, 1, 0, 2, 0, 2, -1, 1, 1, 1, 2));
+        hexList.add(new Hexomino(0, 0, 1, 0, 1, -1, 0, 1, -1, 1, 0, 2));
         return hexList;
     }
 
