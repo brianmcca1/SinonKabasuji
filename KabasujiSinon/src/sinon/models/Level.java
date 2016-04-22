@@ -10,7 +10,7 @@ public class Level {
 	public Board board;
 	BullPen bullpen;
 	LevelData levelData;
-	public Optional<Hexomino> selected;
+	public Optional<Hexomino> selectedHexomino;
 	
 	public Level(int levelNum, Board b, BullPen bp){
 		this.levelNum = levelNum;
@@ -19,32 +19,34 @@ public class Level {
 		selected = Optional.empty();
 	}
 	
+	/**
+	 * Used by the Builder's new level controllers to set the Level field regarding its type
+	 * @param t Enum type of level (puzzle/lightning/release)
+	 */
 	public Level(types t){
 		this.levelData.setLevelType(t);
 	}
 	
-	public void open(){
-		
-	}
-	
 	/** 
-	 * This returns the bullpen from the level.
-	 * @return
+	 * @return returns BullPen of this level
 	 */
-	public BullPen getBullpen() {
-		return bullpen;
-	}
+	public BullPen getBullpen() {return this.bullpen;}
 	
-	public void select(Optional<Hexomino> hex){
-		this.selected = hex;
-	}
+	/**
+	 * Sets the selected hexomino
+	 * @param hex
+	 */
+	public void select(Optional<Hexomino> hex){this.selected = hex;}
 	
-	public void deselect(){
-		this.selected = Optional.empty();
-	}
+	/**
+	 * Sets the selected hexomino to empty
+	 */
+	public void deselect(){this.selected = Optional.empty();}
 	
-	public boolean hasSelected(){
-		return this.selected.isPresent();
-	}
+	/**
+	 * @return TRUE - There is a selected hexomino
+	 * 		   FALSE - There is no selected hexomino
+	 */
+	public boolean hasSelected(){return this.selected.isPresent();}
 	
 }

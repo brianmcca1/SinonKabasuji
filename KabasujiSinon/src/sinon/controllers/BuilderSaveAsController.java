@@ -35,16 +35,16 @@ public class BuilderSaveAsController implements ActionListener{
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		System.out.println("ENTERING SAVE AS CONTROLLER");
         int returnVal = fc.showSaveDialog(this.builder);
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
+        	
             File file = fc.getSelectedFile();
-            
-            /*
-             *---!!!THIS IS JUST A TEST LEVELDATA OBJECT!!!---
-             *This will need to be changed to read all of the Level class' data into a new LevelData object
-             *everything else of this class as well as Serializer should be legitimate
-             */
+            this.builder.setCurrentFile(file);
+
+            //SET ALL this.builder.getCurrentLevel() fields
+            //SERIALIZE this.builder.getCurrentLevel().getLevelData()
             LevelData levelData = new LevelData(LevelType.types.PUZZLE, new BoardData(), new BullPenData(), 1);
             
             Serializer serializer = new Serializer(file, levelData);

@@ -33,11 +33,9 @@ public class TestTile {
 		
 		assertEquals(t1.hasHex(), true);
 		
-		t1.removeHex();
+		assertTrue(t1.removeHex());
 		
-		assertEquals(t1.hasHex(), false);
-		
-		
+		assertEquals(t1.hasHex(), false);	
 		
 	}
 	
@@ -62,19 +60,19 @@ public class TestTile {
 		
 		t1.addHexomino(hex);
 		
-		t1.removeHex();
+		assertTrue(t1.removeHex());
 		
 		Optional<Hexomino> emptyHex = Optional.empty();
 		emptyHex = t1.getHexomino();
 		assertEquals(emptyHex.isPresent(), false);
 	}
 	
-	@Test(expected = RuntimeException.class)
+	@Test
 	public void testRemoveEmpty(){
 		Point p = new Point(0, 0);
 		Tile t1 = new Tile(p, true);
 		
-		t1.removeHex();	
+		assertFalse(t1.removeHex());	
 	}
 	
 	@Test(expected = RuntimeException.class)
