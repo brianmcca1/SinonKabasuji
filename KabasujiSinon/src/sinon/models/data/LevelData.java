@@ -64,5 +64,10 @@ public final class LevelData implements Serializable {
     public types getLevelType() {
         return this.levelType;
     }
+    
+    
+    public void setLevelType(types t){
+    	this.levelType = t;
+    }
 
 }

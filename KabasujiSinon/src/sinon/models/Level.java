@@ -3,6 +3,7 @@ package sinon.models;
 import java.util.Optional;
 
 import sinon.models.data.LevelData;
+import sinon.models.data.LevelType.types;
 
 public class Level {
 	int levelNum;
@@ -16,6 +17,10 @@ public class Level {
 		this.board = b;
 		this.bullpen = bp;
 		selected = Optional.empty();
+	}
+	
+	public Level(types t){
+		this.levelData.setLevelType(t);
 	}
 	
 	public void open(){

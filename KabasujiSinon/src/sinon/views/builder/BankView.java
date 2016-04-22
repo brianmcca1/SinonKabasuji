@@ -3,12 +3,10 @@ package sinon.views.builder;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.List;
-
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-
 import sinon.main.Builder;
 import sinon.models.Hexomino;
 import sinon.models.data.HexominoBankData;

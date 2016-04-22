@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import sinon.main.Builder;
+import sinon.models.Level;
+import sinon.models.data.LevelType.types;
 
 public class BuilderNewReleaseLevelController implements ActionListener {
 
@@ -15,6 +17,7 @@ public class BuilderNewReleaseLevelController implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("(TEMP) CREATING NEW RELEASE LEVEL");
+		System.out.println("CREATING NEW RELEASE LEVEL");
+		this.builder.setCurrentLevel(new Level(types.RELEASE));
 	}
 }
