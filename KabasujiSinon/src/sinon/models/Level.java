@@ -16,7 +16,7 @@ public class Level {
 		this.levelNum = levelNum;
 		this.board = b;
 		this.bullpen = bp;
-		selected = Optional.empty();
+		selectedHexomino = Optional.empty();
 	}
 	
 	/**
@@ -36,17 +36,17 @@ public class Level {
 	 * Sets the selected hexomino
 	 * @param hex
 	 */
-	public void select(Optional<Hexomino> hex){this.selected = hex;}
+	public void select(Optional<Hexomino> hex){this.selectedHexomino = hex;}
 	
 	/**
 	 * Sets the selected hexomino to empty
 	 */
-	public void deselect(){this.selected = Optional.empty();}
+	public void deselect(){this.selectedHexomino = Optional.empty();}
 	
 	/**
 	 * @return TRUE - There is a selected hexomino
 	 * 		   FALSE - There is no selected hexomino
 	 */
-	public boolean hasSelected(){return this.selected.isPresent();}
+	public boolean hasSelected(){return this.selectedHexomino.isPresent();}
 	
 }
