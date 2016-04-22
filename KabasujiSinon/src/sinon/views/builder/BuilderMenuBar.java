@@ -13,6 +13,7 @@ import sinon.controllers.BuilderNewLightningLevelController;
 import sinon.controllers.BuilderNewPuzzleLevelController;
 import sinon.controllers.BuilderNewReleaseLevelController;
 import sinon.controllers.BuilderSaveAsController;
+import sinon.controllers.BuilderSaveController;
 import sinon.main.Builder;
 
 /**
@@ -70,11 +71,10 @@ public class BuilderMenuBar extends JMenuBar {
 		mnFile.add(mntmSaveAs);
 		mnFile.add(mntmQuit);
 		
+		mntmSave.addActionListener(new BuilderSaveController(this.builder));
 		mntmSaveAs.addActionListener(new BuilderSaveAsController(this.builder));
 		mntmNewPuzzleLevel.addActionListener(new BuilderNewPuzzleLevelController(this.builder));
 		mntmNewLightningLevel.addActionListener(new BuilderNewLightningLevelController(this.builder));
-		mntmNewReleaseLevel.addActionListener(new BuilderNewReleaseLevelController(this.builder));
-		
-	
+		mntmNewReleaseLevel.addActionListener(new BuilderNewReleaseLevelController(this.builder));	
 	}
 }

@@ -30,4 +30,8 @@ public class Builder extends Kabasuji {
 	public void setCurrentLevel(Level l){
 		this.currentLevel = l;
 	}
+	
+	public File getCurrentFile(){
+		return this.currentFile;
+	}
 }
