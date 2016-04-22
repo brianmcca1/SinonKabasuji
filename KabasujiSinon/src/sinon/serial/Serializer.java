@@ -1,39 +1,47 @@
 package sinon.serial;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
+import sinon.models.data.LevelData;
 
-import sinon.models.Hexomino;
-
+/**
+ * This class is used by the Builder to save a LevelData object to a binary file.
+ * @author Kyle
+ */
 public class Serializer {
 
+	/** File to save levelData to*/
+	private File fileToSave;
+	/** LevelData to write to file*/
+	private LevelData levelData;
+	
 	/**
-	 * This method is temporary to serialize some hexominoes to a binary file 
-	 * That file will then be read by the Deserializer and will return Hexomino models
-	 * Which will then be applied to views, and the views will be added to the BankView
-	 * (controller registry isnt important for this)
-	 * @param args
+	 * @param f File to save levelData to
+	 * @param ld LevelData to write to file
 	 */
-	public static void main(String args[]){
-		ArrayList<Hexomino> hexominoesToSerialize = new ArrayList<Hexomino>(35);
-		
-		hexominoesToSerialize.add(new Hexomino(0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5));
-		hexominoesToSerialize.add(new Hexomino(0, 0, 1, 0, 0, 1, 0, 2, 0, 3, 0, 4));
-		hexominoesToSerialize.add(new Hexomino(0, 0, 0, 1, 1, 1, 0, 2, 0, 3, 0, 4));
-		hexominoesToSerialize.add(new Hexomino(0, 0, 0, 1, 0, 2, 1, 2, 0, 3, 0, 4));
-		hexominoesToSerialize.add(new Hexomino(0, 0, 0, 1, -1, 1, -1, 2, -1, 3, -1, 4));
-		hexominoesToSerialize.add(new Hexomino(0, 0, 0, 1, 1, 0, 1, 1, 0, 2, 0, 3));
-		hexominoesToSerialize.add(new Hexomino(0, 0, 1, 0, 0, 1, 0, 2, 1, 2, 0, 3));
-		
+	public Serializer(File f, LevelData ld){
+		this.fileToSave = f;
+		this.levelData = ld;
+	}
+	
+	/**
+	 * Serializes levelData to fileToSave.
+	 * NOTE: this function also takes into account the selected directory from the JFileChooser.
+	 * @return indicates success or failure of serialization
+	 */
+	public boolean SerializeFile(){
 		try{
-			FileOutputStream fout = new FileOutputStream("hexominoes.hex");
+			FileOutputStream fout = new FileOutputStream(this.fileToSave);
 			ObjectOutputStream oos = new ObjectOutputStream(fout);   
-			oos.writeObject(hexominoesToSerialize);
+			oos.writeObject(this.levelData);
 			oos.close();
-			System.out.println("ARRAYLIST OF HEXOMINOES HAS BEEN SERIALIZED TO 'hexominoes.hex'");
+			System.out.println("SERIALIZING FILE: " + this.fileToSave.getName());
+			return true;
 		}catch(Exception ex){
 			ex.printStackTrace();
+			return false;
 		}
 	}
+
 }

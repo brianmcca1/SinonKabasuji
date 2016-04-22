@@ -4,26 +4,29 @@ import java.io.Serializable;
 
 import sinon.models.Board;
 import sinon.models.BullPen;
+import sinon.models.data.LevelType.types;
 
 /**
  * This class holds all of the data necessary to save/load a level.
  */
 public final class LevelData implements Serializable {
 
-    /** Enum representing three types of level */
-    enum LevelType {
-        PUZZLE, LIGHTNING, RELEASE
-    }
-
     /** Type of level */
-    LevelType levelType;
+    types levelType;
     /** Board that the level will be played on. */
-    BoardData board;
+    BoardData boardData;
     /** Bullpen holding all the level hexominoes. */
-    BullPenData bullpen;
+    BullPenData bullpenData;
     /** This level's number (1 to 15). */
     int levelNum;
 
+    public LevelData(types puzzle, BoardData bData, BullPenData bpData, int num){
+    	this.levelType = puzzle;
+    	this.boardData = bData;
+    	this.bullpenData = bpData;
+    	this.levelNum = num;
+    }
+    
     /**
      * Builds an empty board which is ready for game play based on the data
      * stored in this object.
@@ -31,7 +34,7 @@ public final class LevelData implements Serializable {
      * @return a Board for game play.
      */
     public Board getBoard() {
-        return new Board(board);
+        return new Board(boardData);
     }
 
     /**
@@ -41,7 +44,7 @@ public final class LevelData implements Serializable {
      * @return a Bullpen for game play.
      */
     public BullPen getBullpen() {
-        return new BullPen(bullpen);
+        return new BullPen(bullpenData);
     }
 
     /**
@@ -58,7 +61,7 @@ public final class LevelData implements Serializable {
      * 
      * @return The type of level.
      */
-    public LevelType getLevelType() {
+    public types getLevelType() {
         return this.levelType;
     }
 

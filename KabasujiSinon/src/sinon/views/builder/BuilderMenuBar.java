@@ -12,6 +12,7 @@ import javax.swing.KeyStroke;
 import sinon.controllers.BuilderNewLightningLevelController;
 import sinon.controllers.BuilderNewPuzzleLevelController;
 import sinon.controllers.BuilderNewReleaseLevelController;
+import sinon.controllers.BuilderSaveAsController;
 import sinon.main.Builder;
 
 /**
@@ -69,8 +70,7 @@ public class BuilderMenuBar extends JMenuBar {
 		mnFile.add(mntmSaveAs);
 		mnFile.add(mntmQuit);
 		
-		
-		
+		mntmSaveAs.addActionListener(new BuilderSaveAsController(this.builder));
 		mntmNewPuzzleLevel.addActionListener(new BuilderNewPuzzleLevelController(this.builder));
 		mntmNewLightningLevel.addActionListener(new BuilderNewLightningLevelController(this.builder));
 		mntmNewReleaseLevel.addActionListener(new BuilderNewReleaseLevelController(this.builder));

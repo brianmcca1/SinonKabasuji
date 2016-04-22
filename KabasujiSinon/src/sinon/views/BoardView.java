@@ -38,8 +38,8 @@ public class BoardView extends JPanel {
     private void initializeTile(int row, int column) {
         TileView tileView = new TileView();
         // FIXME this is just sort of there.
-        tileView.addMouseListener(
-                new TileController(kabasuji.openedLevel, tileView, null));
+        //tileView.addMouseListener(
+        //        new TileController(kabasuji.openedLevel, tileView, null));
 
         tileView.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
         tileView.setBounds(12 * row, 12 * column, 25, 25); // TODO this is in
