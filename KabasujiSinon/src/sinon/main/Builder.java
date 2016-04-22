@@ -7,16 +7,11 @@ import sinon.views.builder.BuilderMenuBar;
 @SuppressWarnings("serial")
 public class Builder extends Kabasuji {
 
-	private BuilderMenuBar menuBar;
-
 	Builder() {
 		super();
-		// Initialize the JMenuBar
-		menuBar = new BuilderMenuBar();
-		this.setJMenuBar(menuBar);
-
+		
 		// Start the splash screen.
-		startSplash("Kabasuji Builder", new MainView(this, new BankView()));
+		startSplash("Kabasuji Builder", new MainView(this, new BankView(this)));
 	}
 
 	public static void main(String args[]) {

@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
+import sinon.main.Builder;
 import sinon.models.Hexomino;
 import sinon.models.data.HexominoBankData;
 import sinon.views.HexominoBullpenView;
@@ -19,9 +20,15 @@ public class BankView extends InfoPanel {
 
     JScrollPane scrollPanel;
     JPanel bankViewPanel;
+    Builder builder;
 
-    public BankView() {
+    public BankView(Builder b) {
         super();
+        
+        this.builder = b;
+        //initialize builder menu bar
+		BuilderMenuBar menuBar = new BuilderMenuBar(this.builder);
+		this.builder.setJMenuBar(menuBar);
 
         initContentPanel();
         initBankViewScrollPanel();
