@@ -39,6 +39,17 @@ public class HexominoBankData {
         hexList.add(new Hexomino(0, 0, 1, 0, 0, 1, 0, 2, 1, 2, 0, 3));
         hexList.add(new Hexomino(0, 0, 0, 1, 1, 1, 0, 2, 1, 2, 0, 3));
         //9 done
+        hexList.add(new Hexomino(0, 0, 0, 1, 0, 2, 0, 3, 1, 0, 2, 0));
+        hexList.add(new Hexomino(0, 0, 0, 1, 1, 1, 2, 1, 0, 2, 0, 3));
+        //11
+        hexList.add(new Hexomino(0, 0, 1, 0, 2, 0, 1, 1, 1, 2, 1, 3));
+        hexList.add(new Hexomino(0, 0, 1, 0, 0, 1, -1, 1, 0, 2, 0, 3));
+        //13
+        hexList.add(new Hexomino(0, 0, 1, 0, 0, 1, 0, 2, -1, 2, 0, 3));
+        hexList.add(new Hexomino(0, 0, 1, 0, 0, 1, 0, 2, 0, 3, -1, 3));
+        //15
+        hexList.add(new Hexomino(0, 0, 0, 1, 1, 1, 0, 2, -1, 2, 0, 3));
+        
         return hexList;
     }
 

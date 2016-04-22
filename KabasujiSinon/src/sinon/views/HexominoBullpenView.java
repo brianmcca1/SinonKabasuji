@@ -6,7 +6,9 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 import sinon.models.Hexomino;
 
@@ -26,10 +28,9 @@ public class HexominoBullpenView extends JPanel {
     }
 
     /** @return Hexomino model associated with this view. */
-    @Deprecated
     public Hexomino getHexomino() {
-        // FIXME No. Why do you need this method? The only reason this class has
-        // a hexomino is to draw it. Nothing else right?
+    	//I need it for getting the hexomino to the hexomino bank controller and
+    	//adding it to the bullpen when clicked in the bank.
         return this.hex;
     }
 
@@ -47,6 +48,7 @@ public class HexominoBullpenView extends JPanel {
         JPanel tempHexPanel;
         for (int i = 0; i < 36; i++) {
             tempHexPanel = new JPanel();
+            this.hexominoPanel.setBorder(new EmptyBorder(10, 0, 10, 0));
             if (indexList.contains(i)) {
                 tempHexPanel.setBackground(Color.blue);
                 this.hexominoPanel.add(tempHexPanel);
