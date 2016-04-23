@@ -2,20 +2,18 @@ package sinon.views;
 
 import java.awt.Color;
 import java.util.Optional;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
-import sinon.controllers.ExitGameController;
-import sinon.controllers.NextLevelController;
-import sinon.controllers.RestartLevelController;
-import sinon.main.Game;
-import sinon.main.Kabasuji;
+
+import sinon.models.BullPen;
 import sinon.models.Level;
+import sinon.models.data.BullPenData;
 
 /**
- * This class controls the entirety of the Builder/Game Views;
- * Shows GridView, the Optional ReleaseButtonView, the BullpenView, and the
- * InfoPanel.
+ * This class controls the entirety of the Builder/Game Views; Shows GridView,
+ * the Optional ReleaseButtonView, the BullpenView, and the InfoPanel.
  * 
  * @see InfoPanel
  */
@@ -23,70 +21,70 @@ import sinon.models.Level;
 public class MainView extends JPanel {
     static final int LEVEL_PANEL_WIDTH = 640;
     static final int MAIN_PANEL_HEIGHT = 545;
-    
-    /**Allows global access to top level MainView object.*/
-    public static MainView mainView;
-    /**Top level Game/Builder object.*/
-    public static Kabasuji kabasuji;
-    /**levelPanel contains: Bullpen, GridView, optional ReleaseButtonView, and is on the left side of the screen.*/
-    private LevelPanel levelPanel;
-    /**Contains GridView and the Optional ReleaseButtonView.*/
-    private JPanel gameAreaPanel;
-    BullpenView bullpenView;
-    /**Only exists in Builder Mode and Release game play.*/
-    private Optional<ReleaseButtonView> releaseButtonView;
-    private InfoPanel infoPanel;
-    public int levelNum;
-    Level level;
 
-	/**
-	 * @param k
-	 * 			Top level Game/Builder object.
-	 * @param infoPanel
-	 * 			The InfoPanel to be displayed.
-	 */
-    public MainView(Kabasuji k, InfoPanel infoPanel) {
+    /**
+     * levelPanel contains: Bullpen, GridView, optional ReleaseButtonView, and
+     * is on the left side of the screen.
+     */
+    LevelPanel levelPanel;
+    /** Contains GridView and the Optional ReleaseButtonView. */
+    JPanel gameAreaPanel; // FIXME If this is only asthetic, get rid of it.
+    /** Only exists in Builder Mode and Release game play. */
+    Optional<ReleaseButtonView> releaseButtonView;
+    BullpenView bullpenView;
+    InfoPanel infoPanel;
+    Level level;
+    int levelNum;
+
+    /**
+     * @param k
+     *            Top level Game/Builder object.
+     * @param infoPanel
+     *            The InfoPanel to be displayed.
+     */
+    public MainView(InfoPanel infoPanel, Level level) {
         releaseButtonView = Optional.of(new ReleaseButtonView());
-        mainView = this;
-        this.infoPanel = infoPanel; 
-        kabasuji = k;
-        this.bullpenView = new BullpenView();
-        initializeViews(); 
+        this.infoPanel = infoPanel;
+        this.bullpenView = new BullpenView(new BullPen(new BullPenData()));
+        this.level = level;
+        initializeViews();
     }
-    
+
     /**
      * This function sets the currently opened level number.
+     * 
      * @param num
-     * 		Level number (1 to 15)
+     *            Level number (1 to 15)
      */
-    public void setLevelNum(int num){
-    	this.levelNum = num;
-    	System.out.println("MAINVIEW HAS RECOGNIZED LEVEL #" + this.levelNum);
+    public void setLevelNum(int num) {
+        this.levelNum = num;
+        System.out.println("MAINVIEW HAS RECOGNIZED LEVEL #" + this.levelNum);
     }
 
-    /** Initializes all of the components that make up this GUI.*/
+    /** Initializes all of the components that make up this GUI. */
     private void initializeViews() {
         this.setLayout(null);
 
         initGameAreaPanel();
         initLevelPanel();
-        //initBullpenView();
+        // initBullpenView();
         initBoard();
         initReleaseButtonView();
         initGameInfoButtons();
-        
+
         this.add(this.infoPanel);
         infoPanel.setBounds(LEVEL_PANEL_WIDTH, 0, 150, MAIN_PANEL_HEIGHT);
     }
-    
-    /** Get all the buttons from the infoView (all return null if in Builder mode).*/
-    private void initGameInfoButtons(){
+
+    /**
+     * Get all the buttons from the infoView (all return null if in Builder
+     * mode).
+     */
+    private void initGameInfoButtons() {
         JButton exitBtn = infoPanel.getExitButton();
         JButton restartBtn = infoPanel.getRestartButton();
         JButton nextLevelBtn = infoPanel.getNextLevelButton();
-        if(exitBtn != null) exitBtn.addActionListener(new ExitGameController((Game) kabasuji, this)); 
-        if(restartBtn != null) restartBtn.addActionListener(new RestartLevelController((Game) kabasuji, this));
-        if(nextLevelBtn != null) nextLevelBtn.addActionListener(new NextLevelController((Game) kabasuji, this));
+
     }
 
     private void initReleaseButtonView() {
@@ -99,7 +97,7 @@ public class MainView extends JPanel {
      * {@link #gameAreaPanel}
      */
     private void initBoard() {
-        BoardView tempBoard = new BoardView(kabasuji);
+        BoardView tempBoard = new BoardView(level.getBoard());
         gameAreaPanel.add(tempBoard.boardPanel);
     }
 
@@ -116,8 +114,17 @@ public class MainView extends JPanel {
         levelPanel.setBounds(0, 0, LEVEL_PANEL_WIDTH, MAIN_PANEL_HEIGHT);
         this.add(levelPanel);
     }
-    
+
     public BullpenView getBullpenView() {
-    	return this.bullpenView;
+        return this.bullpenView;
     }
+
+    public InfoPanel getInfoPanel() {
+        return infoPanel;
+    }
+
+    public void getBoardView() {
+        // TODO Auto-generated method stud
+    }
+
 }

@@ -10,6 +10,9 @@ import javax.swing.JScrollPane;
 
 public class LevelPanel extends JPanel {
 
+    BullpenView bullPenView;
+    BoardView boardView;
+
     /**
      * Create the panel.
      * 
@@ -42,4 +45,5 @@ public class LevelPanel extends JPanel {
         add(panel, gbc_panel);
 
     }
+
 }
