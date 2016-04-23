@@ -10,6 +10,7 @@ import javax.swing.JScrollPane;
 
 import sinon.controllers.HexominoBankController;
 import sinon.main.Builder;
+import sinon.models.BullPen;
 import sinon.models.Hexomino;
 import sinon.models.data.HexominoBankData;
 import sinon.views.HexominoBullpenView;
@@ -20,12 +21,13 @@ public class BankView extends InfoPanel {
 
     JScrollPane scrollPanel;
     JPanel bankViewPanel;
-    Builder builder;
+    //Builder builder;
+    BullPen bullpen;
 
     public BankView(Builder b) {
         super();
         
-        this.builder = b;
+        //this.builder = b;
         //initialize builder menu bar
 		//BuilderMenuBar menuBar = new BuilderMenuBar(this.builder);
 		//this.builder.setJMenuBar(menuBar);
@@ -37,6 +39,7 @@ public class BankView extends InfoPanel {
         this.setLayout(new GridLayout(1, 1));
         this.add(scrollPanel);
         this.validate();
+        this.bullpen = new BullPen(HexominoBankData.getHexominos());
     }
 
     private void initContentPanel() {
@@ -60,13 +63,12 @@ public class BankView extends InfoPanel {
     }
 
     private void populateBankViewWithHexominoes() {
-        List<Hexomino> hexominoesReadFromFile = HexominoBankData.getHexominos();
+        
 
-        for (int i = 0; i < hexominoesReadFromFile.size(); i++) {
-            HexominoBullpenView tempHexBullpenView = new HexominoBullpenView(hexominoesReadFromFile.get(i));
-            tempHexBullpenView.getHexominoPanel().addMouseListener(new HexominoBankController(this.builder, tempHexBullpenView));
+        for (int i = 0; i < bullpen.getPieces().size(); i++) {
+            HexominoBullpenView tempHexBullpenView = new HexominoBullpenView(bullpen.getPieces().get(i));
             this.bankViewPanel.add(tempHexBullpenView.getHexominoPanel());
-            tempHexBullpenView.addMouseListener(new HexominoBankController(this.builder, tempHexBullpenView));
+            //tempHexBullpenView.addMouseListener(new HexominoBankController(this.builder, tempHexBullpenView));
         }
 
         this.bankViewPanel.doLayout();
