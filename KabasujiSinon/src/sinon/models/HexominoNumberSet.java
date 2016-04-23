@@ -38,14 +38,13 @@ public class HexominoNumberSet {
         this.points = points;
     }
 
-    public void flipHorizontally() {
+    void flipHorizontally() {
         for (Point p : points) {
             p.x = p.x * -1;
         }
-
     }
 
-    public void flipVertically() {
+    void flipVertically() {
         for (Point p : points) {
             p.y = p.y * -1;
         }
@@ -57,7 +56,7 @@ public class HexominoNumberSet {
      * @return True if the set of points given is in a legal state for a
      *         HexominoNumberSet.
      */
-    public static boolean validatePoints(List<Point> points) {
+    static boolean validatePoints(List<Point> points) {
         if (points == null) {
             return false;
         }

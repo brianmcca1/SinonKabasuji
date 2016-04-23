@@ -63,7 +63,7 @@ public class BullPen {
         return this.pieces.remove(hex);
     }
 
-    // FIXME this method is written wrong and is really concerning
+    // FIXME this method is written wrong
     @Deprecated
     public void rotateHexominoClockwise(Hexomino hex) {
         if (this.pieces.contains(hex)) {
@@ -73,7 +73,7 @@ public class BullPen {
         }
     }
 
-    // FIXME this method is written wrong and is really concerning
+    // FIXME this method is written wrong
     @Deprecated
     public void rotateHexominoCounterClockwise(Hexomino hex) {
         if (this.pieces.contains(hex)) {
@@ -83,7 +83,7 @@ public class BullPen {
         }
     }
 
-    // FIXME this method is written wrong and is really concerning
+    // FIXME this method is written wrong
     @Deprecated
     public void flipHexominoVertical(Hexomino hex) {
         if (this.pieces.contains(hex)) {
@@ -94,7 +94,7 @@ public class BullPen {
 
     }
 
-    // FIXME this method is written wrong and is really concerning
+    // FIXME this method is written wrong
     @Deprecated
     public void flipHexominoHorizontal(Hexomino hex) {
         if (this.pieces.contains(hex)) {
