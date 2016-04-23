@@ -1,9 +1,13 @@
 package sinon.main;
 
 import java.io.File;
+
+import javax.swing.JPanel;
+
 import sinon.models.Level;
 import sinon.views.MainView;
 import sinon.views.builder.BankView;
+import sinon.views.builder.BuilderMenuBar;
 
 @SuppressWarnings("serial")
 public class Builder extends Kabasuji {
@@ -13,10 +17,16 @@ public class Builder extends Kabasuji {
 	/** Builder's knowledge of the level. */
 	Level currentLevel;
 	
+	JPanel blankPanel;
+	
 	Builder() {
 		super();
 		this.currentFile = null;
-		startSplash("Kabasuji Builder", new MainView(this, new BankView(this)));
+		//startSplash("Kabasuji Builder", new MainView(this, new BankView(this)));
+		this.blankPanel = new JPanel();
+		startSplash("Kabasuji Builder", this.blankPanel);
+		BuilderMenuBar menuBar = new BuilderMenuBar(this, this.blankPanel);
+		this.setJMenuBar(menuBar);
 	}
 
 	public static void main(String args[]) {

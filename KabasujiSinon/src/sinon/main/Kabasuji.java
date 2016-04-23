@@ -38,50 +38,11 @@ public abstract class Kabasuji extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    /**
-     * Creates a SplashScreen with the given title and displays it.
-     * 
-     * @param nextPanel
-     *            The next panel that will be displayed after this panel
-     */
-    /*
-    public void startSplash(String title, JPanel nextPanel) {
-        SplashScreen splash = new SplashScreen(title);
-        this.add(splash);
-
-        this.validate();
-
-        ActionListener al = new ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SplashScreen.count++;
-                SplashScreen.progressBar.setValue(SplashScreen.count);
-                if (SplashScreen.count == 100) {
-                    SplashScreen.timer.stop();
-                    startNextPanel(splash, nextPanel);
-                }
-            }
-        };
-
-        SplashScreen.timer = new Timer(25, al);
-        SplashScreen.timer.start();
-    }
-*/
-
 	// COMMON VIEWS AND MODELS BETWEEN BOTH BUILDER AND GAME GO HERE
 	public Stack undo = new Stack();
 	// Stack redo = new Stack();
 	// public Level[] levels = new Level[15];
 	public Level openedLevel;
-	
-/*
-	public Kabasuji() {
-		this.setBounds(100, 100, 800, 600);
-		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.selected = null;
-	}
-	*/
 
 	/**
 	 * Creates a SplashScreen with the given information and displays it

@@ -1,17 +1,16 @@
 package sinon.views.builder;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.KeyStroke;
-
 import sinon.controllers.BuilderNewLightningLevelController;
 import sinon.controllers.BuilderNewPuzzleLevelController;
 import sinon.controllers.BuilderNewReleaseLevelController;
+import sinon.controllers.BuilderOpenController;
 import sinon.controllers.BuilderSaveAsController;
 import sinon.controllers.BuilderSaveController;
 import sinon.main.Builder;
@@ -28,9 +27,12 @@ public class BuilderMenuBar extends JMenuBar {
 	private JMenu mnEdit;
 	
 	private Builder builder;
+	
+	private JPanel blankPanel;
 
-	public BuilderMenuBar(Builder b) {
+	public BuilderMenuBar(Builder b, JPanel bPanel) {
 		this.builder = b;
+		this.blankPanel = bPanel;
 		initFileMenu();
 		initEditMenu();
 	}
@@ -73,8 +75,9 @@ public class BuilderMenuBar extends JMenuBar {
 		
 		mntmSave.addActionListener(new BuilderSaveController(this.builder));
 		mntmSaveAs.addActionListener(new BuilderSaveAsController(this.builder));
-		mntmNewPuzzleLevel.addActionListener(new BuilderNewPuzzleLevelController(this.builder));
-		mntmNewLightningLevel.addActionListener(new BuilderNewLightningLevelController(this.builder));
-		mntmNewReleaseLevel.addActionListener(new BuilderNewReleaseLevelController(this.builder));	
+		mntmNewPuzzleLevel.addActionListener(new BuilderNewPuzzleLevelController(this.builder, this.blankPanel));
+		mntmNewLightningLevel.addActionListener(new BuilderNewLightningLevelController(this.builder, this.blankPanel));
+		mntmNewReleaseLevel.addActionListener(new BuilderNewReleaseLevelController(this.builder, this.blankPanel));
+		mntmOpen.addActionListener(new BuilderOpenController(this.builder));
 	}
 }

@@ -27,8 +27,8 @@ public class BankView extends InfoPanel {
         
         this.builder = b;
         //initialize builder menu bar
-		BuilderMenuBar menuBar = new BuilderMenuBar(this.builder);
-		this.builder.setJMenuBar(menuBar);
+		//BuilderMenuBar menuBar = new BuilderMenuBar(this.builder);
+		//this.builder.setJMenuBar(menuBar);
 
         initContentPanel();
         initBankViewScrollPanel();
