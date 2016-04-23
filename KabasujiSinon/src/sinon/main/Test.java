@@ -7,12 +7,14 @@ import sinon.models.Board;
 import sinon.models.BullPen;
 import sinon.models.Hexomino;
 import sinon.models.Level;
+import sinon.models.data.HexominoBankData;
 import sinon.views.MainView;
 import sinon.views.builder.BankView;
 import sinon.views.game.GameInfoView;
 
 public class Test extends Kabasuji {
 
+    BullPen bullpen = new BullPen(HexominoBankData.getHexominos());
     Level testLevel;
     MainView mainView;
 
@@ -30,13 +32,18 @@ public class Test extends Kabasuji {
     }
 
     void initializeMainView() {
-        mainView = new MainView(new BankView(), testLevel);
+        mainView = new MainView(new BankView(bullpen), testLevel);
     }
 
     void initializeMainControllers() {
         BankView sidePanel = (BankView) mainView.getInfoPanel();
 
-        sidePanel.registerControllers(new )
+        sidePanel.getListOfHexViews();
+        
+        for every hexView:
+            add the controller to it.
+        
+        sidePanel.registerControllers(new HexominoBankControllerFactory());
 
         mainView.getBullpenView().addMouseListener(new BullpenController(
                 testLevel.getBullpen(), mainView.getBullpenView(), testLevel));
