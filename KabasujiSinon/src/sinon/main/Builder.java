@@ -15,6 +15,7 @@ public class Builder extends Kabasuji {
 	
 	Builder() {
 		super();
+		this.currentFile = null;
 		startSplash("Kabasuji Builder", new MainView(this, new BankView(this)));
 	}
 
@@ -23,15 +24,11 @@ public class Builder extends Kabasuji {
 		Builder builder = new Builder();
 	}
 	
-	public void setCurrentFile(File f){
-		this.currentFile = f;
-	}
+	public void setCurrentFile(File f){this.currentFile = f;}
 	
-	public void setCurrentLevel(Level l){
-		this.currentLevel = l;
-	}
+	public void setCurrentLevel(Level l){this.currentLevel = l;}
 	
-	public File getCurrentFile(){
-		return this.currentFile;
-	}
+	public File getCurrentFile(){return this.currentFile;}
+	
+	public Level getCurrentLevel(){return this.currentLevel;}
 }
