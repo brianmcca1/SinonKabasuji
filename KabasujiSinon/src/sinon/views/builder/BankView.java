@@ -66,6 +66,7 @@ public class BankView extends InfoPanel {
             HexominoBullpenView tempHexBullpenView = new HexominoBullpenView(hexominoesReadFromFile.get(i));
             tempHexBullpenView.getHexominoPanel().addMouseListener(new HexominoBankController(this.builder, tempHexBullpenView));
             this.bankViewPanel.add(tempHexBullpenView.getHexominoPanel());
+            tempHexBullpenView.addMouseListener(new HexominoBankController(this.builder, tempHexBullpenView));
         }
 
         this.bankViewPanel.doLayout();
