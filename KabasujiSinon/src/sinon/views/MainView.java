@@ -22,8 +22,6 @@ public class MainView extends JPanel {
     static final int LEVEL_PANEL_WIDTH = 640;
     static final int MAIN_PANEL_HEIGHT = 545;
 
-    /** Allows global access to top level MainView object. */
-    public static MainView mainView;
     /**
      * levelPanel contains: Bullpen, GridView, optional ReleaseButtonView, and
      * is on the left side of the screen.
@@ -46,7 +44,6 @@ public class MainView extends JPanel {
      */
     public MainView(InfoPanel infoPanel, Level level) {
         releaseButtonView = Optional.of(new ReleaseButtonView());
-        mainView = this;
         this.infoPanel = infoPanel;
         this.bullpenView = new BullpenView(new BullPen(new BullPenData()));
         this.level = level;
@@ -100,7 +97,7 @@ public class MainView extends JPanel {
      * {@link #gameAreaPanel}
      */
     private void initBoard() {
-        BoardView tempBoard = new BoardView(level.board);
+        BoardView tempBoard = new BoardView(level.getBoard());
         gameAreaPanel.add(tempBoard.boardPanel);
     }
 
