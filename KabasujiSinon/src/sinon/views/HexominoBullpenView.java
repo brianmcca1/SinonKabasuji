@@ -55,6 +55,7 @@ public class HexominoBullpenView extends JPanel {
             this.hexominoPanel.setBorder(new EmptyBorder(10, 0, 10, 0));
             if (indexList.contains(i)) {
                 tempHexPanel.setBackground(Color.blue);
+                tempHexPanel.setBorder(BorderFactory.createLineBorder(Color.lightGray));
                 this.hexominoPanel.add(tempHexPanel);
             } else {
                 this.hexominoPanel.add(tempHexPanel);

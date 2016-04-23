@@ -24,7 +24,7 @@ public class Level {
 	 * @param t Enum type of level (puzzle/lightning/release)
 	 */
 	public Level(types t){
-		this.levelData.setLevelType(t);
+		this.levelData = new LevelData(t);
 	}
 	
 	/** 

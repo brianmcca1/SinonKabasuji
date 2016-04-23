@@ -27,6 +27,10 @@ public final class LevelData implements Serializable {
     	this.levelNum = num;
     }
     
+    public LevelData(types type){
+    	this.levelType = type;
+    }
+    
     /**
      * Builds an empty board which is ready for game play based on the data
      * stored in this object.
@@ -63,11 +67,6 @@ public final class LevelData implements Serializable {
      */
     public types getLevelType() {
         return this.levelType;
-    }
-    
-    
-    public void setLevelType(types t){
-    	this.levelType = t;
     }
 
 }
