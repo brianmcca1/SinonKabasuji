@@ -69,7 +69,7 @@ public class BankView extends InfoPanel implements HexominoContainerView {
         for (int i = 0; i < bullpen.getPieces().size(); i++) {
             HexominoBullpenView tempHexBullpenView = new HexominoBullpenView(
                     bullpen.getPieces().get(i));
-            this.contentPanel.add(tempHexBullpenView.getHexominoPanel());
+            this.contentPanel.add(tempHexBullpenView);
             this.hexominoViews.add(tempHexBullpenView);
             // tempHexBullpenView.addMouseListener(new
             // HexominoBankController(this.builder, tempHexBullpenView));
