@@ -7,6 +7,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+
+import sinon.controllers.HexominoBankController;
 import sinon.main.Builder;
 import sinon.models.Hexomino;
 import sinon.models.data.HexominoBankData;
@@ -58,12 +60,11 @@ public class BankView extends InfoPanel {
     }
 
     private void populateBankViewWithHexominoes() {
-
         List<Hexomino> hexominoesReadFromFile = HexominoBankData.getHexominos();
 
         for (int i = 0; i < hexominoesReadFromFile.size(); i++) {
-            HexominoBullpenView tempHexBullpenView = new HexominoBullpenView(
-                    hexominoesReadFromFile.get(i));
+            HexominoBullpenView tempHexBullpenView = new HexominoBullpenView(hexominoesReadFromFile.get(i));
+            tempHexBullpenView.getHexominoPanel().addMouseListener(new HexominoBankController(this.builder, tempHexBullpenView));
             this.bankViewPanel.add(tempHexBullpenView.getHexominoPanel());
         }
 
