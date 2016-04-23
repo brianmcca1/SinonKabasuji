@@ -29,6 +29,7 @@ public class Hexomino {
      * @param a1
      *            the y component of the first coordinate point
      */
+    @Deprecated
     protected Hexomino(int a, int a1, int b, int b1, int c, int c1, int d,
             int d1, int e, int e1, int f, int f1) {
 
@@ -61,10 +62,10 @@ public class Hexomino {
      *            The immutable data object representing a HexominoNumberSet.
      */
     public Hexomino(HexominoCode code) {
-        this.hexominoNumberSet = new HexominoNumberSet(code);
+        this.hexominoNumberSet = NumberSetFactory.getByCode(code);
     }
 
-    public void addToTile(Tile t) {
+    void addToTile(Tile t) {
         if (t == null) {
             throw new IllegalArgumentException("Given Tile was null");
         }

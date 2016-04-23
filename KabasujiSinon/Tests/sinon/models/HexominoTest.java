@@ -1,4 +1,4 @@
-package sinon.tests;
+package sinon.models;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,8 +8,6 @@ import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import sinon.models.Hexomino;
 
 public class HexominoTest {
 
@@ -161,11 +159,6 @@ public class HexominoTest {
     public void testNullTile() {
         Hexomino hex = buildExampleHexomino();
         hex.addToTile(null);
-        // FIXME this class needs to be in a different package I think?
-        // I can't call hex.add(null), because add is package private.
-        // That's the right visibility this test package just needs to be
-        // renamed I think...
-
     }
 
 }

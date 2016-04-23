@@ -1,4 +1,4 @@
-package sinon.tests;
+package sinon.models;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,24 +9,24 @@ import java.util.List;
 import org.junit.Test;
 
 import sinon.models.HexominoNumberSet;
+import sinon.models.NumberSetFactory;
 import sinon.models.data.HexominoCode;
 
 public class HexominoNumberSetTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testCreateNullSet() {
-
         List<Point> points = null;
 
         @SuppressWarnings("unused")
-        HexominoNumberSet set = new HexominoNumberSet(points);
+        HexominoNumberSet set = NumberSetFactory.getByList(points);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testCreateNullCode() {
         HexominoCode c = null;
         @SuppressWarnings("unused")
-        HexominoNumberSet set = new HexominoNumberSet(c);
+        HexominoNumberSet set = NumberSetFactory.getByCode(c);
     }
 
     @Test
@@ -34,7 +34,7 @@ public class HexominoNumberSetTest {
         List<Point> points = getLegalNumberSet();
 
         @SuppressWarnings("unused")
-        HexominoNumberSet set = new HexominoNumberSet(points);
+        HexominoNumberSet set = NumberSetFactory.getByList(points);
     }
 
     /**
@@ -57,14 +57,14 @@ public class HexominoNumberSetTest {
         points.add(new Point(0, 6));
 
         @SuppressWarnings("unused")
-        HexominoNumberSet set = new HexominoNumberSet(points);
+        HexominoNumberSet set = NumberSetFactory.getByList(points);
     }
 
     @Test
     public void testGetNormalizedSet() {
 
-        HexominoNumberSet set = new HexominoNumberSet(-3, 0, -2, 0, -1, 0, 0, 0,
-                1, 0, 2, 0);
+        HexominoNumberSet set = NumberSetFactory.getByNumbers(-3, 0, -2, 0, -1,
+                0, 0, 0, 1, 0, 2, 0);
 
         List<Point> newPoints = set.getNormalizedPoints();
 
@@ -78,10 +78,10 @@ public class HexominoNumberSetTest {
 
     @Test
     public void testGetNormalizedSetIsACopy() {
-        HexominoNumberSet setOne = new HexominoNumberSet(-3, 0, -2, 0, -1, 0, 0,
-                0, 1, 0, 2, 0);
-        HexominoNumberSet setTwo = new HexominoNumberSet(-3, 0, -2, 0, -1, 0, 0,
-                0, 1, 0, 2, 0);
+        HexominoNumberSet setOne = NumberSetFactory.getByNumbers(-3, 0, -2, 0,
+                -1, 0, 0, 0, 1, 0, 2, 0);
+        HexominoNumberSet setTwo = NumberSetFactory.getByNumbers(-3, 0, -2, 0,
+                -1, 0, 0, 0, 1, 0, 2, 0);
 
         List<Point> newPoints = setOne.getNormalizedPoints();
         newPoints.get(0).translate(5, 3);

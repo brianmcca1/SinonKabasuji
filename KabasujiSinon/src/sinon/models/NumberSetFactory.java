@@ -58,7 +58,7 @@ public class NumberSetFactory {
      * @param code
      *            The immutable data object representing a HexominoNumberSet.
      */
-    public HexominoNumberSet getByCode(HexominoCode code) {
+    public static HexominoNumberSet getByCode(HexominoCode code) {
         if (code == null)
             throw new IllegalArgumentException("HexominoCode can't be null");
 
