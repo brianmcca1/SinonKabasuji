@@ -2,6 +2,11 @@ package sinon.models.data;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -23,6 +28,7 @@ public class BoardDataTest {
         board.getTile(1, 2).setPlayable(false);
         board.getTile(2, 3).setPlayable(false);
         board.getTile(6, 8).setPlayable(false);
+
     }
 
     @Test
@@ -44,6 +50,15 @@ public class BoardDataTest {
         Board nullBoard = null;
         @SuppressWarnings("unused")
         BoardData data = new BoardData(nullBoard);
+    }
+
+    @Test
+    public void testSerialize() throws IOException {
+        BoardData data = new BoardData(board);
+        new ObjectOutputStream(new ByteArrayOutputStream()).writeObject(data);
+
+        // TODO test serializability;
+        fail("test isn't finished yet");
     }
 
 }
