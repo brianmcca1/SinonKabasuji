@@ -23,8 +23,10 @@ public class Level {
 	 * Used by the Builder's new level controllers to set the Level field regarding its type
 	 * @param t Enum type of level (puzzle/lightning/release)
 	 */
-	public Level(types t){
+	public Level(types t, Board b, BullPen bp){
 		this.levelData = new LevelData(t);
+		this.board = b;
+		this.bullpen = bp;
 	}
 	
 	/** 

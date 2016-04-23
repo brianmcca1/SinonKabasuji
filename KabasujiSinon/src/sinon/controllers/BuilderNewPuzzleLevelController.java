@@ -3,7 +3,10 @@ package sinon.controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import sinon.main.Builder;
+import sinon.models.Board;
+import sinon.models.BullPen;
 import sinon.models.Level;
+import sinon.models.data.BullPenData;
 import sinon.models.data.LevelType.types;
 
 public class BuilderNewPuzzleLevelController implements ActionListener{
@@ -17,6 +20,6 @@ public class BuilderNewPuzzleLevelController implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("CREATING NEW PUZZLE LEVEL");
-		this.builder.setCurrentLevel(new Level(types.PUZZLE));
+		this.builder.setCurrentLevel(new Level(types.PUZZLE, new Board(), new BullPen(new BullPenData())));
 	}
 }

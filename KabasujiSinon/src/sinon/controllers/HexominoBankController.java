@@ -4,8 +4,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Optional;
 import sinon.main.Builder;
+import sinon.models.BullPen;
 import sinon.models.Hexomino;
 import sinon.views.HexominoBullpenView;
+import sinon.views.MainView;
 /**
  * This controller responds to mouse interactions with the HexominoBullpenViews in 
  * the bank of the builder.
@@ -27,11 +29,13 @@ public class HexominoBankController implements MouseListener{
 		System.out.println("I AM A BANK HEXOMINO AND I GOT CLICKED ON");
 		if(this.builder.getCurrentLevel() != null){
 			// TODO This event basically adds a hexomino to the bullpen
-			Optional<Hexomino> hex = Optional.of(this.hexBullpenView.getHexomino()); 
+			Hexomino hex = this.hexBullpenView.getHexomino(); 
+			//when a bank hexomino gets clicked on, it just gets added to the bullpen
 			
-			this.builder.getCurrentLevel().select(hex); //when a bank hexomino gets clicked on, it just gets added to the bullpen
-			
-			System.out.println("SELECTED HEXOMINO IN BUILDER'S LEVEL: " + this.builder.getCurrentLevel().selectedHexomino.toString());
+			BullPen bp = this.builder.getCurrentLevel().getBullpen();
+			bp.addHexomino(hex);
+			System.out.println(bp.getPieces().toString());
+
 		}
 	}
 
