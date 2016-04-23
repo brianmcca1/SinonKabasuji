@@ -30,17 +30,16 @@ public class Serializer {
 	 * NOTE: this function also takes into account the selected directory from the JFileChooser.
 	 * @return indicates success or failure of serialization
 	 */
-	public boolean serializeFile(){
+	public void serializeFile(){
 		try{
 			FileOutputStream fout = new FileOutputStream(this.fileToSave);
 			ObjectOutputStream oos = new ObjectOutputStream(fout);   
 			oos.writeObject(this.levelData);
 			oos.close();
 			System.out.println("SERIALIZING FILE: " + this.fileToSave.getName());
-			return true;
+			System.out.println("SERIALIZER SUCCESSFUL");
 		}catch(Exception ex){
 			ex.printStackTrace();
-			return false;
 		}
 	}
 

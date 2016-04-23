@@ -12,6 +12,8 @@ import sinon.models.data.BullPenData;
 import sinon.models.data.LevelData;
 import sinon.models.data.LevelType;
 import sinon.serial.Deserializer;
+import sinon.views.MainView;
+import sinon.views.builder.BankView;
 import sinon.views.builder.BuilderMenuBar;
 
 public class BuilderOpenController extends BuilderNewLevelController implements ActionListener{
@@ -47,11 +49,19 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
             //CREATE LEVEL FROM THE READ LEVELDATA HERE
             
             Deserializer deserializer = new Deserializer(file);
-            boolean successful = deserializer.deserializeFile();
+            deserializer.deserializeFile();
             
             startLevel(this.blankPanel, this.builder, this.builderMenuBar);
-            if(successful) System.out.println("DESERIALIZER SUCCESSFULLY CREATED LEVELDATA FROM FILE");
-            else System.out.println("DESERIALIZER FAILED");
+            this.builderMenuBar.mntmSave.setEnabled(true);
         }
+	}
+	
+	public void startLevel(JPanel blankPanel, Builder builder, BuilderMenuBar bMenuBar){
+		builder.startNextPanel(blankPanel, new MainView(builder, new BankView(builder)));
+		bMenuBar.mntmSaveAs.setEnabled(true);
+		bMenuBar.mntmSave.setEnabled(true);
+		bMenuBar.mntmUndo.setEnabled(true);
+		bMenuBar.mntmRedo.setEnabled(true);
+        bMenuBar.mntmClearBoard.setEnabled(true);
 	}
 }

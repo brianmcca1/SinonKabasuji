@@ -2,12 +2,7 @@ package sinon.serial;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-
-import sinon.models.Hexomino;
 import sinon.models.data.LevelData;
 
 /**
@@ -34,16 +29,15 @@ public class Deserializer {
 	 * NOTE: this function also takes into account the selected directory from the JFileChooser.
 	 * @return indicates success or failure of deserialization
 	 */
-	public boolean deserializeFile() {
+	public void deserializeFile() {
 	    try{
 	    	FileInputStream fin = new FileInputStream(fileToOpen);
 	    	ObjectInputStream ois = new ObjectInputStream(fin);
 	    	this.levelData = (LevelData) ois.readObject();
 	    	ois.close();
-	    	return true;
+	    	System.out.println("DESERIALIZER SUCCESSFUL");
 	    }catch(Exception ex){
 	    	ex.printStackTrace();
-	    	return false;
 	    } 
 	}
 	

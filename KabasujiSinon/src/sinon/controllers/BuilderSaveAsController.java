@@ -52,11 +52,9 @@ public class BuilderSaveAsController implements ActionListener{
             LevelData levelData = new LevelData(LevelType.types.PUZZLE, new BoardData(), new BullPenData(), 1);
             
             Serializer serializer = new Serializer(file, levelData);
-            boolean successful = serializer.serializeFile();
+            serializer.serializeFile();
             
             this.builderMenuBar.mntmSave.setEnabled(true);
-            if(successful) System.out.println("SERIALIZER SUCCESSFULLY SAVED LEVELDATA TO FILE");
-            else System.out.println("SERIALIZER FAILED");
         }
 	}
 }
