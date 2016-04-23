@@ -32,7 +32,7 @@ public class MainView extends JPanel {
     private LevelPanel levelPanel;
     /**Contains GridView and the Optional ReleaseButtonView.*/
     private JPanel gameAreaPanel;
-    private JPanel bullpenView;
+    private BullpenView bullpenView;
     /**Only exists in Builder Mode and Release game play.*/
     private Optional<ReleaseButtonView> releaseButtonView;
     private InfoPanel infoPanel;
@@ -47,9 +47,9 @@ public class MainView extends JPanel {
 	 */
     public MainView(Kabasuji k, InfoPanel infoPanel) {
         releaseButtonView = Optional.of(new ReleaseButtonView());
-        this.mainView = this;
+        mainView = this;
         this.infoPanel = infoPanel; 
-        this.kabasuji = k;
+        kabasuji = k;
         initializeViews(); 
     }
     
