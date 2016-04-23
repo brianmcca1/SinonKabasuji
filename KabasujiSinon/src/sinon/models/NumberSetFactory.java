@@ -7,7 +7,14 @@ import java.util.List;
 import sinon.models.data.HexominoCode;
 
 /**
- * Instantiates HexominoNumberSets
+ * Instantiates HexominoNumberSets.
+ * 
+ * 
+ * All versions of the constructor eventually point to
+ * {@link #getByComparableList(List)}. For validation, this class relies on
+ * {@link HexominoNumberSet#validatePoints(List)}. This should be the only class
+ * creating HexominoNumberSets.
+ * 
  * 
  * @author Josh Desmond
  */
@@ -28,15 +35,15 @@ public class NumberSetFactory {
      */
     public static HexominoNumberSet getByNumbers(int a, int a1, int b, int b1,
             int c, int c1, int d, int d1, int e, int e1, int f, int f1) {
-        List<Point> points = new LinkedList<Point>();
-        points.add(new Point(a, a1));
-        points.add(new Point(b, b1));
-        points.add(new Point(c, c1));
-        points.add(new Point(d, d1));
-        points.add(new Point(e, e1));
-        points.add(new Point(f, f1));
+        List<ComparablePoint> points = new LinkedList<ComparablePoint>();
+        points.add(new ComparablePoint(a, a1));
+        points.add(new ComparablePoint(b, b1));
+        points.add(new ComparablePoint(c, c1));
+        points.add(new ComparablePoint(d, d1));
+        points.add(new ComparablePoint(e, e1));
+        points.add(new ComparablePoint(f, f1));
 
-        return getByList(points);
+        return getByComparableList(points);
     }
 
     /**
@@ -48,6 +55,20 @@ public class NumberSetFactory {
      *            element must be (0,0).
      */
     public static HexominoNumberSet getByList(List<Point> points) {
+        if (points == null)
+            throw new IllegalArgumentException("Points can't be null");
+
+        List<ComparablePoint> newPoints = new LinkedList<ComparablePoint>();
+        for (Point p : points) {
+            newPoints.add(new ComparablePoint(p));
+        }
+
+        return getByComparableList(newPoints);
+    }
+
+    public static HexominoNumberSet getByComparableList(
+            List<ComparablePoint> points) {
+        points.sort(null);
         HexominoNumberSet.validatePoints(points);
         return new HexominoNumberSet(points);
     }

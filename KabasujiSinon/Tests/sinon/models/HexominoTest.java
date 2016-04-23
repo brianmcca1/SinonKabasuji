@@ -30,7 +30,8 @@ public class HexominoTest {
         hex.flipHorizontally();
         Hexomino expectedFlippedHex = new Hexomino(0, 0, 0, 1, 0, 2, 0, 3, 0, 4,
                 -1, 4);
-        assertEquals(expectedFlippedHex, hex);
+        assertEquals(expectedFlippedHex.getNormalizedPoints(),
+                hex.getNormalizedPoints());
     }
 
     @Test
@@ -47,8 +48,9 @@ public class HexominoTest {
         Hexomino hex = buildExampleHexomino();
         hex.flipVertically();
         Hexomino expectedFlippedHex = new Hexomino(0, 0, 0, -1, 0, -2, 0, -3, 0,
-                -4, -1, -4);
-        assertEquals(expectedFlippedHex, hex);
+                -4, 1, -4);
+        assertEquals(expectedFlippedHex.getNormalizedPoints(),
+                hex.getNormalizedPoints());
     }
 
     @Test
@@ -122,7 +124,10 @@ public class HexominoTest {
         assertEquals(hex, shiftedAnchor);
         shiftedAnchor.rotateC();
         shiftedAnchor.flipHorizontally();
-        assertEquals(hex, shiftedAnchor);
+        hex.rotateC();
+        hex.flipHorizontally();
+        assertEquals(hex.getNormalizedPoints(),
+                shiftedAnchor.getNormalizedPoints());
     }
 
     @Test(expected = IllegalArgumentException.class)
