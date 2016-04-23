@@ -1,9 +1,11 @@
 package sinon.models;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.Before;
@@ -22,6 +24,21 @@ public class HexominoTest {
      */
     private static Hexomino buildExampleHexomino() {
         return new Hexomino(0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 1, 4);
+    }
+    
+    @Test
+    public void testHexNumSetConstructor(){
+    	Hexomino hex = buildExampleHexomino();
+    	ArrayList<ComparablePoint> points = new ArrayList<ComparablePoint>();
+    	points.add(new ComparablePoint(0, 0));
+    	points.add(new ComparablePoint(0, 1));
+    	points.add(new ComparablePoint(0, 2));
+    	points.add(new ComparablePoint(0, 3));
+    	points.add(new ComparablePoint(0, 4));
+    	points.add(new ComparablePoint(1, 4));
+    	HexominoNumberSet hexominoNumberSet = new HexominoNumberSet(points);
+    	Hexomino constructedHex = new Hexomino(hexominoNumberSet);
+    	assertEquals(hex, constructedHex);
     }
 
     @Test
@@ -53,6 +70,21 @@ public class HexominoTest {
                 hex.getNormalizedPoints());
     }
 
+    @Test
+    public void testRotateC(){
+    	Hexomino hex = buildExampleHexomino();
+    	hex.rotateC();
+    	Hexomino expectedRotatedHex = new Hexomino(0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 4, -1);
+    	assertEquals(expectedRotatedHex, hex);
+    }
+    
+    @Test
+    public void testRotateCC(){
+    	Hexomino hex = buildExampleHexomino();
+    	hex.rotateCC();
+    	Hexomino expectedRotatedHex = new Hexomino(0, 0, -1, 0, -2, 0, -3, 0, -4, 0, -4, 1);
+    	assertEquals(expectedRotatedHex, hex);
+    }
     @Test
     public void testNormalEquality() {
         Hexomino hex1 = buildExampleHexomino();
@@ -164,6 +196,29 @@ public class HexominoTest {
     public void testNullTile() {
         Hexomino hex = buildExampleHexomino();
         hex.addToTile(null);
+    }
+    
+    @Test
+    public void testAddToTile(){
+    	Hexomino hex = buildExampleHexomino();
+    	Tile t = new Tile(new Point(0, 0), true);
+    	assertTrue(hex.addToTile(t));
+    	assertFalse(hex.addToTile(t));
+    }
+    
+    @Test
+    public void testGetHexNumSet(){
+    	Hexomino hex = buildExampleHexomino();
+    	ArrayList<ComparablePoint> points = new ArrayList<ComparablePoint>();
+    	points.add(new ComparablePoint(0, 0));
+    	points.add(new ComparablePoint(0, 1));
+    	points.add(new ComparablePoint(0, 2));
+    	points.add(new ComparablePoint(0, 3));
+    	points.add(new ComparablePoint(0, 4));
+    	points.add(new ComparablePoint(1, 4));
+    	HexominoNumberSet hexominoNumberSet = new HexominoNumberSet(points);
+    	assertEquals(hex.getHexominoNumberSet(), hexominoNumberSet);
+    	
     }
 
 }
