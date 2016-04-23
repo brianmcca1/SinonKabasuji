@@ -33,9 +33,8 @@ public class HexominoBankController implements MouseListener {
     public void mouseClicked(MouseEvent e) {
 
         System.out.println("I AM A BANK HEXOMINO AND I GOT CLICKED ON");
-        // bullpen.addHexomino(hex);
+        bullpen.addHexomino(hex);
         System.out.println(bullpen.getPieces().toString());
-        bpview.revalidate();
 
     }
 

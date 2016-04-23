@@ -17,15 +17,12 @@ import sinon.models.Hexomino;
 @SuppressWarnings("serial")
 public class HexominoBullpenView extends JPanel {
 
-    // FIXME this should not have a panel what it is a panel
-    JPanel hexominoPanel;
     /** The hexomino model object associated with this view */
     Hexomino hex;
 
     public HexominoBullpenView(Hexomino h) {
         this.hex = h;
-        this.hexominoPanel = new JPanel();
-        this.hexominoPanel.setLayout(new GridLayout(6, 6));
+        this.setLayout(new GridLayout(6, 6));
 
         this.setHexominoOnGrid();
     }
@@ -53,14 +50,14 @@ public class HexominoBullpenView extends JPanel {
         for (int i = 0; i < 36; i++) {
             tempHexPanel = new JPanel();
             tempHexPanel.setPreferredSize(new Dimension(15, 15));
-            this.hexominoPanel.setBorder(new EmptyBorder(10, 0, 10, 0));
+            this.setBorder(new EmptyBorder(10, 0, 10, 0));
             if (indexList.contains(i)) {
                 tempHexPanel.setBackground(Color.blue);
                 tempHexPanel.setBorder(
                         BorderFactory.createLineBorder(Color.lightGray));
-                this.hexominoPanel.add(tempHexPanel);
+                this.add(tempHexPanel);
             } else {
-                this.hexominoPanel.add(tempHexPanel);
+                this.add(tempHexPanel);
             }
 
         }
@@ -68,19 +65,8 @@ public class HexominoBullpenView extends JPanel {
         return this;
     }
 
-    public JPanel getHexominoPanel() {
-        return this.hexominoPanel;
-    }
+    
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "HexominoBullpenView [hexominoPanel=" + hexominoPanel + ", hex="
-                + hex + "]";
-    }
+    
 
 }
