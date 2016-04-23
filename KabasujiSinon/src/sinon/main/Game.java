@@ -16,4 +16,5 @@ public class Game extends Kabasuji {
 		@SuppressWarnings("unused")
 		Game game = new Game();
 	}
+	
 }

@@ -10,7 +10,9 @@ import sinon.controllers.NextLevelController;
 import sinon.controllers.RestartLevelController;
 import sinon.main.Game;
 import sinon.main.Kabasuji;
+import sinon.models.BullPen;
 import sinon.models.Level;
+import sinon.models.data.BullPenData;
 
 /**
  * This class controls the entirety of the Builder/Game Views;
@@ -26,18 +28,16 @@ public class MainView extends JPanel {
     
     /**Allows global access to top level MainView object.*/
     public static MainView mainView;
-    /**Top level Game/Builder object.*/
-    public static Kabasuji kabasuji;
     /**levelPanel contains: Bullpen, GridView, optional ReleaseButtonView, and is on the left side of the screen.*/
-    private LevelPanel levelPanel;
+    LevelPanel levelPanel;
     /**Contains GridView and the Optional ReleaseButtonView.*/
-    private JPanel gameAreaPanel;
-    BullpenView bullpenView;
+    JPanel gameAreaPanel;
     /**Only exists in Builder Mode and Release game play.*/
-    private Optional<ReleaseButtonView> releaseButtonView;
-    private InfoPanel infoPanel;
-    public int levelNum;
-    Level level;
+    Optional<ReleaseButtonView> releaseButtonView;
+    BullpenView bullpenView;
+    InfoPanel infoPanel;
+    int levelNum;
+    
 
 	/**
 	 * @param k
@@ -49,8 +49,7 @@ public class MainView extends JPanel {
         releaseButtonView = Optional.of(new ReleaseButtonView());
         mainView = this;
         this.infoPanel = infoPanel; 
-        kabasuji = k;
-        this.bullpenView = new BullpenView();
+        this.bullpenView = new BullpenView(new BullPen(new BullPenData()));
         initializeViews(); 
     }
     
@@ -84,9 +83,7 @@ public class MainView extends JPanel {
         JButton exitBtn = infoPanel.getExitButton();
         JButton restartBtn = infoPanel.getRestartButton();
         JButton nextLevelBtn = infoPanel.getNextLevelButton();
-        if(exitBtn != null) exitBtn.addActionListener(new ExitGameController((Game) kabasuji, this)); 
-        if(restartBtn != null) restartBtn.addActionListener(new RestartLevelController((Game) kabasuji, this));
-        if(nextLevelBtn != null) nextLevelBtn.addActionListener(new NextLevelController((Game) kabasuji, this));
+        
     }
 
     private void initReleaseButtonView() {
