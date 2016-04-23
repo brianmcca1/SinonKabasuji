@@ -65,11 +65,21 @@ public class Hexomino {
         this.hexominoNumberSet = NumberSetFactory.getByCode(code);
     }
 
-    void addToTile(Tile t) {
+    /**
+     * Adds this hexomino to the given tile
+     * 
+     * @param t Tile to add the hexomino to
+     * @return True if the Hexomino was added, otherwise False
+     */
+    boolean addToTile(Tile t) {
         if (t == null) {
             throw new IllegalArgumentException("Given Tile was null");
         }
+        if(t.canAddHex() == false){
+        	return false;
+        }
         t.addHexomino(this);
+        return true;
     }
 
     public void flipHorizontally() {
@@ -88,6 +98,9 @@ public class Hexomino {
         hexominoNumberSet.rotateCC();
     }
 
+    public HexominoNumberSet getHexominoNumberSet(){
+    	return this.hexominoNumberSet;
+    }
     /**
      * Returns the translated set of points, such that every point is positive,
      * and within the bounds of a 6x6 grid.

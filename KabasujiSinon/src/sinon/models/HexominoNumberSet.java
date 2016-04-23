@@ -36,6 +36,9 @@ public class HexominoNumberSet {
         this.points = points;
     }
 
+    public List<ComparablePoint> getPoints(){
+    	return this.points;
+    }
     void flipHorizontally() {
         for (Point p : points) {
             p.x = p.x * -1;

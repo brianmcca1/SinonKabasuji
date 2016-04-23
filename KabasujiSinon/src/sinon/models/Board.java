@@ -73,7 +73,16 @@ public class Board {
      * @return True if the move if possible, false otherwise.
      */
     public boolean canAddHexomino(Point anchorLocation, Hexomino hex) {
-        return false;
+    	boolean canAdd = true;
+    	HexominoNumberSet hexominoNumberSet = hex.getHexominoNumberSet();
+    	for(ComparablePoint p : hexominoNumberSet.getPoints()){
+    		Point pointToCheck = new Point(anchorLocation.x + p.x, anchorLocation.y + p.y);
+    		if(!tilesViaPoints.get(pointToCheck).canAddHex()){
+    			canAdd = false;
+    		}
+    	}
+    	
+        return canAdd;
     }
 
     /**
@@ -91,7 +100,14 @@ public class Board {
                     "Can't add Hexomino to this location");
         }
 
-        // TODO
+        HexominoNumberSet hexominoNumberSet = hex.getHexominoNumberSet();
+    	for(ComparablePoint p : hexominoNumberSet.getPoints()){
+    		Point pointToAdd = new Point(anchorLocation.x + p.x, anchorLocation.y + p.y);
+    		if(!tilesViaPoints.get(pointToAdd).canAddHex()){
+    			tilesViaPoints.get(pointToAdd).addHexomino(hex);
+    		}
+    	}
+
     }
 
     /**
