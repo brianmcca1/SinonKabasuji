@@ -14,7 +14,7 @@ import sinon.models.Hexomino;
  * @author Josh Desmond
  */
 public final class BullPenData implements Serializable {
-    private static final long serialVersionUID = -8267652387948547852L;
+    private static final long serialVersionUID = 7509166366913814744L;
 
     /**
      * The list of hexominos in the order that they are to appear in the BullPen
@@ -65,4 +65,43 @@ public final class BullPenData implements Serializable {
         return this.hexominos;
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result
+                + ((hexominos == null) ? 0 : hexominos.hashCode());
+        return result;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (!(obj instanceof BullPenData))
+            return false;
+        BullPenData other = (BullPenData) obj;
+        if (hexominos == null) {
+            if (other.hexominos != null)
+                return false;
+        } else if (!hexominos.equals(other.hexominos))
+            return false;
+        return true;
+    }
+
+    public void test() {
+
+    }
 }

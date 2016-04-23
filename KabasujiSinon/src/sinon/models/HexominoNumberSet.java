@@ -10,6 +10,10 @@ import sinon.models.data.HexominoCode;
  * A HexominoNumberSet represents the six coordinate pairs that make up any
  * Hexomino.
  * 
+ * TODO this class really needs a builder object I'm realizing. There are too
+ * many constructors and too much validation code not to have it. The quicker we
+ * refactor this to have one going the fewer problems we'll have later...
+ * 
  * @author Josh Desmond
  * @author Brian McCarthy
  */
@@ -32,6 +36,11 @@ public class HexominoNumberSet {
         points.add(new Point(d, d1));
         points.add(new Point(e, e1));
         points.add(new Point(f, f1));
+
+        if (!validatePoints(points)) {
+            throw new IllegalArgumentException(
+                    String.format("Illegal pointsList inputted, %s", points));
+        }
     }
 
     /**
@@ -45,7 +54,7 @@ public class HexominoNumberSet {
     public HexominoNumberSet(List<Point> points) {
         if (!validatePoints(points)) {
             throw new IllegalArgumentException(
-                    "Illegal input to HexominoNumberSet: " + points);
+                    String.format("Illegal pointsList inputted, %s ", points));
         }
 
         this.points = points;
@@ -253,6 +262,17 @@ public class HexominoNumberSet {
     @Override
     public String toString() {
         return "HexominoNumberSet [points=" + points + "]";
+    }
+
+    /**
+     * Generates a string from
+     * 
+     * @param points2
+     * @return
+     */
+    public static String stringOf(List<Point> points2) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

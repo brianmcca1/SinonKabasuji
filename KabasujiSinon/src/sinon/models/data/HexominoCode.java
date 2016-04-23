@@ -2,10 +2,11 @@ package sinon.models.data;
 
 import java.awt.Point;
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import sinon.models.Hexomino;
+import sinon.models.HexominoNumberSet;
 
 /**
  * A HexominoCode is the ArrayList of six points that represents a
@@ -13,16 +14,31 @@ import sinon.models.Hexomino;
  */
 public final class HexominoCode implements Serializable {
 
-    /** ArrayList of six points representing a HexominoNumberSet */
-    ArrayList<Point> points;
+    /** Array of six points representing a HexominoNumberSet */
+    Point[] points;
 
     public HexominoCode() {
-
+        points = new Point[6];
     }
 
     /** Creates a HexominoCode from a given Hexomino */
-    public HexominoCode(Hexomino h) {
-        // TODO Auto-generated constructor stub
+    public HexominoCode(Hexomino hexomino) {
+        if (hexomino == null)
+            throw new IllegalArgumentException("Hexomino can't be null");
+
+        List<Point> givenPoints = hexomino.getNormalizedPoints();
+        if (givenPoints.size() != 6) {
+            throw new IllegalArgumentException(String.format(
+                    "Hexomino didn't have six points %s", hexomino.toString()));
+        }
+
+        points = new Point[6];
+        int i = 0;
+
+        for (Point p : givenPoints) {
+            points[i] = p;
+            i++;
+        }
     }
 
     /**
@@ -31,6 +47,11 @@ public final class HexominoCode implements Serializable {
      * @return The list of points.
      */
     public List<Point> getPoints() {
-        return points;
+        return Arrays.asList(points);
+    }
+
+    @Override
+    public String toString() {
+        return HexominoNumberSet.stringOf(getPoints());
     }
 }
