@@ -1,6 +1,8 @@
 package sinon.models.data;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -50,6 +52,20 @@ public class BoardDataTest {
         Board nullBoard = null;
         @SuppressWarnings("unused")
         BoardData data = new BoardData(nullBoard);
+    }
+
+    @Test
+    public void testEquals() {
+        BoardData data1 = new BoardData(board);
+        BoardData data2 = new BoardData(board);
+
+        // Test equality.
+        assertEquals(data1, data2);
+        assertEquals(data1.hashCode(), data2.hashCode());
+
+        // Test inequality.
+        data1.playable[5][5] = false;
+        assertNotEquals(data1, data2);
     }
 
     @Test

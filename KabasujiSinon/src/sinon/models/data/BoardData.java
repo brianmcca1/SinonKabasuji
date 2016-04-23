@@ -2,6 +2,7 @@ package sinon.models.data;
 
 import java.awt.Point;
 import java.io.Serializable;
+import java.util.Arrays;
 
 import sinon.models.Board;
 import sinon.models.Tile;
@@ -55,4 +56,37 @@ public final class BoardData implements Serializable {
     public boolean[][] getPlayableArray() {
         return playable;
     }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + Arrays.deepHashCode(playable);
+        return result;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (!(obj instanceof BoardData))
+            return false;
+        BoardData other = (BoardData) obj;
+        if (!Arrays.deepEquals(playable, other.playable))
+            return false;
+        return true;
+    }
+
 }
