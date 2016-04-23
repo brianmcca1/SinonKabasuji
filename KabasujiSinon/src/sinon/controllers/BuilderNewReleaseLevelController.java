@@ -15,7 +15,7 @@ import sinon.views.MainView;
 import sinon.views.builder.BankView;
 import sinon.views.builder.BuilderMenuBar;
 
-public class BuilderNewReleaseLevelController implements ActionListener {
+public class BuilderNewReleaseLevelController extends BuilderNewLevelController implements ActionListener {
 
 	private Builder builder;
 	
@@ -32,12 +32,7 @@ public class BuilderNewReleaseLevelController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("CREATING NEW RELEASE LEVEL");
-		this.builder.startNextPanel(this.blankPanel, new MainView(this.builder, new BankView(this.builder)));
-		this.builderMenuBar.mntmSaveAs.setEnabled(true);
-		this.builderMenuBar.mntmSave.setEnabled(false);
-        this.builderMenuBar.mntmUndo.setEnabled(true);
-        this.builderMenuBar.mntmRedo.setEnabled(true);
-        this.builderMenuBar.mntmClearBoard.setEnabled(true);
+		this.startLevel(this.blankPanel, this.builder, this.builderMenuBar);
 		this.builder.setCurrentLevel(new Level(types.RELEASE, new Board(), new BullPen(new BullPenData())));
 	}
 }
