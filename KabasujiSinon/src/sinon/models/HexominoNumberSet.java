@@ -4,8 +4,6 @@ import java.awt.Point;
 import java.util.LinkedList;
 import java.util.List;
 
-import sinon.models.data.HexominoCode;
-
 /**
  * A HexominoNumberSet represents the six coordinate pairs that make up any
  * Hexomino.
@@ -24,26 +22,6 @@ public class HexominoNumberSet {
     List<Point> points;
 
     /**
-     * Convenience constructor. Try to avoid using this except for testing. I
-     * think this will eventually be moved to the factory class.
-     */
-    public HexominoNumberSet(int a, int a1, int b, int b1, int c, int c1, int d,
-            int d1, int e, int e1, int f, int f1) {
-        points = new LinkedList<Point>();
-        points.add(new Point(a, a1));
-        points.add(new Point(b, b1));
-        points.add(new Point(c, c1));
-        points.add(new Point(d, d1));
-        points.add(new Point(e, e1));
-        points.add(new Point(f, f1));
-
-        if (!validatePoints(points)) {
-            throw new IllegalArgumentException(
-                    String.format("Illegal pointsList inputted, %s", points));
-        }
-    }
-
-    /**
      * Main Constructor for creating a HexominoNumberSet
      * 
      * @param points
@@ -51,26 +29,13 @@ public class HexominoNumberSet {
      *            Hexomino. The set must contain exactly six elements, and one
      *            element must be (0,0).
      */
-    public HexominoNumberSet(List<Point> points) {
+    protected HexominoNumberSet(List<Point> points) {
         if (!validatePoints(points)) {
             throw new IllegalArgumentException(
                     String.format("Illegal pointsList inputted, %s ", points));
         }
 
         this.points = points;
-    }
-
-    /**
-     * Creates a HexominoNumberSet from a HexominoCode.
-     * 
-     * @param code
-     *            The immutable data object representing a HexominoNumberSet.
-     */
-    public HexominoNumberSet(HexominoCode code) {
-        if (code == null)
-            throw new IllegalArgumentException("HexominoCode can't be null");
-
-        this.points = code.getPoints();
     }
 
     public void flipHorizontally() {
@@ -92,7 +57,7 @@ public class HexominoNumberSet {
      * @return True if the set of points given is in a legal state for a
      *         HexominoNumberSet.
      */
-    private static boolean validatePoints(List<Point> points) {
+    public static boolean validatePoints(List<Point> points) {
         if (points == null) {
             return false;
         }

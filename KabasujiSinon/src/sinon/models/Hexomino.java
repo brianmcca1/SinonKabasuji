@@ -29,12 +29,11 @@ public class Hexomino {
      * @param a1
      *            the y component of the first coordinate point
      */
-    public Hexomino(int a, int a1, int b, int b1, int c, int c1, int d, int d1,
-            int e, int e1, int f, int f1) {
+    protected Hexomino(int a, int a1, int b, int b1, int c, int c1, int d,
+            int d1, int e, int e1, int f, int f1) {
 
-        this.hexominoNumberSet = new HexominoNumberSet(a, a1, b, b1, c, c1, d,
-                d1, e, e1, f, f1);
-
+        this.hexominoNumberSet = NumberSetFactory.getByNumbers(a, a1, b, b1, c,
+                c1, d, d1, e, e1, f, f1);
     }
 
     public Hexomino(Set<Point> points) {
