@@ -10,6 +10,7 @@ import sinon.models.data.BullPenData;
 import sinon.models.data.LevelData;
 import sinon.models.data.LevelType;
 import sinon.serial.Serializer;
+import sinon.views.builder.BuilderMenuBar;
 
 /**
  * This class responds to the "Save As" option in the Builder and opens a Save As menu, and saves
@@ -23,8 +24,11 @@ public class BuilderSaveAsController implements ActionListener{
 	
 	final JFileChooser fc = new JFileChooser();
 	
-	public BuilderSaveAsController(Builder b){
+	private BuilderMenuBar builderMenuBar;
+	
+	public BuilderSaveAsController(Builder b, BuilderMenuBar bMenuBar){
 		this.builder = b;
+		this.builderMenuBar = bMenuBar;
 	}
 	
 	/**
@@ -50,6 +54,7 @@ public class BuilderSaveAsController implements ActionListener{
             Serializer serializer = new Serializer(file, levelData);
             boolean successful = serializer.serializeFile();
             
+            this.builderMenuBar.mntmSave.setEnabled(true);
             if(successful) System.out.println("SERIALIZER SUCCESSFULLY SAVED LEVELDATA TO FILE");
             else System.out.println("SERIALIZER FAILED");
         }

@@ -21,10 +21,18 @@ import sinon.main.Builder;
 @SuppressWarnings("serial")
 public class BuilderMenuBar extends JMenuBar {
 
-	/** File menu */
-	private JMenu mnFile;
-	/** Edit menu */
-	private JMenu mnEdit;
+	public JMenu mnFile;
+	public JMenu mnEdit;
+	public JMenu mntmNewLevel;
+	public JMenuItem mntmOpen;
+	public JMenuItem mntmSave;
+	public JMenuItem mntmSaveAs;
+	public JMenuItem mntmNewPuzzleLevel;
+	public JMenuItem mntmNewLightningLevel;
+	public JMenuItem mntmNewReleaseLevel;
+	public JMenuItem mntmUndo;
+	public JMenuItem mntmRedo;
+	public JMenuItem mntmClearBoard;
 	
 	private Builder builder;
 	
@@ -41,43 +49,46 @@ public class BuilderMenuBar extends JMenuBar {
 		mnEdit = new JMenu("Edit");
 		this.add(mnEdit);
 
-		JMenuItem mntmUndo = new JMenuItem("Undo");
-		mntmUndo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, InputEvent.CTRL_MASK));
-		JMenuItem mntmRedo = new JMenuItem("Redo");
-		JMenuItem mntmClearBoard = new JMenuItem("Clear Board");
+		mntmUndo = new JMenuItem("Undo");
+		mntmRedo = new JMenuItem("Redo");
+		mntmClearBoard = new JMenuItem("Clear Board");
+		
 		mnEdit.add(mntmUndo);
 		mnEdit.add(mntmRedo);
 		mnEdit.add(mntmClearBoard);
+		
+		mntmUndo.setEnabled(false);
+		mntmRedo.setEnabled(false);
+		mntmClearBoard.setEnabled(false);
 	}
 
 	private void initFileMenu() {
 		mnFile = new JMenu("File");
-		JMenuItem mntmOpen = new JMenuItem("Open");
-		mntmOpen.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_MASK));
-		JMenu mntmNewLevel = new JMenu("New Level");
-		JMenuItem mntmSave = new JMenuItem("Save");
-		mntmSave.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
-		JMenuItem mntmSaveAs = new JMenuItem("Save As");
-		JMenuItem mntmQuit = new JMenuItem("Quit");
-		JMenuItem mntmNewPuzzleLevel = new JMenuItem("Puzzle");
-		JMenuItem mntmNewLightningLevel = new JMenuItem("Lightning");
-		JMenuItem mntmNewReleaseLevel = new JMenuItem("Release");
+		mntmOpen = new JMenuItem("Open");
+		mntmNewLevel = new JMenu("New Level");
+		mntmSave = new JMenuItem("Save");
+		mntmSaveAs = new JMenuItem("Save As");
+		mntmNewPuzzleLevel = new JMenuItem("Puzzle");
+		mntmNewLightningLevel = new JMenuItem("Lightning");
+		mntmNewReleaseLevel = new JMenuItem("Release");
 		
 		this.add(mnFile);
 		mnFile.add(mntmOpen);
 		mnFile.add(mntmNewLevel);
+		mnFile.add(mntmSave);
+		mnFile.add(mntmSaveAs);
 		mntmNewLevel.add(mntmNewPuzzleLevel);
 		mntmNewLevel.add(mntmNewLightningLevel);
 		mntmNewLevel.add(mntmNewReleaseLevel);
-		mnFile.add(mntmSave);
-		mnFile.add(mntmSaveAs);
-		mnFile.add(mntmQuit);
+		
+		mntmSave.setEnabled(false);
+		mntmSaveAs.setEnabled(false);
 		
 		mntmSave.addActionListener(new BuilderSaveController(this.builder));
-		mntmSaveAs.addActionListener(new BuilderSaveAsController(this.builder));
-		mntmNewPuzzleLevel.addActionListener(new BuilderNewPuzzleLevelController(this.builder, this.blankPanel));
-		mntmNewLightningLevel.addActionListener(new BuilderNewLightningLevelController(this.builder, this.blankPanel));
-		mntmNewReleaseLevel.addActionListener(new BuilderNewReleaseLevelController(this.builder, this.blankPanel));
-		mntmOpen.addActionListener(new BuilderOpenController(this.builder));
+		mntmSaveAs.addActionListener(new BuilderSaveAsController(this.builder, this));
+		mntmNewPuzzleLevel.addActionListener(new BuilderNewPuzzleLevelController(this.builder, this.blankPanel, this));
+		mntmNewLightningLevel.addActionListener(new BuilderNewLightningLevelController(this.builder, this.blankPanel, this));
+		mntmNewReleaseLevel.addActionListener(new BuilderNewReleaseLevelController(this.builder, this.blankPanel, this));
+		mntmOpen.addActionListener(new BuilderOpenController(this.builder, this));
 	}
 }

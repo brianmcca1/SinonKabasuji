@@ -10,6 +10,7 @@ import sinon.models.data.BullPenData;
 import sinon.models.data.LevelData;
 import sinon.models.data.LevelType;
 import sinon.serial.Deserializer;
+import sinon.views.builder.BuilderMenuBar;
 
 public class BuilderOpenController implements ActionListener{
 	
@@ -18,8 +19,11 @@ public class BuilderOpenController implements ActionListener{
 	
 	final JFileChooser fc = new JFileChooser();
 	
-	public BuilderOpenController(Builder b){
+	private BuilderMenuBar builderMenuBar;
+	
+	public BuilderOpenController(Builder b, BuilderMenuBar bMenuBar){
 		this.builder = b;
+		this.builderMenuBar = bMenuBar;
 	}
 
 	@Override
@@ -40,6 +44,11 @@ public class BuilderOpenController implements ActionListener{
             Deserializer deserializer = new Deserializer(file);
             boolean successful = deserializer.deserializeFile();
             
+            this.builderMenuBar.mntmSave.setEnabled(true);
+            this.builderMenuBar.mntmSaveAs.setEnabled(true);
+            this.builderMenuBar.mntmUndo.setEnabled(true);
+            this.builderMenuBar.mntmRedo.setEnabled(true);
+            this.builderMenuBar.mntmClearBoard.setEnabled(true);
             if(successful) System.out.println("DESERIALIZER SUCCESSFULLY CREATED LEVELDATA FROM FILE");
             else System.out.println("DESERIALIZER FAILED");
         }
