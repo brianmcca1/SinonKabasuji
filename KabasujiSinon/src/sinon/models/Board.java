@@ -159,6 +159,6 @@ public class Board {
         return tempList;
     }
 
-    // TODO equals and hash
+    // TODO equals and hash and ToString
 
 }

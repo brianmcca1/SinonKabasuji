@@ -8,10 +8,6 @@ import java.util.List;
  * A HexominoNumberSet represents the six coordinate pairs that make up any
  * Hexomino.
  * 
- * TODO this class really needs a builder object I'm realizing. There are too
- * many constructors and too much validation code not to have it. The quicker we
- * refactor this to have one going the fewer problems we'll have later...
- * 
  * @author Josh Desmond
  * @author Brian McCarthy
  */
@@ -51,22 +47,59 @@ public class HexominoNumberSet {
     }
 
     /**
-     * Validates the state of any set of points.
+     * Validates the state of any set of points. Points are legal if they are
+     * all connected, if they contain (0,0), have six points.
      * 
      * @return True if the set of points given is in a legal state for a
      *         HexominoNumberSet.
      */
-    static boolean validatePoints(List<Point> points) {
-        if (points == null) {
+    static boolean validatePoints(List<Point> list) {
+        if (list == null) {
             return false;
-        }
-        if (points.size() != SIZE) {
+        } else if (list.size() != SIZE) {
+            return false;
+        } else if (!validateConnected(list)) {
+            return false;
+        } else if (!list.contains(new Point(0, 0))) {
             return false;
         }
         return true;
     }
 
-    public void rotateC() {
+    /**
+     * Determines if a set of points is connected.
+     * 
+     * @param list
+     *            The set of points to test
+     * @return True if the points are connected.
+     */
+    private static boolean validateConnected(List<Point> list) {
+        // For each point, check that at least one of the four points around it
+        // are also in the list.
+        for (Point p : list) {
+            Point[] surroundingPoints = new Point[4];
+            surroundingPoints[0] = new Point(p.x + 1, p.y);
+            surroundingPoints[1] = new Point(p.x - 1, p.y);
+            surroundingPoints[2] = new Point(p.x, p.y + 1);
+            surroundingPoints[3] = new Point(p.x, p.y - 1);
+
+            boolean hasFoundNeighbor = false;
+            for (Point neighbor : surroundingPoints) {
+                if (list.contains(neighbor)) {
+                    hasFoundNeighbor = true;
+                    break;
+                }
+            }
+
+            if (hasFoundNeighbor == false) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    void rotateC() {
         for (Point p : points) {
             int newX;
             int newY;
@@ -82,7 +115,7 @@ public class HexominoNumberSet {
         }
     }
 
-    public void rotateCC() {
+    void rotateCC() {
         rotateC();
         rotateC();
         rotateC();
@@ -225,18 +258,14 @@ public class HexominoNumberSet {
      */
     @Override
     public String toString() {
-        return "HexominoNumberSet [points=" + points + "]";
-    }
+        StringBuilder str = new StringBuilder("{");
+        for (Point p : this.points) {
+            str.append(String.format(", (%s, %s)", p.x, p.y));
+        }
+        str.deleteCharAt(1);
+        str.deleteCharAt(2); // remove extra space at beginning
+        str.append("}");
 
-    /**
-     * Generates a string from
-     * 
-     * @param points2
-     * @return
-     */
-    public static String stringOf(List<Point> points2) {
-        // TODO Auto-generated method stub
-        return null;
+        return str.toString();
     }
-
 }

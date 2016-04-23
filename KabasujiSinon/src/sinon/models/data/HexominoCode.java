@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import sinon.models.Hexomino;
-import sinon.models.HexominoNumberSet;
 
 /**
  * A HexominoCode is the ArrayList of six points that represents a
@@ -52,6 +51,6 @@ public final class HexominoCode implements Serializable {
 
     @Override
     public String toString() {
-        return HexominoNumberSet.stringOf(getPoints());
+        return Arrays.deepToString(points);
     }
 }

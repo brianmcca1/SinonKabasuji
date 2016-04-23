@@ -141,6 +141,6 @@ public class Hexomino {
      */
     @Override
     public String toString() {
-        return "Hexomino [hexominoNumberSet=" + hexominoNumberSet + "]";
+        return "Hex:" + hexominoNumberSet;
     }
 }
