@@ -17,17 +17,19 @@ public class HexominoBankController implements MouseListener{
 	HexominoBullpenView hexBullpenView;
 	
 	public HexominoBankController(Builder b, HexominoBullpenView view) {
-		this.builder = b;
+		this.builder = b; 
 		this.hexBullpenView = view;
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		
+		System.out.println("I AM A BANK HEXOMINO AND I GOT CLICKED ON");
 		if(this.builder.getCurrentLevel() != null){
 			// TODO This event basically adds a hexomino to the bullpen
 			Optional<Hexomino> hex = Optional.of(this.hexBullpenView.getHexomino()); 
 			
-			this.builder.getCurrentLevel().select(hex);
+			this.builder.getCurrentLevel().select(hex); //when a bank hexomino gets clicked on, it just gets added to the bullpen
 			
 			System.out.println("SELECTED HEXOMINO IN BUILDER'S LEVEL: " + this.builder.getCurrentLevel().selectedHexomino.toString());
 		}
