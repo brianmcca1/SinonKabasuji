@@ -85,6 +85,7 @@ public class BankView extends InfoPanel implements HexominoContainerView {
         assert bullpen != null;
 
         for (HexominoBullpenView view : hexominoViews) {
+            hexominoBankControllerFactory.registerHexomino(view, bullpen);
             // FIXME this should be using the bank controller factory
             view.addMouseListener(new HexominoBankController(bullpen,
                     view.getHexomino(), null, view));
