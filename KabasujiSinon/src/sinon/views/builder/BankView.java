@@ -24,7 +24,7 @@ public class BankView extends InfoPanel {
     //Builder builder;
     BullPen bullpen;
 
-    public BankView(Builder b) {
+    public BankView(BullPen bullpen) {
         super();
         
         //this.builder = b;
@@ -39,7 +39,7 @@ public class BankView extends InfoPanel {
         this.setLayout(new GridLayout(1, 1));
         this.add(scrollPanel);
         this.validate();
-        this.bullpen = new BullPen(HexominoBankData.getHexominos());
+        this.bullpen = bullpen;
     }
 
     private void initContentPanel() {
