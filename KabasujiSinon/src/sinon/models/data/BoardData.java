@@ -38,6 +38,9 @@ public final class BoardData implements Serializable {
      *            The board to save to disk.
      */
     public BoardData(Board board) {
+        if (board == null) {
+            throw new IllegalArgumentException("Board can't be null");
+        }
         playable = new boolean[SIZE][SIZE];
         for (Tile t : board.getTiles()) {
             Point p = t.getLocation();
