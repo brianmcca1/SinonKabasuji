@@ -63,47 +63,6 @@ public class BullPen {
         return this.pieces.remove(hex);
     }
 
-    // FIXME this method is written wrong
-    @Deprecated
-    public void rotateHexominoClockwise(Hexomino hex) {
-        if (this.pieces.contains(hex)) {
-            hex.rotateC();
-        } else {
-            System.err.println("Bullpen does not contain that Hexomino");
-        }
-    }
-
-    // FIXME this method is written wrong
-    @Deprecated
-    public void rotateHexominoCounterClockwise(Hexomino hex) {
-        if (this.pieces.contains(hex)) {
-            hex.rotateCC();
-        } else {
-            System.err.println("Bullpen does not contain that Hexomino");
-        }
-    }
-
-    // FIXME this method is written wrong
-    @Deprecated
-    public void flipHexominoVertical(Hexomino hex) {
-        if (this.pieces.contains(hex)) {
-            hex.flipVertically();
-        } else {
-            System.err.println("Bullpen does not contain that Hexomino");
-        }
-
-    }
-
-    // FIXME this method is written wrong
-    @Deprecated
-    public void flipHexominoHorizontal(Hexomino hex) {
-        if (this.pieces.contains(hex)) {
-            hex.flipHorizontally();
-        } else {
-            System.err.println("Bullpen does not contain that Hexomino");
-        }
-
-    }
 
     @Override
     public String toString() {
