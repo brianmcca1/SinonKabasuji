@@ -32,18 +32,18 @@ public class Tile {
      * 
      * Adds the given Hexomino to the tile
      * 
-     *  Throws Runtime Exception if Hexomino is already present
+     * Throws Runtime Exception if Hexomino is already present
      * 
      * @param hex
      *            The hexomino to be added
      */
     public void addHexomino(Hexomino hex) {
-    	
+
         if (this.hex.isPresent()) {
             throw new RuntimeException("Tile already contains a Hexomino");
 
-        } else if(this.playable == false){
-        	throw new RuntimeException("Tile is not playable");
+        } else if (this.playable == false) {
+            throw new RuntimeException("Tile is not playable");
         } else {
             this.hex = Optional.of(hex);
         }
@@ -65,7 +65,7 @@ public class Tile {
      * 
      */
     public boolean removeHex() {
-        
+
         if (this.hex.isPresent()) {
             this.hex = Optional.empty();
             return true;
@@ -98,5 +98,17 @@ public class Tile {
      */
     public boolean hasHex() {
         return hex.isPresent();
+    }
+
+    /**
+     * Determines if the tile is playable or not.
+     * 
+     * Note that this has nothing to do with whether or not you can actually
+     * place something on a tile. Use {@link #canAddHex()} for that one.
+     * 
+     * @return True if the tile is playable.
+     */
+    public boolean isPlayable() {
+        return this.playable;
     }
 }

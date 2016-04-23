@@ -149,6 +149,8 @@ public class Board {
      * the tiles. Please be careful and don't actually edit the tiles with a
      * controller or something unless it's really needed.
      * 
+     * Note that these tiles are not in order if you use this method.
+     * 
      * @return An iterable of all of the tiles.
      */
     public Iterable<Tile> getTiles() {
