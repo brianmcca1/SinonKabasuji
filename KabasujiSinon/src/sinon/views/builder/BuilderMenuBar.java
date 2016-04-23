@@ -89,6 +89,6 @@ public class BuilderMenuBar extends JMenuBar {
 		mntmNewPuzzleLevel.addActionListener(new BuilderNewPuzzleLevelController(this.builder, this.blankPanel, this));
 		mntmNewLightningLevel.addActionListener(new BuilderNewLightningLevelController(this.builder, this.blankPanel, this));
 		mntmNewReleaseLevel.addActionListener(new BuilderNewReleaseLevelController(this.builder, this.blankPanel, this));
-		mntmOpen.addActionListener(new BuilderOpenController(this.builder, this));
+		mntmOpen.addActionListener(new BuilderOpenController(this.builder, this.blankPanel, this));
 	}
 }
