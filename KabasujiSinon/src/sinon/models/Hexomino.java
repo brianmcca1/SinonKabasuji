@@ -82,22 +82,37 @@ public class Hexomino {
         return true;
     }
 
+    /**
+     * Flip the Hexomino horizontally (over the y-axis)
+     */
     public void flipHorizontally() {
         hexominoNumberSet.flipHorizontally();
     }
-
+    
+    /**
+     * Flip the Hexomino vertically (over the x-axis)
+     */
     public void flipVertically() {
         hexominoNumberSet.flipVertically();
     }
-
+    /**
+     * Rotate the Hexomino Clockwise
+     */
     public void rotateC() {
         hexominoNumberSet.rotateC();
     }
 
+    /**
+     * Rotate the Hexomino Counter-Clockwise
+     */
     public void rotateCC() {
         hexominoNumberSet.rotateCC();
     }
 
+    /**
+     * Get the Hexomino's Hexomino Number Set
+     * @return The Hexomino Number Set
+     */
     public HexominoNumberSet getHexominoNumberSet(){
     	return this.hexominoNumberSet;
     }
