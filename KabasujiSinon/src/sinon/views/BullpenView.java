@@ -7,8 +7,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
-import sinon.controllers.BullpenController;
-import sinon.controllers.HexominoBullpenController;
 import sinon.models.BullPen;
 import sinon.models.Hexomino;
 import sinon.models.NumberSetFactory;
@@ -25,9 +23,6 @@ public class BullpenView extends JScrollPane {
         this.bullpenPanel = new JPanel();
         bullpenPanel.setBackground(Color.gray);
         bullpenPanel.setLayout(new BoxLayout(bullpenPanel, BoxLayout.X_AXIS));
-        bullpenPanel.addMouseListener(new BullpenController(MainView.kabasuji, this)); // register
-                                                                 // BullpenController
-                                                                 // to bullpen
         populateBullpen();
         JScrollBar scrollBar = new JScrollBar(JScrollBar.HORIZONTAL);
         this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
@@ -42,20 +37,21 @@ public class BullpenView extends JScrollPane {
     private void populateBullpen() {
 
         // temp work/
-    	
+
         Hexomino hex = new Hexomino(NumberSetFactory.getByNumbers(0, 0, 0, 1, 0,
                 2, 0, 3, 0, 4, 0, 5));
         HexominoBullpenView hexView = new HexominoBullpenView(hex);
         this.bullpenPanel.add(hexView);
-        hexView.addMouseListener(new HexominoBullpenController(MainView.kabasuji, hexView));
-		
-//         We will actually need this block uncommented when we get the entities
-//         working. 
-//         for(Hexomino hex : bullpen.getPieces()) {
-//        	 HexominoBullpenView hbpView = new HexominoBullpenView(hex); 
-//        	 hbpView.setBackground(Color.red);
-//        	 this.bullpenPanel.add(hbpView); hbpView.addMouseListener(new HexominoBullpenController(MainView.kabasuji, hbpView)); 
-//         }
-         
+
+        // We will actually need this block uncommented when we get the entities
+        // working.
+        // for(Hexomino hex : bullpen.getPieces()) {
+        // HexominoBullpenView hbpView = new HexominoBullpenView(hex);
+        // hbpView.setBackground(Color.red);
+        // this.bullpenPanel.add(hbpView); hbpView.addMouseListener(new
+        // HexominoBullpenController(MainView.kabasuji, hbpView));
+        // }
+
     }
+
 }

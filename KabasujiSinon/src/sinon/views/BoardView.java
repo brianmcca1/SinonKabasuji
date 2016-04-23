@@ -2,25 +2,21 @@ package sinon.views;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.Collection;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-import sinon.controllers.TileController;
-import sinon.main.Kabasuji;
 import sinon.models.Board;
-import sinon.models.Tile;
 
 public class BoardView extends JPanel {
 
     JPanel boardPanel;
-    private Kabasuji kabasuji;
+    private Board board;
+    Collection<TileView> tileViews;
 
-    public BoardView(Kabasuji kabasuji) {
-        initialize();
-    }
-
-    void initialize() {
+    public BoardView(Board board) {
+        this.board = board;
         this.boardPanel = new JPanel();
         this.boardPanel.setLayout(new GridLayout(12, 12));
         this.boardPanel.setBounds(80, 26, 300, 300);
@@ -36,10 +32,10 @@ public class BoardView extends JPanel {
     }
 
     private void initializeTile(int row, int column) {
-        TileView tileView = new TileView();
+        TileView tileView = new TileView(board.getTile(row, column));
         // FIXME this is just sort of there.
-        //tileView.addMouseListener(
-        //        new TileController(kabasuji.openedLevel, tileView, null));
+        // tileView.addMouseListener(
+        // new TileController(kabasuji.openedLevel, tileView, null));
 
         tileView.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
         tileView.setBounds(12 * row, 12 * column, 25, 25); // TODO this is in
@@ -49,10 +45,8 @@ public class BoardView extends JPanel {
         boardPanel.add(tileView);
     }
 
-    private void intializeTileControllersToBoard(Board b) {
-        for (Tile t : b.getTiles()) {
-            t.getLocation();
-        }
+    public Collection<TileView> getTileViews() {
+        return tileViews;
     }
 
 }
