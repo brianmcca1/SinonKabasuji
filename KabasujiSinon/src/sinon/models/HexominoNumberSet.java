@@ -1,6 +1,7 @@
 package sinon.models;
 
 import java.awt.Point;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -48,7 +49,7 @@ public class HexominoNumberSet {
 
     /**
      * Validates the state of any set of points. Points are legal if they are
-     * all connected, if they contain (0,0), have six points.
+     * all connected, if they contain (0,0), and have six unique points.
      * 
      * @return True if the set of points given is in a legal state for a
      *         HexominoNumberSet.
@@ -62,7 +63,36 @@ public class HexominoNumberSet {
             return false;
         } else if (!list.contains(new Point(0, 0))) {
             return false;
+        } else if (!validateUniquePoints(list)) {
+            return false;
         }
+        return true;
+    }
+
+    /**
+     * Validates that the list of points has no duplicates.
+     * 
+     * @param list
+     *            List of points to test
+     * @return True if the list has no duplicates.
+     */
+    private static boolean validateUniquePoints(List<Point> list) {
+        assert list != null;
+
+        List<Point> copyOfList = Arrays.asList(list.toArray(new Point[6]));
+
+        for (Point p : list) {
+            boolean sanityCheck = copyOfList.remove(p);
+            assert sanityCheck; // Both lists better have point p.
+
+            // If after removing point p from copy, copy still
+            // has point p, that means it had a duplicate point.
+            if (copyOfList.contains(p)) {
+                // ==> return false since the list isn't valid.
+                return false;
+            }
+        }
+
         return true;
     }
 
@@ -74,6 +104,8 @@ public class HexominoNumberSet {
      * @return True if the points are connected.
      */
     private static boolean validateConnected(List<Point> list) {
+        assert list != null;
+
         // For each point, check that at least one of the four points around it
         // are also in the list.
         for (Point p : list) {

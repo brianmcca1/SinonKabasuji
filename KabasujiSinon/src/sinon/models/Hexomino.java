@@ -43,7 +43,7 @@ public class Hexomino {
         }
 
         List<Point> listOfPoints = new LinkedList<Point>(points);
-        this.hexominoNumberSet = new HexominoNumberSet(listOfPoints);
+        this.hexominoNumberSet = NumberSetFactory.getByList(listOfPoints);
     }
 
     /**
