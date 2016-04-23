@@ -44,21 +44,24 @@ public class BullpenView extends JScrollPane {
      */
     private void populateBullpen() {
 
-        // temp work
+        // temp work/
+    	
         Hexomino hex = new Hexomino(NumberSetFactory.getByNumbers(0, 0, 0, 1, 0,
                 2, 0, 3, 0, 4, 0, 5));
         HexominoBullpenView hexView = new HexominoBullpenView(hex);
         this.bullpenPanel.add(hexView);
         hexView.addMouseListener(
                 new HexominoBullpenController(MainView.kabasuji, hexView));
-
-        /*
-         * We will actually need this block uncommented when we get the entities
-         * working. for(Hexomino hex : bullpen.getPieces()) {
-         * HexominoBullpenView hbpView = new HexominoBullpenView(hex,
-         * this.bullpen); hbpView.setBackground(Color.red);
-         * this.bullpenPanel.add(hbpView); hbpView.addMouseListener(new
-         * HexominoBullpenController(MainView.kabasuji, hbpView)); }
-         */
+		
+    	
+        
+//         We will actually need this block uncommented when we get the entities
+//         working. 
+//         for(Hexomino hex : bullpen.getPieces()) {
+//        	 HexominoBullpenView hbpView = new HexominoBullpenView(hex); 
+//        	 hbpView.setBackground(Color.red);
+//        	 this.bullpenPanel.add(hbpView); hbpView.addMouseListener(new HexominoBullpenController(MainView.kabasuji, hbpView)); 
+//         }
+         
     }
 }

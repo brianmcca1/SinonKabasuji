@@ -32,7 +32,7 @@ public class MainView extends JPanel {
     private LevelPanel levelPanel;
     /**Contains GridView and the Optional ReleaseButtonView.*/
     private JPanel gameAreaPanel;
-    private BullpenView bullpenView;
+    BullpenView bullpenView;
     /**Only exists in Builder Mode and Release game play.*/
     private Optional<ReleaseButtonView> releaseButtonView;
     private InfoPanel infoPanel;
@@ -50,6 +50,7 @@ public class MainView extends JPanel {
         mainView = this;
         this.infoPanel = infoPanel; 
         kabasuji = k;
+        this.bullpenView = new BullpenView();
         initializeViews(); 
     }
     
@@ -110,9 +111,13 @@ public class MainView extends JPanel {
 
     /** Initializes the {@link #levelPanel} */
     private void initLevelPanel() {
-        levelPanel = new LevelPanel(new BullpenView(), gameAreaPanel);
+        levelPanel = new LevelPanel(this.bullpenView, gameAreaPanel);
         levelPanel.setBorder(new LineBorder(new Color(255, 0, 0)));
         levelPanel.setBounds(0, 0, LEVEL_PANEL_WIDTH, MAIN_PANEL_HEIGHT);
         this.add(levelPanel);
+    }
+    
+    public BullpenView getBullpenView() {
+    	return this.bullpenView;
     }
 }

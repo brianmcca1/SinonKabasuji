@@ -1,7 +1,7 @@
 package sinon.models;
 
 import java.awt.Point;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -141,8 +141,10 @@ public class HexominoNumberSet {
         return result;
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * Two HexominoNumberSets are equal if they both describe the same Hexomino
+     * with the same orientation. The relative position of the coordinates,
+     * however, does not matter.
      * 
      * @see java.lang.Object#equals(java.lang.Object)
      */
@@ -230,16 +232,8 @@ public class HexominoNumberSet {
     private static boolean validateUniquePoints(List<? extends Point> list) {
         assert list != null;
 
-        List<? extends Point> copyOfList = new ArrayList<Point>(list);
-
         for (Point p : list) {
-            boolean sanityCheck = copyOfList.remove(p);
-            assert sanityCheck; // Both lists better have point p.
-
-            // If after removing point p from copy, copy still
-            // has point p, that means it had a duplicate point.
-            if (copyOfList.contains(p)) {
-                // ==> return false since the list isn't valid.
+            if (Collections.frequency(list, p) != 1) {
                 return false;
             }
         }
