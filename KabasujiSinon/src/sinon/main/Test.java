@@ -10,6 +10,7 @@ import sinon.models.Level;
 import sinon.models.data.HexominoBankData;
 import sinon.views.MainView;
 import sinon.views.builder.BankView;
+import sinon.views.builder.HexominoContainerView;
 
 public class Test extends Kabasuji {
 
@@ -41,7 +42,7 @@ public class Test extends Kabasuji {
     }
 
     void initializeMainControllers() {
-        BankView sidePanel = (BankView) mainView.getInfoPanel();
+        HexominoContainerView sidePanel = (HexominoContainerView) mainView.getInfoPanel();
 
         sidePanel.registerControllers(new HexominoBankControllerFactory());
 

@@ -17,10 +17,10 @@ import sinon.views.HexominoBullpenView;
 import sinon.views.InfoPanel;
 
 @SuppressWarnings("serial")
-public class BankView extends InfoPanel {
+public class BankView extends InfoPanel implements HexominoContainerView {
 
     JScrollPane scrollPanel;
-    JPanel bankViewPanel;
+    JPanel contentPanel;
     // Builder builder;
     BullPen bullpen;
     List<HexominoBullpenView> hexominoViews;
@@ -45,9 +45,9 @@ public class BankView extends InfoPanel {
     }
 
     private void initContentPanel() {
-        bankViewPanel = new JPanel();
-        bankViewPanel.setBackground(Color.orange);
-        bankViewPanel.setLayout(new BoxLayout(bankViewPanel, BoxLayout.Y_AXIS));
+        contentPanel = new JPanel();
+        contentPanel.setBackground(Color.orange);
+        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
     }
 
     private void initBankViewScrollPanel() {
@@ -60,7 +60,7 @@ public class BankView extends InfoPanel {
         scrollPanel.setVerticalScrollBarPolicy(
                 JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-        scrollPanel.setViewportView(bankViewPanel);
+        scrollPanel.setViewportView(contentPanel);
 
     }
 
@@ -69,22 +69,22 @@ public class BankView extends InfoPanel {
         for (int i = 0; i < bullpen.getPieces().size(); i++) {
             HexominoBullpenView tempHexBullpenView = new HexominoBullpenView(
                     bullpen.getPieces().get(i));
-            this.bankViewPanel.add(tempHexBullpenView.getHexominoPanel());
+            this.contentPanel.add(tempHexBullpenView.getHexominoPanel());
             this.hexominoViews.add(tempHexBullpenView);
             // tempHexBullpenView.addMouseListener(new
             // HexominoBankController(this.builder, tempHexBullpenView));
         }
 
-        this.bankViewPanel.doLayout();
+        this.contentPanel.doLayout();
         this.validate();
     }
 
+    @Override
     public void registerControllers(
             HexominoBankControllerFactory hexominoBankControllerFactory) {
         assert bullpen != null;
 
         for (HexominoBullpenView view : hexominoViews) {
-            System.out.println(view);
             // FIXME this should be using the bank controller factory
             view.addMouseListener(new HexominoBankController(bullpen,
                     view.getHexomino(), null, view));

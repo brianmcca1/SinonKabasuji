@@ -1,33 +1,47 @@
 package sinon.views;
 
 import java.awt.Color;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
+import sinon.main.HexominoBankControllerFactory;
 import sinon.models.BullPen;
 import sinon.models.Hexomino;
 import sinon.models.NumberSetFactory;
+import sinon.views.builder.HexominoContainerView;
 
 @SuppressWarnings("serial")
-public class BullpenView extends JScrollPane {
+public class BullpenView extends JScrollPane implements HexominoContainerView {
 
-    private JPanel bullpenPanel;
+    JPanel contentPanel;
 
     /** This is the bullpen that is associated with the view */
     BullPen bullpen;
+    List<HexominoBullpenView> hexominoViews;
 
     public BullpenView(BullPen bullpen) {
-        this.bullpenPanel = new JPanel();
-        bullpenPanel.setBackground(Color.gray);
-        bullpenPanel.setLayout(new BoxLayout(bullpenPanel, BoxLayout.X_AXIS));
+        this.bullpen = bullpen;
+        this.hexominoViews = new LinkedList<HexominoBullpenView>();
+
+        initContentPanel();
         populateBullpen();
+
+        this.validate();
+    }
+
+    private void initContentPanel() {
+        this.contentPanel = new JPanel();
+        contentPanel.setBackground(Color.gray);
+        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.X_AXIS));
         JScrollBar scrollBar = new JScrollBar(JScrollBar.HORIZONTAL);
         this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
         this.add(scrollBar);
-        this.setViewportView(bullpenPanel);
+        this.setViewportView(contentPanel);
     }
 
     /**
@@ -41,7 +55,7 @@ public class BullpenView extends JScrollPane {
         Hexomino hex = new Hexomino(NumberSetFactory.getByNumbers(0, 0, 0, 1, 0,
                 2, 0, 3, 0, 4, 0, 5));
         HexominoBullpenView hexView = new HexominoBullpenView(hex);
-        this.bullpenPanel.add(hexView);
+        this.contentPanel.add(hexView);
 
         // We will actually need this block uncommented when we get the entities
         // working.
@@ -52,6 +66,13 @@ public class BullpenView extends JScrollPane {
         // HexominoBullpenController(MainView.kabasuji, hbpView));
         // }
 
+    }
+
+    @Override
+    public void registerControllers(
+            HexominoBankControllerFactory hexominoBankControllerFactory) {
+        // TODO copy the code from BankView once that is finished. Don't copy
+        // it if it isn't finished.
     }
 
 }
