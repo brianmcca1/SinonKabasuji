@@ -7,22 +7,27 @@ import java.util.Collection;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
+import sinon.controllers.BuilderTileController;
+import sinon.main.Builder;
+import sinon.main.Kabasuji;
 import sinon.models.Board;
+import sinon.models.Level;
 
 public class BoardView extends JPanel {
 
     JPanel boardPanel;
     private Board board;
     Collection<TileView> tileViews;
+    private Kabasuji kabasuji;
 
-    public BoardView(Board board) {
+    public BoardView(Kabasuji k, Board board) {
         this.board = board;
+        this.kabasuji = k;
         this.boardPanel = new JPanel();
         this.boardPanel.setLayout(new GridLayout(12, 12));
         this.boardPanel.setBounds(80, 26, 300, 300);
         this.boardPanel.setBackground(Color.BLACK);
-        this.boardPanel
-                .setBorder(BorderFactory.createLineBorder(Color.black, 1));
+        this.boardPanel.setBorder(BorderFactory.createLineBorder(Color.black, 1));
 
         for (int i = 0; i < 12; i++) {
             for (int j = 0; j < 12; j++) {
@@ -33,14 +38,11 @@ public class BoardView extends JPanel {
 
     private void initializeTile(int row, int column) {
         TileView tileView = new TileView(board.getTile(row, column));
-        // FIXME this is just sort of there.
-        // tileView.addMouseListener(
-        // new TileController(kabasuji.openedLevel, tileView, null));
+
+        tileView.addMouseListener(new BuilderTileController((Builder) kabasuji, tileView, this.kabasuji.getLevel()));
 
         tileView.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
-        tileView.setBounds(12 * row, 12 * column, 25, 25); // TODO this is in
-                                                           // absolute
-                                                           // positioning?
+        tileView.setBounds(12 * row, 12 * column, 25, 25);
 
         boardPanel.add(tileView);
     }

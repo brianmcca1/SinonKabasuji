@@ -1,5 +1,7 @@
 package sinon.views;
 
+import java.awt.Color;
+
 import javax.swing.JPanel;
 
 import sinon.models.Tile;
@@ -7,10 +9,36 @@ import sinon.models.Tile;
 public class TileView extends JPanel {
 
     public Tile tile;
-    int row, col;
+    int row, column;
 
     TileView(Tile tile) {
         this.tile = tile;
+        this.setBackground(Color.white);
+        this.row = tile.getLocation().x;
+        this.column = tile.getLocation().y;
+    }
+    
+    
+    public void toggleColor(){
+    	if(!(this.getBackground().equals(Color.black)))
+    		this.setBackground(Color.black);
+    	else
+    		this.setBackground(Color.white);
+
+    	this.repaint();
+    	this.revalidate();
     }
 
+    public int getRow(){
+    	return this.row;
+    }
+    
+    public int getColumn(){
+    	return this.column;
+    }
+    
+    public Tile getTile(){
+    	return this.tile;
+    }
+    
 }

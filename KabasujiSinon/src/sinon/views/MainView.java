@@ -95,7 +95,7 @@ public class MainView extends JPanel {
      * {@link #gameAreaPanel}
      */
     private void initBoard() {
-        BoardView tempBoard = new BoardView(level.getBoard());
+        BoardView tempBoard = new BoardView(this.kabasuji, level.getBoard());
         gameAreaPanel.add(tempBoard.boardPanel);
     }
 
