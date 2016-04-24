@@ -153,14 +153,14 @@ public class Hexomino {
      * 
      * @see java.lang.Object#hashCode()
      */
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((hexominoNumberSet == null) ? 0
-                : hexominoNumberSet.hashCode());
-        return result;
-    }
+    //@Override
+//    public int hashCode() {
+//        final int prime = 31;
+//        int result = 1;
+//        result = prime * result + ((hexominoNumberSet == null) ? 0
+//                : hexominoNumberSet.hashCode());
+//        return result;
+//    }
 
     /*
      * (non-Javadoc)

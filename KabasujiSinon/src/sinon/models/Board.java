@@ -103,7 +103,7 @@ public class Board {
         HexominoNumberSet hexominoNumberSet = hex.getHexominoNumberSet();
     	for(ComparablePoint p : hexominoNumberSet.getPoints()){
     		Point pointToAdd = new Point(anchorLocation.x + p.x, anchorLocation.y + p.y);
-    		if(tilesViaPoints.get(pointToAdd).canAddHex()){
+    		if(tilesViaPoints.get(pointToAdd).canAddHex() & isInBounds(pointToAdd.x, pointToAdd.y)){
     			tilesViaPoints.get(pointToAdd).addHexomino(hex);
     		}
     	}

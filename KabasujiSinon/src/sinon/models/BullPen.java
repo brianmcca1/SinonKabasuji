@@ -1,5 +1,6 @@
 package sinon.models;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -33,9 +34,12 @@ public class BullPen {
      * @return List of all Hexominos
      */
     public List<Hexomino> getPieces() {
-        // FIXME, return a copy, not original. Don't have faith people won't
-        // accidentally destroy the list once given it.
-        return this.pieces;
+   
+    	ArrayList<Hexomino> piecesCopy = new ArrayList<Hexomino>();
+    	for(Hexomino h: this.pieces){
+    		piecesCopy.add(h);
+    	}
+        return piecesCopy;
     }
 
     /**
@@ -60,9 +64,16 @@ public class BullPen {
      * @return True if this list contained the specified element.
      */
     public boolean removeHexomino(Hexomino hex) {
+    	// TODO: how to do this better? How does it handle duplicates?
         return this.pieces.remove(hex);
     }
-
+    /**
+     * Gives the number of Hexominos in the bullpen
+     * @return The number of Hexominos
+     */
+    public int hexominoCount(){
+    	return this.pieces.size();
+    }
 
     @Override
     public String toString() {
