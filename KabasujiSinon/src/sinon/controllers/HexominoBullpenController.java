@@ -25,16 +25,14 @@ public class HexominoBullpenController implements MouseListener{
 	/** Current level that the game/builder is in.  */
 	Level level;
 	
-	/** Bullpen which contains hexominos in both game and builder. */
-	BullPen bullpen;
-	
 	/** Hexomino model that's associated with this controller. */
 	Hexomino hex;
 	
-	public HexominoBullpenController(HexominoBullpenView view, Level level, BullPen bullpen){
+	public HexominoBullpenController(HexominoBullpenView view, Level level, BullpenView bullpenView){
 		this.hexBullpenView = view;
+		this.hex = hexBullpenView.getHexomino();
 		this.level = level;
-		this.bullpen = bullpen;
+		this.bpview = bullpenView;
 	}
 	
 
@@ -43,35 +41,28 @@ public class HexominoBullpenController implements MouseListener{
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		System.out.println("I AM A HEXOMINO AND I JUST GOT CLICKED ON!");
+		System.out.println("I AM A BULLPEN HEXOMINO AND I JUST GOT CLICKED ON!");
 		
 		if(level.hasSelected()) {
-			Hexomino alreadySelected = level.selectedHexomino.get();
-			bullpen.addHexomino(alreadySelected);
-			//we will have to  refresh the bullpenview here
-		} else {
-			level.select(Optional.of(hex));
-			//refresh the views here? 
+			Hexomino alreadySelected = level.selectedHexomino;
+			this.level.getBullpen().addHexomino(alreadySelected);
+			bpview.redrawBullpenView();
+			level.deselect();
+			System.out.println("SELECTED HEXOMINO HAS BEEN DESELECTED");
+		} 
+		else {
+			level.select(hex);
+			System.out.println("NEWLY SELECTED HEXOMINO: " + level.selectedHexomino.toString());
 		}
+		
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-	}
-
+	public void mousePressed(MouseEvent e) {}
 	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-	}
-
+	public void mouseReleased(MouseEvent e) {}
 	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-	}
-
+	public void mouseEntered(MouseEvent e) {}
 	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-	}
+	public void mouseExited(MouseEvent e) {}
 }

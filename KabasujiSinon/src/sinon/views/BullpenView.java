@@ -9,23 +9,27 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-import sinon.models.BullPen;
 
+import sinon.controllers.HexominoBullpenController;
+import sinon.main.Kabasuji;
+import sinon.models.BullPen;
 
 @SuppressWarnings("serial")
 public class BullpenView extends JPanel{
 
 	public JScrollPane scrollPanel;
     public JPanel contentPanel;
+    public Kabasuji kabasuji;
 
     /** This is the bullpen that is associated with the view */
     BullPen bullpen;
     
     List<HexominoBullpenView> hexominoViews;
 
-    public BullpenView(BullPen bullpen) {
+    public BullpenView(Kabasuji k, BullPen bullpen) {
         this.bullpen = bullpen;
         this.hexominoViews = new LinkedList<HexominoBullpenView>();
+        this.kabasuji = k;
 
         initContentPanel();
         initBullpenViewScrollPanel();
@@ -52,6 +56,7 @@ public class BullpenView extends JPanel{
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.X_AXIS));
     }
 
+    /** Called by the HexominoBankController to repaint this bullpen. */
     public void redrawBullpenView(){
     	this.repaint();
     	this.revalidate();
@@ -60,30 +65,18 @@ public class BullpenView extends JPanel{
     }
     
     public void addHexominoBullpenView(HexominoBullpenView hexBullpenView){
+    	//have to create a copy so that we can register a different controller to this HexominBullpenView
     	HexominoBullpenView hexBPView = new HexominoBullpenView(hexBullpenView.getHexomino());
+    	hexBPView.addMouseListener(new HexominoBullpenController(hexBPView, this.kabasuji.getLevel(), this));
     	this.hexominoViews.add(hexBPView);
     	this.contentPanel.add(hexBPView);    	
     	this.redrawBullpenView();
     }
     
-    /**
-     * Creates a HexominoBullpenView and registers a HexominoBullpenController
-     * to it.
-     */
+    /** Creates a HexominoBullpenView and registers a HexominoBullpenController to it.*/
     private void populateBullpen() {
-    	
     	//THIS SHOULD TAKE A LIST OF HEXOMINO VIEWS FOR THE CASE THAT THE BULLPEN ALREADY HAS A BUNCH OF HEXOMINOS IN IT (OPEN, FOR EXAMPLE)
     	//AND THEN IT WILL CALL addHexominoBullpenView ON EACH ONE
-    	
-    	
-        // We will actually need this block uncommented when we get the entities
-        // working.
-        // for(Hexomino hex : bullpen.getPieces()) {
-        // HexominoBullpenView hbpView = new HexominoBullpenView(hex);
-        // hbpView.setBackground(Color.red);
-        // this.bullpenPanel.add(hbpView); hbpView.addMouseListener(new
-        // HexominoBullpenController(MainView.kabasuji, hbpView));
-        // }
     }
 
 }

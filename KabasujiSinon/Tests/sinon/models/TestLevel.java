@@ -21,7 +21,7 @@ public class TestLevel {
 		assertEquals(level.getBoard(), board);
 		assertEquals(level.getBullpen(), bullpen);
 		
-		level.select(Optional.of(hex));
+		level.select(hex);
 		assertTrue(level.hasSelected());
 		
 		level.deselect();

@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import sinon.main.Kabasuji;
 import sinon.models.BullPen;
 import sinon.models.Level;
 import sinon.models.data.BullPenData;
@@ -35,6 +36,7 @@ public class MainView extends JPanel {
     InfoPanel infoPanel;
     Level level;
     int levelNum;
+    Kabasuji kabasuji;
 
     /**
      * @param k
@@ -42,10 +44,11 @@ public class MainView extends JPanel {
      * @param infoPanel
      *            The InfoPanel to be displayed.
      */
-    public MainView(InfoPanel infoPanel, Level level) {
+    public MainView(Kabasuji k, InfoPanel infoPanel, Level level) {
         releaseButtonView = Optional.of(new ReleaseButtonView());
         this.infoPanel = infoPanel;
-        this.bullpenView = new BullpenView(level.getBullpen());
+        this.kabasuji = k;
+        this.bullpenView = new BullpenView(this.kabasuji, level.getBullpen());
         this.level = level;
         initializeViews();
     }

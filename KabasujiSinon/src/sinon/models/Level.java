@@ -1,7 +1,5 @@
 package sinon.models;
 
-import java.util.Optional;
-
 import sinon.models.data.LevelData;
 import sinon.models.data.LevelType.types;
 
@@ -10,13 +8,12 @@ public class Level {
     Board board;
     BullPen bullpen;
     LevelData levelData;
-    public Optional<Hexomino> selectedHexomino;
+    public Hexomino selectedHexomino;
 
     public Level(int levelNum, Board b, BullPen bp) {
         this.levelNum = levelNum;
         this.board = b;
         this.bullpen = bp;
-        selectedHexomino = Optional.empty();
     }
 
     /**
@@ -44,7 +41,7 @@ public class Level {
      * 
      * @param hex
      */
-    public void select(Optional<Hexomino> hex) {
+    public void select(Hexomino hex) {
         this.selectedHexomino = hex;
     }
 
@@ -52,7 +49,7 @@ public class Level {
      * Sets the selected hexomino to empty
      */
     public void deselect() {
-        this.selectedHexomino = Optional.empty();
+        this.selectedHexomino = null;
     }
 
     /**
@@ -60,7 +57,7 @@ public class Level {
      *         hexomino
      */
     public boolean hasSelected() {
-        return this.selectedHexomino.isPresent();
+        return this.selectedHexomino != null;
     }
 
     public Board getBoard() {
