@@ -120,6 +120,10 @@ public class Board {
     public Tile getTile(int row, int column) {
         return tilesViaPoints.get(new Point(row, column));
     }
+    
+    public Tile getTile(Point p){
+    	return tilesViaPoints.get(p);
+    }
 
     /**
      * Returns whether given row and column are in bounds in the existing game

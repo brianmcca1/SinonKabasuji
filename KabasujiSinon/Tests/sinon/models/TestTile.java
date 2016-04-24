@@ -100,7 +100,7 @@ public class TestTile {
 
         assertEquals(t1.canAddHex(), false);
 
-        t1.setPlayable(true);
+        t1.togglePlayable();
 
         Hexomino hex = new Hexomino(0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 1);
 
