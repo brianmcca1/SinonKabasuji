@@ -32,7 +32,7 @@ public class BuilderNewLightningLevelController extends BuilderNewLevelControlle
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("CREATING NEW LIGHTNING LEVEL");
-		this.builder.setCurrentLevel(new Level(types.LIGHTNING, new Board(), new BullPen(new BullPenData())));
+		this.builder.setLevel(new Level(types.LIGHTNING, new Board(), new BullPen(new BullPenData())));
 		this.handleNewLevel(this.blankPanel, this.builder, this.builderMenuBar);
 	}
 }

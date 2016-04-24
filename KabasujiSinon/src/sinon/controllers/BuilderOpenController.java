@@ -59,7 +59,7 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 	}
 	
 	public void startLevel(JPanel blankPanel, Builder builder, BuilderMenuBar bMenuBar){
-		builder.startNextPanel(blankPanel, new MainView(new BankView(new BullPen(HexominoBankData.getHexominos())),this.builder.getCurrentLevel()));
+		builder.startNextPanel(blankPanel, new MainView(new BankView(new BullPen(HexominoBankData.getHexominos())),this.builder.getLevel()));
 		bMenuBar.mntmSaveAs.setEnabled(true);
 		bMenuBar.mntmSave.setEnabled(true);
 		bMenuBar.mntmUndo.setEnabled(true);

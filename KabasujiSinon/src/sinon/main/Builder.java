@@ -10,12 +10,15 @@ import sinon.views.builder.BuilderMenuBar;
 @SuppressWarnings("serial")
 public class Builder extends Kabasuji {
 
-	/** Used by JMenuItem controllers to deal with file operations. */
+	/** File that is currently being read from / saved to. */
 	File currentFile;
 	/** Builder's knowledge of the level. */
 	Level level;
+	/** JPanel that the builder initially starts out with. */
 	JPanel blankPanel;
+	/** Builder's knowledge of the mainView */
 	MainView mainView;
+	/** BullPen containing all 35 hexominos. */
     BullPen bullpen = new BullPen(HexominoBankData.getHexominos());
 	
 	Builder() {
@@ -29,11 +32,11 @@ public class Builder extends Kabasuji {
 	
 	public void setCurrentFile(File f){this.currentFile = f;}
 	
-	public void setCurrentLevel(Level l){this.level = l;}
+	public void setLevel(Level l){this.level = l;}
 	
 	public File getCurrentFile(){return this.currentFile;}
 	
-	public Level getCurrentLevel(){return this.level;}
+	public Level getLevel(){return this.level;}
 	
 	public MainView getMainView(){return this.mainView;}
 	

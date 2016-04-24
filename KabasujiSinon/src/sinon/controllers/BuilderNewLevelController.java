@@ -15,13 +15,13 @@ import sinon.views.builder.BuilderMenuBar;
 public abstract class BuilderNewLevelController {
 	
 	/**
-	 * Used by all the New Level Controllers, starts the MainView and handles enabling/disabling of file options.
+	 * Used by all the New Level Controllers, starts the MainView and handles enabling/disabling of menu bar items.
 	 * @param blankPanel The blank panel to remove from the builder.
 	 * @param builder Overall Builder object.
 	 * @param bMenuBar The menu bar at the top of the frame.
 	 */
 	public void handleNewLevel(JPanel blankPanel, Builder builder, BuilderMenuBar bMenuBar){
-		builder.startNextPanel(blankPanel, new MainView(new BankView(builder.getBullpen()), builder.getCurrentLevel()));
+		builder.startNextPanel(blankPanel, new MainView(new BankView(builder.getBullpen()), builder.getLevel()));
 		bMenuBar.mntmSaveAs.setEnabled(true);
 		bMenuBar.mntmSave.setEnabled(false);
 		bMenuBar.mntmUndo.setEnabled(true);
