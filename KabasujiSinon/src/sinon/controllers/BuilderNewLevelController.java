@@ -21,7 +21,7 @@ public abstract class BuilderNewLevelController {
 	 * @param bMenuBar The menu bar at the top of the frame.
 	 */
 	public void handleNewLevel(JPanel blankPanel, Builder builder, BuilderMenuBar bMenuBar){
-		builder.startNextPanel(blankPanel, new MainView(new BankView(builder.getBullpen()), builder.getLevel()));
+		builder.initializeMainView();
 		bMenuBar.mntmSaveAs.setEnabled(true);
 		bMenuBar.mntmSave.setEnabled(false);
 		bMenuBar.mntmUndo.setEnabled(true);
