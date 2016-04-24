@@ -7,8 +7,10 @@ import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 
 import sinon.main.Builder;
+import sinon.models.BullPen;
 import sinon.models.data.BoardData;
 import sinon.models.data.BullPenData;
+import sinon.models.data.HexominoBankData;
 import sinon.models.data.LevelData;
 import sinon.models.data.LevelType;
 import sinon.serial.Deserializer;
@@ -42,14 +44,14 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
         	
             File file = fc.getSelectedFile();
             this.builder.setCurrentFile(file);
-
-            //attempt to read LevelData from file
-            LevelData levelData = new LevelData(LevelType.types.PUZZLE, new BoardData(), new BullPenData(), 1);
             
-            //CREATE LEVEL FROM THE READ LEVELDATA HERE
+            Deserializer deserializer = new Deserializer(file); 
             
-            Deserializer deserializer = new Deserializer(file);
-            deserializer.deserializeFile();
+            //read LevelData from file
+            LevelData levelData = deserializer.deserializeFile();
+           
+            //CREATE ALEVEL FROM levelData HERE
+            //SET ALEVEL TO BUILDER
             
             startLevel(this.blankPanel, this.builder, this.builderMenuBar);
             this.builderMenuBar.mntmSave.setEnabled(true);
@@ -57,7 +59,7 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 	}
 	
 	public void startLevel(JPanel blankPanel, Builder builder, BuilderMenuBar bMenuBar){
-		builder.startNextPanel(blankPanel, new MainView(builder, new BankView(builder)));
+		builder.startNextPanel(blankPanel, new MainView(new BankView(new BullPen(HexominoBankData.getHexominos())),this.builder.getCurrentLevel()));
 		bMenuBar.mntmSaveAs.setEnabled(true);
 		bMenuBar.mntmSave.setEnabled(true);
 		bMenuBar.mntmUndo.setEnabled(true);

@@ -13,8 +13,6 @@ public class Deserializer {
 	
 	/** File to read a LevelData from.*/
 	private File fileToOpen;
-	/** LevelData object read from file.*/
-	private LevelData levelData;
 	
 	/**
 	 * @param f File to open/read from.
@@ -29,15 +27,17 @@ public class Deserializer {
 	 * NOTE: this function also takes into account the selected directory from the JFileChooser.
 	 * @return indicates success or failure of deserialization
 	 */
-	public void deserializeFile() {
+	public LevelData deserializeFile() {
 	    try{
 	    	FileInputStream fin = new FileInputStream(fileToOpen);
 	    	ObjectInputStream ois = new ObjectInputStream(fin);
-	    	this.levelData = (LevelData) ois.readObject();
+	    	LevelData levelData = (LevelData) ois.readObject();
 	    	ois.close();
 	    	System.out.println("DESERIALIZER SUCCESSFUL");
+	    	return levelData;
 	    }catch(Exception ex){
 	    	ex.printStackTrace();
+	    	return null;
 	    } 
 	}
 	

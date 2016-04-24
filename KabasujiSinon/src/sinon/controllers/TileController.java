@@ -63,7 +63,7 @@ public class TileController implements MouseListener, MouseMotionListener {
 
     /** Accesses the board from the fields this class has */
     private Board getBoard() {
-        return level.board;
+        return level.getBoard();
     }
 
     @Override
