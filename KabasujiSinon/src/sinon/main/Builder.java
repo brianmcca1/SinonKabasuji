@@ -27,7 +27,9 @@ public class Builder extends Kabasuji {
 	}
 	
 	public void initializeMainView(){
-		this.startNextPanel(this.blankPanel, new MainView(new BankView(this.bullpen), this.currentLevel));
+		MainView mv = new MainView(new BankView(this, this.bullpen), this.currentLevel);
+		this.setMainView(mv);
+		this.startNextPanel(this.blankPanel, mv);
 	}
 	
 	public void setCurrentFile(File f){this.currentFile = f;}

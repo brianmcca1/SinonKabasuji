@@ -80,13 +80,7 @@ public class HexominoBankData {
         
         // etc
         for (int[] h : list) {
-            // hexList.add(new
-            // Hexomino(h[0],h[1],h[2],h[3],h[4],h[5],h[6],h[7]));
-            // Oh no the implementation changed of Hexomino. Lets fix that:
-            hexList.add(new Hexomino(
-                    NumberSetFactory.getByNumbers(h[0], h[1], h[2], h[3], h[4],
-                            h[5], h[6], h[7], h[8], h[9], h[10], h[11])));
-
+            hexList.add(new Hexomino(NumberSetFactory.getByNumbers(h[0], h[1], h[2], h[3], h[4], h[5], h[6], h[7], h[8], h[9], h[10], h[11])));
         }
 
         /*

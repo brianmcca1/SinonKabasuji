@@ -37,7 +37,7 @@ public class Test extends Kabasuji {
     }
 
     void initializeMainView() {
-        mainView = new MainView(new BankView(bullpen), testLevel);
+       // mainView = new MainView(new BankView(bullpen), testLevel);
         mainView.setVisible(true);
     }
 

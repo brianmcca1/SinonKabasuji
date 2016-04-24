@@ -15,7 +15,6 @@ public class LevelPanel extends JPanel {
 
     /**
      * Create the panel.
-     * 
      * @param gameAreaPanel
      * @param bullpenView
      */
@@ -28,14 +27,13 @@ public class LevelPanel extends JPanel {
         gridBagLayout.rowWeights = new double[] { 1.0, 1.0 };
         setLayout(gridBagLayout);
 
-        JScrollPane scrollPane = bullpenView;
         GridBagConstraints gbc_scrollPane = new GridBagConstraints();
         gbc_scrollPane.anchor = GridBagConstraints.NORTH;
         gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
         gbc_scrollPane.fill = GridBagConstraints.BOTH;
         gbc_scrollPane.gridx = 0;
         gbc_scrollPane.gridy = 0;
-        add(scrollPane, gbc_scrollPane);
+        add(bullpenView.scrollPanel, gbc_scrollPane);
 
         JPanel panel = gameAreaPanel;
         GridBagConstraints gbc_panel = new GridBagConstraints();

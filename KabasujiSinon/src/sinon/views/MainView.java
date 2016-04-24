@@ -45,7 +45,7 @@ public class MainView extends JPanel {
     public MainView(InfoPanel infoPanel, Level level) {
         releaseButtonView = Optional.of(new ReleaseButtonView());
         this.infoPanel = infoPanel;
-        this.bullpenView = new BullpenView(new BullPen(new BullPenData()));
+        this.bullpenView = new BullpenView(level.getBullpen());
         this.level = level;
         initializeViews();
     }
@@ -60,7 +60,7 @@ public class MainView extends JPanel {
     }
 
     /** Initializes all of the components that make up this GUI. */
-    private void initializeViews() {
+    public void initializeViews() {
         this.setLayout(null);
 
         initGameAreaPanel();

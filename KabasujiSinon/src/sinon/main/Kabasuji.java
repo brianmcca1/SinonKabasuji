@@ -83,4 +83,8 @@ public abstract class Kabasuji extends JFrame {
     
     /** Sets the Level object. */
     public void setLevel(Level l){this.currentLevel = l;}
+    
+    public void revalidateMainView(){
+    	this.mainView.revalidate();
+    }
 }

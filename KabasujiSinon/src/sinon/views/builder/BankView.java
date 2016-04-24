@@ -11,28 +11,27 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
 import sinon.controllers.HexominoBankController;
+import sinon.main.Builder;
 import sinon.main.HexominoBankControllerFactory;
 import sinon.models.BullPen;
 import sinon.views.HexominoBullpenView;
 import sinon.views.InfoPanel;
 
 @SuppressWarnings("serial")
-public class BankView extends InfoPanel implements HexominoContainerView {
+public class BankView extends InfoPanel {
 
     JScrollPane scrollPanel;
     JPanel contentPanel;
-    // Builder builder;
     BullPen bullpen;
+    Builder builder;
     List<HexominoBullpenView> hexominoViews;
 
-    public BankView(BullPen bullpen) {
+    public BankView(Builder b, BullPen bullpen) {
         super();
+        
+        this.builder = b;
         this.bullpen = bullpen;
         this.hexominoViews = new LinkedList<HexominoBullpenView>();
-        // this.builder = b;
-        // initialize builder menu bar
-        // BuilderMenuBar menuBar = new BuilderMenuBar(this.builder);
-        // this.builder.setJMenuBar(menuBar);
 
         initContentPanel();
         initBankViewScrollPanel();
@@ -52,43 +51,24 @@ public class BankView extends InfoPanel implements HexominoContainerView {
 
     private void initBankViewScrollPanel() {
         scrollPanel = new JScrollPane();
-
         JScrollBar scrollBar = new JScrollBar(JScrollBar.VERTICAL);
-        scrollPanel.setHorizontalScrollBarPolicy(
-                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPanel.add(scrollBar);
-        scrollPanel.setVerticalScrollBarPolicy(
-                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
+        scrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPanel.setViewportView(contentPanel);
-
     }
 
     private void populateBankViewWithHexominoes() {
 
         for (int i = 0; i < bullpen.getPieces().size(); i++) {
-            HexominoBullpenView tempHexBullpenView = new HexominoBullpenView(
-                    bullpen.getPieces().get(i));
+            HexominoBullpenView tempHexBullpenView = new HexominoBullpenView(bullpen.getPieces().get(i));
             this.contentPanel.add(tempHexBullpenView);
             this.hexominoViews.add(tempHexBullpenView);
-            // tempHexBullpenView.addMouseListener(new
-            // HexominoBankController(this.builder, tempHexBullpenView));
+            tempHexBullpenView.addMouseListener(new HexominoBankController(this.builder, this.builder.getLevel().getBullpen(), tempHexBullpenView));
         }
 
         this.contentPanel.doLayout();
         this.validate();
     }
 
-    @Override
-    public void registerControllers(
-            HexominoBankControllerFactory hexominoBankControllerFactory) {
-        assert bullpen != null;
-
-        for (HexominoBullpenView view : hexominoViews) {
-            hexominoBankControllerFactory.registerHexomino(view, bullpen);
-            // FIXME this should be using the bank controller factory
-            view.addMouseListener(new HexominoBankController(bullpen,
-                    view.getHexomino(), null, view));
-        }
-    }
 }
