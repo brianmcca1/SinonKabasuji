@@ -44,7 +44,7 @@ public class HexominoBullpenController implements MouseListener{
 		System.out.println("I AM A BULLPEN HEXOMINO AND I JUST GOT CLICKED ON!");
 		
 		if(level.hasSelected()) {
-			Hexomino alreadySelected = level.selectedHexomino;
+			Hexomino alreadySelected = level.selectedHexomino.get();
 			this.level.getBullpen().addHexomino(alreadySelected);
 			bpview.redrawBullpenView();
 			level.deselect();

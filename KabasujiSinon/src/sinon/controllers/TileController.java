@@ -37,7 +37,7 @@ public class TileController implements MouseListener, MouseMotionListener {
         System.out.println("I AM A TILE AND I WAS JUST CLICKED ON!");
 
         if (level.hasSelected()) {
-            final Hexomino selectedHex = level.selectedHexomino;
+            final Hexomino selectedHex = level.selectedHexomino.get();
 
             if (getBoard().canAddHexomino(tile.getLocation(), selectedHex)) {
 

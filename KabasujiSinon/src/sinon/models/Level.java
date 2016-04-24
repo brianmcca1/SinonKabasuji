@@ -1,5 +1,7 @@
 package sinon.models;
 
+import java.util.Optional;
+
 import sinon.models.data.LevelData;
 import sinon.models.data.LevelType.types;
 
@@ -8,7 +10,7 @@ public class Level {
     Board board;
     BullPen bullpen;
     LevelData levelData;
-    public Hexomino selectedHexomino;
+    public Optional<Hexomino> selectedHexomino;
 
     public Level(int levelNum, Board b, BullPen bp) {
         this.levelNum = levelNum;
@@ -42,7 +44,7 @@ public class Level {
      * @param hex
      */
     public void select(Hexomino hex) {
-        this.selectedHexomino = hex;
+        this.selectedHexomino = Optional.of(hex);
     }
 
     /**
