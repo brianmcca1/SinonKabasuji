@@ -8,10 +8,6 @@ import sinon.models.BullPen;
  *
  */
 public abstract class BullPenMove {
-	/** 
-	 * This is the bullpen within which we are rotating.
-	 */
-	BullPen bullPen;
 	
 	/**
 	 * This is the hexomino that is being rotated.

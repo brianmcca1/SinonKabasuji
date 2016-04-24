@@ -10,8 +10,7 @@ import sinon.models.BullPen;
  */
 public class FlipVerticalMove extends BullPenMove{
 
-	public FlipVerticalMove(BullPen bp, Hexomino hex) {
-		this.bullPen = bp;
+	public FlipVerticalMove(Hexomino hex) {
 		this.hex = hex;
 	}
 	@Override
@@ -20,7 +19,7 @@ public class FlipVerticalMove extends BullPenMove{
 			throw new NullPointerException();
 		}
 		
-		bullPen.flipHexominoVertical(hex);
+		hex.flipVertically();
 		return true;
 	}
 
@@ -30,7 +29,7 @@ public class FlipVerticalMove extends BullPenMove{
 			throw new NullPointerException();
 		}
 		
-		bullPen.flipHexominoVertical(hex);
+		hex.flipVertically();
 		return true;
 	}
 

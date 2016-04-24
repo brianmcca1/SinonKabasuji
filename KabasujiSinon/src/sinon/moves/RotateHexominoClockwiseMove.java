@@ -10,8 +10,7 @@ import sinon.models.BullPen;
  */
 public class RotateHexominoClockwiseMove extends BullPenMove {
 	
-	public RotateHexominoClockwiseMove(BullPen bp, Hexomino hex) {
-		this.bullPen = bp;
+	public RotateHexominoClockwiseMove(Hexomino hex) {
 		this.hex = hex;
 	}
 	
@@ -21,7 +20,7 @@ public class RotateHexominoClockwiseMove extends BullPenMove {
 			throw new NullPointerException();
 		}
 		
-		bullPen.rotateHexominoClockwise(hex);
+		hex.rotateC();
 		return true;
 	}
 
@@ -31,7 +30,7 @@ public class RotateHexominoClockwiseMove extends BullPenMove {
 			throw new NullPointerException();
 		}
 		
-		bullPen.rotateHexominoCounterClockwise(hex);
+		hex.rotateCC();
 		return true;
 	}
 
