@@ -15,10 +15,11 @@ import sinon.views.game.LevelSelectView;
  */
 public class LevelStartController implements ActionListener{
 
-	/**LevelSelectView to be removed from the frame */
+	/** LevelSelectView to be removed from the frame. */
     LevelSelectView levelSelectView;
-    /**Level number 1-15*/
+    /** Level number (1-15). */
     int levelNum;
+    /** Top level Game object. */
     Game game;
 
     /**
@@ -36,11 +37,10 @@ public class LevelStartController implements ActionListener{
 	@Override
 	/**
 	 * Response to a LevelSelectButtonView being clicked
-	 * Will instantiate the MainView if it doesn't already exist, otherwise it will use the existing MainView
+	 * Calls on Game to start the MainView
 	 */
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("STARTING LEVEL #" + levelNum + ". . .");
-		this.game.setMainView(new MainView(new GameInfoView(this.game.getLevel()), this.game.getLevel()));
-		this.game.startNextPanel(this.levelSelectView, this.game.getMainView());
+		this.game.initializeMainView(this.levelSelectView);
 	}
 }

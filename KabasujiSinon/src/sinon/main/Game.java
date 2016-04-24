@@ -13,35 +13,35 @@ import sinon.views.game.LevelSelectView;
 
 @SuppressWarnings("serial")
 public class Game extends Kabasuji {
-
-	/** Game's knowledge of the level. */
-    Level level;
-	/** Builder's knowledge of the mainView */
-    MainView mainView;
+	
+    /** Holds all the levels for the game. */
+	public Level[] allLevels = new Level[15];
 
     public Game() {
         super();
 
         startSplash("Kabasuji", new LevelSelectView(this));
-        level = new Level(5, new Board(), new BullPen(new LinkedList<Hexomino>()));
+        currentLevel = new Level(5, new Board(), new BullPen(new LinkedList<Hexomino>())); //test level
     }
-
-
+    
+    /**
+     * Called by the LevelStartController to open the MainView.
+     * @param levelSelectView LevelSelectView to remove from the frame.
+     */
+    public void initializeMainView(LevelSelectView levelSelectView){
+		this.setMainView(new MainView(new GameInfoView(this.getLevel()), this.getLevel()));
+		this.startNextPanel(levelSelectView, this.getMainView());
+    }
 
     public void initializeMainControllers() {
         GameInfoView sidePanel = (GameInfoView) mainView.getInfoPanel();
         sidePanel.getExitButton().addActionListener(new sinon.controllers.ExitGameController(this, mainView));
-        mainView.getBullpenView().addMouseListener(new BullpenController(this.level.getBullpen(), mainView.getBullpenView(), this.level));
+        mainView.getBullpenView().addMouseListener(new BullpenController(this.currentLevel.getBullpen(), mainView.getBullpenView(), this.currentLevel));
     }
-
+   
     public static void main(String args[]) {
         @SuppressWarnings("unused")
         Game game = new Game();
     }
-    
-    public void setMainView(MainView m){ this.mainView = m;}
-    
-    public Level getLevel(){ return this.level;}
-    
-    public MainView getMainView(){ return this.mainView;}
+
 }    

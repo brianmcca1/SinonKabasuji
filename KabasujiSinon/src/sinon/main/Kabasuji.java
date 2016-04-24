@@ -1,16 +1,11 @@
 package sinon.main;
 
 import java.awt.event.ActionListener;
-import java.util.Optional;
-import java.util.Stack;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-
-import sinon.models.Board;
-import sinon.models.Hexomino;
 import sinon.models.Level;
+import sinon.views.MainView;
 //import sinon.views.LevelSelectView;
 import sinon.views.SplashScreen;
 
@@ -23,14 +18,17 @@ import sinon.views.SplashScreen;
  */
 @SuppressWarnings("serial")
 public abstract class Kabasuji extends JFrame {
+	
     /** Width in pixels of the frame */
     static final int WIDTH = 800;
     /** Height in pixels of the frame */
     static final int HEIGHT = 600;
-
-    /**
-     * Initializes a general frame.
-     */
+	/** Knowledge of the current level. */
+	public Level currentLevel;
+	/** Knowledge of the MainView.*/
+    public MainView mainView;
+	
+	/** Initializes a general frame. */
     Kabasuji() {
         this.setBounds(0, 0, WIDTH, HEIGHT);
         this.setVisible(true);
@@ -38,17 +36,10 @@ public abstract class Kabasuji extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-	// COMMON VIEWS AND MODELS BETWEEN BOTH BUILDER AND GAME GO HERE
-	public Stack undo = new Stack();
-	// Stack redo = new Stack();
-	// public Level[] levels = new Level[15];
-	public Level openedLevel;
-
 	/**
-	 * Creates a SplashScreen with the given information and displays it
-	 * 
-	 * @param nextPanel
-	 *            The next panel that will be displayed after this panel
+	 * Creates a SplashScreen with the given information and displays it.
+	 * @param title Title to be displayed on the SplashScreen panel.
+	 * @param nextPanel The next panel that will be displayed after this panel.
 	 */
 	public void startSplash(String title, final JPanel nextPanel) {
 		final SplashScreen splash = new SplashScreen(title);
@@ -70,22 +61,26 @@ public abstract class Kabasuji extends JFrame {
 		SplashScreen.timer.start();
 	}
 
-
-  
     /**
-     * Removes the current panel and replaces it with the nextPanel
-     * 
-     * @param current
-     *            Panel that is currently being displayed
-     * @param nextPanel
-     *            Panel to be put into the frame
+     * Removes the current panel and replaces it with the nextPanel.
+     * @param current Panel that is currently being displayed.
+     * @param nextPanel Panel to be put into the frame.
      */
     public void startNextPanel(JPanel current, JPanel nextPanel) {
         this.remove(current);
         this.add(nextPanel);
-        // Validate just seems to really make weird errors go away.
         this.revalidate();
-        this.repaint();
     }
-
+    
+    /** @return returns the MainView object. */
+    public MainView getMainView(){ return this.mainView;}
+    
+    /** Sets the MainView object. */
+    public void setMainView(MainView m){ this.mainView = m;}
+    
+    /** @return gets the Level object. */
+    public Level getLevel(){ return this.currentLevel;}
+    
+    /** Sets the Level object. */
+    public void setLevel(Level l){this.currentLevel = l;}
 }

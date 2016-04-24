@@ -52,9 +52,7 @@ public class MainView extends JPanel {
 
     /**
      * This function sets the currently opened level number.
-     * 
-     * @param num
-     *            Level number (1 to 15)
+     * @param num Level number (1 to 15).
      */
     public void setLevelNum(int num) {
         this.levelNum = num;
@@ -76,10 +74,7 @@ public class MainView extends JPanel {
         infoPanel.setBounds(LEVEL_PANEL_WIDTH, 0, 150, MAIN_PANEL_HEIGHT);
     }
 
-    /**
-     * Get all the buttons from the infoView (all return null if in Builder
-     * mode).
-     */
+    /** Get all the buttons from the infoView (all return null if in Builder mode). */
     private void initGameInfoButtons() {
         JButton exitBtn = infoPanel.getExitButton();
         JButton restartBtn = infoPanel.getRestartButton();
