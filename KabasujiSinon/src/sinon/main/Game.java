@@ -13,42 +13,41 @@ import sinon.views.game.LevelSelectView;
 
 @SuppressWarnings("serial")
 public class Game extends Kabasuji {
+	
+    /** Holds all the levels for the game. */
+	public Level[] allLevels = new Level[15];
 
-	/** Holds all the levels for the game. */
-	public Level[] allLevels = new Level[15]; // TODO don't use arrays use lists
+    public Game() {
+        super();
 
-	public Game() {
-		super();
-
-		startSplash("Kabasuji", new LevelSelectView(this));
-		currentLevel = new Level(5, new Board(), new BullPen(new LinkedList<Hexomino>())); //test level
-	}
-
-	/**
-	 * Called by the LevelStartController to open the MainView.
-	 * @param levelSelectView LevelSelectView to remove from the frame.
-	 */
-	public void initializeMainView(LevelSelectView levelSelectView){
-		this.setMainView(new MainView(this.getLevel(), new GameInfoView(this.getLevel())));
+        startSplash("Kabasuji", new LevelSelectView(this));
+        currentLevel = new Level(5, new Board(), new BullPen(new LinkedList<Hexomino>())); //test level
+    }
+    
+    /**
+     * Called by the LevelStartController to open the MainView.
+     * @param levelSelectView LevelSelectView to remove from the frame.
+     */
+    public void initializeMainView(LevelSelectView levelSelectView){
+		this.setMainView(new MainView(this, new GameInfoView(this.getLevel())));
 		this.startNextPanel(levelSelectView, this.getMainView());
-	}
+    }
 
-	public void initializeMainControllers() {
-		GameInfoView sidePanel = (GameInfoView) mainView.getInfoPanel();
-		sidePanel.getExitButton().addActionListener(new sinon.controllers.ExitGameController(this, mainView));
-		mainView.getBullpenView().addMouseListener(new BullpenController(this.currentLevel.getBullpen(), mainView.getBullpenView(), this.currentLevel));
-	}
+    public void initializeMainControllers() {
+        GameInfoView sidePanel = (GameInfoView) mainView.getInfoPanel();
+        sidePanel.getExitButton().addActionListener(new sinon.controllers.ExitGameController(this, mainView));
+        mainView.getBullpenView().addMouseListener(new BullpenController(this.currentLevel.getBullpen(), mainView.getBullpenView(), this.currentLevel));
+    }
+    
+    /** Registers the GameTileControllers to each TileView in the Game's BoardView. */
+    public void registerBoardViewControllers(){
+    	//apply GameTileControllers here
+    }
+    
+    public static void main(String args[]) {
+        @SuppressWarnings("unused")
+        Game game = new Game();
+    }
 
-	/** Registers the GameTileControllers to each TileView in the Game's BoardView. */
-	@Override
-	public void registerBoardViewControllers(){
-		//apply GameTileControllers here
-	}
 
-	public static void main(String args[]) {
-		@SuppressWarnings("unused")
-		Game game = new Game();
-	}
-
-
-}
+}    
