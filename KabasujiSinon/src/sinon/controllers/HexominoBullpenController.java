@@ -5,9 +5,9 @@ import java.awt.event.MouseListener;
 
 import sinon.models.Hexomino;
 import sinon.models.Level;
-import sinon.views.BullpenView;
 import sinon.views.HexominoBullpenView;
 import sinon.views.HexominoStashController;
+import sinon.views.MainView;
 
 /**
  * This controller responds to mouse interactions with HexominoBullpenViews in the BullpenView.
@@ -18,7 +18,7 @@ public class HexominoBullpenController implements MouseListener, HexominoStashCo
 	HexominoBullpenView hexBullpenView;
 
 	/** View associated with the Bullpen that contains this hexomino. */
-	BullpenView bpview;
+	MainView mainView;
 
 	/** Current level that the game/builder is in.  */
 	Level level;
@@ -26,11 +26,11 @@ public class HexominoBullpenController implements MouseListener, HexominoStashCo
 	/** Hexomino model that's associated with this controller. */
 	Hexomino hex;
 
-	public HexominoBullpenController(HexominoBullpenView view, Level level, BullpenView bullpenView){
+	public HexominoBullpenController(HexominoBullpenView view, Level level, MainView mainView){
 		this.hexBullpenView = view;
 		this.hex = hexBullpenView.getHexomino();
 		this.level = level;
-		this.bpview = bullpenView;
+		this.mainView = mainView;
 	}
 
 
