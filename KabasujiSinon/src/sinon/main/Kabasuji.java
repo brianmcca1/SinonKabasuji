@@ -1,12 +1,12 @@
 package sinon.main;
 
 import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
 import sinon.models.Level;
-import sinon.views.BoardView;
-import sinon.views.BullpenView;
 import sinon.views.MainView;
 //import sinon.views.LevelSelectView;
 import sinon.views.SplashScreen;
@@ -20,27 +20,24 @@ import sinon.views.SplashScreen;
  */
 @SuppressWarnings("serial")
 public abstract class Kabasuji extends JFrame {
-	
-    /** Width in pixels of the frame */
-    static final int WIDTH = 800;
-    /** Height in pixels of the frame */
-    static final int HEIGHT = 600;
+
+	/** Width in pixels of the frame */
+	static final int WIDTH = 800;
+	/** Height in pixels of the frame */
+	static final int HEIGHT = 600;
 	/** Knowledge of the current level. */
 	public Level currentLevel;
 	/** Knowledge of the MainView.*/
-    public MainView mainView;
-    /** Knowledge of the BullpenView. */
-    public BullpenView bullpenView;
-    /** Knowledge of the BoardView. */
-    public BoardView boardView;
-	
+	public MainView mainView;
+
+
 	/** Initializes a general frame. */
-    Kabasuji() {
-        this.setBounds(0, 0, WIDTH, HEIGHT);
-        this.setVisible(true);
-        this.setResizable(false);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
+	Kabasuji() {
+		this.setBounds(0, 0, WIDTH, HEIGHT);
+		this.setVisible(true);
+		this.setResizable(false);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
 
 	/**
 	 * Creates a SplashScreen with the given information and displays it.
@@ -50,10 +47,11 @@ public abstract class Kabasuji extends JFrame {
 	public void startSplash(String title, final JPanel nextPanel) {
 		final SplashScreen splash = new SplashScreen(title);
 		this.add(splash);
-		
+
 		this.validate();
 
 		ActionListener al = new ActionListener() {
+			@Override
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				SplashScreen.count++;
 				SplashScreen.progressBar.setValue(SplashScreen.count);
@@ -67,32 +65,32 @@ public abstract class Kabasuji extends JFrame {
 		SplashScreen.timer.start();
 	}
 
-    /**
-     * Removes the current panel and replaces it with the nextPanel.
-     * @param current Panel that is currently being displayed.
-     * @param nextPanel Panel to be put into the frame.
-     */
-    public void startNextPanel(JPanel current, JPanel nextPanel) {
-        this.remove(current);
-        this.add(nextPanel);
-        this.revalidate();
-    }
-    
-    /** @return returns the MainView object. */
-    public MainView getMainView(){ return this.mainView;}
-    
-    /** Sets the MainView object. */
-    public void setMainView(MainView m){ this.mainView = m;}
-    
-    /** @return gets the Level object. */
-    public Level getLevel(){ return this.currentLevel;}
-    
-    /** Sets the Level object. */
-    public void setLevel(Level l){this.currentLevel = l;}
-    
-    public void registerBoardViewControllers(){}
-    
-    public void revalidateMainView(){
-    	this.mainView.revalidate();
-    }
+	/**
+	 * Removes the current panel and replaces it with the nextPanel.
+	 * @param current Panel that is currently being displayed.
+	 * @param nextPanel Panel to be put into the frame.
+	 */
+	public void startNextPanel(JPanel current, JPanel nextPanel) {
+		this.remove(current);
+		this.add(nextPanel);
+		this.revalidate();
+	}
+
+	/** @return returns the MainView object. */
+	public MainView getMainView(){ return this.mainView;}
+
+	/** Sets the MainView object. */
+	public void setMainView(MainView m){ this.mainView = m;}
+
+	/** @return gets the Level object. */
+	public Level getLevel(){ return this.currentLevel;}
+
+	/** Sets the Level object. */
+	public void setLevel(Level l){this.currentLevel = l;}
+
+	public void registerBoardViewControllers(){}
+
+	public void revalidateMainView(){
+		this.mainView.revalidate();
+	}
 }
