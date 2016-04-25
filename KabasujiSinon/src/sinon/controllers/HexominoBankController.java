@@ -6,6 +6,7 @@ import java.awt.event.MouseListener;
 import sinon.main.Builder;
 import sinon.models.BullPen;
 import sinon.views.HexominoBullpenView;
+import sinon.views.HexominoStashController;
 
 /**
  * This controller responds to mouse interactions with the HexominoBullpenViews
@@ -13,44 +14,44 @@ import sinon.views.HexominoBullpenView;
  * 
  * @author kartik
  */
-public class HexominoBankController implements MouseListener {
+public class HexominoBankController implements MouseListener, HexominoStashController{
 
-    BullPen bullpen;
-    HexominoBullpenView hexBullpenView;
-    Builder builder; // TODO get rid of this field.
-    // SUGGESTION morph this class with Hex Bullpen Controller?
+	BullPen bullpen;
+	HexominoBullpenView hexBullpenView;
+	Builder builder; // TODO get rid of this field.
+	// SUGGESTION morph this class with Hex Bullpen Controller?
 
-    public HexominoBankController(Builder b, BullPen bp,
-            HexominoBullpenView view) {
-        this.bullpen = bp;
-        this.hexBullpenView = view;
-        this.builder = b;
-    }
+	public HexominoBankController(Builder b, BullPen bp,
+			HexominoBullpenView view) {
+		this.bullpen = bp;
+		this.hexBullpenView = view;
+		this.builder = b;
+	}
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        System.out.println("I AM A BANK HEXOMINO AND I GOT CLICKED ON");
-        bullpen.addHexomino(hexBullpenView.getHexomino());
-        this.builder.getMainView().getBullpenView()
-                .addHexominoBullpenView(hexBullpenView);
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		System.out.println("I AM A BANK HEXOMINO AND I GOT CLICKED ON");
+		bullpen.addHexomino(hexBullpenView.getHexomino());
+		this.builder.getMainView().getBullpenView()
+		.addHexominoBullpenView(hexBullpenView);
 
-        System.out.println(
-                this.builder.getLevel().getBullpen().getPieces().toString());
-    }
+		System.out.println(
+				this.builder.getLevel().getBullpen().getPieces().toString());
+	}
 
-    @Override
-    public void mousePressed(MouseEvent e) {
-    }
+	@Override
+	public void mousePressed(MouseEvent e) {
+	}
 
-    @Override
-    public void mouseReleased(MouseEvent e) {
-    }
+	@Override
+	public void mouseReleased(MouseEvent e) {
+	}
 
-    @Override
-    public void mouseEntered(MouseEvent e) {
-    }
+	@Override
+	public void mouseEntered(MouseEvent e) {
+	}
 
-    @Override
-    public void mouseExited(MouseEvent e) {
-    }
+	@Override
+	public void mouseExited(MouseEvent e) {
+	}
 }

@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
-import sinon.controllers.HexominoBullpenController;
 import sinon.models.BullPen;
 
 @SuppressWarnings("serial")
@@ -18,13 +17,18 @@ public class BullpenView extends JPanel {
 
 	public JScrollPane scrollPanel;
 	public JPanel contentPanel;
-
-	/** This is the bullpen that is associated with the view */
+	/**
+	 * This is the object which will register new HexominoViews with
+	 * controllers.
+	 */
+	public HexRegistrator registrator;
+	/** This is the bullpen that is associated with the view. */
 	BullPen bullpen;
-
+	/** This is a list of hexominoViews within the Bullpen. */
 	List<HexominoBullpenView> hexominoViews;
 
 	public BullpenView(BullPen bullpen) {
+		this.registrator = registrator;
 		this.hexominoViews = new LinkedList<HexominoBullpenView>();
 		this.bullpen = bullpen;
 
@@ -70,8 +74,7 @@ public class BullpenView extends JPanel {
 				hexBullpenView.getHexomino());
 		// FIXME no controllers in the views.
 		// TODO add the controller back on.
-		hexBPView.addMouseListener(new HexominoBullpenController(hexBPView,
-				this.kabasuji.getLevel(), this));
+		registrator.registerHexominoView(hexBPView);
 		this.hexominoViews.add(hexBPView);
 		this.contentPanel.add(hexBPView);
 		this.redrawBullpenView();
