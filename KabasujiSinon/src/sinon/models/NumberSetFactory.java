@@ -35,13 +35,13 @@ public class NumberSetFactory {
      */
     public static HexominoNumberSet getByNumbers(int a, int a1, int b, int b1,
             int c, int c1, int d, int d1, int e, int e1, int f, int f1) {
-        List<ComparablePoint> points = new LinkedList<ComparablePoint>();
-        points.add(new ComparablePoint(a, a1));
-        points.add(new ComparablePoint(b, b1));
-        points.add(new ComparablePoint(c, c1));
-        points.add(new ComparablePoint(d, d1));
-        points.add(new ComparablePoint(e, e1));
-        points.add(new ComparablePoint(f, f1));
+        List<Point> points = new LinkedList<Point>();
+        points.add(new Point(a, a1));
+        points.add(new Point(b, b1));
+        points.add(new Point(c, c1));
+        points.add(new Point(d, d1));
+        points.add(new Point(e, e1));
+        points.add(new Point(f, f1));
 
         return getByComparableList(points);
     }
@@ -58,17 +58,15 @@ public class NumberSetFactory {
         if (points == null)
             throw new IllegalArgumentException("Points can't be null");
 
-        List<ComparablePoint> newPoints = new LinkedList<ComparablePoint>();
+        List<Point> newPoints = new LinkedList<Point>();
         for (Point p : points) {
-            newPoints.add(new ComparablePoint(p));
+            newPoints.add(new Point(p));
         }
 
         return getByComparableList(newPoints);
     }
 
-    public static HexominoNumberSet getByComparableList(
-            List<ComparablePoint> points) {
-        points.sort(null);
+    public static HexominoNumberSet getByComparableList(List<Point> points) {
         HexominoNumberSet.validatePoints(points);
         return new HexominoNumberSet(points);
     }

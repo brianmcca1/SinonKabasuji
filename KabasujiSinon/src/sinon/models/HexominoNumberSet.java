@@ -2,6 +2,7 @@ package sinon.models;
 
 import java.awt.Point;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,7 +17,25 @@ public class HexominoNumberSet {
 
     private static final int SIZE = 6;
     /** List of six points representing a Hexomino. */
-    List<ComparablePoint> points;
+    List<Point> points;
+    /**
+     * Comparator used to sort the points.
+     * 
+     * The order of points is based on first the x coordinate, then the y
+     * coordinate.
+     */
+    private static final Comparator<Point> COMP = new Comparator<Point>() {
+
+        @Override
+        public int compare(Point p1, Point p2) {
+            if (p1.x != p2.x) {
+                return p1.x - p2.x;
+            }
+
+            assert p1.x == p2.x;
+            return p1.y - p2.y;
+        }
+    };
 
     /**
      * Main Constructor for creating a HexominoNumberSet
@@ -26,8 +45,8 @@ public class HexominoNumberSet {
      *            Hexomino. The set must contain exactly six elements, and one
      *            element must be (0,0).
      */
-    protected HexominoNumberSet(List<ComparablePoint> points) {
-        points.sort(null);
+    protected HexominoNumberSet(List<Point> points) {
+        points.sort(COMP);
         if (!validatePoints(points)) {
             throw new IllegalArgumentException(
                     String.format("Illegal pointsList inputted, %s ", points));
@@ -36,9 +55,10 @@ public class HexominoNumberSet {
         this.points = points;
     }
 
-    public List<ComparablePoint> getPoints(){
-    	return this.points;
+    public List<Point> getPoints() {
+        return this.points;
     }
+
     void flipHorizontally() {
         for (Point p : points) {
             p.x = p.x * -1;
@@ -48,7 +68,7 @@ public class HexominoNumberSet {
     }
 
     private void resortPoints() {
-        points.sort(null);
+        points.sort(COMP);
     }
 
     void flipVertically() {
@@ -60,17 +80,9 @@ public class HexominoNumberSet {
 
     void rotateC() {
         for (Point p : points) {
-            int newX;
-            int newY;
-
-            // Perform rotation, Matrix is
-            // [0 1]
+            // [0 1] - Rotation matrix is:
             // [-1 0]
-            newX = p.y;
-            newY = p.x * -1;
-
-            // set new location
-            p.move(newX, newY);
+            p.setLocation(p.y, -1 * p.x);
         }
         resortPoints();
     }
@@ -86,9 +98,8 @@ public class HexominoNumberSet {
      * Returns an unmodifiable translated set of points.
      * 
      * This means that that every point is positive, and within the bounds of a
-     * 6x6 grid. Points are in the order specified by ComparablePoint. The
-     * unmodifiable list means that any attempt to alter the list will throw an
-     * error.
+     * 6x6 grid. Points are in the order specified by Point. The unmodifiable
+     * list means that any attempt to alter the list will throw an error.
      * 
      * @return Returns a set of points that describes the Hexomino
      */
@@ -98,7 +109,7 @@ public class HexominoNumberSet {
                 mostPositiveX = Integer.MIN_VALUE,
                 mostPositiveY = Integer.MIN_VALUE;
 
-        List<ComparablePoint> copy = this.points;
+        List<Point> copy = this.points;
 
         for (Point p : copy) {
             if (p.x < mostNegativeX) {
@@ -175,9 +186,9 @@ public class HexominoNumberSet {
              * List<Point> translatedPoints = new LinkedList<Point>(); // TODO
              * use collections.copy // Translate all point in the hex to change
              * which square is the // anchor for (Point p2 : other.points) {
-             * translatedPoints .add(new ComparablePoint(p2.x - p.x, p2.y -
-             * p.y)); } HexominoNumberSet translatedOther = new
-             * HexominoNumberSet( translatedPoints);
+             * translatedPoints .add(new Point(p2.x - p.x, p2.y - p.y)); }
+             * HexominoNumberSet translatedOther = new HexominoNumberSet(
+             * translatedPoints);
              * 
              * for (int i = 0; i < 4; i++) { if
              * (points.equals(translatedOther.points)) { return true; } else {
@@ -267,7 +278,7 @@ public class HexominoNumberSet {
             for (Point neighbor : surroundingPoints) {
                 if (list.contains(neighbor)) {
                     hasFoundNeighbor = true;
-                    break;
+                    break; // FIXME test this logic I think this is wrong.
                 }
             }
 
