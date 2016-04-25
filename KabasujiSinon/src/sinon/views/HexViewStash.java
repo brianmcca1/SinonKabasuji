@@ -9,57 +9,92 @@ import javax.swing.JPanel;
 import sinon.main.HexStashRegistrator;
 import sinon.models.BullPen;
 import sinon.models.Hexomino;
+import sinon.views.builder.BankView;
 
 /**
- * Encapsulates the shared behaviors of the BankView and BullpenView. Both of
- * those will have a HexViewStash, which will manage the registration of
+ * Encapsulates the shared behaviors of the BankView and BullpenView.
+ * 
+ * Both of those will have a HexViewStash, which will manage the registration of
  * controllers, and the updating of the individual HexominoBullpenViews.
  * 
+ * @see BankView
+ * @see BullpenView
  * @author Josh Desmond
  */
 public class HexViewStash {
-	/** Object which is used to register controllers to Hexominos in the stash */
-	HexStashRegistrator registrator;
-	/** Bullpen associated with this Stash */
-	BullPen bullpen;
-	/** This is a list of hexominoViews within the Bullpen. */
-	List<HexominoBullpenView> hexominos;
+    /**
+     * Object which is used to register controllers to Hexominos in the stash
+     */
+    HexStashRegistrator registrator;
+    /** Bullpen associated with this Stash */
+    BullPen bullpen;
+    /** This is a list of hexominoViews within the Bullpen. */
+    List<HexominoBullpenView> hexominosList;
+    /** Content Panel where Hexominos are supposed to be added. */
+    JPanel contentPanel;
 
-	public HexViewStash(BullPen bullpen, JPanel contentPanel) {
-		this.bullpen = Objects.requireNonNull(bullpen);
-		this.hexominos = new LinkedList<HexominoBullpenView>();
-		initializeHexominos();
-	}
+    /**
+     * Creates a new HexViewStash for a Bullpen/Board.
+     * 
+     * @param bullpen
+     *            Bullpen which the HexViewStash is associated with.
+     * @param contentPanel
+     *            The JPanel where HexominoBullpenViews are to be added. Note
+     *            that this should already be initialized, and should already
+     *            have the proper layout for rendering Hexominos.
+     */
+    public HexViewStash(BullPen bullpen, JPanel contentPanel) {
+        this.contentPanel = Objects.requireNonNull(contentPanel);
+        this.bullpen = Objects.requireNonNull(bullpen);
+        initializeHexominoList();
+    }
 
-	private void initializeHexominos() {
-		for (Hexomino h : bullpen.getPieces()) {
-			hexominos.add(new HexominoBullpenView(h));
-		}
-	}
+    /** This must be called during the constructor. */
+    private void initializeHexominoList() {
+        this.hexominosList = new LinkedList<HexominoBullpenView>();
+        for (Hexomino h : bullpen.getPieces()) {
+            hexominosList.add(new HexominoBullpenView(h));
+        }
+    }
 
-	public void registrateHexominos() {
-		for (HexominoBullpenView h : hexominos) {
-			registrator.registerHexominoView(h);
-		}
-	}
+    public List<HexominoBullpenView> getHexominos() {
+        return hexominosList;
+    }
 
-	public List<HexominoBullpenView> getHexominos() {
-		return hexominos;
-	}
+    public void setRegistrator(HexStashRegistrator registrator) {
+        this.registrator = Objects.requireNonNull(registrator);
+        registerHexominos();
+    }
 
-	public void setRegistrator(HexStashRegistrator registrator) {
-		this.registrator = Objects.requireNonNull(registrator);
-		registerHexominos();
-	}
+    private void registerHexominos() {
+        assert this.hexominosList != null;
+        for (HexominoBullpenView h : hexominosList) {
+            registrator.registerHexominoView(h);
+        }
+    }
 
-	private void registerHexominos() {
-		for (HexominoBullpenView h : hexominos) {
-			registrator.registerHexominoView(h);
-		}
-	}
+    public void populateViewWithHexominos() {
+        if (this.contentPanel == null) {
+            throw new NullPointerException(
+                    "content panel was null when adding Hexominos.");
+        }
+        for (HexominoBullpenView hex : getHexominos()) {
+            this.contentPanel.add(hex);
+        }
+    }
 
-	public void populateViewWithHexominos() {
-		// TODO Auto-generated method stub
-
-	}
+    /**
+     * Adds a HexominoBullpenView to the Stash and registers it to a controller.
+     * 
+     * @param hexBPView
+     *            HexominoView to be added.
+     */
+    public void add(HexominoBullpenView hexBPView) {
+        assert this.contentPanel != null;
+        assert this.hexominosList != null;
+        assert this.registrator != null;
+        this.contentPanel.add(Objects.requireNonNull(hexBPView));
+        this.hexominosList.add(hexBPView);
+        registrator.registerHexominoView(hexBPView);
+    }
 }
