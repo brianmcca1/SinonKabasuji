@@ -1,6 +1,9 @@
 package sinon.moves;
 
 import sinon.models.Hexomino;
+
+import java.awt.Point;
+
 import sinon.models.Board;
 import sinon.models.BullPen;
 
@@ -50,7 +53,13 @@ public class MoveToBoardFromBullpen extends BoardMove{
 	
 	@Override
 	public boolean doMove() {
-		return false;
+		try {
+			this.board.addHexomino(new Point(destAnchorRow, destAnchorColumn), hex);
+			return true;
+		} catch (Exception exception) {
+			System.out.println("Couldn't add hexomino here!");
+			return false;
+		}
 	}
 
 	@Override

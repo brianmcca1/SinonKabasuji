@@ -96,8 +96,7 @@ public class Board {
      */
     public void addHexomino(Point anchorLocation, Hexomino hex) throws IllegalArgumentException{
         if (!canAddHexomino(anchorLocation, hex)) {
-            throw new IllegalArgumentException(
-                    "Can't add Hexomino to this location");
+            throw new IllegalArgumentException("Can't add Hexomino to this location");
         }
 
         HexominoNumberSet hexominoNumberSet = hex.getHexominoNumberSet();

@@ -40,14 +40,16 @@ public class HexominoBullpenView extends JPanel {
         ArrayList<Integer> indexList = new ArrayList<Integer>();
 
         for (Point p : normalizedPoints) {
-            indexForHexJPanel = (p.y * 6) + p.x;
+            indexForHexJPanel = (p.x * 6) + p.y;
             indexList.add(indexForHexJPanel);
         }
 
         JPanel tempHexPanel;
         for (int i = 0; i < 36; i++) {
             tempHexPanel = new JPanel();
-            tempHexPanel.setMaximumSize(new Dimension(15, 15));
+            tempHexPanel.setMaximumSize(new Dimension(10, 10));
+            tempHexPanel.setMinimumSize(new Dimension(10, 10));
+            tempHexPanel.setPreferredSize(new Dimension(10, 10));
             this.setBorder(new EmptyBorder(10, 0, 10, 0));
             if (indexList.contains(i)) {
                 tempHexPanel.setBackground(Color.blue);

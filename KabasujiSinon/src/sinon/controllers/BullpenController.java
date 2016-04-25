@@ -4,6 +4,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import sinon.models.BullPen;
+import sinon.models.Hexomino;
 import sinon.models.Level;
 import sinon.views.BullpenView;
 
@@ -25,6 +26,11 @@ public class BullpenController implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         System.out.println("I AM A BULLPEN AND I JUST GOT CLICKED ON!");
+        if(level.hasSelected()) {
+			bullpenView.redrawBullpenView();
+			level.deselect();
+			System.out.println("SELECTED HEXOMINO HAS BEEN DESELECTED");
+        }
     }
 
     @Override

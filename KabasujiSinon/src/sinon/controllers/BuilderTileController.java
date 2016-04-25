@@ -8,6 +8,7 @@ import javax.swing.SwingUtilities;
 import sinon.main.Builder;
 import sinon.models.Hexomino;
 import sinon.models.Level;
+import sinon.moves.MoveToBoardFromBullpen;
 import sinon.views.MainView;
 import sinon.views.TileView;
 
@@ -46,12 +47,17 @@ public class BuilderTileController implements MouseListener{
 				Hexomino hex = level.selectedHexomino.get();
 				int row = tileView.getRow();
 				int column = tileView.getColumn();
-				//this updates the model
-				try {
-					level.getBoard().addHexomino(new Point(row, column), hex);
-				} catch (Exception exception) {
-					System.out.println("Couldn't add hexomino here!");
+				
+				MoveToBoardFromBullpen move = new MoveToBoardFromBullpen(level.getBullpen(), level.getBoard(), hex, row, column); 
+				
+				if(move.doMove()){
+					System.out.println("Move successfully completed!");
+					//Since the move is completed we should add to the stack, not sure how
+					//that would work
+				} else {
+					System.out.println("There was some error doing the move.");
 				}
+				
 				//next we need to update the views 
 				builder.boardView.redrawTiles();
 			}
