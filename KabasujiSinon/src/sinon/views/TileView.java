@@ -10,6 +10,7 @@ public class TileView extends JPanel {
 
     public Tile tile;
     int row, column;
+    Color color;
 
     TileView(Tile tile) {
         this.tile = tile;
@@ -39,6 +40,10 @@ public class TileView extends JPanel {
     
     public Tile getTile(){
     	return this.tile;
+    }
+    
+    public void setColor(Color c){
+    	this.setBackground(Color.blue);
     }
     
 }

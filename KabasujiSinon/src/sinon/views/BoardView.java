@@ -2,6 +2,7 @@ package sinon.views;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.swing.BorderFactory;
@@ -45,4 +46,11 @@ public class BoardView extends JPanel {
         return tileViews;
     }
 
+    public void redrawTiles(){
+    	for(TileView tv: this.tileViews) {
+    		if(board.getTile(new Point(tv.row, tv.column)).hasHex()) {
+    			tv.setColor(Color.blue);
+    		}
+    	}
+    }
 }

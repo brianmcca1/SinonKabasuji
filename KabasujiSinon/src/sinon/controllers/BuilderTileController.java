@@ -1,11 +1,14 @@
 package sinon.controllers;
 
 import java.awt.Color;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.SwingUtilities;
 import sinon.main.Builder;
+import sinon.models.Hexomino;
 import sinon.models.Level;
+import sinon.views.MainView;
 import sinon.views.TileView;
 
 public class BuilderTileController implements MouseListener{
@@ -37,7 +40,21 @@ public class BuilderTileController implements MouseListener{
 			System.out.println("PLAYABLE AFTER: " + tileView.getTile().isPlayable());
 		}
 		else{
+			//else if a hexomino had been selected, then add that to the board at row, column
 			System.out.println("I AM A TILEVIEW AND I WAS JUST LEFT CLICKED ON");
+			if(level.hasSelected()) {
+				Hexomino hex = level.selectedHexomino.get();
+				int row = tileView.getRow();
+				int column = tileView.getColumn();
+				//this updates the model
+				try {
+					level.getBoard().addHexomino(new Point(row, column), hex);
+				} catch (Exception exception) {
+					System.out.println("Couldn't add hexomino here!");
+				}
+				//next we need to update the views 
+				builder.boardView.redrawTiles();
+			}
 		}
 		
 	}

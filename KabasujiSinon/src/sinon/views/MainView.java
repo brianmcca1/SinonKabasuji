@@ -110,5 +110,9 @@ public class MainView extends JPanel {
     public InfoPanel getInfoPanel() {
         return infoPanel;
     }
+    
+    public LevelPanel getLevelPanel() {
+    	return levelPanel;
+    }
 
 }
