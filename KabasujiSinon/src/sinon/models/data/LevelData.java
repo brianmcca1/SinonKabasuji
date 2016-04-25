@@ -11,62 +11,56 @@ import sinon.models.data.LevelType.types;
  */
 public final class LevelData implements Serializable {
 
-    /** Type of level */
+    /** Type of level (PUZZLE/LIGHTNING/RELEASE)*/
     types levelType;
-    /** Board that the level will be played on. */
-    BoardData boardData;
-    /** Bullpen holding all the level hexominoes. */
-    BullPenData bullpenData;
-    /** This level's number (1 to 15). */
+    /** This level number (1-15). */
     int levelNum;
+    /** BoardData has the 2-D array of booleans for the playable tiles. */
+    BoardData boardData;
+    /** BullpenData has the list of hexominos that are in the bullpen for this level. */
+    BullPenData bullpenData;
 
-    public LevelData(types puzzle, BoardData bData, BullPenData bpData, int num){
-    	this.levelType = puzzle;
+    public LevelData(types t, BoardData bData, BullPenData bpData, int num){
+    	this.levelType = t;
     	this.boardData = bData;
     	this.bullpenData = bpData;
     	this.levelNum = num;
     }
     
-    public LevelData(types type){
+    /** Used when creating a new Level to set this level type. */
+    public LevelData(int num, types type){
     	this.levelType = type;
+    	this.levelNum = num;
     }
     
-    /**
-     * Builds an empty board which is ready for game play based on the data
-     * stored in this object.
-     * 
-     * @return a Board for game play.
-     */
+    /** @return an empty board which is ready for game play based on the data stored in this object. */
     public Board getBoard() {
         return new Board(boardData);
     }
 
-    /**
-     * Builds a BullPen which is ready for game play based on the data stored in
-     * this object.
-     * 
-     * @return a Bullpen for game play.
-     */
+    /** @return a BullPen which is ready for game play based on the data stored in this object.*/
     public BullPen getBullpen() {
-        return new BullPen(bullpenData);
+    	return new BullPen(bullpenData);
+    }
+    
+    /** @return this levelData's LevelType. */
+    public types getType(){
+    	return this.levelType;
     }
 
-    /**
-     * Gets the number of this level.
-     * 
-     * @return Value between 1 and 15
-     */
-    public int getLevelNum() {
-        return this.levelNum;
-    }
-
-    /**
-     * Gets the enum value of the type of level.
-     * 
-     * @return The type of level.
-     */
+    /** @return The type of level. */
     public types getLevelType() {
         return this.levelType;
+    }
+    
+    /** Sets the BullPenData field. */
+    public void setBullpenData(BullPenData bpData){
+    	this.bullpenData = bpData;
+    }
+    
+    /** Sets the BoardData field. */
+    public void setBoardData(BoardData bData){
+    	this.boardData = bData;
     }
 
 }

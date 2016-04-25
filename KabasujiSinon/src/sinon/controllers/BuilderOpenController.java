@@ -54,9 +54,9 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
             //THEN SET levelFromFile TO BUILDER
             //THEN this.builder.initializeMainView();
             
-            Level levelFromFile= new Level(5, new Board(), new BullPen(new LinkedList<Hexomino>())); //test level
+            //Level levelFromFile= new Level(5, new Board(), new BullPen(new LinkedList<Hexomino>())); //test level
             
-            this.builder.setLevel(levelFromFile);
+            //this.builder.setLevel(levelFromFile);
             this.handleOpenLevel(this.builderMenuBar);
         }
 	}

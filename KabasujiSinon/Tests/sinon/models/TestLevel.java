@@ -7,6 +7,8 @@ import java.util.Optional;
 
 import org.junit.Test;
 
+import sinon.models.data.LevelType.types;
+
 public class TestLevel {
 
 	@Test
@@ -14,7 +16,7 @@ public class TestLevel {
 		Board board = new Board();
 		ArrayList<Hexomino> pieces = new ArrayList<Hexomino>();
 		BullPen bullpen = new BullPen(pieces);
-		Level level = new Level(0, board, bullpen);
+		Level level = new Level(0, types.PUZZLE, board, bullpen);
 		Hexomino hex = new Hexomino(0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 1, 4);
 		bullpen.addHexomino(hex);
 		

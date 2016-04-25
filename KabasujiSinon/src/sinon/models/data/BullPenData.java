@@ -16,9 +16,7 @@ import sinon.models.Hexomino;
 public final class BullPenData implements Serializable {
     private static final long serialVersionUID = 7509166366913814744L;
 
-    /**
-     * The list of hexominos in the order that they are to appear in the BullPen
-     */
+    /** The list of hexominos in the order that they are to appear in the BullPen. */
     ArrayList<HexominoCode> hexominos;
 
     /** Creates an empty BullPenData object */
@@ -27,10 +25,8 @@ public final class BullPenData implements Serializable {
     }
 
     /**
-     * Creates a BullPenData from a given BullPen. Use this to store a BullPen
-     * offline for later use.
-     * 
-     * @param bullpen
+     * Creates a BullPenData from a given BullPen. Use this to store a BullPen offline for later use.
+     * @param bullpen The bullpen from the level to create a BullPenData from.
      */
     public BullPenData(BullPen bullpen) {
         if (bullpen == null) {

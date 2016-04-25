@@ -8,6 +8,7 @@ import sinon.models.BullPen;
 import sinon.models.Hexomino;
 import sinon.models.Level;
 import sinon.models.data.HexominoBankData;
+import sinon.models.data.LevelType.types;
 import sinon.views.MainView;
 import sinon.views.builder.BankView;
 import sinon.views.builder.HexominoContainerView;
@@ -31,7 +32,7 @@ public class Test extends Kabasuji {
     }
 
     private void initializeModel() {
-        testLevel = new Level(5, new Board(),
+        testLevel = new Level(5, types.PUZZLE, new Board(),
                 new BullPen(new LinkedList<Hexomino>()));
 
     }

@@ -7,6 +7,7 @@ import sinon.models.Board;
 import sinon.models.BullPen;
 import sinon.models.Hexomino;
 import sinon.models.Level;
+import sinon.models.data.LevelType.types;
 import sinon.views.MainView;
 import sinon.views.game.GameInfoView;
 import sinon.views.game.LevelSelectView;
@@ -21,7 +22,7 @@ public class Game extends Kabasuji {
         super();
 
         startSplash("Kabasuji", new LevelSelectView(this));
-        currentLevel = new Level(5, new Board(), new BullPen(new LinkedList<Hexomino>())); //test level
+        currentLevel = new Level(1, types.PUZZLE, new Board(), new BullPen(new LinkedList<Hexomino>())); //test level
     }
     
     /**

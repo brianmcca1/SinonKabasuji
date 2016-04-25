@@ -6,64 +6,69 @@ import sinon.models.data.LevelData;
 import sinon.models.data.LevelType.types;
 
 public class Level {
+	
+	/** This level number (1-15). */
     int levelNum;
+    /** Board model for this level. */
     Board board;
+    /** Bullpen model for this level. */
     BullPen bullpen;
+    /** This is used for Serializing and Deserializing data relevant to the Level. 
+     *  Contains: 
+     *  	this level number.
+     *  	this level type.
+     *  	data regarding playable tiles for the board.
+     *  	data regarding the hexominos that should be in the bullpen.
+     */
     LevelData levelData;
+    /** The Hexomino model that is currently selected. */
     public Optional<Hexomino> selectedHexomino;
 
-    public Level(int levelNum, Board b, BullPen bp) {
+    
+    public Level(int levelNum, types t, Board b, BullPen bp) {
         this.levelNum = levelNum;
         this.board = b;
         this.bullpen = bp;
+        this.levelData = new LevelData(levelNum, t);
     }
 
-    /**
-     * Used by the Builder's new level controllers to set the Level field
-     * regarding its type
-     * 
-     * @param t
-     *            Enum type of level (puzzle/lightning/release)
-     */
-    public Level(types t, Board b, BullPen bp) {
-        this.levelData = new LevelData(t);
-        this.board = b;
-        this.bullpen = bp;
-    }
-
-    /**
-     * @return returns BullPen of this level
-     */
+    /** @return BullPen model of this level. */
     public BullPen getBullpen() {
         return this.bullpen;
+    }    
+    
+    /** @return Board model of this level. */
+    public Board getBoard() {
+        return board;
+    }
+
+    /** @return this level's LevelData. */
+    public LevelData getLevelData(){
+    	return this.levelData;
+    }
+    
+    /** @return this level's number. */
+    public int getNumber(){
+    	return this.levelNum;
     }
 
     /**
      * Sets the selected hexomino
-     * 
-     * @param hex
+     * @param hex The Hexomino model to select.
      */
     public void select(Hexomino hex) {
         this.selectedHexomino = Optional.of(hex);
     }
 
-    /**
-     * Sets the selected hexomino to empty
-     */
+    /** Sets the selected hexomino to empty. */
     public void deselect() {
         this.selectedHexomino = null;
     }
 
-    /**
-     * @return TRUE - There is a selected hexomino FALSE - There is no selected
-     *         hexomino
-     */
+    /** @return if there is currently a hexomino selected. */
     public boolean hasSelected() {
         return this.selectedHexomino != null;
     }
 
-    public Board getBoard() {
-        return board;
-    }
 
 }
