@@ -31,7 +31,7 @@ public abstract class Kabasuji extends JFrame {
     public MainView mainView;
     /** Knowledge of the BullpenView. */
     public BullpenView bullpenView;
-    
+    /** Knowledge of the BoardView. */
     public BoardView boardView;
 	
 	/** Initializes a general frame. */

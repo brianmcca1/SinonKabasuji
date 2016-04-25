@@ -2,13 +2,10 @@ package sinon.main;
 
 import java.io.File;
 import java.util.ArrayList;
-
 import javax.swing.JPanel;
-
 import sinon.controllers.BuilderTileController;
 import sinon.models.BullPen;
 import sinon.models.data.HexominoBankData;
-import sinon.views.BoardView;
 import sinon.views.MainView;
 import sinon.views.TileView;
 import sinon.views.builder.BankView;

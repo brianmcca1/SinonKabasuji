@@ -38,14 +38,16 @@ public class Game extends Kabasuji {
         sidePanel.getExitButton().addActionListener(new sinon.controllers.ExitGameController(this, mainView));
         mainView.getBullpenView().addMouseListener(new BullpenController(this.currentLevel.getBullpen(), mainView.getBullpenView(), this.currentLevel));
     }
-   
+    
+    /** Registers the GameTileControllers to each TileView in the Game's BoardView. */
+    public void registerBoardViewControllers(){
+    	//apply GameTileControllers here
+    }
+    
     public static void main(String args[]) {
         @SuppressWarnings("unused")
         Game game = new Game();
     }
-    
-    public void registerBoardViewControllers(){
-    	//apply GameTileControllers here
-    }
+
 
 }    

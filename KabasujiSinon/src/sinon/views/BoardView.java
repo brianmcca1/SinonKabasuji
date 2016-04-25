@@ -4,19 +4,14 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Collection;
-
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
-
-import sinon.controllers.BuilderTileController;
-import sinon.main.Builder;
 import sinon.main.Kabasuji;
 import sinon.models.Board;
-import sinon.models.Level;
 
 public class BoardView extends JPanel {
-
-    JPanel boardPanel;
+	
+	JPanel boardPanel;
     private Board board;
     Collection<TileView> tileViews;
     private Kabasuji kabasuji;
