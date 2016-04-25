@@ -95,11 +95,11 @@ public final class BoardData implements Serializable {
     	for(int i = 0; i < SIZE; i++){
     		for(int j = 0; j < SIZE; j++){
     			if(this.playable[i][j] == true)
-    				strBoardData = strBoardData + " T ";
+    				strBoardData += " T ";
     			else
-    				strBoardData = strBoardData + " F ";
+    				strBoardData += " F ";
     		}
-    		strBoardData = strBoardData + "\r\n";
+    		strBoardData += "\r\n";
     	}
     	
     	return strBoardData;

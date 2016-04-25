@@ -40,7 +40,6 @@ public class BankView extends InfoPanel {
         this.setLayout(new GridLayout(1, 1));
         this.add(scrollPanel);
         this.validate();
-
     }
 
     private void initContentPanel() {
@@ -59,7 +58,6 @@ public class BankView extends InfoPanel {
     }
 
     private void populateBankViewWithHexominoes() {
-
         for (int i = 0; i < bullpen.getPieces().size(); i++) {
             HexominoBullpenView tempHexBullpenView = new HexominoBullpenView(bullpen.getPieces().get(i));
             this.contentPanel.add(tempHexBullpenView);

@@ -67,6 +67,17 @@ public final class LevelData implements Serializable {
     	this.boardData = bData;
     }
 
-    
+    public String toString(){
+    	String strLevelData = "";
+    	
+    	strLevelData += this.boardData.toString();
+    	strLevelData += this.bullpenData.toString();
+    	strLevelData += "\r\n";
+    	strLevelData += ("LEVEL TYPE: " + this.levelType);
+    	strLevelData += "\r\n";
+    	strLevelData += ("LEVEL NUMBER: " + this.levelNum);
+    	
+    	return strLevelData;
+    }
     
 }

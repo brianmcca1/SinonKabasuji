@@ -97,7 +97,14 @@ public final class BullPenData implements Serializable {
         return true;
     }
 
-    public void test() {
 
+    public String toString(){
+    	String strBullpenData = "";
+    	
+    	for(int i = 0; i < this.hexominos.size(); i++){
+    		strBullpenData += this.hexominos.get(i).toString() + "\r\n";
+    	}
+    	
+    	return strBullpenData;
     }
 }
