@@ -55,6 +55,7 @@ public class MoveToBoardFromBullpen extends BoardMove{
 	public boolean doMove() {
 		try {
 			this.board.addHexomino(new Point(destAnchorRow, destAnchorColumn), hex);
+			this.bullpen.removeHexomino(hex);
 			return true;
 		} catch (Exception exception) {
 			System.out.println("Couldn't add hexomino here!");

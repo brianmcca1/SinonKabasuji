@@ -60,6 +60,7 @@ public class BuilderTileController implements MouseListener{
 				
 				//next we need to update the views 
 				builder.boardView.redrawTiles();
+				builder.bullpenView.redrawBullpenView();
 			}
 		}
 		
