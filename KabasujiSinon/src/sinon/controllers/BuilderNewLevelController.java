@@ -1,15 +1,6 @@
 package sinon.controllers;
 
-import javax.swing.JPanel;
 import sinon.main.Builder;
-import sinon.models.Board;
-import sinon.models.BullPen;
-import sinon.models.Level;
-import sinon.models.data.BullPenData;
-import sinon.models.data.HexominoBankData;
-import sinon.models.data.LevelType.types;
-import sinon.views.MainView;
-import sinon.views.builder.BankView;
 import sinon.views.builder.BuilderMenuBar;
 
 public abstract class BuilderNewLevelController {

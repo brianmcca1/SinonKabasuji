@@ -32,10 +32,15 @@ public class MainView extends JPanel {
     JPanel gameAreaPanel; // FIXME If this is only asthetic, get rid of it.
     /** Only exists in Builder Mode and Release game play. */
     Optional<ReleaseButtonView> releaseButtonView;
-    BullpenView bullpenView;
+    /** BankView/GameInfoView. */
     InfoPanel infoPanel;
+    /** MainView's knowledge of the BullpenView. */
+    BullpenView bullpenView;
+    /** MainView's knowledge of the current level. */
     Level level;
+    /** Current level number. */
     int levelNum;
+    /** Overall Game/Builder object. */
     Kabasuji kabasuji;
 
     /**
