@@ -23,18 +23,22 @@ public final class LevelData implements Serializable {
     BoardData boardData;
     /** BullpenData has the list of hexominos that are in the bullpen for this level. */
     BullPenData bullpenData;
+    /** Highest number of stars reached on this level */
+    int starRecord;
 
-    public LevelData(types t, BoardData bData, BullPenData bpData, int num){
+    public LevelData(types t, BoardData bData, BullPenData bpData, int num, int starRecord){
     	this.levelType = t;
     	this.boardData = bData;
     	this.bullpenData = bpData;
     	this.levelNum = num;
+    	this.starRecord = starRecord;
     }
     
     /** Used when creating a new Level to set this level type. */
     public LevelData(int num, types type){
     	this.levelType = type;
     	this.levelNum = num;
+    	this.starRecord = 0;
     }
     
     /** @return an empty board which is ready for game play based on the data stored in this object. */
@@ -46,12 +50,14 @@ public final class LevelData implements Serializable {
     public BullPenData getBullpen() {
     	return this.bullpenData;
     }
-    
-    /** @return this levelData's LevelType. */
-    public types getType(){
-    	return this.levelType;
+
+    public int getLevelNum(){
+    	return this.levelNum;
     }
 
+    public int getStarRecord(){
+    	return this.starRecord;
+    }
     /** @return The type of level. */
     public types getLevelType() {
         return this.levelType;
