@@ -10,8 +10,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
+import sinon.controllers.HexominoBullpenController;
 import sinon.main.Kabasuji;
 import sinon.models.BullPen;
+import sinon.models.Hexomino;
 
 @SuppressWarnings("serial")
 public class BullpenView extends JPanel {
@@ -67,11 +69,9 @@ public class BullpenView extends JPanel {
     public void addHexominoBullpenView(HexominoBullpenView hexBullpenView) {
         // have to create a copy so that we can register a different controller
         // to this HexominBullpenView
-        HexominoBullpenView hexBPView = new HexominoBullpenView(
-                hexBullpenView.getHexomino());
+        HexominoBullpenView hexBPView = new HexominoBullpenView(hexBullpenView.getHexomino());
         // FIXME no controllers in the views.
-        // hexBPView.addMouseListener(new HexominoBullpenController(hexBPView,
-        // this.kabasuji.getLevel(), this));
+        hexBPView.addMouseListener(new HexominoBullpenController(hexBPView, this.kabasuji.getLevel(), this));
         this.hexominoViews.add(hexBPView);
         this.contentPanel.add(hexBPView);
         this.redrawBullpenView();

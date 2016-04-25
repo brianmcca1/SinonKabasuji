@@ -37,7 +37,7 @@ public class BuilderTileController implements MouseListener{
 			
 			tileView.toggleColor();
 			System.out.println("PLAYABLE BEFORE: " + tileView.getTile().isPlayable());
-			tileView.getTile().togglePlayable();
+			tileView.getTile().setPlayable(!tileView.getTile().isPlayable());
 			System.out.println("PLAYABLE AFTER: " + tileView.getTile().isPlayable());
 		}
 		else{

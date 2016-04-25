@@ -65,7 +65,9 @@ public class MoveToBoardFromBullpen extends BoardMove{
 
 	@Override
 	public boolean undo() {
-		return false;
+		this.board.removeHexomino(hex);
+		this.bullpen.removeHexomino(hex);
+		return true;
 	}
 
 	@Override
