@@ -28,16 +28,16 @@ public class BankView extends InfoPanel implements StashView {
 
 	public BankView(Builder builder, BullPen bullpen) {
 		super();
-		this.stash = new HexViewStash(Objects.requireNonNull(bullpen));
+		this.stash = new HexViewStash(Objects.requireNonNull(bullpen),
+				contentPanel);
 		this.builder = Objects.requireNonNull(builder);
-
 		initContentPanel();
 		initBankViewScrollPanel();
-		populateBankViewWithHexominoes();
-
 		this.setLayout(new GridLayout(1, 1));
 		this.add(scrollPanel);
 		this.validate();
+
+		populateBankViewWithHexominoes();
 	}
 
 	private void initContentPanel() {
@@ -58,12 +58,13 @@ public class BankView extends InfoPanel implements StashView {
 	}
 
 	private void populateBankViewWithHexominoes() {
+		stash.populateViewWithHexominos();
 
-		for (int i = 0; i < stash.getHexominos().size(); i++) {
-			HexominoBullpenView tempHexBullpenView = stash.getHexominos().get(i);
-			this.contentPanel.add(tempHexBullpenView);
+		for (HexominoBullpenView hex : stash.getHexominos()) {
+			this.contentPanel.add(hex);
 		}
 
+		// TODO move these two lines to another method.
 		this.contentPanel.doLayout();
 		this.validate();
 	}

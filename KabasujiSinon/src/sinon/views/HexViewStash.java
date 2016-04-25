@@ -4,6 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.swing.JPanel;
+
 import sinon.main.HexStashRegistrator;
 import sinon.models.BullPen;
 import sinon.models.Hexomino;
@@ -23,7 +25,7 @@ public class HexViewStash {
 	/** This is a list of hexominoViews within the Bullpen. */
 	List<HexominoBullpenView> hexominos;
 
-	public HexViewStash(BullPen bullpen) {
+	public HexViewStash(BullPen bullpen, JPanel contentPanel) {
 		this.bullpen = Objects.requireNonNull(bullpen);
 		this.hexominos = new LinkedList<HexominoBullpenView>();
 		initializeHexominos();
@@ -54,5 +56,10 @@ public class HexViewStash {
 		for (HexominoBullpenView h : hexominos) {
 			registrator.registerHexominoView(h);
 		}
+	}
+
+	public void populateViewWithHexominos() {
+		// TODO Auto-generated method stub
+
 	}
 }

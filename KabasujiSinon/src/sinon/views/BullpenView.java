@@ -22,20 +22,16 @@ public class BullpenView extends JPanel implements StashView {
 	 * controllers.
 	 */
 	public HexStashRegistrator registrator;
-	/** This is the bullpen that is associated with the view. */
-	BullPen bullpen;
 
 	HexViewStash stash;
 
 	public BullpenView(BullPen bullpen) {
-		this.bullpen = Objects.requireNonNull(bullpen);
-
 		initContentPanel();
 		initBullpenViewScrollPanel();
 
 		this.setLayout(new GridLayout(1, 1));
-		this.stash = new HexViewStash(bullpen);
-		populateWithHexominoes();
+		this.stash = new HexViewStash(Objects.requireNonNull(bullpen));
+		populateBankViewWithHexominoes();
 		this.add(scrollPanel);
 		this.validate();
 	}
@@ -80,15 +76,14 @@ public class BullpenView extends JPanel implements StashView {
 		this.redrawBullpenView();
 	}
 
-	private void populateWithHexominoes() {
+	private void populateBankViewWithHexominoes() {
+		stash.populateViewWithHexominos();
 
-		for (int i = 0; i < bullpen.getPieces().size(); i++) {
-			HexominoBullpenView tempHexBullpenView = new HexominoBullpenView(
-					bullpen.getPieces().get(i));
-			this.contentPanel.add(tempHexBullpenView);
-			this.stash.hexominos.add(tempHexBullpenView);
+		for (HexominoBullpenView hex : stash.getHexominos()) {
+			this.contentPanel.add(hex);
 		}
 
+		// TODO move these two lines to another method.
 		this.contentPanel.doLayout();
 		this.validate();
 	}
