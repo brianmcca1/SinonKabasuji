@@ -43,19 +43,16 @@ public class GameInfoView extends InfoPanel {
         this.exitButton = btnExit;
     }
 
-    @Override
     /** @return Returns the JButton object for the exit button. */
     public JButton getExitButton() {
         return this.exitButton;
     }
 
-    @Override
     /** @return Returns the JButton object for the restart button. */
     public JButton getRestartButton() {
         return this.restartButton;
     }
 
-    @Override
     /** @return Returns the JButton object for the next level button. */
     public JButton getNextLevelButton() {
         return this.nextLevelButton;

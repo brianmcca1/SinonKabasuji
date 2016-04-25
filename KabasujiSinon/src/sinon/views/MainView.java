@@ -3,7 +3,6 @@ package sinon.views;
 import java.awt.Color;
 import java.util.Optional;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
@@ -57,22 +56,9 @@ public class MainView extends JPanel {
         // initBullpenView();
         initBoard();
         initReleaseButtonView();
-        initGameInfoButtons();
 
         this.add(this.infoPanel);
         infoPanel.setBounds(LEVEL_PANEL_WIDTH, 0, 150, MAIN_PANEL_HEIGHT);
-    }
-
-    /**
-     * Get all the buttons from the infoView (all return null if in Builder
-     * mode).
-     */
-    @Deprecated
-    private void initGameInfoButtons() {
-        JButton exitBtn = infoPanel.getExitButton();
-        JButton restartBtn = infoPanel.getRestartButton();
-        JButton nextLevelBtn = infoPanel.getNextLevelButton();
-
     }
 
     private void initReleaseButtonView() {

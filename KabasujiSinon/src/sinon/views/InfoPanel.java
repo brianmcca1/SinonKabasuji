@@ -3,7 +3,6 @@ package sinon.views;
 import java.awt.Color;
 import java.awt.Dimension;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
@@ -23,8 +22,14 @@ public class InfoPanel extends JPanel {
         this.setBorder(new LineBorder(new Color(0, 0, 0)));
         this.setBackground(Color.green);
     }
-    
-    public JButton getExitButton(){return null;}
-    public JButton getRestartButton(){return null;}
-    public JButton getNextLevelButton(){return null;}
+
+    // No need for this. If you're in the game just cast the InfoPanel to be a
+    // GameInfoView, because you created the GameInfoView and know it's there.
+    /*
+     * public JButton getExitButton() { return null; }
+     * 
+     * public JButton getRestartButton() { return null; }
+     * 
+     * public JButton getNextLevelButton() { return null; }
+     */
 }
