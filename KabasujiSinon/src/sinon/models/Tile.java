@@ -80,8 +80,8 @@ public class Tile {
      * @param bool
      *            True implies making the tile playable.
      */
-    public void togglePlayable() {
-    	this.playable = !this.playable;
+    public void setPlayable(boolean playability) {
+        this.playable = playability;
     }
 
     /**
