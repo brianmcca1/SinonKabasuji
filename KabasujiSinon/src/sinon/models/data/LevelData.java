@@ -11,7 +11,11 @@ import sinon.models.data.LevelType.types;
  */
 public final class LevelData implements Serializable {
 
-    /** Type of level (PUZZLE/LIGHTNING/RELEASE)*/
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7014637350059511767L;
+	/** Type of level (PUZZLE/LIGHTNING/RELEASE)*/
     types levelType;
     /** This level number (1-15). */
     int levelNum;
@@ -34,13 +38,13 @@ public final class LevelData implements Serializable {
     }
     
     /** @return an empty board which is ready for game play based on the data stored in this object. */
-    public Board getBoard() {
-        return new Board(boardData);
+    public BoardData getBoardData() {
+        return this.boardData;
     }
 
     /** @return a BullPen which is ready for game play based on the data stored in this object.*/
-    public BullPen getBullpen() {
-    	return new BullPen(bullpenData);
+    public BullPenData getBullpen() {
+    	return this.bullpenData;
     }
     
     /** @return this levelData's LevelType. */
@@ -63,4 +67,6 @@ public final class LevelData implements Serializable {
     	this.boardData = bData;
     }
 
+    
+    
 }

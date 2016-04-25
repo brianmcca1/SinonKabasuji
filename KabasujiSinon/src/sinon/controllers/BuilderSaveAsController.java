@@ -52,17 +52,13 @@ public class BuilderSaveAsController implements ActionListener{
             //CREATE THE LEVELS BOARDDATA AND SET IT
             BoardData levelBoardData = new BoardData(this.builder.getLevel().getBoard());
             this.builder.getLevel().getLevelData().setBoardData(levelBoardData);
-           
-            
-            
-            this.builder.getLevel().getBoard().toString();
             
             /*
              * FIELDS TO SET:
-             * LEVEL
+             * this.builder.getLevel()
              * 		int levelNum;								DONE
-             * 		Board board;								
-             * 			Map<Point, Tile> tilesViaPoints;		
+             * 		Board board;								DONE?
+             * 			Map<Point, Tile> tilesViaPoints;		DONE?
              * 		BullPen bullpen;							DONE
              * 			List<Hexomino> pieces;					DONE
              * 		LevelData levelData;						DONE
@@ -74,6 +70,11 @@ public class BuilderSaveAsController implements ActionListener{
              * 				ArrayList<HexominoCode> hexominos;  DONE
              */
 
+            /*
+             * At this point, I believe this.builder.getLevel().getLevelData() is ready for serialization.
+             * I'm not entirely sure if the Level's board has been correctly set, but I think it is in the level constructor.
+             * So, at this point we should serialize the LevelData to the file.
+             */
             Serializer serializer = new Serializer(file, this.builder.getLevel().getLevelData());
             serializer.serializeFile();
             

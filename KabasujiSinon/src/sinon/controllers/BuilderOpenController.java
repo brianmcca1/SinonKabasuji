@@ -50,13 +50,17 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
             Deserializer deserializer = new Deserializer(file); 
             LevelData levelData = deserializer.deserializeFile();
            
+            System.out.println("******************");
+            System.out.println(levelData.getLevelType());
+	    	System.out.println(levelData.getBoardData().toString());
+	    	System.out.println("******************");
+	    	
             //CREATE levelFromFile FROM levelData HERE
             //THEN SET levelFromFile TO BUILDER
             //THEN this.builder.initializeMainView();
-            
             //Level levelFromFile= new Level(5, new Board(), new BullPen(new LinkedList<Hexomino>())); //test level
-            
             //this.builder.setLevel(levelFromFile);
+	    	
             this.handleOpenLevel(this.builderMenuBar);
         }
 	}
