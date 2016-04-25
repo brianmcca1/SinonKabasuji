@@ -41,8 +41,6 @@ public class Builder extends Kabasuji {
 	public void initializeMainView() {
 		MainView mv = new MainView(this.getLevel(), new BankView(this,
 				this.bullpen));
-		mv.setBullpenRegistrator(new BullpenRegistrator(this.getLevel(), mv
-				.getBullpenView()));
 		this.setMainView(mv);
 		mainView.getBullpenView().addMouseListener(
 				new BullpenController(currentLevel.getBullpen(), mainView
