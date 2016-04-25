@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import sinon.models.Level;
+import sinon.views.BullpenView;
 import sinon.views.MainView;
 //import sinon.views.LevelSelectView;
 import sinon.views.SplashScreen;
@@ -27,6 +28,8 @@ public abstract class Kabasuji extends JFrame {
 	public Level currentLevel;
 	/** Knowledge of the MainView.*/
     public MainView mainView;
+    /** Knowledge of the BullpenView. */
+    public BullpenView bullpenView;
 	
 	/** Initializes a general frame. */
     Kabasuji() {

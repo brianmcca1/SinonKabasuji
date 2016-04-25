@@ -22,26 +22,19 @@ import sinon.models.data.BullPenData;
 public class MainView extends JPanel {
     static final int LEVEL_PANEL_WIDTH = 640;
     static final int MAIN_PANEL_HEIGHT = 545;
-
-    /**
-     * levelPanel contains: Bullpen, GridView, optional ReleaseButtonView, and
-     * is on the left side of the screen.
-     */
+    
+    /** Overall Game/Builder object. */
+    Kabasuji kabasuji;
+    /** levelPanel contains: Bullpen, GridView, optional ReleaseButtonView, and
+     *  is on the left side of the screen.*/
     LevelPanel levelPanel;
     /** Contains GridView and the Optional ReleaseButtonView. */
     JPanel gameAreaPanel; // FIXME If this is only asthetic, get rid of it.
     /** Only exists in Builder Mode and Release game play. */
-    Optional<ReleaseButtonView> releaseButtonView;
+    Optional<ReleaseInfoView> releaseButtonView;
     /** BankView/GameInfoView. */
     InfoPanel infoPanel;
-    /** MainView's knowledge of the BullpenView. */
-    BullpenView bullpenView;
-    /** MainView's knowledge of the current level. */
-    Level level;
-    /** Current level number. */
-    int levelNum;
-    /** Overall Game/Builder object. */
-    Kabasuji kabasuji;
+
 
     /**
      * @param k
@@ -49,22 +42,12 @@ public class MainView extends JPanel {
      * @param infoPanel
      *            The InfoPanel to be displayed.
      */
-    public MainView(Kabasuji k, InfoPanel infoPanel, Level level) {
-        releaseButtonView = Optional.of(new ReleaseButtonView());
+    public MainView(Kabasuji k, InfoPanel infoPanel) {
+        releaseButtonView = Optional.of(new ReleaseInfoView());
         this.infoPanel = infoPanel;
         this.kabasuji = k;
-        this.bullpenView = new BullpenView(this.kabasuji, level.getBullpen());
-        this.level = level;
+        this.kabasuji.bullpenView = new BullpenView(this.kabasuji);
         initializeViews();
-    }
-
-    /**
-     * This function sets the currently opened level number.
-     * @param num Level number (1 to 15).
-     */
-    public void setLevelNum(int num) {
-        this.levelNum = num;
-        System.out.println("MAINVIEW HAS RECOGNIZED LEVEL #" + this.levelNum);
     }
 
     /** Initializes all of the components that make up this GUI. */
@@ -100,7 +83,7 @@ public class MainView extends JPanel {
      * {@link #gameAreaPanel}
      */
     private void initBoard() {
-        BoardView tempBoard = new BoardView(this.kabasuji, level.getBoard());
+        BoardView tempBoard = new BoardView(this.kabasuji, this.kabasuji.getLevel().getBoard());
         gameAreaPanel.add(tempBoard.boardPanel);
     }
 
@@ -112,14 +95,14 @@ public class MainView extends JPanel {
 
     /** Initializes the {@link #levelPanel} */
     private void initLevelPanel() {
-        levelPanel = new LevelPanel(this.bullpenView, gameAreaPanel);
+        levelPanel = new LevelPanel(this.kabasuji.bullpenView, gameAreaPanel);
         levelPanel.setBorder(new LineBorder(new Color(255, 0, 0)));
         levelPanel.setBounds(0, 0, LEVEL_PANEL_WIDTH, MAIN_PANEL_HEIGHT);
         this.add(levelPanel);
     }
 
     public BullpenView getBullpenView() {
-        return this.bullpenView;
+        return this.kabasuji.bullpenView;
     }
 
     public InfoPanel getInfoPanel() {

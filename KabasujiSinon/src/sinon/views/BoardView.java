@@ -40,10 +40,7 @@ public class BoardView extends JPanel {
         TileView tileView = new TileView(board.getTile(row, column));
 
         tileView.addMouseListener(new BuilderTileController((Builder) kabasuji, tileView, this.kabasuji.getLevel()));
-
         tileView.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
-        tileView.setBounds(12 * row, 12 * column, 25, 25);
-
         boardPanel.add(tileView);
     }
 

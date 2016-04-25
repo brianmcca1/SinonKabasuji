@@ -29,7 +29,7 @@ public class Game extends Kabasuji {
      * @param levelSelectView LevelSelectView to remove from the frame.
      */
     public void initializeMainView(LevelSelectView levelSelectView){
-		this.setMainView(new MainView(this, new GameInfoView(this.getLevel()), this.getLevel()));
+		this.setMainView(new MainView(this, new GameInfoView(this.getLevel())));
 		this.startNextPanel(levelSelectView, this.getMainView());
     }
 

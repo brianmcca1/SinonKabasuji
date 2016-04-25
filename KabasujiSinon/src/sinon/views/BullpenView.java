@@ -26,8 +26,7 @@ public class BullpenView extends JPanel{
     
     List<HexominoBullpenView> hexominoViews;
 
-    public BullpenView(Kabasuji k, BullPen bullpen) {
-        this.bullpen = bullpen;
+    public BullpenView(Kabasuji k) {
         this.hexominoViews = new LinkedList<HexominoBullpenView>();
         this.kabasuji = k;
 

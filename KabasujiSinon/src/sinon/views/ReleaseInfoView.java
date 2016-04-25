@@ -18,7 +18,7 @@ import javax.swing.border.LineBorder;
  * @author Josh Desmond
  */
 @SuppressWarnings("serial")
-public class ReleaseButtonView extends JPanel {
+public class ReleaseInfoView extends JPanel implements LevelTypeInfoView {
 
 	/** The dimensions of the rectangle */
 	private static final Rectangle BOUNDS = new Rectangle(450, 26, 130, 200);
@@ -27,10 +27,7 @@ public class ReleaseButtonView extends JPanel {
 	/** The list of 15 buttons */
 	List<JButton> buttons = new ArrayList<JButton>(NUMBER_OF_BUTTONS);
 
-	/**
-	 * Create the panel.
-	 */
-	public ReleaseButtonView() {
+	public ReleaseInfoView() {
 		setBounds(BOUNDS);
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setLayout(new GridLayout(6, 3, 2, 2));
