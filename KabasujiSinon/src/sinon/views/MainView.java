@@ -6,7 +6,9 @@ import java.util.Optional;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import sinon.models.BullPen;
 import sinon.models.Level;
+import sinon.models.data.HexominoBankData;
 
 /**
  * This class controls the entirety of the Builder/Game Views; Shows GridView,
@@ -47,7 +49,9 @@ public class MainView extends JPanel {
 		this.level = level;
 		this.infoPanel = infoPanel;
 		// TODO move below line to proper location.
-		this.bullpenView = new BullpenView(level.getBullpen());
+		// FIXME this is a temp change for testing
+		// this.bullpenView = new BullpenView(level.getBullpen());
+		this.bullpenView = new BullpenView(new BullPen(HexominoBankData.getHexominos()));
 		initializeViews();
 	}
 

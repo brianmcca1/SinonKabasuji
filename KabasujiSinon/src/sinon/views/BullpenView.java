@@ -2,18 +2,18 @@ package sinon.views;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Objects;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
+import sinon.main.HexStashRegistrator;
 import sinon.models.BullPen;
 
 @SuppressWarnings("serial")
-public class BullpenView extends JPanel {
+public class BullpenView extends JPanel implements StashView {
 
 	public JScrollPane scrollPanel;
 	public JPanel contentPanel;
@@ -21,23 +21,21 @@ public class BullpenView extends JPanel {
 	 * This is the object which will register new HexominoViews with
 	 * controllers.
 	 */
-	public HexRegistrator registrator;
+	public HexStashRegistrator registrator;
 	/** This is the bullpen that is associated with the view. */
 	BullPen bullpen;
-	/** This is a list of hexominoViews within the Bullpen. */
-	List<HexominoBullpenView> hexominoViews;
+
+	HexViewStash stash;
 
 	public BullpenView(BullPen bullpen) {
-		this.registrator = registrator;
-		this.hexominoViews = new LinkedList<HexominoBullpenView>();
-		this.bullpen = bullpen;
+		this.bullpen = Objects.requireNonNull(bullpen);
 
 		initContentPanel();
 		initBullpenViewScrollPanel();
-		populateBullpen();
 
 		this.setLayout(new GridLayout(1, 1));
-
+		this.stash = new HexViewStash(bullpen);
+		populateWithHexominoes();
 		this.add(scrollPanel);
 		this.validate();
 	}
@@ -68,26 +66,36 @@ public class BullpenView extends JPanel {
 	}
 
 	public void addHexominoBullpenView(HexominoBullpenView hexBullpenView) {
+		assert registrator != null;
 		// have to create a copy so that we can register a different controller
 		// to this HexominBullpenView
 		HexominoBullpenView hexBPView = new HexominoBullpenView(
 				hexBullpenView.getHexomino());
 		// FIXME no controllers in the views.
 		// TODO add the controller back on.
+		System.out.println("registering attempt");
 		registrator.registerHexominoView(hexBPView);
-		this.hexominoViews.add(hexBPView);
+		this.stash.hexominos.add(hexBPView);
 		this.contentPanel.add(hexBPView);
 		this.redrawBullpenView();
 	}
 
-	/**
-	 * Creates a HexominoBullpenView and registers a HexominoBullpenController
-	 * to it.
-	 */
-	private void populateBullpen() {
-		// THIS SHOULD TAKE A LIST OF HEXOMINO VIEWS FOR THE CASE THAT THE
-		// BULLPEN ALREADY HAS A BUNCH OF HEXOMINOS IN IT (OPEN, FOR EXAMPLE)
-		// AND THEN IT WILL CALL addHexominoBullpenView ON EACH ONE
+	private void populateWithHexominoes() {
+
+		for (int i = 0; i < bullpen.getPieces().size(); i++) {
+			HexominoBullpenView tempHexBullpenView = new HexominoBullpenView(
+					bullpen.getPieces().get(i));
+			this.contentPanel.add(tempHexBullpenView);
+			this.stash.hexominos.add(tempHexBullpenView);
+		}
+
+		this.contentPanel.doLayout();
+		this.validate();
+	}
+
+	@Override
+	public void setRegistrator(HexStashRegistrator hexStashRegistrator) {
+		this.registrator = Objects.requireNonNull(hexStashRegistrator);
 	}
 
 }

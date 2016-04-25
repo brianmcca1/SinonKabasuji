@@ -2,16 +2,12 @@ package sinon.main;
 
 import java.io.File;
 import java.util.Collection;
-import java.util.LinkedList;
 
 import javax.swing.JPanel;
 
 import sinon.controllers.BuilderTileController;
 import sinon.controllers.BullpenController;
-import sinon.models.Board;
 import sinon.models.BullPen;
-import sinon.models.Hexomino;
-import sinon.models.Level;
 import sinon.models.data.HexominoBankData;
 import sinon.views.MainView;
 import sinon.views.TileView;
@@ -26,12 +22,10 @@ public class Builder extends Kabasuji {
 	/** JPanel that the builder initially starts out with. */
 	public JPanel blankPanel;
 	/** BullPen containing all 35 hexominos. */
-	BullPen bullpen = new BullPen(HexominoBankData.getHexominos());
+	BullPen bankData = new BullPen(HexominoBankData.getHexominos());
 
 	Builder() {
 		super();
-		this.currentLevel = new Level(1, new Board(), new BullPen(
-				new LinkedList<Hexomino>()));
 		this.currentFile = null;
 		this.blankPanel = new JPanel();
 		this.setJMenuBar(new BuilderMenuBar(this, this.blankPanel));
@@ -40,9 +34,12 @@ public class Builder extends Kabasuji {
 
 	public void initializeMainView() {
 		MainView mv = new MainView(this.getLevel(), new BankView(this,
-				this.bullpen));
-		mv.setBullpenRegistrator(new BullpenRegistrator(this.getLevel(), mv
-				.getBullpenView()));
+				this.bankData));
+
+		mv.getBullpenView().setRegistrator(new HexStashRegistrator(this.getLevel(), mv));
+		BankView bank = (BankView) mv.getInfoPanel();
+		bank.setRegistrator(new HexStashRegistrator(this.getLevel(), mv));
+
 		this.setMainView(mv);
 		mainView.getBullpenView().addMouseListener(
 				new BullpenController(currentLevel.getBullpen(), mainView
@@ -59,7 +56,7 @@ public class Builder extends Kabasuji {
 	}
 
 	public BullPen getBullpen() {
-		return this.bullpen;
+		return this.bankData;
 	}
 
 	/**

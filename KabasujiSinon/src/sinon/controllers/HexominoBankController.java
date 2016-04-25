@@ -6,7 +6,6 @@ import java.awt.event.MouseListener;
 import sinon.main.Builder;
 import sinon.models.BullPen;
 import sinon.views.HexominoBullpenView;
-import sinon.views.HexominoStashController;
 
 /**
  * This controller responds to mouse interactions with the HexominoBullpenViews
@@ -14,11 +13,14 @@ import sinon.views.HexominoStashController;
  * 
  * @author kartik
  */
-public class HexominoBankController implements MouseListener, HexominoStashController{
+@Deprecated
+public class HexominoBankController extends AbstractHexStashController
+implements MouseListener {
 
 	BullPen bullpen;
 	HexominoBullpenView hexBullpenView;
 	Builder builder; // TODO get rid of this field.
+
 	// SUGGESTION morph this class with Hex Bullpen Controller?
 
 	public HexominoBankController(Builder b, BullPen bp,
@@ -35,8 +37,8 @@ public class HexominoBankController implements MouseListener, HexominoStashContr
 		this.builder.getMainView().getBullpenView()
 		.addHexominoBullpenView(hexBullpenView);
 
-		System.out.println(
-				this.builder.getLevel().getBullpen().getPieces().toString());
+		System.out.println(this.builder.getLevel().getBullpen().getPieces()
+				.toString());
 	}
 
 	@Override
