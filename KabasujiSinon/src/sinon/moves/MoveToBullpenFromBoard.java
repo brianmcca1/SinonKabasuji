@@ -1,6 +1,7 @@
 package sinon.moves;
 
 import sinon.models.Hexomino;
+import sinon.models.Level;
 import sinon.models.Board;
 import sinon.models.BullPen;
 
@@ -17,11 +18,6 @@ public class MoveToBullpenFromBoard extends BoardMove {
 	BullPen bullpen;
 	
 	/**
-	 * This is the hexomino that we are moving.
-	 */
-	Hexomino hex;
-	
-	/**
 	 * This is the board that we are moving from.
 	 */
 	Board board;
@@ -36,11 +32,11 @@ public class MoveToBullpenFromBoard extends BoardMove {
 	 */
 	int srcAnchorColumn;
 	
-	public MoveToBullpenFromBoard (BullPen bp, Hexomino h, Board b, int srcAnchorRow, int srcAnchorColumn) {
+	public MoveToBullpenFromBoard (BullPen bp, Board b, Level level, int srcAnchorRow, int srcAnchorColumn) {
 		
 		this.bullpen = bp;
 		this.board = b;
-		this.hex = h;
+		this.level = level;
 		this.srcAnchorRow = srcAnchorRow;
 		this.srcAnchorColumn = srcAnchorColumn;
 		
