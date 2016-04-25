@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import sinon.models.Level;
+import sinon.views.BoardView;
 import sinon.views.BullpenView;
 import sinon.views.MainView;
 //import sinon.views.LevelSelectView;
@@ -30,6 +31,8 @@ public abstract class Kabasuji extends JFrame {
     public MainView mainView;
     /** Knowledge of the BullpenView. */
     public BullpenView bullpenView;
+    
+    public BoardView boardView;
 	
 	/** Initializes a general frame. */
     Kabasuji() {
@@ -86,6 +89,8 @@ public abstract class Kabasuji extends JFrame {
     
     /** Sets the Level object. */
     public void setLevel(Level l){this.currentLevel = l;}
+    
+    public void registerBoardViewControllers(){}
     
     public void revalidateMainView(){
     	this.mainView.revalidate();

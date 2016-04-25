@@ -84,6 +84,8 @@ public class MainView extends JPanel {
      */
     private void initBoard() {
         BoardView tempBoard = new BoardView(this.kabasuji, this.kabasuji.getLevel().getBoard());
+        this.kabasuji.boardView = tempBoard;
+        this.kabasuji.registerBoardViewControllers();
         gameAreaPanel.add(tempBoard.boardPanel);
     }
 
@@ -107,10 +109,6 @@ public class MainView extends JPanel {
 
     public InfoPanel getInfoPanel() {
         return infoPanel;
-    }
-
-    public void getBoardView() {
-        // TODO Auto-generated method stud
     }
 
 }

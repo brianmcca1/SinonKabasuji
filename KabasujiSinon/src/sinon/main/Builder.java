@@ -1,10 +1,16 @@
 package sinon.main;
 
 import java.io.File;
+import java.util.ArrayList;
+
 import javax.swing.JPanel;
+
+import sinon.controllers.BuilderTileController;
 import sinon.models.BullPen;
 import sinon.models.data.HexominoBankData;
+import sinon.views.BoardView;
 import sinon.views.MainView;
+import sinon.views.TileView;
 import sinon.views.builder.BankView;
 import sinon.views.builder.BuilderMenuBar;
 @SuppressWarnings("serial")
@@ -37,6 +43,16 @@ public class Builder extends Kabasuji {
 	public File getCurrentFile(){return this.currentFile;}
 	
 	public BullPen getBullpen(){return this.bullpen;}
+	
+	/** Registers the BuilderTileControllers to each TileView in the Builder's BoardView. */
+	public void registerBoardViewControllers(){
+		ArrayList<TileView> tileViews = (ArrayList<TileView>)this.boardView.getTileViews();
+		
+		for(int i = 0; i < tileViews.size(); i++){
+			tileViews.get(i).addMouseListener(new BuilderTileController(this, tileViews.get(i), this.currentLevel));
+		}
+		
+	}
 	
 	public static void main(String args[]) {
 		@SuppressWarnings("unused")

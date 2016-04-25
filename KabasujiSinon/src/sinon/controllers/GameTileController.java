@@ -20,13 +20,13 @@ import sinon.views.TileView;
  * @author Peter Debrine
  * @author Josh Desmond
  */
-public class TileController implements MouseListener, MouseMotionListener {
+public class GameTileController implements MouseListener, MouseMotionListener {
 
     Level level;
     TileView view;
     Tile tile;
 
-    public TileController(Level level, TileView view, Tile tile) {
+    public GameTileController(Level level, TileView view, Tile tile) {
         this.level = level;
         this.view = view;
         this.tile = tile;

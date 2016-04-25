@@ -2,6 +2,7 @@ package sinon.views;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.swing.BorderFactory;
@@ -28,6 +29,7 @@ public class BoardView extends JPanel {
         this.boardPanel.setBounds(80, 26, 300, 300);
         this.boardPanel.setBackground(Color.BLACK);
         this.boardPanel.setBorder(BorderFactory.createLineBorder(Color.black, 1));
+        this.tileViews = new ArrayList<TileView>();
 
         for (int i = 0; i < 12; i++) {
             for (int j = 0; j < 12; j++) {
@@ -39,8 +41,8 @@ public class BoardView extends JPanel {
     private void initializeTile(int row, int column) {
         TileView tileView = new TileView(board.getTile(row, column));
 
-        tileView.addMouseListener(new BuilderTileController((Builder) kabasuji, tileView, this.kabasuji.getLevel()));
         tileView.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
+        this.tileViews.add(tileView);
         boardPanel.add(tileView);
     }
 
