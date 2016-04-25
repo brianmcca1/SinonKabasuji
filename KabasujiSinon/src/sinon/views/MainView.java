@@ -8,9 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import sinon.main.Kabasuji;
-import sinon.models.BullPen;
-import sinon.models.Level;
-import sinon.models.data.BullPenData;
 
 /**
  * This class controls the entirety of the Builder/Game Views; Shows GridView,
@@ -22,11 +19,13 @@ import sinon.models.data.BullPenData;
 public class MainView extends JPanel {
     static final int LEVEL_PANEL_WIDTH = 640;
     static final int MAIN_PANEL_HEIGHT = 545;
-    
+
     /** Overall Game/Builder object. */
     Kabasuji kabasuji;
-    /** levelPanel contains: Bullpen, GridView, optional ReleaseButtonView, and
-     *  is on the left side of the screen.*/
+    /**
+     * levelPanel contains: Bullpen, GridView, optional ReleaseButtonView, and
+     * is on the left side of the screen.
+     */
     LevelPanel levelPanel;
     /** Contains GridView and the Optional ReleaseButtonView. */
     JPanel gameAreaPanel; // FIXME If this is only asthetic, get rid of it.
@@ -34,7 +33,6 @@ public class MainView extends JPanel {
     Optional<ReleaseInfoView> releaseButtonView;
     /** BankView/GameInfoView. */
     InfoPanel infoPanel;
-
 
     /**
      * @param k
@@ -65,7 +63,11 @@ public class MainView extends JPanel {
         infoPanel.setBounds(LEVEL_PANEL_WIDTH, 0, 150, MAIN_PANEL_HEIGHT);
     }
 
-    /** Get all the buttons from the infoView (all return null if in Builder mode). */
+    /**
+     * Get all the buttons from the infoView (all return null if in Builder
+     * mode).
+     */
+    @Deprecated
     private void initGameInfoButtons() {
         JButton exitBtn = infoPanel.getExitButton();
         JButton restartBtn = infoPanel.getRestartButton();
@@ -83,7 +85,8 @@ public class MainView extends JPanel {
      * {@link #gameAreaPanel}
      */
     private void initBoard() {
-        BoardView tempBoard = new BoardView(this.kabasuji, this.kabasuji.getLevel().getBoard());
+        BoardView tempBoard = new BoardView(this.kabasuji,
+                this.kabasuji.getLevel().getBoard());
         this.kabasuji.boardView = tempBoard;
         this.kabasuji.registerBoardViewControllers();
         gameAreaPanel.add(tempBoard.boardPanel);
@@ -110,9 +113,9 @@ public class MainView extends JPanel {
     public InfoPanel getInfoPanel() {
         return infoPanel;
     }
-    
+
     public LevelPanel getLevelPanel() {
-    	return levelPanel;
+        return levelPanel;
     }
 
 }

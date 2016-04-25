@@ -5,8 +5,6 @@ import java.awt.event.MouseListener;
 
 import sinon.main.Builder;
 import sinon.models.BullPen;
-import sinon.models.Hexomino;
-import sinon.views.BullpenView;
 import sinon.views.HexominoBullpenView;
 
 /**
@@ -19,9 +17,11 @@ public class HexominoBankController implements MouseListener {
 
     BullPen bullpen;
     HexominoBullpenView hexBullpenView;
-    Builder builder;
+    Builder builder; // TODO get rid of this field.
+    // SUGGESTION morph this class with Hex Bullpen Controller?
 
-    public HexominoBankController(Builder b, BullPen bp, HexominoBullpenView view) {
+    public HexominoBankController(Builder b, BullPen bp,
+            HexominoBullpenView view) {
         this.bullpen = bp;
         this.hexBullpenView = view;
         this.builder = b;
@@ -31,17 +31,26 @@ public class HexominoBankController implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         System.out.println("I AM A BANK HEXOMINO AND I GOT CLICKED ON");
         bullpen.addHexomino(hexBullpenView.getHexomino());
-        this.builder.getMainView().getBullpenView().addHexominoBullpenView(hexBullpenView);
-        
-        System.out.println(this.builder.getLevel().getBullpen().getPieces().toString());
+        this.builder.getMainView().getBullpenView()
+                .addHexominoBullpenView(hexBullpenView);
+
+        System.out.println(
+                this.builder.getLevel().getBullpen().getPieces().toString());
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {}
+    public void mousePressed(MouseEvent e) {
+    }
+
     @Override
-    public void mouseReleased(MouseEvent e) {}
+    public void mouseReleased(MouseEvent e) {
+    }
+
     @Override
-    public void mouseEntered(MouseEvent e) {}
+    public void mouseEntered(MouseEvent e) {
+    }
+
     @Override
-    public void mouseExited(MouseEvent e) {}
+    public void mouseExited(MouseEvent e) {
+    }
 }
