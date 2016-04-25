@@ -20,8 +20,7 @@ public class HexominoBankController implements MouseListener {
     Builder builder; // TODO get rid of this field.
     // SUGGESTION morph this class with Hex Bullpen Controller?
 
-    public HexominoBankController(Builder b, BullPen bp,
-            HexominoBullpenView view) {
+    public HexominoBankController(Builder b, BullPen bp, HexominoBullpenView view) {
         this.bullpen = bp;
         this.hexBullpenView = view;
         this.builder = b;
