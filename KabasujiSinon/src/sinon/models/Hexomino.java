@@ -29,7 +29,7 @@ public class Hexomino {
      * @param a1
      *            the y component of the first coordinate point
      */
-    @Deprecated
+    
     protected Hexomino(int a, int a1, int b, int b1, int c, int c1, int d,
             int d1, int e, int e1, int f, int f1) {
 
