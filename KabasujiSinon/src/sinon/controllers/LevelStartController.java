@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import sinon.main.Game;
+import sinon.models.LightningLevel;
 import sinon.models.data.LevelType;
 import sinon.models.data.LevelType.types;
 import sinon.views.LevelTypeInfoView;
@@ -58,7 +59,7 @@ public class LevelStartController implements ActionListener{
     	}
     	else{
     		if(thisLevelsType.equals(types.LIGHTNING)){
-    			lvlTypeInfoView = new LightningInfoView(false);
+    			lvlTypeInfoView = new LightningInfoView(false, (LightningLevel) game.getLevel());
     		}
     		else{
     			if(thisLevelsType.equals(types.RELEASE)){

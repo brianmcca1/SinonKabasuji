@@ -8,6 +8,7 @@ import sinon.main.Builder;
 import sinon.models.Board;
 import sinon.models.BullPen;
 import sinon.models.Level;
+import sinon.models.LightningLevel;
 import sinon.models.data.LevelData;
 import sinon.models.data.LevelType.types;
 import sinon.serial.Deserializer;
@@ -50,7 +51,7 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 	    	
 	    	//CREATE levelFromFile FROM levelData HERE
 	    	Level levelFromFile = new Level(levelData.getLevelType(), new Board(levelData.getBoardData()), new BullPen(levelData.getBullpenData()));
-	    	this.builder.setLevel(levelFromFile);
+	    	
 
 	    	//FIND OUT WHICH LevelTypeInfoView TO GIVE TO MAINVIEW
 			LevelTypeInfoView lvlTypeInfoView = null;
@@ -61,7 +62,10 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 	    	}
 	    	else{
 	    		if(thisLevelsType.equals(types.LIGHTNING)){
-	    			lvlTypeInfoView = new LightningInfoView(true);
+	    			
+	    			LightningLevel lightningLevel = new LightningLevel(levelFromFile);
+	    			lvlTypeInfoView = new LightningInfoView(true, lightningLevel);
+	    			this.builder.setLevel(lightningLevel);
 	    		}
 	    		else{
 	    			if(thisLevelsType.equals(types.RELEASE)){

@@ -17,6 +17,11 @@ public class LightningLevel extends Level{
 		// TODO Auto-generated constructor stub
 	} 
 	
+	public LightningLevel(Level level){
+		super(types.LIGHTNING, level.getBoard(), level.getBullpen());
+		this.maxTime = level.getLevelData().getLevelProperty().getPropertyValue();
+	}
+	
 	public int countStars(){
 		int numNotPlayed = 0;
 		for (Tile t : this.board.getTiles()){
@@ -39,6 +44,22 @@ public class LightningLevel extends Level{
 		}
 		
 		return 0;
+	}
+	
+	public int getTimeLeft(){
+		return this.timeLeft;
+	}
+	/**
+	 * Decrement the time left by 1 second
+	 * @return True if the time was decremented successfully, False if not
+	 */
+	public boolean tickTimeLeft(){
+		if(this.timeLeft <= 0){
+			return false;
+		}
+		this.timeLeft--;
+		return true;
+		
 	}
 
 
