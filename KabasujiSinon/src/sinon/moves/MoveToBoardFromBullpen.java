@@ -20,55 +20,57 @@ public class MoveToBoardFromBullpen extends BoardMove{
 	 * TODO We might not need this field eventually.
 	 */
 	int destAnchorRow;
-	
+
 	/**
 	 * This the destination anchor-column for the hexomino.
 	 * TODO We might not need this field eventually.
 	 */
 	int destAnchorColumn;
-	
+
 	public MoveToBoardFromBullpen (Level level, int destAnchorRow, int destAnchorColumn) {
-		
+
 		this.level = level;
 		if(level.hasSelected()) {
 			this.hex = level.selectedHexomino.get();
 		}
 		this.destAnchorRow = destAnchorRow;
 		this.destAnchorColumn = destAnchorColumn;
-	
+
 	}
-	
+
 	@Override
 	public boolean doMove() {
-		
+
 		if(!this.valid()) { return false; }
-			
+
 		Hexomino hex = level.selectedHexomino.get();	
 		level.getBullpen().removeHexomino(hex);
 		level.getBoard().addHexomino(new Point(destAnchorRow, destAnchorColumn), hex);
 		return true;
-		
+
 	}
 
 	@Override
 	public boolean undo() {
-		
-		level.getBullpen().addHexomino(hex);
-		level.getBoard().removeHexomino(hex);
-		return true;
-		
+		if (this.valid()){
+			level.getBullpen().addHexomino(hex);
+			level.getBoard().removeHexomino(hex);
+			return true;
+		}
+		return false;
+
 	}
 
 	@Override
 	public boolean valid() {
-		
+
 		if(level.hasSelected()) {
 			Hexomino hex = level.selectedHexomino.get();
 			return level.getBoard().canAddHexomino((new Point(destAnchorRow, destAnchorColumn)), hex);
 		} else {
 			return false;
 		}
-		
+
 	}
 
 }
