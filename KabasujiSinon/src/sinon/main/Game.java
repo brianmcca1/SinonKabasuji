@@ -43,6 +43,10 @@ public class Game extends Kabasuji {
      * @param levelSelectView LevelSelectView to remove from the frame.
      */
     public void initializeMainView(LevelSelectView levelSelectView, LevelTypeInfoView lvlTypeInfoView){
+		if(this.mainView != null){
+			this.remove(this.mainView);
+			this.revalidate();
+		}
 		this.setMainView(new MainView(this, new GameInfoView(this.getLevel()), lvlTypeInfoView));
 		this.startNextPanel(levelSelectView, this.getMainView());
     }
@@ -61,6 +65,12 @@ public class Game extends Kabasuji {
     public void registerBoardViewControllers(){
     	//apply GameTileControllers here
     }
+    
+    /** @return Level object from the specified index in the allLevels array. */
+    public Level getLevel(int index){
+    	return this.allLevels[index];
+    }
+    
     
     public static void main(String args[]) {
         @SuppressWarnings("unused")

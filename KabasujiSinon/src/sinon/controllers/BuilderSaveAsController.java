@@ -7,6 +7,7 @@ import javax.swing.JFileChooser;
 import sinon.main.Builder;
 import sinon.models.data.BoardData;
 import sinon.models.data.BullPenData;
+import sinon.models.data.LevelProperty;
 import sinon.models.data.PuzzleLevelProperty;
 import sinon.serial.Serializer;
 import sinon.views.builder.BuilderMenuBar;
@@ -54,8 +55,15 @@ public class BuilderSaveAsController implements ActionListener{
             BoardData levelBoardData = new BoardData(this.builder.getLevel().getBoard());
             this.builder.getLevel().getLevelData().setBoardData(levelBoardData);
             
-            this.builder.getLevel().getLevelData().setLevelProperty(new PuzzleLevelProperty(5)); 
-            //TODO get real LevelProperty from views
+            
+            
+            this.builder.getLevel().getLevelData().setLevelProperty(new PuzzleLevelProperty(5)); //TODO get real LevelProperty from views
+            
+            //GET LevelTypeInfoView value that was set (number of moves, time left)
+            
+            //this.builder.getLevel().getLevelData().setLevelProperty(new );
+            System.out.println("LEVEL PROPERTY VALUE: " + this.builder.getMainView().getLevelTypeInfoView().getValue());
+            
             
             /*
              * FIELDS TO SET:
@@ -74,6 +82,8 @@ public class BuilderSaveAsController implements ActionListener{
              * 				boolean[][] playable;				DONE
              * 			BullPenData bullpenData;				DONE
              * 				ArrayList<HexominoCode> hexominos;  DONE
+             *     		int starRecord;							THIS IS USED BY THE GAME TO SAVE THE EARNED STARS
+             * 			LevelProperty levelProperty;
              */
 
             Serializer serializer = new Serializer(file, this.builder.getLevel().getLevelData());

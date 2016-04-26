@@ -93,12 +93,19 @@ public class MainView extends JPanel {
         return this.kabasuji.bullpenView;
     }
 
+    /** @return This MainView's InfoPanel. */
     public InfoPanel getInfoPanel() {
         return infoPanel;
     }
 
+    /** @return This MainView's LevelPanel. */
     public LevelPanel getLevelPanel() {
         return levelPanel;
+    }
+    
+    /** @return This MainView's LevelTypeInfoView. */
+    public LevelTypeInfoView getLevelTypeInfoView(){
+    	return this.levelTypeInfoView;
     }
 
 }

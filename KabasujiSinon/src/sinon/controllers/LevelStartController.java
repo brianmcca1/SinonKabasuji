@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import sinon.main.Game;
+import sinon.models.data.LevelType;
 import sinon.models.data.LevelType.types;
 import sinon.views.LevelTypeInfoView;
 import sinon.views.LightningInfoView;
@@ -46,28 +47,27 @@ public class LevelStartController implements ActionListener{
 	 */
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("STARTING LEVEL #" + (levelNum + 1));
-		this.game.setLevel(this.game.allLevels[this.levelNum]);
+		
+		this.game.setLevel(this.game.getLevel(this.levelNum));
 		
 		LevelTypeInfoView lvlTypeInfoView = null;
+		types thisLevelsType = this.game.getLevel(this.levelNum).getLevelData().getLevelType();
 		
-        if(this.game.getLevel().getLevelData().getLevelType().equals(types.PUZZLE)){
+        if(thisLevelsType.equals(types.PUZZLE)){
         	lvlTypeInfoView = new PuzzleInfoView(false);
     	}
     	else{
-    		if(this.game.getLevel().getLevelData().getLevelType().equals(types.LIGHTNING)){
+    		if(thisLevelsType.equals(types.LIGHTNING)){
     			lvlTypeInfoView = new LightningInfoView(false);
     		}
     		else{
-    			if(this.game.getLevel().getLevelData().getLevelType().equals(types.RELEASE)){
+    			if(thisLevelsType.equals(types.RELEASE)){
     				lvlTypeInfoView = new ReleaseInfoView();
     			}
     		}
     	}
 		
-		this.game.allLevels[0].getLevelData().getLevelType();
 		this.game.initializeMainView(this.levelSelectView, lvlTypeInfoView);
-		
-		
 	}
 	
 }

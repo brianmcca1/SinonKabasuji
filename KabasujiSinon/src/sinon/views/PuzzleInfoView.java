@@ -1,5 +1,6 @@
 package sinon.views;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Rectangle;
 import javax.swing.JLabel;
@@ -24,4 +25,8 @@ public class PuzzleInfoView extends LevelTypeInfoView {
         this.add(infoLabel);
         this.add(movesLeftField);
     }
+    
+	public int getValue(){
+		return (int)Integer.parseInt(this.movesLeftField.getText());
+	}
 }

@@ -24,4 +24,8 @@ public class LightningInfoView extends LevelTypeInfoView {
         this.add(infoLabel);
         this.add(timeLeftField);
     }
+    
+	public int getValue(){
+		return (int)Integer.parseInt(this.timeLeftField.getText());
+	}
 }

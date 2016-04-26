@@ -1,15 +1,16 @@
 package sinon.models.data;
 
-public class PuzzleLevelProperty implements LevelProperty {
+public class PuzzleLevelProperty<Integer> implements LevelProperty {
 
-	public int numMoves;
+	private static final long serialVersionUID = 7502352531785165619L;
+	public Integer numMoves;
 	
-	public PuzzleLevelProperty(int m){
+	public PuzzleLevelProperty(Integer m){
 		this.numMoves = m;
 	}
 
 	@Override
-	public int getPropertyValue() {
+	public Integer getPropertyValue() {
 		return this.numMoves;
 	}
 	
