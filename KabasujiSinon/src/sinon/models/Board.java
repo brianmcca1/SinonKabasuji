@@ -78,6 +78,9 @@ public class Board {
         for (Point p : hexominoNumberSet.getPoints()) {
             Point pointToCheck = new Point(anchorLocation.x + p.x,
                     anchorLocation.y + p.y);
+            if (!(this.isInBounds(pointToCheck.x, pointToCheck.y))){
+            	return false;
+            }
             if (!tilesViaPoints.get(pointToCheck).canAddHex()) {
                 canAdd = false;
             }
