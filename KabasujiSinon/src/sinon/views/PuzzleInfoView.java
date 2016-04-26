@@ -27,6 +27,10 @@ public class PuzzleInfoView extends LevelTypeInfoView {
     }
     
 	public int getValue(){
+		if(this.movesLeftField.getText().compareTo("") == 0){
+			return 1;
+		}
+		
 		return (int)Integer.parseInt(this.movesLeftField.getText());
 	}
 }

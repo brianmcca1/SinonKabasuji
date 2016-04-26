@@ -1,18 +1,17 @@
 package sinon.models.data;
 
+import java.awt.Point;
 import java.util.List;
 
-public class ReleaseLevelProperty<List> implements LevelProperty{
+public class ReleaseLevelProperty implements LevelProperty{
 	
-	public List numberTilePoints;
+	public List<Point> numberTilePoints;
 	
-	public ReleaseLevelProperty(List list){
+	public ReleaseLevelProperty(List<Point> list){
 		this.numberTilePoints = list;
 	}
 
-	@Override
-	public List getPropertyValue() {
-		return this.numberTilePoints;
+	public int getPropertyValue(){
+		return -999;
 	}
-	
 }

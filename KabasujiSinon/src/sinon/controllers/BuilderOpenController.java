@@ -5,9 +5,16 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import javax.swing.JFileChooser;
 import sinon.main.Builder;
+import sinon.models.Board;
+import sinon.models.BullPen;
+import sinon.models.Level;
 import sinon.models.data.LevelData;
+import sinon.models.data.LevelType.types;
 import sinon.serial.Deserializer;
+import sinon.views.LevelTypeInfoView;
+import sinon.views.LightningInfoView;
 import sinon.views.PuzzleInfoView;
+import sinon.views.ReleaseInfoView;
 import sinon.views.builder.BuilderMenuBar;
 
 public class BuilderOpenController extends BuilderNewLevelController implements ActionListener{
@@ -41,14 +48,29 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
             System.out.println(levelData.toString());
 	    	System.out.println("******************");
 	    	
+	    	//CREATE levelFromFile FROM levelData HERE
+	    	Level levelFromFile = new Level(levelData.getLevelType(), new Board(levelData.getBoardData()), new BullPen(levelData.getBullpenData()));
+	    	this.builder.setLevel(levelFromFile);
+
+	    	//FIND OUT WHICH LevelTypeInfoView TO GIVE TO MAINVIEW
+			LevelTypeInfoView lvlTypeInfoView = null;
+			types thisLevelsType = levelData.getLevelType();
+			
+	        if(thisLevelsType.equals(types.PUZZLE)){
+	        	lvlTypeInfoView = new PuzzleInfoView(true);
+	    	}
+	    	else{
+	    		if(thisLevelsType.equals(types.LIGHTNING)){
+	    			lvlTypeInfoView = new LightningInfoView(true);
+	    		}
+	    		else{
+	    			if(thisLevelsType.equals(types.RELEASE)){
+	    				lvlTypeInfoView = new ReleaseInfoView();
+	    			}
+	    		}
+	    	}
 	    	
-	    	
-            //CREATE levelFromFile FROM levelData HERE
-            //THEN SET levelFromFile TO BUILDER
-            //THEN this.builder.initializeMainView();
-            //Level levelFromFile= new Level(5, new Board(), new BullPen(new LinkedList<Hexomino>())); //test level
-            //this.builder.setLevel(levelFromFile);
-	    	
+            this.builder.initializeMainView(lvlTypeInfoView);
             this.handleOpenLevel(this.builderMenuBar);
         }
 	}

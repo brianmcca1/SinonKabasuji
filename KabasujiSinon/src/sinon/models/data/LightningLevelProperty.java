@@ -1,17 +1,16 @@
 package sinon.models.data;
 
-public class LightningLevelProperty<Integer> implements LevelProperty {
+public class LightningLevelProperty implements LevelProperty {
 
 	private static final long serialVersionUID = -1510251264746958369L;
-	public Integer time;
+	public int time;
 	
-	public LightningLevelProperty(Integer t){
+	public LightningLevelProperty(int t){
 		this.time = t;
 	}
 
-	@Override
-	public Integer getPropertyValue() {
-		return (Integer)this.time;
+	public int getPropertyValue() {
+		return this.time;
 	}
 
 }

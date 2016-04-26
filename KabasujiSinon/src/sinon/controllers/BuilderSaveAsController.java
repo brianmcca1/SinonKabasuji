@@ -7,7 +7,10 @@ import javax.swing.JFileChooser;
 import sinon.main.Builder;
 import sinon.models.data.BoardData;
 import sinon.models.data.BullPenData;
+import sinon.models.data.LevelData;
 import sinon.models.data.LevelProperty;
+import sinon.models.data.LevelType.types;
+import sinon.models.data.LightningLevelProperty;
 import sinon.models.data.PuzzleLevelProperty;
 import sinon.serial.Serializer;
 import sinon.views.builder.BuilderMenuBar;
@@ -55,18 +58,22 @@ public class BuilderSaveAsController implements ActionListener{
             BoardData levelBoardData = new BoardData(this.builder.getLevel().getBoard());
             this.builder.getLevel().getLevelData().setBoardData(levelBoardData);
             
+            //GET THIS LEVEL'S propertyValue
+            types thisLevelsType = this.builder.getLevel().getLevelData().getLevelType();
+            int propertyValue = this.builder.getMainView().getLevelTypeInfoView().getValue();
             
-            
-            this.builder.getLevel().getLevelData().setLevelProperty(new PuzzleLevelProperty(5)); //TODO get real LevelProperty from views
-            
-            //GET LevelTypeInfoView value that was set (number of moves, time left)
-            
-            //this.builder.getLevel().getLevelData().setLevelProperty(new );
-            System.out.println("LEVEL PROPERTY VALUE: " + this.builder.getMainView().getLevelTypeInfoView().getValue());
-            
+            //SET LevelProperty BASED ON LEVEL TYPE AND WHAT WAS ENTERED INTO THE VIEW
+            if(thisLevelsType.equals(types.PUZZLE)){
+            	this.builder.getLevel().getLevelData().setLevelProperty(new PuzzleLevelProperty(propertyValue));
+            }
+            else{
+            	if(thisLevelsType.equals(types.LIGHTNING)){
+            		this.builder.getLevel().getLevelData().setLevelProperty(new LightningLevelProperty(propertyValue));
+            	}
+            }      
             
             /*
-             * FIELDS TO SET:
+             * FIELDS TO SET FOR LEVEL
              * this.builder.getLevel()
              * 		int levelNum;								DONE
              * 		Board board;								DONE?
@@ -82,8 +89,8 @@ public class BuilderSaveAsController implements ActionListener{
              * 				boolean[][] playable;				DONE
              * 			BullPenData bullpenData;				DONE
              * 				ArrayList<HexominoCode> hexominos;  DONE
-             *     		int starRecord;							THIS IS USED BY THE GAME TO SAVE THE EARNED STARS
-             * 			LevelProperty levelProperty;
+             *     		int starRecord;							DONE (THIS IS SET BY THE GAME TO SAVE THE EARNED STARS)
+             * 			LevelProperty levelProperty;			DONE
              */
 
             Serializer serializer = new Serializer(file, this.builder.getLevel().getLevelData());

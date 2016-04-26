@@ -33,7 +33,8 @@ public class Game extends Kabasuji {
         Deserializer deserializer = new Deserializer(levelOneFile);
         LevelData levelOneData = deserializer.deserializeFile();
 
-        this.currentLevel = new Level(levelOneData.getLevelType(), new Board(levelOneData.getBoardData()), new BullPen(levelOneData.getBullpenData())); //test level
+        this.currentLevel = new Level(levelOneData.getLevelType(), new Board(levelOneData.getBoardData()), new BullPen(levelOneData.getBullpenData())); 
+        //TODO Update this level creation from file if needed
         allLevels[0] = this.currentLevel;
         System.out.println("LEVELONE READ INTO GAME");
     }
