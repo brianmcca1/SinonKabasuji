@@ -40,7 +40,7 @@ public class MoveToBoardFromBullpen extends BoardMove{
 
 	@Override
 	public boolean doMove() {
-
+		
 		if(!this.valid()) { return false; }
 
 		Hexomino hex = level.selectedHexomino.get();	
@@ -52,6 +52,7 @@ public class MoveToBoardFromBullpen extends BoardMove{
 
 	@Override
 	public boolean undo() {
+		//FIXME What is this? See what valid() is actually doing.
 		if (this.valid()){
 			level.getBullpen().addHexomino(hex);
 			level.getBoard().removeHexomino(hex);
