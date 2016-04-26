@@ -37,5 +37,14 @@ public class PuzzleLevel extends Level{
 	public int getMaxMoves(){
 		return this.maxMoves;
 	}
+	
+	public int countStars(){
+		int bpc = bullpen.hexominoCount();
+		int stars = 3 - bpc;
+		if (stars < 0) stars = 0;
+		
+		return stars;
+		
+	}
 
 }
