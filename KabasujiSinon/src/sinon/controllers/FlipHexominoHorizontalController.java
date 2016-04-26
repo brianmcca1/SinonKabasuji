@@ -31,6 +31,7 @@ public class FlipHexominoHorizontalController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("(TEMP) FLIPPING BULLPEN HEXOMINO HORIZONTALLY. . .");
-        FlipHorizontalMove flipHmove = new FlipHorizontalMove(null);
+        FlipHorizontalMove flipHmove = new FlipHorizontalMove(hexBullpenView.getHexomino());
+        flipHmove.doMove();
     }
 }

@@ -3,6 +3,7 @@ package sinon.controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import sinon.main.Kabasuji;
+import sinon.moves.FlipVerticalMove;
 import sinon.views.HexominoBullpenView;
 
 /**
@@ -29,5 +30,9 @@ public class FlipHexominoVerticalController implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("(TEMP) FLIPPING BULLPEN HEXOMINO VERTICALLY. . .");
+		FlipVerticalMove move = new FlipVerticalMove(hexBullpenView.getHexomino());
+		move.doMove();
+		// TODO Is kabasuji supposed to be there??
+		
 	}
 }

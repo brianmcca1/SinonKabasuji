@@ -3,6 +3,8 @@ package sinon.controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import sinon.main.Kabasuji;
+import sinon.moves.FlipVerticalMove;
+import sinon.moves.RotateHexominoCounterClockwiseMove;
 import sinon.views.HexominoBullpenView;
 
 /**
@@ -29,5 +31,7 @@ public class RotateHexominoAnticlockwiseController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("(TEMP) ROTATING BULLPEN HEXOMINO ANTICLOCKWISE. . .");
+		RotateHexominoCounterClockwiseMove move = new RotateHexominoCounterClockwiseMove(hexBullpenView.getHexomino());
+		move.doMove();
 	}
 }
