@@ -26,6 +26,18 @@ public class PuzzleInfoView extends LevelTypeInfoView {
         this.add(movesLeftField);
     }
     
+    public PuzzleInfoView(int numMoves) {
+        setLayout(new GridLayout(1, 1));
+        this.infoLabel = new JLabel("Moves:");
+        this.movesLeftField = new JTextField();
+
+        this.movesLeftField.setEditable(false);
+        this.movesLeftField.setText(Integer.toString(numMoves));
+        
+        this.add(infoLabel);
+        this.add(movesLeftField);
+    }
+    
 	public int getValue(){
 		if(this.movesLeftField.getText().compareTo("") == 0){
 			return 1;

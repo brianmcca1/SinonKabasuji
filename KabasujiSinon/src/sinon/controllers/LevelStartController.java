@@ -55,7 +55,7 @@ public class LevelStartController implements ActionListener{
 		types thisLevelsType = this.game.getLevel(this.levelNum).getLevelData().getLevelType();
 		
         if(thisLevelsType.equals(types.PUZZLE)){
-        	lvlTypeInfoView = new PuzzleInfoView(false);
+        	lvlTypeInfoView = new PuzzleInfoView(this.game.getLevel().getLevelData().getLevelProperty().getPropertyValue());
     	}
     	else{
     		if(thisLevelsType.equals(types.LIGHTNING)){

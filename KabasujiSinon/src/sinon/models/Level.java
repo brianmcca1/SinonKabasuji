@@ -56,6 +56,10 @@ public class Level {
     public LevelData getLevelData(){
     	return this.levelData;
     }
+    
+    public void setLevelData(LevelData l){
+    	this.levelData = l;
+    }
 
     public int getStars(){
     	return this.stars;
