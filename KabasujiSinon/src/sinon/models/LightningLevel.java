@@ -25,6 +25,7 @@ public class LightningLevel extends Level{
 			}
 		}
 		
+		
 		if (numNotPlayed == 0){
 			return 3;
 		}
