@@ -100,5 +100,26 @@ public class Level {
         return this.selectedHexomino != null;
     }
 
+    /**
+     * Determines whether this level has been won
+     * @return Returns true if the level has been won (Three stars have been attained), otherwise returns false
+     * @author PDeBrine
+     */
+    
+    public boolean hasWon(){
+    	if (this.countStars() == 3){
+    	return true;
+    }
+    	return false;
+    }
+    
+    /**
+     * Counts the number of stars earned for this level
+     * @return Returns the number of stars earned, the max being 3, and the min being 0
+     */
+    
+    public int countStars(){
+    	return 0;
+    }
 
 }

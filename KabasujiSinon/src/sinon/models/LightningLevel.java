@@ -16,5 +16,16 @@ public class LightningLevel extends Level{
 		this.timeLeft = maxTime;
 		// TODO Auto-generated constructor stub
 	} 
+	
+	public int countStars(){
+		int answer = 0;
+		for (Tile t : this.board.getTiles()){
+			if (!t.hasHex()){
+				answer++;
+			}
+		}
+		return answer;
+	}
+
 
 }
