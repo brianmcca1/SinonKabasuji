@@ -65,6 +65,8 @@ public class BuilderSaveAsController implements ActionListener{
              * 			Map<Point, Tile> tilesViaPoints;		DONE?
              * 		BullPen bullpen;							DONE
              * 			List<Hexomino> pieces;					DONE
+             *      int stars;									DONE
+    		 *		int starRecord;								DONE
              * 		LevelData levelData;						DONE
              * 			types levelType;						DONE
              * 			int levelNum;							DONE

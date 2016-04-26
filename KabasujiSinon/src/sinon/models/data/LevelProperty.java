@@ -1,6 +1,8 @@
 package sinon.models.data;
 
-public interface LevelProperty {
+import java.io.Serializable;
+
+public interface LevelProperty extends Serializable{
 
 	public int getPropertyValue();
 	

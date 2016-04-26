@@ -100,6 +100,7 @@ public final class LevelData implements Serializable {
     	strLevelData += ("LEVEL TYPE: " + this.levelType);
     	strLevelData += "\r\n";
     	strLevelData += ("LEVEL NUMBER: " + this.levelNum);
+    	strLevelData += "\r\n";
     	strLevelData += ("LEVEL PROPERTY: ") + this.levelProperty.getPropertyValue();
     	
     	return strLevelData;
