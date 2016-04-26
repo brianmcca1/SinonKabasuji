@@ -1,5 +1,6 @@
 package sinon.main;
 
+import java.io.File;
 import java.util.LinkedList;
 
 import sinon.controllers.BullpenController;
@@ -7,7 +8,9 @@ import sinon.models.Board;
 import sinon.models.BullPen;
 import sinon.models.Hexomino;
 import sinon.models.Level;
+import sinon.models.data.LevelData;
 import sinon.models.data.LevelType.types;
+import sinon.serial.Deserializer;
 import sinon.views.MainView;
 import sinon.views.game.GameInfoView;
 import sinon.views.game.LevelSelectView;
@@ -22,7 +25,16 @@ public class Game extends Kabasuji {
         super();
 
         startSplash("Kabasuji", new LevelSelectView(this));
-        currentLevel = new Level(1, types.PUZZLE, new Board(), new BullPen(new LinkedList<Hexomino>())); //test level
+
+        
+        //OPEN ALL 15 LEVELS AND STORE THEM IN THE ARRAY
+        File levelOneFile = new File("level1.dat");
+        Deserializer deserializer = new Deserializer(levelOneFile);
+        LevelData levelOneData = deserializer.deserializeFile();
+
+        this.currentLevel = new Level(levelOneData.getLevelType(), new Board(levelOneData.getBoardData()), new BullPen(levelOneData.getBullpenData())); //test level
+        allLevels[0] = this.currentLevel;
+        System.out.println("LEVELONE READ INTO GAME");
     }
     
     /**

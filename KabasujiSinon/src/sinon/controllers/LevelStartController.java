@@ -17,7 +17,7 @@ public class LevelStartController implements ActionListener{
 
 	/** LevelSelectView to be removed from the frame. */
     LevelSelectView levelSelectView;
-    /** Level number (1-15). */
+    /** The level number that this button corresponds to (0-14). */
     int levelNum;
     /** Top level Game object. */
     Game game;
@@ -40,7 +40,10 @@ public class LevelStartController implements ActionListener{
 	 * Calls on Game to start the MainView
 	 */
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("STARTING LEVEL #" + levelNum + ". . .");
+		System.out.println("STARTING LEVEL #" + (levelNum + 1) + ". . .");
 		this.game.initializeMainView(this.levelSelectView);
+		
+		this.game.setLevel(this.game.allLevels[this.levelNum]);
 	}
+	
 }

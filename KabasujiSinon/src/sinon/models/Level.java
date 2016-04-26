@@ -7,8 +7,6 @@ import sinon.models.data.LevelType.types;
 
 public class Level {
 	
-	/** This level number (1-15). */
-    int levelNum;
     /** Board model for this level. */
     Board board;
     /** Bullpen model for this level. */
@@ -29,18 +27,16 @@ public class Level {
     public Optional<Hexomino> selectedHexomino;
 
     
-    public Level(int levelNum, types t, Board b, BullPen bp) {
-        this.levelNum = levelNum;
+    public Level(types t, Board b, BullPen bp) {
         this.board = b;
         this.bullpen = bp;
-        this.levelData = new LevelData(levelNum, t);
+        this.levelData = new LevelData(t);
         this.starRecord = 0;
     }
     
     public Level(LevelData levelData){
     	this.board = new Board(levelData.getBoardData());
-    	this.bullpen = new BullPen(levelData.getBullpen());
-    	this.levelNum = levelData.getLevelNum();
+    	this.bullpen = new BullPen(levelData.getBullpenData());
     	this.starRecord = levelData.getStarRecord();
     	this.levelData = levelData;
     	
@@ -59,11 +55,6 @@ public class Level {
     /** @return this level's LevelData. */
     public LevelData getLevelData(){
     	return this.levelData;
-    }
-    
-    /** @return this level's number. */
-    public int getNumber(){
-    	return this.levelNum;
     }
 
     public int getStars(){

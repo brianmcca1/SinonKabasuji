@@ -25,11 +25,14 @@ public class Deserializer {
 	 * @return indicates success or failure of deserialization
 	 */
 	public LevelData deserializeFile() {
+		LevelData levelData = null;
+		
 	    try{
 	    	FileInputStream fin = new FileInputStream(fileToOpen);
 	    	ObjectInputStream ois = new ObjectInputStream(fin);
-	    	LevelData levelData = (LevelData) ois.readObject();
+	    	levelData = (LevelData) ois.readObject();
 	    	ois.close();
+	    	fin.close();
 	    	System.out.println("DESERIALIZING FILE: " + this.fileToOpen.getName());
 	    	System.out.println("DESERIALIZER SUCCESSFUL");
 	    	return levelData;

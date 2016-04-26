@@ -43,6 +43,7 @@ public class Board {
      *            BoardData specifying which tiles are playable.
      */
     public Board(BoardData boardData) {
+    	tilesViaPoints = new HashMap<Point, Tile>();
         for (int x = 0; x < WIDTH; x++) {
             for (int y = 0; y < HEIGHT; y++) {
                 boolean playable = boardData.getPlayableArray()[x][y];

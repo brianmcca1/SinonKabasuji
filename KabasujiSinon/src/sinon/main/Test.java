@@ -32,8 +32,7 @@ public class Test extends Kabasuji {
     }
 
     private void initializeModel() {
-        testLevel = new Level(5, types.PUZZLE, new Board(),
-                new BullPen(new LinkedList<Hexomino>()));
+        testLevel = new Level(types.PUZZLE, new Board(), new BullPen(new LinkedList<Hexomino>()));
 
     }
 
