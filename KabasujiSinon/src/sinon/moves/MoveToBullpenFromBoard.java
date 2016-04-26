@@ -47,8 +47,6 @@ public class MoveToBullpenFromBoard extends BoardMove {
 
 	@Override
 	public boolean undo() {
-		//FIXME valid checks if the board has the hex. When we're undoing, the board SHOULDN'T have the hex.
-		//if (!valid()) return false;
 		level.getBoard().addHexomino(new Point(srcAnchorRow, srcAnchorColumn), hex);
 		return true;
 	}
