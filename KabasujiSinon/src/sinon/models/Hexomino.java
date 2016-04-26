@@ -20,6 +20,11 @@ public class Hexomino {
 
     /** @see HexominoNumberSet */
     HexominoNumberSet hexominoNumberSet;
+    
+    /** Unique number to ID hexominoes in the board and the bullpen. **/
+    int id;
+    
+    private static final int invalidID = -5;
 
     /**
      * Is a convenience constructor for quickly building a Hexomino.
@@ -35,6 +40,7 @@ public class Hexomino {
 
         this.hexominoNumberSet = NumberSetFactory.getByNumbers(a, a1, b, b1, c,
                 c1, d, d1, e, e1, f, f1);
+        
     }
 
     public Hexomino(Set<Point> points) {

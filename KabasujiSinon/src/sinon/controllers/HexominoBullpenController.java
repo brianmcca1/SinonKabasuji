@@ -45,6 +45,7 @@ public class HexominoBullpenController implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		System.out.println("I AM A BULLPEN HEXOMINO AND I JUST GOT CLICKED ON!");
 		
+		//FIXME A new move is NOT always created when you click on the bullpen
 		if(level.hasSelected()) {
 			
 			int x, y;
