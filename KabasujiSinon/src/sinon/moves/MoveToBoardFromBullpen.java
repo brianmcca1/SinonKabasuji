@@ -30,8 +30,9 @@ public class MoveToBoardFromBullpen extends BoardMove{
 	public MoveToBoardFromBullpen (Level level, int destAnchorRow, int destAnchorColumn) {
 		
 		this.level = level;
-		this.hex = level.selectedHexomino.get();
-		this.hex = level.selectedHexomino.get();
+		if(level.hasSelected()) {
+			this.hex = level.selectedHexomino.get();
+		}
 		this.destAnchorRow = destAnchorRow;
 		this.destAnchorColumn = destAnchorColumn;
 	
@@ -52,7 +53,10 @@ public class MoveToBoardFromBullpen extends BoardMove{
 	@Override
 	public boolean undo() {
 		
-		return false;
+		level.getBullpen().addHexomino(hex);
+		level.getBoard().removeHexomino(hex);
+		return true;
+		
 	}
 
 	@Override

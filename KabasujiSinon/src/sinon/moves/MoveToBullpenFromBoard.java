@@ -25,6 +25,10 @@ public class MoveToBullpenFromBoard extends BoardMove {
 	public MoveToBullpenFromBoard (Level level, int srcAnchorRow, int srcAnchorColumn) {
 		
 		this.level = level;
+		if(level.hasSelected()) {
+			this.hex = level.selectedHexomino.get();
+		}
+		
 		this.srcAnchorRow = srcAnchorRow;
 		this.srcAnchorColumn = srcAnchorColumn;
 		

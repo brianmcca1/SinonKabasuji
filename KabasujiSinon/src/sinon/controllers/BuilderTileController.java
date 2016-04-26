@@ -39,6 +39,8 @@ public class BuilderTileController implements MouseListener{
 			System.out.println("PLAYABLE BEFORE: " + tileView.getTile().isPlayable());
 			tileView.getTile().setPlayable(!tileView.getTile().isPlayable());
 			System.out.println("PLAYABLE AFTER: " + tileView.getTile().isPlayable());
+			builder.boardView.redrawTiles();
+			
 			
 		} else {
 			//else if a hexomino had been selected, then add that to the board at row, column

@@ -26,7 +26,11 @@ public class MoveInBoard extends BoardMove{
 	public MoveInBoard(Level level, int srcAnchorRow, int srcAnchorColumn, int destAnchorRow, int destAnchorColumn) {
 		
 		this.level = level;
+		
+		if(level.hasSelected()) {
 		this.hex = level.selectedHexomino.get();
+		}
+		
 		this.srcAnchorRow = srcAnchorRow;
 		this.srcAnchorColumn = srcAnchorColumn;
 		this.destAnchorRow = destAnchorRow;
