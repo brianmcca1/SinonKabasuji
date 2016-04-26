@@ -2,6 +2,9 @@ package sinon.moves;
 
 import sinon.models.Hexomino;
 import sinon.models.Level;
+
+import java.awt.Point;
+
 import sinon.models.Board;
 
 /**
@@ -40,20 +43,26 @@ public class MoveInBoard extends BoardMove{
 	
 	@Override
 	public boolean doMove() {
-		// TODO Auto-generated method stub
-		return false;
+		if (!valid()) return false;
+		level.getBoard().removeHexomino(hex);
+		level.getBoard().addHexomino(new Point(destAnchorRow, destAnchorColumn), hex);
+		level.deselect();
+		return true;
 	}
 
 	@Override
 	public boolean undo() {
-		// TODO Auto-generated method stub
-		return false;
+		level.getBoard().removeHexomino(hex);
+		level.getBoard().addHexomino(new Point(srcAnchorRow, srcAnchorColumn), hex);
+		return true;
 	}
 
 	@Override
 	public boolean valid() {
-		// TODO Auto-generated method stub
-		return false;
+		if (!level.hasSelected()) return false;
+		if (!level.getBoard().canAddHexomino(new Point(destAnchorRow, destAnchorColumn), hex)) return false;
+		if (!level.getBoard().hasHex(hex)) return false;
+		return true;
 	}
 
 }

@@ -206,6 +206,19 @@ public class Board {
 		tilesViaPoints.forEach((k, v) -> tempList.add(v));
 		return tempList;
 	}
+	/**
+	 * Determines if this board has the hexomino hex played on it
+	 * @param hex the hex to be looked for
+	 * @return True if hex is found, otherwise false
+	 */
+	public boolean hasHex(Hexomino hex){
+		for (Tile t : this.getTiles()){
+			if (t.hasHex()){
+				if(t.getHexomino().get().equals(hex)) return true;
+			}
+		}
+		return false;
+	}
 
 	// TODO equals and hash and ToString
 

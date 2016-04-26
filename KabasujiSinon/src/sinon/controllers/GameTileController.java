@@ -39,10 +39,16 @@ public class GameTileController implements MouseListener, MouseMotionListener {
 
         if (level.hasSelected()) {
         	int x, y;
-        	x = level.getBoard().findHex(level.selectedHexomino.get()).x;
-        	y = level.getBoard().findHex(level.selectedHexomino.get()).y;
+        	x = level.getBoard().getHexominoLocation(level.selectedHexomino.get()).x;
+        	y = level.getBoard().getHexominoLocation(level.selectedHexomino.get()).y;
         	MoveInBoard move = new MoveInBoard(level, x, y, tile.getLocation().x, tile.getLocation().y);
+        	move.doMove();
         	
+        	// For when we have the stack for undo
+        	//level.push(move);
+        	
+        	
+        	// Old working version, left just in case lmao
             /*
             final Hexomino selectedHex = level.selectedHexomino.get();
 
