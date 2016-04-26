@@ -51,6 +51,7 @@ public class BullpenView extends JPanel implements StashView {
 
     /** Called by the HexominoBankController to repaint this bullpen. */
     public void redrawBullpenView() {
+        this.stash.update();
         this.repaint();
         this.revalidate();
         this.contentPanel.repaint();

@@ -78,8 +78,12 @@ public class HexViewStash {
             throw new NullPointerException(
                     "content panel was null when adding Hexominos.");
         }
-        for (HexominoBullpenView hex : getHexominos()) {
-            this.contentPanel.add(hex);
+        this.getHexominos().removeIf((Object) -> true);
+        this.contentPanel.removeAll();
+        for (Hexomino h : bullpen.getPieces()) {
+            HexominoBullpenView hexView = new HexominoBullpenView(h);
+            hexominosList.add(hexView);
+            this.contentPanel.add(hexView);
         }
     }
 
@@ -96,5 +100,16 @@ public class HexViewStash {
         this.contentPanel.add(Objects.requireNonNull(hexBPView));
         this.hexominosList.add(hexBPView);
         registrator.registerHexominoView(hexBPView);
+    }
+
+    /**
+     * Re renders the Stash it is observing.
+     */
+    public void update() {
+        if (hexominosList.size() != bullpen.getPieces().size()) {
+            System.out.println("Sizes are different");
+        }
+
+        this.populateViewWithHexominos();
     }
 }

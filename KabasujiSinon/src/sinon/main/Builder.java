@@ -35,10 +35,15 @@ public class Builder extends Kabasuji {
     public void initializeMainView() {
         MainView mv = new MainView(this.getLevel(), new BankView());
 
-        mv.getBullpenView()
-                .setRegistrator(new HexStashRegistrator(this.getLevel(), mv));
+        mv.getBullpenView().setRegistrator(new HexStashRegistrator(
+                this.getLevel(), mv, HexStashRegistrator.BULLPEN_CONTROLLER));
         BankView bank = (BankView) mv.getInfoPanel();
-        bank.setRegistrator(new HexStashRegistrator(this.getLevel(), mv));
+        bank.setRegistrator(new HexStashRegistrator(this.getLevel(), mv,
+                HexStashRegistrator.BANK_CONTROLLER));
+
+        mv.getBullpenView().contentPanel.addMouseListener(
+                new BullpenController(this.getLevel().getBullpen(),
+                        mv.getBullpenView(), currentLevel));
 
         this.setMainView(mv);
         mainView.getBullpenView().addMouseListener(
