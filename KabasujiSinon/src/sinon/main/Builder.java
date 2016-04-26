@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import sinon.controllers.BuilderTileController;
 import sinon.models.BullPen;
 import sinon.models.data.HexominoBankData;
+import sinon.views.LevelTypeInfoView;
 import sinon.views.MainView;
 import sinon.views.TileView;
 import sinon.views.builder.BankView;
@@ -29,8 +30,12 @@ public class Builder extends Kabasuji {
 		startSplash("Kabasuji Builder", this.blankPanel);
 	}
 	
-	public void initializeMainView(){
-		MainView mv = new MainView(this, new BankView(this, this.bullpen));
+	public void initializeMainView(LevelTypeInfoView lvlTypeInfoView){
+		if(this.mainView != null){
+			this.remove(this.mainView);
+			this.revalidate();
+		}
+		MainView mv = new MainView(this, new BankView(this, this.bullpen), lvlTypeInfoView);
 		this.setMainView(mv);
 		this.mainView.revalidate();
 		this.startNextPanel(this.blankPanel, mv);

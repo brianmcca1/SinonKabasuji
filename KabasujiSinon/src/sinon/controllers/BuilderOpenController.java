@@ -7,6 +7,7 @@ import javax.swing.JFileChooser;
 import sinon.main.Builder;
 import sinon.models.data.LevelData;
 import sinon.serial.Deserializer;
+import sinon.views.PuzzleInfoView;
 import sinon.views.builder.BuilderMenuBar;
 
 public class BuilderOpenController extends BuilderNewLevelController implements ActionListener{
@@ -61,7 +62,7 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 		bMenuBar.mntmRedo.setEnabled(true);
         bMenuBar.mntmClearBoard.setEnabled(true);
         this.builderMenuBar.mntmSave.setEnabled(true);
-        this.builder.initializeMainView();
+        this.builder.initializeMainView(new PuzzleInfoView(true)); //FIXME read the type of level and make the correct LevelTypeInfoView
         this.builder.mainView.getBullpenView().redrawBullpenView();
 	}
 }

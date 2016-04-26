@@ -26,12 +26,12 @@ public class MainView extends JPanel {
      * levelPanel contains: Bullpen, GridView, optional ReleaseButtonView, and
      * is on the left side of the screen.
      */
-    LevelPanel levelPanel;
+    public LevelPanel levelPanel;
     /** Contains GridView and the Optional ReleaseButtonView. */
-    JPanel gameAreaPanel; // FIXME If this is only asthetic, get rid of it.
+    public JPanel gameAreaPanel; // FIXME If this is only asthetic, get rid of it.
     /** Only exists in Builder Mode and Release game play. */
     //Optional<ReleaseInfoView> releaseButtonView;
-    LevelTypeInfoView levelTypeInfoView;
+    public LevelTypeInfoView levelTypeInfoView;
     /** BankView/GameInfoView. */
     InfoPanel infoPanel;
 
@@ -41,28 +41,12 @@ public class MainView extends JPanel {
      * @param infoPanel
      *            The InfoPanel to be displayed.
      */
-    public MainView(Kabasuji k, InfoPanel infoPanel) {
-    	
-        //releaseButtonView = Optional.of(new ReleaseInfoView());
-
+    public MainView(Kabasuji k, InfoPanel infoPanel, LevelTypeInfoView lvlTypeInfoView) {
         this.infoPanel = infoPanel;
         this.kabasuji = k;
         this.kabasuji.bullpenView = new BullpenView(this.kabasuji);
+        this.levelTypeInfoView = lvlTypeInfoView;
         
-        if(this.kabasuji.getLevel().getLevelData().getLevelType().equals(types.PUZZLE)){
-    		levelTypeInfoView = new PuzzleInfoView(true);
-    	}
-    	else{
-    		if(this.kabasuji.getLevel().getLevelData().getLevelType().equals(types.LIGHTNING)){
-    			levelTypeInfoView = new LightningInfoView(true);
-    		}
-    		else{
-    			if(this.kabasuji.getLevel().getLevelData().getLevelType().equals(types.RELEASE)){
-    				levelTypeInfoView = new ReleaseInfoView();
-    			}
-    		}
-    	}
-
         initializeViews();
     }
 
@@ -72,20 +56,12 @@ public class MainView extends JPanel {
 
         initGameAreaPanel();
         initLevelPanel();
-        // initBullpenView();
         initBoard();
-        initReleaseButtonView();
 
         this.add(this.infoPanel);
         infoPanel.setBounds(LEVEL_PANEL_WIDTH, 0, 150, MAIN_PANEL_HEIGHT);
     }
 
-    private void initReleaseButtonView() {
-    	//gameAreaPanel.add((JPanel)this.levelTypeInfoView);
-    	
-        //if (releaseButtonView.isPresent())
-        //    gameAreaPanel.add(releaseButtonView.get());
-    }
 
     /**
      * Creates the JPanel for the board and adds it to the
@@ -102,7 +78,7 @@ public class MainView extends JPanel {
     private void initGameAreaPanel() {
         gameAreaPanel = new JPanel();
         gameAreaPanel.setLayout(null);
-        gameAreaPanel.add((JPanel)this.levelTypeInfoView);
+        gameAreaPanel.add(this.levelTypeInfoView);
     }
 
     /** Initializes the {@link #levelPanel} */

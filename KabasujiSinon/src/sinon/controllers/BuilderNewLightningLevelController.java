@@ -8,6 +8,7 @@ import sinon.models.BullPen;
 import sinon.models.Level;
 import sinon.models.data.BullPenData;
 import sinon.models.data.LevelType.types;
+import sinon.views.LightningInfoView;
 import sinon.views.builder.BuilderMenuBar;
 
 public class BuilderNewLightningLevelController extends BuilderNewLevelController implements ActionListener {
@@ -25,6 +26,6 @@ public class BuilderNewLightningLevelController extends BuilderNewLevelControlle
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("CREATING NEW LIGHTNING LEVEL");
 		this.builder.setLevel(new Level(types.LIGHTNING, new Board(), new BullPen(new BullPenData())));
-		this.handleNewLevel(this.builder, this.builderMenuBar);
+		this.handleNewLevel(this.builder, this.builderMenuBar, new LightningInfoView(true));
 	}
 }

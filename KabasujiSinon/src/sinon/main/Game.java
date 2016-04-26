@@ -11,6 +11,7 @@ import sinon.models.Level;
 import sinon.models.data.LevelData;
 import sinon.models.data.LevelType.types;
 import sinon.serial.Deserializer;
+import sinon.views.LevelTypeInfoView;
 import sinon.views.MainView;
 import sinon.views.game.GameInfoView;
 import sinon.views.game.LevelSelectView;
@@ -41,12 +42,16 @@ public class Game extends Kabasuji {
      * Called by the LevelStartController to open the MainView.
      * @param levelSelectView LevelSelectView to remove from the frame.
      */
-    public void initializeMainView(LevelSelectView levelSelectView){
-		this.setMainView(new MainView(this, new GameInfoView(this.getLevel())));
+    public void initializeMainView(LevelSelectView levelSelectView, LevelTypeInfoView lvlTypeInfoView){
+		this.setMainView(new MainView(this, new GameInfoView(this.getLevel()), lvlTypeInfoView));
 		this.startNextPanel(levelSelectView, this.getMainView());
     }
 
     public void initializeMainControllers() {
+		if(this.mainView != null){
+			this.remove(this.mainView);
+			this.revalidate();
+		}
         GameInfoView sidePanel = (GameInfoView) mainView.getInfoPanel();
         sidePanel.getExitButton().addActionListener(new sinon.controllers.ExitGameController(this, mainView));
         mainView.getBullpenView().addMouseListener(new BullpenController(this.currentLevel.getBullpen(), mainView.getBullpenView(), this.currentLevel));

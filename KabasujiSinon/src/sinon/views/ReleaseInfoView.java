@@ -5,9 +5,7 @@ import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.JButton;
-import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 /**
@@ -17,20 +15,15 @@ import javax.swing.border.LineBorder;
  * 
  * @author Josh Desmond
  */
-@SuppressWarnings("serial")
-// FIXME this is not one of the three info views. Read the comment at the top.
-// It goes in a different spot. Not the same thing.
-public class ReleaseInfoView extends JPanel implements LevelTypeInfoView {
-
-    /** The dimensions of the rectangle */
-    private static final Rectangle BOUNDS = new Rectangle(450, 26, 130, 200);
+public class ReleaseInfoView extends LevelTypeInfoView {
+	
+	private static final long serialVersionUID = -7158712755823785281L;
     /** The number of buttons in the grid of buttons */
     private static final int NUMBER_OF_BUTTONS = 18;
     /** The list of 15 buttons */
     List<JButton> buttons = new ArrayList<JButton>(NUMBER_OF_BUTTONS);
 
     public ReleaseInfoView() {
-        setBounds(BOUNDS);
         setBorder(new LineBorder(new Color(0, 0, 0)));
         setLayout(new GridLayout(6, 3, 2, 2));
         addButtons();
