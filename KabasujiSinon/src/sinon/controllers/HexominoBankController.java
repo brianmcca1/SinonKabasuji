@@ -5,6 +5,7 @@ import java.awt.event.MouseListener;
 
 import sinon.main.Builder;
 import sinon.models.BullPen;
+import sinon.moves.BankToBullpenMove;
 import sinon.views.HexominoBullpenView;
 
 /**
@@ -29,11 +30,19 @@ public class HexominoBankController implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         System.out.println("I AM A BANK HEXOMINO AND I GOT CLICKED ON");
-        bullpen.addHexomino(hexBullpenView.getHexomino());
+        
+        BankToBullpenMove move = new BankToBullpenMove(bullpen, hexBullpenView.getHexomino());
+        
+        if(move.doMove()) {
+        	System.out.println("Move was made successfully!");
+        } else {
+        	System.out.println("For some reason, move was not completed.");
+        }
+        
+        //FIXME we might need to just refresh the views and not actually doing the adding here.
         this.builder.getMainView().getBullpenView().addHexominoBullpenView(hexBullpenView);
 
-        System.out.println(
-                this.builder.getLevel().getBullpen().getPieces().toString());
+        System.out.println(this.builder.getLevel().getBullpen().getPieces().toString());
     }
 
     @Override
