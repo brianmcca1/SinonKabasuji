@@ -1,5 +1,6 @@
 package sinon.moves;
 
+import sinon.models.Hexomino;
 import sinon.models.Level;
 
 /**
@@ -11,6 +12,8 @@ import sinon.models.Level;
 public abstract class BoardMove {
 	
 	Level level; 
+	
+	Hexomino hex;
 	
 	public abstract boolean doMove();
 	

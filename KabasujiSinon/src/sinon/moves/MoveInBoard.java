@@ -12,11 +12,6 @@ import sinon.models.Board;
 public class MoveInBoard extends BoardMove{
 
 	/**
-	 * This is the board that we are moving in.
-	 */
-	Board board;
-
-	/**
 	 * These are the source anchor positions on the board.
 	 */
 	int srcAnchorRow;
@@ -28,10 +23,10 @@ public class MoveInBoard extends BoardMove{
 	int destAnchorRow;
 	int destAnchorColumn;
 	
-	public MoveInBoard(Board b, Level level, int srcAnchorRow, int srcAnchorColumn, int destAnchorRow, int destAnchorColumn) {
+	public MoveInBoard(Level level, int srcAnchorRow, int srcAnchorColumn, int destAnchorRow, int destAnchorColumn) {
 		
-		this.board = b;
 		this.level = level;
+		this.hex = level.selectedHexomino.get();
 		this.srcAnchorRow = srcAnchorRow;
 		this.srcAnchorColumn = srcAnchorColumn;
 		this.destAnchorRow = destAnchorRow;

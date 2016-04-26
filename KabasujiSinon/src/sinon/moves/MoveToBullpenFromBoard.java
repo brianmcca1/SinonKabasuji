@@ -13,16 +13,6 @@ import sinon.models.BullPen;
 public class MoveToBullpenFromBoard extends BoardMove {
 
 	/**
-	 * This the bullpen object that we are moving the hexomino to.
-	 */
-	BullPen bullpen;
-	
-	/**
-	 * This is the board that we are moving from.
-	 */
-	Board board;
-	
-	/**
 	 * This is the source anchor-row that we are moving the hexomino from.
 	 */
 	int srcAnchorRow;
@@ -32,10 +22,8 @@ public class MoveToBullpenFromBoard extends BoardMove {
 	 */
 	int srcAnchorColumn;
 	
-	public MoveToBullpenFromBoard (BullPen bp, Board b, Level level, int srcAnchorRow, int srcAnchorColumn) {
+	public MoveToBullpenFromBoard (Level level, int srcAnchorRow, int srcAnchorColumn) {
 		
-		this.bullpen = bp;
-		this.board = b;
 		this.level = level;
 		this.srcAnchorRow = srcAnchorRow;
 		this.srcAnchorColumn = srcAnchorColumn;
