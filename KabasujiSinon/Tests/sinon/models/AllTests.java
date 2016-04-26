@@ -8,7 +8,9 @@ import sinon.models.HexominoTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({ HexominoNumberSetTest.class, HexominoTest.class,
-        TestTile.class })
+        NumberSetFactoryTest.class, TestBoard.class, TestBullpen.class,
+        TestLevel.class, TestLightingLevel.class, TestTile.class })
+
 public class AllTests {
 
 }
