@@ -1,6 +1,7 @@
 package sinon.views;
 
 import java.awt.Color;
+import java.util.Objects;
 import java.util.Optional;
 
 import javax.swing.JPanel;
@@ -41,13 +42,17 @@ public class MainView extends JPanel {
 	 *            Top level Game/Builder object.
 	 * @param infoPanel
 	 *            The InfoPanel to be displayed.
+	 * @param hasReleaseView
+	 *            True if the MainView should have a ReleaseView showing.
 	 */
-	public MainView(Level level, InfoPanel infoPanel) {
-		releaseButtonView = Optional.of(new ReleaseInfoView());
-		this.level = level;
-		this.infoPanel = infoPanel;
-
-		// FIXME this is a temp change for testing
+	public MainView(Level level, InfoPanel infoPanel, boolean hasReleaseView) {
+		if (hasReleaseView) {
+			releaseButtonView = Optional.of(new ReleaseInfoView());
+		} else {
+			releaseButtonView = Optional.of(null);
+		}
+		this.level = Objects.requireNonNull(level);
+		this.infoPanel = Objects.requireNonNull(infoPanel);
 		this.bullpenView = new BullpenView(level.getBullpen());
 		initializeViews();
 	}
@@ -68,11 +73,11 @@ public class MainView extends JPanel {
 	}
 
 	/** Initializes all of the components that make up this GUI. */
-	public void initializeViews() {
+	void initializeViews() {
 		this.setLayout(null);
 		initGameAreaPanel();
 		initLevelPanel();
-		initBoard();
+		initBoardView();
 		initReleaseButtonView();
 		this.add(this.infoPanel);
 		infoPanel.setBounds(LEVEL_PANEL_WIDTH, 0, 150, MAIN_PANEL_HEIGHT);
@@ -82,7 +87,7 @@ public class MainView extends JPanel {
 		if (releaseButtonView.isPresent())
 			gameAreaPanel.add(releaseButtonView.get());
 		/*
-		 * This code was removed when merging branches.
+		 * This code was removed when merging branches. Doesn't seem useful.
 		 * this.add(this.infoPanel); infoPanel.setBounds(LEVEL_PANEL_WIDTH, 0,
 		 * 150, MAIN_PANEL_HEIGHT);
 		 */
@@ -92,10 +97,10 @@ public class MainView extends JPanel {
 	 * Creates the JPanel for the board and adds it to the
 	 * {@link #gameAreaPanel}
 	 */
-	private void initBoard() {
-		BoardView tempBoard = new BoardView(level.getBoard());
-		this.boardView = tempBoard;
-		gameAreaPanel.add(tempBoard.boardPanel);
+	private void initBoardView() {
+		BoardView newBoardView = new BoardView(level.getBoard());
+		this.boardView = newBoardView;
+		gameAreaPanel.add(newBoardView.boardPanel);
 	}
 
 	/** Initializes the {@link #gameAreaPanel} */
@@ -114,9 +119,16 @@ public class MainView extends JPanel {
 
 	public BullpenView getBullpenView() {
 		return this.bullpenView;
-
 	}
 
+	/**
+	 * Returns the info panel associated with this main view.
+	 * 
+	 * Typically you will have to cast this InfoPanel into whatever class you
+	 * know it actually is. IE in the builder, cast this into a BankView.
+	 * 
+	 * @return InfoPanel of this MainView.
+	 */
 	public InfoPanel getInfoPanel() {
 		return infoPanel;
 	}

@@ -2,6 +2,7 @@ package sinon.views;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.MouseListener;
 import java.util.Objects;
 
 import javax.swing.BoxLayout;
@@ -61,11 +62,22 @@ public class BullpenView extends JPanel implements StashView {
 	public void addHexominoBullpenView(HexominoBullpenView hexBullpenView) {
 		// have to create a copy so that we can register a different controller
 		// to this HexominBullpenView
-		HexominoBullpenView hexBPView = new HexominoBullpenView(
-				hexBullpenView.getHexomino());
-		this.stash.add(hexBPView);
-		this.contentPanel.add(hexBPView);
+		removeMouseListeners(hexBullpenView);
+		this.stash.add(hexBullpenView);
+		this.contentPanel.add(hexBullpenView);
 		this.redrawBullpenView();
+	}
+
+	/**
+	 * Use this method to remove any MouseListeners from a HexominoPanel.
+	 * 
+	 * @param hexBullpenView
+	 *            HexominoBullpenView to remove MouseListeners from.
+	 */
+	private static void removeMouseListeners(JPanel hexBullpenView) {
+		for (MouseListener m : hexBullpenView.getMouseListeners()) {
+			hexBullpenView.removeMouseListener(m);
+		}
 	}
 
 	private void populateBankViewWithHexominoes() {

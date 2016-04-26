@@ -32,7 +32,8 @@ public class Builder extends Kabasuji {
 	}
 
 	public void initializeMainView() {
-		MainView mv = new MainView(this.getLevel(), new BankView());
+		MainView mv = new MainViewBuilder().setLevel(this.getLevel())
+				.setInfoPanel(new BankView()).setHasReleaseView(true).build();
 
 		mv.getBullpenView().setRegistrator(
 				new HexStashRegistrator(this.getLevel(), mv,
