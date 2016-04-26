@@ -48,7 +48,8 @@ public class MoveToBullpenFromBoard extends BoardMove {
 
 	@Override
 	public boolean valid() {
-		// TODO Auto-generated method stub
+		if (!level.hasSelected()) return false;
+		if (level.getBoard().
 		return false;
 	}
 
