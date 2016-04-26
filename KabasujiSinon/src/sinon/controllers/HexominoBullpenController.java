@@ -8,6 +8,8 @@ import sinon.main.Kabasuji;
 import sinon.models.BullPen;
 import sinon.models.Hexomino;
 import sinon.models.Level;
+import sinon.moves.MoveInBoard;
+import sinon.moves.MoveToBullpenFromBoard;
 import sinon.views.BullpenView;
 import sinon.views.HexominoBullpenView;
 
@@ -44,10 +46,21 @@ public class HexominoBullpenController implements MouseListener{
 		System.out.println("I AM A BULLPEN HEXOMINO AND I JUST GOT CLICKED ON!");
 		
 		if(level.hasSelected()) {
-			Hexomino alreadySelected = level.selectedHexomino.get();
-			this.level.getBullpen().addHexomino(alreadySelected);
+			
+			int x, y;
+        	x = level.getBoard().getHexominoLocation(level.selectedHexomino.get()).x;
+        	y = level.getBoard().getHexominoLocation(level.selectedHexomino.get()).y;
+        	MoveToBullpenFromBoard move = new MoveToBullpenFromBoard(level, x, y);
+        	move.doMove();
+        	
+        	// For when we have the stack for undo
+        	//level.push(move);
+
+        	//Commented out old working stuff
+			//Hexomino alreadySelected = level.selectedHexomino.get();
+			//this.level.getBullpen().addHexomino(alreadySelected);
 			bpview.redrawBullpenView();
-			level.deselect();
+			//level.deselect();
 			System.out.println("SELECTED HEXOMINO HAS BEEN DESELECTED");
 		} 
 		else {
