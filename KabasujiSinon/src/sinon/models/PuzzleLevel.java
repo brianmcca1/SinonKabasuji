@@ -9,8 +9,8 @@ public class PuzzleLevel extends Level{
 	/** The number of moves made so far */
 	int moves;
 	
-	public PuzzleLevel(int levelNum, Board b, BullPen bp, int maxMoves) {
-		super(levelNum, types.PUZZLE, b, bp);
+	public PuzzleLevel(Board b, BullPen bp, int maxMoves) {
+		super(types.PUZZLE, b, bp);
 		this.maxMoves = maxMoves;
 		this.moves = 0;
 	}

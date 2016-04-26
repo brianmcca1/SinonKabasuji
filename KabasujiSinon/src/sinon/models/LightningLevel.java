@@ -10,8 +10,8 @@ public class LightningLevel extends Level{
 	
 	
 	
-	public LightningLevel(int levelNum, Board b, BullPen bp, int maxTime) {
-		super(levelNum, types.LIGHTNING, b, bp);
+	public LightningLevel(Board b, BullPen bp, int maxTime) {
+		super(types.LIGHTNING, b, bp);
 		this.maxTime = maxTime;
 		this.timeLeft = maxTime;
 		// TODO Auto-generated constructor stub

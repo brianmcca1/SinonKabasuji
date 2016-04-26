@@ -19,7 +19,7 @@ public class TestLightingLevel {
 		
 		Board b = new Board();
 		BullPen bp = new BullPen(bpList);
-		LightningLevel level = new LightningLevel(1, b, bp, 1);
+		LightningLevel level = new LightningLevel(b, bp, 1);
 		assertFalse(level.hasWon());
 		for(Tile t : level.getBoard().getTiles()){
 			t.addHexomino(hex1);
