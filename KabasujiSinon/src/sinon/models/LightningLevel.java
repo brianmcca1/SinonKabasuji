@@ -18,13 +18,26 @@ public class LightningLevel extends Level{
 	} 
 	
 	public int countStars(){
-		int answer = 0;
+		int numNotPlayed = 0;
 		for (Tile t : this.board.getTiles()){
 			if (!t.hasHex()){
-				answer++;
+				numNotPlayed++;
 			}
 		}
-		return answer;
+		
+		if (numNotPlayed == 0){
+			return 3;
+		}
+		
+		if (numNotPlayed <= 6){
+			return 2;
+		}
+		
+		if (numNotPlayed <= 12){
+			return 1;
+		}
+		
+		return 0;
 	}
 
 
