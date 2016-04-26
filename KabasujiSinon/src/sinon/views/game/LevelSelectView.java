@@ -12,8 +12,10 @@ import sinon.main.Game;
 
 @SuppressWarnings("serial")
 public class LevelSelectView extends JPanel {
+	
     /** These are the buttons on the level select screen */
     LevelSelectButtonView[] buttonPanels = new LevelSelectButtonView[15];
+    /** Overall Game. */
     Game game;
 
     /**
@@ -42,14 +44,11 @@ public class LevelSelectView extends JPanel {
         // initialize all the button views on the screen
         for (int i = 0; i < 15; i++) {
             buttonPanels[i] = new LevelSelectButtonView(i + 1);
-            String newI = Integer.toString(i + 1);
             internalPanelOne.add(buttonPanels[i]);
         }
 
         for (int i = 0; i < 15; i++) {
-            // FIXME No controller references in views.
-            buttonPanels[i].selectbtn.addActionListener(
-                    new LevelStartController(game, this, i + 1));
+            buttonPanels[i].selectbtn.addActionListener(new LevelStartController(game, this, i));
         }
 
         JPanel titlePanel = new JPanel();

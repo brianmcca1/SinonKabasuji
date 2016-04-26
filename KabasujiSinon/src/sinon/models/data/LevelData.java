@@ -1,9 +1,6 @@
 package sinon.models.data;
 
 import java.io.Serializable;
-
-import sinon.models.Board;
-import sinon.models.BullPen;
 import sinon.models.data.LevelType.types;
 
 /**
@@ -11,62 +8,91 @@ import sinon.models.data.LevelType.types;
  */
 public final class LevelData implements Serializable {
 
-    /** Type of level */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7014637350059511767L;
+	/** Type of level (PUZZLE/LIGHTNING/RELEASE)*/
     types levelType;
-    /** Board that the level will be played on. */
+    /** BoardData has the 2-D array of booleans for the playable tiles. */
     BoardData boardData;
-    /** Bullpen holding all the level hexominoes. */
+    /** BullpenData has the list of hexominos that are in the bullpen for this level. */
     BullPenData bullpenData;
-    /** This level's number (1 to 15). */
-    int levelNum;
+    /** Highest number of stars reached on this level */
+    int starRecord;
+    /** Holds the info regarding number of moves/time/locations of number tiles. */
+    LevelProperty levelProperty;
 
-    public LevelData(types puzzle, BoardData bData, BullPenData bpData, int num){
-    	this.levelType = puzzle;
+    public LevelData(types t, BoardData bData, BullPenData bpData, int starRecord){
+    	this.levelType = t;
     	this.boardData = bData;
     	this.bullpenData = bpData;
-    	this.levelNum = num;
+    	this.starRecord = starRecord;
     }
     
+    /** Used when creating a new Level to set this level type. */
     public LevelData(types type){
     	this.levelType = type;
+    	this.starRecord = 0;
     }
     
-    /**
-     * Builds an empty board which is ready for game play based on the data
-     * stored in this object.
-     * 
-     * @return a Board for game play.
-     */
-    public Board getBoard() {
-        return new Board(boardData);
+    /** @return an empty board which is ready for game play based on the data stored in this object. */
+    public BoardData getBoardData() {
+        return this.boardData;
     }
 
-    /**
-     * Builds a BullPen which is ready for game play based on the data stored in
-     * this object.
-     * 
-     * @return a Bullpen for game play.
-     */
-    public BullPen getBullpen() {
-        return new BullPen(bullpenData);
+    /** @return a BullPen which is ready for game play based on the data stored in this object.*/
+    public BullPenData getBullpenData() {
+    	return this.bullpenData;
     }
 
-    /**
-     * Gets the number of this level.
-     * 
-     * @return Value between 1 and 15
-     */
-    public int getLevelNum() {
-        return this.levelNum;
+    /** @return This level's star record. */
+    public int getStarRecord(){
+    	return this.starRecord;
     }
-
-    /**
-     * Gets the enum value of the type of level.
-     * 
-     * @return The type of level.
-     */
+    
+    /** @return The type of level. */
     public types getLevelType() {
         return this.levelType;
     }
+    
+    /** Sets the BullPenData field. 
+     * @param bpData The BullPenData to set.
+     */
+    public void setBullpenData(BullPenData bpData){
+    	this.bullpenData = bpData;
+    }
+    
+    /** Sets the BoardData field. 
+     * @param bData The BoardData to set.
+     */
+    public void setBoardData(BoardData bData){
+    	this.boardData = bData;
+    }
+    
+    /** @return This level's LevelProperty. */
+    public LevelProperty getLevelProperty(){
+    	return this.levelProperty;
+    }
+    
+    /** Sets this level's LevelProperty. 
+     * @param l LevelProperty to set.
+     */
+    public void setLevelProperty(LevelProperty l){
+    	this.levelProperty = l;
+    }
 
+    public String toString(){
+    	String strLevelData = "";
+    	
+    	strLevelData += this.boardData.toString();
+    	strLevelData += this.bullpenData.toString();
+    	strLevelData += "\r\n";
+    	strLevelData += ("LEVEL TYPE: " + this.levelType);
+    	strLevelData += "\r\n";
+    	strLevelData += ("LEVEL PROPERTY: ") + this.levelProperty.getPropertyValue();
+    	
+    	return strLevelData;
+    }
+    
 }

@@ -88,5 +88,21 @@ public final class BoardData implements Serializable {
             return false;
         return true;
     }
+    
+    public String toString(){
+    	String strBoardData = "";
+    	
+    	for(int i = 0; i < SIZE; i++){
+    		for(int j = 0; j < SIZE; j++){
+    			if(this.playable[i][j] == true)
+    				strBoardData += " T ";
+    			else
+    				strBoardData += " F ";
+    		}
+    		strBoardData += "\r\n";
+    	}
+    	
+    	return strBoardData;
+    }
 
 }

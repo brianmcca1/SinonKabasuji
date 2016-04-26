@@ -1,5 +1,6 @@
 package sinon.main;
 
+import java.io.File;
 import java.util.LinkedList;
 
 import sinon.controllers.BullpenController;
@@ -7,48 +8,59 @@ import sinon.models.Board;
 import sinon.models.BullPen;
 import sinon.models.Hexomino;
 import sinon.models.Level;
+import sinon.models.data.LevelData;
+import sinon.models.data.LevelType.types;
+import sinon.serial.Deserializer;
 import sinon.views.MainView;
 import sinon.views.game.GameInfoView;
 import sinon.views.game.LevelSelectView;
 
 @SuppressWarnings("serial")
 public class Game extends Kabasuji {
+	
+    /** Holds all the levels for the game. */
+	public Level[] allLevels = new Level[15];
 
-	/** Holds all the levels for the game. */
-	public Level[] allLevels = new Level[15]; // TODO don't use arrays use lists
+    public Game() {
+        super();
 
-	public Game() {
-		super();
+        startSplash("Kabasuji", new LevelSelectView(this));
 
-		startSplash("Kabasuji", new LevelSelectView(this));
-		currentLevel = new Level(5, new Board(), new BullPen(new LinkedList<Hexomino>())); //test level
-	}
+        
+        //OPEN ALL 15 LEVELS AND STORE THEM IN THE ARRAY
+        File levelOneFile = new File("level1.dat");
+        Deserializer deserializer = new Deserializer(levelOneFile);
+        LevelData levelOneData = deserializer.deserializeFile();
 
-	/**
-	 * Called by the LevelStartController to open the MainView.
-	 * @param levelSelectView LevelSelectView to remove from the frame.
-	 */
-	public void initializeMainView(LevelSelectView levelSelectView){
-		this.setMainView(new MainView(this.getLevel(), new GameInfoView(this.getLevel())));
+        this.currentLevel = new Level(levelOneData.getLevelType(), new Board(levelOneData.getBoardData()), new BullPen(levelOneData.getBullpenData())); //test level
+        allLevels[0] = this.currentLevel;
+        System.out.println("LEVELONE READ INTO GAME");
+    }
+    
+    /**
+     * Called by the LevelStartController to open the MainView.
+     * @param levelSelectView LevelSelectView to remove from the frame.
+     */
+    public void initializeMainView(LevelSelectView levelSelectView){
+		this.setMainView(new MainView(this, new GameInfoView(this.getLevel())));
 		this.startNextPanel(levelSelectView, this.getMainView());
-	}
+    }
 
-	public void initializeMainControllers() {
-		GameInfoView sidePanel = (GameInfoView) mainView.getInfoPanel();
-		sidePanel.getExitButton().addActionListener(new sinon.controllers.ExitGameController(this, mainView));
-		mainView.getBullpenView().addMouseListener(new BullpenController(this.currentLevel.getBullpen(), mainView.getBullpenView(), this.currentLevel));
-	}
+    public void initializeMainControllers() {
+        GameInfoView sidePanel = (GameInfoView) mainView.getInfoPanel();
+        sidePanel.getExitButton().addActionListener(new sinon.controllers.ExitGameController(this, mainView));
+        mainView.getBullpenView().addMouseListener(new BullpenController(this.currentLevel.getBullpen(), mainView.getBullpenView(), this.currentLevel));
+    }
+    
+    /** Registers the GameTileControllers to each TileView in the Game's BoardView. */
+    public void registerBoardViewControllers(){
+    	//apply GameTileControllers here
+    }
+    
+    public static void main(String args[]) {
+        @SuppressWarnings("unused")
+        Game game = new Game();
+    }
 
-	/** Registers the GameTileControllers to each TileView in the Game's BoardView. */
-	@Override
-	public void registerBoardViewControllers(){
-		//apply GameTileControllers here
-	}
 
-	public static void main(String args[]) {
-		@SuppressWarnings("unused")
-		Game game = new Game();
-	}
-
-
-}
+}    

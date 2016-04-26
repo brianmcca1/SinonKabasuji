@@ -7,8 +7,7 @@ import javax.swing.JFileChooser;
 import sinon.main.Builder;
 import sinon.models.data.BoardData;
 import sinon.models.data.BullPenData;
-import sinon.models.data.LevelData;
-import sinon.models.data.LevelType;
+import sinon.models.data.PuzzleLevelProperty;
 import sinon.serial.Serializer;
 import sinon.views.builder.BuilderMenuBar;
 
@@ -47,11 +46,37 @@ public class BuilderSaveAsController implements ActionListener{
             File file = fc.getSelectedFile();
             this.builder.setCurrentFile(file);
 
-            //SET ALL this.builder.getCurrentLevel() fields
-            //SERIALIZE this.builder.getCurrentLevel().getLevelData()
-            LevelData levelData = new LevelData(LevelType.types.PUZZLE, new BoardData(), new BullPenData(), 1);
+            //CREATE THE LEVELS BULLPENDATA AND SET IT
+            BullPenData levelBullpenData = new BullPenData(this.builder.getLevel().getBullpen());
+            this.builder.getLevel().getLevelData().setBullpenData(levelBullpenData);
             
-            Serializer serializer = new Serializer(file, levelData);
+            //CREATE THE LEVELS BOARDDATA AND SET IT
+            BoardData levelBoardData = new BoardData(this.builder.getLevel().getBoard());
+            this.builder.getLevel().getLevelData().setBoardData(levelBoardData);
+            
+            this.builder.getLevel().getLevelData().setLevelProperty(new PuzzleLevelProperty(5)); 
+            //TODO get real LevelProperty from views
+            
+            /*
+             * FIELDS TO SET:
+             * this.builder.getLevel()
+             * 		int levelNum;								DONE
+             * 		Board board;								DONE?
+             * 			Map<Point, Tile> tilesViaPoints;		DONE?
+             * 		BullPen bullpen;							DONE
+             * 			List<Hexomino> pieces;					DONE
+             *      int stars;									DONE
+    		 *		int starRecord;								DONE
+             * 		LevelData levelData;						DONE
+             * 			types levelType;						DONE
+             * 			int levelNum;							DONE
+             * 			BoardData boardData;					DONE
+             * 				boolean[][] playable;				DONE
+             * 			BullPenData bullpenData;				DONE
+             * 				ArrayList<HexominoCode> hexominos;  DONE
+             */
+
+            Serializer serializer = new Serializer(file, this.builder.getLevel().getLevelData());
             serializer.serializeFile();
             
             this.builderMenuBar.mntmSave.setEnabled(true);

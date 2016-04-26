@@ -1,5 +1,8 @@
 package sinon.moves;
 
+import sinon.models.Hexomino;
+import sinon.models.Level;
+
 /**
  * BoardMove abstract class that is used when extending each 
  * individual move.
@@ -7,6 +10,11 @@ package sinon.moves;
  *
  */
 public abstract class BoardMove {
+	
+	Level level; 
+	
+	Hexomino hex;
+	
 	public abstract boolean doMove();
 	
 	public abstract boolean undo();

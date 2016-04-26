@@ -8,6 +8,7 @@ import sinon.models.Board;
 import sinon.models.Hexomino;
 import sinon.models.Level;
 import sinon.models.Tile;
+import sinon.moves.MoveInBoard;
 import sinon.views.TileView;
 
 /**
@@ -37,12 +38,20 @@ public class GameTileController implements MouseListener, MouseMotionListener {
         System.out.println("I AM A TILE AND I WAS JUST CLICKED ON!");
 
         if (level.hasSelected()) {
+        	int x, y;
+        	x = level.getBoard().findHex(level.selectedHexomino.get()).x;
+        	y = level.getBoard().findHex(level.selectedHexomino.get()).y;
+        	MoveInBoard move = new MoveInBoard(level, x, y, tile.getLocation().x, tile.getLocation().y);
+        	
+            /*
             final Hexomino selectedHex = level.selectedHexomino.get();
 
             if (getBoard().canAddHexomino(tile.getLocation(), selectedHex)) {
 
                 getBoard().addHexomino(tile.getLocation(), selectedHex);
-            }
+                }
+                */
+            
 
             // Else do nothing. TODO maybe one day you could unselect it. for
             // now this is okay.

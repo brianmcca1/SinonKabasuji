@@ -59,6 +59,7 @@ public class HexominoBullpenView extends JPanel {
                 this.add(tempHexPanel);
             }
         }
+        this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         return this;
     }
     

@@ -3,24 +3,10 @@ package sinon.controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.LinkedList;
-
 import javax.swing.JFileChooser;
-import javax.swing.JPanel;
-
 import sinon.main.Builder;
-import sinon.models.Board;
-import sinon.models.BullPen;
-import sinon.models.Hexomino;
-import sinon.models.Level;
-import sinon.models.data.BoardData;
-import sinon.models.data.BullPenData;
-import sinon.models.data.HexominoBankData;
 import sinon.models.data.LevelData;
-import sinon.models.data.LevelType;
 import sinon.serial.Deserializer;
-import sinon.views.MainView;
-import sinon.views.builder.BankView;
 import sinon.views.builder.BuilderMenuBar;
 
 public class BuilderOpenController extends BuilderNewLevelController implements ActionListener{
@@ -50,13 +36,16 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
             Deserializer deserializer = new Deserializer(file); 
             LevelData levelData = deserializer.deserializeFile();
            
+            System.out.println("******************");
+            System.out.println(levelData.toString());
+	    	System.out.println("******************");
+	    	
             //CREATE levelFromFile FROM levelData HERE
             //THEN SET levelFromFile TO BUILDER
             //THEN this.builder.initializeMainView();
-            
-            Level levelFromFile= new Level(5, new Board(), new BullPen(new LinkedList<Hexomino>())); //test level
-            
-            this.builder.setLevel(levelFromFile);
+            //Level levelFromFile= new Level(5, new Board(), new BullPen(new LinkedList<Hexomino>())); //test level
+            //this.builder.setLevel(levelFromFile);
+	    	
             this.handleOpenLevel(this.builderMenuBar);
         }
 	}
@@ -73,6 +62,6 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
         bMenuBar.mntmClearBoard.setEnabled(true);
         this.builderMenuBar.mntmSave.setEnabled(true);
         this.builder.initializeMainView();
-
+        this.builder.mainView.getBullpenView().redrawBullpenView();
 	}
 }

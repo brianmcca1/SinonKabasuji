@@ -13,21 +13,19 @@ import sinon.views.MainView;
  */
 public class HexominoBankController extends AbstractHexStashController {
 
-    private BullPen bullpen;
+	private BullPen bullpen;
 
-    public HexominoBankController(Level level, MainView mainView,
-            HexominoBullpenView hex) {
-        super(level, mainView, hex);
-        this.bullpen = level.getBullpen();
-        assert bullpen != null;
-    }
+	public HexominoBankController(Level level, MainView mainView,
+			HexominoBullpenView hex) {
+		super(level, mainView, hex);
+		this.bullpen = level.getBullpen();
+		assert bullpen != null;
+	}
 
-    @Override
-    protected void handleClicked() {
-        System.out.println("I AM A BANK HEXOMINO AND I GOT CLICKED ON");
-        bullpen.addHexomino(this.hex.getHexomino());
-
-        System.out.println(this.bullpen.getPieces().toString());
-
-    }
+	@Override
+	protected void handleClicked() {
+		System.out.println("I AM A BANK HEXOMINO AND I GOT CLICKED ON");
+		bullpen.addHexomino(this.hex.getHexomino());
+		System.out.println(this.bullpen.getPieces().toString());
+	}
 }

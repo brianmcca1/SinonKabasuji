@@ -21,11 +21,14 @@ public class Board {
 	private final static int HEIGHT_BY_ZERO = HEIGHT - 1;
 
 	Map<Point, Tile> tilesViaPoints;
+	/** Maps every Hexomino to the tile of its anchor location. */
+	Map<Hexomino, Point> hexominoLocations;
 
 	/**
 	 * Creates a 12 by 12 Board with tiles initialized to all playable tiles.
 	 */
 	public Board() {
+		hexominoLocations = new HashMap<Hexomino, Point>();
 		tilesViaPoints = new HashMap<Point, Tile>();
 		for (int x = 0; x < WIDTH; x++) {
 			for (int y = 0; y < HEIGHT; y++) {
@@ -43,6 +46,8 @@ public class Board {
 	 *            BoardData specifying which tiles are playable.
 	 */
 	public Board(BoardData boardData) {
+		hexominoLocations = new HashMap<Hexomino, Point>();
+		tilesViaPoints = new HashMap<Point, Tile>();
 		for (int x = 0; x < WIDTH; x++) {
 			for (int y = 0; y < HEIGHT; y++) {
 				boolean playable = boardData.getPlayableArray()[x][y];
@@ -78,12 +83,26 @@ public class Board {
 		for (Point p : hexominoNumberSet.getPoints()) {
 			Point pointToCheck = new Point(anchorLocation.x + p.x,
 					anchorLocation.y + p.y);
+			if (!(this.isInBounds(pointToCheck.x, pointToCheck.y))) {
+				return false;
+			}
 			if (!tilesViaPoints.get(pointToCheck).canAddHex()) {
 				canAdd = false;
 			}
 		}
 
 		return canAdd;
+	}
+
+	/**
+	 * Retrieves the position where a hexomino is placed.
+	 * 
+	 * @param hex
+	 *            Hexomino to be found.
+	 * @return The Point p where the anchor of tile is located.
+	 */
+	public Point getHexominoLocation(Hexomino hex) {
+		return hexominoLocations.get(hex);
 	}
 
 	/**
@@ -95,14 +114,11 @@ public class Board {
 	 *            The Hexomino to be added
 	 * 
 	 */
-	public void addHexomino(Point anchorLocation, Hexomino hex)
-			throws IllegalArgumentException { // FIXME don't use errors this way.
-		if (!canAddHexomino(anchorLocation, hex)) {
-			throw new IllegalArgumentException(
-					"Can't add Hexomino to this location");
-		}
-
+	public void addHexomino(Point anchorLocation, Hexomino hex) {
 		HexominoNumberSet hexominoNumberSet = hex.getHexominoNumberSet();
+
+		hexominoLocations.put(hex, anchorLocation.getLocation());
+
 		for (Point p : hexominoNumberSet.getPoints()) {
 			Point pointToAdd = new Point(anchorLocation.x + p.x,
 					anchorLocation.y + p.y);
@@ -111,7 +127,25 @@ public class Board {
 				tilesViaPoints.get(pointToAdd).addHexomino(hex);
 			}
 		}
+	}
 
+	/**
+	 * Completely removes the specified Hexomino from the board.
+	 * 
+	 * Note that this removes the Hexomino only if it is the exact same
+	 * instance. If the Hexomino given is .equals() but not ==, it doesn't
+	 * matter, it won't be removed.
+	 */
+	public void removeHexomino(Hexomino hex) {
+		for (Tile t : getTiles()) {
+			if (t.getHexomino().isPresent()) {
+				if (t.getHexomino().get() == hex) { // TODO is this correct
+					t.removeHex();
+				}
+			}
+		}
+
+		hexominoLocations.remove(hex);
 	}
 
 	/**
@@ -122,9 +156,16 @@ public class Board {
 	 * @return The Tile found.
 	 */
 	public Tile getTile(int row, int column) {
-		return tilesViaPoints.get(new Point(row, column));
+		return getTile(new Point(row, column));
 	}
 
+	/**
+	 * Gets the Tile at the specified position
+	 * 
+	 * @param p
+	 *            Point to get tile at.
+	 * @return The Tile found.
+	 */
 	public Tile getTile(Point p) {
 		return tilesViaPoints.get(p);
 	}
@@ -147,23 +188,6 @@ public class Board {
 			return false;
 		} else
 			return true;
-	}
-
-	/**
-	 * Completely removes the specified Hexomino from the board.
-	 * 
-	 * Note that this removes the Hexomino only if it is the exact same
-	 * instance. If the Hexomino given is .equals() but not ==, it doesn't
-	 * matter, it won't be removed.
-	 */
-	public void removeHexomino(Hexomino hex) {
-		for (Tile t : getTiles()) {
-			if (t.getHexomino().isPresent()) {
-				if (t.getHexomino().get() == hex) { // TODO is this correct
-					t.removeHex();
-				}
-			}
-		}
 	}
 
 	/**

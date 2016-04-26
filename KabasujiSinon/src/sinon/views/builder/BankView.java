@@ -18,49 +18,50 @@ import sinon.views.StashView;
 @SuppressWarnings("serial")
 public class BankView extends InfoPanel implements StashView {
 
-    JScrollPane scrollPanel;
-    JPanel contentPanel;
-    // BullPen bullpen;
+	JScrollPane scrollPanel;
+	JPanel contentPanel;
+	// BullPen bullpen;
 
-    HexViewStash stash;
+	HexViewStash stash;
 
-    public BankView() {
-        super();
-        initContentPanel();
-        initBankViewScrollPanel();
-        this.setLayout(new GridLayout(1, 1));
-        this.add(scrollPanel);
-        this.validate();
+	public BankView() {
+		super();
+		initContentPanel();
+		initBankViewScrollPanel();
+		this.setLayout(new GridLayout(1, 1));
+		this.add(scrollPanel);
+		this.validate();
 
-        this.stash = new HexViewStash(
-                new BullPen(HexominoBankData.getHexominos()), contentPanel);
-        populateBankViewWithHexominoes();
-    }
+		this.stash = new HexViewStash(new BullPen(
+				HexominoBankData.getHexominos()), contentPanel);
+		populateBankViewWithHexominoes();
+	}
 
-    private void initContentPanel() {
-        contentPanel = new JPanel();
-        contentPanel.setBackground(Color.orange);
-        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
-    }
+	private void initContentPanel() {
+		contentPanel = new JPanel();
+		contentPanel.setBackground(Color.orange);
+		contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
+	}
 
-    private void initBankViewScrollPanel() {
-        scrollPanel = new JScrollPane();
-        JScrollBar scrollBar = new JScrollBar(JScrollBar.VERTICAL);
-        scrollPanel.setHorizontalScrollBarPolicy(
-                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPanel.add(scrollBar);
-        scrollPanel.setVerticalScrollBarPolicy(
-                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPanel.setViewportView(contentPanel);
-    }
+	private void initBankViewScrollPanel() {
+		scrollPanel = new JScrollPane();
+		JScrollBar scrollBar = new JScrollBar(JScrollBar.VERTICAL);
+		scrollPanel
+		.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPanel.add(scrollBar);
+		scrollPanel
+		.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPanel.setViewportView(contentPanel);
+	}
 
-    private void populateBankViewWithHexominoes() {
-        stash.populateViewWithHexominos();
-    }
+	private void populateBankViewWithHexominoes() {
 
-    @Override
-    public void setRegistrator(HexStashRegistrator hexStashRegistrator) {
-        this.stash.setRegistrator(hexStashRegistrator);
-    }
+		stash.populateViewWithHexominos();
+	}
+
+	@Override
+	public void setRegistrator(HexStashRegistrator hexStashRegistrator) {
+		this.stash.setRegistrator(hexStashRegistrator);
+	}
 
 }
