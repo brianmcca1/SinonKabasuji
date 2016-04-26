@@ -53,6 +53,8 @@ public class BuilderTileController implements MouseListener{
 				
 			if(move.doMove()){
 				System.out.println("Move successfully completed!");
+				level.selectedHexomino = null;
+				System.out.println(level.hasSelected());
 			} else {
 				System.out.println("There was some error doing the move.");
 			}
