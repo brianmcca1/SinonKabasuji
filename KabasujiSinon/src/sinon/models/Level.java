@@ -13,6 +13,10 @@ public class Level {
     Board board;
     /** Bullpen model for this level. */
     BullPen bullpen;
+    /** The stars currently unlocked on this level, out of 3 */
+    int stars;
+    /** The highest amount of stars unlocked on this level, out of 3 */
+    int starRecord;
     /** This is used for Serializing and Deserializing data relevant to the Level. 
      *  Contains: 
      *  	this level number.
@@ -30,6 +34,16 @@ public class Level {
         this.board = b;
         this.bullpen = bp;
         this.levelData = new LevelData(levelNum, t);
+        this.starRecord = 0;
+    }
+    
+    public Level(LevelData levelData){
+    	this.board = new Board(levelData.getBoardData());
+    	this.bullpen = new BullPen(levelData.getBullpen());
+    	this.levelNum = levelData.getLevelNum();
+    	this.starRecord = levelData.getStarRecord();
+    	this.levelData = levelData;
+    	
     }
 
     /** @return BullPen model of this level. */

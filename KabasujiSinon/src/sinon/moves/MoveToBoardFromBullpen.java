@@ -1,6 +1,7 @@
 package sinon.moves;
 
 import sinon.models.Hexomino;
+import sinon.models.Level;
 
 import java.awt.Point;
 
@@ -15,21 +16,6 @@ import sinon.models.BullPen;
 public class MoveToBoardFromBullpen extends BoardMove{
 
 	/**
-	 * BullPen from where we are moving hexomino to the board.
-	 */
-	BullPen bullpen;
-	
-	/**
-	 * Hexomino that is being moved.
-	 */
-	Hexomino hex;
-	
-	/**
-	 * Board that the hexomino is being added to.
-	 */
-	Board board;
-	
-	/**
 	 * This is the destination anchor-row for the hexomino.
 	 * TODO We might not need this field eventually.
 	 */
@@ -41,11 +27,12 @@ public class MoveToBoardFromBullpen extends BoardMove{
 	 */
 	int destAnchorColumn;
 	
-	public MoveToBoardFromBullpen (BullPen bp, Board b, Hexomino hex, int destAnchorRow, int destAnchorColumn) {
+	public MoveToBoardFromBullpen (Level level, int destAnchorRow, int destAnchorColumn) {
 		
-		this.bullpen = bp;
-		this.board = b;
-		this.hex = hex;
+		this.level = level;
+		if(level.hasSelected()) {
+			this.hex = level.selectedHexomino.get();
+		}
 		this.destAnchorRow = destAnchorRow;
 		this.destAnchorColumn = destAnchorColumn;
 	
@@ -53,26 +40,35 @@ public class MoveToBoardFromBullpen extends BoardMove{
 	
 	@Override
 	public boolean doMove() {
-		try {
-			this.board.addHexomino(new Point(destAnchorRow, destAnchorColumn), hex);
-			this.bullpen.removeHexomino(hex);
-			return true;
-		} catch (Exception exception) {
-			System.out.println("Couldn't add hexomino here!");
-			return false;
-		}
+		
+		if(!this.valid()) { return false; }
+			
+		Hexomino hex = level.selectedHexomino.get();	
+		level.getBullpen().removeHexomino(hex);
+		level.getBoard().addHexomino(new Point(destAnchorRow, destAnchorColumn), hex);
+		return true;
+		
 	}
 
 	@Override
 	public boolean undo() {
-		this.board.removeHexomino(hex);
-		this.bullpen.removeHexomino(hex);
+		
+		level.getBullpen().addHexomino(hex);
+		level.getBoard().removeHexomino(hex);
 		return true;
+		
 	}
 
 	@Override
 	public boolean valid() {
-		return false;
+		
+		if(level.hasSelected()) {
+			Hexomino hex = level.selectedHexomino.get();
+			return level.getBoard().canAddHexomino((new Point(destAnchorRow, destAnchorColumn)), hex);
+		} else {
+			return false;
+		}
+		
 	}
 
 }
