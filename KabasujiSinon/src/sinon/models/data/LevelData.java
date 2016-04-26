@@ -1,9 +1,6 @@
 package sinon.models.data;
 
 import java.io.Serializable;
-
-import sinon.models.Board;
-import sinon.models.BullPen;
 import sinon.models.data.LevelType.types;
 
 /**
@@ -25,6 +22,8 @@ public final class LevelData implements Serializable {
     BullPenData bullpenData;
     /** Highest number of stars reached on this level */
     int starRecord;
+    /** Holds the info regarding number of moves/time/locations of number tiles. */
+    LevelProperty levelProperty;
 
     public LevelData(types t, BoardData bData, BullPenData bpData, int num, int starRecord){
     	this.levelType = t;
@@ -51,26 +50,45 @@ public final class LevelData implements Serializable {
     	return this.bullpenData;
     }
 
+    /** @return This level's level number. */
     public int getLevelNum(){
     	return this.levelNum;
     }
 
+    /** @return This level's star record. */
     public int getStarRecord(){
     	return this.starRecord;
     }
+    
     /** @return The type of level. */
     public types getLevelType() {
         return this.levelType;
     }
     
-    /** Sets the BullPenData field. */
+    /** Sets the BullPenData field. 
+     * @param bpData The BullPenData to set.
+     */
     public void setBullpenData(BullPenData bpData){
     	this.bullpenData = bpData;
     }
     
-    /** Sets the BoardData field. */
+    /** Sets the BoardData field. 
+     * @param bData The BoardData to set.
+     */
     public void setBoardData(BoardData bData){
     	this.boardData = bData;
+    }
+    
+    /** @return This level's LevelProperty. */
+    public LevelProperty getLevelProperty(){
+    	return this.levelProperty;
+    }
+    
+    /** Sets this level's LevelProperty. 
+     * @param l LevelProperty to set.
+     */
+    public void setLevelProperty(LevelProperty l){
+    	this.levelProperty = l;
     }
 
     public String toString(){
@@ -82,6 +100,7 @@ public final class LevelData implements Serializable {
     	strLevelData += ("LEVEL TYPE: " + this.levelType);
     	strLevelData += "\r\n";
     	strLevelData += ("LEVEL NUMBER: " + this.levelNum);
+    	strLevelData += ("LEVEL PROPERTY: ") + this.levelProperty.getPropertyValue();
     	
     	return strLevelData;
     }

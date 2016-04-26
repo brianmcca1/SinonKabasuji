@@ -66,6 +66,22 @@ public class Level {
     	return this.levelNum;
     }
 
+    public int getStars(){
+    	return this.stars;
+    }    
+    
+    public void setStars(int s){
+    	this.stars = s;
+    }
+    
+    public int getStarRecord(){
+    	return this.starRecord;
+    }
+    
+    public void setStarRecord(int s){
+    	this.starRecord = s;
+    }
+    
     /**
      * Sets the selected hexomino
      * @param hex The Hexomino model to select.

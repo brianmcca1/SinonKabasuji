@@ -7,6 +7,7 @@ import javax.swing.JFileChooser;
 import sinon.main.Builder;
 import sinon.models.data.BoardData;
 import sinon.models.data.BullPenData;
+import sinon.models.data.PuzzleLevelProperty;
 import sinon.serial.Serializer;
 import sinon.views.builder.BuilderMenuBar;
 
@@ -52,6 +53,9 @@ public class BuilderSaveAsController implements ActionListener{
             //CREATE THE LEVELS BOARDDATA AND SET IT
             BoardData levelBoardData = new BoardData(this.builder.getLevel().getBoard());
             this.builder.getLevel().getLevelData().setBoardData(levelBoardData);
+            
+            this.builder.getLevel().getLevelData().setLevelProperty(new PuzzleLevelProperty(5)); 
+            //TODO get real LevelProperty from views
             
             /*
              * FIELDS TO SET:
