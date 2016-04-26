@@ -116,6 +116,7 @@ public class Level {
     /**
      * Counts the number of stars earned for this level
      * @return Returns the number of stars earned, the max being 3, and the min being 0
+     * @author PDeBrine
      */
     
     public int countStars(){

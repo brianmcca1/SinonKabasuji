@@ -29,6 +29,10 @@ public class TestLevel {
 		level.deselect();
 		assertFalse(level.hasSelected());
 		
+		// These should never be called
+		assertFalse(level.hasWon());
+		assertEquals(level.countStars(), 0);
+		
 	}
 
 }
