@@ -2,6 +2,9 @@ package sinon.moves;
 
 import sinon.models.Hexomino;
 import sinon.models.Level;
+
+import java.awt.Point;
+
 import sinon.models.Board;
 import sinon.models.BullPen;
 
@@ -36,14 +39,17 @@ public class MoveToBullpenFromBoard extends BoardMove {
 	
 	@Override
 	public boolean doMove() {
-		// TODO Auto-generated method stub
-		return false;
+		if (!valid()) return false;
+		level.getBullpen().addHexomino(hex);
+		level.deselect();
+		return true;
 	}
 
 	@Override
 	public boolean undo() {
-		// TODO Auto-generated method stub
-		return false;
+		if (!valid()) return false;
+		level.getBoard().addHexomino(new Point(srcAnchorRow, srcAnchorColumn), hex);
+		return true;
 	}
 
 	@Override
