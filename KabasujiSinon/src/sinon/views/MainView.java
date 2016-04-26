@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import sinon.main.Kabasuji;
+import sinon.models.data.LevelType.types;
 
 /**
  * This class controls the entirety of the Builder/Game Views; Shows GridView,
@@ -29,7 +30,8 @@ public class MainView extends JPanel {
     /** Contains GridView and the Optional ReleaseButtonView. */
     JPanel gameAreaPanel; // FIXME If this is only asthetic, get rid of it.
     /** Only exists in Builder Mode and Release game play. */
-    Optional<ReleaseInfoView> releaseButtonView;
+    //Optional<ReleaseInfoView> releaseButtonView;
+    LevelTypeInfoView levelTypeInfoView;
     /** BankView/GameInfoView. */
     InfoPanel infoPanel;
 
@@ -40,10 +42,27 @@ public class MainView extends JPanel {
      *            The InfoPanel to be displayed.
      */
     public MainView(Kabasuji k, InfoPanel infoPanel) {
-        releaseButtonView = Optional.of(new ReleaseInfoView());
+    	
+        //releaseButtonView = Optional.of(new ReleaseInfoView());
+
         this.infoPanel = infoPanel;
         this.kabasuji = k;
         this.kabasuji.bullpenView = new BullpenView(this.kabasuji);
+        
+        if(this.kabasuji.getLevel().getLevelData().getLevelType().equals(types.PUZZLE)){
+    		levelTypeInfoView = new PuzzleInfoView(true);
+    	}
+    	else{
+    		if(this.kabasuji.getLevel().getLevelData().getLevelType().equals(types.LIGHTNING)){
+    			levelTypeInfoView = new LightningInfoView(true);
+    		}
+    		else{
+    			if(this.kabasuji.getLevel().getLevelData().getLevelType().equals(types.RELEASE)){
+    				levelTypeInfoView = new ReleaseInfoView();
+    			}
+    		}
+    	}
+
         initializeViews();
     }
 
@@ -62,8 +81,10 @@ public class MainView extends JPanel {
     }
 
     private void initReleaseButtonView() {
-        if (releaseButtonView.isPresent())
-            gameAreaPanel.add(releaseButtonView.get());
+    	//gameAreaPanel.add((JPanel)this.levelTypeInfoView);
+    	
+        //if (releaseButtonView.isPresent())
+        //    gameAreaPanel.add(releaseButtonView.get());
     }
 
     /**
@@ -71,8 +92,7 @@ public class MainView extends JPanel {
      * {@link #gameAreaPanel}
      */
     private void initBoard() {
-        BoardView tempBoard = new BoardView(this.kabasuji,
-                this.kabasuji.getLevel().getBoard());
+        BoardView tempBoard = new BoardView(this.kabasuji, this.kabasuji.getLevel().getBoard());
         this.kabasuji.boardView = tempBoard;
         this.kabasuji.registerBoardViewControllers();
         gameAreaPanel.add(tempBoard.boardPanel);
@@ -82,6 +102,7 @@ public class MainView extends JPanel {
     private void initGameAreaPanel() {
         gameAreaPanel = new JPanel();
         gameAreaPanel.setLayout(null);
+        gameAreaPanel.add((JPanel)this.levelTypeInfoView);
     }
 
     /** Initializes the {@link #levelPanel} */
