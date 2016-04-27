@@ -82,12 +82,11 @@ public class Board {
 		boolean canAdd = true;
 		HexominoNumberSet hexominoNumberSet = hex.getHexominoNumberSet();
 		for (Point p : hexominoNumberSet.getPoints()) {
-			Point pointToCheck = new Point(anchorLocation.x + p.x,
-					anchorLocation.y + p.y);
+			Point pointToCheck = new Point(anchorLocation.x + p.x, anchorLocation.y + p.y);
 			if (!(this.isInBounds(pointToCheck.x, pointToCheck.y))) {
 				return false;
 			}
-			if (!tilesViaPoints.get(pointToCheck).canAddHex()) {
+			if (!tilesViaPoints.get(pointToCheck).canAddHex(hex)) {
 				canAdd = false;
 			}
 		}
@@ -121,10 +120,8 @@ public class Board {
 		hexominoLocations.put(hex, anchorLocation.getLocation());
 
 		for (Point p : hexominoNumberSet.getPoints()) {
-			Point pointToAdd = new Point(anchorLocation.x + p.x,
-					anchorLocation.y + p.y);
-			if (tilesViaPoints.get(pointToAdd).canAddHex()
-					& isInBounds(pointToAdd.x, pointToAdd.y)) {
+			Point pointToAdd = new Point(anchorLocation.x + p.x, anchorLocation.y + p.y);
+			if (tilesViaPoints.get(pointToAdd).canAddHex(hex) & isInBounds(pointToAdd.x, pointToAdd.y)) {
 				tilesViaPoints.get(pointToAdd).addHexomino(hex);
 			}
 		}
@@ -207,25 +204,28 @@ public class Board {
 		tilesViaPoints.forEach((k, v) -> tempList.add(v));
 		return tempList;
 	}
+
 	/**
 	 * Determines if this board has the hexomino hex played on it
-	 * @param hex the hex to be looked for
+	 * 
+	 * @param hex
+	 *            the hex to be looked for
 	 * @return True if hex is found, otherwise false
 	 */
-	public boolean hasHex(Hexomino hex){
+	public boolean hasHex(Hexomino hex) {
 		return this.containsHexID(hex.getID());
 	}
-	
+
 	public boolean containsHexID(UUID id) {
-		
-		for(Tile t : this.getTiles()){
-			if(t.hasHex()){
-				if(t.getHexomino().get().getID().equals(id)) {
+
+		for (Tile t : this.getTiles()) {
+			if (t.hasHex()) {
+				if (t.getHexomino().get().getID().equals(id)) {
 					return true;
 				}
 			}
 		}
-		
+
 		return false;
 	}
 
