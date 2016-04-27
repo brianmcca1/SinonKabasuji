@@ -70,16 +70,15 @@ public class Game extends Kabasuji {
         GameInfoView gameInfoView = (GameInfoView) this.mainView.getInfoPanel();
         gameInfoView.getExitButton()
                 .addActionListener(new ExitGameController(this));
-        mainView.getBullpenView().addMouseListener(
-                new BullpenController(this.currentLevel.getBullpen(),
-                        mainView.getBullpenView(), this.currentLevel));
+        mainView.getBullpenView().addMouseListener(new BullpenController(this.currentLevel.getBullpen(), mainView.getBullpenView(), this.currentLevel));
+        registerBoardGameViewControllers();
     }
 
     /**
      * Registers the GameTileControllers to each TileView in the Game's
      * BoardView.
      */
-    public void registerBoardViewControllers() {
+    public void registerBoardGameViewControllers() {
         // apply GameTileControllers here
         ArrayList<TileView> tileViews = (ArrayList<TileView>) this.getMainView()
                 .getBoardView().getTileViews();

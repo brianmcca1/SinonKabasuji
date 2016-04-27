@@ -9,6 +9,7 @@ import sinon.models.Board;
 import sinon.models.Level;
 import sinon.moves.MoveInBoard;
 import sinon.moves.MoveToBoardFromBullpen;
+import sinon.views.MainView;
 import sinon.views.TileView;
 
 /**
@@ -21,21 +22,32 @@ import sinon.views.TileView;
  * @author Peter Debrine
  * @author Josh Desmond
  */
-public class GameTileController implements MouseListener, MouseMotionListener {
+public class GameTileController extends TileController {
 
-    Game game;
-    Level level;
-    TileView view;
-
-    public GameTileController(Game game, Level level, TileView view) {
-        this.game = game;
-        this.level = level;
-        this.view = view;
+    public GameTileController(Level level, TileView view, MainView mainView) {
+        super(level, view, mainView);
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println("I AM A TILE AND I WAS JUST CLICKED ON!");
+        
+
+        // next we need to update the views
+        game.getMainView().getBoardView().redrawTiles();
+        game.getMainView().getBullpenView().redrawBullpenView();
+
+    }
+
+   
+
+    /** Accesses the board from the fields this class has */
+    private Board getBoard() {
+        return level.getBoard();
+    }
+
+    @Override
+    public void handleLeftClick() {
+    	System.out.println("I AM A TILE AND I WAS JUST CLICKED ON!");
 
         if (level.hasSelected()) {
 
@@ -49,7 +61,7 @@ public class GameTileController implements MouseListener, MouseMotionListener {
                     .containsHexID(level.getSelectedHexomino().get().getID())) {
                 // else move from bullpen to board
                 MoveToBoardFromBullpen move = new MoveToBoardFromBullpen(
-                        this.level, view.getRow(), view.getColumn());
+                        this.level, this.tileView.getRow(), this.tileView.getColumn());
 
                 if (move.doMove()) {
                     System.out.println("Move successfully completed!");
@@ -67,8 +79,8 @@ public class GameTileController implements MouseListener, MouseMotionListener {
                         level.getSelectedHexomino().get()).x;
                 y = level.getBoard().getHexominoLocation(
                         level.getSelectedHexomino().get()).y;
-                MoveInBoard move = new MoveInBoard(level, x, y, view.getRow(),
-                        view.getColumn());
+                MoveInBoard move = new MoveInBoard(level, x, y, this.tileView.getRow(),
+                        this.tileView.getColumn());
 
                 if (move.doMove()) {
                     System.out.println("The move was successfully completed!");
@@ -79,45 +91,10 @@ public class GameTileController implements MouseListener, MouseMotionListener {
 
             }
         } else {
-            if (view.getTile().hasHex()) {
-                level.select(view.getTile().getHexomino().get());
+            if (this.tileView.getTile().hasHex()) {
+                level.select(this.tileView.getTile().getHexomino().get());
             }
         }
-
-        // next we need to update the views
-        game.getMainView().getBoardView().redrawTiles();
-        game.getMainView().getBullpenView().redrawBullpenView();
-
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-        // TODO handle shadows.
-    }
-
-    /** Accesses the board from the fields this class has */
-    private Board getBoard() {
-        return level.getBoard();
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseDragged(MouseEvent e) {
     }
 
 }
