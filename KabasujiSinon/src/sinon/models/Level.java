@@ -33,6 +33,7 @@ public class Level implements Observable {
         this.levelData = new LevelData(t);
         this.starRecord = 0;
         observer = Optional.empty();
+        selectedHexomino = Optional.empty();
     }
 
     public Level(LevelData levelData) {
@@ -41,6 +42,7 @@ public class Level implements Observable {
         this.starRecord = levelData.getStarRecord();
         this.levelData = levelData;
         observer = Optional.empty();
+        selectedHexomino = Optional.empty();
     }
 
     /** @return BullPen model of this level. */
