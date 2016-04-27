@@ -36,10 +36,7 @@ public abstract class Kabasuji extends JFrame {
 	public int currentLevelNumber;
 	/** Knowledge of the MainView.*/
     public MainView mainView;
-    /** Knowledge of the BullpenView. */
-    public BullpenView bullpenView;
-    /** Knowledge of the BoardView. */
-    public BoardView boardView;
+
 	
 	/** Initializes a general frame. */
     Kabasuji() {
@@ -89,7 +86,6 @@ public abstract class Kabasuji extends JFrame {
 	
 	public File getCurrentFile(){return this.currentFile;}
     
-    public BullpenView getBullpenView(){return this.bullpenView;}
     
     /** @return returns the MainView object. */
     public MainView getMainView(){ return this.mainView;}

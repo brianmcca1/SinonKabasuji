@@ -85,8 +85,8 @@ public class GameTileController implements MouseListener, MouseMotionListener {
         }
 
         // next we need to update the views
-        game.boardView.redrawTiles();
-        game.bullpenView.redrawBullpenView();
+        game.getMainView().getBoardView().redrawTiles();
+        game.getMainView().getBullpenView().redrawBullpenView();
 
     }
 

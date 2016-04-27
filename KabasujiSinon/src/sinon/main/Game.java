@@ -72,7 +72,8 @@ public class Game extends Kabasuji {
     /** Registers the GameTileControllers to each TileView in the Game's BoardView. */
     public void registerBoardViewControllers(){
     	//apply GameTileControllers here
-    	ArrayList<TileView> tileViews = (ArrayList<TileView>)this.boardView.getTileViews();
+    	ArrayList<TileView> tileViews = (ArrayList<TileView>)this.getMainView().getBoardView().getTileViews();
+    			
 		
 		for(int i = 0; i < tileViews.size(); i++){
 			tileViews.get(i).addMouseListener(new GameTileController(this, this.currentLevel, tileViews.get(i)));
