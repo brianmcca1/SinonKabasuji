@@ -27,6 +27,8 @@ public abstract class Kabasuji extends JFrame {
     static final int HEIGHT = 600;
 	/** Knowledge of the current level. */
 	public Level currentLevel;
+	/** Knowledge of the current level number. */
+	public int currentLevelNumber;
 	/** Knowledge of the MainView.*/
     public MainView mainView;
     /** Knowledge of the BullpenView. */
@@ -93,6 +95,10 @@ public abstract class Kabasuji extends JFrame {
     public void setLevel(Level l){this.currentLevel = l;}
     
     public void registerBoardViewControllers(){}
+    
+    public void setCurrentLevelNumber(int n){
+    	this.currentLevelNumber = n;
+    }
     
     public void revalidateMainView(){
     	this.mainView.revalidate();

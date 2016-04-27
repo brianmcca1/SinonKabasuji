@@ -41,6 +41,7 @@ public class Game extends Kabasuji {
         levelOne.setLevelData(levelOneData);
         
         allLevels[0] = levelOne;
+        this.setCurrentLevelNumber(0);
         
         System.out.println("LEVELONE READ INTO GAME");
     }
