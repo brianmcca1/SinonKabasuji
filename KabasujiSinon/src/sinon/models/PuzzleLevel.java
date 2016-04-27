@@ -15,6 +15,11 @@ public class PuzzleLevel extends Level{
 		this.moves = 0;
 	}
 	
+	public PuzzleLevel(Level level){
+		super(types.PUZZLE, level.getBoard(), level.getBullpen());
+		this.maxMoves = level.getLevelData().getLevelProperty().getPropertyValue();
+	}
+	
 	/**
 	 * Increments the moves made so far
 	 * @return True if the move limit has not been met, False otherwise
@@ -27,8 +32,8 @@ public class PuzzleLevel extends Level{
 	 * Get the moves made so far
 	 * @return the number of moves made so far
 	 */
-	public int getMoves(){
-		return this.moves;
+	public int getMovesLeft(){
+		return (this.maxMoves - this.moves);
 	}
 	/**
 	 * Get the maximum number of moves
@@ -38,6 +43,13 @@ public class PuzzleLevel extends Level{
 		return this.maxMoves;
 	}
 	
+	public boolean incrementMovesMade(){
+		if(this.moves < this.maxMoves){
+			this.moves++;
+			return true;
+		}
+		return false;
+	}
 	public int countStars(){
 		int bpc = bullpen.hexominoCount();
 		int stars = 3 - bpc;

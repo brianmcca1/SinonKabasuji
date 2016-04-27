@@ -9,6 +9,7 @@ import sinon.models.Board;
 import sinon.models.BullPen;
 import sinon.models.Level;
 import sinon.models.LightningLevel;
+import sinon.models.PuzzleLevel;
 import sinon.models.data.LevelData;
 import sinon.models.data.LevelType.types;
 import sinon.serial.Deserializer;
@@ -58,7 +59,9 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 			types thisLevelsType = levelData.getLevelType();
 			
 	        if(thisLevelsType.equals(types.PUZZLE)){
-	        	lvlTypeInfoView = new PuzzleInfoView(true);
+	        	PuzzleLevel puzzleLevel = new PuzzleLevel(levelFromFile);
+	        	lvlTypeInfoView = new PuzzleInfoView(true, puzzleLevel);
+	        	this.builder.setLevel(puzzleLevel);
 	    	}
 	    	else{
 	    		if(thisLevelsType.equals(types.LIGHTNING)){
@@ -90,7 +93,7 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 		bMenuBar.mntmRedo.setEnabled(true);
         bMenuBar.mntmClearBoard.setEnabled(true);
         this.builderMenuBar.mntmSave.setEnabled(true);
-        this.builder.initializeMainView(new PuzzleInfoView(true)); //FIXME read the type of level and make the correct LevelTypeInfoView
+        //this.builder.initializeMainView(new PuzzleInfoView(true)); //FIXME read the type of level and make the correct LevelTypeInfoView
         this.builder.mainView.getBullpenView().redrawBullpenView();
 	}
 }

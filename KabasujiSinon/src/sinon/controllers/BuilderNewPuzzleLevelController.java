@@ -6,6 +6,7 @@ import sinon.main.Builder;
 import sinon.models.Board;
 import sinon.models.BullPen;
 import sinon.models.Level;
+import sinon.models.PuzzleLevel;
 import sinon.models.data.BullPenData;
 import sinon.models.data.LevelType.types;
 import sinon.views.PuzzleInfoView;
@@ -24,8 +25,11 @@ public class BuilderNewPuzzleLevelController extends BuilderNewLevelController i
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		Board board = new Board();
+		BullPen bullpen = new BullPen(new BullPenData());
+		PuzzleLevel level = new PuzzleLevel(board, bullpen, 10);
 		System.out.println("CREATING NEW PUZZLE LEVEL");
-		this.builder.setLevel(new Level(types.PUZZLE, new Board(), new BullPen(new BullPenData())));
-		this.handleNewLevel(this.builder, this.builderMenuBar, new PuzzleInfoView(true));
+		this.builder.setLevel(level);
+		this.handleNewLevel(this.builder, this.builderMenuBar, new PuzzleInfoView(true, level));
 	}
 }
