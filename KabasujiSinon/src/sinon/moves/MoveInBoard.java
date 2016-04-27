@@ -1,68 +1,74 @@
 package sinon.moves;
 
-import sinon.models.Hexomino;
-import sinon.models.Level;
-
 import java.awt.Point;
 
-import sinon.models.Board;
+import sinon.models.Level;
 
 /**
  * Move class for moving a hexomino from one position in the board to the next.
+ * 
  * @author kartik
  *
  */
-public class MoveInBoard extends BoardMove{
+public class MoveInBoard extends BoardMove {
 
-	/**
-	 * These are the source anchor positions on the board.
-	 */
-	int srcAnchorRow;
-	int srcAnchorColumn;
-	
-	/**
-	 * These are the destination anchor positions on the board.
-	 */
-	int destAnchorRow;
-	int destAnchorColumn;
-	
-	public MoveInBoard(Level level, int srcAnchorRow, int srcAnchorColumn, int destAnchorRow, int destAnchorColumn) {
-		
-		this.level = level;
-		
-		if(level.hasSelected()) {
-		this.hex = level.selectedHexomino.get();
-		}
-		
-		this.srcAnchorRow = srcAnchorRow;
-		this.srcAnchorColumn = srcAnchorColumn;
-		this.destAnchorRow = destAnchorRow;
-		this.destAnchorColumn = destAnchorColumn;
-	
-	}
-	
-	@Override
-	public boolean doMove() {
-		if (!valid()) return false;
-		level.getBoard().removeHexomino(hex);
-		level.getBoard().addHexomino(new Point(destAnchorRow, destAnchorColumn), hex);
-		level.deselect();
-		return true;
-	}
+    /**
+     * These are the source anchor positions on the board.
+     */
+    int srcAnchorRow;
+    int srcAnchorColumn;
 
-	@Override
-	public boolean undo() {
-		level.getBoard().removeHexomino(hex);
-		level.getBoard().addHexomino(new Point(srcAnchorRow, srcAnchorColumn), hex);
-		return true;
-	}
+    /**
+     * These are the destination anchor positions on the board.
+     */
+    int destAnchorRow;
+    int destAnchorColumn;
 
-	@Override
-	public boolean valid() {
-		if (!level.hasSelected()) return false;
-		if (!level.getBoard().canAddHexomino(new Point(destAnchorRow, destAnchorColumn), hex)) return false;
-		if (!level.getBoard().hasHex(hex)) return false;
-		return true;
-	}
+    public MoveInBoard(Level level, int srcAnchorRow, int srcAnchorColumn,
+            int destAnchorRow, int destAnchorColumn) {
+
+        this.level = level;
+
+        if (level.hasSelected()) {
+            this.hex = level.getSelectedHexomino().get();
+        }
+
+        this.srcAnchorRow = srcAnchorRow;
+        this.srcAnchorColumn = srcAnchorColumn;
+        this.destAnchorRow = destAnchorRow;
+        this.destAnchorColumn = destAnchorColumn;
+
+    }
+
+    @Override
+    public boolean doMove() {
+        if (!valid())
+            return false;
+        level.getBoard().removeHexomino(hex);
+        level.getBoard().addHexomino(new Point(destAnchorRow, destAnchorColumn),
+                hex);
+        level.deselect();
+        return true;
+    }
+
+    @Override
+    public boolean undo() {
+        level.getBoard().removeHexomino(hex);
+        level.getBoard().addHexomino(new Point(srcAnchorRow, srcAnchorColumn),
+                hex);
+        return true;
+    }
+
+    @Override
+    public boolean valid() {
+        if (!level.hasSelected())
+            return false;
+        if (!level.getBoard().canAddHexomino(
+                new Point(destAnchorRow, destAnchorColumn), hex))
+            return false;
+        if (!level.getBoard().hasHex(hex))
+            return false;
+        return true;
+    }
 
 }

@@ -24,7 +24,7 @@ public class Level implements Observable {
      */
     LevelData levelData;
     /** The Hexomino model that is currently selected. */
-    public Optional<Hexomino> selectedHexomino;
+    Optional<Hexomino> selectedHexomino;
     private Optional<Observer> observer;
 
     public Level(types t, Board b, BullPen bp) {
@@ -63,7 +63,7 @@ public class Level implements Observable {
     }
 
     public int getStars() {
-    	this.stars = this.countStars();
+        this.stars = this.countStars();
         return this.stars;
     }
 
@@ -91,12 +91,12 @@ public class Level implements Observable {
 
     /** Sets the selected hexomino to empty. */
     public void deselect() {
-        this.selectedHexomino = null;
+        this.selectedHexomino = Optional.empty();
     }
 
     /** @return if there is currently a hexomino selected. */
     public boolean hasSelected() {
-        return this.selectedHexomino != null;
+        return this.selectedHexomino.isPresent();
     }
 
     /**
@@ -136,6 +136,10 @@ public class Level implements Observable {
     public void update() {
         if (observer.isPresent())
             this.observer.get().updated();
+    }
+
+    public Optional<Hexomino> getSelectedHexomino() {
+        return this.selectedHexomino;
     }
 
 }
