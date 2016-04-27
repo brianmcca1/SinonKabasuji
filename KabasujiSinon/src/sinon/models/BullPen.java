@@ -106,5 +106,19 @@ public class BullPen {
     public String toString() {
         return "BullPen [pieces=" + pieces + "]";
     }
+   
+    /**
+     * Searches through this bullpen looking for the hexomino hex
+     * @param hex the Hexomino being searched for
+     * @return True if the hexomino is in this bullpen, otherwise false
+     * @author PDeBrine
+     */
+    
+	public boolean hasHex(Hexomino hex) {
+		for (Hexomino h: this.getPieces()){
+			if (h.equals(hex)) return true;
+		}
+		return false;
+	}
 
 }
