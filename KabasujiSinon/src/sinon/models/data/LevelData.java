@@ -8,9 +8,6 @@ import sinon.models.data.LevelType.types;
  */
 public final class LevelData implements Serializable {
 
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = -7014637350059511767L;
 	/** Type of level (PUZZLE/LIGHTNING/RELEASE)*/
     types levelType;

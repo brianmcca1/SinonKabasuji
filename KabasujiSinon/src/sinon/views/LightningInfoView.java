@@ -25,6 +25,7 @@ public class LightningInfoView extends LevelTypeInfoView {
         else
         	this.timeLeftField.setEditable(true);
         
+        this.timeLeftField.setText(Integer.toString(level.getMaxTime()));
         this.add(infoLabel);
         this.add(timeLeftField);
     }

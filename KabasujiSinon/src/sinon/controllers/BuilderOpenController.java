@@ -41,9 +41,11 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
         	
             File file = fc.getSelectedFile();
             
-            if(file.compareTo(this.builder.getCurrentFile()) == 0){
-            	System.out.println("FILE IS ALREADY OPEN!");
-            	return;
+            if(this.builder.getCurrentFile() != null){
+	            if(file.compareTo(this.builder.getCurrentFile()) == 0){
+	            	System.out.println("FILE IS ALREADY OPEN!");
+	            	return;
+	            }
             }
             
             this.builder.setCurrentFile(file);
@@ -63,25 +65,22 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 			LevelTypeInfoView lvlTypeInfoView = null;
 			types thisLevelsType = levelData.getLevelType();
 			
-	        if(thisLevelsType.equals(types.PUZZLE)){
-	        	PuzzleLevel puzzleLevel = new PuzzleLevel(levelFromFile);
-	        	lvlTypeInfoView = new PuzzleInfoView(true, puzzleLevel);
-	        	this.builder.setLevel(puzzleLevel);
-	    	}
-	    	else{
-	    		if(thisLevelsType.equals(types.LIGHTNING)){
-	    			
-	    			LightningLevel lightningLevel = new LightningLevel(levelFromFile);
+			switch(thisLevelsType){
+				case PUZZLE:
+					PuzzleLevel puzzleLevel = new PuzzleLevel(levelFromFile);
+		        	lvlTypeInfoView = new PuzzleInfoView(true, puzzleLevel);
+		        	this.builder.setLevel(puzzleLevel);
+					break;
+				case LIGHTNING:
+					LightningLevel lightningLevel = new LightningLevel(levelFromFile);
 	    			lvlTypeInfoView = new LightningInfoView(true, lightningLevel);
 	    			this.builder.setLevel(lightningLevel);
-	    		}
-	    		else{
-	    			if(thisLevelsType.equals(types.RELEASE)){
-	    				lvlTypeInfoView = new ReleaseInfoView();
-	    			}
-	    		}
-	    	}
-	    	
+					break;
+				case RELEASE:
+					lvlTypeInfoView = new ReleaseInfoView();
+					break;
+			}
+
             this.builder.initializeMainView(lvlTypeInfoView);
             this.handleOpenLevel(this.builderMenuBar);
         }
@@ -98,7 +97,6 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 		bMenuBar.mntmRedo.setEnabled(true);
         bMenuBar.mntmClearBoard.setEnabled(true);
         this.builderMenuBar.mntmSave.setEnabled(true);
-        //this.builder.initializeMainView(new PuzzleInfoView(true)); //FIXME read the type of level and make the correct LevelTypeInfoView
         this.builder.mainView.getBullpenView().redrawBullpenView();
 	}
 }

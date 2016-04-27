@@ -18,10 +18,8 @@ import javax.swing.border.LineBorder;
 public class ReleaseInfoView extends LevelTypeInfoView {
 	
 	private static final long serialVersionUID = -7158712755823785281L;
-    /** The number of buttons in the grid of buttons */
-    private static final int NUMBER_OF_BUTTONS = 18;
     /** The list of 15 buttons */
-    List<JButton> buttons = new ArrayList<JButton>(NUMBER_OF_BUTTONS);
+    List<JButton> buttons = new ArrayList<JButton>(18);
 
     public ReleaseInfoView() {
         setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -34,10 +32,20 @@ public class ReleaseInfoView extends LevelTypeInfoView {
      * the field {@link #buttons}.
      */
     private void addButtons() {
-        for (int i = 0; i < NUMBER_OF_BUTTONS; i++) {
-            JButton nextButton = new JButton("#");
-            this.add(nextButton);
-            this.buttons.add(nextButton);
-        }
+    	for(int j = 0; j < 3; j++){
+	        for (int i = 1; i <=6 ; i++) {
+	            JButton nextButton = new JButton(Integer.toString(i));
+	            
+	            if(j == 0)
+	            	nextButton.setForeground(Color.red);
+	            if(j == 1)
+	            	nextButton.setForeground(Color.green);
+	            if(j == 2)
+	            	nextButton.setForeground(Color.yellow);
+	            
+	            this.add(nextButton);
+	            this.buttons.add(nextButton);
+	        }
+    	}
     }
 }

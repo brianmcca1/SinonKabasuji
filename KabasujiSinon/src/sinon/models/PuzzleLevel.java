@@ -17,8 +17,7 @@ public class PuzzleLevel extends Level {
 
     public PuzzleLevel(Level level) {
         super(types.PUZZLE, level.getBoard(), level.getBullpen());
-        this.maxMoves = level.getLevelData().getLevelProperty()
-                .getPropertyValue();
+        this.maxMoves = level.getLevelData().getLevelProperty().getPropertyValue();
     }
 
     /**

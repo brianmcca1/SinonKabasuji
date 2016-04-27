@@ -46,6 +46,10 @@ public class LightningLevel extends Level{
 		return 0;
 	}
 	
+	public int getMaxTime(){
+		return this.maxTime;
+	}
+	
 	public int getTimeLeft(){
 		return this.timeLeft;
 	}

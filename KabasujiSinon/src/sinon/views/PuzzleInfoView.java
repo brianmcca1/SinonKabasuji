@@ -26,6 +26,7 @@ public class PuzzleInfoView extends LevelTypeInfoView {
         else
         	this.movesLeftField.setEditable(true);
         
+        this.movesLeftField.setText(Integer.toString(level.getMaxMoves()));
         this.add(infoLabel);
         this.add(movesLeftField);
     }

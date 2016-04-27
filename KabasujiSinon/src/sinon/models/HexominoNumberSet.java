@@ -48,11 +48,12 @@ public class HexominoNumberSet {
 	 */
 	protected HexominoNumberSet(List<Point> points) {
 		points.sort(COMP);
+		/*
 		if (!validatePoints(points)) {
 			throw new IllegalArgumentException(String.format(
 					"Illegal pointsList inputted, %s ", points));
 		}
-
+		*/
 		this.points = points;
 	}
 

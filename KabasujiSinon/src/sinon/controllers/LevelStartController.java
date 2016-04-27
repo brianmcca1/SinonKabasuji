@@ -54,19 +54,17 @@ public class LevelStartController implements ActionListener{
 		LevelTypeInfoView lvlTypeInfoView = null;
 		types thisLevelsType = this.game.getLevel(this.levelNum).getLevelData().getLevelType();
 		
-        if(thisLevelsType.equals(types.PUZZLE)){
-        	lvlTypeInfoView = new PuzzleInfoView(this.game.getLevel().getLevelData().getLevelProperty().getPropertyValue());
-    	}
-    	else{
-    		if(thisLevelsType.equals(types.LIGHTNING)){
-    			lvlTypeInfoView = new LightningInfoView(false, (LightningLevel) game.getLevel());
-    		}
-    		else{
-    			if(thisLevelsType.equals(types.RELEASE)){
-    				lvlTypeInfoView = new ReleaseInfoView();
-    			}
-    		}
-    	}
+		switch(thisLevelsType){
+		case PUZZLE:
+				lvlTypeInfoView = new PuzzleInfoView(this.game.getLevel().getLevelData().getLevelProperty().getPropertyValue()); 
+				break;
+			case LIGHTNING:
+				lvlTypeInfoView = new LightningInfoView(false, (LightningLevel) game.getLevel());
+				break;
+			case RELEASE:
+				lvlTypeInfoView = new ReleaseInfoView();
+				break;
+		}
 		
 		this.game.initializeMainView(this.levelSelectView, lvlTypeInfoView);
 		this.game.getBullpenView().redrawBullpenView();
