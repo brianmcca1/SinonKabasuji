@@ -5,8 +5,10 @@ import java.awt.event.ActionListener;
 import sinon.main.Game;
 import sinon.models.data.BoardData;
 import sinon.models.data.BullPenData;
+import sinon.models.data.LevelData;
 import sinon.models.data.LightningLevelProperty;
 import sinon.models.data.PuzzleLevelProperty;
+import sinon.serial.Deserializer;
 import sinon.serial.Serializer;
 import sinon.models.data.LevelType.types;
 import sinon.views.game.LevelSelectView;
@@ -30,10 +32,8 @@ public class ExitGameController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
     	System.out.println("EXITING LEVEL #" + (this.game.getCurrentLevelNumber() + 1));
     	
-        //CREATE THE LEVELS BULLPENDATA AND SET IT
-        BullPenData levelBullpenData = new BullPenData(this.game.getLevel().getBullpen());
-        this.game.getLevel().getLevelData().setBullpenData(levelBullpenData);
-        
+    	this.game.determineCurrentGameLevelFile();
+
         //CREATE THE LEVELS BOARDDATA AND SET IT
         BoardData levelBoardData = new BoardData(this.game.getLevel().getBoard());
         this.game.getLevel().getLevelData().setBoardData(levelBoardData);
@@ -52,10 +52,10 @@ public class ExitGameController implements ActionListener {
         		break;
         }
         
+        
         //TODO set the max stars and whatever else is relevant to the game
         
         
-        this.game.determineCurrentGameLevelFile();
         Serializer serializer = new Serializer(this.game.getCurrentFile(), this.game.getLevel().getLevelData());
         serializer.serializeFile();
         
@@ -63,6 +63,7 @@ public class ExitGameController implements ActionListener {
         System.out.println(this.game.getLevel().getLevelData().toString());
         System.out.println("*********************************************");
     	
+        game.loadAllLevels(); //reload all the levels
         game.startNextPanel(this.game.mainView, new LevelSelectView(this.game));
     }
 

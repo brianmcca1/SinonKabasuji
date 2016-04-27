@@ -32,8 +32,12 @@ public class Game extends Kabasuji {
 
         startSplash("Kabasuji", new LevelSelectView(this));
 
-        
-        //OPEN ALL 15 LEVELS AND STORE THEM IN THE ARRAY
+        loadAllLevels();
+            	
+    }
+    
+    /** Will pull every level from file and reset it. */ 
+    public void loadAllLevels(){
         File levelOneFile = new File("level1.dat");
         Deserializer deserializer = new Deserializer(levelOneFile);
         LevelData levelOneData = deserializer.deserializeFile();
@@ -43,12 +47,7 @@ public class Game extends Kabasuji {
         
         allLevels[0] = levelOne;
         
-        System.out.println("LEVELONE READ INTO GAME");
-        
-        System.out.println("*************LEVEL ONE DATA******************");
-        System.out.println(this.getLevel(0).getLevelData().toString());
-        System.out.println("*********************************************");
-    	
+        System.out.println("GAME HAS LOADED ALL LEVELS INTO INTO ARRAY FROM FILES");
     }
     
     /**
