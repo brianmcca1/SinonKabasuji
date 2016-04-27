@@ -25,14 +25,14 @@ public class Level implements Observable {
     LevelData levelData;
     /** The Hexomino model that is currently selected. */
     public Optional<Hexomino> selectedHexomino;
-    private Observer observer;
+    private Optional<Observer> observer;
 
     public Level(types t, Board b, BullPen bp) {
-
         this.board = b;
         this.bullpen = bp;
         this.levelData = new LevelData(t);
         this.starRecord = 0;
+        observer = Optional.empty();
     }
 
     public Level(LevelData levelData) {
@@ -40,7 +40,7 @@ public class Level implements Observable {
         this.bullpen = new BullPen(levelData.getBullpenData());
         this.starRecord = levelData.getStarRecord();
         this.levelData = levelData;
-
+        observer = Optional.empty();
     }
 
     /** @return BullPen model of this level. */
@@ -128,13 +128,14 @@ public class Level implements Observable {
 
     @Override
     public void registerObserver(Observer observer) {
-        this.observer = observer;
+        this.observer = Optional.of(observer);
 
     }
 
     @Override
     public void update() {
-        this.observer.updated();
+        if (observer.isPresent())
+            this.observer.get().updated();
     }
 
 }
