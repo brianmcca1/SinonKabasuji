@@ -3,6 +3,7 @@ package sinon.controllers;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.Optional;
 
 import sinon.main.Game;
 import sinon.models.Board;
@@ -41,21 +42,9 @@ public class GameTileController implements MouseListener, MouseMotionListener {
 
         if(level.hasSelected()) {
         	
-        	if(level.getBoard().containsHexID(level.selectedHexomino.get().getID())) {
-        		//then move from board to board
-        		int x, y;
-            	x = level.getBoard().getHexominoLocation(level.selectedHexomino.get()).x;
-            	y = level.getBoard().getHexominoLocation(level.selectedHexomino.get()).y;
-            	MoveInBoard move = new MoveInBoard(level, x, y, view.getRow(), view.getColumn());
-            	
-            	if(move.doMove()) {
-            		System.out.println("The move was successfully completed!");
-            		level.selectedHexomino = null;
-            	} else {
-            		System.out.println("The move couldn't be completed!");
-            	}
-            	
-        	} else if (level.getBullpen().containsHexID(level.selectedHexomino.get().getID())){
+        	//we have to determine what kind of move to create
+        	
+        	if (level.getBullpen().containsHexID(level.selectedHexomino.get().getID())){
         		//else move from bullpen to board
         		MoveToBoardFromBullpen move = new MoveToBoardFromBullpen(this.level, view.getRow(), view.getColumn());
         		
@@ -65,9 +54,25 @@ public class GameTileController implements MouseListener, MouseMotionListener {
     			} else {
     				System.out.println("There was some error doing the move.");
     			}
-        	}
+        	} 
         	
-        } else {
+//        	else if(level.getBoard().containsHexID(level.selectedHexomino.get().getID())) {
+//        		//then move from board to board
+//        		int x, y;
+//            	x = level.getBoard().getHexominoLocation(level.selectedHexomino.get()).x;
+//            	y = level.getBoard().getHexominoLocation(level.selectedHexomino.get()).y;
+//            	MoveInBoard move = new MoveInBoard(level, x, y, view.getRow(), view.getColumn());
+//            	
+//            	if(move.doMove()) {
+//            		System.out.println("The move was successfully completed!");
+//            		level.selectedHexomino = Optional.empty();
+//            	} else {
+//            		System.out.println("The move couldn't be completed!");
+//            	}
+
+        	} 
+        
+       	else {
         	if(view.getTile().hasHex()){
         		level.select(view.getTile().getHexomino().get());
         	}
