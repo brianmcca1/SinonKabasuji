@@ -1,10 +1,5 @@
 package sinon.controllers;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-
-import sinon.main.Game;
 import sinon.models.Board;
 import sinon.models.Level;
 import sinon.moves.MoveInBoard;
@@ -28,10 +23,6 @@ public class GameTileController extends TileController {
         super(level, view, mainView);
     }
 
-   
-
-   
-
     /** Accesses the board from the fields this class has */
     private Board getBoard() {
         return level.getBoard();
@@ -39,7 +30,7 @@ public class GameTileController extends TileController {
 
     @Override
     public void handleLeftClick() {
-    	System.out.println("I AM A TILE AND I WAS JUST CLICKED ON!");
+        System.out.println("I AM A TILE AND I WAS JUST CLICKED ON!");
 
         if (level.hasSelected()) {
 
@@ -53,7 +44,8 @@ public class GameTileController extends TileController {
                     .containsHexID(level.getSelectedHexomino().get().getID())) {
                 // else move from bullpen to board
                 MoveToBoardFromBullpen move = new MoveToBoardFromBullpen(
-                        this.level, this.tileView.getRow(), this.tileView.getColumn());
+                        this.level, this.tileView.getRow(),
+                        this.tileView.getColumn());
 
                 if (move.doMove()) {
                     System.out.println("Move successfully completed!");
@@ -71,8 +63,8 @@ public class GameTileController extends TileController {
                         level.getSelectedHexomino().get()).x;
                 y = level.getBoard().getHexominoLocation(
                         level.getSelectedHexomino().get()).y;
-                MoveInBoard move = new MoveInBoard(level, x, y, this.tileView.getRow(),
-                        this.tileView.getColumn());
+                MoveInBoard move = new MoveInBoard(level, x, y,
+                        this.tileView.getRow(), this.tileView.getColumn());
 
                 if (move.doMove()) {
                     System.out.println("The move was successfully completed!");
@@ -87,10 +79,10 @@ public class GameTileController extends TileController {
                 level.select(this.tileView.getTile().getHexomino().get());
             }
         }
-     // next we need to update the views
+        // next we need to update the views
         this.mainView.getBoardView().redrawTiles();
         this.mainView.getBullpenView().redrawBullpenView();
-    
+
     }
 
 }

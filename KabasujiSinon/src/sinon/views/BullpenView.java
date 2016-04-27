@@ -12,12 +12,13 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
 import sinon.controllers.HexominoBullpenController;
-import sinon.main.Kabasuji;
 import sinon.models.BullPen;
 import sinon.models.Hexomino;
 import sinon.models.Level;
+
 /**
  * View in charge of displaying the Bullpen
+ * 
  * @author Brian
  *
  */
@@ -32,8 +33,9 @@ public class BullpenView extends JPanel {
     Level level;
 
     List<HexominoBullpenView> hexominoViews;
+    private MainView mainView;
 
-    public BullpenView(Level level) {
+    public BullpenView(Level level, MainView mainView) {
         this.hexominoViews = new LinkedList<HexominoBullpenView>();
         this.bullpen = Objects.requireNonNull(level.getBullpen());
         this.level = Objects.requireNonNull(level);
@@ -43,9 +45,13 @@ public class BullpenView extends JPanel {
 
         this.setLayout(new GridLayout(1, 1));
 
+        // FIXME this shouldn't take in a mainView
+        this.mainView = mainView;
+
         this.add(scrollPanel);
         this.validate();
     }
+
     /**
      * Initialize the bullpen scroll panel
      */
@@ -59,6 +65,7 @@ public class BullpenView extends JPanel {
                 JScrollPane.VERTICAL_SCROLLBAR_NEVER);
         scrollPanel.setViewportView(contentPanel);
     }
+
     /**
      * Initialize the content panel
      */
@@ -70,16 +77,17 @@ public class BullpenView extends JPanel {
 
     /** Called by the HexominoBankController to repaint this bullpen. */
     public void redrawBullpenView() {
-    	
-    	this.contentPanel.removeAll();
-    	
-    	for(Hexomino hex : this.bullpen.getPieces()){
-    		HexominoBullpenView hexBPView = new HexominoBullpenView(hex);
-            hexBPView.addMouseListener(new HexominoBullpenController(hexBPView, level , this));
-    		this.contentPanel.add(hexBPView);
-    	}
-        
-    	this.repaint();
+
+        this.contentPanel.removeAll();
+
+        for (Hexomino hex : this.bullpen.getPieces()) {
+            HexominoBullpenView hexBPView = new HexominoBullpenView(hex);
+            hexBPView.addMouseListener(new HexominoBullpenController(hexBPView,
+                    level, this, mainView));
+            this.contentPanel.add(hexBPView);
+        }
+
+        this.repaint();
         this.revalidate();
         this.contentPanel.repaint();
         this.contentPanel.revalidate();

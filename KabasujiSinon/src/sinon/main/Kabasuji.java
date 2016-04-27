@@ -39,6 +39,7 @@ public abstract class Kabasuji extends JFrame {
     public int currentLevelNumber;
     /** Knowledge of the MainView. */
     public MainView mainView;
+
     /**
      * This field is in charge of registering the controllers to tiles. It is
      * the job of all subclasses of Kabasuji to set this field.
