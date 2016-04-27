@@ -84,8 +84,7 @@ public class Game extends Kabasuji {
                 .getBoardView().getTileViews();
 
         for (int i = 0; i < tileViews.size(); i++) {
-            tileViews.get(i).addMouseListener(new GameTileController(this,
-                    this.currentLevel, tileViews.get(i)));
+            tileViews.get(i).addMouseListener(new GameTileController(this.currentLevel, tileViews.get(i), this.mainView));
         }
     }
 

@@ -18,14 +18,12 @@ public class BuilderTileController extends TileController {
     public void handleLeftClick() {
 		// else if a hexomino had been selected, then add that to the board
 		// at row, column
-		System.out
-		        .println("I AM A TILEVIEW AND I WAS JUST LEFT CLICKED ON");
+		System.out.println("I AM A TILEVIEW AND I WAS JUST LEFT CLICKED ON");
 
 		int row = tileView.getRow();
 		int column = tileView.getColumn();
 
-		MoveToBoardFromBullpen move = new MoveToBoardFromBullpen(level, row,
-		        column);
+		MoveToBoardFromBullpen move = new MoveToBoardFromBullpen(level, row, column);
 
 		if (move.doMove()) {
 		    System.out.println("Move successfully completed!");
@@ -40,19 +38,16 @@ public class BuilderTileController extends TileController {
 		this.mainView.getBullpenView().redrawBullpenView();
 	}
 
-    
-	void handleRightClick() {
-		System.out
-		        .println("I AM A TILEVIEW AND I WAS JUST RIGHT CLICKED ON");
+    @Override
+	public void handleRightClick() {
+		System.out.println("I AM A TILEVIEW AND I WAS JUST RIGHT CLICKED ON");
 		int row = tileView.getRow();
 		int column = tileView.getColumn();
 
 		tileView.toggleColor();
-		System.out.println(
-		        "PLAYABLE BEFORE: " + tileView.getTile().isPlayable());
+		System.out.println("PLAYABLE BEFORE: " + tileView.getTile().isPlayable());
 		tileView.getTile().setPlayable(!tileView.getTile().isPlayable());
-		System.out.println(
-		        "PLAYABLE AFTER: " + tileView.getTile().isPlayable());
+		System.out.println("PLAYABLE AFTER: " + tileView.getTile().isPlayable());
 		this.mainView.getBoardView().redrawTiles();
 	}
 

@@ -28,15 +28,7 @@ public class GameTileController extends TileController {
         super(level, view, mainView);
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        
-
-        // next we need to update the views
-        game.getMainView().getBoardView().redrawTiles();
-        game.getMainView().getBullpenView().redrawBullpenView();
-
-    }
+   
 
    
 
@@ -95,6 +87,10 @@ public class GameTileController extends TileController {
                 level.select(this.tileView.getTile().getHexomino().get());
             }
         }
+     // next we need to update the views
+        this.mainView.getBoardView().redrawTiles();
+        this.mainView.getBullpenView().redrawBullpenView();
+    
     }
 
 }
