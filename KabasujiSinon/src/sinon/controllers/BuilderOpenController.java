@@ -35,20 +35,25 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("ENTERING OPEN CONTROLLER");
         int returnVal = fc.showOpenDialog(this.builder);
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
         	
             File file = fc.getSelectedFile();
+            
+            if(file.compareTo(this.builder.getCurrentFile()) == 0){
+            	System.out.println("FILE IS ALREADY OPEN!");
+            	return;
+            }
+            
             this.builder.setCurrentFile(file);
             
             Deserializer deserializer = new Deserializer(file); 
             LevelData levelData = deserializer.deserializeFile();
            
-            System.out.println("******************");
+            System.out.println("*************OPEN CONTROLLER*****************");
             System.out.println(levelData.toString());
-	    	System.out.println("******************");
+	    	System.out.println("*********************************************");
 	    	
 	    	//CREATE levelFromFile FROM levelData HERE
 	    	Level levelFromFile = new Level(levelData.getLevelType(), new Board(levelData.getBoardData()), new BullPen(levelData.getBullpenData()));

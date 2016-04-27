@@ -71,28 +71,12 @@ public class BuilderSaveAsController implements ActionListener{
             		this.builder.getLevel().getLevelData().setLevelProperty(new LightningLevelProperty(propertyValue));
             	}
             }      
-            
-            /*
-             * FIELDS TO SET FOR LEVEL
-             * this.builder.getLevel()
-             * 		int levelNum;								DONE
-             * 		Board board;								DONE?
-             * 			Map<Point, Tile> tilesViaPoints;		DONE?
-             * 		BullPen bullpen;							DONE
-             * 			List<Hexomino> pieces;					DONE
-             *      int stars;									DONE
-    		 *		int starRecord;								DONE
-             * 		LevelData levelData;						DONE
-             * 			types levelType;						DONE
-             * 			int levelNum;							DONE
-             * 			BoardData boardData;					DONE
-             * 				boolean[][] playable;				DONE
-             * 			BullPenData bullpenData;				DONE
-             * 				ArrayList<HexominoCode> hexominos;  DONE
-             *     		int starRecord;							DONE (THIS IS SET BY THE GAME TO SAVE THE EARNED STARS)
-             * 			LevelProperty levelProperty;			DONE
-             */
 
+            System.out.println("*************SAVE AS CONTROLLER*****************");
+            System.out.println(this.builder.getLevel().getLevelData().toString());
+            System.out.println("*********************************************");
+            
+            
             Serializer serializer = new Serializer(file, this.builder.getLevel().getLevelData());
             serializer.serializeFile();
             
@@ -100,3 +84,24 @@ public class BuilderSaveAsController implements ActionListener{
         }
 	}
 }
+     
+/*
+ * FIELDS TO SET FOR LEVEL
+ * this.builder.getLevel()
+ * 		int levelNum;								DONE
+ * 		Board board;								DONE?
+ * 			Map<Point, Tile> tilesViaPoints;		DONE?
+ * 		BullPen bullpen;							DONE
+ * 			List<Hexomino> pieces;					DONE
+ *      int stars;									DONE
+ *		int starRecord;								DONE
+ * 		LevelData levelData;						DONE
+ * 			types levelType;						DONE
+ * 			int levelNum;							DONE
+ * 			BoardData boardData;					DONE
+ * 				boolean[][] playable;				DONE
+ * 			BullPenData bullpenData;				DONE
+ * 				ArrayList<HexominoCode> hexominos;  DONE
+ *     		int starRecord;							DONE (THIS IS SET BY THE GAME TO SAVE THE EARNED STARS)
+ * 			LevelProperty levelProperty;			DONE
+ */
