@@ -113,6 +113,7 @@ public class BullPen {
      * @return True if the hexomino is in this bullpen, otherwise false
      * @author PDeBrine
      */
+    // TODO write test case
     
 	public boolean hasHex(Hexomino hex) {
 		for (Hexomino h: this.getPieces()){

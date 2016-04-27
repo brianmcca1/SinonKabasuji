@@ -43,7 +43,6 @@ public class MoveToBoardFromBullpen extends BoardMove {
             return false;
         }
 
-        Hexomino hex = level.getSelectedHexomino().get();
 
         if (level instanceof PuzzleLevel) {
             ((PuzzleLevel) level).incrementMoves();
@@ -68,7 +67,6 @@ public class MoveToBoardFromBullpen extends BoardMove {
     public boolean valid() {
 
         if (level.hasSelected() && level.getBullpen().hasHex(hex)){
-            Hexomino hex = level.getSelectedHexomino().get();
             return level.getBoard().canAddHexomino(
                     (new Point(destAnchorRow, destAnchorColumn)), hex);
         } else {
