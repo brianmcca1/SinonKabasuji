@@ -36,7 +36,14 @@ public class BoardView extends JPanel {
 
     private void initializeTile(int row, int column) {
         TileView tileView = new TileView(board.getTile(row, column));
-
+        if(tileView.getTile().isPlayable()){
+        	tileView.setBackground(Color.white);
+        }
+        else{
+        	if(tileView.getTile().isPlayable() == false){
+        		tileView.setBackground(Color.black);
+        	}
+        }
         tileView.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
         this.tileViews.add(tileView);
         boardPanel.add(tileView);
