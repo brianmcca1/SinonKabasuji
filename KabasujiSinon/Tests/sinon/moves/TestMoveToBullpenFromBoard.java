@@ -4,7 +4,7 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-public class TestBoardToBullpen {
+public class TestMoveToBullpenFromBoard {
 
     @Test
     public void test() {

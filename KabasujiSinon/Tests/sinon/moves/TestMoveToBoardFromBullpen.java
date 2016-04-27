@@ -18,7 +18,7 @@ import sinon.models.NumberSetFactory;
 import sinon.models.data.LevelType;
 import sinon.moves.MoveToBoardFromBullpen;
 
-public class TestMovetoBoardFromBullpen {
+public class TestMoveToBoardFromBullpen {
 
 	Level testLevel;
 	MoveToBoardFromBullpen mtbfbp1;
