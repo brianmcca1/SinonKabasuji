@@ -3,6 +3,7 @@ package sinon.models;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 import sinon.models.data.BullPenData;
 import sinon.models.data.HexominoCode;
@@ -75,6 +76,20 @@ public class BullPen {
     	return this.pieces.size();
     }
 
+    /**
+     * Determines if any hexomino with the passed in ID exists in the bullpen
+     */
+    public boolean containsHexID(UUID id) {
+    	
+    	for(Hexomino hex : this.pieces) {
+    		if(hex.getID().equals(id)) {
+    			return true;
+    		}
+    	}
+    	
+    	return false;
+    }
+    
     @Override
     public String toString() {
         return "BullPen [pieces=" + pieces + "]";

@@ -15,14 +15,12 @@ import sinon.models.PuzzleLevel;
 public class MoveToBoardFromBullpen extends BoardMove {
 
     /**
-     * This is the destination anchor-row for the hexomino. TODO We might not
-     * need this field eventually.
+     * This is the destination anchor-row for the hexomino. 
      */
     int destAnchorRow;
 
     /**
-     * This the destination anchor-column for the hexomino. TODO We might not
-     * need this field eventually.
+     * This the destination anchor-column for the hexomino. 
      */
     int destAnchorColumn;
 
@@ -51,8 +49,7 @@ public class MoveToBoardFromBullpen extends BoardMove {
 
         Hexomino hex = level.selectedHexomino.get();
         level.getBullpen().removeHexomino(hex);
-        level.getBoard().addHexomino(new Point(destAnchorRow, destAnchorColumn),
-                hex);
+        level.getBoard().addHexomino(new Point(destAnchorRow, destAnchorColumn), hex);
         return true;
 
     }
@@ -70,8 +67,7 @@ public class MoveToBoardFromBullpen extends BoardMove {
 
         if (level.hasSelected()) {
             Hexomino hex = level.selectedHexomino.get();
-            return level.getBoard().canAddHexomino(
-                    (new Point(destAnchorRow, destAnchorColumn)), hex);
+            return level.getBoard().canAddHexomino((new Point(destAnchorRow, destAnchorColumn)), hex);
         } else {
             return false;
         }

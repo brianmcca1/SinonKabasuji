@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 import sinon.models.data.HexominoCode;
 
@@ -22,7 +23,7 @@ public class Hexomino {
     HexominoNumberSet hexominoNumberSet;
     
     /** Unique number to ID hexominoes in the board and the bullpen. **/
-    int id;
+    UUID id;
     
     private static final int invalidID = -5;
 
@@ -40,7 +41,7 @@ public class Hexomino {
 
         this.hexominoNumberSet = NumberSetFactory.getByNumbers(a, a1, b, b1, c,
                 c1, d, d1, e, e1, f, f1);
-        
+        this.id = UUID.randomUUID();
     }
 
     public Hexomino(Set<Point> points) {
@@ -50,6 +51,7 @@ public class Hexomino {
 
         List<Point> listOfPoints = new LinkedList<Point>(points);
         this.hexominoNumberSet = NumberSetFactory.getByList(listOfPoints);
+        this.id = UUID.randomUUID();
     }
 
     /**
@@ -59,6 +61,7 @@ public class Hexomino {
      */
     public Hexomino(HexominoNumberSet hexominoNumberSet) {
         this.hexominoNumberSet = hexominoNumberSet;
+        this.id = UUID.randomUUID();
     }
 
     /**
@@ -69,6 +72,7 @@ public class Hexomino {
      */
     public Hexomino(HexominoCode code) {
         this.hexominoNumberSet = NumberSetFactory.getByCode(code);
+        this.id = UUID.randomUUID();
     }
 
     /**
@@ -152,6 +156,10 @@ public class Hexomino {
         } else if (!hexominoNumberSet.equals(other.hexominoNumberSet))
             return false;
         return true;
+    }
+    
+    public UUID getID() {
+    	return this.id;
     }
 
     /*

@@ -1,9 +1,12 @@
 package sinon.main;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
+import sinon.controllers.BuilderTileController;
 import sinon.controllers.BullpenController;
+import sinon.controllers.GameTileController;
 import sinon.models.Board;
 import sinon.models.BullPen;
 import sinon.models.Hexomino;
@@ -13,6 +16,7 @@ import sinon.models.data.LevelType.types;
 import sinon.serial.Deserializer;
 import sinon.views.LevelTypeInfoView;
 import sinon.views.MainView;
+import sinon.views.TileView;
 import sinon.views.game.GameInfoView;
 import sinon.views.game.LevelSelectView;
 
@@ -67,6 +71,11 @@ public class Game extends Kabasuji {
     /** Registers the GameTileControllers to each TileView in the Game's BoardView. */
     public void registerBoardViewControllers(){
     	//apply GameTileControllers here
+    	ArrayList<TileView> tileViews = (ArrayList<TileView>)this.boardView.getTileViews();
+		
+		for(int i = 0; i < tileViews.size(); i++){
+			tileViews.get(i).addMouseListener(new GameTileController(this, this.currentLevel, tileViews.get(i)));
+		}
     }
     
     /** @return Level object from the specified index in the allLevels array. */

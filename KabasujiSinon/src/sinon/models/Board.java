@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.UUID;
 
 import sinon.models.data.BoardData;
 
@@ -217,6 +218,19 @@ public class Board {
 				if(t.getHexomino().get().equals(hex)) return true;
 			}
 		}
+		return false;
+	}
+	
+	public boolean containsHexID(UUID id) {
+		
+		for(Tile t : this.getTiles()){
+			if(t.hasHex()){
+				if(t.getHexomino().get().getID().equals(id)) {
+					return true;
+				}
+			}
+		}
+		
 		return false;
 	}
 
