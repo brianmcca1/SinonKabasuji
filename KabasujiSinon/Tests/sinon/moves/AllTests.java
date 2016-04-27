@@ -5,8 +5,9 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ TestBankToBullpen.class, TestMoveToBullpenFromBoard.class,
-        TestMoveToBoardFromBullpen.class })
+@SuiteClasses({ TestBankToBullpen.class, TestMoveToBoardFromBullpen.class,
+        TestMoveToBullpenFromBoard.class })
+
 public class AllTests {
 
 }
