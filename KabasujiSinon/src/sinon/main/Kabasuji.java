@@ -2,16 +2,20 @@ package sinon.main;
 
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
+import sinon.controllers.BuilderTileController;
 import sinon.models.Level;
 import sinon.views.BoardView;
 import sinon.views.BullpenView;
 import sinon.views.MainView;
 //import sinon.views.LevelSelectView;
 import sinon.views.SplashScreen;
+import sinon.views.TileView;
 
 /**
  * Kabasuji is a parent class which is the equivalent of the "Application" class
@@ -114,7 +118,9 @@ public abstract class Kabasuji extends JFrame {
     	}
     }
     
-    public void registerBoardViewControllers(){}
+    public void registerBoardGameViewControllers(){
+    	
+    }
     
     public void setCurrentLevelNumber(int n){this.currentLevelNumber = n;}
     
@@ -123,4 +129,21 @@ public abstract class Kabasuji extends JFrame {
     public void revalidateMainView(){
     	this.mainView.revalidate();
     }
+
+	/**
+	 * Registers the BuilderTileControllers to each TileView in the Builder's
+	 * BoardView.
+	 */
+	public void registerBoardViewControllers() {
+	    ArrayList<TileView> tileViews = (ArrayList<TileView>) this.getMainView()
+	            .getBoardView().getTileViews();
+	    
+	    assert tileViews != null;
+	    assert tileViews.size() == 144;
+	
+	    for (int i = 0; i < tileViews.size(); i++) {
+	        tileViews.get(i).addMouseListener(new BuilderTileController(this.mainView,
+	                tileViews.get(i), this.currentLevel));
+	    }
+	}
 }
