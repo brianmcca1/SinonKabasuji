@@ -50,6 +50,7 @@ public class LevelStartController implements ActionListener{
 		System.out.println("STARTING LEVEL #" + (levelNum + 1));
 		
 		this.game.setLevel(this.game.getLevel(this.levelNum));
+		this.game.setCurrentLevelNumber(this.levelNum);
 		
 		LevelTypeInfoView lvlTypeInfoView = null;
 		types thisLevelsType = this.game.getLevel(this.levelNum).getLevelData().getLevelType();

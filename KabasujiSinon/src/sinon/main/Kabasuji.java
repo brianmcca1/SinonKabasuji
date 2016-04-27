@@ -27,7 +27,8 @@ public abstract class Kabasuji extends JFrame {
     static final int HEIGHT = 600;
 	/** Knowledge of the current level. */
 	public Level currentLevel;
-	/** Knowledge of the current level number. */
+	/** Knowledge of the current level number. 
+	 * Used by some controllers to deal with serializing the proper Level. */
 	public int currentLevelNumber;
 	/** Knowledge of the MainView.*/
     public MainView mainView;
