@@ -60,8 +60,16 @@ public class PuzzleLevel extends Level {
     }
 
     public int countStars() {
-        int bpc = bullpen.hexominoCount();
-        int stars = 3 - bpc;
+    	int numNotPlayed = 0;
+		for (Tile t : this.board.getTiles()){
+			if (!t.hasHex()){
+				numNotPlayed++;
+			}
+		}
+		
+		int hexSpacesLeft = numNotPlayed / 6;
+		
+        int stars = 3 - hexSpacesLeft;
         if (stars < 0)
             stars = 0;
 
