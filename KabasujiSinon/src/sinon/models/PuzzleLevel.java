@@ -62,7 +62,7 @@ public class PuzzleLevel extends Level {
     public int countStars() {
     	int numNotPlayed = 0;
 		for (Tile t : this.board.getTiles()){
-			if (!t.hasHex()){
+			if (!t.hasHex() & t.isPlayable()){
 				numNotPlayed++;
 			}
 		}
