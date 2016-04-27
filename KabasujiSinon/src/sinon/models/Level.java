@@ -63,6 +63,7 @@ public class Level implements Observable {
     }
 
     public int getStars() {
+    	this.stars = this.countStars();
         return this.stars;
     }
 
