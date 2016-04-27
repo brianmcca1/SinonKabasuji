@@ -7,7 +7,11 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import sinon.models.PuzzleLevel;
-
+/**
+ * The InfoView for a puzzle level
+ * @author Brian
+ *
+ */
 public class PuzzleInfoView extends LevelTypeInfoView {
 	
 	private static final long serialVersionUID = -6047685525063166167L;
@@ -50,7 +54,9 @@ public class PuzzleInfoView extends LevelTypeInfoView {
 		
 		return (int)Integer.parseInt(this.movesLeftField.getText());
 	}
-	
+	/**
+	 * Update the view to show how many moves the player can make
+	 */
 	public void updateMovesMade(){
 		this.movesLeftField.setText(((Integer) level.getMovesLeft()).toString());
 	}
