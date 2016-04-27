@@ -48,12 +48,12 @@ public class HexominoNumberSet {
 	 */
 	protected HexominoNumberSet(List<Point> points) {
 		points.sort(COMP);
-		/*
+		
 		if (!validatePoints(points)) {
 			throw new IllegalArgumentException(String.format(
 					"Illegal pointsList inputted, %s ", points));
 		}
-		*/
+		
 		this.points = points;
 	}
 
@@ -228,8 +228,8 @@ public class HexominoNumberSet {
 			return false;
 		} else if (!validateConnected(list)) {
 			return false;
-		} else if (!list.contains(new Point(0, 0))) {
-			return false;
+		//} else if (!list.contains(new Point(0, 0))) {
+		//	return false;
 		} else if (!validateUniquePoints(list)) {
 			return false;
 		}
