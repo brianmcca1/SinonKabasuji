@@ -213,12 +213,7 @@ public class Board {
 	 * @return True if hex is found, otherwise false
 	 */
 	public boolean hasHex(Hexomino hex){
-		for (Tile t : this.getTiles()){
-			if (t.hasHex()){
-				if(t.getHexomino().get().equals(hex)) return true;
-			}
-		}
-		return false;
+		return this.containsHexID(hex.getID());
 	}
 	
 	public boolean containsHexID(UUID id) {
