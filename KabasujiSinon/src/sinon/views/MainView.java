@@ -1,15 +1,16 @@
 package sinon.views;
 
 import java.awt.Color;
-import java.util.Optional;
+import java.util.Objects;
 
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import sinon.main.Kabasuji;
-import sinon.models.data.LevelType.types;
+import sinon.models.Level;
 
 /**
+ * Highest level view class responsible for displaying a level.
+ * 
  * This class controls the entirety of the Builder/Game Views; Shows GridView,
  * the Optional ReleaseButtonView, the BullpenView, and the InfoPanel.
  * 
@@ -20,20 +21,23 @@ public class MainView extends JPanel {
     static final int LEVEL_PANEL_WIDTH = 640;
     static final int MAIN_PANEL_HEIGHT = 545;
 
-    /** Overall Game/Builder object. */
-    Kabasuji kabasuji;
     /**
      * levelPanel contains: Bullpen, GridView, optional ReleaseButtonView, and
      * is on the left side of the screen.
      */
     public LevelPanel levelPanel;
     /** Contains GridView and the Optional ReleaseButtonView. */
-    public JPanel gameAreaPanel; // FIXME If this is only asthetic, get rid of it.
+    public JPanel gameAreaPanel; // FIXME If this is only asthetic, get rid of
+                                 // it.
     /** Only exists in Builder Mode and Release game play. */
-    //Optional<ReleaseInfoView> releaseButtonView;
+    // Optional<ReleaseInfoView> releaseButtonView;
     public LevelTypeInfoView levelTypeInfoView;
     /** BankView/GameInfoView. */
     InfoPanel infoPanel;
+    /** The level associated with this MainView. */
+    Level level;
+    BullpenView bullpenView;
+    private BoardView boardView;
 
     /**
      * @param k
@@ -41,12 +45,11 @@ public class MainView extends JPanel {
      * @param infoPanel
      *            The InfoPanel to be displayed.
      */
-    public MainView(Kabasuji k, InfoPanel infoPanel, LevelTypeInfoView lvlTypeInfoView) {
-        this.infoPanel = infoPanel;
-        this.kabasuji = k;
-        this.kabasuji.bullpenView = new BullpenView(this.kabasuji);
-        this.levelTypeInfoView = lvlTypeInfoView;
-        
+    public MainView(Level level, InfoPanel infoPanel,
+            LevelTypeInfoView lvlTypeInfoView) {
+        this.infoPanel = Objects.requireNonNull(infoPanel);
+        this.levelTypeInfoView = Objects.requireNonNull(lvlTypeInfoView);
+        this.level = Objects.requireNonNull(level);
         initializeViews();
     }
 
@@ -62,16 +65,13 @@ public class MainView extends JPanel {
         infoPanel.setBounds(LEVEL_PANEL_WIDTH, 0, 150, MAIN_PANEL_HEIGHT);
     }
 
-
     /**
      * Creates the JPanel for the board and adds it to the
      * {@link #gameAreaPanel}
      */
     private void initBoard() {
-        BoardView tempBoard = new BoardView(this.kabasuji, this.kabasuji.getLevel().getBoard());
-        this.kabasuji.boardView = tempBoard;
-        this.kabasuji.registerBoardViewControllers();
-        gameAreaPanel.add(tempBoard.boardPanel);
+        boardView = new BoardView(level.getBoard());
+        gameAreaPanel.add(boardView.boardPanel);
     }
 
     /** Initializes the {@link #gameAreaPanel} */
@@ -83,14 +83,14 @@ public class MainView extends JPanel {
 
     /** Initializes the {@link #levelPanel} */
     private void initLevelPanel() {
-        levelPanel = new LevelPanel(this.kabasuji.bullpenView, gameAreaPanel);
+        levelPanel = new LevelPanel(this.bullpenView, gameAreaPanel);
         levelPanel.setBorder(new LineBorder(new Color(255, 0, 0)));
         levelPanel.setBounds(0, 0, LEVEL_PANEL_WIDTH, MAIN_PANEL_HEIGHT);
         this.add(levelPanel);
     }
 
     public BullpenView getBullpenView() {
-        return this.kabasuji.bullpenView;
+        return this.bullpenView;
     }
 
     /** @return This MainView's InfoPanel. */
@@ -102,10 +102,14 @@ public class MainView extends JPanel {
     public LevelPanel getLevelPanel() {
         return levelPanel;
     }
-    
+
     /** @return This MainView's LevelTypeInfoView. */
-    public LevelTypeInfoView getLevelTypeInfoView(){
-    	return this.levelTypeInfoView;
+    public LevelTypeInfoView getLevelTypeInfoView() {
+        return this.levelTypeInfoView;
+    }
+
+    public BoardView getBoardView() {
+        return this.boardView;
     }
 
 }
