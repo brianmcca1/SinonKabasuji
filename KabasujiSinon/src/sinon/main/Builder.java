@@ -31,11 +31,14 @@ public class Builder extends Kabasuji {
             this.remove(this.mainView);
             this.revalidate();
         }
+
         MainView mv = new MainView(this.getLevel(),
                 new BankView(this, this.bullpen), lvlTypeInfoView);
         this.setMainView(mv);
         this.mainView.revalidate();
         this.startNextPanel(this.blankPanel, mv);
+        this.tileRegistrator = new TileRegistrator(getLevel(), mainView);
+        this.tileRegistrator.setToBuilderType();
         registerBoardViewControllers();
     }
 

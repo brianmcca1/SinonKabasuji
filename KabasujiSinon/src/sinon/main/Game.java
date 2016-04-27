@@ -1,11 +1,9 @@
 package sinon.main;
 
 import java.io.File;
-import java.util.ArrayList;
 
 import sinon.controllers.BullpenController;
 import sinon.controllers.ExitGameController;
-import sinon.controllers.GameTileController;
 import sinon.models.Board;
 import sinon.models.BullPen;
 import sinon.models.Level;
@@ -13,7 +11,6 @@ import sinon.models.data.LevelData;
 import sinon.serial.Deserializer;
 import sinon.views.LevelTypeInfoView;
 import sinon.views.MainView;
-import sinon.views.TileView;
 import sinon.views.game.GameInfoView;
 import sinon.views.game.LevelSelectView;
 
@@ -70,22 +67,12 @@ public class Game extends Kabasuji {
         GameInfoView gameInfoView = (GameInfoView) this.mainView.getInfoPanel();
         gameInfoView.getExitButton()
                 .addActionListener(new ExitGameController(this));
-        mainView.getBullpenView().addMouseListener(new BullpenController(this.currentLevel.getBullpen(), mainView.getBullpenView(), this.currentLevel));
-        registerBoardGameViewControllers();
-    }
-
-    /**
-     * Registers the GameTileControllers to each TileView in the Game's
-     * BoardView.
-     */
-    public void registerBoardGameViewControllers() {
-        // apply GameTileControllers here
-        ArrayList<TileView> tileViews = (ArrayList<TileView>) this.getMainView()
-                .getBoardView().getTileViews();
-
-        for (int i = 0; i < tileViews.size(); i++) {
-            tileViews.get(i).addMouseListener(new GameTileController(this.currentLevel, tileViews.get(i), this.mainView));
-        }
+        mainView.getBullpenView().addMouseListener(
+                new BullpenController(this.currentLevel.getBullpen(),
+                        mainView.getBullpenView(), this.currentLevel));
+        this.tileRegistrator = new TileRegistrator(getLevel(), mainView);
+        this.tileRegistrator.setToGameType();
+        registerBoardViewControllers();
     }
 
     /** @return Level object from the specified index in the allLevels array. */
