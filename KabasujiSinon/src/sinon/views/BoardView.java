@@ -5,6 +5,8 @@ import java.awt.GridLayout;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Objects;
+
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import sinon.main.Kabasuji;
@@ -20,11 +22,9 @@ public class BoardView extends JPanel {
 	JPanel boardPanel;
     private Board board;
     Collection<TileView> tileViews;
-    private Kabasuji kabasuji;
 
-    public BoardView(Kabasuji k, Board board) {
-        this.board = board;
-        this.kabasuji = k;
+    public BoardView(Board board) {
+        this.board = Objects.requireNonNull(board);
         this.boardPanel = new JPanel();
         this.boardPanel.setLayout(new GridLayout(12, 12));
         this.boardPanel.setBounds(80, 26, 300, 300);

@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
@@ -14,6 +15,7 @@ import sinon.controllers.HexominoBullpenController;
 import sinon.main.Kabasuji;
 import sinon.models.BullPen;
 import sinon.models.Hexomino;
+import sinon.models.Level;
 /**
  * View in charge of displaying the Bullpen
  * @author Brian
@@ -24,17 +26,17 @@ public class BullpenView extends JPanel {
 
     public JScrollPane scrollPanel;
     public JPanel contentPanel;
-    public Kabasuji kabasuji;
 
     /** This is the bullpen that is associated with the view */
     BullPen bullpen;
+    Level level;
 
     List<HexominoBullpenView> hexominoViews;
 
-    public BullpenView(Kabasuji k) {
+    public BullpenView(Level level) {
         this.hexominoViews = new LinkedList<HexominoBullpenView>();
-        this.kabasuji = k;
-
+        this.bullpen = Objects.requireNonNull(bullpen);
+        this.level = Objects.requireNonNull(level);
         initContentPanel();
         initBullpenViewScrollPanel();
         populateBullpen();
@@ -71,9 +73,9 @@ public class BullpenView extends JPanel {
     	
     	this.contentPanel.removeAll();
     	
-    	for(Hexomino hex : kabasuji.getLevel().getBullpen().getPieces()){
+    	for(Hexomino hex : this.bullpen.getPieces()){
     		HexominoBullpenView hexBPView = new HexominoBullpenView(hex);
-            hexBPView.addMouseListener(new HexominoBullpenController(hexBPView, this.kabasuji.getLevel(), this));
+            hexBPView.addMouseListener(new HexominoBullpenController(hexBPView, level , this));
     		this.contentPanel.add(hexBPView);
     	}
         
