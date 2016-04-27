@@ -14,8 +14,6 @@ import sinon.views.builder.BuilderMenuBar;
 @SuppressWarnings("serial")
 public class Builder extends Kabasuji {
 
-	/** File that is currently being read from / saved to. */
-	File currentFile;
 	/** JPanel that the builder initially starts out with. */
 	public JPanel blankPanel;
 	/** BullPen containing all 35 hexominos. */
@@ -40,10 +38,6 @@ public class Builder extends Kabasuji {
 		this.mainView.revalidate();
 		this.startNextPanel(this.blankPanel, mv);
 	}
-	
-	public void setCurrentFile(File f){this.currentFile = f;}
-	
-	public File getCurrentFile(){return this.currentFile;}
 	
 	public BullPen getBullpen(){return this.bullpen;}
 	

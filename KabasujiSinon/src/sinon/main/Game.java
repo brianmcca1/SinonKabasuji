@@ -6,6 +6,7 @@ import java.util.LinkedList;
 
 import sinon.controllers.BuilderTileController;
 import sinon.controllers.BullpenController;
+import sinon.controllers.ExitGameController;
 import sinon.controllers.GameTileController;
 import sinon.models.Board;
 import sinon.models.BullPen;
@@ -43,6 +44,11 @@ public class Game extends Kabasuji {
         allLevels[0] = levelOne;
         
         System.out.println("LEVELONE READ INTO GAME");
+        
+        System.out.println("*************LEVEL ONE DATA******************");
+        System.out.println(this.getLevel(0).getLevelData().toString());
+        System.out.println("*********************************************");
+    	
     }
     
     /**
@@ -59,12 +65,8 @@ public class Game extends Kabasuji {
     }
 
     public void initializeMainControllers() {
-		if(this.mainView != null){
-			this.remove(this.mainView);
-			this.revalidate();
-		}
-        GameInfoView sidePanel = (GameInfoView) mainView.getInfoPanel();
-        sidePanel.getExitButton().addActionListener(new sinon.controllers.ExitGameController(this, mainView));
+        GameInfoView gameInfoView = (GameInfoView)this.mainView.getInfoPanel();
+        gameInfoView.getExitButton().addActionListener(new ExitGameController(this));
         mainView.getBullpenView().addMouseListener(new BullpenController(this.currentLevel.getBullpen(), mainView.getBullpenView(), this.currentLevel));
     }
     

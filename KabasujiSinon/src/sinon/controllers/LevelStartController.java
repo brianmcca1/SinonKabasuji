@@ -49,14 +49,14 @@ public class LevelStartController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("STARTING LEVEL #" + (levelNum + 1));
 		
-		this.game.setLevel(this.game.getLevel(this.levelNum));
 		this.game.setCurrentLevelNumber(this.levelNum);
-		
+		this.game.setLevel(this.game.getLevel(this.levelNum));
+	
 		LevelTypeInfoView lvlTypeInfoView = null;
 		types thisLevelsType = this.game.getLevel(this.levelNum).getLevelData().getLevelType();
 		
 		switch(thisLevelsType){
-		case PUZZLE:
+			case PUZZLE:
 				lvlTypeInfoView = new PuzzleInfoView(this.game.getLevel().getLevelData().getLevelProperty().getPropertyValue()); 
 				break;
 			case LIGHTNING:
@@ -68,6 +68,7 @@ public class LevelStartController implements ActionListener{
 		}
 		
 		this.game.initializeMainView(this.levelSelectView, lvlTypeInfoView);
+		this.game.initializeMainControllers();
 		this.game.getBullpenView().redrawBullpenView();
 	}
 	

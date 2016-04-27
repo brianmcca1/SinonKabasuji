@@ -1,6 +1,8 @@
 package sinon.main;
 
 import java.awt.event.ActionListener;
+import java.io.File;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -25,6 +27,8 @@ public abstract class Kabasuji extends JFrame {
     static final int WIDTH = 800;
     /** Height in pixels of the frame */
     static final int HEIGHT = 600;
+	/** File that is currently being read from / saved to. */
+	File currentFile;
 	/** Knowledge of the current level. */
 	public Level currentLevel;
 	/** Knowledge of the current level number. 
@@ -81,6 +85,10 @@ public abstract class Kabasuji extends JFrame {
         this.revalidate();
     }
     
+	public void setCurrentFile(File f){this.currentFile = f;}
+	
+	public File getCurrentFile(){return this.currentFile;}
+    
     public BullpenView getBullpenView(){return this.bullpenView;}
     
     /** @return returns the MainView object. */
@@ -93,13 +101,28 @@ public abstract class Kabasuji extends JFrame {
     public Level getLevel(){ return this.currentLevel;}
     
     /** Sets the Level object. */
-    public void setLevel(Level l){this.currentLevel = l;}
+    public void setLevel(Level l){
+    	this.currentLevel = l;
+    }
+    
+    /** Will determine which file to set for the Game based on the currently open level. */
+    public void determineCurrentGameLevelFile(){
+    	//TODO fill in rest of the level files
+    	switch(this.currentLevelNumber){
+    		case 0:
+    			this.setCurrentFile(new File("level1.dat"));
+    			break;
+    		case 1:
+    			this.setCurrentFile(new File("level2.dat"));
+    			break;
+    	}
+    }
     
     public void registerBoardViewControllers(){}
     
-    public void setCurrentLevelNumber(int n){
-    	this.currentLevelNumber = n;
-    }
+    public void setCurrentLevelNumber(int n){this.currentLevelNumber = n;}
+    
+    public int getCurrentLevelNumber(){ return this.currentLevelNumber;}
     
     public void revalidateMainView(){
     	this.mainView.revalidate();
