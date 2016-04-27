@@ -55,11 +55,10 @@ public class PuzzleIntegrationTest {
         createAndDoMove(1);
         createAndDoMove(2);
         createAndDoMove(3);
-        createAndDoMove(4);
         assertTrue(exampleLevel.getStars() == 1);
-        createAndDoMove(5);
+        createAndDoMove(4);
         assertTrue(exampleLevel.getStars() == 2);
-        createAndDoMove(6);
+        createAndDoMove(5);
         assertTrue(exampleLevel.getStars() == 3);
     }
 
@@ -71,12 +70,12 @@ public class PuzzleIntegrationTest {
                 i, 0);
         assertTrue(move.valid());
         move.doMove();
-        assertTrue(bullpen.pieces.size() == 8 - i);
+        assertTrue(bullpen.pieces.size() == 7 - i);
         assertTrue(board.getTile(new Point(i, 0)).getHexomino().get()
                 .equals(hexToMove));
         assertTrue(
-                board.getHexominoLocation(hexToMove).equals(new Point(0, 0)));
-        assertTrue(exampleLevel.getMovesLeft() == 8 - i);
+                board.getHexominoLocation(hexToMove).equals(new Point(i, 0)));
+        assertTrue(exampleLevel.getMovesLeft() == 7 - i);
     }
 
 }
