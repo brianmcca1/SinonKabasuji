@@ -33,6 +33,10 @@ public class HexominoBullpenView extends JPanel {
         return this.hex;
     }
 
+    /**
+     * Constructs the Hexomino view on a grid
+     * @return the created Hexomino BullPen View
+     */
     public HexominoBullpenView setHexominoOnGrid() {
         List<Point> normalizedPoints = this.hex.getNormalizedPoints();
 

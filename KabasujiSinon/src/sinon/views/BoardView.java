@@ -10,7 +10,11 @@ import javax.swing.JPanel;
 import sinon.main.Kabasuji;
 import sinon.models.Board;
 import sinon.models.Tile;
-
+/**
+ * View in charge of displaying the board
+ * @author Brian
+ *
+ */
 public class BoardView extends JPanel {
 	
 	JPanel boardPanel;
@@ -35,6 +39,11 @@ public class BoardView extends JPanel {
         }
     }
 
+    /**
+     * Initialize a TileView 
+     * @param row The row the tile is on
+     * @param column The column the tile is on
+     */
     private void initializeTile(int row, int column) {
         TileView tileView = new TileView(board.getTile(row, column));
         if(tileView.getTile().isPlayable()){
@@ -50,10 +59,17 @@ public class BoardView extends JPanel {
         boardPanel.add(tileView);
     }
 
+    /**
+     * Gives the collection of all TileViews that make up the BoardView
+     * @return The TileViews as a Collection
+     */
     public Collection<TileView> getTileViews() {
         return tileViews;
     }
 
+    /**
+     * Redraw all the tiles with the appropriate colors
+     */
     public void redrawTiles(){
     	for(TileView tv: this.tileViews) {
     		if(board.getTile(new Point(tv.row, tv.column)).hasHex()) {

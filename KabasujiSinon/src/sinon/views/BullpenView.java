@@ -14,7 +14,11 @@ import sinon.controllers.HexominoBullpenController;
 import sinon.main.Kabasuji;
 import sinon.models.BullPen;
 import sinon.models.Hexomino;
-
+/**
+ * View in charge of displaying the Bullpen
+ * @author Brian
+ *
+ */
 @SuppressWarnings("serial")
 public class BullpenView extends JPanel {
 
@@ -40,7 +44,9 @@ public class BullpenView extends JPanel {
         this.add(scrollPanel);
         this.validate();
     }
-
+    /**
+     * Initialize the bullpen scroll panel
+     */
     private void initBullpenViewScrollPanel() {
         scrollPanel = new JScrollPane();
         JScrollBar scrollBar = new JScrollBar(JScrollBar.HORIZONTAL);
@@ -51,7 +57,9 @@ public class BullpenView extends JPanel {
                 JScrollPane.VERTICAL_SCROLLBAR_NEVER);
         scrollPanel.setViewportView(contentPanel);
     }
-
+    /**
+     * Initialize the content panel
+     */
     private void initContentPanel() {
         this.contentPanel = new JPanel();
         contentPanel.setBackground(Color.gray);
