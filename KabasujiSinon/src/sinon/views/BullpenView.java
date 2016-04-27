@@ -35,7 +35,7 @@ public class BullpenView extends JPanel {
 
     public BullpenView(Level level) {
         this.hexominoViews = new LinkedList<HexominoBullpenView>();
-        this.bullpen = Objects.requireNonNull(bullpen);
+        this.bullpen = Objects.requireNonNull(level.getBullpen());
         this.level = Objects.requireNonNull(level);
         initContentPanel();
         initBullpenViewScrollPanel();
