@@ -51,7 +51,10 @@ public class ExitGameController implements ActionListener {
         		this.game.getLevel().getLevelData().setLevelProperty(new LightningLevelProperty(propertyValue));
         		break;
         }
-       
+        
+        //TODO set the max stars and whatever else is relevant to the game
+        
+        
         this.game.determineCurrentGameLevelFile();
         Serializer serializer = new Serializer(this.game.getCurrentFile(), this.game.getLevel().getLevelData());
         serializer.serializeFile();
