@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 import sinon.models.data.BullPenData;
+import sinon.models.data.HexominoBankData;
 import sinon.models.data.HexominoCode;
 
 /**
@@ -35,11 +36,11 @@ public class BullPen {
      * @return List of all Hexominos
      */
     public List<Hexomino> getPieces() {
-   
-    	ArrayList<Hexomino> piecesCopy = new ArrayList<Hexomino>();
-    	for(Hexomino h: this.pieces){
-    		piecesCopy.add(h);
-    	}
+
+        ArrayList<Hexomino> piecesCopy = new ArrayList<Hexomino>();
+        for (Hexomino h : this.pieces) {
+            piecesCopy.add(h);
+        }
         return piecesCopy;
     }
 
@@ -65,15 +66,26 @@ public class BullPen {
      * @return True if this list contained the specified element.
      */
     public boolean removeHexomino(Hexomino hex) {
-    	// TODO: how to do this better? How does it handle duplicates?
+        // TODO: how to do this better? How does it handle duplicates?
         return this.pieces.remove(hex);
     }
+
+    /**
+     * Creates a new hexomino based on {@link HexominoBankData}'s list of
+     * Hexominos.
+     */
+    public void addRandomHexomino() {
+        Hexomino hex; // TODO get from bank data.
+
+    }
+
     /**
      * Gives the number of Hexominos in the bullpen
+     * 
      * @return The number of Hexominos
      */
-    public int hexominoCount(){
-    	return this.pieces.size();
+    public int hexominoCount() {
+        return this.pieces.size();
     }
 
     /**
