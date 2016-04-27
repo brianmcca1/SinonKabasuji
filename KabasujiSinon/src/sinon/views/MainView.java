@@ -50,6 +50,7 @@ public class MainView extends JPanel {
         this.infoPanel = Objects.requireNonNull(infoPanel);
         this.levelTypeInfoView = Objects.requireNonNull(lvlTypeInfoView);
         this.level = Objects.requireNonNull(level);
+        this.bullpenView = new BullpenView(level);
         initializeViews();
     }
 

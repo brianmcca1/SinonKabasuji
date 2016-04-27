@@ -40,6 +40,7 @@ public class Builder extends Kabasuji {
         this.setMainView(mv);
         this.mainView.revalidate();
         this.startNextPanel(this.blankPanel, mv);
+        registerBoardViewControllers();
     }
 
     public BullPen getBullpen() {
@@ -53,6 +54,9 @@ public class Builder extends Kabasuji {
     public void registerBoardViewControllers() {
         ArrayList<TileView> tileViews = (ArrayList<TileView>) this.getMainView()
                 .getBoardView().getTileViews();
+        
+        assert tileViews != null;
+        assert tileViews.size() == 144;
 
         for (int i = 0; i < tileViews.size(); i++) {
             tileViews.get(i).addMouseListener(new BuilderTileController(this,
