@@ -78,6 +78,8 @@ public abstract class Kabasuji extends JFrame {
         this.revalidate();
     }
     
+    public BullpenView getBullpenView(){return this.bullpenView;}
+    
     /** @return returns the MainView object. */
     public MainView getMainView(){ return this.mainView;}
     

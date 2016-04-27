@@ -57,7 +57,7 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 	    	
 	    	//CREATE levelFromFile FROM levelData HERE
 	    	Level levelFromFile = new Level(levelData.getLevelType(), new Board(levelData.getBoardData()), new BullPen(levelData.getBullpenData()));
-	    	
+	    	levelFromFile.setLevelData(levelData);
 
 	    	//FIND OUT WHICH LevelTypeInfoView TO GIVE TO MAINVIEW
 			LevelTypeInfoView lvlTypeInfoView = null;

@@ -48,6 +48,13 @@ public class HexominoBullpenController implements MouseListener{
 		//FIXME A new move is NOT always created when you click on the bullpen
 		if(level.hasSelected()) {
 			
+			//compare this.hex to level.selectedHexomino.get()
+			
+			if(this.hex.equals(this.level.selectedHexomino.get())){
+				System.out.println("THIS HEXOMINO IS ALREADY SELECTED");
+				return;
+			}
+			
 			int x, y;
 			if(level.getBoard().hasHex(level.selectedHexomino.get())) {
 				x = level.getBoard().getHexominoLocation(level.selectedHexomino.get()).x;

@@ -69,6 +69,7 @@ public class LevelStartController implements ActionListener{
     	}
 		
 		this.game.initializeMainView(this.levelSelectView, lvlTypeInfoView);
+		this.game.getBullpenView().redrawBullpenView();
 	}
 	
 }
