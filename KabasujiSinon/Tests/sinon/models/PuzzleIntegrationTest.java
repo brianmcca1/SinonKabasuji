@@ -60,6 +60,7 @@ public class PuzzleIntegrationTest {
         assertTrue(exampleLevel.getStars() == 2);
         createAndDoMove(5);
         assertTrue(exampleLevel.getStars() == 3);
+        assertTrue(exampleLevel.hasWon());
     }
 
     private void createAndDoMove(int i) {
@@ -76,6 +77,8 @@ public class PuzzleIntegrationTest {
         assertTrue(
                 board.getHexominoLocation(hexToMove).equals(new Point(i, 0)));
         assertTrue(exampleLevel.getMovesLeft() == 7 - i);
+        assertTrue(exampleLevel.getBoard().getTile(new Point(i, 3))
+                .getHexomino().get().equals(hexToMove));
     }
 
 }
