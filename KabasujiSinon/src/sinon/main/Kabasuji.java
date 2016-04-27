@@ -142,8 +142,8 @@ public abstract class Kabasuji extends JFrame {
 	    assert tileViews.size() == 144;
 	
 	    for (int i = 0; i < tileViews.size(); i++) {
-	        tileViews.get(i).addMouseListener(new BuilderTileController(this.mainView,
-	                tileViews.get(i), this.currentLevel));
+	        tileViews.get(i).addMouseListener(new BuilderTileController(this.currentLevel,
+	                tileViews.get(i), this.mainView));
 	    }
 	}
 }
