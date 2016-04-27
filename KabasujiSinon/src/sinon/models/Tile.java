@@ -24,8 +24,13 @@ public class Tile {
 		if (this.playable == false) {
 			return false;
 		}
-		if (this.hex.isPresent() & (this.getHexomino().get().getID() != hex.getID())) {
-			return false;
+		// TODO: clean this up
+		if (this.hex.isPresent()) {
+			if ((this.getHexomino().get().getID() != hex.getID())) {
+				return false;
+			} else {
+				return true;
+			}
 		} else {
 			return true;
 		}
