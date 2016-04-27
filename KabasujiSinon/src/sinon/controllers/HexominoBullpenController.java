@@ -53,7 +53,7 @@ public class HexominoBullpenController implements MouseListener {
             }
 
             int x, y;
-            if (level.getBoard().containsHexID(level.getSelectedHexomino().get().getID())) {
+            if (level.getBoard().hasHex(level.getSelectedHexomino().get())) {
                 x = level.getBoard().getHexominoLocation(
                         level.getSelectedHexomino().get()).x;
                 y = level.getBoard().getHexominoLocation(

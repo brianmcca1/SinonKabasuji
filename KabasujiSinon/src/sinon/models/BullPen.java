@@ -116,10 +116,7 @@ public class BullPen {
     // TODO write test case
     
 	public boolean hasHex(Hexomino hex) {
-		for (Hexomino h: this.getPieces()){
-			if (h.equals(hex)) return true;
-		}
-		return false;
+		return this.containsHexID(hex.id);
 	}
 
 }
