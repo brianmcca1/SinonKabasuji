@@ -43,7 +43,7 @@ public class Builder extends Kabasuji {
 	
 	/** Registers the BuilderTileControllers to each TileView in the Builder's BoardView. */
 	public void registerBoardViewControllers(){
-		ArrayList<TileView> tileViews = (ArrayList<TileView>)this.boardView.getTileViews();
+		ArrayList<TileView> tileViews = (ArrayList<TileView>)this.getMainView().getBoardView().getTileViews();
 		
 		for(int i = 0; i < tileViews.size(); i++){
 			tileViews.get(i).addMouseListener(new BuilderTileController(this, tileViews.get(i), this.currentLevel));

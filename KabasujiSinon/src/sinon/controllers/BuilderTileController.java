@@ -39,7 +39,7 @@ public class BuilderTileController implements MouseListener {
             tileView.getTile().setPlayable(!tileView.getTile().isPlayable());
             System.out.println(
                     "PLAYABLE AFTER: " + tileView.getTile().isPlayable());
-            builder.boardView.redrawTiles();
+            builder.getMainView().getBoardView().redrawTiles();
 
         } else {
             // else if a hexomino had been selected, then add that to the board
@@ -62,8 +62,8 @@ public class BuilderTileController implements MouseListener {
             }
 
             // next we need to update the views
-            builder.boardView.redrawTiles();
-            builder.bullpenView.redrawBullpenView();
+            builder.getMainView().getBoardView().redrawTiles();
+            builder.getMainView().getBullpenView().redrawBullpenView();
         }
     }
 
