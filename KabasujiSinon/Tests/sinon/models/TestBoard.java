@@ -7,7 +7,7 @@ import java.awt.Point;
 import org.junit.Test;
 
 public class TestBoard {
-/*
+
 	// TODO: test constructor with BoardData
 	@Test
 	public void testAddHex() {
@@ -30,7 +30,7 @@ public class TestBoard {
 		board.addHexomino(new Point(0, 1), hex);
 		
 	}
-	*/
+	
 	@Test
 	public void testHasHex(){
 		Board b = new Board();
