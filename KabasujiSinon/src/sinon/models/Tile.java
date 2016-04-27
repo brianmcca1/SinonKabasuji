@@ -21,7 +21,7 @@ public class Tile {
 	 * @return True if you can add the hex, False if you cannot
 	 */
 	public boolean canAddHex(Hexomino hex) {
-		if (this.playable == false) {
+		if (!this.playable) {
 			return false;
 		}
 		// TODO: clean this up

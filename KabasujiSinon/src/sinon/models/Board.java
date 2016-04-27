@@ -183,7 +183,7 @@ public class Board {
 	 * @return True if the location is in bounds
 	 */
 	private boolean isInBounds(int row, int column) {
-		if (row > HEIGHT_BY_ZERO || row > WIDTH_BY_ZERO) {
+		if (row > HEIGHT_BY_ZERO || column > WIDTH_BY_ZERO) {
 			return false;
 		} else if (row < 0 || column < 0) {
 			return false;
