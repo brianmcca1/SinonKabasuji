@@ -1,1 +1,0 @@
-package sinon.main;

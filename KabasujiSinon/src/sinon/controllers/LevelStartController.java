@@ -60,7 +60,8 @@ public class LevelStartController implements ActionListener{
 				lvlTypeInfoView = new PuzzleInfoView(this.game.getLevel().getLevelData().getLevelProperty().getPropertyValue()); 
 				break;
 			case LIGHTNING:
-				lvlTypeInfoView = new LightningInfoView(false, (LightningLevel) game.getLevel());
+				lvlTypeInfoView = new LightningInfoView(this.game.getLevel().getLevelData().getLevelProperty().getPropertyValue()); 
+				//lvlTypeInfoView = new LightningInfoView(false, (LightningLevel) game.getLevel()); FIXME this threw a cast exception
 				break;
 			case RELEASE:
 				lvlTypeInfoView = new ReleaseInfoView();

@@ -33,6 +33,20 @@ public class LightningInfoView extends LevelTypeInfoView {
         this.add(infoLabel);
         this.add(timeLeftField);
     }
+    
+    public LightningInfoView(int time) {
+        setLayout(new GridLayout(1, 1));
+        this.infoLabel = new JLabel("Time:");
+        this.timeLeftField = new JTextField();
+
+        this.timeLeftField.setEditable(false);
+        this.timeLeftField.setText(Integer.toString(time));
+        
+        this.add(infoLabel);
+        this.add(timeLeftField);
+    }
+    
+    
 	public int getValue(){
 		if(this.timeLeftField.getText().compareTo("") == 0){
 			return 1;

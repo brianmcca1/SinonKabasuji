@@ -31,19 +31,26 @@ public class Game extends Kabasuji {
 
     /** Will pull every level from file and reset it. */
     public void loadAllLevels() {
-        File levelOneFile = new File("level1.dat");
-        Deserializer deserializer = new Deserializer(levelOneFile);
-        LevelData levelOneData = deserializer.deserializeFile();
+        File levelFile = new File("level1.dat");
+        Deserializer deserializer = new Deserializer(levelFile);
+        LevelData levelData = deserializer.deserializeFile();
 
-        Level levelOne = new Level(levelOneData.getLevelType(),
-                new Board(levelOneData.getBoardData()),
-                new BullPen(levelOneData.getBullpenData()));
-        levelOne.setLevelData(levelOneData);
+        Level levelOne = new Level(levelData.getLevelType(), new Board(levelData.getBoardData()), new BullPen(levelData.getBullpenData()));
+        levelOne.setLevelData(levelData);
 
         allLevels[0] = levelOne;
 
-        System.out.println(
-                "GAME HAS LOADED ALL LEVELS INTO INTO ARRAY FROM FILES");
+        
+        levelFile = new File("level2.dat");
+        deserializer = new Deserializer(levelFile);
+        levelData = deserializer.deserializeFile();
+        
+        Level levelTwo = new Level(levelData.getLevelType(), new Board(levelData.getBoardData()), new BullPen(levelData.getBullpenData()));
+        levelTwo.setLevelData(levelData);
+        
+        allLevels[1] = levelTwo;
+        
+        System.out.println("GAME HAS LOADED ALL LEVELS INTO INTO ARRAY FROM FILES");
     }
 
     /**
