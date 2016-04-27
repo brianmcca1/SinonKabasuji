@@ -63,7 +63,7 @@ public class PuzzleIntegrationTest {
                 .equals(hexToMove));
         assertTrue(
                 board.getHexominoLocation(hexToMove).equals(new Point(0, 0)));
-        assertTrue(exampleLevel.getMoves() == 1);
+        assertTrue(exampleLevel.getMovesLeft() == 7);
 
     }
 
