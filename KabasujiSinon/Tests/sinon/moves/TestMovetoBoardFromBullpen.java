@@ -1,3 +1,4 @@
+package sinon.moves;
 import static org.junit.Assert.*;
 
 import java.awt.List;
@@ -16,7 +17,7 @@ import sinon.models.NumberSetFactory;
 import sinon.models.data.LevelType;
 import sinon.moves.MoveToBoardFromBullpen;
 
-public class MoveToBoardFromBullpenTest {
+public class TestMovetoBoardFromBullpen {
 
 	@Test
 	public void test() {

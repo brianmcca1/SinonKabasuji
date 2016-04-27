@@ -9,6 +9,7 @@ import sinon.main.Builder;
 import sinon.models.Hexomino;
 import sinon.models.Level;
 import sinon.moves.MoveToBoardFromBullpen;
+import sinon.views.HexominoBullpenView;
 import sinon.views.MainView;
 import sinon.views.TileView;
 
@@ -61,7 +62,6 @@ public class BuilderTileController implements MouseListener{
 			//next we need to update the views 
 			builder.boardView.redrawTiles();
 			builder.bullpenView.redrawBullpenView();
-			
 		}
 	}
 		

@@ -60,21 +60,19 @@ public class BullpenView extends JPanel {
 
     /** Called by the HexominoBankController to repaint this bullpen. */
     public void redrawBullpenView() {
-        this.repaint();
+    	
+    	this.contentPanel.removeAll();
+    	
+    	for(Hexomino hex : kabasuji.getLevel().getBullpen().getPieces()){
+    		HexominoBullpenView hexBPView = new HexominoBullpenView(hex);
+            hexBPView.addMouseListener(new HexominoBullpenController(hexBPView, this.kabasuji.getLevel(), this));
+    		this.contentPanel.add(hexBPView);
+    	}
+        
+    	this.repaint();
         this.revalidate();
         this.contentPanel.repaint();
         this.contentPanel.revalidate();
-    }
-
-    public void addHexominoBullpenView(HexominoBullpenView hexBullpenView) {
-        // have to create a copy so that we can register a different controller
-        // to this HexominBullpenView
-        HexominoBullpenView hexBPView = new HexominoBullpenView(hexBullpenView.getHexomino());
-        // FIXME no controllers in the views.
-        hexBPView.addMouseListener(new HexominoBullpenController(hexBPView, this.kabasuji.getLevel(), this));
-        this.hexominoViews.add(hexBPView);
-        this.contentPanel.add(hexBPView);
-        this.redrawBullpenView();
     }
 
     /**

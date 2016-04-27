@@ -49,10 +49,14 @@ public class HexominoBullpenController implements MouseListener{
 		if(level.hasSelected()) {
 			
 			int x, y;
-        	x = level.getBoard().getHexominoLocation(level.selectedHexomino.get()).x;
-        	y = level.getBoard().getHexominoLocation(level.selectedHexomino.get()).y;
-        	MoveToBullpenFromBoard move = new MoveToBullpenFromBoard(level, x, y);
-        	move.doMove();
+			if(level.getBoard().hasHex(level.selectedHexomino.get())) {
+				x = level.getBoard().getHexominoLocation(level.selectedHexomino.get()).x;
+        		y = level.getBoard().getHexominoLocation(level.selectedHexomino.get()).y;
+        		MoveToBullpenFromBoard move = new MoveToBullpenFromBoard(level, x, y);
+        		move.doMove();
+			} else {
+				level.getBullpen().addHexomino(level.selectedHexomino.get());
+			}
         	
         	// For when we have the stack for undo
         	//level.push(move);

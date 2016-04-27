@@ -40,7 +40,7 @@ public class HexominoBankController implements MouseListener {
         }
         
         //FIXME we might need to just refresh the views and not actually doing the adding here.
-        this.builder.getMainView().getBullpenView().addHexominoBullpenView(hexBullpenView);
+        this.builder.getMainView().getBullpenView().redrawBullpenView();
 
         System.out.println(this.builder.getLevel().getBullpen().getPieces().toString());
     }
