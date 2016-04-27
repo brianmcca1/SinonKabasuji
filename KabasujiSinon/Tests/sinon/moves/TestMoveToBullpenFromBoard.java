@@ -27,7 +27,6 @@ public class TestMoveToBullpenFromBoard {
 	MoveToBullpenFromBoard move7;
 
 	public void setUp() {
-		NumberSetFactory nsf = new NumberSetFactory();
 		Hexomino hex1 = new Hexomino(NumberSetFactory.getByNumbers(0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0));
 		// hex1.flipVertically();
 		Hexomino hex2 = new Hexomino(NumberSetFactory.getByNumbers(0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0));
