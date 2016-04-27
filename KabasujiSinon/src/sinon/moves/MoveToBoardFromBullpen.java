@@ -4,6 +4,7 @@ import java.awt.Point;
 
 import sinon.models.Hexomino;
 import sinon.models.Level;
+import sinon.models.LightningLevel;
 import sinon.models.PuzzleLevel;
 
 /**
@@ -42,12 +43,13 @@ public class MoveToBoardFromBullpen extends BoardMove {
         if (!this.valid()) {
             return false;
         }
+        
+        Hexomino hex = level.selectedHexomino.get();
 
         if (level instanceof PuzzleLevel) {
             ((PuzzleLevel) level).incrementMoves();
-        }
-
-        Hexomino hex = level.selectedHexomino.get();
+        } 
+        
         level.getBullpen().removeHexomino(hex);
         level.getBoard().addHexomino(new Point(destAnchorRow, destAnchorColumn), hex);
         return true;

@@ -43,7 +43,7 @@ public class TileView extends JPanel {
     }
     
     public void setColor(Color c){
-    	this.setBackground(Color.blue);
+    	this.setBackground(c);
     }
     
 }

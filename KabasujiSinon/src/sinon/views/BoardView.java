@@ -9,6 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import sinon.main.Kabasuji;
 import sinon.models.Board;
+import sinon.models.Tile;
 
 public class BoardView extends JPanel {
 	
@@ -57,6 +58,10 @@ public class BoardView extends JPanel {
     	for(TileView tv: this.tileViews) {
     		if(board.getTile(new Point(tv.row, tv.column)).hasHex()) {
     			tv.setColor(Color.blue);
+    		} else if(board.getTile(new Point(tv.row, tv.column)).isPlayable()){
+    			tv.setColor(Color.white);
+    		} else {
+    			tv.setColor(Color.black);
     		}
     	}
     }

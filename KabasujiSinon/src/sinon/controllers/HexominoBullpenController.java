@@ -78,6 +78,8 @@ public class HexominoBullpenController implements MouseListener{
 			System.out.println("NEWLY SELECTED HEXOMINO: " + level.selectedHexomino.toString());
 		}
 		
+		bpview.redrawBullpenView();
+		//need to redraw tiles as well
 	}
 
 	@Override

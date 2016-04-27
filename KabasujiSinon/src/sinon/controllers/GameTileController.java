@@ -56,22 +56,22 @@ public class GameTileController implements MouseListener, MouseMotionListener {
     			}
         	} 
         	
-//        	else if(level.getBoard().containsHexID(level.selectedHexomino.get().getID())) {
-//        		//then move from board to board
-//        		int x, y;
-//            	x = level.getBoard().getHexominoLocation(level.selectedHexomino.get()).x;
-//            	y = level.getBoard().getHexominoLocation(level.selectedHexomino.get()).y;
-//            	MoveInBoard move = new MoveInBoard(level, x, y, view.getRow(), view.getColumn());
-//            	
-//            	if(move.doMove()) {
-//            		System.out.println("The move was successfully completed!");
-//            		level.selectedHexomino = Optional.empty();
-//            	} else {
-//            		System.out.println("The move couldn't be completed!");
-//            	}
+        	else if(level.getBoard().containsHexID(level.selectedHexomino.get().getID())) {
+        		//then move from board to board
+        		int x, y;
+            	x = level.getBoard().getHexominoLocation(level.selectedHexomino.get()).x;
+            	y = level.getBoard().getHexominoLocation(level.selectedHexomino.get()).y;
+            	MoveInBoard move = new MoveInBoard(level, x, y, view.getRow(), view.getColumn());
+            	
+            	if(move.doMove()) {
+            		System.out.println("The move was successfully completed!");
+            		level.selectedHexomino = null;
+            	} else {
+            		System.out.println("The move couldn't be completed!");
+            	}
 
         	} 
-        
+        }
        	else {
         	if(view.getTile().hasHex()){
         		level.select(view.getTile().getHexomino().get());
