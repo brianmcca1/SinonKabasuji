@@ -4,6 +4,13 @@ import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+/**
+ * The information related to each level type
+ * 
+ * For example, the time left in a lightning level
+ * @author Brian
+ *
+ */
 public class LevelTypeInfoView extends JPanel{
 
 	public LevelTypeInfoView(){
