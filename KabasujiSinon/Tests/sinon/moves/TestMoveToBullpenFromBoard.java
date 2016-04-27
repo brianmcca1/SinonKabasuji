@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import sinon.models.Board;
@@ -26,9 +27,10 @@ public class TestMoveToBullpenFromBoard {
 	MoveToBullpenFromBoard move6;
 	MoveToBullpenFromBoard move7;
 
+	@Before
 	public void setUp() {
 		Hexomino hex1 = new Hexomino(NumberSetFactory.getByNumbers(0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0));
-		// hex1.flipVertically();
+
 		Hexomino hex2 = new Hexomino(NumberSetFactory.getByNumbers(0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0));
 		// hex2.flipHorizontally();
 
@@ -37,10 +39,12 @@ public class TestMoveToBullpenFromBoard {
 		bullpen.addHexomino(hex1);
 		bullpen.addHexomino(hex2);
 
-		moveToBoard1 = new MoveToBoardFromBullpen(testLevel, 2, 2);
+		testLevel = new Level(LevelType.types.PUZZLE, new Board(), new BullPen(bpList));
+		testLevel.select(hex1);
+		moveToBoard1 = new MoveToBoardFromBullpen(testLevel, 5, 5);
+		testLevel.select(hex2);
 		moveToBoard2 = new MoveToBoardFromBullpen(testLevel, 6, 2);
 
-		testLevel = new Level(LevelType.types.PUZZLE, new Board(), new BullPen(bpList));
 		testLevel.select(hex1);
 		move1 = new MoveToBullpenFromBoard(testLevel, 2, 2);
 		move2 = new MoveToBullpenFromBoard(testLevel, 6, 2);
@@ -55,6 +59,8 @@ public class TestMoveToBullpenFromBoard {
 
 	@Test
 	public void testBasicMove() {
+
+		assertTrue(moveToBoard1.valid());
 		// Place the pieces
 		assertTrue(moveToBoard1.doMove());
 		assertTrue(moveToBoard2.doMove());
