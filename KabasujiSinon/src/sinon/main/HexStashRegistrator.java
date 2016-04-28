@@ -61,7 +61,7 @@ public class HexStashRegistrator {
 							Function<NewControllerParameter, AbstractHexStashController> controllerCreater) {
 						this.level = Objects.requireNonNull(level);
 						this.mainView = Objects.requireNonNull(mainView);
-						this.controller = controllerCreater;
+						this.controller = Objects.requireNonNull(controllerCreater);
 					}
 
 					/**
@@ -76,7 +76,7 @@ public class HexStashRegistrator {
 						NewControllerParameter c = new NewControllerParameter(level, mainView,
 								hex);
 						hex.addMouseListener(controller.apply(c));
-
+						assert hex.getMouseListeners()[0] != null;
 						System.out.println("Registration attempt");
 						System.out.println(hex.getHexomino());
 					}

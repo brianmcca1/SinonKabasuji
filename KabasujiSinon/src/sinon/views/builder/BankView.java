@@ -31,11 +31,9 @@ public class BankView extends InfoPanel implements StashView, Observer {
 		initBankViewScrollPanel();
 		this.setLayout(new GridLayout(1, 1));
 		this.add(scrollPanel);
-		this.validate();
 
 		this.stash = new HexViewStash(new BullPen(
 				HexominoBankData.getHexominos()), contentPanel);
-		populateBankViewWithHexominoes();
 	}
 
 	private void initContentPanel() {
@@ -55,12 +53,9 @@ public class BankView extends InfoPanel implements StashView, Observer {
 		scrollPanel.setViewportView(contentPanel);
 	}
 
-	private void populateBankViewWithHexominoes() {
-		stash.populateViewWithHexominos();
-	}
-
 	@Override
 	public void setRegistrator(HexStashRegistrator hexStashRegistrator) {
+		assert hexStashRegistrator != null;
 		this.stash.setRegistrator(hexStashRegistrator);
 		updated();
 	}
@@ -68,6 +63,12 @@ public class BankView extends InfoPanel implements StashView, Observer {
 	@Override
 	public void updated() {
 		this.stash.update();
+		validate();
+	}
+
+	@Override
+	public JPanel getPanelToRegisterController() {
+		return this.contentPanel;
 	}
 
 }

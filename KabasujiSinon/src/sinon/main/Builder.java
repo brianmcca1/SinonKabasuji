@@ -2,6 +2,7 @@ package sinon.main;
 
 import javax.swing.JPanel;
 
+import sinon.controllers.BullpenController;
 import sinon.models.BullPen;
 import sinon.models.data.HexominoBankData;
 import sinon.views.LevelTypeInfoView;
@@ -51,6 +52,13 @@ public class Builder extends Kabasuji {
 		this.mainView.getBullpenView().setRegistrator(
 				new HexStashRegistrator(getLevel(), getMainView(),
 						HexStashRegistrator.BULLPEN_CONTROLLER));
+
+		this.getMainView()
+		.getBullpenView()
+		.getPanelToRegisterController()
+		.addMouseListener(
+				new BullpenController(this.getLevel().getBullpen(),
+						this.getMainView().getBullpenView(), getLevel()));
 	}
 
 	public BullPen getBullpen() {

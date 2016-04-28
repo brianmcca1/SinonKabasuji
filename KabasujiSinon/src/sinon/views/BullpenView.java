@@ -2,7 +2,6 @@ package sinon.views;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.event.MouseListener;
 import java.util.Objects;
 
 import javax.swing.BoxLayout;
@@ -24,12 +23,11 @@ public class BullpenView extends JPanel implements StashView, Observer {
 	public BullpenView(BullPen bullpen) {
 		initContentPanel();
 		initBullpenViewScrollPanel();
-
 		this.setLayout(new GridLayout(1, 1));
+		this.add(scrollPanel);
+		bullpen.registerObserver(this);
 		this.stash = new HexViewStash(Objects.requireNonNull(bullpen),
 				contentPanel);
-		populateBankViewWithHexominoes();
-		this.add(scrollPanel);
 		this.validate();
 	}
 
@@ -50,43 +48,6 @@ public class BullpenView extends JPanel implements StashView, Observer {
 		contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.X_AXIS));
 	}
 
-	/** Called by the HexominoBankController to repaint this bullpen. */
-	public void redrawBullpenView() {
-		this.stash.update();
-		this.repaint();
-		this.revalidate();
-		this.contentPanel.repaint();
-		this.contentPanel.revalidate();
-	}
-
-	public void addHexominoBullpenView(HexominoBullpenView hexBullpenView) {
-		// have to create a copy so that we can register a different controller
-		// to this HexominBullpenView
-		removeMouseListeners(hexBullpenView);
-		this.stash.add(hexBullpenView);
-		this.contentPanel.add(hexBullpenView);
-		this.redrawBullpenView();
-	}
-
-	/**
-	 * Use this method to remove any MouseListeners from a HexominoPanel.
-	 * 
-	 * @param hexBullpenView
-	 *            HexominoBullpenView to remove MouseListeners from.
-	 */
-	private static void removeMouseListeners(JPanel hexBullpenView) {
-		for (MouseListener m : hexBullpenView.getMouseListeners()) {
-			hexBullpenView.removeMouseListener(m);
-		}
-	}
-
-	private void populateBankViewWithHexominoes() {
-		stash.populateViewWithHexominos();
-		// TODO move these two lines to another method.
-		this.contentPanel.doLayout();
-		this.validate();
-	}
-
 	@Override
 	public void setRegistrator(HexStashRegistrator hexStashRegistrator) {
 		stash.setRegistrator(Objects.requireNonNull(hexStashRegistrator));
@@ -95,7 +56,11 @@ public class BullpenView extends JPanel implements StashView, Observer {
 
 	@Override
 	public void updated() {
-		redrawBullpenView();
+		stash.update();
 	}
 
+	@Override
+	public JPanel getPanelToRegisterController() {
+		return contentPanel;
+	}
 }

@@ -79,8 +79,6 @@ public class GameTileController extends TileController {
 				level.select(this.tileView.getTile().getHexomino().get());
 			}
 		}
-		// next we need to update the views
-		this.mainView.getBullpenView().redrawBullpenView();
 
 	}
 

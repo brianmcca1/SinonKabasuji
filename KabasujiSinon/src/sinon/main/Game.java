@@ -64,6 +64,12 @@ public class Game extends Kabasuji {
 		this.mainView.getBullpenView().setRegistrator(
 				new HexStashRegistrator(getLevel(), getMainView(),
 						HexStashRegistrator.BULLPEN_CONTROLLER));
+		this.getMainView()
+		.getBullpenView()
+		.getPanelToRegisterController()
+		.addMouseListener(
+				new BullpenController(this.getLevel().getBullpen(),
+						this.getMainView().getBullpenView(), getLevel()));
 	}
 
 	/** @return Level object from the specified index in the allLevels array. */

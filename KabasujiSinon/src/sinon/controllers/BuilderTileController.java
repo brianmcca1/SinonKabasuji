@@ -35,7 +35,6 @@ public class BuilderTileController extends TileController {
 			System.out.println("There was some error doing the move.");
 		}
 
-		this.mainView.getBullpenView().redrawBullpenView();
 	}
 
 	@Override

@@ -2,9 +2,9 @@ package sinon.controllers;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Objects;
 
 import sinon.models.BullPen;
-import sinon.models.Hexomino;
 import sinon.models.Level;
 import sinon.views.BullpenView;
 
@@ -13,39 +13,38 @@ import sinon.views.BullpenView;
  */
 public class BullpenController implements MouseListener {
 
-    Level level;
-    BullPen bullpen;
-    BullpenView bullpenView;
+	Level level;
+	BullPen bullpen;
+	BullpenView bullpenView;
 
-    public BullpenController(BullPen k, BullpenView b, Level level) {
-        // TODO better var names
-        this.bullpen = k;
-        this.bullpenView = b;
-    }
+	public BullpenController(BullPen bullpen, BullpenView view, Level level) {
+		this.bullpen = Objects.requireNonNull(bullpen);
+		this.bullpenView = Objects.requireNonNull(view);
+		this.level = Objects.requireNonNull(level);
+	}
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        System.out.println("I AM A BULLPEN AND I JUST GOT CLICKED ON!");
-        if(level.hasSelected()) {
-			bullpenView.redrawBullpenView();
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		System.out.println("I AM A BULLPEN AND I JUST GOT CLICKED ON!");
+		if(level.hasSelected()) {
 			level.deselect();
 			System.out.println("SELECTED HEXOMINO HAS BEEN DESELECTED");
-        }
-    }
+		}
+	}
 
-    @Override
-    public void mousePressed(MouseEvent e) {
-    }
+	@Override
+	public void mousePressed(MouseEvent e) {
+	}
 
-    @Override
-    public void mouseReleased(MouseEvent e) {
-    }
+	@Override
+	public void mouseReleased(MouseEvent e) {
+	}
 
-    @Override
-    public void mouseEntered(MouseEvent e) {
-    }
+	@Override
+	public void mouseEntered(MouseEvent e) {
+	}
 
-    @Override
-    public void mouseExited(MouseEvent e) {
-    }
+	@Override
+	public void mouseExited(MouseEvent e) {
+	}
 }

@@ -3,24 +3,28 @@ package sinon.models;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import sinon.models.data.BullPenData;
 import sinon.models.data.HexominoBankData;
 import sinon.models.data.HexominoCode;
+import sinon.views.Observer;
 
 /**
  * A BullPen is the game entity which stores all Hexominos in the Bullpen.
  * 
  *
  */
-public class BullPen {
+public class BullPen implements Observable {
 
 	/** ArrayList of all the hexominos that will be in this level's bullpen. */
 	List<Hexomino> pieces;
+	Optional<Observer> observer;
 
 	public BullPen(List<Hexomino> pieces) {
 		this.pieces = pieces;
+		this.observer = Optional.empty();
 	}
 
 	public BullPen(BullPenData bullPenData) {
@@ -28,6 +32,7 @@ public class BullPen {
 		for (HexominoCode code : bullPenData.getHexominos()) {
 			pieces.add(new Hexomino(code));
 		}
+		this.observer = Optional.empty();
 	}
 
 	/**
@@ -55,6 +60,7 @@ public class BullPen {
 			throw new IllegalArgumentException("Can't add null to Bullpen");
 		}
 		pieces.add(hex);
+		update();
 	}
 
 	/**
@@ -66,7 +72,9 @@ public class BullPen {
 	 * @return True if this list contained the specified element.
 	 */
 	public boolean removeHexomino(Hexomino hex) {
-		return this.pieces.remove(hex);
+		boolean b = this.pieces.remove(hex);
+		update();
+		return b;
 	}
 
 	/**
@@ -75,7 +83,7 @@ public class BullPen {
 	 */
 	public void addRandomHexomino() {
 		Hexomino hex; // TODO get from bank data.
-
+		update();
 	}
 
 	/**
@@ -117,6 +125,19 @@ public class BullPen {
 
 	public boolean hasHex(Hexomino hex) {
 		return this.containsHexID(hex.id);
+	}
+
+	@Override
+	public void registerObserver(Observer observer) {
+		this.observer = Optional.of(observer);
+	}
+
+	@Override
+	public void update() {
+		if (this.observer.isPresent()) {
+			this.observer.get().updated();
+		}
+
 	}
 
 }
