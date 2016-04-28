@@ -16,7 +16,8 @@ public class FlipVerticalMove extends BullPenMove {
 
 	@Override
 	public boolean doMove() {
-		if (hex == null) {
+		if (hex == null) { // TODO move to super class this logic.
+			// https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
 			throw new NullPointerException();
 		}
 
