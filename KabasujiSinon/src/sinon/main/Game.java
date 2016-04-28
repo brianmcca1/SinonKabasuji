@@ -1,6 +1,5 @@
 package sinon.main;
 
-import sinon.controllers.BullpenController;
 import sinon.controllers.ExitGameController;
 import sinon.controllers.FileHandler;
 import sinon.controllers.HexStashRegistrator;
@@ -53,25 +52,18 @@ public class Game extends Kabasuji {
 		this.startNextPanel(levelSelectView, this.getMainView());
 	}
 
-	public void initializeMainControllers() {
+	public void initializeControllers() {
 		GameInfoView gameInfoView = (GameInfoView) this.mainView.getInfoPanel();
 		gameInfoView.getExitButton().addActionListener(
 				new ExitGameController(this));
-		mainView.getBullpenView().addMouseListener(
-				new BullpenController(this.currentLevel.getBullpen(), mainView
-						.getBullpenView(), this.currentLevel));
 		this.tileRegistrator = new TileRegistrator(getLevel(), mainView);
 		this.tileRegistrator.setToGameType();
 		registerBoardViewControllers();
 		this.mainView.getBullpenView().setRegistrator(
 				new HexStashRegistrator(getLevel(), getMainView(),
 						false));
-		this.getMainView()
-		.getBullpenView()
-		.getPanelToRegisterController()
-		.addMouseListener(
-				new BullpenController(this.getLevel().getBullpen(),
-						this.getMainView().getBullpenView(), getLevel()));
+
+		registerBullpenController();
 	}
 
 	/** @return Level object from the specified index in the allLevels array. */
