@@ -12,23 +12,24 @@ import sinon.models.Level;
  */
 public class MoveInBoard extends BoardMove {
 
-    /**
-     * These are the source anchor positions on the board.
-     */
+    /** The source anchor row from which the move was made. */
     int srcAnchorRow;
+    
+    /** The source anchor column from which the move was made. */
     int srcAnchorColumn;
 
-    /**
-     * These are the destination anchor positions on the board.
-     */
+    /** The destination anchor row to which the hexomino is being moved. */
     int destAnchorRow;
+    
+    /** The destination anchor column to which the hexomino is being moved. */
     int destAnchorColumn;
 
     public MoveInBoard(Level level, int srcAnchorRow, int srcAnchorColumn,
             int destAnchorRow, int destAnchorColumn) {
-
+    	
         this.level = level;
-
+        
+        //if the level has a hexomino that's selected, then set the hexomino field. 
         if (level.hasSelected()) {
             this.hex = level.getSelectedHexomino().get();
         }
@@ -42,11 +43,15 @@ public class MoveInBoard extends BoardMove {
 
     @Override
     public boolean doMove() {
+    	//if the move was not valid, return immediately
         if (!valid())
             return false;
+        
+        //remove the hexomino from the board.
         level.getBoard().removeHexomino(hex);
-        level.getBoard().addHexomino(new Point(destAnchorRow, destAnchorColumn),
-                hex);
+        
+        //add the same hexomino at the new position.
+        level.getBoard().addHexomino(new Point(destAnchorRow, destAnchorColumn), hex);
         level.deselect();
         return true;
     }
@@ -61,14 +66,18 @@ public class MoveInBoard extends BoardMove {
 
     @Override
     public boolean valid() {
-    	//FIXME Doesn't check if the tile is on the board in the location specified
+    	//if the level doesn't have something selected,  then move is invalid.
         if (!level.hasSelected())
             return false;
-        if (!level.getBoard().canAddHexomino(
-                new Point(destAnchorRow, destAnchorColumn), hex))
+        
+        //check if we can add the hexomino at the new position.
+        if (!level.getBoard().canAddHexomino(new Point(destAnchorRow, destAnchorColumn), hex))
             return false;
+        
+        //if the board doesn't actually have the hexomino then return false.
         if (!level.getBoard().hasHex(hex))
             return false;
+        
         return true;
     }
 

@@ -6,6 +6,7 @@ import sinon.models.Hexomino;
 /**
  * Class that encapsulates a move from the bank to the bullpen
  * in the builder.
+ * 
  * @author kartik
  *
  */

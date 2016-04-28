@@ -308,6 +308,18 @@ public class Board implements Observable {
 
 		return false;
 	}
+	
+	public void setUnplayableRectangle(Point topLeft, Point bottomRight) {
+		
+		for(int i = topLeft.x; i < bottomRight.x; i++) {
+			
+			for(int j = topLeft.y; j < bottomRight.y; j++) {
+				this.getTile(i, j).setPlayable(false);
+			}
+			
+		}
+		
+	}
 
 	@Override
 	public void registerObserver(Observer observer) {

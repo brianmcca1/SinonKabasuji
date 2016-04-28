@@ -11,8 +11,10 @@ import sinon.models.Level;
  */
 public abstract class BoardMove {
 	
+	/** This is the level in which the move is being made. */
 	Level level; 
 	
+	/** The hexomino that is being moved.  */
 	Hexomino hex;
 	
 	public abstract boolean doMove();
