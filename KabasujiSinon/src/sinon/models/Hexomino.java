@@ -3,10 +3,12 @@ package sinon.models;
 import java.awt.Point;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
 import sinon.models.data.HexominoCode;
+import sinon.views.Observer;
 
 /**
  * A Hexomino is an entity which is used for standard Kabasuji play.
@@ -17,15 +19,14 @@ import sinon.models.data.HexominoCode;
  * @author Brian
  * @author Josh Desmond
  */
-public class Hexomino {
+public class Hexomino implements Observable {
 
 	/** @see HexominoNumberSet */
 	HexominoNumberSet hexominoNumberSet;
-
+	/** List of observers to notify after changes. */
+	List<Observer> observers;
 	/** Unique number to ID hexominoes in the board and the bullpen. **/
 	UUID id;
-
-	private static final int invalidID = -5;
 
 	/**
 	 * Is a convenience constructor for quickly building a Hexomino.
@@ -35,11 +36,13 @@ public class Hexomino {
 	 * @param a1
 	 *            the y component of the first coordinate point
 	 */
+	protected Hexomino(int a, int a1, int b, int b1, int c, int c1, int d,
+			int d1, int e, int e1, int f, int f1) {
 
-	protected Hexomino(int a, int a1, int b, int b1, int c, int c1, int d, int d1, int e, int e1, int f, int f1) {
-
-		this.hexominoNumberSet = NumberSetFactory.getByNumbers(a, a1, b, b1, c, c1, d, d1, e, e1, f, f1);
+		this.hexominoNumberSet = NumberSetFactory.getByNumbers(a, a1, b, b1, c,
+				c1, d, d1, e, e1, f, f1);
 		this.id = UUID.randomUUID();
+		this.observers = new LinkedList<Observer>();
 	}
 
 	public Hexomino(Set<Point> points) {
@@ -50,6 +53,7 @@ public class Hexomino {
 		List<Point> listOfPoints = new LinkedList<Point>(points);
 		this.hexominoNumberSet = NumberSetFactory.getByList(listOfPoints);
 		this.id = UUID.randomUUID();
+		this.observers = new LinkedList<Observer>();
 	}
 
 	/**
@@ -58,8 +62,10 @@ public class Hexomino {
 	 * @param hexominoNumberSet
 	 */
 	public Hexomino(HexominoNumberSet hexominoNumberSet) {
+		Objects.requireNonNull(hexominoNumberSet);
 		this.hexominoNumberSet = hexominoNumberSet;
 		this.id = UUID.randomUUID();
+		this.observers = new LinkedList<Observer>();
 	}
 
 	/**
@@ -69,8 +75,10 @@ public class Hexomino {
 	 *            The immutable data object representing a HexominoNumberSet.
 	 */
 	public Hexomino(HexominoCode code) {
+		Objects.requireNonNull(code);
 		this.hexominoNumberSet = NumberSetFactory.getByCode(code);
 		this.id = UUID.randomUUID();
+		this.observers = new LinkedList<Observer>();
 	}
 
 	/**
@@ -96,6 +104,7 @@ public class Hexomino {
 	 */
 	public void flipHorizontally() {
 		hexominoNumberSet.flipHorizontally();
+		update();
 	}
 
 	/**
@@ -103,6 +112,7 @@ public class Hexomino {
 	 */
 	public void flipVertically() {
 		hexominoNumberSet.flipVertically();
+		update();
 	}
 
 	/**
@@ -110,6 +120,7 @@ public class Hexomino {
 	 */
 	public void rotateC() {
 		hexominoNumberSet.rotateC();
+		update();
 	}
 
 	/**
@@ -117,6 +128,7 @@ public class Hexomino {
 	 */
 	public void rotateCC() {
 		hexominoNumberSet.rotateCC();
+		update();
 	}
 
 	/**
@@ -136,6 +148,10 @@ public class Hexomino {
 	 */
 	public List<Point> getNormalizedPoints() {
 		return this.hexominoNumberSet.getNormalizedPoints();
+	}
+
+	public UUID getID() {
+		return this.id;
 	}
 
 	/*
@@ -160,24 +176,6 @@ public class Hexomino {
 		return true;
 	}
 
-	public UUID getID() {
-		return this.id;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#hashCode()
-	 */
-	// @Override
-	// public int hashCode() {
-	// final int prime = 31;
-	// int result = 1;
-	// result = prime * result + ((hexominoNumberSet == null) ? 0
-	// : hexominoNumberSet.hashCode());
-	// return result;
-	// }
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -186,5 +184,17 @@ public class Hexomino {
 	@Override
 	public String toString() {
 		return "Hex:" + hexominoNumberSet;
+	}
+
+	@Override
+	public void registerObserver(Observer observer) {
+		this.observers.add(observer);
+	}
+
+	@Override
+	public void update() {
+		for (Observer o : observers) {
+			o.updated();
+		}
 	}
 }
