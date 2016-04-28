@@ -27,10 +27,7 @@ public class MainView extends JPanel {
 	 */
 	private LevelPanel levelPanel;
 	/** Contains GridView and the Optional ReleaseButtonView. */
-	private JPanel gameAreaPanel; // FIXME If this is only asthetic, get rid of
-	// it.
-	/** Only exists in Builder Mode and Release game play. */
-	// Optional<ReleaseInfoView> releaseButtonView;
+	private JPanel gameAreaPanel;
 	private LevelTypeInfoView levelTypeInfoView;
 	/** BankView/GameInfoView. */
 	InfoPanel infoPanel;

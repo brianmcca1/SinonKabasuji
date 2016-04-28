@@ -8,6 +8,8 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 
+import sinon.models.ReleaseNumber;
+
 /**
  * This class is the panel that contains the eighteen release buttons.
  * 
@@ -25,6 +27,13 @@ public class ReleaseInfoView extends LevelTypeInfoView {
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setLayout(new GridLayout(6, 3, 2, 2));
 		addButtons();
+	}
+
+	public ReleaseInfoView(ArrayList<ReleaseNumber> releaseNumbers) {
+		setBorder(new LineBorder(new Color(0, 0, 0)));
+		setLayout(new GridLayout(6, 3, 2, 2));
+		addButtons();
+		// TODO: implement this
 	}
 
 	/**
@@ -47,5 +56,10 @@ public class ReleaseInfoView extends LevelTypeInfoView {
 				this.buttons.add(nextButton);
 			}
 		}
+	}
+
+	// TODO: complete this
+	public ArrayList<ReleaseNumber> getReleaseSets() {
+		return null;
 	}
 }

@@ -40,54 +40,9 @@ public class FileHandler {
 	 * level.
 	 */
 	public static void determineCurrentGameLevelFile(int currentLevelNumber) {
-		// TODO https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
-		switch (currentLevelNumber) {
-		case 0:
-			setCurrentFile(new File("level1.dat"));
-			break;
-		case 1:
-			setCurrentFile(new File("level2.dat"));
-			break;
-		case 2:
-			setCurrentFile(new File("level3.dat"));
-			break;
-		case 3:
-			setCurrentFile(new File("level4.dat"));
-			break;
-		case 4:
-			setCurrentFile(new File("level5.dat"));
-			break;
-		case 5:
-			setCurrentFile(new File("level6.dat"));
-			break;
-		case 6:
-			setCurrentFile(new File("level7.dat"));
-			break;
-		case 7:
-			setCurrentFile(new File("level8.dat"));
-			break;
-		case 8:
-			setCurrentFile(new File("level9.dat"));
-			break;
-		case 9:
-			setCurrentFile(new File("level10.dat"));
-			break;
-		case 10:
-			setCurrentFile(new File("level11.dat"));
-			break;
-		case 11:
-			setCurrentFile(new File("level12.dat"));
-			break;
-		case 12:
-			setCurrentFile(new File("level13.dat"));
-			break;
-		case 13:
-			setCurrentFile(new File("level14.dat"));
-			break;
-		case 14:
-			setCurrentFile(new File("level15.dat"));
-			break;
-		}
+		String levelNumString = Integer.toString(currentLevelNumber+1);
+		String fileString = "level" + levelNumString + ".dat";
+		setCurrentFile(new File(fileString));
 	}
 
 	public static Level[] loadAllLevels() {

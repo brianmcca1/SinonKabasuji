@@ -23,13 +23,4 @@ public class InfoPanel extends JPanel {
 		this.setBackground(Color.green);
 	}
 
-	// No need for this. If you're in the game just cast the InfoPanel to be a
-	// GameInfoView, because you created the GameInfoView and know it's there.
-	/*
-	 * public JButton getExitButton() { return null; }
-	 * 
-	 * public JButton getRestartButton() { return null; }
-	 * 
-	 * public JButton getNextLevelButton() { return null; }
-	 */
 }

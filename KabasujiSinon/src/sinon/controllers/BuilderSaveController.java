@@ -2,10 +2,13 @@ package sinon.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import sinon.main.Builder;
+import sinon.models.ReleaseNumber;
 import sinon.models.data.LevelProperty;
 import sinon.models.data.LevelType.Types;
+import sinon.views.ReleaseInfoView;
 
 public class BuilderSaveController implements ActionListener {
 
@@ -23,19 +26,25 @@ public class BuilderSaveController implements ActionListener {
 
 			// GET THIS LEVEL'S propertyValue
 			Types thisLevelsType = this.builder.getLevel().getLevelData().getLevelType();
-			int propertyValue = this.builder.getMainView().getLevelTypeInfoView().getValue();
+
 			LevelProperty levelProp = null;
 
 			switch (thisLevelsType) {
 			case PUZZLE:
-				levelProp = new LevelProperty(propertyValue, Types.PUZZLE);
+				int propertyValuePuzzle = this.builder.getMainView().getLevelTypeInfoView().getValue();
+				levelProp = new LevelProperty(propertyValuePuzzle, Types.PUZZLE);
 				this.builder.getLevel().getLevelData().setLevelProperty(levelProp);
 				break;
 			case LIGHTNING:
-				levelProp = new LevelProperty(propertyValue, Types.LIGHTNING);
+				int propertyValueLightning = this.builder.getMainView().getLevelTypeInfoView().getValue();
+				levelProp = new LevelProperty(propertyValueLightning, Types.LIGHTNING);
 				this.builder.getLevel().getLevelData().setLevelProperty(levelProp);
 				break;
 			case RELEASE:
+				// TODO: Is there a more elegant way to do this?
+				ArrayList<ReleaseNumber> propertyValueRelease = ((ReleaseInfoView) this.builder.getMainView()
+						.getLevelTypeInfoView()).getReleaseSets();
+				levelProp = new LevelProperty(propertyValueRelease, Types.RELEASE);
 				break;
 			}
 
