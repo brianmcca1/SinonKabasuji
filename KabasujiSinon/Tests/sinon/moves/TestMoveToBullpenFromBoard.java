@@ -1,6 +1,7 @@
 package sinon.moves;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -71,6 +72,13 @@ public class TestMoveToBullpenFromBoard {
 		assertTrue(move1.doMove());
 		// Bullpen should have 1 piece
 		assertEquals(testLevel.getBullpen().hexominoCount(), 1);
+		// Put it back
+		assertTrue(move1.undo());
+		// Bullpen should be empty again
+		assertEquals(testLevel.getBullpen().hexominoCount(), 0);
+		// Trying to do move 2 should return false, since it's invalid (no hex
+		// selected)
+		assertFalse(move2.doMove());
 
 	}
 }
