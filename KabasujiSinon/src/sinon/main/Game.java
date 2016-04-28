@@ -3,6 +3,8 @@ package sinon.main;
 import sinon.controllers.BullpenController;
 import sinon.controllers.ExitGameController;
 import sinon.controllers.FileHandler;
+import sinon.controllers.HexStashRegistrator;
+import sinon.controllers.TileRegistrator;
 import sinon.models.Level;
 import sinon.views.LevelTypeInfoView;
 import sinon.views.MainView;
@@ -63,7 +65,7 @@ public class Game extends Kabasuji {
 		registerBoardViewControllers();
 		this.mainView.getBullpenView().setRegistrator(
 				new HexStashRegistrator(getLevel(), getMainView(),
-						HexStashRegistrator.BULLPEN_CONTROLLER));
+						false));
 		this.getMainView()
 		.getBullpenView()
 		.getPanelToRegisterController()

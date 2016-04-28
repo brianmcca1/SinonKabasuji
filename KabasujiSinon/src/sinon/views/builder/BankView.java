@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
-import sinon.main.HexStashRegistrator;
+import sinon.controllers.HexStashRegistrator;
 import sinon.models.BullPen;
 import sinon.models.data.HexominoBankData;
 import sinon.views.HexViewStash;

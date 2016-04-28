@@ -3,6 +3,8 @@ package sinon.main;
 import javax.swing.JPanel;
 
 import sinon.controllers.BullpenController;
+import sinon.controllers.HexStashRegistrator;
+import sinon.controllers.TileRegistrator;
 import sinon.models.BullPen;
 import sinon.models.data.HexominoBankData;
 import sinon.views.LevelTypeInfoView;
@@ -33,7 +35,6 @@ public class Builder extends Kabasuji {
 			this.revalidate();
 		}
 
-
 		MainView mv = new MainView(this.getLevel(), new BankView(),
 				lvlTypeInfoView);
 		this.setMainView(mv);
@@ -43,15 +44,12 @@ public class Builder extends Kabasuji {
 		this.tileRegistrator.setToBuilderType();
 		registerBoardViewControllers();
 
-
 		((BankView) this.mainView.getInfoPanel())
 		.setRegistrator(new HexStashRegistrator(getLevel(),
-				getMainView(), HexStashRegistrator.BANK_CONTROLLER));
-
+				getMainView(), true));
 
 		this.mainView.getBullpenView().setRegistrator(
-				new HexStashRegistrator(getLevel(), getMainView(),
-						HexStashRegistrator.BULLPEN_CONTROLLER));
+				new HexStashRegistrator(getLevel(), getMainView(), false));
 
 		this.getMainView()
 		.getBullpenView()

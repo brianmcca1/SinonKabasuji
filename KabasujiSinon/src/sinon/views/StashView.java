@@ -2,7 +2,7 @@ package sinon.views;
 
 import javax.swing.JPanel;
 
-import sinon.main.HexStashRegistrator;
+import sinon.controllers.HexStashRegistrator;
 
 public interface StashView {
 

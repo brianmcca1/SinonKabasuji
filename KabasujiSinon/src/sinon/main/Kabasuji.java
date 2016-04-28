@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import sinon.controllers.FileHandler;
+import sinon.controllers.TileRegistrator;
 import sinon.models.Level;
 import sinon.views.MainView;
 // import sinon.views.LevelSelectView;

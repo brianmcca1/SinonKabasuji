@@ -1,9 +1,7 @@
-package sinon.main;
+package sinon.controllers;
 
 import java.util.Objects;
 
-import sinon.controllers.BuilderTileController;
-import sinon.controllers.GameTileController;
 import sinon.models.Level;
 import sinon.views.MainView;
 import sinon.views.TileView;

@@ -7,7 +7,7 @@ import java.util.Optional;
 
 import javax.swing.JPanel;
 
-import sinon.main.HexStashRegistrator;
+import sinon.controllers.HexStashRegistrator;
 import sinon.models.BullPen;
 import sinon.models.Hexomino;
 import sinon.views.builder.BankView;
