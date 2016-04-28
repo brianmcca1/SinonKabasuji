@@ -16,7 +16,8 @@ public class FlipHorizontalMove extends BullPenMove {
 	
 	public boolean doMove() {
 		if(hex == null) {
-			throw new NullPointerException();
+			return false;
+			//throw new NullPointerException();
 		}
 		
 		hex.flipHorizontally();
@@ -25,7 +26,8 @@ public class FlipHorizontalMove extends BullPenMove {
 
 	public boolean undoMove() {
 		if(hex == null) {
-			throw new NullPointerException();
+			return false;
+			//throw new NullPointerException();
 		}
 		
 		hex.flipHorizontally();
