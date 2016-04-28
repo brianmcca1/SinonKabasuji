@@ -1,7 +1,6 @@
 package sinon.models.data;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import sinon.models.ReleaseNumber;
 import sinon.models.data.LevelType.Types;
@@ -46,7 +45,7 @@ public class LevelProperty {
 		}
 	}
 
-	public List<ReleaseNumber> getReleaseSet() {
+	public ArrayList<ReleaseNumber> getReleaseSet() {
 		if (this.releaseSet == null) {
 			return this.releaseSet;
 		} else {
