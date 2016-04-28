@@ -7,7 +7,12 @@ import sinon.views.MainView;
 import sinon.views.TileView;
 
 /**
- * Tile controller for builder specific interactions.
+ * Tile Controller for builder interactions. This extends the TileController
+ * superclass because Tile Click events should behave in different ways between
+ * the builder and the game.
+ * 
+ * @author kartik
+ *
  */
 public class BuilderTileController extends TileController {
 
