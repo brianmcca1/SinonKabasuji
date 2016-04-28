@@ -8,140 +8,144 @@ import sinon.views.Observer;
 
 public class Level implements Observable {
 
-    /** Board model for this level. */
-    Board board;
-    /** Bullpen model for this level. */
-    BullPen bullpen;
-    /** The stars currently unlocked on this level, out of 3 */
-    int stars;
-    /** The highest amount of stars unlocked on this level, out of 3 */
-    int starRecord;
-    /**
-     * This is used for Serializing and Deserializing data relevant to the
-     * Level. Contains: this level number. this level type. data regarding
-     * playable tiles for the board. data regarding the hexominos that should be
-     * in the bullpen.
-     */
-    LevelData levelData;
-    /** The Hexomino model that is currently selected. */
-    Optional<Hexomino> selectedHexomino;
-    private Optional<Observer> observer;
+	/** Board model for this level. */
+	Board board;
+	/** Bullpen model for this level. */
+	BullPen bullpen;
+	/** The stars currently unlocked on this level, out of 3 */
+	int stars;
+	/** The highest amount of stars unlocked on this level, out of 3 */
+	int starRecord;
+	/**
+	 * This is used for Serializing and Deserializing data relevant to the
+	 * Level. Contains: this level number. this level type. data regarding
+	 * playable tiles for the board. data regarding the hexominos that should be
+	 * in the bullpen.
+	 */
+	LevelData levelData;
+	/** The Hexomino model that is currently selected. */
+	Optional<Hexomino> selectedHexomino;
+	private Optional<Observer> observer;
 
-    public Level(types t, Board b, BullPen bp) {
-        this.board = b;
-        this.bullpen = bp;
-        this.levelData = new LevelData(t);
-        this.starRecord = 0;
-        observer = Optional.empty();
-        selectedHexomino = Optional.empty();
-    }
+	public Level(types t, Board b, BullPen bp) {
+		this.board = b;
+		this.bullpen = bp;
+		this.levelData = new LevelData(t);
+		this.starRecord = 0;
+		observer = Optional.empty();
+		selectedHexomino = Optional.empty();
+	}
 
-    public Level(LevelData levelData) {
-        this.board = new Board(levelData.getBoardData());
-        this.bullpen = new BullPen(levelData.getBullpenData());
-        this.starRecord = levelData.getStarRecord();
-        this.levelData = levelData;
-        observer = Optional.empty();
-        selectedHexomino = Optional.empty();
-    }
+	public Level(LevelData levelData) {
+		this.board = new Board(levelData.getBoardData());
+		this.bullpen = new BullPen(levelData.getBullpenData());
+		this.starRecord = levelData.getStarRecord();
+		this.levelData = levelData;
+		observer = Optional.empty();
+		selectedHexomino = Optional.empty();
+	}
 
-    /** @return BullPen model of this level. */
-    public BullPen getBullpen() {
-        return this.bullpen;
-    }
+	/** @return BullPen model of this level. */
+	public BullPen getBullpen() {
+		return this.bullpen;
+	}
 
-    /** @return Board model of this level. */
-    public Board getBoard() {
-        return board;
-    }
+	/** @return Board model of this level. */
+	public Board getBoard() {
+		return board;
+	}
 
-    /** @return this level's LevelData. */
-    public LevelData getLevelData() {
-        return this.levelData;
-    }
+	public int getPropertyValue() {
+		return this.levelData.getLevelProperty().getPropertyValue();
+	}
 
-    public void setLevelData(LevelData l) {
-        this.levelData = l;
-    }
+	/** @return this level's LevelData. */
+	public LevelData getLevelData() {
+		return this.levelData;
+	}
 
-    public int getStars() {
-        this.stars = this.countStars();
-        return this.stars;
-    }
+	public void setLevelData(LevelData l) {
+		this.levelData = l;
+	}
 
-    public void setStars(int s) {
-        this.stars = s;
-    }
+	public int getStars() {
+		this.stars = this.countStars();
+		return this.stars;
+	}
 
-    public int getStarRecord() {
-        return this.starRecord;
-    }
+	public void setStars(int s) {
+		this.stars = s;
+	}
 
-    public void setStarRecord(int s) {
-        this.starRecord = s;
-    }
+	public int getStarRecord() {
+		return this.starRecord;
+	}
 
-    /**
-     * Sets the selected hexomino
-     * 
-     * @param hex
-     *            The Hexomino model to select.
-     */
-    public void select(Hexomino hex) {
-        this.selectedHexomino = Optional.of(hex);
-    }
+	public void setStarRecord(int s) {
+		this.starRecord = s;
+	}
 
-    /** Sets the selected hexomino to empty. */
-    public void deselect() {
-        this.selectedHexomino = Optional.empty();
-    }
+	/**
+	 * Sets the selected hexomino
+	 * 
+	 * @param hex
+	 *            The Hexomino model to select.
+	 */
+	public void select(Hexomino hex) {
+		this.selectedHexomino = Optional.of(hex);
+	}
 
-    /** @return if there is currently a hexomino selected. */
-    public boolean hasSelected() {
-        return this.selectedHexomino.isPresent();
-    }
+	/** Sets the selected hexomino to empty. */
+	public void deselect() {
+		this.selectedHexomino = Optional.empty();
+	}
 
-    /**
-     * Determines whether this level has been won
-     * 
-     * @return Returns true if the level has been won (Three stars have been
-     *         attained), otherwise returns false
-     * @author PDeBrine
-     */
+	/** @return if there is currently a hexomino selected. */
+	public boolean hasSelected() {
+		return this.selectedHexomino.isPresent();
+	}
 
-    public boolean hasWon() {
-        if (this.countStars() == 3) {
-            return true;
-        }
-        return false;
-    }
+	/**
+	 * Determines whether this level has been won
+	 * 
+	 * @return Returns true if the level has been won (Three stars have been
+	 *         attained), otherwise returns false
+	 * @author PDeBrine
+	 */
 
-    /**
-     * Counts the number of stars earned for this level
-     * 
-     * @return Returns the number of stars earned, the max being 3, and the min
-     *         being 0
-     * @author PDeBrine
-     */
+	public boolean hasWon() {
+		if (this.countStars() == 3) {
+			return true;
+		}
+		return false;
+	}
 
-    public int countStars() {
-        return 0;
-    }
+	/**
+	 * Counts the number of stars earned for this level
+	 * 
+	 * @return Returns the number of stars earned, the max being 3, and the min
+	 *         being 0
+	 * @author PDeBrine
+	 */
 
-    @Override
-    public void registerObserver(Observer observer) {
-        this.observer = Optional.of(observer);
+	public int countStars() {
+		return 0;
+	}
 
-    }
+	@Override
+	public void registerObserver(Observer observer) {
+		this.observer = Optional.of(observer);
 
-    @Override
-    public void update() {
-        if (observer.isPresent())
-            this.observer.get().updated();
-    }
+	}
 
-    public Optional<Hexomino> getSelectedHexomino() {
-        return this.selectedHexomino;
-    }
+	@Override
+	public void update() {
+		if (observer.isPresent())
+			this.observer.get().updated();
+	}
+
+	public Optional<Hexomino> getSelectedHexomino() {
+		return this.selectedHexomino;
+	}
 
 }
