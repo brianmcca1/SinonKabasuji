@@ -14,4 +14,26 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/images/1star.png</name>
+			<type>1</type>
+			<location>C:/Users/Kyle/Documents/Dropbox/School/Software Engineering/GroupProject/GUIsRevised/1star.png</location>
+		</link>
+		<link>
+			<name>src/images/2stars.png</name>
+			<type>1</type>
+			<location>C:/Users/Kyle/Documents/Dropbox/School/Software Engineering/GroupProject/GUIsRevised/2stars.png</location>
+		</link>
+		<link>
+			<name>src/images/3stars.png</name>
+			<type>1</type>
+			<location>C:/Users/Kyle/Documents/Dropbox/School/Software Engineering/GroupProject/GUIsRevised/3stars.png</location>
+		</link>
+		<link>
+			<name>src/images/blank.png</name>
+			<type>1</type>
+			<location>C:/Users/Kyle/Documents/Dropbox/School/Software Engineering/GroupProject/GUIsRevised/blank.png</location>
+		</link>
+	</linkedResources>
 </projectDescription>
