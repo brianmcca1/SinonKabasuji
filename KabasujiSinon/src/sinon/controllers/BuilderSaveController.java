@@ -42,13 +42,12 @@ public class BuilderSaveController implements ActionListener {
 				break;
 			case RELEASE:
 				// TODO: Is there a more elegant way to do this?
-				ArrayList<ReleaseNumber> propertyValueRelease = ((ReleaseInfoView) this.builder.getMainView()
-						.getLevelTypeInfoView()).getReleaseSets();
+				ArrayList<ReleaseNumber> propertyValueRelease = ((ReleaseInfoView) this.builder.getMainView().getLevelTypeInfoView()).getReleaseSets();
 				levelProp = new LevelProperty(propertyValueRelease, Types.RELEASE);
 				break;
 			}
 
-			FileHandler.builderSaveLevelToFile(FileHandler.currentFile, this.builder.getLevel(), levelProp);
+			FileHandler.builderSaveLevelToFile(FileHandler.currentFile, this.builder.getLevel());
 		}
 	}
 

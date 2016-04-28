@@ -1,9 +1,8 @@
 package sinon.views.game;
 
 import java.awt.Dimension;
-
 import javax.swing.JButton;
-
+import javax.swing.JPanel;
 import sinon.models.Level;
 import sinon.views.InfoPanel;
 
@@ -11,7 +10,7 @@ import sinon.views.InfoPanel;
 public class GameInfoView extends InfoPanel {
 
     /** Top level game object to manipulate. */
-    Level game;
+    Level level;
 
     /** Button objects that appear on the panel. */
     JButton exitButton;
@@ -19,13 +18,13 @@ public class GameInfoView extends InfoPanel {
     JButton nextLevelButton;
 
     /**
-     * @param g
+     * @param l
      *            The top level Game object.
      */
-    public GameInfoView(Level g) {
+    public GameInfoView(Level l) {
         super();
 
-        this.game = g;
+        this.level = l;
 
         JButton btnRestart = new JButton("Restart level\r\n");
         btnRestart.setPreferredSize(new Dimension(120, 30));
@@ -41,6 +40,11 @@ public class GameInfoView extends InfoPanel {
         btnExit.setPreferredSize(new Dimension(120, 30));
         this.add(btnExit);
         this.exitButton = btnExit;
+        
+        //TODO read max stars from currentFile and set appropriately
+        
+        JPanel starView = new StarView("/images/3stars.png");
+        this.add(starView);
     }
 
     /** @return Returns the JButton object for the exit button. */

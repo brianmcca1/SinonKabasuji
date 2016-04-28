@@ -75,7 +75,7 @@ public class BuilderSaveAsController implements ActionListener {
 				break;
 			}
 
-			FileHandler.builderSaveLevelToFile(file, this.builder.getLevel(), levelProp);
+			FileHandler.builderSaveLevelToFile(file, this.builder.getLevel());
 
 			this.builderMenuBar.mntmSave.setEnabled(true);
 		}

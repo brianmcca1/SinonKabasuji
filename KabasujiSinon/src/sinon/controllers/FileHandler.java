@@ -14,10 +14,16 @@ import sinon.serial.Serializer;
 
 public class FileHandler {
 
+	/** Current File being handled. */
 	public static File currentFile;
 
-	public static void builderSaveLevelToFile(File fileToSaveTo, Level level,
-			LevelProperty levelProp) {
+	/**
+	 * Will save the current level to file.
+	 * @param fileToSaveTo File to save to.
+	 * @param level Level to save.
+	 * @param levelProp LevelProperty of level to set.
+	 */
+	public static void builderSaveLevelToFile(File fileToSaveTo, Level level) {
 		// CREATE THE LEVELS BULLPENDATA AND SET IT
 		BullPenData levelBullpenData = new BullPenData(level.getBullpen());
 		level.getLevelData().setBullpenData(levelBullpenData);
@@ -26,8 +32,7 @@ public class FileHandler {
 		BoardData levelBoardData = new BoardData(level.getBoard());
 		level.getLevelData().setBoardData(levelBoardData);
 
-		Serializer serializer = new Serializer(fileToSaveTo,
-				level.getLevelData());
+		Serializer serializer = new Serializer(fileToSaveTo, level.getLevelData());
 		serializer.serializeFile();
 	}
 
@@ -45,6 +50,10 @@ public class FileHandler {
 		setCurrentFile(new File(fileString));
 	}
 
+	/**
+	 * Will load all levels from the local project directory files.
+	 * @return Returns Level[].
+	 */
 	public static Level[] loadAllLevels() {
 		Level[] levels = new Level[2];
 
