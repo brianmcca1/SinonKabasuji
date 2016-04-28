@@ -2,12 +2,15 @@ package sinon.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import sinon.main.Game;
+import sinon.models.ReleaseNumber;
 import sinon.models.data.BoardData;
 import sinon.models.data.LevelProperty;
 import sinon.models.data.LevelType.Types;
 import sinon.serial.Serializer;
+import sinon.views.ReleaseInfoView;
 import sinon.views.game.LevelSelectView;
 
 /**
@@ -38,18 +41,24 @@ public class ExitGameController implements ActionListener {
 
 		// GET THIS LEVEL'S propertyValue
 		Types thisLevelsType = this.game.getLevel().getLevelData().getLevelType();
-		int propertyValue = this.game.getMainView().getLevelTypeInfoView().getValue();
 
 		// SET LevelProperty BASED ON LEVEL TYPE AND WHAT WAS ENTERED INTO THE
 		// VIEW
 		switch (thisLevelsType) {
 		case PUZZLE:
-			this.game.getLevel().getLevelData().setLevelProperty(new LevelProperty(propertyValue, Types.PUZZLE));
+			int propertyValuePuzzle = this.game.getMainView().getLevelTypeInfoView().getValue();
+			this.game.getLevel().getLevelData().setLevelProperty(new LevelProperty(propertyValuePuzzle, Types.PUZZLE));
 			break;
 		case LIGHTNING:
-			this.game.getLevel().getLevelData().setLevelProperty(new LevelProperty(propertyValue, Types.LIGHTNING));
+			int propertyValueLightning = this.game.getMainView().getLevelTypeInfoView().getValue();
+			this.game.getLevel().getLevelData()
+					.setLevelProperty(new LevelProperty(propertyValueLightning, Types.LIGHTNING));
 			break;
 		case RELEASE:
+			ArrayList<ReleaseNumber> propertyValueRelease = ((ReleaseInfoView) this.game.getMainView()
+					.getLevelTypeInfoView()).getReleaseSets();
+			this.game.getLevel().getLevelData()
+					.setLevelProperty(new LevelProperty(propertyValueRelease, Types.RELEASE));
 			break;
 		}
 

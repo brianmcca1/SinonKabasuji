@@ -12,6 +12,7 @@ import sinon.models.BullPen;
 import sinon.models.Level;
 import sinon.models.LightningLevel;
 import sinon.models.PuzzleLevel;
+import sinon.models.ReleaseLevel;
 import sinon.models.data.LevelData;
 import sinon.models.data.LevelType.Types;
 import sinon.serial.Deserializer;
@@ -21,16 +22,16 @@ import sinon.views.PuzzleInfoView;
 import sinon.views.ReleaseInfoView;
 import sinon.views.builder.BuilderMenuBar;
 
-public class BuilderOpenController extends BuilderNewLevelController implements ActionListener{
+public class BuilderOpenController extends BuilderNewLevelController implements ActionListener {
 
-	/** Overall Builder object*/
+	/** Overall Builder object */
 	private Builder builder;
 
 	final JFileChooser fc = new JFileChooser();
 
 	private BuilderMenuBar builderMenuBar;
 
-	public BuilderOpenController(Builder b, BuilderMenuBar bMenuBar){
+	public BuilderOpenController(Builder b, BuilderMenuBar bMenuBar) {
 		this.builder = b;
 		this.builderMenuBar = bMenuBar;
 	}
@@ -43,8 +44,8 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 
 			File file = fc.getSelectedFile();
 
-			if(FileHandler.currentFile != null){
-				if(file.compareTo(FileHandler.currentFile) == 0){
+			if (FileHandler.currentFile != null) {
+				if (file.compareTo(FileHandler.currentFile) == 0) {
 					System.out.println("FILE IS ALREADY OPEN!");
 					return;
 				}
@@ -59,15 +60,16 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 			System.out.println(levelData.toString());
 			System.out.println("*********************************************");
 
-			//CREATE levelFromFile FROM levelData HERE
-			Level levelFromFile = new Level(levelData.getLevelType(), new Board(levelData.getBoardData()), new BullPen(levelData.getBullpenData()));
+			// CREATE levelFromFile FROM levelData HERE
+			Level levelFromFile = new Level(levelData.getLevelType(), new Board(levelData.getBoardData()),
+					new BullPen(levelData.getBullpenData()));
 			levelFromFile.setLevelData(levelData);
 
-			//FIND OUT WHICH LevelTypeInfoView TO GIVE TO MAINVIEW
+			// FIND OUT WHICH LevelTypeInfoView TO GIVE TO MAINVIEW
 			LevelTypeInfoView lvlTypeInfoView = null;
 			Types thisLevelsType = levelData.getLevelType();
 
-			switch(thisLevelsType){
+			switch (thisLevelsType) {
 			case PUZZLE:
 				PuzzleLevel puzzleLevel = new PuzzleLevel(levelFromFile);
 				lvlTypeInfoView = new PuzzleInfoView(true, puzzleLevel);
@@ -79,7 +81,9 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 				this.builder.setLevel(lightningLevel);
 				break;
 			case RELEASE:
+				ReleaseLevel releaseLevel = new ReleaseLevel(levelFromFile);
 				lvlTypeInfoView = new ReleaseInfoView();
+				this.builder.setLevel(releaseLevel);
 				break;
 			}
 
@@ -90,9 +94,11 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 
 	/**
 	 * Sets the file options and then initializes the MainView.
-	 * @param bMenuBar BuilderMenuBar used to set the appropriate file options.
+	 * 
+	 * @param bMenuBar
+	 *            BuilderMenuBar used to set the appropriate file options.
 	 */
-	public void handleOpenLevel(BuilderMenuBar bMenuBar){
+	public void handleOpenLevel(BuilderMenuBar bMenuBar) {
 		bMenuBar.mntmSaveAs.setEnabled(true);
 		bMenuBar.mntmSave.setEnabled(true);
 		bMenuBar.mntmUndo.setEnabled(true);

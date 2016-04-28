@@ -27,7 +27,7 @@ public class ReleaseLevel extends Level {
 	@Override
 	public int countStars() {
 		boolean redCollected = true;
-		boolean blueCollected = true;
+		boolean greenCollected = true;
 		boolean yellowCollected = true;
 		int stars = 0;
 
@@ -35,8 +35,8 @@ public class ReleaseLevel extends Level {
 			if (r.getColor() == "red" & !(r.getCollected())) {
 				redCollected = false;
 			}
-			if (r.getColor() == "blue" & !(r.getCollected())) {
-				blueCollected = false;
+			if (r.getColor() == "green" & !(r.getCollected())) {
+				greenCollected = false;
 			}
 			if (r.getColor() == "yellow" & !(r.getCollected())) {
 				yellowCollected = false;
@@ -45,7 +45,7 @@ public class ReleaseLevel extends Level {
 		if (redCollected) {
 			stars++;
 		}
-		if (blueCollected) {
+		if (greenCollected) {
 			stars++;
 		}
 		if (yellowCollected) {
