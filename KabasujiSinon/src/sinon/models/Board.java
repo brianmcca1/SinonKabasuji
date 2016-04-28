@@ -3,10 +3,12 @@ package sinon.models;
 import java.awt.Point;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 import sinon.models.data.BoardData;
+import sinon.views.Observer;
 
 /**
  * Entity Class which represents the 12x12 area of game play.
@@ -14,7 +16,10 @@ import sinon.models.data.BoardData;
  * @author Josh Desmond
  * @author Brian
  **/
-public class Board {
+public class Board implements Observable {
+
+	/** The list of observers which are watching for updates on the board */
+	List<Observer> observers;
 
 	/*
 	 * (non-Javadoc)
@@ -23,7 +28,8 @@ public class Board {
 	 */
 	@Override
 	public String toString() {
-		return "Board [tilesViaPoints=" + tilesViaPoints + ", hexominoLocations=" + hexominoLocations + "]";
+		return "Board [tilesViaPoints=" + tilesViaPoints
+				+ ", hexominoLocations=" + hexominoLocations + "]";
 	}
 
 	/*
@@ -35,8 +41,12 @@ public class Board {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((hexominoLocations == null) ? 0 : hexominoLocations.hashCode());
-		result = prime * result + ((tilesViaPoints == null) ? 0 : tilesViaPoints.hashCode());
+		result = prime
+				* result
+				+ ((hexominoLocations == null) ? 0 : hexominoLocations
+						.hashCode());
+		result = prime * result
+				+ ((tilesViaPoints == null) ? 0 : tilesViaPoints.hashCode());
 		return result;
 	}
 
@@ -88,6 +98,8 @@ public class Board {
 				tilesViaPoints.put(p, new Tile(p, true));
 			}
 		}
+
+		initializeObserverList();
 	}
 
 	/**
@@ -107,6 +119,14 @@ public class Board {
 				tilesViaPoints.put(p, new Tile(p, playable));
 			}
 		}
+
+		initializeObserverList();
+	}
+
+	/** Every constructor should call this */
+	private void initializeObserverList() {
+		assert observers == null; // Why would you call this again?
+		observers = new LinkedList<Observer>();
 	}
 
 	/**
@@ -133,7 +153,8 @@ public class Board {
 		boolean canAdd = true;
 		HexominoNumberSet hexominoNumberSet = hex.getHexominoNumberSet();
 		for (Point p : hexominoNumberSet.getPoints()) {
-			Point pointToCheck = new Point(anchorLocation.x + p.x, anchorLocation.y + p.y);
+			Point pointToCheck = new Point(anchorLocation.x + p.x,
+					anchorLocation.y + p.y);
 			if (!(this.isInBounds(pointToCheck.x, pointToCheck.y))) {
 				return false;
 			}
@@ -171,11 +192,15 @@ public class Board {
 		hexominoLocations.put(hex, anchorLocation.getLocation());
 
 		for (Point p : hexominoNumberSet.getPoints()) {
-			Point pointToAdd = new Point(anchorLocation.x + p.x, anchorLocation.y + p.y);
-			if (tilesViaPoints.get(pointToAdd).canAddHex(hex) & isInBounds(pointToAdd.x, pointToAdd.y)) {
+			Point pointToAdd = new Point(anchorLocation.x + p.x,
+					anchorLocation.y + p.y);
+			if (tilesViaPoints.get(pointToAdd).canAddHex(hex)
+					& isInBounds(pointToAdd.x, pointToAdd.y)) {
 				tilesViaPoints.get(pointToAdd).addHexomino(hex);
 			}
 		}
+
+		update();
 	}
 
 	/**
@@ -189,15 +214,16 @@ public class Board {
 		for (Tile t : getTiles()) {
 			if (t.getHexomino().isPresent()) {
 				if (t.getHexomino().get().getID().equals(hex.getID())) { // TODO
-																			// is
-																			// this
-																			// correct
+					// is
+					// this
+					// correct
 					t.removeHex();
 				}
 			}
 		}
 
 		hexominoLocations.remove(hex);
+		update();
 	}
 
 	/**
@@ -281,6 +307,18 @@ public class Board {
 		}
 
 		return false;
+	}
+
+	@Override
+	public void registerObserver(Observer observer) {
+		this.observers.add(observer);
+	}
+
+	@Override
+	public void update() {
+		for (Observer o : observers) {
+			o.updated();
+		}
 	}
 
 }
