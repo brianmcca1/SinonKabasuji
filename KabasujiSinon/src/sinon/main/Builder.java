@@ -44,19 +44,27 @@ public class Builder extends Kabasuji {
 		this.tileRegistrator.setToBuilderType();
 		registerBoardViewControllers();
 
-		((BankView) this.mainView.getInfoPanel())
-		.setRegistrator(new HexStashRegistrator(getLevel(),
-				getMainView(), true));
+		getBankView().setRegistrator(
+				new HexStashRegistrator(getLevel(), getMainView(), true));
 
+		registerBullpenController();
+	}
+
+	/**
+	 * Adds the registrator to the bullpen, and adds the overall bullpen
+	 * controller
+	 */
+	private void registerBullpenController() {
 		this.mainView.getBullpenView().setRegistrator(
 				new HexStashRegistrator(getLevel(), getMainView(), false));
 
-		this.getMainView()
-		.getBullpenView()
-		.getPanelToRegisterController()
-		.addMouseListener(
-				new BullpenController(this.getLevel().getBullpen(),
-						this.getMainView().getBullpenView(), getLevel()));
+		JPanel bullpenPanel = this.getMainView().getBullpenView()
+				.getPanelToRegisterController();
+
+		BullpenController bullpenController = new BullpenController(this
+				.getLevel().getBullpen(), this.getMainView().getBullpenView(),
+				getLevel());
+		bullpenPanel.addMouseListener(bullpenController);
 	}
 
 	public BullPen getBullpen() {
@@ -66,5 +74,10 @@ public class Builder extends Kabasuji {
 	public static void main(String args[]) {
 		@SuppressWarnings("unused")
 		Kabasuji builder = new Builder();
+	}
+
+	private BankView getBankView() {
+		assert this.getMainView() != null;
+		return (BankView) this.mainView.getInfoPanel();
 	}
 }

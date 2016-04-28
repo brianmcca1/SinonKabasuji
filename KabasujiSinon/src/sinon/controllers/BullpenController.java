@@ -26,10 +26,16 @@ public class BullpenController implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		System.out.println("I AM A BULLPEN AND I JUST GOT CLICKED ON!");
-		if(level.hasSelected()) {
+		handleClick();
+	}
+
+	protected void handleClick() {
+		if (level.hasSelected()) {
 			level.deselect();
 			System.out.println("SELECTED HEXOMINO HAS BEEN DESELECTED");
 		}
+
+		// TODO add logic for creating a board to bullpen move.
 	}
 
 	@Override
