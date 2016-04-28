@@ -1,11 +1,14 @@
 package sinon.models.data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import sinon.models.ReleaseNumber;
 import sinon.models.data.LevelType.Types;
 
-public class LevelProperty {
+public class LevelProperty implements Serializable {
+
+	private static final long serialVersionUID = -166019953009468288L;
 	Integer maxTime;
 	Integer maxMoves;
 	ArrayList<ReleaseNumber> releaseSet;
