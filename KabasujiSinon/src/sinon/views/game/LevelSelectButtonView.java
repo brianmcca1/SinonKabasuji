@@ -7,6 +7,9 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import sinon.controllers.FileHandler;
+import sinon.models.Level;
+
 /**
  * A Panel for each button that contains the number, image, and the button for
  * the level select screen
@@ -19,6 +22,7 @@ public class LevelSelectButtonView extends JPanel {
 	JButton selectbtn;
 	JPanel imagePanel;
 	public int levelNum;
+	JPanel starView;
 
 	/**
 	 * Create the panel, takes the number of the level as an argument
@@ -34,6 +38,12 @@ public class LevelSelectButtonView extends JPanel {
 
 		JButton selectbtn = makeButton(Integer.toString(num));
 		add(selectbtn);
+		
+		//we are going to get each individual level that is already loaded :)
+		//level is going to be levels 1 to 15 each individually
+		
+		//int starRecord = level.getLevelData().getStarRecord();
+		//this.starView = FileHandler.determineFileStringForStars(num));
 
 	}
 

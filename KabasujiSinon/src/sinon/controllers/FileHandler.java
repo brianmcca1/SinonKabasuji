@@ -77,4 +77,8 @@ public class FileHandler {
 
 		return levels;
 	}
+	
+	//public static String determineFileStringForStars(int levelNum){
+		
+	//}
 }

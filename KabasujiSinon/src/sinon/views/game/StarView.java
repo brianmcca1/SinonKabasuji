@@ -28,7 +28,7 @@ public class StarView extends JPanel implements Observer{
 	 */
 	public StarView(String filePath){
 		try {                
-			this.image = ImageIO.read(new File(getClass().getResource(filePath).toURI()));
+			 this.image = ImageIO.read(new File(getClass().getResource(filePath).toURI()));
 			 ImageIcon icon = new ImageIcon(this.image);
 			 this.starLabel = new JLabel(icon);
 			 this.add(this.starLabel);
