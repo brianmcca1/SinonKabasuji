@@ -20,6 +20,9 @@ public class BuilderTileController extends TileController {
 
         int row = tileView.getRow();
         int column = tileView.getColumn();
+        
+        //FIXME Look at game tile controller and steal some code,
+        //currently all this can do is place something from the bullpen
 
         MoveToBoardFromBullpen move = new MoveToBoardFromBullpen(level, row,
                 column);
