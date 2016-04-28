@@ -12,10 +12,17 @@ import sinon.models.data.LevelType.types;
 import sinon.views.PuzzleInfoView;
 import sinon.views.builder.BuilderMenuBar;
 
+/**
+ * Controller that handles the opening of a new puzzle level in the builder. 
+ * 
+ *
+ */
 public class BuilderNewPuzzleLevelController extends BuilderNewLevelController implements ActionListener {
 
+	/** The builder application that this controller is associated with. */
 	private Builder builder;
 	
+	/** The menu bar from which this controller is fired through an option. */
 	private BuilderMenuBar builderMenuBar;
 
 	public BuilderNewPuzzleLevelController(Builder b, BuilderMenuBar bMenuBar){

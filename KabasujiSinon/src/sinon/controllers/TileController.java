@@ -2,6 +2,7 @@ package sinon.controllers;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.SwingUtilities;
 
@@ -10,7 +11,7 @@ import sinon.models.Tile;
 import sinon.views.MainView;
 import sinon.views.TileView;
 
-public abstract class TileController implements MouseListener{
+public abstract class TileController implements MouseListener, MouseMotionListener{
 
 	protected Level level;
 	protected TileView tileView;
@@ -50,7 +51,17 @@ public abstract class TileController implements MouseListener{
 	@Override
 	public void mouseExited(MouseEvent e) {
 	}
-
+	
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		
+	}
+	
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		
+	}
+	
 	public void handleRightClick(){}
 	
 	public void handleLeftClick(){}

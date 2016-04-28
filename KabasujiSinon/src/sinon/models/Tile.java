@@ -81,8 +81,8 @@ public class Tile {
 	/**
 	 * Changes the playability of the tile.
 	 * 
-	 * @param bool
-	 *            True implies making the tile playable.
+	 * @param bool 
+	 * 			True implies making the tile playable.
 	 */
 	public void setPlayable(boolean playability) {
 		this.playable = playability;

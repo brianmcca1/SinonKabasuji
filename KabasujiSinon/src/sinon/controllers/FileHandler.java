@@ -12,10 +12,22 @@ import sinon.models.data.LevelProperty;
 import sinon.serial.Deserializer;
 import sinon.serial.Serializer;
 
+/**
+ * Class that handles all the game files that are created using the builder.
+ * It is used to set the current file static field.
+ *
+ */
 public class FileHandler {
 
 	public static File currentFile;
 	
+	/**
+	 * Saves builder to the file after converting model classes into their 
+	 * corresponding serializable classes.
+	 * @param fileToSaveTo This is the file that is being saved to.
+	 * @param level This is the level that is being saved.
+	 * @param levelProp Holds game specific information.
+	 */
 	public static void builderSaveLevelToFile(File fileToSaveTo, Level level, LevelProperty levelProp){
         //CREATE THE LEVELS BULLPENDATA AND SET IT
         BullPenData levelBullpenData = new BullPenData(level.getBullpen());
@@ -29,6 +41,10 @@ public class FileHandler {
         serializer.serializeFile();
 	}
 	
+	/**
+	 * Sets the static current file to f.
+	 * @param f
+	 */
 	public static void setCurrentFile(File f){
 		FileHandler.currentFile = f;
 	}
@@ -84,6 +100,10 @@ public class FileHandler {
     	}
     }
     
+    /**
+     * Deserializes all the levels that exist and loads them into the game/builder.
+     * @return Array of levels that were deserialized.
+     */
     public static Level[] loadAllLevels(){
     	Level[] levels = new Level[2];
     	

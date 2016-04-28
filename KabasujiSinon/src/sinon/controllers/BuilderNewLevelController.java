@@ -4,6 +4,10 @@ import sinon.main.Builder;
 import sinon.views.LevelTypeInfoView;
 import sinon.views.builder.BuilderMenuBar;
 
+/**
+ * Superclass that is the parent for each type of open controller in the builder.
+ *
+ */
 public abstract class BuilderNewLevelController {
 	
 	/**

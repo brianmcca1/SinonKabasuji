@@ -12,10 +12,16 @@ import sinon.models.data.LevelType.types;
 import sinon.views.LightningInfoView;
 import sinon.views.builder.BuilderMenuBar;
 
+/**
+ * Controller that is used to handle the opening of a new lightning level in the builder.
+ * 
+ */
 public class BuilderNewLightningLevelController extends BuilderNewLevelController implements ActionListener {
 	
+	/** The application to which this controller is associated. */
 	private Builder builder;
 
+	/** The menu-bar which has the option for opening a new lightning level. */
 	private BuilderMenuBar builderMenuBar;
 	
 	public BuilderNewLightningLevelController(Builder b, BuilderMenuBar bMenuBar){

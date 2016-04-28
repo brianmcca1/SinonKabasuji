@@ -11,10 +11,16 @@ import sinon.models.data.LevelType.types;
 import sinon.views.ReleaseInfoView;
 import sinon.views.builder.BuilderMenuBar;
 
+/**
+ * This is the controller that handles the opening of a new release level in the builder.
+ * 
+ */
 public class BuilderNewReleaseLevelController extends BuilderNewLevelController implements ActionListener {
 
+	/** The builder application that is associated with this controller. */
 	private Builder builder;
 
+	/** This controller is fired from an option in this menu bar. */
 	private BuilderMenuBar builderMenuBar;
 
 	public BuilderNewReleaseLevelController(Builder b, BuilderMenuBar bMenuBar){
