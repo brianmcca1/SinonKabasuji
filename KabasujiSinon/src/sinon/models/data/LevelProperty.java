@@ -1,5 +1,6 @@
 package sinon.models.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import sinon.models.ReleaseNumber;
@@ -8,7 +9,7 @@ import sinon.models.data.LevelType.Types;
 public class LevelProperty {
 	Integer maxTime;
 	Integer maxMoves;
-	List<ReleaseNumber> releaseSet;
+	ArrayList<ReleaseNumber> releaseSet;
 
 	public LevelProperty(int levelProperty, Types t) {
 
@@ -21,7 +22,7 @@ public class LevelProperty {
 		}
 	}
 
-	public LevelProperty(List<ReleaseNumber> levelProperty, Types t) {
+	public LevelProperty(ArrayList<ReleaseNumber> levelProperty, Types t) {
 		if (t == Types.RELEASE) {
 			this.releaseSet = levelProperty;
 		} else {
