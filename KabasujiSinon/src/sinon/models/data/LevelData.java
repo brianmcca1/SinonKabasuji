@@ -25,11 +25,12 @@ public final class LevelData implements Serializable {
 	BullPenData bullpenData;
 	/** Highest number of stars reached on this level */
 	int starRecord;
-	/** Holds the info regarding number of moves/time/locations of number tiles. */
+	/**
+	 * Holds the info regarding number of moves/time/locations of number tiles.
+	 */
 	LevelProperty levelProperty;
 
-	public LevelData(Types t, BoardData bData, BullPenData bpData,
-			int starRecord) {
+	public LevelData(Types t, BoardData bData, BullPenData bpData, int starRecord) {
 		this.levelType = t;
 		this.boardData = bData;
 		this.bullpenData = bpData;
@@ -112,8 +113,9 @@ public final class LevelData implements Serializable {
 		strLevelData += "\r\n";
 		strLevelData += ("LEVEL TYPE: " + this.levelType);
 		strLevelData += "\r\n";
-		strLevelData += ("LEVEL PROPERTY: ")
-				+ this.levelProperty.getPropertyValue();
+		// FIXME Switch to check level type before printing
+		// strLevelData += ("LEVEL PROPERTY: ")
+		// + this.levelProperty.getPropertyValue();
 		strLevelData += "\r\n";
 		strLevelData += ("STAR RECORD: ") + this.starRecord;
 

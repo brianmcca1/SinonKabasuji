@@ -59,10 +59,6 @@ public class Level implements Observable {
 		return board;
 	}
 
-	public int getPropertyValue() {
-		return this.levelData.getLevelProperty().getPropertyValue();
-	}
-
 	/** @return this level's LevelData. */
 	public LevelData getLevelData() {
 		return this.levelData;
