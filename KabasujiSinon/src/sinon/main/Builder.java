@@ -12,41 +12,40 @@ import sinon.views.builder.BuilderMenuBar;
 @SuppressWarnings("serial")
 public class Builder extends Kabasuji {
 
-    /** JPanel that the builder initially starts out with. */
-    public JPanel blankPanel;
-    /** BullPen containing all 35 hexominos. */
-    BullPen bullpen = new BullPen(HexominoBankData.getHexominos());
+	/** JPanel that the builder initially starts out with. */
+	public JPanel blankPanel;
+	/** BullPen containing all 35 hexominos. */
+	BullPen bullpen = new BullPen(HexominoBankData.getHexominos());
 
-    Builder() {
-        super();
+	public Builder() {
+		super();
 
-        this.blankPanel = new JPanel();
-        this.setJMenuBar(new BuilderMenuBar(this, this.blankPanel));
-        startSplash("Kabasuji Builder", this.blankPanel);
-    }
+		this.blankPanel = new JPanel();
+		this.setJMenuBar(new BuilderMenuBar(this, this.blankPanel));
+		startSplash("Kabasuji Builder", this.blankPanel);
+	}
 
-    public void initializeMainView(LevelTypeInfoView lvlTypeInfoView) {
-        if (this.mainView != null) {
-            this.remove(this.mainView);
-            this.revalidate();
-        }
+	public void initializeMainView(LevelTypeInfoView lvlTypeInfoView) {
+		if (this.mainView != null) {
+			this.remove(this.mainView);
+			this.revalidate();
+		}
 
-        MainView mv = new MainView(this.getLevel(),
-                new BankView(this, this.bullpen), lvlTypeInfoView);
-        this.setMainView(mv);
-        this.mainView.revalidate();
-        this.startNextPanel(this.blankPanel, mv);
-        this.tileRegistrator = new TileRegistrator(getLevel(), mainView);
-        this.tileRegistrator.setToBuilderType();
-        registerBoardViewControllers();
-    }
+		MainView mv = new MainView(this.getLevel(), new BankView(this, this.bullpen), lvlTypeInfoView);
+		this.setMainView(mv);
+		this.mainView.revalidate();
+		this.startNextPanel(this.blankPanel, mv);
+		this.tileRegistrator = new TileRegistrator(getLevel(), mainView);
+		this.tileRegistrator.setToBuilderType();
+		registerBoardViewControllers();
+	}
 
-    public BullPen getBullpen() {
-        return this.bullpen;
-    }
+	public BullPen getBullpen() {
+		return this.bullpen;
+	}
 
-    public static void main(String args[]) {
-        @SuppressWarnings("unused")
-        Kabasuji builder = new Builder();
-    }
+	public static void main(String args[]) {
+		@SuppressWarnings("unused")
+		Kabasuji builder = new Builder();
+	}
 }
