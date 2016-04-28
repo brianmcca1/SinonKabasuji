@@ -1,17 +1,21 @@
 package sinon.models;
 
 import java.awt.Point;
+import java.util.Objects;
 import java.util.Optional;
 
-public class Tile {
+import sinon.views.Observer;
+
+public class Tile implements Observable {
 
 	boolean playable;
 	Optional<Hexomino> hex;
 	Point location;
+	Observer observer;
 
 	public Tile(Point location, boolean playable) {
 		this.playable = playable;
-		this.location = location;
+		this.location = Objects.requireNonNull(location);
 		hex = Optional.empty();
 	}
 
@@ -24,12 +28,12 @@ public class Tile {
 		if (!this.playable) {
 			return false;
 		}
-		
+
 		if (this.hex.isPresent()) {
 			return this.getHexomino().get().getID().equals(hex.getID());
-		} else {
-			return true;
 		}
+		// else
+		return true;
 	}
 
 	/**
@@ -39,18 +43,21 @@ public class Tile {
 	 * Throws Runtime Exception if Hexomino is already present
 	 * 
 	 * @param hex
-	 *            The hexomino to be added
+	 *            The Hexomino to be added. Can't be null.
 	 */
 	public void addHexomino(Hexomino hex) {
-
+		if (hex == null)
+			throw new NullPointerException();
+		// FIXME probably shouldn't be throwing an error but maybe just
+		// returning false.
 		if (this.hex.isPresent()) {
 			throw new RuntimeException("Tile already contains a Hexomino");
-
 		} else if (this.playable == false) {
 			throw new RuntimeException("Tile is not playable");
-		} else {
-			this.hex = Optional.of(hex);
 		}
+
+		this.hex = Optional.of(hex);
+		update();
 	}
 
 	/**
@@ -69,9 +76,9 @@ public class Tile {
 	 * 
 	 */
 	public boolean removeHex() {
-
 		if (this.hex.isPresent()) {
 			this.hex = Optional.empty();
+			update();
 			return true;
 		} else {
 			return false;
@@ -86,6 +93,7 @@ public class Tile {
 	 */
 	public void setPlayable(boolean playability) {
 		this.playable = playability;
+		update();
 	}
 
 	/**
@@ -114,5 +122,15 @@ public class Tile {
 	 */
 	public boolean isPlayable() {
 		return this.playable;
+	}
+
+	@Override
+	public void registerObserver(Observer observer) {
+		this.observer = observer;
+	}
+
+	@Override
+	public void update() {
+		this.observer.updated();
 	}
 }
