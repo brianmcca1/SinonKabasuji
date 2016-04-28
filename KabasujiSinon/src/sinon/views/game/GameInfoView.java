@@ -3,8 +3,6 @@ package sinon.views.game;
 import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
-import sinon.controllers.FileHandler;
 import sinon.models.Level;
 import sinon.views.InfoPanel;
 
@@ -18,6 +16,7 @@ public class GameInfoView extends InfoPanel {
     JButton exitButton;
     JButton restartButton;
     JButton nextLevelButton;
+    JPanel starView;
 
     /**
      * @param l
@@ -43,8 +42,8 @@ public class GameInfoView extends InfoPanel {
         this.add(btnExit);
         this.exitButton = btnExit;
         
-        JPanel starView = new StarView("/images/blank.png");
-        this.add(starView);
+        this.starView = new StarView("/images/blank.png");
+        this.add(this.starView);
     }
 
     /** @return Returns the JButton object for the exit button. */
@@ -60,5 +59,10 @@ public class GameInfoView extends InfoPanel {
     /** @return Returns the JButton object for the next level button. */
     public JButton getNextLevelButton() {
         return this.nextLevelButton;
+    }
+    
+    /** @return Returns the StarView object. */
+    public JPanel getStarView(){
+    	return this.starView;
     }
 }
