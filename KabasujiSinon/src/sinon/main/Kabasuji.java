@@ -7,7 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import sinon.controllers.BullpenController;
 import sinon.controllers.FileHandler;
+import sinon.controllers.HexStashRegistrator;
 import sinon.controllers.TileRegistrator;
 import sinon.models.Level;
 import sinon.views.MainView;
@@ -37,7 +39,7 @@ public abstract class Kabasuji extends JFrame {
 	 */
 	public int currentLevelNumber;
 	/** Knowledge of the MainView. */
-	public MainView mainView;
+	protected MainView mainView;
 
 	/**
 	 * This field is in charge of registering the controllers to tiles. It is
@@ -156,5 +158,22 @@ public abstract class Kabasuji extends JFrame {
 
 	protected TileRegistrator getTileRegistrator() {
 		return this.tileRegistrator;
+	}
+
+	/**
+	 * Adds the registrator to the bullpen, and adds the overall bullpen
+	 * controller
+	 */
+	protected void registerBullpenController() {
+		this.getMainView().getBullpenView().setRegistrator(
+				new HexStashRegistrator(getLevel(), getMainView(), false));
+
+		JPanel bullpenPanel = this.getMainView().getBullpenView()
+				.getPanelToRegisterController();
+
+		BullpenController bullpenController = new BullpenController(this
+				.getLevel().getBullpen(), this.getMainView().getBullpenView(),
+				getLevel());
+		bullpenPanel.addMouseListener(bullpenController);
 	}
 }

@@ -2,7 +2,6 @@ package sinon.main;
 
 import javax.swing.JPanel;
 
-import sinon.controllers.BullpenController;
 import sinon.controllers.HexStashRegistrator;
 import sinon.controllers.TileRegistrator;
 import sinon.models.BullPen;
@@ -38,8 +37,13 @@ public class Builder extends Kabasuji {
 		MainView mv = new MainView(this.getLevel(), new BankView(),
 				lvlTypeInfoView);
 		this.setMainView(mv);
-		this.mainView.revalidate();
 		this.startNextPanel(this.blankPanel, mv);
+		registerControllers();
+	}
+
+	/** Registers all of the controllers to the already initialized mainView */
+	private void registerControllers() {
+		// Sets the type of tile register to a builder specific type.
 		this.tileRegistrator = new TileRegistrator(getLevel(), mainView);
 		this.tileRegistrator.setToBuilderType();
 		registerBoardViewControllers();
@@ -50,30 +54,13 @@ public class Builder extends Kabasuji {
 		registerBullpenController();
 	}
 
-	/**
-	 * Adds the registrator to the bullpen, and adds the overall bullpen
-	 * controller
-	 */
-	private void registerBullpenController() {
-		this.mainView.getBullpenView().setRegistrator(
-				new HexStashRegistrator(getLevel(), getMainView(), false));
-
-		JPanel bullpenPanel = this.getMainView().getBullpenView()
-				.getPanelToRegisterController();
-
-		BullpenController bullpenController = new BullpenController(this
-				.getLevel().getBullpen(), this.getMainView().getBullpenView(),
-				getLevel());
-		bullpenPanel.addMouseListener(bullpenController);
-	}
-
 	public BullPen getBullpen() {
 		return this.bullpen;
 	}
 
 	public static void main(String args[]) {
 		@SuppressWarnings("unused")
-		Kabasuji builder = new Builder();
+		Builder builder = new Builder();
 	}
 
 	private BankView getBankView() {
