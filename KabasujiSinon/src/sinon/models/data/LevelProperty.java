@@ -33,7 +33,7 @@ public class LevelProperty implements Serializable {
 	}
 
 	public int getMaxMoves() {
-		if (this.maxMoves == null) {
+		if (this.maxMoves != null) {
 			return this.maxMoves;
 		} else {
 			throw new IllegalArgumentException();
@@ -41,7 +41,7 @@ public class LevelProperty implements Serializable {
 	}
 
 	public int getMaxTime() {
-		if (this.maxTime == null) {
+		if (this.maxTime != null) {
 			return this.maxTime;
 		} else {
 			throw new IllegalArgumentException();
@@ -49,7 +49,7 @@ public class LevelProperty implements Serializable {
 	}
 
 	public ArrayList<ReleaseNumber> getReleaseSet() {
-		if (this.releaseSet == null) {
+		if (this.releaseSet != null) {
 			return this.releaseSet;
 		} else {
 			throw new IllegalArgumentException();
