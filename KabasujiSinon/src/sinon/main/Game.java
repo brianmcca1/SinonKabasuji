@@ -18,11 +18,8 @@ public class Game extends Kabasuji {
 
 	public Game() {
 		super();
-
 		startSplash("Kabasuji", new LevelSelectView(this));
-
 		loadAllLevels();
-
 	}
 
 	/** Will pull every level from file and reset it. */
@@ -59,9 +56,8 @@ public class Game extends Kabasuji {
 		this.tileRegistrator = new TileRegistrator(getLevel(), mainView);
 		this.tileRegistrator.setToGameType();
 		registerBoardViewControllers();
-		this.mainView.getBullpenView().setRegistrator(
-				new HexStashRegistrator(getLevel(), getMainView(),
-						false));
+		getMainView().getBullpenView().setRegistrator(
+				new HexStashRegistrator(getLevel(), getMainView(), false));
 
 		registerBullpenController();
 	}

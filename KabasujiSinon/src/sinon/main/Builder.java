@@ -38,11 +38,11 @@ public class Builder extends Kabasuji {
 				lvlTypeInfoView);
 		this.setMainView(mv);
 		this.startNextPanel(this.blankPanel, mv);
-		registerControllers();
+		initializeControllers();
 	}
 
 	/** Registers all of the controllers to the already initialized mainView */
-	private void registerControllers() {
+	private void initializeControllers() {
 		// Sets the type of tile register to a builder specific type.
 		this.tileRegistrator = new TileRegistrator(getLevel(), mainView);
 		this.tileRegistrator.setToBuilderType();

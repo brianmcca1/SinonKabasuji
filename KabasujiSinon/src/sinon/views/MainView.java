@@ -25,13 +25,13 @@ public class MainView extends JPanel {
 	 * levelPanel contains: Bullpen, GridView, optional ReleaseButtonView, and
 	 * is on the left side of the screen.
 	 */
-	public LevelPanel levelPanel;
+	private LevelPanel levelPanel;
 	/** Contains GridView and the Optional ReleaseButtonView. */
-	public JPanel gameAreaPanel; // FIXME If this is only asthetic, get rid of
+	private JPanel gameAreaPanel; // FIXME If this is only asthetic, get rid of
 	// it.
 	/** Only exists in Builder Mode and Release game play. */
 	// Optional<ReleaseInfoView> releaseButtonView;
-	public LevelTypeInfoView levelTypeInfoView;
+	private LevelTypeInfoView levelTypeInfoView;
 	/** BankView/GameInfoView. */
 	InfoPanel infoPanel;
 	/** The level associated with this MainView. */
@@ -90,6 +90,11 @@ public class MainView extends JPanel {
 		this.add(levelPanel);
 	}
 
+	/**
+	 * Gets the BullpenView of this MainView
+	 * 
+	 * @return The BullpenView object of this level.
+	 */
 	public BullpenView getBullpenView() {
 		return this.bullpenView;
 	}

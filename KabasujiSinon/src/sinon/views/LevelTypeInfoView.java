@@ -1,26 +1,30 @@
 package sinon.views;
 
 import java.awt.Color;
+
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 /**
- * The information related to each level type
+ * This is the panel which displays extra info about the progress of a game, or
+ * the editable fields for level specific properties.
  * 
- * For example, the time left in a lightning level
- * @author Brian
- *
+ * @see LightningInfoView
+ * @see PuzzleInfoView
+ * @see ReleaseInfoView For example, the time left in a lightning level
  */
-public class LevelTypeInfoView extends JPanel{
+@SuppressWarnings("serial")
+public class LevelTypeInfoView extends JPanel {
+	// TODO, shouldn't this be abstract?
 
-	public LevelTypeInfoView(){
+	public LevelTypeInfoView() {
 		this.setBounds(450, 26, 130, 300);
-        this.setBorder(new LineBorder(new Color(0, 0, 0)));
-        this.setBackground(Color.LIGHT_GRAY);
+		this.setBorder(new LineBorder(new Color(0, 0, 0)));
+		this.setBackground(Color.LIGHT_GRAY);
 	}
-	
-	public int getValue(){
+
+	public int getValue() {
 		return -999;
 	}
-	
+
 }
