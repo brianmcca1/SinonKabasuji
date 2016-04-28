@@ -95,7 +95,6 @@ public class TestTile {
 	public void setPlayable() {
 		Tile t1 = new Tile(new Point(0, 0), false);
 		Hexomino hex = new Hexomino(0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 1);
-		// TODO use assertFalse();
 		assertFalse(t1.canAddHex(hex));
 
 		t1.setPlayable(true);

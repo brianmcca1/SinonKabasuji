@@ -16,6 +16,57 @@ import sinon.models.data.BoardData;
  **/
 public class Board {
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Board [tilesViaPoints=" + tilesViaPoints + ", hexominoLocations=" + hexominoLocations + "]";
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((hexominoLocations == null) ? 0 : hexominoLocations.hashCode());
+		result = prime * result + ((tilesViaPoints == null) ? 0 : tilesViaPoints.hashCode());
+		return result;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Board other = (Board) obj;
+		if (hexominoLocations == null) {
+			if (other.hexominoLocations != null)
+				return false;
+		} else if (!hexominoLocations.equals(other.hexominoLocations))
+			return false;
+		if (tilesViaPoints == null) {
+			if (other.tilesViaPoints != null)
+				return false;
+		} else if (!tilesViaPoints.equals(other.tilesViaPoints))
+			return false;
+		return true;
+	}
+
 	private final static int WIDTH = 12;
 	private final static int HEIGHT = 12;
 	private final static int WIDTH_BY_ZERO = WIDTH - 1;
@@ -231,7 +282,5 @@ public class Board {
 
 		return false;
 	}
-
-	// TODO equals and hash and ToString
 
 }
