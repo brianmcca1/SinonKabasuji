@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import sinon.controllers.FileHandler;
 import sinon.models.Level;
 import sinon.views.MainView;
 // import sinon.views.LevelSelectView;
@@ -28,8 +29,6 @@ public abstract class Kabasuji extends JFrame {
     static final int WIDTH = 800;
     /** Height in pixels of the frame */
     static final int HEIGHT = 600;
-    /** File that is currently being read from / saved to. */
-    File currentFile;
     /** Knowledge of the current level. */
     public Level currentLevel;
     /**
@@ -96,14 +95,6 @@ public abstract class Kabasuji extends JFrame {
         this.revalidate();
     }
 
-    public void setCurrentFile(File f) {
-        this.currentFile = f;
-    }
-
-    public File getCurrentFile() {
-        return this.currentFile;
-    }
-
     /** @return returns the MainView object. */
     public MainView getMainView() {
         return this.mainView;
@@ -124,20 +115,9 @@ public abstract class Kabasuji extends JFrame {
         this.currentLevel = l;
     }
 
-    /**
-     * Will determine which file to set for the Game based on the currently open
-     * level.
-     */
+    /** Will determine which file to set for the Game based on the currently open level.*/
     public void determineCurrentGameLevelFile() {
-        // TODO fill in rest of the level files
-        switch (this.currentLevelNumber) {
-        case 0:
-            this.setCurrentFile(new File("level1.dat"));
-            break;
-        case 1:
-            this.setCurrentFile(new File("level2.dat"));
-            break;
-        }
+    	FileHandler.determineCurrentGameLevelFile(this.currentLevelNumber);
     }
 
     public void setCurrentLevelNumber(int n) {

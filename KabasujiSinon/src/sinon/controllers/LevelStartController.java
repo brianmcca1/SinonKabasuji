@@ -61,7 +61,7 @@ public class LevelStartController implements ActionListener{
 				break;
 			case LIGHTNING:
 				lvlTypeInfoView = new LightningInfoView(this.game.getLevel().getLevelData().getLevelProperty().getPropertyValue()); 
-				//lvlTypeInfoView = new LightningInfoView(false, (LightningLevel) game.getLevel()); FIXME this threw a cast exception
+				//lvlTypeInfoView = new LightningInfoView(false, (LightningLevel) game.getLevel()); FIXME this throws a cast exception
 				break;
 			case RELEASE:
 				lvlTypeInfoView = new ReleaseInfoView();

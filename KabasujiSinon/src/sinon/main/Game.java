@@ -4,6 +4,7 @@ import java.io.File;
 
 import sinon.controllers.BullpenController;
 import sinon.controllers.ExitGameController;
+import sinon.controllers.FileHandler;
 import sinon.models.Board;
 import sinon.models.BullPen;
 import sinon.models.Level;
@@ -31,25 +32,10 @@ public class Game extends Kabasuji {
 
     /** Will pull every level from file and reset it. */
     public void loadAllLevels() {
-        File levelFile = new File("level1.dat");
-        Deserializer deserializer = new Deserializer(levelFile);
-        LevelData levelData = deserializer.deserializeFile();
+    	Level[] levels;
+    	levels = FileHandler.loadAllLevels();
+    	allLevels = levels.clone();
 
-        Level levelOne = new Level(levelData.getLevelType(), new Board(levelData.getBoardData()), new BullPen(levelData.getBullpenData()));
-        levelOne.setLevelData(levelData);
-
-        allLevels[0] = levelOne;
-
-        
-        levelFile = new File("level2.dat");
-        deserializer = new Deserializer(levelFile);
-        levelData = deserializer.deserializeFile();
-        
-        Level levelTwo = new Level(levelData.getLevelType(), new Board(levelData.getBoardData()), new BullPen(levelData.getBullpenData()));
-        levelTwo.setLevelData(levelData);
-        
-        allLevels[1] = levelTwo;
-        
         System.out.println("GAME HAS LOADED ALL LEVELS INTO INTO ARRAY FROM FILES");
     }
 

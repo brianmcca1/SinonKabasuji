@@ -4,11 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import sinon.main.Game;
 import sinon.models.data.BoardData;
-import sinon.models.data.BullPenData;
-import sinon.models.data.LevelData;
 import sinon.models.data.LightningLevelProperty;
 import sinon.models.data.PuzzleLevelProperty;
-import sinon.serial.Deserializer;
 import sinon.serial.Serializer;
 import sinon.models.data.LevelType.types;
 import sinon.views.game.LevelSelectView;
@@ -50,13 +47,15 @@ public class ExitGameController implements ActionListener {
         	case LIGHTNING:
         		this.game.getLevel().getLevelData().setLevelProperty(new LightningLevelProperty(propertyValue));
         		break;
+        	case RELEASE:
+        		break;
         }
         
         
         //TODO set the max stars and whatever else is relevant to the game
         
         
-        Serializer serializer = new Serializer(this.game.getCurrentFile(), this.game.getLevel().getLevelData());
+        Serializer serializer = new Serializer(FileHandler.currentFile, this.game.getLevel().getLevelData());
         serializer.serializeFile();
         
         System.out.println("*************EXIT CONTROLLER*****************");

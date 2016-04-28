@@ -41,14 +41,14 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
         	
             File file = fc.getSelectedFile();
             
-            if(this.builder.getCurrentFile() != null){
-	            if(file.compareTo(this.builder.getCurrentFile()) == 0){
+            if(FileHandler.currentFile != null){
+	            if(file.compareTo(FileHandler.currentFile) == 0){
 	            	System.out.println("FILE IS ALREADY OPEN!");
 	            	return;
 	            }
             }
             
-            this.builder.setCurrentFile(file);
+            FileHandler.currentFile = file;
             
             Deserializer deserializer = new Deserializer(file); 
             LevelData levelData = deserializer.deserializeFile();

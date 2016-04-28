@@ -20,7 +20,6 @@ public class Builder extends Kabasuji {
     Builder() {
         super();
 
-        this.currentFile = null;
         this.blankPanel = new JPanel();
         this.setJMenuBar(new BuilderMenuBar(this, this.blankPanel));
         startSplash("Kabasuji Builder", this.blankPanel);

@@ -5,14 +5,10 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import javax.swing.JFileChooser;
 import sinon.main.Builder;
-import sinon.models.data.BoardData;
-import sinon.models.data.BullPenData;
-import sinon.models.data.LevelData;
 import sinon.models.data.LevelProperty;
 import sinon.models.data.LevelType.types;
 import sinon.models.data.LightningLevelProperty;
 import sinon.models.data.PuzzleLevelProperty;
-import sinon.serial.Serializer;
 import sinon.views.builder.BuilderMenuBar;
 
 /**
@@ -48,37 +44,27 @@ public class BuilderSaveAsController implements ActionListener{
         if (returnVal == JFileChooser.APPROVE_OPTION) {
         	
             File file = fc.getSelectedFile();
-            this.builder.setCurrentFile(file);
-
-            //CREATE THE LEVELS BULLPENDATA AND SET IT
-            BullPenData levelBullpenData = new BullPenData(this.builder.getLevel().getBullpen());
-            this.builder.getLevel().getLevelData().setBullpenData(levelBullpenData);
-            
-            //CREATE THE LEVELS BOARDDATA AND SET IT
-            BoardData levelBoardData = new BoardData(this.builder.getLevel().getBoard());
-            this.builder.getLevel().getLevelData().setBoardData(levelBoardData);
+            FileHandler.currentFile = file;
             
             //GET THIS LEVEL'S propertyValue
             types thisLevelsType = this.builder.getLevel().getLevelData().getLevelType();
             int propertyValue = this.builder.getMainView().getLevelTypeInfoView().getValue();
+            LevelProperty levelProp = null;
             
-            //SET LevelProperty BASED ON LEVEL TYPE AND WHAT WAS ENTERED INTO THE VIEW
-            if(thisLevelsType.equals(types.PUZZLE)){
-            	this.builder.getLevel().getLevelData().setLevelProperty(new PuzzleLevelProperty(propertyValue));
+            switch(thisLevelsType){
+	            case PUZZLE:
+	            	levelProp = new PuzzleLevelProperty(propertyValue);
+	            	this.builder.getLevel().getLevelData().setLevelProperty(new PuzzleLevelProperty(propertyValue));
+	            	break;
+	            case LIGHTNING:
+	            	levelProp = new LightningLevelProperty(propertyValue);
+	            	this.builder.getLevel().getLevelData().setLevelProperty(new LightningLevelProperty(propertyValue));
+	            	break;
+	            case RELEASE:
+	            	break;
             }
-            else{
-            	if(thisLevelsType.equals(types.LIGHTNING)){
-            		this.builder.getLevel().getLevelData().setLevelProperty(new LightningLevelProperty(propertyValue));
-            	}
-            }      
-
-            System.out.println("*************SAVE AS CONTROLLER*****************");
-            System.out.println(this.builder.getLevel().getLevelData().toString());
-            System.out.println("*********************************************");
             
-            
-            Serializer serializer = new Serializer(file, this.builder.getLevel().getLevelData());
-            serializer.serializeFile();
+            FileHandler.builderSaveLevelToFile(file, this.builder.getLevel(), levelProp);
             
             this.builderMenuBar.mntmSave.setEnabled(true);
         }
