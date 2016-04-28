@@ -3,6 +3,8 @@ package sinon.views.game;
 import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
+import sinon.controllers.FileHandler;
 import sinon.models.Level;
 import sinon.views.InfoPanel;
 
@@ -41,9 +43,7 @@ public class GameInfoView extends InfoPanel {
         this.add(btnExit);
         this.exitButton = btnExit;
         
-        //TODO read max stars from currentFile and set appropriately
-        
-        JPanel starView = new StarView("/images/3stars.png");
+        JPanel starView = new StarView("/images/blank.png");
         this.add(starView);
     }
 

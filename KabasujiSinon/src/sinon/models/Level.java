@@ -17,8 +17,6 @@ public class Level implements Observable {
 	BullPen bullpen;
 	/** The stars currently unlocked on this level, out of 3 */
 	int stars;
-	/** The highest amount of stars unlocked on this level, out of 3 */
-	int starRecord;
 	/**
 	 * This is used for Serializing and Deserializing data relevant to the
 	 * Level. @see LevelData
@@ -35,7 +33,6 @@ public class Level implements Observable {
 		this.bullpen = Objects.requireNonNull(bullpen);
 		Objects.requireNonNull(type);
 		this.levelData = new LevelData(type);
-		this.starRecord = 0;
 		observers = new LinkedList<Observer>();
 		selectedHexomino = Optional.empty();
 	}
@@ -43,7 +40,6 @@ public class Level implements Observable {
 	public Level(LevelData levelData) {
 		this.board = new Board(levelData.getBoardData());
 		this.bullpen = new BullPen(levelData.getBullpenData());
-		this.starRecord = levelData.getStarRecord();
 		this.levelData = levelData;
 		observers = new LinkedList<Observer>();
 		selectedHexomino = Optional.empty();
@@ -72,14 +68,6 @@ public class Level implements Observable {
 
 	public void setStars(int s) {
 		this.stars = s;
-	}
-
-	public int getStarRecord() {
-		return this.starRecord;
-	}
-
-	public void setStarRecord(int s) {
-		this.starRecord = s;
 	}
 
 	/**

@@ -61,9 +61,7 @@ public class FileHandler {
 		Deserializer deserializer = new Deserializer(levelFile);
 		LevelData levelData = deserializer.deserializeFile();
 
-		Level levelOne = new Level(levelData.getLevelType(), new Board(
-				levelData.getBoardData()), new BullPen(
-						levelData.getBullpenData()));
+		Level levelOne = new Level(levelData.getLevelType(), new Board(levelData.getBoardData()), new BullPen(levelData.getBullpenData()));
 		levelOne.setLevelData(levelData);
 
 		levels[0] = levelOne;
@@ -72,9 +70,7 @@ public class FileHandler {
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
 
-		Level levelTwo = new Level(levelData.getLevelType(), new Board(
-				levelData.getBoardData()), new BullPen(
-						levelData.getBullpenData()));
+		Level levelTwo = new Level(levelData.getLevelType(), new Board(levelData.getBoardData()), new BullPen(levelData.getBullpenData()));
 		levelTwo.setLevelData(levelData);
 
 		levels[1] = levelTwo;
