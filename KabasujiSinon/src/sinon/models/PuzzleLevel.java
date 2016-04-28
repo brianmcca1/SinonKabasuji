@@ -1,6 +1,6 @@
 package sinon.models;
 
-import sinon.models.data.LevelType.types;
+import sinon.models.data.LevelType.Types;
 
 public class PuzzleLevel extends Level {
     /** The maximum number of moves allowed */
@@ -10,13 +10,13 @@ public class PuzzleLevel extends Level {
     int moves;
 
     public PuzzleLevel(Board b, BullPen bp, int maxMoves) {
-        super(types.PUZZLE, b, bp);
+        super(Types.PUZZLE, b, bp);
         this.maxMoves = maxMoves;
         this.moves = 0;
     }
 
     public PuzzleLevel(Level level) {
-        super(types.PUZZLE, level.getBoard(), level.getBullpen());
+        super(Types.PUZZLE, level.getBoard(), level.getBullpen());
         this.maxMoves = level.getLevelData().getLevelProperty().getPropertyValue();
     }
 

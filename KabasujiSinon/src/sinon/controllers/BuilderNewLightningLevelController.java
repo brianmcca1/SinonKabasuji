@@ -8,7 +8,7 @@ import sinon.models.BullPen;
 import sinon.models.Level;
 import sinon.models.LightningLevel;
 import sinon.models.data.BullPenData;
-import sinon.models.data.LevelType.types;
+import sinon.models.data.LevelType.Types;
 import sinon.views.LightningInfoView;
 import sinon.views.builder.BuilderMenuBar;
 

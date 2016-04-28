@@ -36,7 +36,7 @@ public class TestMoveBoardToBoard {
 		ArrayList<Hexomino> bpList = new ArrayList<Hexomino>();
 		BullPen bullpen = new BullPen(bpList);
 
-		testLevel = new Level(LevelType.types.PUZZLE, new Board(), bullpen);
+		testLevel = new Level(LevelType.Types.PUZZLE, new Board(), bullpen);
 		testLevel.getBoard().addHexomino(new Point(11, 11), hex1);
 		testLevel.getBoard().addHexomino(new Point(3, 3), hex2);
 		

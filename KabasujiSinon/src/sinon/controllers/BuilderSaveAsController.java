@@ -6,7 +6,7 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import sinon.main.Builder;
 import sinon.models.data.LevelProperty;
-import sinon.models.data.LevelType.types;
+import sinon.models.data.LevelType.Types;
 import sinon.models.data.LightningLevelProperty;
 import sinon.models.data.PuzzleLevelProperty;
 import sinon.views.builder.BuilderMenuBar;
@@ -47,7 +47,7 @@ public class BuilderSaveAsController implements ActionListener{
             FileHandler.currentFile = file;
             
             //GET THIS LEVEL'S propertyValue
-            types thisLevelsType = this.builder.getLevel().getLevelData().getLevelType();
+            Types thisLevelsType = this.builder.getLevel().getLevelData().getLevelType();
             int propertyValue = this.builder.getMainView().getLevelTypeInfoView().getValue();
             LevelProperty levelProp = null;
             

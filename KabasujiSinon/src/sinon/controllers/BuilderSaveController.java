@@ -9,7 +9,7 @@ import sinon.models.data.BullPenData;
 import sinon.models.data.LevelProperty;
 import sinon.models.data.LightningLevelProperty;
 import sinon.models.data.PuzzleLevelProperty;
-import sinon.models.data.LevelType.types;
+import sinon.models.data.LevelType.Types;
 import sinon.serial.Serializer;
 
 public class BuilderSaveController implements ActionListener{
@@ -27,7 +27,7 @@ public class BuilderSaveController implements ActionListener{
 		if(FileHandler.currentFile != null){
 			
             //GET THIS LEVEL'S propertyValue
-            types thisLevelsType = this.builder.getLevel().getLevelData().getLevelType();
+            Types thisLevelsType = this.builder.getLevel().getLevelData().getLevelType();
             int propertyValue = this.builder.getMainView().getLevelTypeInfoView().getValue();
             LevelProperty levelProp = null;
             

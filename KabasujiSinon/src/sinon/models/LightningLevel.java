@@ -1,6 +1,6 @@
 package sinon.models;
 
-import sinon.models.data.LevelType.types;
+import sinon.models.data.LevelType.Types;
 
 public class LightningLevel extends Level {
 	/** Maximum amount of time allowed, in seconds */
@@ -9,13 +9,13 @@ public class LightningLevel extends Level {
 	int timeLeft;
 
 	public LightningLevel(Board b, BullPen bp, int maxTime) {
-		super(types.LIGHTNING, b, bp);
+		super(Types.LIGHTNING, b, bp);
 		this.maxTime = maxTime;
 		this.timeLeft = maxTime;
 	}
 
 	public LightningLevel(Level level) {
-		super(types.LIGHTNING, level.getBoard(), level.getBullpen());
+		super(Types.LIGHTNING, level.getBoard(), level.getBullpen());
 		this.maxTime = level.getLevelData().getLevelProperty().getPropertyValue();
 	}
 

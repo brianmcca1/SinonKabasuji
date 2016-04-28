@@ -8,7 +8,7 @@ import sinon.models.BullPen;
 import sinon.models.Level;
 import sinon.models.PuzzleLevel;
 import sinon.models.data.BullPenData;
-import sinon.models.data.LevelType.types;
+import sinon.models.data.LevelType.Types;
 import sinon.views.PuzzleInfoView;
 import sinon.views.builder.BuilderMenuBar;
 

@@ -13,7 +13,7 @@ import sinon.models.Level;
 import sinon.models.LightningLevel;
 import sinon.models.PuzzleLevel;
 import sinon.models.data.LevelData;
-import sinon.models.data.LevelType.types;
+import sinon.models.data.LevelType.Types;
 import sinon.serial.Deserializer;
 import sinon.views.LevelTypeInfoView;
 import sinon.views.LightningInfoView;
@@ -65,7 +65,7 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 
 			//FIND OUT WHICH LevelTypeInfoView TO GIVE TO MAINVIEW
 			LevelTypeInfoView lvlTypeInfoView = null;
-			types thisLevelsType = levelData.getLevelType();
+			Types thisLevelsType = levelData.getLevelType();
 
 			switch(thisLevelsType){
 			case PUZZLE:

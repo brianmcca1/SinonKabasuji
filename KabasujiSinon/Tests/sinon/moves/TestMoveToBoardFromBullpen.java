@@ -38,7 +38,7 @@ public class TestMoveToBoardFromBullpen {
 		bullpen.addHexomino(hex1);
 		bullpen.addHexomino(hex2);
 
-		testLevel = new Level(LevelType.types.PUZZLE, new Board(), bullpen);
+		testLevel = new Level(LevelType.Types.PUZZLE, new Board(), bullpen);
 		testLevel.select(hex1);
 		mtbfbp1 = new MoveToBoardFromBullpen(testLevel, 11, 11);
 		mtbfbp2 = new MoveToBoardFromBullpen(testLevel, 0, 0);

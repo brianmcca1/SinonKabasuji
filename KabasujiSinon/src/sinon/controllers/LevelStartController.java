@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import sinon.main.Game;
-import sinon.models.data.LevelType.types;
+import sinon.models.data.LevelType.Types;
 import sinon.views.LevelTypeInfoView;
 import sinon.views.LightningInfoView;
 import sinon.views.PuzzleInfoView;
@@ -48,7 +48,7 @@ public class LevelStartController implements ActionListener {
 		this.game.setLevel(this.game.getLevel(this.levelNum));
 
 		LevelTypeInfoView lvlTypeInfoView = null;
-		types thisLevelsType = this.game.getLevel(this.levelNum).getLevelData().getLevelType();
+		Types thisLevelsType = this.game.getLevel(this.levelNum).getLevelData().getLevelType();
 
 		switch (thisLevelsType) {
 		case PUZZLE:

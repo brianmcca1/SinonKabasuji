@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import sinon.main.Game;
 import sinon.models.data.BoardData;
-import sinon.models.data.LevelType.types;
+import sinon.models.data.LevelType.Types;
 import sinon.models.data.LightningLevelProperty;
 import sinon.models.data.PuzzleLevelProperty;
 import sinon.serial.Serializer;
@@ -37,7 +37,7 @@ public class ExitGameController implements ActionListener {
 		this.game.getLevel().getLevelData().setBoardData(levelBoardData);
 
 		//GET THIS LEVEL'S propertyValue
-		types thisLevelsType = this.game.getLevel().getLevelData().getLevelType();
+		Types thisLevelsType = this.game.getLevel().getLevelData().getLevelType();
 		int propertyValue = this.game.getMainView().getLevelTypeInfoView().getValue();
 
 		//SET LevelProperty BASED ON LEVEL TYPE AND WHAT WAS ENTERED INTO THE VIEW

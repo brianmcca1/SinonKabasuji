@@ -1,9 +1,12 @@
 package sinon.models;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import sinon.models.data.LevelData;
-import sinon.models.data.LevelType.types;
+import sinon.models.data.LevelType.Types;
 import sinon.views.Observer;
 
 public class Level implements Observable {
@@ -18,21 +21,22 @@ public class Level implements Observable {
 	int starRecord;
 	/**
 	 * This is used for Serializing and Deserializing data relevant to the
-	 * Level. Contains: this level number. this level type. data regarding
-	 * playable tiles for the board. data regarding the hexominos that should be
-	 * in the bullpen.
+	 * Level. @see LevelData
 	 */
 	LevelData levelData;
+
 	/** The Hexomino model that is currently selected. */
 	Optional<Hexomino> selectedHexomino;
-	private Optional<Observer> observer;
+	/** Observers of the level */
+	List<Observer> observers;
 
-	public Level(types t, Board b, BullPen bp) {
-		this.board = b;
-		this.bullpen = bp;
-		this.levelData = new LevelData(t);
+	public Level(Types type, Board board, BullPen bullpen) {
+		this.board = Objects.requireNonNull(board);
+		this.bullpen = Objects.requireNonNull(bullpen);
+		Objects.requireNonNull(type);
+		this.levelData = new LevelData(type);
 		this.starRecord = 0;
-		observer = Optional.empty();
+		observers = new LinkedList<Observer>();
 		selectedHexomino = Optional.empty();
 	}
 
@@ -41,7 +45,7 @@ public class Level implements Observable {
 		this.bullpen = new BullPen(levelData.getBullpenData());
 		this.starRecord = levelData.getStarRecord();
 		this.levelData = levelData;
-		observer = Optional.empty();
+		observers = new LinkedList<Observer>();
 		selectedHexomino = Optional.empty();
 	}
 
@@ -64,13 +68,10 @@ public class Level implements Observable {
 		return this.levelData;
 	}
 
+	// TODO why would this ever need to be called?
+	// remove this if possible imo.
 	public void setLevelData(LevelData l) {
 		this.levelData = l;
-	}
-
-	public int getStars() {
-		this.stars = this.countStars();
-		return this.stars;
 	}
 
 	public void setStars(int s) {
@@ -100,13 +101,17 @@ public class Level implements Observable {
 		this.selectedHexomino = Optional.empty();
 	}
 
-	/** @return if there is currently a hexomino selected. */
+	/**
+	 * Determines if there is a selected hexomino.
+	 * 
+	 * @return True if there is currently a hexomino selected.
+	 */
 	public boolean hasSelected() {
 		return this.selectedHexomino.isPresent();
 	}
 
 	/**
-	 * Determines whether this level has been won
+	 * Determines whether this level is completed.
 	 * 
 	 * @return Returns true if the level has been won (Three stars have been
 	 *         attained), otherwise returns false
@@ -127,23 +132,29 @@ public class Level implements Observable {
 	 *         being 0
 	 * @author PDeBrine
 	 */
-
 	public int countStars() {
 		return 0;
 	}
 
 	@Override
 	public void registerObserver(Observer observer) {
-		this.observer = Optional.of(observer);
+		this.observers.add(observer);
 
 	}
 
 	@Override
 	public void update() {
-		if (observer.isPresent())
-			this.observer.get().updated();
+		for (Observer o : observers) {
+			o.updated();
+		}
 	}
 
+	/**
+	 * Gets the selected hexomino.
+	 * 
+	 * @return The optional with either the selected hexomino if there is one,
+	 *         or null.
+	 */
 	public Optional<Hexomino> getSelectedHexomino() {
 		return this.selectedHexomino;
 	}

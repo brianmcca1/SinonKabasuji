@@ -7,7 +7,7 @@ import sinon.models.Board;
 import sinon.models.BullPen;
 import sinon.models.Level;
 import sinon.models.data.BullPenData;
-import sinon.models.data.LevelType.types;
+import sinon.models.data.LevelType.Types;
 import sinon.views.ReleaseInfoView;
 import sinon.views.builder.BuilderMenuBar;
 
@@ -25,7 +25,7 @@ public class BuilderNewReleaseLevelController extends BuilderNewLevelController 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("CREATING NEW RELEASE LEVEL");
-		this.builder.setLevel(new Level(types.RELEASE, new Board(), new BullPen(new BullPenData())));
+		this.builder.setLevel(new Level(Types.RELEASE, new Board(), new BullPen(new BullPenData())));
 		this.handleNewLevel(this.builder, this.builderMenuBar, new ReleaseInfoView());
 	}
 }

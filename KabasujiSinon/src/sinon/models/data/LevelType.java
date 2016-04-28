@@ -7,7 +7,7 @@ public class LevelType implements Serializable{
 
 	private static final long serialVersionUID = 3520586132922947808L;
 
-	public enum types {
+	public enum Types {
         PUZZLE, LIGHTNING, RELEASE
     }
 }
