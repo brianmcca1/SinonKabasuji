@@ -30,14 +30,7 @@ public class GameTileController extends TileController {
 
 		if (level.hasSelected()) {
 
-			// we have to determine what kind of move to create
-			if (level.getBullpen().getPieces()
-					.contains(level.getSelectedHexomino().get())) {
-
-			}
-
-			if (level.getBullpen().containsHexID(
-					level.getSelectedHexomino().get().getID())) {
+			if (level.getBullpen().containsHexID(level.getSelectedHexomino().get().getID())) {
 				// else move from bullpen to board
 				MoveToBoardFromBullpen move = new MoveToBoardFromBullpen(
 						this.level, this.tileView.getRow(),
@@ -51,8 +44,7 @@ public class GameTileController extends TileController {
 				}
 			}
 
-			else if (level.getBoard() // TODO change to contains.
-					.containsHexID(level.getSelectedHexomino().get().getID())) {
+			else if (level.getBoard().containsHexID(level.getSelectedHexomino().get().getID())) {
 				// then move from board to board
 				int x, y;
 				x = level.getBoard().getHexominoLocation(
