@@ -1,28 +1,27 @@
 package sinon.controllers;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import sinon.main.Builder;
 import sinon.models.Board;
 import sinon.models.BullPen;
-import sinon.models.Level;
 import sinon.models.PuzzleLevel;
 import sinon.models.data.BullPenData;
-import sinon.models.data.LevelType.Types;
 import sinon.views.PuzzleInfoView;
 import sinon.views.builder.BuilderMenuBar;
 
-public class BuilderNewPuzzleLevelController extends BuilderNewLevelController implements ActionListener {
+public class BuilderNewPuzzleLevelController extends BuilderNewLevelController
+{
 
 	private Builder builder;
-	
+
 	private BuilderMenuBar builderMenuBar;
 
-	public BuilderNewPuzzleLevelController(Builder b, BuilderMenuBar bMenuBar){
+	public BuilderNewPuzzleLevelController(Builder b, BuilderMenuBar bMenuBar) {
 		this.builder = b;
 		this.builderMenuBar = bMenuBar;
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Board board = new Board();
@@ -30,6 +29,7 @@ public class BuilderNewPuzzleLevelController extends BuilderNewLevelController i
 		PuzzleLevel level = new PuzzleLevel(board, bullpen, 10);
 		System.out.println("CREATING NEW PUZZLE LEVEL");
 		this.builder.setLevel(level);
-		this.handleNewLevel(this.builder, this.builderMenuBar, new PuzzleInfoView(true, level));
+		this.handleNewLevel(this.builder, this.builderMenuBar,
+				new PuzzleInfoView(true, level));
 	}
 }

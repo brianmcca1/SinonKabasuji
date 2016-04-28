@@ -10,7 +10,16 @@ import sinon.models.Tile;
 import sinon.views.MainView;
 import sinon.views.TileView;
 
-public abstract class TileController implements MouseListener{
+/**
+ * A TileController is the mouse listener for a TileView.
+ * 
+ * A TileController is registered to an individual tile and tileView. Each
+ * TileController must also be aware of it's current level, so that it can
+ * access the board and know the selected piece.
+ * 
+ * @author Josh Desmond
+ */
+public abstract class TileController implements MouseListener {
 
 	protected Level level;
 	protected TileView tileView;
@@ -23,16 +32,16 @@ public abstract class TileController implements MouseListener{
 		this.tileView = tileView;
 		this.tile = tileView.getTile();
 	}
-	
+
 	@Override
 	public void mouseClicked(MouseEvent e) {
-	
-	    if (SwingUtilities.isRightMouseButton(e)) {
-	        handleRightClick();
-	
-	    } else {
-	        handleLeftClick();
-	    }
+
+		if (SwingUtilities.isRightMouseButton(e)) {
+			handleRightClick();
+
+		} else {
+			handleLeftClick();
+		}
 	}
 
 	@Override
@@ -51,7 +60,7 @@ public abstract class TileController implements MouseListener{
 	public void mouseExited(MouseEvent e) {
 	}
 
-	public void handleRightClick(){}
-	
-	public void handleLeftClick(){}
+	public abstract void handleRightClick();
+
+	public abstract void handleLeftClick();
 }

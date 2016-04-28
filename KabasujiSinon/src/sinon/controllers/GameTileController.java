@@ -8,11 +8,7 @@ import sinon.views.MainView;
 import sinon.views.TileView;
 
 /**
- * A TileController is the mouse listener for a TileView.
- * 
- * A TileController is registered to an individual tile and tileView. Each
- * TileController must also be aware of it's current level, so that it can
- * access the board and know the selected piece.
+ * Tile Controller for game specific interactions.
  * 
  * @author Peter Debrine
  * @author Josh Desmond
@@ -80,6 +76,11 @@ public class GameTileController extends TileController {
 			}
 		}
 
+	}
+
+	@Override
+	public void handleRightClick() {
+		// Do nothing.
 	}
 
 }
