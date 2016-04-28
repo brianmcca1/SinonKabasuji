@@ -1,4 +1,4 @@
-
+package sinon.views;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -10,10 +10,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
+import sinon.main.HexStashRegistrator;
 import sinon.models.BullPen;
 
 @SuppressWarnings("serial")
-public class BullpenView extends JPanel implements StashView {
+public class BullpenView extends JPanel implements StashView, Observer {
 
 	public JScrollPane scrollPanel;
 	public JPanel contentPanel;
@@ -89,6 +90,12 @@ public class BullpenView extends JPanel implements StashView {
 	@Override
 	public void setRegistrator(HexStashRegistrator hexStashRegistrator) {
 		stash.setRegistrator(Objects.requireNonNull(hexStashRegistrator));
+		updated();
+	}
+
+	@Override
+	public void updated() {
+		redrawBullpenView();
 	}
 
 }

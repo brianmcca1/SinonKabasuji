@@ -1,4 +1,4 @@
-
+package sinon.views;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -23,8 +23,8 @@ public class HexominoBullpenView extends JPanel {
 	public HexominoBullpenView(Hexomino h) {
 		this.hex = h;
 		this.setLayout(new GridLayout(6, 6));
-		this.setMinimumSize(new Dimension(150,150));
-		this.setMaximumSize(new Dimension(150,150));
+		this.setMinimumSize(new Dimension(150, 150));
+		this.setMaximumSize(new Dimension(150, 150));
 		this.setHexominoOnGrid();
 	}
 
@@ -53,7 +53,8 @@ public class HexominoBullpenView extends JPanel {
 			this.setBorder(new EmptyBorder(10, 0, 10, 0));
 			if (indexList.contains(i)) {
 				tempHexPanel.setBackground(Color.blue);
-				tempHexPanel.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+				tempHexPanel.setBorder(BorderFactory
+						.createLineBorder(Color.lightGray));
 				this.add(tempHexPanel);
 			} else {
 				this.add(tempHexPanel);
@@ -62,6 +63,5 @@ public class HexominoBullpenView extends JPanel {
 		this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		return this;
 	}
-
 
 }

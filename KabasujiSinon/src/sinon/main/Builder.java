@@ -18,6 +18,7 @@ public class Builder extends Kabasuji {
 	BullPen bullpen = new BullPen(HexominoBankData.getHexominos());
 
 	public Builder() {
+
 		super();
 
 		this.blankPanel = new JPanel();
@@ -31,13 +32,25 @@ public class Builder extends Kabasuji {
 			this.revalidate();
 		}
 
-		MainView mv = new MainView(this.getLevel(), new BankView(this, this.bullpen), lvlTypeInfoView);
+
+		MainView mv = new MainView(this.getLevel(), new BankView(),
+				lvlTypeInfoView);
 		this.setMainView(mv);
 		this.mainView.revalidate();
 		this.startNextPanel(this.blankPanel, mv);
 		this.tileRegistrator = new TileRegistrator(getLevel(), mainView);
 		this.tileRegistrator.setToBuilderType();
 		registerBoardViewControllers();
+
+
+		((BankView) this.mainView.getInfoPanel())
+		.setRegistrator(new HexStashRegistrator(getLevel(),
+				getMainView(), HexStashRegistrator.BANK_CONTROLLER));
+
+
+		this.mainView.getBullpenView().setRegistrator(
+				new HexStashRegistrator(getLevel(), getMainView(),
+						HexStashRegistrator.BULLPEN_CONTROLLER));
 	}
 
 	public BullPen getBullpen() {
