@@ -22,13 +22,15 @@ public class TestMoveBoardToBoard {
 	MoveInBoard mib3;
 	MoveInBoard mib4;
 	MoveInBoard mib5;
+	Hexomino hex1 = new Hexomino(NumberSetFactory.getByNumbers(0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5));
+	Hexomino hex2 = new Hexomino(NumberSetFactory.getByNumbers(0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0));
+	Hexomino hex3 = new Hexomino(NumberSetFactory.getByNumbers(0, 0, 1, 0, 1, 1, 2, 0, 3, 0, 4, 0));
 	
 
 	@Before
 	public void setUp() {
-		Hexomino hex1 = new Hexomino(NumberSetFactory.getByNumbers(0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5));
 		hex1.flipVertically();
-		Hexomino hex2 = new Hexomino(NumberSetFactory.getByNumbers(0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0));
+		hex2.flipHorizontally();
 		hex2.flipHorizontally();
 
 		ArrayList<Hexomino> bpList = new ArrayList<Hexomino>();
@@ -36,23 +38,37 @@ public class TestMoveBoardToBoard {
 
 		testLevel = new Level(LevelType.types.PUZZLE, new Board(), bullpen);
 		testLevel.getBoard().addHexomino(new Point(11, 11), hex1);
-		testLevel.getBoard().addHexomino(new Point(7, 7), hex2);
+		testLevel.getBoard().addHexomino(new Point(3, 3), hex2);
 		
 		testLevel.select(hex1);
 		mib1 = new MoveInBoard(testLevel, 11, 11, 10, 10);
-		mib2 = new MoveInBoard(testLevel, 0, 0, 11, 11);
 		mib3 = new MoveInBoard(testLevel, -3, -3, 5, 5);
-		mib4 = new MoveInBoard(testLevel, 11, 0, 5, 5);
 		testLevel.select(hex2);
 		mib5 = new MoveInBoard(testLevel, 5, 5, 5, 5);
-
+		testLevel.select(hex2);
+		mib4 = new MoveInBoard(testLevel, 11, 0, 3, 5);
+		testLevel.select(hex3);
+		mib2 = new MoveInBoard(testLevel, 0, 0, 11, 11);
 	}
 	
 	@Test
 	public void testBasicMove(){
+		// Basic move
 		assertTrue(mib1.doMove());
-		assertFalse(mib5.doMove());
+		hex2.flipHorizontally();
+		testLevel.select(hex2);
+		assertTrue(mib5.doMove());
+		testLevel.select(hex2);
 		assertFalse(mib3.doMove());
+		testLevel.select(hex2);
+		assertFalse(mib4.doMove());
+		testLevel.select(hex3);
+		assertFalse(mib2.doMove());
+		mib1.level.getBoard().removeHexomino(mib1.hex);
+		assertFalse(mib1.doMove());
+		mib1.level.deselect();
+		assertFalse(mib1.doMove());
+		
 		
 	}
 	

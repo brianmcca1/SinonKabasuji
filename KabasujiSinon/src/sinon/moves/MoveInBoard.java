@@ -61,6 +61,7 @@ public class MoveInBoard extends BoardMove {
 
     @Override
     public boolean valid() {
+    	//FIXME Doesn't check if the tile is on the board in the location specified
         if (!level.hasSelected())
             return false;
         if (!level.getBoard().canAddHexomino(
