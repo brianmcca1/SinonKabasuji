@@ -11,12 +11,13 @@ public class Tile implements Observable {
 	boolean playable;
 	Optional<Hexomino> hex;
 	Point location;
-	Observer observer;
+	Optional<Observer> observer;
 
 	public Tile(Point location, boolean playable) {
 		this.playable = playable;
 		this.location = Objects.requireNonNull(location);
 		hex = Optional.empty();
+		this.observer = Optional.empty();
 	}
 
 	/**
@@ -126,11 +127,13 @@ public class Tile implements Observable {
 
 	@Override
 	public void registerObserver(Observer observer) {
-		this.observer = observer;
+		this.observer = Optional.of(observer);
 	}
 
 	@Override
 	public void update() {
-		this.observer.updated();
+		if (this.observer.isPresent()) {
+			this.observer.get().updated();
+		}
 	}
 }
