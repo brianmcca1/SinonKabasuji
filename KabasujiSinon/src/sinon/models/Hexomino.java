@@ -5,6 +5,7 @@ import java.awt.Point;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
 
@@ -30,6 +31,8 @@ public class Hexomino implements Observable {
     UUID id;
     /** Color of the hexomino */
     Color color;
+    /** Random for use with random */
+    private static final Random RANDOM = new Random();
 
     /**
      * Is a convenience constructor for quickly building a Hexomino.
@@ -88,7 +91,16 @@ public class Hexomino implements Observable {
     }
 
     private static Color createRandomColor() {
-        return null;
+        // Code stolen from Greg at:
+        // http://stackoverflow.com/questions/4246351/creating-random-colour-in-java
+        // Java 'Color' class takes 3 floats, from 0 to 1.
+        float r = RANDOM.nextFloat();
+        float g = RANDOM.nextFloat();
+        float b = RANDOM.nextFloat();
+        // Then to finally create the colour, pass the primary colours into the
+        // constructor:
+        Color randomColor = new Color(r, g, b);
+        return randomColor;
     }
 
     /**
