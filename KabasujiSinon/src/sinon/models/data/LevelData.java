@@ -30,11 +30,10 @@ public final class LevelData implements Serializable {
 	 */
 	LevelProperty levelProperty;
 
-	public LevelData(Types t, BoardData bData, BullPenData bpData, int starRecord) {
+	public LevelData(Types t, BoardData bData, BullPenData bpData) {
 		this.levelType = t;
 		this.boardData = bData;
 		this.bullpenData = bpData;
-		this.starRecord = starRecord;
 	}
 
 	/** Used when creating a new Level to set this level type. */
@@ -62,6 +61,11 @@ public final class LevelData implements Serializable {
 	/** @return This level's star record. */
 	public int getStarRecord() {
 		return this.starRecord;
+	}
+	
+	/** @param s The star record to set. */
+	public void setStarRecord(int s){
+		this.starRecord = s;
 	}
 
 	/** @return The type of level. */

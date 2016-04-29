@@ -22,29 +22,33 @@ public class LevelSelectButtonView extends JPanel {
 	JButton selectbtn;
 	JPanel imagePanel;
 	public int levelNum;
-	JPanel starView;
+	StarView starView;
 
 	/**
 	 * Create the panel, takes the number of the level as an argument
 	 */
-	public LevelSelectButtonView(int num) {
+	public LevelSelectButtonView(int num, Level level) {
 		setLayout(new GridLayout(2, 1, 0, 0));
 
-		JPanel panel = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
+		JPanel imagePanel = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) imagePanel.getLayout();
 		flowLayout.setVgap(0);
 		flowLayout.setHgap(0);
-		add(panel);
-
+		this.add(imagePanel);
+		
+		int starRecord = level.getLevelData().getStarRecord();
+		String starImageFilePath = FileHandler.determineFileStringForStars(starRecord);
+		this.starView = new StarView(starImageFilePath);
+		imagePanel.add(starView);
+		
+		this.add(imagePanel);
 		JButton selectbtn = makeButton(Integer.toString(num));
 		add(selectbtn);
 		
-		//we are going to get each individual level that is already loaded :)
-		//level is going to be levels 1 to 15 each individually
 		
-		//int starRecord = level.getLevelData().getStarRecord();
-		//this.starView = FileHandler.determineFileStringForStars(num));
 
+		
+		
 	}
 
 	/**

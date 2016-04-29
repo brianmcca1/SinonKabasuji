@@ -31,6 +31,8 @@ public class FileHandler {
 		// CREATE THE LEVELS BOARDDATA AND SET IT
 		BoardData levelBoardData = new BoardData(level.getBoard());
 		level.getLevelData().setBoardData(levelBoardData);
+		
+		level.getLevelData().setStarRecord(0);
 
 		Serializer serializer = new Serializer(fileToSaveTo, level.getLevelData());
 		serializer.serializeFile();
@@ -78,7 +80,25 @@ public class FileHandler {
 		return levels;
 	}
 	
-	//public static String determineFileStringForStars(int levelNum){
+	public static String determineFileStringForStars(int starsEarned){
+		String fileString = "/images/";
 		
-	//}
+		switch(starsEarned){
+			case 0:
+				fileString += "blank.png";
+				break;
+			case 1:
+				fileString += "1star.png";
+				break;
+			case 2:
+				fileString += "2stars.png";
+				break;
+			case 3:
+				fileString += "3stars.png";
+				break;
+		}
+		
+		System.out.println(fileString);
+		return fileString;
+	}
 }

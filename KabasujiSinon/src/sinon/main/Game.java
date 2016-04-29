@@ -18,8 +18,8 @@ public class Game extends Kabasuji {
 
 	public Game() {
 		super();
-		startSplash("Kabasuji", new LevelSelectView(this));
 		loadAllLevels();
+		startSplash("Kabasuji", new LevelSelectView(this));
 	}
 
 	/** Will pull every level from file and reset it. */
@@ -29,7 +29,7 @@ public class Game extends Kabasuji {
 		allLevels = levels.clone();
 
 		System.out
-		.println("GAME HAS LOADED ALL LEVELS INTO INTO ARRAY FROM FILES");
+		.println("GAME HAS LOADED ALL LEVELS INTO ARRAY FROM FILES");
 	}
 
 	/**

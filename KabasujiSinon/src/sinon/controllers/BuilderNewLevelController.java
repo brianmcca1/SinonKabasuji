@@ -19,8 +19,7 @@ public abstract class BuilderNewLevelController implements ActionListener {
 	 * @param bMenuBar
 	 *            The menu bar at the top of the frame.
 	 */
-	public void handleNewLevel(Builder builder, BuilderMenuBar bMenuBar,
-			LevelTypeInfoView lvlTypeInfoView) {
+	public void handleNewLevel(Builder builder, BuilderMenuBar bMenuBar, LevelTypeInfoView lvlTypeInfoView) {
 		builder.initializeMainView(lvlTypeInfoView);
 		bMenuBar.mntmSaveAs.setEnabled(true);
 		bMenuBar.mntmSave.setEnabled(false);
