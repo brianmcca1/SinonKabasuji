@@ -52,35 +52,37 @@ public class HexominoBankData {
         list.add(new int[] { 0, 0, 1, 0, 0, 1, 0, 2, 0, 3, 1, 3 });
         list.add(new int[] { 0, 0, 0, 1, 1, 1, 0, 2, 1, 2, 0, 3 });
         list.add(new int[] { 0, 0, 0, 1, 0, 2, 0, 3, 1, 0, 2, 0 });
-        list.add(new int[] { 0, 0, 0, 1, 1, 1, 2, 1, 0, 2, 0, 3});
-        list.add(new int[] { 0, 0, 1, 0, 2, 0, 1, 1, 1, 2, 1, 3});
-        list.add(new int[] { 0, 0, 1, 0, 0, 1, -1, 1, 0, 2, 0, 3});
-        list.add(new int[] { 0, 0, 1, 0, 0, 1, 0, 2, -1, 2, 0, 3});
-        list.add(new int[] { 0, 0, 1, 0, 0, 1, 0, 2, 0, 3, -1, 3});
-        list.add(new int[] { 0, 0, 0, 1, 1, 1, 0, 2, -1, 2, 0, 3});
-        list.add(new int[] { 0, 0, 0, 1, 1, 1, -1, 1, 0, 2, 0, 3});
-        list.add(new int[] { 0, 0, 1, 0, 1, -1, 2, 0, 0, 1, 0, 2});
-        list.add(new int[] { 0, 0, 1, 0, 1, -1, 0, 1, 0, 2, 1, 2});
-        list.add(new int[] { 0, 0, 0, 1, 0, 2, -1, 2, -1, 3, -1, 4});
-        list.add(new int[] { 0, 0, 1, 0, 1, -1, 0, 1, 1, 1, 0, 2});
-        list.add(new int[] { 0, 0, 0, 1, 0, 2, 1, 0, 1, 1, 1, 2});
-        list.add(new int[] { 0, 0, 1, 0, 2, 0, 2, -1, 1, 1, 1, 2});
-        list.add(new int[] { 0, 0, 1, 0, 2, 0, 1, 1, 2, 1, 1, 2});
-        list.add(new int[] { 0, 0, 1, 0, 1, -1, 0, 1, -1, 1, 0, 2});
-        list.add(new int[] { 0, 0, 1, 0, 2, 0, 2, -1, 0, 1, 0, 2});
-        list.add(new int[] { 0, 0, 1, 0, 1, -1, 2, -1, 0, 1, 0, 2});
-        list.add(new int[] { 0, 0, 1, 0, 2, 0, 2, 1, 0, 1, 0, 2});
-        list.add(new int[] { 0, 0, 2, 0, 0, 1, 1, 1, 2, 1, 0, 2});
-        list.add(new int[] { 0, 0, 1, 0, 0, 1, 0, 2, -1, 2, -1, 3});
-        list.add(new int[] { 0, 0, 0, 1, 1, 1, 1, 2, 2, 1, 0, 2});
-        list.add(new int[] { 0, 0, 0, 1, 1, 1, 0, 2, 1, 2, 2, 2});
-        list.add(new int[] { 0, 0, 1, 0, 1, -1, 2, 0, 0, 1, 1, 1});
-        list.add(new int[] { 0, 0, 1, 0, 2, 0, 2, -1, 0, 1, 1, 1});
-        list.add(new int[] { 0, 0, 0, 1, -1, 1, -1, 2, -2, 2, -2, 3});
-        
+        list.add(new int[] { 0, 0, 0, 1, 1, 1, 2, 1, 0, 2, 0, 3 });
+        list.add(new int[] { 0, 0, 1, 0, 2, 0, 1, 1, 1, 2, 1, 3 });
+        list.add(new int[] { 0, 0, 1, 0, 0, 1, -1, 1, 0, 2, 0, 3 });
+        list.add(new int[] { 0, 0, 1, 0, 0, 1, 0, 2, -1, 2, 0, 3 });
+        list.add(new int[] { 0, 0, 1, 0, 0, 1, 0, 2, 0, 3, -1, 3 });
+        list.add(new int[] { 0, 0, 0, 1, 1, 1, 0, 2, -1, 2, 0, 3 });
+        list.add(new int[] { 0, 0, 0, 1, 1, 1, -1, 1, 0, 2, 0, 3 });
+        list.add(new int[] { 0, 0, 1, 0, 1, -1, 2, 0, 0, 1, 0, 2 });
+        list.add(new int[] { 0, 0, 1, 0, 1, -1, 0, 1, 0, 2, 1, 2 });
+        list.add(new int[] { 0, 0, 0, 1, 0, 2, -1, 2, -1, 3, -1, 4 });
+        list.add(new int[] { 0, 0, 1, 0, 1, -1, 0, 1, 1, 1, 0, 2 });
+        list.add(new int[] { 0, 0, 0, 1, 0, 2, 1, 0, 1, 1, 1, 2 });
+        list.add(new int[] { 0, 0, 1, 0, 2, 0, 2, -1, 1, 1, 1, 2 });
+        list.add(new int[] { 0, 0, 1, 0, 2, 0, 1, 1, 2, 1, 1, 2 });
+        list.add(new int[] { 0, 0, 1, 0, 1, -1, 0, 1, -1, 1, 0, 2 });
+        list.add(new int[] { 0, 0, 1, 0, 2, 0, 2, -1, 0, 1, 0, 2 });
+        list.add(new int[] { 0, 0, 1, 0, 1, -1, 2, -1, 0, 1, 0, 2 });
+        list.add(new int[] { 0, 0, 1, 0, 2, 0, 2, 1, 0, 1, 0, 2 });
+        list.add(new int[] { 0, 0, 2, 0, 0, 1, 1, 1, 2, 1, 0, 2 });
+        list.add(new int[] { 0, 0, 1, 0, 0, 1, 0, 2, -1, 2, -1, 3 });
+        list.add(new int[] { 0, 0, 0, 1, 1, 1, 1, 2, 2, 1, 0, 2 });
+        list.add(new int[] { 0, 0, 0, 1, 1, 1, 0, 2, 1, 2, 2, 2 });
+        list.add(new int[] { 0, 0, 1, 0, 1, -1, 2, 0, 0, 1, 1, 1 });
+        list.add(new int[] { 0, 0, 1, 0, 2, 0, 2, -1, 0, 1, 1, 1 });
+        list.add(new int[] { 0, 0, 0, 1, -1, 1, -1, 2, -2, 2, -2, 3 });
+
         // etc
         for (int[] h : list) {
-            hexList.add(new Hexomino(NumberSetFactory.getByNumbers(h[0], h[1], h[2], h[3], h[4], h[5], h[6], h[7], h[8], h[9], h[10], h[11])));
+            hexList.add(new Hexomino(
+                    NumberSetFactory.getByNumbers(h[0], h[1], h[2], h[3], h[4],
+                            h[5], h[6], h[7], h[8], h[9], h[10], h[11])));
         }
 
         /*
@@ -93,7 +95,6 @@ public class HexominoBankData {
          * only have to change code within a helper method for this class to get
          * it working.
          */
-
 
         return hexList;
     }
