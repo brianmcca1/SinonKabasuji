@@ -17,7 +17,9 @@ public class RotateHexominoClockwiseMove extends BullPenMove {
 	@Override
 	public boolean doMove() {
 		if(hex == null) {
-			throw new NullPointerException();
+			return false;
+			//For testing
+			//throw new NullPointerException();
 		}
 		
 		hex.rotateC();
@@ -27,7 +29,9 @@ public class RotateHexominoClockwiseMove extends BullPenMove {
 	@Override
 	public boolean undoMove() {
 		if(hex == null) {
-			throw new NullPointerException();
+			return false;
+			//For testing
+			//throw new NullPointerException();
 		}
 		
 		hex.rotateCC();
