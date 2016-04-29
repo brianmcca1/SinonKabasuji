@@ -14,10 +14,10 @@ public class TestReleaseTile {
 
 	@Test
 	public void testAddAndRemove() {
-		ReleaseNumber releaseNumber = new ReleaseNumber(Color.BLUE, 1);
+		ReleaseNumber releaseNumber = new ReleaseNumber(Color.GREEN, 1);
 		assertFalse(releaseNumber.isCollected());
 
-		assertEquals(releaseNumber.getColor(), Color.BLUE);
+		assertEquals(releaseNumber.getColor(), Color.GREEN);
 		ReleaseTile releaseTile = new ReleaseTile(new Point(0, 0), true);
 		assertTrue(releaseTile.addReleaseNumber(releaseNumber));
 		assertEquals(releaseNumber.getLocation().get(), new Point(0, 0));
@@ -34,7 +34,7 @@ public class TestReleaseTile {
 
 	@Test
 	public void testCollected() {
-		ReleaseNumber releaseNumber = new ReleaseNumber(Color.BLUE, 1);
+		ReleaseNumber releaseNumber = new ReleaseNumber(Color.GREEN, 1);
 		ReleaseTile releaseTile = new ReleaseTile(new Point(0, 0), true);
 
 		assertTrue(releaseTile.addReleaseNumber(releaseNumber));
