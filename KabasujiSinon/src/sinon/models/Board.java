@@ -328,5 +328,6 @@ public class Board implements Observable {
 			o.updated();
 		}
 	}
+	
 
 }

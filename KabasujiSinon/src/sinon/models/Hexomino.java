@@ -180,6 +180,13 @@ public class Hexomino implements Observable {
     public List<Point> getNormalizedPoints() {
         return this.hexominoNumberSet.getNormalizedPoints();
     }
+    
+    /**
+     * Ask the hexomino to normalize itself.
+     */
+    public void normalizeHexomino() {
+    	this.hexominoNumberSet = new HexominoNumberSet(this.hexominoNumberSet.getNormalizedPoints());
+    }
 
     public UUID getID() {
         return this.id;

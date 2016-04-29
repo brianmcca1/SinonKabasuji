@@ -8,6 +8,12 @@ import sinon.views.Observer;
 
 public class Tile implements Observable {
 
+	@Override
+	public String toString() {
+		return "Tile [playable=" + playable + ", hex=" + hex + ", location=" + location + ", observer=" + observer
+				+ "]";
+	}
+
 	boolean playable;
 	Optional<Hexomino> hex;
 	Point location;

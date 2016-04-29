@@ -12,6 +12,11 @@ import javax.swing.JScrollPane;
 import sinon.controllers.HexStashRegistrator;
 import sinon.models.BullPen;
 
+/**
+ * This is the boundary object that is in charge of displaying the bullpen.
+ * @author kartik
+ *
+ */
 @SuppressWarnings("serial")
 public class BullpenView extends JPanel implements StashView, Observer {
 
