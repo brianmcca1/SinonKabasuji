@@ -1,6 +1,9 @@
 package sinon.models;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.awt.Point;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -9,39 +12,43 @@ import sinon.moves.MoveToBoardFromBullpen;
 
 public class PuzzleIntegrationTest {
 
-	PuzzleLevel level;
-	int movesLeft;
-	private ModelIntegrationTest m;
-	MoveToBoardFromBullpen move1;
-	MoveToBoardFromBullpen move2;
-	MoveToBoardFromBullpen move3;
-	MoveToBoardFromBullpen move4;
-	MoveToBoardFromBullpen move5;
-	
-	@Before
-	public void setUp() {
-		movesLeft = 8;
-		m = new ModelIntegrationTest();
-		level = new PuzzleLevel(m.getBoard(), m.getBullpen(), movesLeft);
-		initializeMoves(level);
-	}
-	
-	void initializeMoves(Level level) {
-		// Move Hexomino 1 to (1, 0)
-		this.move1 = new MoveToBoardFromBullpen(level, 2, 2);
-		// Move Hexomino 2 to (5, 1)
-		this.move2 = new MoveToBoardFromBullpen(level, 5, 1);
-		// Move Hexomino 3 to (7, 0)
-		this.move3 = new MoveToBoardFromBullpen(level, 7, 0);
-		// Move Hexomino 4 to (3, 1)
-		this.move4 = new MoveToBoardFromBullpen(level, 3, 1);
-		// Move Hexomino 5 to (2, 0)
-		this.move5 = new MoveToBoardFromBullpen(level, 2, 0);
-	}
-	
-	@Test
-	public void testRun() {
-		level.select(m.hex3);
-		assertTrue(move3.valid());
-	}
+    PuzzleLevel level;
+    int movesLeft;
+    private ModelIntegrationTest m;
+
+    @Before
+    public void setUp() {
+        movesLeft = 8;
+        m = new ModelIntegrationTest();
+        level = new PuzzleLevel(m.getBoard(), m.getBullpen(), movesLeft);
+    }
+
+    @Test
+    public void testRun() {
+        System.out.println(m.hex1);
+        doMove(m.getMove(level, 1), m.hex1);
+        System.out.println(m.hex2);
+        doMove(m.getMove(level, 2), m.hex2);
+
+        assertTrue(m.hex1.hexominoNumberSet.equals(m.hex2));
+
+        for (Tile t : level.getBoard().getTiles()) {
+            // System.out.println(t);
+        }
+        doMove(m.getMove(level, 3), m.hex3);
+    }
+
+    private void doMove(MoveToBoardFromBullpen move, Hexomino hex) {
+        int movesRemainingPre = level.getMovesLeft();
+        level.select(hex);
+        assertEquals(level.getSelectedHexomino().get(), hex);
+        assertTrue(move.valid());
+        assertTrue(move.doMove());
+        assertEquals(movesRemainingPre, 1 + level.getMovesLeft());
+        Point pos = new Point(move.getDestRow(), move.getDestColumn());
+        Tile t = level.getBoard().getTile(pos);
+        if (hex.getHexominoNumberSet().getPoints().contains(new Point(0, 0))) {
+            assertTrue(t.getHexomino().get().equals(hex));
+        }
+    }
 }
