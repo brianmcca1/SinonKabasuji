@@ -99,8 +99,6 @@ public class FileHandler {
 			fileString += "3stars.png";
 			break;
 		}
-
-		System.out.println(fileString);
 		return fileString;
 	}
 }

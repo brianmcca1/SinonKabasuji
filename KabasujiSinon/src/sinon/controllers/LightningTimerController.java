@@ -5,21 +5,22 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
-import sinon.models.Level;
 import sinon.models.LightningLevel;
 import sinon.views.LightningInfoView;
 
 public class LightningTimerController {
+	
 	LightningLevel level;
 	LightningInfoView infoView;
-	Timer theTimer;
+	public static Timer timer;
+	
 	public LightningTimerController(LightningLevel level, LightningInfoView infoView) {
 		this.level = level;
 		this.infoView = infoView;
-		this.startTimer();
+		this.startTimer(level, this.infoView);
 	}
 	
-	public void startTimer(){
+	public void startTimer(LightningLevel level, LightningInfoView infoView){
 		int delay = 1000;
 		ActionListener timer = new ActionListener(){
 			public void actionPerformed(ActionEvent evt){
@@ -33,7 +34,9 @@ public class LightningTimerController {
 				}
 			}
 		};
-		new Timer(delay, timer).start();
+		Timer t = new Timer(delay, timer);		
+		t.start();
+		LightningTimerController.timer = t;
 		
 	}
 }

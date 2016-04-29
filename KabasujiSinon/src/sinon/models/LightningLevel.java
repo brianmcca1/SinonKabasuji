@@ -19,6 +19,7 @@ public class LightningLevel extends Level {
 		this.levelData = level.levelData;
 		this.maxTime = this.levelData.getLevelProperty().getMaxTime();
 		this.timeLeft = this.maxTime;
+		
 	}
 
 	@Override

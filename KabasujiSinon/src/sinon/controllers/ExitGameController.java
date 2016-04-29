@@ -2,15 +2,9 @@ package sinon.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
 import sinon.main.Game;
-import sinon.models.ReleaseNumber;
-import sinon.models.data.BoardData;
-import sinon.models.data.LevelProperty;
 import sinon.models.data.LevelType.Types;
 import sinon.serial.Serializer;
-import sinon.views.ReleaseInfoView;
 import sinon.views.game.LevelSelectView;
 
 /**
@@ -44,6 +38,18 @@ public class ExitGameController implements ActionListener {
 		System.out.println(this.game.getLevel().getLevelData().toString());
 		System.out.println("*********************************************");
 
+		Types currentLevelType = this.game.getLevel().getLevelData().getLevelType();
+		switch(currentLevelType){
+			case PUZZLE:
+				break;
+			case LIGHTNING:
+				LightningTimerController.timer.stop();
+				break;
+			case RELEASE:
+				break;
+		}
+		
+		
 		game.loadAllLevels();
 		game.startNextPanel(this.game.getMainView(), new LevelSelectView(this.game));
 	}
