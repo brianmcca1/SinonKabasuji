@@ -18,6 +18,7 @@ public class LightningLevel extends Level {
 		super(Types.LIGHTNING, level.getBoard(), level.getBullpen());
 		this.maxTime = level.getLevelData().getLevelProperty().getMaxTime();
 		this.timeLeft = maxTime;
+		this.levelData = level.levelData;
 	}
 
 	@Override

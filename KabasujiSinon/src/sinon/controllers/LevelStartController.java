@@ -58,8 +58,7 @@ public class LevelStartController implements ActionListener {
 			lvlTypeInfoView = new LightningInfoView((int)this.game.getLevel().getLevelData().getLevelProperty().getMaxTime());
 			break;
 		case RELEASE:
-			lvlTypeInfoView = new ReleaseInfoView(
-					this.game.getLevel().getLevelData().getLevelProperty().getReleaseSet());
+			lvlTypeInfoView = new ReleaseInfoView(this.game.getLevel().getLevelData().getLevelProperty().getReleaseSet());
 			break;
 		}
 
