@@ -47,32 +47,28 @@ public class BuilderSaveAsController implements ActionListener {
 		int returnVal = fc.showSaveDialog(this.builder);
 
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
-
 			File file = fc.getSelectedFile();
 			FileHandler.currentFile = file;
 
-			// GET THIS LEVEL'S propertyValue
 			Types thisLevelsType = this.builder.getLevel().getLevelData().getLevelType();
-
 			LevelProperty levelProp = null;
 
 			switch (thisLevelsType) {
-			case PUZZLE:
-				int propertyValuePuzzle = this.builder.getMainView().getLevelTypeInfoView().getValue();
-				levelProp = new LevelProperty(propertyValuePuzzle, Types.PUZZLE);
-				this.builder.getLevel().getLevelData().setLevelProperty(levelProp);
-				break;
-			case LIGHTNING:
-				int propertyValueLightning = this.builder.getMainView().getLevelTypeInfoView().getValue();
-				levelProp = new LevelProperty(propertyValueLightning, Types.LIGHTNING);
-				this.builder.getLevel().getLevelData().setLevelProperty(levelProp);
-				break;
-			case RELEASE:
-				// TODO: Is there a more elegant way to do this?
-				ArrayList<ReleaseNumber> propertyValueRelease = ((ReleaseInfoView) this.builder.getMainView()
-						.getLevelTypeInfoView()).getReleaseSets();
-				levelProp = new LevelProperty(propertyValueRelease, Types.RELEASE);
-				break;
+				case PUZZLE:
+					int propertyValuePuzzle = this.builder.getMainView().getLevelTypeInfoView().getValue();
+					levelProp = new LevelProperty(propertyValuePuzzle, Types.PUZZLE);
+					this.builder.getLevel().getLevelData().setLevelProperty(levelProp);
+					break;
+				case LIGHTNING:
+					int propertyValueLightning = this.builder.getMainView().getLevelTypeInfoView().getValue();
+					levelProp = new LevelProperty(propertyValueLightning, Types.LIGHTNING);
+					this.builder.getLevel().getLevelData().setLevelProperty(levelProp);
+					break;
+				case RELEASE:
+					// TODO: Is there a more elegant way to do this?
+					ArrayList<ReleaseNumber> propertyValueRelease = ((ReleaseInfoView) this.builder.getMainView().getLevelTypeInfoView()).getReleaseSets();
+					levelProp = new LevelProperty(propertyValueRelease, Types.RELEASE);
+					break;
 			}
 
 			FileHandler.builderSaveLevelToFile(file, this.builder.getLevel());
@@ -81,13 +77,3 @@ public class BuilderSaveAsController implements ActionListener {
 		}
 	}
 }
-
-/*
- * FIELDS TO SET FOR LEVEL this.builder.getLevel() int levelNum; DONE Board
- * board; DONE? Map<Point, Tile> tilesViaPoints; DONE? BullPen bullpen; DONE
- * List<Hexomino> pieces; DONE int stars; DONE int starRecord; DONE LevelData
- * levelData; DONE types levelType; DONE int levelNum; DONE BoardData boardData;
- * DONE boolean[][] playable; DONE BullPenData bullpenData; DONE
- * ArrayList<HexominoCode> hexominos; DONE int starRecord; DONE (THIS IS SET BY
- * THE GAME TO SAVE THE EARNED STARS) LevelProperty levelProperty; DONE
- */

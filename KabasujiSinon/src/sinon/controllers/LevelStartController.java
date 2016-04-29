@@ -53,16 +53,16 @@ public class LevelStartController implements ActionListener {
 		Types thisLevelsType = this.game.getLevel(this.levelNum).getLevelData().getLevelType();
 
 		switch (thisLevelsType) {
-		case PUZZLE:
-			lvlTypeInfoView = new PuzzleInfoView((int)this.game.getLevel().getLevelData().getLevelProperty().getMaxMoves());
-			break;
-		case LIGHTNING:
-			lvlTypeInfoView = new LightningInfoView((int)this.game.getLevel().getLevelData().getLevelProperty().getMaxTime(), (LightningLevel)this.game.getLevel(this.levelNum));
-			LightningTimerController l = new LightningTimerController((LightningLevel)this.game.getLevel(this.levelNum), (LightningInfoView)lvlTypeInfoView);
-			break;
-		case RELEASE:
-			lvlTypeInfoView = new ReleaseInfoView(this.game.getLevel().getLevelData().getLevelProperty().getReleaseSet());
-			break;
+			case PUZZLE:
+				lvlTypeInfoView = new PuzzleInfoView((int)this.game.getLevel().getLevelData().getLevelProperty().getMaxMoves());
+				break;
+			case LIGHTNING:
+				lvlTypeInfoView = new LightningInfoView(this.game.getLevel().getLevelData().getLevelProperty().getMaxTime(), (LightningLevel)this.game.getLevel(this.levelNum));
+				LightningTimerController l = new LightningTimerController((LightningLevel)this.game.getLevel(this.levelNum), (LightningInfoView)lvlTypeInfoView);
+				break;
+			case RELEASE:
+				lvlTypeInfoView = new ReleaseInfoView(this.game.getLevel().getLevelData().getLevelProperty().getReleaseSet());
+				break;
 		}
 
 		this.game.initializeMainView(this.levelSelectView, lvlTypeInfoView);

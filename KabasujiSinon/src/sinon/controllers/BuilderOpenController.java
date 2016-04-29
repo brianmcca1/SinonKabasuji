@@ -54,10 +54,6 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 			Deserializer deserializer = new Deserializer(file);
 			LevelData levelData = deserializer.deserializeFile();
 
-			System.out.println("*************OPEN CONTROLLER*****************");
-			System.out.println(levelData.toString());
-			System.out.println("*********************************************");
-
 			// CREATE levelFromFile FROM levelData HERE
 			Level levelFromFile = new Level(levelData);
 
@@ -66,21 +62,21 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 			Types thisLevelsType = levelData.getLevelType();
 
 			switch (thisLevelsType) {
-			case PUZZLE:
-				PuzzleLevel puzzleLevel = new PuzzleLevel(levelFromFile);
-				lvlTypeInfoView = new PuzzleInfoView(true, puzzleLevel);
-				this.builder.setLevel(puzzleLevel);
-				break;
-			case LIGHTNING:
-				LightningLevel lightningLevel = new LightningLevel(levelFromFile);
-				lvlTypeInfoView = new LightningInfoView(true, lightningLevel);
-				this.builder.setLevel(lightningLevel);
-				break;
-			case RELEASE:
-				ReleaseLevel releaseLevel = new ReleaseLevel(levelFromFile);
-				lvlTypeInfoView = new ReleaseInfoView();
-				this.builder.setLevel(releaseLevel);
-				break;
+				case PUZZLE:
+					PuzzleLevel puzzleLevel = new PuzzleLevel(levelFromFile);
+					lvlTypeInfoView = new PuzzleInfoView(true, puzzleLevel);
+					this.builder.setLevel(puzzleLevel);
+					break;
+				case LIGHTNING:
+					LightningLevel lightningLevel = new LightningLevel(levelFromFile);
+					lvlTypeInfoView = new LightningInfoView(true, lightningLevel);
+					this.builder.setLevel(lightningLevel);
+					break;
+				case RELEASE:
+					ReleaseLevel releaseLevel = new ReleaseLevel(levelFromFile);
+					lvlTypeInfoView = new ReleaseInfoView();
+					this.builder.setLevel(releaseLevel);
+					break;
 			}
 
 			this.builder.initializeMainView(lvlTypeInfoView);
