@@ -21,7 +21,7 @@ public class HexominoBankController extends AbstractHexStashController {
 	}
 
 	@Override
-	protected void handleClicked() {
+	protected void handleLeftClicked() {
 		System.out.println("I AM A BANK HEXOMINO AND I GOT CLICKED ON");
 
 
@@ -36,5 +36,9 @@ public class HexominoBankController extends AbstractHexStashController {
 		} else {
 			System.out.println("For some reason, move was not completed.");
 		}
+	}
+
+	@Override
+	protected void handleRightClicked() {
 	}
 }

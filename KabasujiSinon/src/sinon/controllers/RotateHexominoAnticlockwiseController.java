@@ -12,15 +12,13 @@ import sinon.views.HexominoBullpenView;
 public class RotateHexominoAnticlockwiseController extends
 AlterHexominoController {
 
-	public RotateHexominoAnticlockwiseController(Level level,
-			HexominoBullpenView hexomino) {
+	public RotateHexominoAnticlockwiseController(Level level, HexominoBullpenView hexomino) {
 		super(level, hexomino);
 	}
 
 	@Override
 	protected void handleAction() {
-		RotateHexominoCounterClockwiseMove move = new RotateHexominoCounterClockwiseMove(
-				this.hexomino);
+		RotateHexominoCounterClockwiseMove move = new RotateHexominoCounterClockwiseMove(this.hexomino);
 
 		move.doMove();
 		level.pushMove(move);

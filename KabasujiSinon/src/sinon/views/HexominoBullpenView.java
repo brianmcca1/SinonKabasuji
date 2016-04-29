@@ -21,13 +21,6 @@ public class HexominoBullpenView extends JPanel {
 
     /** The hexomino model object associated with this view */
     Hexomino hex;
-    
-    JMenuItem flipVMenuItem;
-    JMenuItem flipHMenuItem;
-    JMenuItem rotateCMenuItem;
-    JMenuItem rotateCCMenuItem;
-    
-    JPopupMenu popupMenu;
 
     public HexominoBullpenView(Hexomino h) {
         this.hex = h;
@@ -35,19 +28,6 @@ public class HexominoBullpenView extends JPanel {
         this.setMinimumSize(new Dimension(150, 150));
         this.setMaximumSize(new Dimension(150, 150));
         this.setHexominoOnGrid();
-        
-        this.flipVMenuItem = new JMenuItem("Flip Vertically");
-        this.flipHMenuItem = new JMenuItem("Flip Horizontally");
-        this.rotateCMenuItem = new JMenuItem("Rotate Clockwise");
-        this.rotateCCMenuItem = new JMenuItem("Rotate Counter-Clockwise");
-        
-        this.popupMenu = new JPopupMenu();
-        this.popupMenu.add(this.flipVMenuItem);
-        this.popupMenu.add(this.flipHMenuItem);
-        this.popupMenu.add(this.rotateCMenuItem);
-        this.popupMenu.add(this.rotateCCMenuItem);
-        
-        this.setComponentPopupMenu(this.popupMenu);
     }
 
     /** @return Hexomino model associated with this view. */

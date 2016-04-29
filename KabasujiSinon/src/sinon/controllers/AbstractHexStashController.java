@@ -4,6 +4,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Objects;
 
+import javax.swing.SwingUtilities;
+
 import sinon.models.Level;
 import sinon.views.HexominoBullpenView;
 import sinon.views.MainView;
@@ -30,8 +32,7 @@ public abstract class AbstractHexStashController implements MouseListener {
 	 * @param hex
 	 *            Panel which the controller is applied to.
 	 */
-	public AbstractHexStashController(Level level, MainView mainView,
-			HexominoBullpenView hex) {
+	public AbstractHexStashController(Level level, MainView mainView, HexominoBullpenView hex) {
 		this.level = Objects.requireNonNull(level);
 		this.mainView = Objects.requireNonNull(mainView);
 		this.hex = Objects.requireNonNull(hex);
@@ -40,14 +41,27 @@ public abstract class AbstractHexStashController implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		System.out.println("clicked");
-		handleClicked();
+		
+		if(SwingUtilities.isLeftMouseButton(e)){
+			handleLeftClicked();
+		}
+		else{
+			handleRightClicked();
+		}
+		
 	}
 
 	/**
-	 * This method should contain the logic for handling a mouse click on the
+	 * This method should contain the logic for handling a left mouse click on the
 	 * HexominoPanel in the stash.
 	 */
-	protected abstract void handleClicked();
+	protected abstract void handleLeftClicked();
+	
+	/**
+	 * This method should contain the logic for handling a right mouse click on the
+	 * HexominoPanel in the stash.
+	 */
+	protected abstract void handleRightClicked();
 
 	@Override
 	public void mousePressed(MouseEvent e) {

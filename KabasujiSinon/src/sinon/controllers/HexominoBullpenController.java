@@ -11,13 +11,12 @@ import sinon.views.MainView;
  */
 public class HexominoBullpenController extends AbstractHexStashController {
 
-	public HexominoBullpenController(Level level, MainView mainView,
-			HexominoBullpenView hex) {
+	public HexominoBullpenController(Level level, MainView mainView, HexominoBullpenView hex) {
 		super(level, mainView, hex);
 	}
 
 	@Override
-	protected void handleClicked() {
+	protected void handleLeftClicked() {
 		System.out
 		.println("I AM A BULLPEN HEXOMINO AND I JUST GOT CLICKED ON!");
 
@@ -52,5 +51,11 @@ public class HexominoBullpenController extends AbstractHexStashController {
 			System.out.println("NEWLY SELECTED HEXOMINO: "
 					+ level.getSelectedHexomino().toString());
 		}
+	}
+	
+	
+	@Override
+	protected void handleRightClicked() {
+		
 	}
 }

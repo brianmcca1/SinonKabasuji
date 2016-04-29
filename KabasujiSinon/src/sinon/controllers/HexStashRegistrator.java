@@ -3,6 +3,9 @@ package sinon.controllers;
 import java.awt.event.MouseListener;
 import java.util.Objects;
 
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+
 import sinon.models.Level;
 import sinon.views.HexominoBullpenView;
 import sinon.views.MainView;
@@ -53,22 +56,45 @@ public class HexStashRegistrator {
 	/**
 	 * Registers a Hexomino using this classes
 	 * 
-	 * @param hex
+	 * @param hexBPView
 	 */
-	public void registerHexominoView(HexominoBullpenView hex) {
-		assert hex != null;
+	public void registerHexominoView(HexominoBullpenView hexBPView) {
+		assert hexBPView != null;
 		assert level != null;
 		assert mainView != null;
 
+		
+
+
+		
 		if (isBankType) {
-			MouseListener m = new HexominoBankController(level, mainView, hex);
-			hex.addMouseListener(m);
+			MouseListener m = new HexominoBankController(level, mainView, hexBPView);
+			hexBPView.addMouseListener(m);
 		}
 
 		else {
 			MouseListener m = new HexominoBullpenController(level, mainView,
-					hex);
-			hex.addMouseListener(m);
+					hexBPView);
+			hexBPView.addMouseListener(m);
+			
+	        JMenuItem flipVMenuItem = new JMenuItem("Flip Vertically");
+	        JMenuItem flipHMenuItem = new JMenuItem("Flip Horizontally");
+	        JMenuItem rotateCMenuItem = new JMenuItem("Rotate Clockwise");
+	        JMenuItem rotateCCMenuItem = new JMenuItem("Rotate Counter-Clockwise");
+	
+	        JPopupMenu popupMenu = new JPopupMenu();
+	        popupMenu.add(flipVMenuItem);
+	        popupMenu.add(flipHMenuItem);
+	        popupMenu.add(rotateCMenuItem);
+	        popupMenu.add(rotateCCMenuItem);
+	        
+	        hexBPView.setComponentPopupMenu(popupMenu);
+			
+	        rotateCMenuItem.addActionListener(new RotateHexominoClockwiseController(this.level, hexBPView));
+	        rotateCCMenuItem.addActionListener(new RotateHexominoAnticlockwiseController(this.level, hexBPView));
+	        flipHMenuItem.addActionListener(new FlipHexominoHorizontallyController(this.level, hexBPView));
+			flipVMenuItem.addActionListener(new FlipHexominoVerticalController(this.level, hexBPView));
+			
 		}
 	}
 }
