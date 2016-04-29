@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 import java.util.UUID;
 
 import sinon.models.data.BullPenData;
@@ -82,7 +83,13 @@ public class BullPen implements Observable {
 	 * Hexominos.
 	 */
 	public void addRandomHexomino() {
-		Hexomino hex; // TODO get from bank data.
+		Random randomGenerator = new Random();
+		Hexomino hex;
+		ArrayList<Hexomino> hexominos = (ArrayList<Hexomino>) HexominoBankData.getHexominos();
+		int index = randomGenerator.nextInt(hexominos.size());
+		hex = hexominos.get(index);
+		this.addHexomino(hex);
+
 		update();
 	}
 
