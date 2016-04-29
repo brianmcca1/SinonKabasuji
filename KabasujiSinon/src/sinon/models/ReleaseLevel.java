@@ -2,11 +2,13 @@ package sinon.models;
 
 import java.awt.Point;
 import java.util.List;
+import java.util.Optional;
 
 import sinon.models.data.LevelType.Types;
 
 public class ReleaseLevel extends Level {
 
+	Optional<ReleaseNumber> selectedReleaseNumber = Optional.empty();
 	List<ReleaseNumber> releaseSets;
 
 	int setsCompleted;
@@ -60,6 +62,18 @@ public class ReleaseLevel extends Level {
 				r.collect();
 			}
 		}
+	}
+
+	public void selectReleaseNumber(ReleaseNumber releaseNumber) {
+		this.selectedReleaseNumber = Optional.of(releaseNumber);
+	}
+
+	public void deselectReleaseNumber(ReleaseNumber releaseNumber) {
+		this.selectedReleaseNumber = Optional.empty();
+	}
+
+	public ReleaseNumber getSelectedReleaseNumber() {
+		return this.selectedReleaseNumber.get();
 	}
 
 }
