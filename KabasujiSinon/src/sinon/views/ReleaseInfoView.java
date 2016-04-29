@@ -17,7 +17,7 @@ import sinon.models.ReleaseNumber;
  * 
  * @author Josh Desmond
  */
-public class ReleaseInfoView extends LevelTypeInfoView {
+public class ReleaseInfoView extends LevelTypeInfoView implements Observer {
 
 	private static final long serialVersionUID = -7158712755823785281L;
 	/** The list of 15 buttons */
@@ -30,7 +30,7 @@ public class ReleaseInfoView extends LevelTypeInfoView {
 	}
 
 	public ReleaseInfoView(ArrayList<ReleaseNumber> releaseNumbers) {
-		//setBorder(new LineBorder(new Color(0, 0, 0)));
+		// setBorder(new LineBorder(new Color(0, 0, 0)));
 		setLayout(new GridLayout(6, 3, 2, 2));
 		addButtons();
 		// TODO: implement this
@@ -62,8 +62,15 @@ public class ReleaseInfoView extends LevelTypeInfoView {
 	public ArrayList<ReleaseNumber> getReleaseSets() {
 		return null;
 	}
-	
-	public int getValue(){
+
+	@Override
+	public int getValue() {
 		return -999;
+	}
+
+	@Override
+	public void updated() {
+		// TODO Auto-generated method stub
+
 	}
 }

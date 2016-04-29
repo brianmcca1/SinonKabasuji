@@ -67,15 +67,13 @@ public class MoveToBoardFromBullpen extends BoardMove {
 	@Override
 	public boolean valid() {
 
-		if (!level.hasSelected()) {
+		if (!this.hex.isPresent()) {
 			System.out.println("Hexomino not selected!");
 			return false;
 		}
-		
-		this.hex = level.getSelectedHexomino();
-		
-		if (level.hasSelected() && level.getBullpen().hasHex(level.getSelectedHexomino().get())) {
-			return level.getBoard().canAddHexomino((new Point(destAnchorRow, destAnchorColumn)), level.getSelectedHexomino().get());
+
+		if (level.getBullpen().hasHex(this.hex.get())) {
+			return level.getBoard().canAddHexomino((new Point(destAnchorRow, destAnchorColumn)), this.hex.get());
 		} else {
 			return false;
 		}
