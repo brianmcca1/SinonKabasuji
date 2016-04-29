@@ -21,5 +21,6 @@ public class FlipHexominoHorizontallyController
     protected void handleAction() {
         FlipHorizontalMove move = new FlipHorizontalMove(this.hexomino);
         move.doMove();
+        level.pushMove(move);
     }
 }

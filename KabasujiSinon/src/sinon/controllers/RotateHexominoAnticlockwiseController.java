@@ -23,5 +23,6 @@ AlterHexominoController {
 				this.hexomino);
 
 		move.doMove();
+		level.pushMove(move);
 	}
 }

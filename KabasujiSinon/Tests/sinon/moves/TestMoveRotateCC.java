@@ -15,7 +15,7 @@ public class TestMoveRotateCC {
 		Hexomino hex = new Hexomino(NumberSetFactory.getByNumbers(0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0));
 		RotateHexominoClockwiseMove fhm = new RotateHexominoClockwiseMove(hex);
 		assertTrue(fhm.doMove());
-		assertTrue(fhm.undoMove());
+		assertTrue(fhm.undo());
 	}
 
 	@Test(expected = NullPointerException.class)
@@ -23,6 +23,6 @@ public class TestMoveRotateCC {
 		Hexomino hex = null;
 		RotateHexominoClockwiseMove fhm = new RotateHexominoClockwiseMove(hex);
 		assertFalse(fhm.doMove());
-		assertFalse(fhm.undoMove());
+		assertFalse(fhm.undo());
 	}
 }

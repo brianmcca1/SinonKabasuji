@@ -4,9 +4,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Stack;
 
 import sinon.models.data.LevelData;
 import sinon.models.data.LevelType.Types;
+import sinon.moves.Move;
+import sinon.moves.MoveToBullpenFromBoard;
 import sinon.views.Observer;
 
 public class Level implements Observable {
@@ -27,6 +30,16 @@ public class Level implements Observable {
 	Optional<Hexomino> selectedHexomino;
 	/** Observers of the level */
 	List<Observer> observers;
+	
+	/**
+	 * Stack of Moves to undo
+	 */
+	Stack<Move> undo;
+	
+	/**
+	 * Stack of Moves to redo
+	 */
+	Stack<Move> redo;
 
 	public Level(Types type, Board board, BullPen bullpen) {
 		this.board = Objects.requireNonNull(board);
@@ -35,6 +48,8 @@ public class Level implements Observable {
 		this.levelData = new LevelData(type);
 		observers = new LinkedList<Observer>();
 		selectedHexomino = Optional.empty();
+		undo = new Stack<Move>();
+		redo = new Stack<Move>();
 	}
 
 	public Level(LevelData levelData) {
@@ -94,6 +109,9 @@ public class Level implements Observable {
 	/** Sets the selected hexomino to empty. */
 	public void deselect() {
 		this.selectedHexomino = Optional.empty();
+		//Only called when a move is done?
+		//Otherwise we need to go to every doMove and reset redo
+		//redo = new Stack<Move>();
 	}
 
 	/**
@@ -152,6 +170,48 @@ public class Level implements Observable {
 	 */
 	public Optional<Hexomino> getSelectedHexomino() {
 		return this.selectedHexomino;
+	}
+	
+	/**
+	 * Pops the last move off the stack undo and undoes it,
+	 * then pushes it to redo
+	 * does nothing if undo is empty
+	 */
+	
+	public void undo(){
+		System.out.println("Hit undo");
+		int sizePre = undo.size();
+		if (undo.empty()) return;
+		Move move;
+		move = undo.pop();
+		System.out.println(undo.size() + "Pre size ->" + sizePre);
+		if (move.undo()){
+			redo.push(move);
+		}
+		else System.out.println("Undo failed");
+	}
+	
+	/**
+	 * Attempts to pop the last move off the stack redo and (re)do it
+	 * does nothing if redo is empty 
+	 */
+	
+	public void redo(){
+		if (redo.empty()) return;
+		Move move;
+		move = redo.pop();
+		move.doMove();
+		this.pushMove(move);
+	}
+
+	/**
+	 * Pushes the move onto the stack undo
+	 * @param move to be pushed
+	 */
+	
+	public void pushMove(Move move) {
+		undo.push(move);
+		System.out.println(this.undo.size());
 	}
 
 }

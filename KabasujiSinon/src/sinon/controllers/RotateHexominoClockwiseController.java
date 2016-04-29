@@ -21,5 +21,6 @@ public class RotateHexominoClockwiseController extends AlterHexominoController {
         RotateHexominoClockwiseMove move = new RotateHexominoClockwiseMove(
                 this.hexomino);
         move.doMove();
+        level.pushMove(move);
     }
 }

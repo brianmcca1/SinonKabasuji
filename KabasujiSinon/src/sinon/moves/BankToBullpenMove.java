@@ -10,7 +10,7 @@ import sinon.models.Hexomino;
  * @author kartik
  *
  */
-public class BankToBullpenMove {
+public class BankToBullpenMove extends Move{
 	
 	/**
 	 * Bullpen to which we are moving.

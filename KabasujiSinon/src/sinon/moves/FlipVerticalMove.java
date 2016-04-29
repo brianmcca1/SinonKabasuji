@@ -26,7 +26,7 @@ public class FlipVerticalMove extends BullPenMove {
 	}
 
 	@Override
-	public boolean undoMove() {
+	public boolean undo() {
 		if (hex == null) {
 			throw new NullPointerException();
 		}

@@ -39,11 +39,11 @@ public class BullpenController implements MouseListener {
 			srcAnchorColumn = level.getBoard().getHexominoLocation(hex).y;
 			MoveToBullpenFromBoard move = new MoveToBullpenFromBoard(level, srcAnchorRow, srcAnchorColumn);
 			move.doMove();
+			level.pushMove(move);
 			level.deselect();
 			System.out.println("SELECTED HEXOMINO HAS BEEN DESELECTED");
 		}
 
-		// TODO add logic for undoing
 	}
 
 	@Override

@@ -20,5 +20,6 @@ public class FlipHexominoVerticalController extends AlterHexominoController {
     protected void handleAction() {
         FlipVerticalMove move = new FlipVerticalMove(this.hexomino);
         move.doMove();
+        level.pushMove(move);
     }
 }

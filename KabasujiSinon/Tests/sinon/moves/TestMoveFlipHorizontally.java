@@ -15,7 +15,7 @@ public class TestMoveFlipHorizontally {
 		Hexomino hex = new Hexomino(NumberSetFactory.getByNumbers(0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0));
 		FlipHorizontalMove fhm = new FlipHorizontalMove(hex);
 		assertTrue(fhm.doMove());
-		assertTrue(fhm.undoMove());
+		assertTrue(fhm.undo());
 	}
 
 	@Test(expected = NullPointerException.class)
@@ -23,6 +23,6 @@ public class TestMoveFlipHorizontally {
 		Hexomino hex = null;
 		FlipHorizontalMove fhm = new FlipHorizontalMove(hex);
 		assertFalse(fhm.doMove());
-		assertFalse(fhm.undoMove());
+		assertFalse(fhm.undo());
 	}
 }

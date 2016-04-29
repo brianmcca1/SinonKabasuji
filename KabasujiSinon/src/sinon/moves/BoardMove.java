@@ -11,7 +11,7 @@ import sinon.models.Level;
  * @author kartik
  *
  */
-public abstract class BoardMove {
+public abstract class BoardMove extends Move {
 	
 	/** This is the level in which the move is being made. */
 	Level level; 

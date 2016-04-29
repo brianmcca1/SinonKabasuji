@@ -2,6 +2,8 @@ package sinon.main;
 
 import javax.swing.JPanel;
 
+import sinon.controllers.BuilderRedoController;
+import sinon.controllers.BuilderUndoController;
 import sinon.controllers.HexStashRegistrator;
 import sinon.controllers.TileRegistrator;
 import sinon.models.BullPen;
@@ -52,6 +54,8 @@ public class Builder extends Kabasuji {
 				new HexStashRegistrator(getLevel(), getMainView(), true));
 
 		registerBullpenController();
+		this.getJMenuBar().getMenu(1).getItem(0).addActionListener(new BuilderUndoController(currentLevel));
+		this.getJMenuBar().getMenu(1).getItem(1).addActionListener(new BuilderRedoController(currentLevel));
 	}
 
 	public BullPen getBullpen() {

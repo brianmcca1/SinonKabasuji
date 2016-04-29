@@ -11,8 +11,10 @@ import sinon.controllers.BuilderNewLightningLevelController;
 import sinon.controllers.BuilderNewPuzzleLevelController;
 import sinon.controllers.BuilderNewReleaseLevelController;
 import sinon.controllers.BuilderOpenController;
+import sinon.controllers.BuilderRedoController;
 import sinon.controllers.BuilderSaveAsController;
 import sinon.controllers.BuilderSaveController;
+import sinon.controllers.BuilderUndoController;
 import sinon.main.Builder;
 
 /**
@@ -60,6 +62,7 @@ public class BuilderMenuBar extends JMenuBar {
 		mntmUndo.setEnabled(false);
 		mntmRedo.setEnabled(false);
 		mntmClearBoard.setEnabled(false);
+		
 	}
 
 	private void initFileMenu() {

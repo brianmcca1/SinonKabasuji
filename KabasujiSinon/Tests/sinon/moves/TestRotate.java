@@ -16,10 +16,10 @@ public class TestRotate {
 		RotateHexominoCounterClockwiseMove rotateCounterClockwise = new RotateHexominoCounterClockwiseMove(hex);
 
 		assertTrue(rotateClockwise.doMove());
-		assertTrue(rotateClockwise.undoMove());
+		assertTrue(rotateClockwise.undo());
 
 		assertTrue(rotateCounterClockwise.doMove());
-		assertTrue(rotateCounterClockwise.undoMove());
+		assertTrue(rotateCounterClockwise.undo());
 	}
 
 	@Test(expected = NullPointerException.class)

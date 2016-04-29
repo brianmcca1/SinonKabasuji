@@ -76,6 +76,7 @@ public abstract class TileController implements MouseListener {
 						this.tileView.getColumn());
 
 				if (move.doMove()) {
+					level.pushMove(move);
 					System.out.println("Move successfully completed!");
 					level.deselect();
 				} else {
@@ -94,6 +95,7 @@ public abstract class TileController implements MouseListener {
 						this.tileView.getRow(), this.tileView.getColumn());
 
 				if (move.doMove()) {
+					level.pushMove(move);
 					System.out.println("The move was successfully completed!");
 					level.deselect();
 				} else {

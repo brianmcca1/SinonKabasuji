@@ -28,7 +28,7 @@ public class RotateHexominoCounterClockwiseMove extends BullPenMove {
 	}
 
 	@Override
-	public boolean undoMove() {
+	public boolean undo() {
 		if (hex == null) {
 			return false;
 			//For testing

@@ -38,7 +38,9 @@ public class HexominoBullpenController extends AbstractHexStashController {
 						level.getSelectedHexomino().get()).y;
 				MoveToBullpenFromBoard move = new MoveToBullpenFromBoard(level,
 						x, y);
-				move.doMove();
+				if (move.doMove()){
+					level.pushMove(move);
+				}
 			} else {
 				level.getBullpen().addHexomino(
 						level.getSelectedHexomino().get());
