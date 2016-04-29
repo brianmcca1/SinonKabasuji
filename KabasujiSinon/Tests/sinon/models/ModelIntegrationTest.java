@@ -33,8 +33,6 @@ public class ModelIntegrationTest {
 	}
 
 	public ModelIntegrationTest() {
-		// TODO Auto-generated constructor stub
-		constructHexominos();
 	}
 
 	void constructHexominos() {
@@ -44,7 +42,6 @@ public class ModelIntegrationTest {
 		hex3 = new Hexomino(hexset1);
 		hex1.flipVertically();
 		hex2.rotateC();
-
 		hex4 = new Hexomino(NumberSetFactory.getByNumbers(0, 0, 1, 0, 2, 0, 3, 0, 1, 1, 1, 2));
 		hex4.flipVertically();
 
@@ -54,15 +51,15 @@ public class ModelIntegrationTest {
 
 	void initializeMoves(Level level) {
 		// Move Hexomino 1 to (1, 0)
-		MoveToBoardFromBullpen move1 = new MoveToBoardFromBullpen(level, 1, 0);
+		this.move1 = new MoveToBoardFromBullpen(level, 1, 0);
 		// Move Hexomino 2 to (5, 1)
-		MoveToBoardFromBullpen move2 = new MoveToBoardFromBullpen(level, 5, 1);
+		this.move2 = new MoveToBoardFromBullpen(level, 5, 1);
 		// Move Hexomino 3 to (7, 0)
-		MoveToBoardFromBullpen move3 = new MoveToBoardFromBullpen(level, 7, 0);
+		this.move3 = new MoveToBoardFromBullpen(level, 7, 0);
 		// Move Hexomino 4 to (3, 1)
-		MoveToBoardFromBullpen move4 = new MoveToBoardFromBullpen(level, 3, 1);
+		this.move4 = new MoveToBoardFromBullpen(level, 3, 1);
 		// Move Hexomino 5 to (2, 0)
-		MoveToBoardFromBullpen move5 = new MoveToBoardFromBullpen(level, 2, 0);
+		this.move5 = new MoveToBoardFromBullpen(level, 2, 0);
 	}
 
 	void newPuzzleLevel() {
@@ -72,7 +69,9 @@ public class ModelIntegrationTest {
 	}
 
 	public BullPen getBullPen() {
+		constructHexominos();
 		ArrayList<Hexomino> hexList = new ArrayList<Hexomino>();
+		assert hex1 != null;
 		hexList.add(hex1);
 		hexList.add(hex2);
 		hexList.add(hex3);

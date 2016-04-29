@@ -30,9 +30,7 @@ public class MoveInBoard extends BoardMove {
         this.level = level;
         
         //if the level has a hexomino that's selected, then set the hexomino field. 
-        if (level.hasSelected()) {
-            this.hex = level.getSelectedHexomino().get();
-        }
+        this.hex = level.getSelectedHexomino();
 
         this.srcAnchorRow = srcAnchorRow;
         this.srcAnchorColumn = srcAnchorColumn;
@@ -48,19 +46,19 @@ public class MoveInBoard extends BoardMove {
             return false;
         
         //remove the hexomino from the board.
-        level.getBoard().removeHexomino(hex);
+        level.getBoard().removeHexomino(hex.get());
         
         //add the same hexomino at the new position.
-        level.getBoard().addHexomino(new Point(destAnchorRow, destAnchorColumn), hex);
+        level.getBoard().addHexomino(new Point(destAnchorRow, destAnchorColumn), hex.get());
         level.deselect();
         return true;
     }
 
     @Override
     public boolean undo() {
-        level.getBoard().removeHexomino(hex);
+        level.getBoard().removeHexomino(hex.get());
         level.getBoard().addHexomino(new Point(srcAnchorRow, srcAnchorColumn),
-                hex);
+                hex.get());
         return true;
     }
 
@@ -71,11 +69,11 @@ public class MoveInBoard extends BoardMove {
             return false;
         
         //check if we can add the hexomino at the new position.
-        if (!level.getBoard().canAddHexomino(new Point(destAnchorRow, destAnchorColumn), hex))
+        if (!level.getBoard().canAddHexomino(new Point(destAnchorRow, destAnchorColumn), hex.get()))
             return false;
         
         //if the board doesn't actually have the hexomino then return false.
-        if (!level.getBoard().hasHex(hex))
+        if (!level.getBoard().hasHex(hex.get()))
             return false;
         
         return true;

@@ -56,7 +56,7 @@ public class TestMoveToBoardFromBullpen {
 
 		// A valid move
 		assertTrue(mtbfbp1.doMove());
-		mtbfbp1.level.select(mtbfbp1.hex);
+		mtbfbp1.level.select(mtbfbp1.hex.get());
 		// You can't make the same move twice
 		assertFalse(mtbfbp1.doMove());
 		// Can't add to the same place
@@ -75,12 +75,12 @@ public class TestMoveToBoardFromBullpen {
 	@Test
 	public void testBounds() {
 
-		mtbfbp5.hex.flipHorizontally();
-		mtbfbp5.level.select(mtbfbp5.hex);
+		mtbfbp5.hex.get().flipHorizontally();
+		mtbfbp5.level.select(mtbfbp5.hex.get());
 		fixSelected(mtbfbp2);
 		assertFalse(mtbfbp2.doMove());
 		assertFalse(mtbfbp5.doMove());
-		mtbfbp5.hex.flipHorizontally();
+		mtbfbp5.hex.get().flipHorizontally();
 		assertTrue(mtbfbp7.level.hasSelected());
 		assertFalse(mtbfbp7.valid());
 		assertFalse(mtbfbp7.doMove());
@@ -98,7 +98,7 @@ public class TestMoveToBoardFromBullpen {
 	}
 
 	public void fixSelected(MoveToBoardFromBullpen m) {
-		m.level.select(m.hex);
+		m.level.select(m.hex.get());
 	}
 
 }

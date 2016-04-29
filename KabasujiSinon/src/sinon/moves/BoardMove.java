@@ -1,5 +1,7 @@
 package sinon.moves;
 
+import java.util.Optional;
+
 import sinon.models.Hexomino;
 import sinon.models.Level;
 
@@ -15,7 +17,7 @@ public abstract class BoardMove {
 	Level level; 
 	
 	/** The hexomino that is being moved.  */
-	Hexomino hex;
+	Optional<Hexomino> hex;
 	
 	public abstract boolean doMove();
 	

@@ -2,6 +2,7 @@ package sinon.models;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class PuzzleIntegrationTest {
@@ -10,20 +11,19 @@ public class PuzzleIntegrationTest {
 	int movesLeft;
 	private ModelIntegrationTest m;
 	
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
-
+	@Before
 	public void setUp() {
 		movesLeft = 8;
 		m = new ModelIntegrationTest();
 		level = new PuzzleLevel(m.getBoard(), m.getBullPen(), movesLeft);
 		m.initializeMoves(level);
+		
+		assertTrue(m.hex3 != null);
 	}
 	
 	@Test
 	public void testRun() {
+		level.select(m.hex1);
 		assertTrue(m.move1.doMove());
 		
 	}

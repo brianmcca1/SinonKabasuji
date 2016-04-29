@@ -25,10 +25,7 @@ public class MoveToBullpenFromBoard extends BoardMove {
 	public MoveToBullpenFromBoard(Level level, int srcAnchorRow, int srcAnchorColumn) {
 
 		this.level = level;
-		if (level.hasSelected()) {
-			this.hex = level.getSelectedHexomino().get();
-		}
-
+		this.hex = level.getSelectedHexomino();
 		this.srcAnchorRow = srcAnchorRow;
 		this.srcAnchorColumn = srcAnchorColumn;
 
@@ -38,16 +35,16 @@ public class MoveToBullpenFromBoard extends BoardMove {
 	public boolean doMove() {
 		if (!valid())
 			return false;
-		level.getBullpen().addHexomino(hex);
-		level.getBoard().removeHexomino(hex);
+		level.getBullpen().addHexomino(hex.get());
+		level.getBoard().removeHexomino(hex.get());
 		level.deselect();
 		return true;
 	}
 
 	@Override
 	public boolean undo() {
-		level.getBoard().addHexomino(new Point(srcAnchorRow, srcAnchorColumn), hex);
-		level.getBullpen().removeHexomino(hex);
+		level.getBoard().addHexomino(new Point(srcAnchorRow, srcAnchorColumn), hex.get());
+		level.getBullpen().removeHexomino(hex.get());
 		return true;
 	}
 
@@ -55,7 +52,7 @@ public class MoveToBullpenFromBoard extends BoardMove {
 	public boolean valid() {
 		if (!level.hasSelected())
 			return false;
-		if (!level.getBoard().hasHex(hex))
+		if (!level.getBoard().hasHex(hex.get()))
 			return false;
 		return true;
 	}

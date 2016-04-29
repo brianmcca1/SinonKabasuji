@@ -3,6 +3,7 @@ package sinon.models;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Random;
 import java.util.UUID;
@@ -131,6 +132,7 @@ public class BullPen implements Observable {
 	 */
 
 	public boolean hasHex(Hexomino hex) {
+		Objects.requireNonNull(hex);
 		return this.containsHexID(hex.id);
 	}
 

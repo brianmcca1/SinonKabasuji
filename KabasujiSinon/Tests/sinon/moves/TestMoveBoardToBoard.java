@@ -64,7 +64,7 @@ public class TestMoveBoardToBoard {
 		assertFalse(mib4.doMove());
 		testLevel.select(hex3);
 		assertFalse(mib2.doMove());
-		mib1.level.getBoard().removeHexomino(mib1.hex);
+		mib1.level.getBoard().removeHexomino(mib1.hex.get());
 		assertFalse(mib1.doMove());
 		mib1.level.deselect();
 		assertFalse(mib1.doMove());
