@@ -2,13 +2,10 @@ package sinon.controllers;
 
 import java.io.File;
 
-import sinon.models.Board;
-import sinon.models.BullPen;
 import sinon.models.Level;
 import sinon.models.data.BoardData;
 import sinon.models.data.BullPenData;
 import sinon.models.data.LevelData;
-import sinon.models.data.LevelProperty;
 import sinon.serial.Deserializer;
 import sinon.serial.Serializer;
 
@@ -19,9 +16,13 @@ public class FileHandler {
 
 	/**
 	 * Will save the current level to file.
-	 * @param fileToSaveTo File to save to.
-	 * @param level Level to save.
-	 * @param levelProp LevelProperty of level to set.
+	 * 
+	 * @param fileToSaveTo
+	 *            File to save to.
+	 * @param level
+	 *            Level to save.
+	 * @param levelProp
+	 *            LevelProperty of level to set.
 	 */
 	public static void builderSaveLevelToFile(File fileToSaveTo, Level level) {
 		// CREATE THE LEVELS BULLPENDATA AND SET IT
@@ -31,7 +32,7 @@ public class FileHandler {
 		// CREATE THE LEVELS BOARDDATA AND SET IT
 		BoardData levelBoardData = new BoardData(level.getBoard());
 		level.getLevelData().setBoardData(levelBoardData);
-		
+
 		level.getLevelData().setStarRecord(0);
 
 		Serializer serializer = new Serializer(fileToSaveTo, level.getLevelData());
@@ -47,13 +48,14 @@ public class FileHandler {
 	 * level.
 	 */
 	public static void determineCurrentGameLevelFile(int currentLevelNumber) {
-		String levelNumString = Integer.toString(currentLevelNumber+1);
+		String levelNumString = Integer.toString(currentLevelNumber + 1);
 		String fileString = "level" + levelNumString + ".dat";
 		setCurrentFile(new File(fileString));
 	}
 
 	/**
 	 * Will load all levels from the local project directory files.
+	 * 
 	 * @return Returns Level[].
 	 */
 	public static Level[] loadAllLevels() {
@@ -63,8 +65,7 @@ public class FileHandler {
 		Deserializer deserializer = new Deserializer(levelFile);
 		LevelData levelData = deserializer.deserializeFile();
 
-		Level levelOne = new Level(levelData.getLevelType(), new Board(levelData.getBoardData()), new BullPen(levelData.getBullpenData()));
-		levelOne.setLevelData(levelData);
+		Level levelOne = new Level(levelData);
 
 		levels[0] = levelOne;
 
@@ -72,32 +73,31 @@ public class FileHandler {
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
 
-		Level levelTwo = new Level(levelData.getLevelType(), new Board(levelData.getBoardData()), new BullPen(levelData.getBullpenData()));
-		levelTwo.setLevelData(levelData);
+		Level levelTwo = new Level(levelData);
 
 		levels[1] = levelTwo;
 
 		return levels;
 	}
-	
-	public static String determineFileStringForStars(int starsEarned){
+
+	public static String determineFileStringForStars(int starsEarned) {
 		String fileString = "/images/";
-		
-		switch(starsEarned){
-			case 0:
-				fileString += "blank.png";
-				break;
-			case 1:
-				fileString += "1star.png";
-				break;
-			case 2:
-				fileString += "2stars.png";
-				break;
-			case 3:
-				fileString += "3stars.png";
-				break;
+
+		switch (starsEarned) {
+		case 0:
+			fileString += "blank.png";
+			break;
+		case 1:
+			fileString += "1star.png";
+			break;
+		case 2:
+			fileString += "2stars.png";
+			break;
+		case 3:
+			fileString += "3stars.png";
+			break;
 		}
-		
+
 		System.out.println(fileString);
 		return fileString;
 	}

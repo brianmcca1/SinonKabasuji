@@ -38,7 +38,18 @@ public class Level implements Observable {
 	}
 
 	public Level(LevelData levelData) {
-		this.board = new Board(levelData.getBoardData());
+		switch (levelData.getLevelType()) {
+		case PUZZLE:
+			this.board = new Board(levelData.getBoardData());
+			break;
+		case LIGHTNING:
+			this.board = new LightningBoard(levelData.getBoardData());
+			break;
+		case RELEASE:
+			this.board = new ReleaseBoard(levelData.getBoardData());
+			break;
+		}
+
 		this.bullpen = new BullPen(levelData.getBullpenData());
 		this.levelData = levelData;
 		observers = new LinkedList<Observer>();

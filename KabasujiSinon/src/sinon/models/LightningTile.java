@@ -12,6 +12,7 @@ public class LightningTile extends Tile {
 
 	@Override
 	public boolean canAddHex(Hexomino hex) {
+		System.out.println("Lightning Tile " + location.toString() + " checking if i can add a hex");
 		assert hex != null;
 		if (!this.playable) {
 			return false;

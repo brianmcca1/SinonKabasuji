@@ -7,8 +7,6 @@ import java.io.File;
 import javax.swing.JFileChooser;
 
 import sinon.main.Builder;
-import sinon.models.Board;
-import sinon.models.BullPen;
 import sinon.models.Level;
 import sinon.models.LightningLevel;
 import sinon.models.PuzzleLevel;
@@ -61,9 +59,7 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 			System.out.println("*********************************************");
 
 			// CREATE levelFromFile FROM levelData HERE
-			Level levelFromFile = new Level(levelData.getLevelType(), new Board(levelData.getBoardData()),
-					new BullPen(levelData.getBullpenData()));
-			levelFromFile.setLevelData(levelData);
+			Level levelFromFile = new Level(levelData);
 
 			// FIND OUT WHICH LevelTypeInfoView TO GIVE TO MAINVIEW
 			LevelTypeInfoView lvlTypeInfoView = null;

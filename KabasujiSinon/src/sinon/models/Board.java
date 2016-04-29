@@ -90,7 +90,7 @@ public class Board implements Observable {
 		for (int x = 0; x < WIDTH; x++) {
 			for (int y = 0; y < HEIGHT; y++) {
 				Point p = new Point(x, y);
-				tilesViaPoints.put(p, new Tile(p, true));
+				initializeTiles(p, true);
 			}
 		}
 
@@ -119,6 +119,7 @@ public class Board implements Observable {
 	}
 
 	protected void initializeTiles(Point p, boolean playable) {
+		System.out.println("Initializing standard tiles");
 		tilesViaPoints.put(p, new Tile(p, playable));
 	}
 
