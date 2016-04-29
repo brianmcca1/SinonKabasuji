@@ -23,8 +23,8 @@ public class PuzzleIntegrationTest {
 	
 	@Test
 	public void testRun() {
-		level.select(m.hex1);
-		assertTrue(m.move1.doMove());
+		level.select(m.hex3);
+		assertTrue(m.move3.valid());
 		
 	}
 }

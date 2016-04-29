@@ -27,11 +27,7 @@ public class ModelIntegrationTest {
 	Board board;
 	PuzzleLevel level;
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
-
+	
 	public ModelIntegrationTest() {
 	}
 
@@ -51,7 +47,7 @@ public class ModelIntegrationTest {
 
 	void initializeMoves(Level level) {
 		// Move Hexomino 1 to (1, 0)
-		this.move1 = new MoveToBoardFromBullpen(level, 1, 0);
+		this.move1 = new MoveToBoardFromBullpen(level, 2, 2);
 		// Move Hexomino 2 to (5, 1)
 		this.move2 = new MoveToBoardFromBullpen(level, 5, 1);
 		// Move Hexomino 3 to (7, 0)
