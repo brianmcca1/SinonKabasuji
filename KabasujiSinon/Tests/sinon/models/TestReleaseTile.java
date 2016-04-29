@@ -15,8 +15,9 @@ public class TestReleaseTile {
 	@Test
 	public void testAddAndRemove() {
 		ReleaseNumber releaseNumber = new ReleaseNumber(Color.BLUE, 1);
-		assertFalse(releaseNumber.getCollected());
+		assertFalse(releaseNumber.isCollected());
 
+		assertEquals(releaseNumber.getColor(), Color.BLUE);
 		ReleaseTile releaseTile = new ReleaseTile(new Point(0, 0), true);
 		assertTrue(releaseTile.addReleaseNumber(releaseNumber));
 		assertEquals(releaseNumber.getLocation().get(), new Point(0, 0));
@@ -27,6 +28,21 @@ public class TestReleaseTile {
 		assertTrue(releaseTile.removeReleaseNumber());
 		assertEquals(releaseNumber.getLocation(), Optional.empty());
 		assertFalse(releaseTile.hasReleaseNumber());
+
+		assertFalse(releaseTile.removeReleaseNumber());
+	}
+
+	@Test
+	public void testCollected() {
+		ReleaseNumber releaseNumber = new ReleaseNumber(Color.BLUE, 1);
+		ReleaseTile releaseTile = new ReleaseTile(new Point(0, 0), true);
+
+		assertTrue(releaseTile.addReleaseNumber(releaseNumber));
+
+		assertFalse(releaseNumber.isCollected());
+		Hexomino hex = new Hexomino(0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5);
+		releaseTile.addHexomino(hex);
+		assertTrue(releaseNumber.isCollected());
 	}
 
 }
