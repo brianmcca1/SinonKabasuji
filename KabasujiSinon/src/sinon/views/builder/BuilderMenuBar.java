@@ -1,20 +1,14 @@
 package sinon.views.builder;
 
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.KeyStroke;
 import sinon.controllers.BuilderNewLightningLevelController;
 import sinon.controllers.BuilderNewPuzzleLevelController;
 import sinon.controllers.BuilderNewReleaseLevelController;
 import sinon.controllers.BuilderOpenController;
-import sinon.controllers.BuilderRedoController;
 import sinon.controllers.BuilderSaveAsController;
 import sinon.controllers.BuilderSaveController;
-import sinon.controllers.BuilderUndoController;
 import sinon.main.Builder;
 
 /**
@@ -37,12 +31,9 @@ public class BuilderMenuBar extends JMenuBar {
 	public JMenuItem mntmClearBoard;
 	
 	private Builder builder;
-	
-	private JPanel blankPanel;
 
-	public BuilderMenuBar(Builder b, JPanel bPanel) {
+	public BuilderMenuBar(Builder b) {
 		this.builder = b;
-		this.blankPanel = bPanel;
 		initFileMenu();
 		initEditMenu();
 	}
