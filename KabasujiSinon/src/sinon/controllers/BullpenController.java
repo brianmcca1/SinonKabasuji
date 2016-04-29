@@ -5,7 +5,9 @@ import java.awt.event.MouseListener;
 import java.util.Objects;
 
 import sinon.models.BullPen;
+import sinon.models.Hexomino;
 import sinon.models.Level;
+import sinon.moves.MoveToBullpenFromBoard;
 import sinon.views.BullpenView;
 
 /**
@@ -31,11 +33,17 @@ public class BullpenController implements MouseListener {
 
 	protected void handleClick() {
 		if (level.hasSelected()) {
+			Hexomino hex = level.getSelectedHexomino().get();
+			int srcAnchorRow, srcAnchorColumn;
+			srcAnchorRow = level.getBoard().getHexominoLocation(hex).x;
+			srcAnchorColumn = level.getBoard().getHexominoLocation(hex).y;
+			MoveToBullpenFromBoard move = new MoveToBullpenFromBoard(level, srcAnchorRow, srcAnchorColumn);
+			move.doMove();
 			level.deselect();
 			System.out.println("SELECTED HEXOMINO HAS BEEN DESELECTED");
 		}
 
-		// TODO add logic for creating a board to bullpen move.
+		// TODO add logic for undoing
 	}
 
 	@Override
