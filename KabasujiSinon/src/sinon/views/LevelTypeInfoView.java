@@ -14,7 +14,7 @@ import javax.swing.border.LineBorder;
  * @see ReleaseInfoView For example, the time left in a lightning level
  */
 @SuppressWarnings("serial")
-public class LevelTypeInfoView extends JPanel {
+public abstract class LevelTypeInfoView extends JPanel {
 	// TODO, shouldn't this be abstract?
 
 	public LevelTypeInfoView() {
@@ -23,8 +23,6 @@ public class LevelTypeInfoView extends JPanel {
 		this.setBackground(Color.LIGHT_GRAY);
 	}
 
-	public int getValue() {
-		return -999;
-	}
+	public abstract int getValue();
 
 }

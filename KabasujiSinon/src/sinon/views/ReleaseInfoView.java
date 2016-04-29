@@ -30,7 +30,7 @@ public class ReleaseInfoView extends LevelTypeInfoView {
 	}
 
 	public ReleaseInfoView(ArrayList<ReleaseNumber> releaseNumbers) {
-		setBorder(new LineBorder(new Color(0, 0, 0)));
+		//setBorder(new LineBorder(new Color(0, 0, 0)));
 		setLayout(new GridLayout(6, 3, 2, 2));
 		addButtons();
 		// TODO: implement this
@@ -61,5 +61,9 @@ public class ReleaseInfoView extends LevelTypeInfoView {
 	// TODO: complete this
 	public ArrayList<ReleaseNumber> getReleaseSets() {
 		return null;
+	}
+	
+	public int getValue(){
+		return -999;
 	}
 }
