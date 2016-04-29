@@ -35,33 +35,6 @@ public class ExitGameController implements ActionListener {
 
 		this.game.determineCurrentGameLevelFile();
 
-		// CREATE THE LEVELS BOARDDATA AND SET IT
-		BoardData levelBoardData = new BoardData(this.game.getLevel().getBoard());
-		this.game.getLevel().getLevelData().setBoardData(levelBoardData);
-
-		// GET THIS LEVEL'S propertyValue
-		Types thisLevelsType = this.game.getLevel().getLevelData().getLevelType();
-
-		// SET LevelProperty BASED ON LEVEL TYPE AND WHAT WAS ENTERED INTO THE
-		// VIEW
-		switch (thisLevelsType) {
-		case PUZZLE:
-			int propertyValuePuzzle = this.game.getMainView().getLevelTypeInfoView().getValue();
-			this.game.getLevel().getLevelData().setLevelProperty(new LevelProperty(propertyValuePuzzle, Types.PUZZLE));
-			break;
-		case LIGHTNING:
-			int propertyValueLightning = this.game.getMainView().getLevelTypeInfoView().getValue();
-			this.game.getLevel().getLevelData()
-					.setLevelProperty(new LevelProperty(propertyValueLightning, Types.LIGHTNING));
-			break;
-		case RELEASE:
-			ArrayList<ReleaseNumber> propertyValueRelease = ((ReleaseInfoView) this.game.getMainView()
-					.getLevelTypeInfoView()).getReleaseSets();
-			this.game.getLevel().getLevelData()
-					.setLevelProperty(new LevelProperty(propertyValueRelease, Types.RELEASE));
-			break;
-		}
-
 		// TODO set the max stars and whatever else is relevant to the game
 
 		Serializer serializer = new Serializer(FileHandler.currentFile, this.game.getLevel().getLevelData());
@@ -71,7 +44,7 @@ public class ExitGameController implements ActionListener {
 		System.out.println(this.game.getLevel().getLevelData().toString());
 		System.out.println("*********************************************");
 
-		game.loadAllLevels(); // reload all the levels
+		game.loadAllLevels();
 		game.startNextPanel(this.game.getMainView(), new LevelSelectView(this.game));
 	}
 

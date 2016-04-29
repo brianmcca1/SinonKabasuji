@@ -44,11 +44,6 @@ public class LevelSelectButtonView extends JPanel {
 		this.add(imagePanel);
 		JButton selectbtn = makeButton(Integer.toString(num));
 		add(selectbtn);
-		
-		
-
-		
-		
 	}
 
 	/**
