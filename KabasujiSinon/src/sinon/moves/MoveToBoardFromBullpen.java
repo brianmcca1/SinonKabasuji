@@ -1,6 +1,7 @@
 package sinon.moves;
 
 import java.awt.Point;
+import java.util.Objects;
 
 import sinon.models.Level;
 import sinon.models.PuzzleLevel;
@@ -26,10 +27,10 @@ public class MoveToBoardFromBullpen extends BoardMove {
 
 	public MoveToBoardFromBullpen(Level level, int destAnchorRow, int destAnchorColumn) {
 
-		this.level = level;
-		if (level.hasSelected()) {
-			this.hex = level.getSelectedHexomino().get();
-		}
+		this.level = Objects.requireNonNull(level);
+
+		this.hex = level.getSelectedHexomino();
+
 		this.destAnchorRow = destAnchorRow;
 		this.destAnchorColumn = destAnchorColumn;
 
@@ -46,8 +47,8 @@ public class MoveToBoardFromBullpen extends BoardMove {
 			((PuzzleLevel) level).incrementMoves();
 		}
 
-		level.getBullpen().removeHexomino(hex);
-		level.getBoard().addHexomino(new Point(destAnchorRow, destAnchorColumn), hex);
+		level.getBullpen().removeHexomino(hex.get());
+		level.getBoard().addHexomino(new Point(destAnchorRow, destAnchorColumn), hex.get());
 		if (level.getLevelData().getLevelType() == Types.LIGHTNING) {
 			level.getBullpen().addRandomHexomino();
 		}
@@ -57,8 +58,8 @@ public class MoveToBoardFromBullpen extends BoardMove {
 
 	@Override
 	public boolean undo() {
-		level.getBullpen().addHexomino(hex);
-		level.getBoard().removeHexomino(hex);
+		level.getBullpen().addHexomino(hex.get());
+		level.getBoard().removeHexomino(hex.get());
 		return true;
 
 	}
@@ -66,8 +67,15 @@ public class MoveToBoardFromBullpen extends BoardMove {
 	@Override
 	public boolean valid() {
 
-		if (level.hasSelected() && level.getBullpen().hasHex(hex)) {
-			return level.getBoard().canAddHexomino((new Point(destAnchorRow, destAnchorColumn)), hex);
+		if (!level.hasSelected()) {
+			System.out.println("Hexomino not selected!");
+			return false;
+		}
+		
+		this.hex = level.getSelectedHexomino();
+		
+		if (level.hasSelected() && level.getBullpen().hasHex(level.getSelectedHexomino().get())) {
+			return level.getBoard().canAddHexomino((new Point(destAnchorRow, destAnchorColumn)), level.getSelectedHexomino().get());
 		} else {
 			return false;
 		}
