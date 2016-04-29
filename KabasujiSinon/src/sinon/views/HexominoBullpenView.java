@@ -17,7 +17,7 @@ import sinon.models.Hexomino;
 
 /** GUI element representing one of the Hexominos in the Bullpen. */
 @SuppressWarnings("serial")
-public class HexominoBullpenView extends JPanel {
+public class HexominoBullpenView extends JPanel implements Observer{
 
     /** The hexomino model object associated with this view */
     Hexomino hex;
@@ -28,6 +28,8 @@ public class HexominoBullpenView extends JPanel {
         this.setMinimumSize(new Dimension(150, 150));
         this.setMaximumSize(new Dimension(150, 150));
         this.setHexominoOnGrid();
+        hex.registerObserver(this);
+        
     }
 
     /** @return Hexomino model associated with this view. */
@@ -66,5 +68,11 @@ public class HexominoBullpenView extends JPanel {
         this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         return this;
     }
+
+	@Override
+	public void updated() {
+		this.removeAll();
+		this.setHexominoOnGrid();
+	}
 
 }
