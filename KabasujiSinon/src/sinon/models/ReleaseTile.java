@@ -32,6 +32,7 @@ public class ReleaseTile extends Tile {
 			return false;
 		}
 		this.releaseNumber = Optional.of(releaseNumber);
+		this.releaseNumber.get().setLocation(this.location);
 		return true;
 	}
 
@@ -45,6 +46,7 @@ public class ReleaseTile extends Tile {
 		if (!this.releaseNumber.isPresent()) {
 			return false;
 		}
+		this.releaseNumber.get().removeLocation();
 		this.releaseNumber = Optional.empty();
 		return true;
 	}

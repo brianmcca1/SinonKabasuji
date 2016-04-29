@@ -1,5 +1,6 @@
 package sinon.models;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.util.List;
 import java.util.Optional;
@@ -29,25 +30,25 @@ public class ReleaseLevel extends Level {
 	@Override
 	public int countStars() {
 		boolean redCollected = true;
-		boolean greenCollected = true;
+		boolean blueCollected = true;
 		boolean yellowCollected = true;
 		int stars = 0;
 
 		for (ReleaseNumber r : this.releaseSets) {
-			if (r.getColor() == "red" & !(r.getCollected())) {
+			if (r.getColor() == Color.RED & !(r.getCollected())) {
 				redCollected = false;
 			}
-			if (r.getColor() == "green" & !(r.getCollected())) {
-				greenCollected = false;
+			if (r.getColor() == Color.BLUE & !(r.getCollected())) {
+				blueCollected = false;
 			}
-			if (r.getColor() == "yellow" & !(r.getCollected())) {
+			if (r.getColor() == Color.YELLOW & !(r.getCollected())) {
 				yellowCollected = false;
 			}
 		}
 		if (redCollected) {
 			stars++;
 		}
-		if (greenCollected) {
+		if (blueCollected) {
 			stars++;
 		}
 		if (yellowCollected) {
