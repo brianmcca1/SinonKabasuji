@@ -52,9 +52,6 @@ public class ModelIntegrationTest {
 		hex3 = new Hexomino(hexset1);
 		hex1.flipVertically();
 		hex2.rotateC();
-		hex1.normalizeHexomino();
-		hex2.normalizeHexomino();
-		hex3.normalizeHexomino();
 		hex4 = new Hexomino(NumberSetFactory.getByNumbers(0, 0, 1, 0, 2, 0, 3, 0, 1, 1, 1, 2));
 		hex4.flipVertically();
 
