@@ -12,19 +12,14 @@ public class ReleaseLevel extends Level {
 	Optional<ReleaseNumber> selectedReleaseNumber = Optional.empty();
 	List<ReleaseNumber> releaseSets;
 
-	int setsCompleted;
-
 	public ReleaseLevel(Board b, BullPen bp, List<ReleaseNumber> releaseSets) {
 		super(Types.RELEASE, b, bp);
 		this.releaseSets = releaseSets;
-		setsCompleted = 0;
 	}
 
 	public ReleaseLevel(Level level) {
 		super(Types.RELEASE, level.getBoard(), level.getBullpen());
-		// Will work if we adjust LevelProperty to the new version
 		this.releaseSets = level.getLevelData().getLevelProperty().getReleaseSet();
-		setsCompleted = 0;
 	}
 
 	@Override
