@@ -28,8 +28,7 @@ public class Board implements Observable {
 	 */
 	@Override
 	public String toString() {
-		return "Board [tilesViaPoints=" + tilesViaPoints
-				+ ", hexominoLocations=" + hexominoLocations + "]";
+		return "Board [tilesViaPoints=" + tilesViaPoints + ", hexominoLocations=" + hexominoLocations + "]";
 	}
 
 	/*
@@ -41,12 +40,8 @@ public class Board implements Observable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime
-				* result
-				+ ((hexominoLocations == null) ? 0 : hexominoLocations
-						.hashCode());
-		result = prime * result
-				+ ((tilesViaPoints == null) ? 0 : tilesViaPoints.hashCode());
+		result = prime * result + ((hexominoLocations == null) ? 0 : hexominoLocations.hashCode());
+		result = prime * result + ((tilesViaPoints == null) ? 0 : tilesViaPoints.hashCode());
 		return result;
 	}
 
@@ -116,11 +111,15 @@ public class Board implements Observable {
 			for (int y = 0; y < HEIGHT; y++) {
 				boolean playable = boardData.getPlayableArray()[x][y];
 				Point p = new Point(x, y);
-				tilesViaPoints.put(p, new Tile(p, playable));
+				initializeTiles(p, playable);
 			}
 		}
 
 		initializeObserverList();
+	}
+
+	protected void initializeTiles(Point p, boolean playable) {
+		tilesViaPoints.put(p, new Tile(p, playable));
 	}
 
 	/** Every constructor should call this */
@@ -153,8 +152,7 @@ public class Board implements Observable {
 		boolean canAdd = true;
 		HexominoNumberSet hexominoNumberSet = hex.getHexominoNumberSet();
 		for (Point p : hexominoNumberSet.getPoints()) {
-			Point pointToCheck = new Point(anchorLocation.x + p.x,
-					anchorLocation.y + p.y);
+			Point pointToCheck = new Point(anchorLocation.x + p.x, anchorLocation.y + p.y);
 			if (!(this.isInBounds(pointToCheck.x, pointToCheck.y))) {
 				return false;
 			}
@@ -192,10 +190,8 @@ public class Board implements Observable {
 		hexominoLocations.put(hex, anchorLocation.getLocation());
 
 		for (Point p : hexominoNumberSet.getPoints()) {
-			Point pointToAdd = new Point(anchorLocation.x + p.x,
-					anchorLocation.y + p.y);
-			if (tilesViaPoints.get(pointToAdd).canAddHex(hex)
-					& isInBounds(pointToAdd.x, pointToAdd.y)) {
+			Point pointToAdd = new Point(anchorLocation.x + p.x, anchorLocation.y + p.y);
+			if (tilesViaPoints.get(pointToAdd).canAddHex(hex) & isInBounds(pointToAdd.x, pointToAdd.y)) {
 				tilesViaPoints.get(pointToAdd).addHexomino(hex);
 			}
 		}
@@ -308,17 +304,17 @@ public class Board implements Observable {
 
 		return false;
 	}
-	
+
 	public void setUnplayableRectangle(Point topLeft, Point bottomRight) {
-		
-		for(int i = topLeft.x; i < bottomRight.x; i++) {
-			
-			for(int j = topLeft.y; j < bottomRight.y; j++) {
+
+		for (int i = topLeft.x; i < bottomRight.x; i++) {
+
+			for (int j = topLeft.y; j < bottomRight.y; j++) {
 				this.getTile(i, j).setPlayable(false);
 			}
-			
+
 		}
-		
+
 	}
 
 	@Override
