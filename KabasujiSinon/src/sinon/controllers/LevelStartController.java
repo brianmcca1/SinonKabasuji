@@ -4,7 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import sinon.main.Game;
+import sinon.models.LightningLevel;
 import sinon.models.data.LevelType.Types;
+
 import sinon.views.LevelTypeInfoView;
 import sinon.views.LightningInfoView;
 import sinon.views.PuzzleInfoView;
@@ -55,7 +57,8 @@ public class LevelStartController implements ActionListener {
 			lvlTypeInfoView = new PuzzleInfoView((int)this.game.getLevel().getLevelData().getLevelProperty().getMaxMoves());
 			break;
 		case LIGHTNING:
-			lvlTypeInfoView = new LightningInfoView((int)this.game.getLevel().getLevelData().getLevelProperty().getMaxTime());
+			lvlTypeInfoView = new LightningInfoView((int)this.game.getLevel().getLevelData().getLevelProperty().getMaxTime(), (LightningLevel)this.game.getLevel(this.levelNum));
+			LightningTimerController l = new LightningTimerController((LightningLevel)this.game.getLevel(this.levelNum), (LightningInfoView)lvlTypeInfoView);
 			break;
 		case RELEASE:
 			lvlTypeInfoView = new ReleaseInfoView(this.game.getLevel().getLevelData().getLevelProperty().getReleaseSet());

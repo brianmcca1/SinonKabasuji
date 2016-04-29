@@ -34,13 +34,15 @@ public class LightningInfoView extends LevelTypeInfoView {
         this.add(timeLeftField);
     }
     
-    public LightningInfoView(int time) {
+    public LightningInfoView(int time, LightningLevel lightningLevel) {
         setLayout(new GridLayout(1, 1));
         this.infoLabel = new JLabel("Time:");
         this.timeLeftField = new JTextField();
 
         this.timeLeftField.setEditable(false);
         this.timeLeftField.setText(Integer.toString(time));
+        
+        this.level = lightningLevel;
         
         this.add(infoLabel);
         this.add(timeLeftField);
@@ -57,6 +59,7 @@ public class LightningInfoView extends LevelTypeInfoView {
 	 * Update the view to show how much time is left
 	 */
 	public void updateTimeLeft(){
+		System.out.println(level);
 		this.timeLeftField.setText(((Integer) level.getTimeLeft()).toString());
 	}
 	

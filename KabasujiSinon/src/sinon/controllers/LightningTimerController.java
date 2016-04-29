@@ -16,6 +16,7 @@ public class LightningTimerController {
 	public LightningTimerController(LightningLevel level, LightningInfoView infoView) {
 		this.level = level;
 		this.infoView = infoView;
+		this.startTimer();
 	}
 	
 	public void startTimer(){
