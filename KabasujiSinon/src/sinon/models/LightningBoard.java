@@ -16,7 +16,6 @@ public class LightningBoard extends Board {
 
 	@Override
 	protected void initializeTiles(Point p, boolean playable) {
-		System.out.println("Initializing Lightning Tiles");
 		tilesViaPoints.put(p, new LightningTile(p, playable));
 	}
 }

@@ -119,7 +119,6 @@ public class Board implements Observable {
 	}
 
 	protected void initializeTiles(Point p, boolean playable) {
-		System.out.println("Initializing standard tiles");
 		tilesViaPoints.put(p, new Tile(p, playable));
 	}
 
