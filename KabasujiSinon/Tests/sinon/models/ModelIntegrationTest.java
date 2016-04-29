@@ -86,8 +86,10 @@ public class ModelIntegrationTest {
 		Point bottomRight1 = new Point(11, 11);
 		Point topLeft2 = new Point(0, 4);
 		Point bottomRight2 = new Point(11, 11);
+		
 		b.setUnplayableRectangle(topLeft1, bottomRight1);
 		b.setUnplayableRectangle(topLeft2, bottomRight2);
+
 
 		b.getTile(new Point(0, 0)).setPlayable(false);
 		b.getTile(new Point(0, 2)).setPlayable(false);

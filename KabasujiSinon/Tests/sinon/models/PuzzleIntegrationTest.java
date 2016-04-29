@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import sinon.moves.MoveToBoardFromBullpen;
+
 public class PuzzleIntegrationTest {
 
 	PuzzleLevel level;
@@ -24,7 +26,7 @@ public class PuzzleIntegrationTest {
 	@Test
 	public void testRun() {
 		level.select(m.hex3);
-		assertTrue(m.move3.valid());
-		
+		MoveToBoardFromBullpen move = new MoveToBoardFromBullpen(level, 7, 0);
+		assertTrue(move.valid());
 	}
 }
