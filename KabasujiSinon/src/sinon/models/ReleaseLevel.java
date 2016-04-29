@@ -35,13 +35,13 @@ public class ReleaseLevel extends Level {
 		int stars = 0;
 
 		for (ReleaseNumber r : this.releaseSets) {
-			if (r.getColor() == Color.RED & !(r.getCollected())) {
+			if (r.getColor() == Color.RED & !(r.isCollected())) {
 				redCollected = false;
 			}
-			if (r.getColor() == Color.BLUE & !(r.getCollected())) {
+			if (r.getColor() == Color.BLUE & !(r.isCollected())) {
 				blueCollected = false;
 			}
-			if (r.getColor() == Color.YELLOW & !(r.getCollected())) {
+			if (r.getColor() == Color.YELLOW & !(r.isCollected())) {
 				yellowCollected = false;
 			}
 		}

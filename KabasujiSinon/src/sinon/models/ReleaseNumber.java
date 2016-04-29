@@ -34,7 +34,7 @@ public class ReleaseNumber {
 		this.location = Optional.empty();
 	}
 
-	public boolean getCollected() {
+	public boolean isCollected() {
 		return this.collected;
 	}
 
