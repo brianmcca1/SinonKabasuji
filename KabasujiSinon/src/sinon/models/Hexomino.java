@@ -1,5 +1,6 @@
 package sinon.models;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.util.LinkedList;
 import java.util.List;
@@ -27,6 +28,8 @@ public class Hexomino implements Observable {
 	List<Observer> observers;
 	/** Unique number to ID hexominoes in the board and the bullpen. **/
 	UUID id;
+	/** Color of the hexomino */
+	Color color;
 
 	/**
 	 * Is a convenience constructor for quickly building a Hexomino.
@@ -36,11 +39,9 @@ public class Hexomino implements Observable {
 	 * @param a1
 	 *            the y component of the first coordinate point
 	 */
-	protected Hexomino(int a, int a1, int b, int b1, int c, int c1, int d,
-			int d1, int e, int e1, int f, int f1) {
+	protected Hexomino(int a, int a1, int b, int b1, int c, int c1, int d, int d1, int e, int e1, int f, int f1) {
 
-		this.hexominoNumberSet = NumberSetFactory.getByNumbers(a, a1, b, b1, c,
-				c1, d, d1, e, e1, f, f1);
+		this.hexominoNumberSet = NumberSetFactory.getByNumbers(a, a1, b, b1, c, c1, d, d1, e, e1, f, f1);
 		this.id = UUID.randomUUID();
 		this.observers = new LinkedList<Observer>();
 	}
@@ -79,6 +80,14 @@ public class Hexomino implements Observable {
 		this.hexominoNumberSet = NumberSetFactory.getByCode(code);
 		this.id = UUID.randomUUID();
 		this.observers = new LinkedList<Observer>();
+	}
+
+	public Hexomino(HexominoCode code, Color color) {
+		Objects.requireNonNull(code);
+		this.hexominoNumberSet = NumberSetFactory.getByCode(code);
+		this.id = UUID.randomUUID();
+		this.observers = new LinkedList<Observer>();
+		this.color = color;
 	}
 
 	/**
@@ -138,6 +147,15 @@ public class Hexomino implements Observable {
 	 */
 	public HexominoNumberSet getHexominoNumberSet() {
 		return this.hexominoNumberSet;
+	}
+
+	/**
+	 * Get this Hexomino's color
+	 * 
+	 * @return The color of this Hexomino
+	 */
+	public Color getColor() {
+		return this.color;
 	}
 
 	/**
