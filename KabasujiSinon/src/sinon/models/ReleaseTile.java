@@ -33,6 +33,7 @@ public class ReleaseTile extends Tile {
 		}
 		this.releaseNumber = Optional.of(releaseNumber);
 		this.releaseNumber.get().setLocation(this.location);
+		update();
 		return true;
 	}
 
@@ -71,20 +72,9 @@ public class ReleaseTile extends Tile {
 
 	@Override
 	public void addHexomino(Hexomino hex) {
-		if (hex == null)
-			throw new NullPointerException();
-		// FIXME probably shouldn't be throwing an error but maybe just
-		// returning false.
-		if (this.hex.isPresent()) {
-			throw new RuntimeException("Tile already contains a Hexomino");
-		} else if (this.playable == false) {
-			throw new RuntimeException("Tile is not playable");
-		}
-
 		if (this.releaseNumber.isPresent()) {
 			this.releaseNumber.get().collect();
 		}
-		this.hex = Optional.of(hex);
-		update();
+		super.addHexomino(hex);
 	}
 }
