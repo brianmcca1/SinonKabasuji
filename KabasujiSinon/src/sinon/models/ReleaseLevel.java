@@ -60,6 +60,10 @@ public class ReleaseLevel extends Level {
 		}
 	}
 
+	public boolean hasSelectedReleaseNumber() {
+		return this.selectedReleaseNumber.isPresent();
+	}
+
 	public void selectReleaseNumber(ReleaseNumber releaseNumber) {
 		this.selectedReleaseNumber = Optional.of(releaseNumber);
 	}

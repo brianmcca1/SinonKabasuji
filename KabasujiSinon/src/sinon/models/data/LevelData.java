@@ -1,7 +1,9 @@
 package sinon.models.data;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
+import sinon.models.ReleaseNumber;
 import sinon.models.data.LevelType.Types;
 
 /**
@@ -40,6 +42,11 @@ public final class LevelData implements Serializable {
 	public LevelData(Types type) {
 		this.levelType = type;
 		this.starRecord = 0;
+		if (type == Types.RELEASE) {
+			this.levelProperty = new LevelProperty(new ArrayList<ReleaseNumber>(), type);
+		} else {
+			this.levelProperty = new LevelProperty(0, type);
+		}
 	}
 
 	/**
@@ -62,9 +69,12 @@ public final class LevelData implements Serializable {
 	public int getStarRecord() {
 		return this.starRecord;
 	}
-	
-	/** @param s The star record to set. */
-	public void setStarRecord(int s){
+
+	/**
+	 * @param s
+	 *            The star record to set.
+	 */
+	public void setStarRecord(int s) {
 		this.starRecord = s;
 	}
 
