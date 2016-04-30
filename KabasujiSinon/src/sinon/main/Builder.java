@@ -19,6 +19,11 @@ import sinon.views.ReleaseInfoView;
 import sinon.views.builder.BankView;
 import sinon.views.builder.BuilderMenuBar;
 
+/**
+ * This is the main builder "application" class that extends the
+ * superclass {@link Kabasuji}. Therefore it is a JFrame.
+ *
+ */
 @SuppressWarnings("serial")
 public class Builder extends Kabasuji {
 

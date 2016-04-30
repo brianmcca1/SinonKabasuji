@@ -12,7 +12,8 @@ import sinon.views.TileView;
 /**
  * Tile Controller for builder interactions. This extends the TileController
  * superclass because Tile Click events should behave in different ways between
- * the builder and the game.
+ * the builder and the game. It is mostly responsible for firing off moves, 
+ * setting unplayable tiles, etc.
  * 
  * @author kartik
  *

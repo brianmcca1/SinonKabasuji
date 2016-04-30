@@ -8,6 +8,7 @@ import sinon.views.MainView;
 
 /**
  * GENERAL NOTE: THIS CLASS MIGHT NEED TO HAVE THE LEVEL MODEL AS A FIELD.
+ * This is the controller responsible for restarting the level.
  */
 public class RestartLevelController implements ActionListener {
 

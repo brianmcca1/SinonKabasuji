@@ -10,6 +10,11 @@ import sinon.models.data.BullPenData;
 import sinon.views.PuzzleInfoView;
 import sinon.views.builder.BuilderMenuBar;
 
+/**
+ * This is the controller associated with starting up a new 
+ * puzzle level in the builder. 
+ *
+ */
 public class BuilderNewPuzzleLevelController extends BuilderNewLevelController
 {
 

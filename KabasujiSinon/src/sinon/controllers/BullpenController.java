@@ -12,6 +12,8 @@ import sinon.views.BullpenView;
 
 /**
  * This controller responds to mouse interactions with the BullpenView.
+ * Primarily this controller merely handles dropping a piece from the board
+ * to the bullpen.
  */
 public class BullpenController implements MouseListener {
 

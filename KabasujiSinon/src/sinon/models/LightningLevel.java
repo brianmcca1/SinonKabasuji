@@ -6,6 +6,12 @@ import java.util.LinkedList;
 
 import sinon.models.data.LevelType.Types;
 
+/**
+ * This is the lightning level model class that is responsible
+ * for attributes and behaviors that are exclusive to lightning
+ * level games such as the maximum time available and the time left.
+ *
+ */
 public class LightningLevel extends Level {
 	/** Maximum amount of time allowed, in seconds */
 	int maxTime;

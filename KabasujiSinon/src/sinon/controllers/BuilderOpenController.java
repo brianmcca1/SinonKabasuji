@@ -20,6 +20,11 @@ import sinon.views.PuzzleInfoView;
 import sinon.views.ReleaseInfoView;
 import sinon.views.builder.BuilderMenuBar;
 
+/**
+ * This is the controller that handles opening up an existing level
+ * in the builder.
+ *
+ */
 public class BuilderOpenController extends BuilderNewLevelController implements ActionListener {
 
 	/** Overall Builder object */
