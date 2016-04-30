@@ -42,7 +42,7 @@ public class GameInfoView extends InfoPanel {
         this.add(btnExit);
         this.exitButton = btnExit;
         
-        this.starView = new StarView("/images/blank.png");
+        this.starView = new StarView("/images/0star.png");
         this.add(this.starView);
     }
 

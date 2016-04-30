@@ -83,22 +83,7 @@ public class FileHandler {
 	}
 
 	public static String determineFileStringForStars(int starsEarned) {
-		String fileString = "/images/";
-
-		switch (starsEarned) {
-		case 0:
-			fileString += "blank.png";
-			break;
-		case 1:
-			fileString += "1star.png";
-			break;
-		case 2:
-			fileString += "2stars.png";
-			break;
-		case 3:
-			fileString += "3stars.png";
-			break;
-		}
+		String fileString = "/images/" + Integer.toString(starsEarned) + "star.png";
 		return fileString;
 	}
 }
