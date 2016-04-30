@@ -93,9 +93,7 @@ public abstract class TileController implements MouseListener, MouseMotionListen
 
 			if (level.getBullpen().containsHexID(level.getSelectedHexomino().get().getID())) {
 				// else move from bullpen to board
-				MoveToBoardFromBullpen move = new MoveToBoardFromBullpen(
-						this.level, this.tileView.getRow(),
-						this.tileView.getColumn());
+				MoveToBoardFromBullpen move = new MoveToBoardFromBullpen(this.level, this.tileView.getRow(),this.tileView.getColumn());
 
 				if (move.doMove()) {
 					level.pushMove(move);
@@ -109,12 +107,9 @@ public abstract class TileController implements MouseListener, MouseMotionListen
 			else if (level.getBoard().containsHexID(level.getSelectedHexomino().get().getID())) {
 				// then move from board to board
 				int x, y;
-				x = level.getBoard().getHexominoLocation(
-						level.getSelectedHexomino().get()).x;
-				y = level.getBoard().getHexominoLocation(
-						level.getSelectedHexomino().get()).y;
-				MoveInBoard move = new MoveInBoard(level, x, y,
-						this.tileView.getRow(), this.tileView.getColumn());
+				x = level.getBoard().getHexominoLocation(level.getSelectedHexomino().get()).x;
+				y = level.getBoard().getHexominoLocation(level.getSelectedHexomino().get()).y;
+				MoveInBoard move = new MoveInBoard(level, x, y, this.tileView.getRow(), this.tileView.getColumn());
 
 				if (move.doMove()) {
 					level.pushMove(move);

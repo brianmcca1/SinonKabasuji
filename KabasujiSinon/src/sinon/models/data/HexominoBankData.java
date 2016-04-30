@@ -28,18 +28,8 @@ public class HexominoBankData {
         return createHexominos();
     }
 
-    // FIXME
     private static List<Hexomino> createHexominos() {
         ArrayList<Hexomino> hexList = new ArrayList<Hexomino>();
-
-        // FIXME
-        /*
-         * This is the problem with heavy & repeated coupling. Storing the
-         * values offline is fine, but doing it by calling a constructor this
-         * many times won't work and is a huge mistake. You're heavily coupling
-         * this class to the Hexomino Class. Coupling is bad. Here's an
-         * alternate way of doing this.
-         */
 
         List<int[]> list = new LinkedList<int[]>();
         list.add(new int[] { 0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5 });

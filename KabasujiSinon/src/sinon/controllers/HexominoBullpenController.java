@@ -20,7 +20,6 @@ public class HexominoBullpenController extends AbstractHexStashController {
 		System.out
 		.println("I AM A BULLPEN HEXOMINO AND I JUST GOT CLICKED ON!");
 
-		// FIXME A new move is NOT always created when you click on the bullpen
 		if (level.hasSelected()) {
 			// compare this.hex to level.selectedHexomino.get()
 			if (this.level.getBullpen().containsHexID(

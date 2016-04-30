@@ -25,9 +25,8 @@ public class HexominoBankController extends AbstractHexStashController {
 		System.out.println("I AM A BANK HEXOMINO AND I GOT CLICKED ON");
 
 
-		Hexomino hexomino = hex.getHexomino();
-		BankToBullpenMove move = new BankToBullpenMove(level.getBullpen(),
-				hexomino);
+		Hexomino hexomino = new Hexomino(hex.getHexomino().getHexominoNumberSet());
+		BankToBullpenMove move = new BankToBullpenMove(level.getBullpen(), hexomino);
 
 		if (move.doMove()) {
 			level.pushMove(move);
