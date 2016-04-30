@@ -1,5 +1,9 @@
 package sinon.models;
 
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 import sinon.models.data.LevelType.Types;
 
 public class LightningLevel extends Level {
@@ -25,12 +29,19 @@ public class LightningLevel extends Level {
 	@Override
 	public int countStars() {
 		int numNotPlayed = 0;
-		for (Tile t : this.board.getTiles()) {
-			if (!t.hasHex() & t.isPlayable()) {
+		LinkedList<Tile> tiles = (LinkedList<Tile>) this.board.getTiles();
+		ArrayList<LightningTile> lightningTiles = new ArrayList<LightningTile>(tiles.size());
+		
+		for(int i = 0; i < tiles.size(); i++){
+			lightningTiles.add(((LightningTile) tiles.get(i)));
+		}
+		
+		for (LightningTile t : lightningTiles) {
+			if (!t.lightninged & t.isPlayable()) {
 				numNotPlayed++;
 			}
 		}
-
+		
 		if (numNotPlayed == 0) {
 			return 3;
 		}

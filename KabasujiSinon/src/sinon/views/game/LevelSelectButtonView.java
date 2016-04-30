@@ -37,6 +37,7 @@ public class LevelSelectButtonView extends JPanel {
 		this.add(imagePanel);
 		
 		int starRecord = level.getLevelData().getStarRecord();
+		System.out.println("LEVELSELECTBUTTONVIEW SAYS THIS LEVEL HAS #STARS = " + starRecord);
 		String starImageFilePath = FileHandler.determineFileStringForStars(starRecord);
 		this.starView = new StarView(starImageFilePath);
 		imagePanel.add(starView);

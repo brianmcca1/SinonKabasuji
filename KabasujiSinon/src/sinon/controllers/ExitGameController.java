@@ -29,14 +29,10 @@ public class ExitGameController implements ActionListener {
 
 		this.game.determineCurrentGameLevelFile();
 
-		// TODO set the max stars and whatever else is relevant to the game
+		this.game.getLevel().getLevelData().setStarRecord(this.game.getLevel().countStars());
 
 		Serializer serializer = new Serializer(FileHandler.currentFile, this.game.getLevel().getLevelData());
 		serializer.serializeFile();
-
-		System.out.println("*************EXIT CONTROLLER*****************");
-		System.out.println(this.game.getLevel().getLevelData().toString());
-		System.out.println("*********************************************");
 
 		Types currentLevelType = this.game.getLevel().getLevelData().getLevelType();
 		switch(currentLevelType){
