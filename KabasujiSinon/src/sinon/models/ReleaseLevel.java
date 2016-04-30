@@ -68,7 +68,7 @@ public class ReleaseLevel extends Level {
 		this.selectedReleaseNumber = Optional.of(releaseNumber);
 	}
 
-	public void deselectReleaseNumber(ReleaseNumber releaseNumber) {
+	public void deselectReleaseNumber() {
 		this.selectedReleaseNumber = Optional.empty();
 	}
 

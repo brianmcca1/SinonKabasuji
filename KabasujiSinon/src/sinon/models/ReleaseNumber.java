@@ -57,6 +57,10 @@ public class ReleaseNumber {
 		collected = true;
 	}
 
+	public void uncollect() {
+		collected = false;
+	}
+
 	public Color getColor() {
 		return this.color;
 	}

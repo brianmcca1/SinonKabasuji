@@ -77,4 +77,14 @@ public class ReleaseTile extends Tile {
 		}
 		super.addHexomino(hex);
 	}
+
+	@Override
+	public boolean removeHex() {
+		if (this.releaseNumber.isPresent()) {
+			if (this.releaseNumber.get().collected) {
+				this.releaseNumber.get().uncollect();
+			}
+		}
+		return super.removeHex();
+	}
 }

@@ -32,6 +32,7 @@ public class AddReleaseNumberMove extends Move {
 			return false;
 		}
 		releaseTile.addReleaseNumber(releaseNumber);
+		this.level.deselectReleaseNumber();
 		return true;
 	}
 
