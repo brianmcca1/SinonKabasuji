@@ -7,6 +7,12 @@ import java.util.Optional;
 
 import sinon.models.data.LevelType.Types;
 
+/**
+ * This is the model class that extends the main level class.
+ * It encapsulates the attributes and behaviors that are 
+ * exclusive to the release level.
+ *
+ */
 public class ReleaseLevel extends Level {
 
 	Optional<ReleaseNumber> selectedReleaseNumber = Optional.empty();
