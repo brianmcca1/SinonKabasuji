@@ -10,6 +10,11 @@ import sinon.views.MainView;
 import sinon.views.game.GameInfoView;
 import sinon.views.game.LevelSelectView;
 
+/**
+ * This is the main application class for the Game that extends 
+ * the superclass {@link Kabasuji}. Therefore it is a JFrame.
+ *
+ */
 @SuppressWarnings("serial")
 public class Game extends Kabasuji {
 
