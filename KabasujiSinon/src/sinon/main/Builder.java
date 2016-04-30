@@ -1,15 +1,21 @@
 package sinon.main;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import sinon.controllers.BuilderRedoController;
 import sinon.controllers.BuilderUndoController;
 import sinon.controllers.HexStashRegistrator;
+import sinon.controllers.ReleaseInfoViewButtonController;
 import sinon.controllers.TileRegistrator;
 import sinon.models.BullPen;
+import sinon.models.ReleaseLevel;
+import sinon.models.ReleaseNumber;
 import sinon.models.data.HexominoBankData;
+import sinon.models.data.LevelType.Types;
 import sinon.views.LevelTypeInfoView;
 import sinon.views.MainView;
+import sinon.views.ReleaseInfoView;
 import sinon.views.builder.BankView;
 import sinon.views.builder.BuilderMenuBar;
 
@@ -36,8 +42,7 @@ public class Builder extends Kabasuji {
 			this.revalidate();
 		}
 
-		MainView mv = new MainView(this.getLevel(), new BankView(),
-				lvlTypeInfoView);
+		MainView mv = new MainView(this.getLevel(), new BankView(), lvlTypeInfoView);
 		this.setMainView(mv);
 		this.startNextPanel(this.blankPanel, mv);
 		initializeControllers();
@@ -50,8 +55,18 @@ public class Builder extends Kabasuji {
 		this.tileRegistrator.setToBuilderType();
 		registerBoardViewControllers();
 
-		getBankView().setRegistrator(
-				new HexStashRegistrator(getLevel(), getMainView(), true));
+		if (this.getLevel().getLevelData().getLevelType() == Types.RELEASE) {
+
+			ReleaseInfoView infoView = (ReleaseInfoView) this.getMainView().getLevelTypeInfoView();
+			for (JButton j : infoView.getAllButtons()) {
+				ReleaseNumber releaseNumber = new ReleaseNumber(j.getForeground(), Integer.parseInt(j.getText()));
+				ReleaseInfoViewButtonController buttonController = new ReleaseInfoViewButtonController(
+						(ReleaseLevel) this.getLevel(), infoView, releaseNumber);
+				j.addActionListener(buttonController);
+			}
+		}
+
+		getBankView().setRegistrator(new HexStashRegistrator(getLevel(), getMainView(), true));
 
 		registerBullpenController();
 		this.getJMenuBar().getMenu(1).getItem(0).addActionListener(new BuilderUndoController(currentLevel));

@@ -28,6 +28,7 @@ public class ReleaseInfoViewButtonController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("I AM A RELEASE NUMBER BUTTON AND I WAS JUST CLICKED ON!");
 		this.level.selectReleaseNumber(this.releaseNumber);
+		System.out.println(this.level.getSelectedReleaseNumber().toString());
 	}
 
 }

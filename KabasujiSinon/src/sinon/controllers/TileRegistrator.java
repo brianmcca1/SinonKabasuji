@@ -40,8 +40,7 @@ public class TileRegistrator {
 
 		if (isBuilderType) {
 			if (this.level.getLevelData().getLevelType() == Types.RELEASE) {
-				ReleaseLevel releaseLevel = new ReleaseLevel(level);
-				c = new ReleaseBuilderTileController(releaseLevel, tileView, mainView);
+				c = new ReleaseBuilderTileController((ReleaseLevel) this.level, tileView, mainView);
 
 			} else {
 				c = new BuilderTileController(level, tileView, mainView);

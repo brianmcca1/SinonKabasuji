@@ -13,6 +13,17 @@ public class ReleaseNumber {
 		this.collected = false;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "ReleaseNumber [color=" + color + ", number=" + number + ", location=" + location + ", collected="
+				+ collected + "]";
+	}
+
 	public ReleaseNumber(Color color, int number) {
 		super();
 		this.color = color;

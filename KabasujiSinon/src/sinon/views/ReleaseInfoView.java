@@ -73,4 +73,9 @@ public class ReleaseInfoView extends LevelTypeInfoView implements Observer {
 		// TODO Auto-generated method stub
 
 	}
+
+	public Iterable<JButton> getAllButtons() {
+
+		return buttons;
+	}
 }
