@@ -127,9 +127,15 @@ public final class LevelData implements Serializable {
 		strLevelData += "\r\n";
 		strLevelData += ("LEVEL TYPE: " + this.levelType);
 		strLevelData += "\r\n";
-		// FIXME Switch to check level type before printing
-		// strLevelData += ("LEVEL PROPERTY: ")
-		// + this.levelProperty.getPropertyValue();
+		switch (this.levelType) {
+		case PUZZLE:
+			strLevelData += ("LEVEL PROPERTY: ") + this.levelProperty.getMaxMoves();
+		case LIGHTNING:
+			strLevelData += ("LEVEL PROPERTY: ") + this.levelProperty.getMaxTime();
+		case RELEASE:
+			strLevelData += ("LEVEL PROPERTY: ") + this.levelProperty.getReleaseSet().toString();
+
+		}
 		strLevelData += "\r\n";
 		strLevelData += ("STAR RECORD: ") + this.starRecord;
 

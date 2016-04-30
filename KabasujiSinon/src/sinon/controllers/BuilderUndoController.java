@@ -8,14 +8,13 @@ import sinon.models.Level;
 public class BuilderUndoController implements ActionListener {
 
 	private Level level;
-	
-	public BuilderUndoController(Level level){
+
+	public BuilderUndoController(Level level) {
 		this.level = level;
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		System.out.println("Gotem");
 		level.undo();
 	}

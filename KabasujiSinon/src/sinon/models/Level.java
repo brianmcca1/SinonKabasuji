@@ -9,7 +9,6 @@ import java.util.Stack;
 import sinon.models.data.LevelData;
 import sinon.models.data.LevelType.Types;
 import sinon.moves.Move;
-import sinon.moves.MoveToBullpenFromBoard;
 import sinon.views.Observer;
 
 public class Level implements Observable {
@@ -30,18 +29,17 @@ public class Level implements Observable {
 	Optional<Hexomino> selectedHexomino;
 	/** Observers of the level */
 	List<Observer> observers;
-	
+
 	/**
 	 * Stack of Moves to undo
 	 */
 	Stack<Move> undo;
-	
+
 	/**
 	 * Stack of Moves to redo
 	 */
 	Stack<Move> redo;
-	
-	
+
 	public Level(Types type, Board board, BullPen bullpen) {
 		this.board = Objects.requireNonNull(board);
 		this.bullpen = Objects.requireNonNull(bullpen);
@@ -87,12 +85,6 @@ public class Level implements Observable {
 		return this.levelData;
 	}
 
-	// TODO why would this ever need to be called?
-	// remove this if possible imo.
-	public void setLevelData(LevelData l) {
-		this.levelData = l;
-	}
-
 	public void setStars(int s) {
 		this.stars = s;
 	}
@@ -110,9 +102,9 @@ public class Level implements Observable {
 	/** Sets the selected hexomino to empty. */
 	public void deselect() {
 		this.selectedHexomino = Optional.empty();
-		//Only called when a move is done?
-		//Otherwise we need to go to every doMove and reset redo
-		//redo = new Stack<Move>();
+		// Only called when a move is done?
+		// Otherwise we need to go to every doMove and reset redo
+		// redo = new Stack<Move>();
 	}
 
 	/**
@@ -172,33 +164,34 @@ public class Level implements Observable {
 	public Optional<Hexomino> getSelectedHexomino() {
 		return this.selectedHexomino;
 	}
-	
+
 	/**
-	 * Pops the last move off the stack undo and undoes it,
-	 * then pushes it to redo
-	 * does nothing if undo is empty
+	 * Pops the last move off the stack undo and undoes it, then pushes it to
+	 * redo does nothing if undo is empty
 	 */
-	
-	public void undo(){
+
+	public void undo() {
 		System.out.println("Hit undo");
 		int sizePre = undo.size();
-		if (undo.empty()) return;
+		if (undo.empty())
+			return;
 		Move move;
 		move = undo.pop();
 		System.out.println(undo.size() + "Pre size ->" + sizePre);
-		if (move.undo()){
+		if (move.undo()) {
 			redo.push(move);
-		}
-		else System.out.println("Undo failed");
+		} else
+			System.out.println("Undo failed");
 	}
-	
+
 	/**
-	 * Attempts to pop the last move off the stack redo and (re)do it
-	 * does nothing if redo is empty 
+	 * Attempts to pop the last move off the stack redo and (re)do it does
+	 * nothing if redo is empty
 	 */
-	
-	public void redo(){
-		if (redo.empty()) return;
+
+	public void redo() {
+		if (redo.empty())
+			return;
 		Move move;
 		move = redo.pop();
 		move.doMove();
@@ -207,14 +200,14 @@ public class Level implements Observable {
 
 	/**
 	 * Pushes the move onto the stack undo
-	 * @param move to be pushed
+	 * 
+	 * @param move
+	 *            to be pushed
 	 */
-	
+
 	public void pushMove(Move move) {
 		undo.push(move);
 		System.out.println(this.undo.size());
 	}
-	
-	
 
 }

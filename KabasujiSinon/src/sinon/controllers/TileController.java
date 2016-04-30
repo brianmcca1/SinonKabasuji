@@ -60,26 +60,24 @@ public abstract class TileController implements MouseListener, MouseMotionListen
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
 	}
-	
+
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		if(level.hasSelected()) {
-				ArrayList<Point> points = new ArrayList<Point> ();
-				for(Point p : level.getSelectedHexomino().get().getHexominoNumberSet().getPoints()) {
-					points.add(new Point(tileView.getRow() + p.x, tileView.getColumn() + p.y));
-					this.mainView.getBoardView().setShadow(points);
+		if (level.hasSelected()) {
+			ArrayList<Point> points = new ArrayList<Point>();
+			for (Point p : level.getSelectedHexomino().get().getHexominoNumberSet().getPoints()) {
+				points.add(new Point(tileView.getRow() + p.x, tileView.getColumn() + p.y));
+				this.mainView.getBoardView().setShadow(points);
 			}
 		}
 	}
@@ -93,7 +91,8 @@ public abstract class TileController implements MouseListener, MouseMotionListen
 
 			if (level.getBullpen().containsHexID(level.getSelectedHexomino().get().getID())) {
 				// else move from bullpen to board
-				MoveToBoardFromBullpen move = new MoveToBoardFromBullpen(this.level, this.tileView.getRow(),this.tileView.getColumn());
+				MoveToBoardFromBullpen move = new MoveToBoardFromBullpen(this.level, this.tileView.getRow(),
+						this.tileView.getColumn());
 
 				if (move.doMove()) {
 					level.pushMove(move);
