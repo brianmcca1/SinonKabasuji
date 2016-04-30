@@ -226,6 +226,24 @@ public class HexominoTest {
         points.add(new Point(1, 4));
         HexominoNumberSet hexominoNumberSet = new HexominoNumberSet(points);
         assertEquals(hex.getHexominoNumberSet(), hexominoNumberSet);
+    }
+
+    @Test
+    public void testMakingWackyHexomino() {
+        HexominoNumberSet s = NumberSetFactory.getByNumbers(0, 0, 0, 1, 0, 2,
+                -1, 1, 1, 0, 1, 1);
+
+        HexominoNumberSet sFlipped = NumberSetFactory.getByNumbers(0, 0, 0, 1,
+                0, 2, -1, 1, 1, 1, 1, 2);
+        // . x x
+        // x x x
+        // . x .
+        Hexomino h = new Hexomino(s);
+        h.flipVertically();
+        Hexomino hFlipped = new Hexomino(sFlipped);
+
+        assertEquals(h.getHexominoNumberSet().getNormalizedPoints(),
+                (hFlipped.getHexominoNumberSet().getNormalizedPoints()));
 
     }
 
