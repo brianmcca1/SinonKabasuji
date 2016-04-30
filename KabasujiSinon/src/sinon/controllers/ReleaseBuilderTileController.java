@@ -8,6 +8,11 @@ import sinon.moves.MoveToBoardFromBullpen;
 import sinon.views.MainView;
 import sinon.views.TileView;
 
+/**
+ * This is the tile controller that is exclusively responsible for 
+ * handling interactions with the tiles in a release level.
+ *
+ */
 public class ReleaseBuilderTileController extends BuilderTileController {
 
 	ReleaseLevel level;

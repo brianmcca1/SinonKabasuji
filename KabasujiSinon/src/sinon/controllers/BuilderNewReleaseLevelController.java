@@ -12,6 +12,11 @@ import sinon.models.data.BullPenData;
 import sinon.views.ReleaseInfoView;
 import sinon.views.builder.BuilderMenuBar;
 
+/**
+ * This is the controller associated with starting a new 
+ * release level in the builder.
+ *
+ */
 public class BuilderNewReleaseLevelController extends BuilderNewLevelController {
 
 	private Builder builder;

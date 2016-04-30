@@ -8,6 +8,13 @@ import javax.swing.Timer;
 import sinon.models.LightningLevel;
 import sinon.views.LightningInfoView;
 
+/**
+ * This is the controller that is responsible for the time-left
+ * in a lightning level. It is also responsible for starting off 
+ * the timer.
+ * @author kartik
+ *
+ */
 public class LightningTimerController {
 	
 	LightningLevel level;

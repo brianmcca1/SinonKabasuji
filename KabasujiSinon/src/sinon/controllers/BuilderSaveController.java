@@ -10,6 +10,11 @@ import sinon.models.data.LevelProperty;
 import sinon.models.data.LevelType.Types;
 import sinon.views.ReleaseInfoView;
 
+/**
+ * This is the controller responsible for saving a file that already 
+ * exists but has been modified in the builder.
+ *
+ */
 public class BuilderSaveController implements ActionListener {
 
 	private Builder builder;

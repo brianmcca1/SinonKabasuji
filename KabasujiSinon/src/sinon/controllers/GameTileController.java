@@ -10,10 +10,10 @@ import sinon.views.MainView;
 import sinon.views.TileView;
 
 /**
- * Tile Controller for game specific interactions.
- * 
- * @author Peter Debrine
- * @author Josh Desmond
+ * This is the tile controller in the game that is mostly responsible 
+ * for firing off moves, setting shadows, etc.
+ * @author kartik
+ *
  */
 public class GameTileController extends TileController {
 

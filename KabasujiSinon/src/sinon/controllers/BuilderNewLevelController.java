@@ -6,6 +6,11 @@ import sinon.main.Builder;
 import sinon.views.LevelTypeInfoView;
 import sinon.views.builder.BuilderMenuBar;
 
+/**
+ * This is the controller associated with starting a new builder level 
+ * in builder mode. 
+ * 
+ */
 public abstract class BuilderNewLevelController implements ActionListener {
 
 	/**

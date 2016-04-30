@@ -10,6 +10,11 @@ import sinon.models.data.BullPenData;
 import sinon.views.LightningInfoView;
 import sinon.views.builder.BuilderMenuBar;
 
+/**
+ * This is the controller that is responsible for starting up a 
+ * new lightning level in the builder. 
+ *
+ */
 public class BuilderNewLightningLevelController extends BuilderNewLevelController {
 
 	private Builder builder;
