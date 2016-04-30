@@ -11,6 +11,11 @@ import sinon.models.data.LevelType.Types;
 import sinon.moves.Move;
 import sinon.views.Observer;
 
+/**
+ * This is the main model class that holds 
+ * all the information associated with a level. 
+ *
+ */
 public class Level implements Observable {
 
     /** Board model for this level. */

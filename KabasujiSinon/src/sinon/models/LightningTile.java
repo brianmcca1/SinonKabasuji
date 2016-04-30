@@ -2,6 +2,12 @@ package sinon.models;
 
 import java.awt.Point;
 
+/**
+ * This is the tile for a lightning level that extends tile.
+ * We need this because in a lightning level  pieces can be
+ * placed over other pieces in a lightning level.
+ *
+ */
 public class LightningTile extends Tile {
 
 	public boolean lightninged;
