@@ -29,7 +29,10 @@ public class ExitGameController implements ActionListener {
 
 		this.game.determineCurrentGameLevelFile();
 
-		this.game.getLevel().getLevelData().setStarRecord(this.game.getLevel().countStars());
+		int newStarRecord = this.game.getLevel().countStars();
+		int knownStarRecord = this.game.getLevel().getLevelData().getStarRecord();
+		if(newStarRecord > knownStarRecord)
+			this.game.getLevel().getLevelData().setStarRecord(newStarRecord);
 
 		Serializer serializer = new Serializer(FileHandler.currentFile, this.game.getLevel().getLevelData());
 		serializer.serializeFile();
