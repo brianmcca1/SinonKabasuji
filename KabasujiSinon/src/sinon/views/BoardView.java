@@ -89,10 +89,8 @@ public class BoardView extends JPanel {
 
 	public void setShadow(List<Point> pointsToShadow) {
 		for (TileView tv : this.tileViews) {
-			tv.setShadow(pointsToShadow.contains(new Point(tv.row, tv.column)));
-			tv.updated();
-			// FIXME this can be optimized, by only calling updated if the change
-			// actually did something.
+			if(tv.setShadow(pointsToShadow.contains(new Point(tv.row, tv.column))))
+				tv.updated();
 		}
 	}
 }

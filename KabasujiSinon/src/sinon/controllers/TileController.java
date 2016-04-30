@@ -65,6 +65,8 @@ public abstract class TileController implements MouseListener, MouseMotionListen
 
 	@Override
 	public void mouseExited(MouseEvent e) {
+		ArrayList<Point> points = new ArrayList<Point>();
+		this.mainView.getBoardView().setShadow(points);
 	}
 
 	@Override
@@ -73,12 +75,14 @@ public abstract class TileController implements MouseListener, MouseMotionListen
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
+		ArrayList<Point> points = new ArrayList<Point>();
 		if (level.hasSelected()) {
-			ArrayList<Point> points = new ArrayList<Point>();
 			for (Point p : level.getSelectedHexomino().get().getHexominoNumberSet().getPoints()) {
 				points.add(new Point(tileView.getRow() + p.x, tileView.getColumn() + p.y));
 				this.mainView.getBoardView().setShadow(points);
 			}
+		} else {
+			this.mainView.getBoardView().setShadow(points);
 		}
 	}
 

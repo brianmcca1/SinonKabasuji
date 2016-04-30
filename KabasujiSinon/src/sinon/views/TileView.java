@@ -129,8 +129,10 @@ public class TileView extends JPanel implements Observer {
 		this.setBackground(c);
 	}
 
-	public void setShadow(boolean isShadow) {
-		this.isShadow = isShadow;
+	public boolean setShadow(boolean isShadow) {
+			boolean returnValue = this.isShadow != isShadow;
+			this.isShadow = isShadow;
+			return returnValue;
 	}
 
 	@Override
