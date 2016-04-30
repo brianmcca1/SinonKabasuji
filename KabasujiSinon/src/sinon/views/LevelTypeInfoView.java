@@ -17,7 +17,6 @@ import sinon.models.Level;
  */
 @SuppressWarnings("serial")
 public abstract class LevelTypeInfoView extends JPanel {
-	// TODO, shouldn't this be abstract?
 	Level level;
 
 	public LevelTypeInfoView() {

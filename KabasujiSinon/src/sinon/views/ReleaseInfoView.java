@@ -33,7 +33,6 @@ public class ReleaseInfoView extends LevelTypeInfoView implements Observer {
 		// setBorder(new LineBorder(new Color(0, 0, 0)));
 		setLayout(new GridLayout(6, 3, 2, 2));
 		addButtons();
-		// TODO: implement this
 	}
 
 	/**
