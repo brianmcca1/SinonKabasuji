@@ -8,8 +8,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import sinon.models.HexominoNumberSet;
-import sinon.models.NumberSetFactory;
 import sinon.models.data.HexominoCode;
 
 public class HexominoNumberSetTest {
@@ -87,5 +85,24 @@ public class HexominoNumberSetTest {
         newPoints.get(0).translate(5, 3);
 
         assertEquals("getNormalizedPoints is leaking fields", setOne, setTwo);
+    }
+
+    @Test
+    public void testRotateAndFlippingEquality() {
+        // This test is here to check if this weird looking hexomino:
+        // . x x
+        // x x x
+        // . x .
+        // doesn't act weird when flipped + rotated.
+        // IE, does it rotated clockwise = it flipped vertically
+
+        HexominoNumberSet setOne = NumberSetFactory.getByNumbers(0, 0, 1, 0, -1,
+                1, 0, 1, 1, 1, 0, 2);
+        HexominoNumberSet setTwo = NumberSetFactory.getByNumbers(0, 0, 1, 0, -1,
+                1, 0, 1, 1, 1, 0, 2);
+        setOne.flipVertically();
+        setTwo.rotateC();
+
+        assertEquals(setOne, setTwo);
     }
 }

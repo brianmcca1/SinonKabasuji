@@ -10,33 +10,36 @@ import sinon.models.Hexomino;
  */
 public class RotateHexominoCounterClockwiseMove extends BullPenMove {
 
-	public RotateHexominoCounterClockwiseMove(Hexomino hex) {
-		this.hex = hex;
-	}
+    public RotateHexominoCounterClockwiseMove(Hexomino hex) {
+        if (hex == null) {
+            throw new NullPointerException();
+        }
+        this.hex = hex;
+    }
 
-	@Override
-	public boolean doMove() {
-		if (hex == null) {
-			return false;
-			//For testing
-			//throw new NullPointerException();
-		}
+    @Override
+    public boolean doMove() {
+        if (hex == null) {
+            return false;
+            // For testing
+            // throw new NullPointerException();
+        }
 
-		hex.rotateCC();
-		return true;
+        hex.rotateCC();
+        return true;
 
-	}
+    }
 
-	@Override
-	public boolean undo() {
-		if (hex == null) {
-			return false;
-			//For testing
-			//throw new NullPointerException();
-		}
+    @Override
+    public boolean undo() {
+        if (hex == null) {
+            return false;
+            // For testing
+            // throw new NullPointerException();
+        }
 
-		hex.rotateC();
-		return true;
-	}
+        hex.rotateC();
+        return true;
+    }
 
 }

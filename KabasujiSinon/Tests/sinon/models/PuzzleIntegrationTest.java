@@ -26,21 +26,24 @@ public class PuzzleIntegrationTest {
     @Test
     public void testRun() {
         System.out.println(m.hex1);
-        doMove(m.getMove(level, 1), m.hex1);
+        doMove(1, m.hex1);
         System.out.println(m.hex2);
-        doMove(m.getMove(level, 2), m.hex2);
+        doMove(2, m.hex2);
 
+        System.out.println(m.hex1.getNormalizedPoints());
+        System.out.println(m.hex2.getNormalizedPoints());
         assertTrue(m.hex1.hexominoNumberSet.equals(m.hex2));
 
         for (Tile t : level.getBoard().getTiles()) {
             // System.out.println(t);
         }
-        doMove(m.getMove(level, 3), m.hex3);
+        doMove(3, m.hex3);
     }
 
-    private void doMove(MoveToBoardFromBullpen move, Hexomino hex) {
+    private void doMove(int i, Hexomino hex) {
         int movesRemainingPre = level.getMovesLeft();
         level.select(hex);
+        MoveToBoardFromBullpen move = m.getMove(level, i);
         assertEquals(level.getSelectedHexomino().get(), hex);
         assertTrue(move.valid());
         assertTrue(move.doMove());
