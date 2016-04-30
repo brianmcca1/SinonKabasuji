@@ -1,7 +1,10 @@
 package sinon.controllers;
 
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 
 import javax.swing.SwingUtilities;
 
@@ -20,8 +23,9 @@ import sinon.views.TileView;
  * access the board and know the selected piece.
  * 
  * @author Josh Desmond
+ * @author kartik
  */
-public abstract class TileController implements MouseListener {
+public abstract class TileController implements MouseListener, MouseMotionListener {
 
 	protected Level level;
 	protected TileView tileView;
@@ -56,10 +60,28 @@ public abstract class TileController implements MouseListener {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
+		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
+	}
+	
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		if(level.hasSelected()) {
+				ArrayList<Point> points = new ArrayList<Point> ();
+				for(Point p : level.getSelectedHexomino().get().getHexominoNumberSet().getPoints()) {
+					points.add(new Point(tileView.getRow() + p.x, tileView.getColumn() + p.y));
+					this.mainView.getBoardView().setShadow(points);
+			}
+		}
 	}
 
 	public abstract void handleRightClick();

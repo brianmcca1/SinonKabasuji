@@ -19,13 +19,16 @@ public class TileView extends JPanel implements Observer {
     public Tile tile;
     int row, column;
     Color color;
+    boolean isShadow;
 
     TileView(Tile tile) {
         this.tile = tile;
-        this.setBackground(Color.white);
+        this.color = Color.white;
+        this.setBackground(color);
         this.row = tile.getLocation().x;
         this.column = tile.getLocation().y;
         this.tile.registerObserver(this);
+        isShadow = false;
     }
 
     /**
@@ -51,14 +54,12 @@ public class TileView extends JPanel implements Observer {
         assert this.tile != null;
 
         if (!tile.isPlayable()) {
-            this.setColor(Color.BLACK);
+            this.setColor(color.black);
         } else {
-            this.setColor(Color.WHITE);
+            this.setColor(color.WHITE);
         }
 
         if (tile.hasHex()) {
-            // TODO set this to be tile.getHex().getColor();
-            // or to be tile.getColor();
             this.setColor(tile.getHexomino().get().getColor());
         }
 
@@ -68,6 +69,10 @@ public class TileView extends JPanel implements Observer {
             }
         }
 
+        if(this.isShadow) {
+        	this.setColor(color.darker());
+        }
+        
         this.repaint();
         this.revalidate();
     }
@@ -106,9 +111,14 @@ public class TileView extends JPanel implements Observer {
      *            The color to set
      */
     public void setColor(Color c) {
+    	this.color = c;
         this.setBackground(c);
     }
-
+    
+    public void setShadow(boolean isShadow) {
+    	this.isShadow = isShadow;
+    }
+    
     @Override
     public void updated() {
         this.redraw();

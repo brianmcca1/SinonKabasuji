@@ -1,5 +1,7 @@
 package sinon.controllers;
 
+import java.awt.event.MouseEvent;
+
 import sinon.models.Board;
 import sinon.models.Level;
 import sinon.moves.MoveInBoard;
@@ -29,5 +31,7 @@ public class GameTileController extends TileController {
 	public void handleRightClick() {
 		// Do nothing.
 	}
+
+	
 
 }

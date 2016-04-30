@@ -40,7 +40,8 @@ public class Level implements Observable {
 	 * Stack of Moves to redo
 	 */
 	Stack<Move> redo;
-
+	
+	
 	public Level(Types type, Board board, BullPen bullpen) {
 		this.board = Objects.requireNonNull(board);
 		this.bullpen = Objects.requireNonNull(bullpen);
@@ -213,5 +214,7 @@ public class Level implements Observable {
 		undo.push(move);
 		System.out.println(this.undo.size());
 	}
+	
+	
 
 }

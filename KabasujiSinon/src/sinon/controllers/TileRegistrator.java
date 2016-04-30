@@ -36,18 +36,24 @@ public class TileRegistrator {
 		assert level != null;
 		assert mainView != null;
 
+		TileController c;
+
 		if (isBuilderType) {
 			if (this.level.getLevelData().getLevelType() == Types.RELEASE) {
 				ReleaseLevel releaseLevel = new ReleaseLevel(level);
-				tileView.addMouseListener(new ReleaseBuilderTileController(releaseLevel, tileView, mainView));
+				c = new ReleaseBuilderTileController(releaseLevel, tileView, mainView);
+
 			} else {
-				tileView.addMouseListener(new BuilderTileController(level, tileView, mainView));
+				c = new BuilderTileController(level, tileView, mainView);
 			}
 		}
 
 		else {
-			tileView.addMouseListener(new GameTileController(level, tileView, mainView));
+			c = new GameTileController(level, tileView, mainView);
 		}
+
+		tileView.addMouseListener(c);
+		tileView.addMouseMotionListener(c);
 	}
 
 	/**
