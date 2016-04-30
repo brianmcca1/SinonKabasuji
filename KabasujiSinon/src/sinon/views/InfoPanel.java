@@ -20,7 +20,6 @@ public class InfoPanel extends JPanel {
 		this.setPreferredSize(new Dimension(180, 800));
 		this.setMinimumSize(new Dimension(150, 800));
 		this.setBorder(new LineBorder(new Color(0, 0, 0)));
-		this.setBackground(Color.green);
 	}
 	
 	public void setStars(int s){

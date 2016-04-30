@@ -42,8 +42,7 @@ public class MainView extends JPanel {
 	 * @param infoPanel
 	 *            The InfoPanel to be displayed.
 	 */
-	public MainView(Level level, InfoPanel infoPanel,
-			LevelTypeInfoView lvlTypeInfoView) {
+	public MainView(Level level, InfoPanel infoPanel, LevelTypeInfoView lvlTypeInfoView) {
 		this.infoPanel = Objects.requireNonNull(infoPanel);
 		this.levelTypeInfoView = Objects.requireNonNull(lvlTypeInfoView);
 		this.level = Objects.requireNonNull(level);

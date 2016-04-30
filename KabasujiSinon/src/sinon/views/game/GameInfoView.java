@@ -81,7 +81,6 @@ public class GameInfoView extends InfoPanel implements Observer {
 	 */
 	private void addNewStarView(StarView sv) {
 		if (this.starView != null) {
-			System.out.println("ENTERED ADDNEWSTARVIEW IF");
 			this.remove(starView);
 		}
 		this.starView = sv;
