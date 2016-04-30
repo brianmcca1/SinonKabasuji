@@ -23,7 +23,9 @@ public class LevelSelectButtonView extends JPanel {
 	JPanel imagePanel;
 	public int levelNum;
 	StarView starView;
-
+	public Level level;
+	
+	
 	/**
 	 * Create the panel, takes the number of the level as an argument
 	 */
@@ -38,7 +40,8 @@ public class LevelSelectButtonView extends JPanel {
 		
 		int starRecord = level.getLevelData().getStarRecord();
 		String starImageFilePath = FileHandler.determineFileStringForStars(starRecord);
-		this.starView = new StarView(starImageFilePath);
+		this.level = level;
+		this.starView = new StarView(starImageFilePath, this.level);
 		imagePanel.add(starView);
 		
 		this.add(imagePanel);

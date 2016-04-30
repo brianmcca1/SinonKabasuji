@@ -71,4 +71,6 @@ public class BankView extends InfoPanel implements StashView, Observer {
 		return this.contentPanel;
 	}
 
+	public void setStars(int s){
+	}
 }

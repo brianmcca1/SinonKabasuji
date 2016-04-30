@@ -22,5 +22,9 @@ public class InfoPanel extends JPanel {
 		this.setBorder(new LineBorder(new Color(0, 0, 0)));
 		this.setBackground(Color.green);
 	}
+	
+	public void setStars(int s){
+		
+	}
 
 }

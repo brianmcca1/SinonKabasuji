@@ -10,12 +10,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import sinon.models.Level;
 import sinon.views.Observer;
 
 /**
  * The view for the stars that the player earns when playing the Game.
  */
-public class StarView extends JPanel implements Observer{
+public class StarView extends JPanel{
 	
 	private static final long serialVersionUID = -6975138273991553460L;
 	/** Image to buffer on the JLabel. */
@@ -23,28 +24,23 @@ public class StarView extends JPanel implements Observer{
 	/** JLabel on which the image is placed. */
 	public JLabel starLabel;
 	
+	public Level level;
+	
 	/**
 	 * @param filePath File path to get the stars image from. MUST be in form "/images/x.y"
 	 */
-	public StarView(String filePath){
+	public StarView(String filePath, Level level){
 		try {                
 			 this.image = ImageIO.read(new File(getClass().getResource(filePath).toURI()));
 			 ImageIcon icon = new ImageIcon(this.image);
 			 this.starLabel = new JLabel(icon);
 			 this.add(this.starLabel);
+			 this.level = level;
 		} catch (URISyntaxException ex) {
 			ex.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	@Override
-	public void updated() {
-		this.starLabel.repaint();
-		this.starLabel.revalidate();
-		this.repaint();
-		this.revalidate();
 	}
 	
 }
