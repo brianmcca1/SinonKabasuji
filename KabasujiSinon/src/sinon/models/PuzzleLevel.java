@@ -2,6 +2,12 @@ package sinon.models;
 
 import sinon.models.data.LevelType.Types;
 
+/**
+ * This is the class that extends the Level class that 
+ * encapsulates the attributes and behaviors that are exclusive
+ * to the puzzle level.
+ *
+ */
 public class PuzzleLevel extends Level {
 	/** The maximum number of moves allowed */
 	int maxMoves;

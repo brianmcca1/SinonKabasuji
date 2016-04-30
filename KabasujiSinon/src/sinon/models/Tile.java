@@ -6,6 +6,11 @@ import java.util.Optional;
 
 import sinon.views.Observer;
 
+/**
+ * Main tile class that encapsulates the attributes and behaviors 
+ * that are exclusive to tile.
+ *
+ */
 public class Tile implements Observable {
 
 	@Override

@@ -4,6 +4,11 @@ import java.awt.Point;
 
 import sinon.models.data.BoardData;
 
+/**
+ * This is the board for a release level that extends the
+ * Board superclass. 
+ *
+ */
 public class ReleaseBoard extends Board {
 
 	public ReleaseBoard() {
