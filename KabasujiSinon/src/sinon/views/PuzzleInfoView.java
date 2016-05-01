@@ -72,6 +72,7 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer{
 
 	@Override
 	public void updated() {
+		updateMovesMade();
 		this.repaint();
 		this.revalidate();
 	}
