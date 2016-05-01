@@ -26,9 +26,9 @@ public class ReleaseInfoViewButtonController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		ReleaseNumber 
-		this.level.selectReleaseNumber(new ReleaseNumber(this.releaseNumber.getColor(),);
+
+		ReleaseNumber copyNumber = new ReleaseNumber(this.releaseNumber.getColor(), this.releaseNumber.getNumber());
+		this.level.selectReleaseNumber(copyNumber);
 		System.out.println(this.level.getSelectedReleaseNumber().toString());
 	}
 
