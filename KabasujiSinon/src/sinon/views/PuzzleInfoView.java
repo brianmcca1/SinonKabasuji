@@ -13,7 +13,7 @@ import sinon.models.PuzzleLevel;
  * @author Brian
  *
  */
-public class PuzzleInfoView extends LevelTypeInfoView {
+public class PuzzleInfoView extends LevelTypeInfoView implements Observer{
 
 	private static final long serialVersionUID = -6047685525063166167L;
 	public JLabel infoLabel;
@@ -34,9 +34,11 @@ public class PuzzleInfoView extends LevelTypeInfoView {
 		this.movesLeftField.setText(Integer.toString(level.getMaxMoves()));
 		this.add(infoLabel);
 		this.add(movesLeftField);
+		
+		this.level.registerObserver(this);
 	}
 
-	public PuzzleInfoView(int numMoves) {
+	public PuzzleInfoView(int numMoves, PuzzleLevel level) {
 		setLayout(new GridLayout(1, 1));
 		this.infoLabel = new JLabel("Moves:");
 		this.movesLeftField = new JTextField();
@@ -46,6 +48,9 @@ public class PuzzleInfoView extends LevelTypeInfoView {
 
 		this.add(infoLabel);
 		this.add(movesLeftField);
+		
+		this.level = level;
+		this.level.registerObserver(this);
 	}
 
 	@Override
@@ -61,7 +66,14 @@ public class PuzzleInfoView extends LevelTypeInfoView {
 	 * Update the view to show how many moves the player can make
 	 */
 	public void updateMovesMade() {
+		System.out.println("UPDATING MOVES MADE");
 		this.movesLeftField.setText(((Integer) level.getMovesLeft()).toString());
+	}
+
+	@Override
+	public void updated() {
+		this.repaint();
+		this.revalidate();
 	}
 
 }

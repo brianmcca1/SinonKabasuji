@@ -25,7 +25,6 @@ public class BuilderSaveController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("ENTERING SAVE CONTROLLER");
 
 		if (FileHandler.currentFile != null) {
 			Types thisLevelsType = this.builder.getLevel().getLevelData().getLevelType();

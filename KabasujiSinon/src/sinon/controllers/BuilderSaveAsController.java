@@ -43,7 +43,6 @@ public class BuilderSaveAsController implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("ENTERING SAVE AS CONTROLLER");
 		int returnVal = fc.showSaveDialog(this.builder);
 
 		if (returnVal == JFileChooser.APPROVE_OPTION) {

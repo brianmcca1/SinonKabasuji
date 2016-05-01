@@ -25,8 +25,7 @@ public class ExitGameController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("EXITING LEVEL #" + (this.game.getCurrentLevelNumber() + 1));
-
+		
 		this.game.determineCurrentGameLevelFile();
 
 		int newStarRecord = this.game.getLevel().countStars();

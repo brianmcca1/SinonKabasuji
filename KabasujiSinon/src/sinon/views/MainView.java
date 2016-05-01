@@ -81,7 +81,6 @@ public class MainView extends JPanel {
 	/** Initializes the {@link #levelPanel} */
 	private void initLevelPanel() {
 		levelPanel = new LevelPanel(this.bullpenView, gameAreaPanel);
-		levelPanel.setBorder(new LineBorder(new Color(255, 0, 0)));
 		levelPanel.setBounds(0, 0, LEVEL_PANEL_WIDTH, MAIN_PANEL_HEIGHT);
 		this.add(levelPanel);
 	}

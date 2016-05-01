@@ -30,7 +30,6 @@ public class BuilderNewReleaseLevelController extends BuilderNewLevelController 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("CREATING NEW RELEASE LEVEL");
 		this.builder.setLevel(
 				new ReleaseLevel(new ReleaseBoard(), new BullPen(new BullPenData()), new ArrayList<ReleaseNumber>()));
 		this.handleNewLevel(this.builder, this.builderMenuBar, new ReleaseInfoView());

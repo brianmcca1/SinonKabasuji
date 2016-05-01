@@ -29,7 +29,7 @@ public class HexominoBankController extends AbstractHexStashController {
 			System.out.println("Move was made successfully!");
 			assert level.getBullpen().getPieces().contains(hexomino);
 		} else {
-			System.out.println("For some reason, move was not completed.");
+			System.out.println("Move was not completed.");
 		}
 	}
 

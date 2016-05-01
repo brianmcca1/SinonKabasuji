@@ -32,7 +32,6 @@ public class BuilderNewPuzzleLevelController extends BuilderNewLevelController
 		Board board = new Board();
 		BullPen bullpen = new BullPen(new BullPenData());
 		PuzzleLevel level = new PuzzleLevel(board, bullpen, 10);
-		System.out.println("CREATING NEW PUZZLE LEVEL");
 		this.builder.setLevel(level);
 		this.handleNewLevel(this.builder, this.builderMenuBar,
 				new PuzzleInfoView(true, level));

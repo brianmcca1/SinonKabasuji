@@ -21,9 +21,7 @@ public class BuilderTileController extends TileController {
 
 	@Override
 	public void handleRightClick() {
-		System.out.println("PLAYABLE BEFORE: " + tileView.getTile().isPlayable());
 		tileView.getTile().setPlayable(!tileView.getTile().isPlayable());
-		System.out.println("PLAYABLE AFTER: " + tileView.getTile().isPlayable());
 	}
 
 }

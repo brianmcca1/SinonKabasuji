@@ -29,7 +29,7 @@ public class ReleaseInfoViewButtonController implements ActionListener {
 
 		ReleaseNumber copyNumber = new ReleaseNumber(this.releaseNumber.getColor(), this.releaseNumber.getNumber());
 		this.level.selectReleaseNumber(copyNumber);
-		System.out.println(this.level.getSelectedReleaseNumber().toString());
+		System.out.println("SELECTED RELEASE NUMBER: " + this.level.getSelectedReleaseNumber().toString());
 	}
 
 }
