@@ -8,6 +8,12 @@ import java.util.Objects;
 
 import sinon.models.data.HexominoCode;
 
+/**
+ * Class to represent hints on the board. Note that we have functionality
+ * such that we can have multiple hints for a game.
+ * @author kartik
+ *
+ */
 public class Hint implements Serializable {
 
 	Point anchorPos;
