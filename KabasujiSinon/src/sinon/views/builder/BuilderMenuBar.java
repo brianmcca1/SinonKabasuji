@@ -28,7 +28,6 @@ public class BuilderMenuBar extends JMenuBar {
 	public JMenuItem mntmNewReleaseLevel;
 	public JMenuItem mntmUndo;
 	public JMenuItem mntmRedo;
-	public JMenuItem mntmClearBoard;
 	
 	private Builder builder;
 
@@ -44,15 +43,12 @@ public class BuilderMenuBar extends JMenuBar {
 
 		mntmUndo = new JMenuItem("Undo");
 		mntmRedo = new JMenuItem("Redo");
-		mntmClearBoard = new JMenuItem("Clear Board");
 		
 		mnEdit.add(mntmUndo);
 		mnEdit.add(mntmRedo);
-		mnEdit.add(mntmClearBoard);
 		
 		mntmUndo.setEnabled(false);
 		mntmRedo.setEnabled(false);
-		mntmClearBoard.setEnabled(false);
 		
 	}
 

@@ -3,7 +3,6 @@ package sinon.models;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 import org.junit.Test;
 

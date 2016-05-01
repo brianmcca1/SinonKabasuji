@@ -6,7 +6,6 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 public class LevelPanel extends JPanel {
 

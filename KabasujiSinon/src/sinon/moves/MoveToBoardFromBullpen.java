@@ -4,7 +4,6 @@ import java.awt.Point;
 import java.util.Objects;
 
 import sinon.models.Level;
-import sinon.models.PuzzleLevel;
 import sinon.models.data.LevelType.Types;
 
 /**

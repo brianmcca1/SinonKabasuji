@@ -1,11 +1,7 @@
 package sinon.views;
 
-import java.awt.Color;
 import java.util.Objects;
-
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
-
 import sinon.models.Level;
 
 /**

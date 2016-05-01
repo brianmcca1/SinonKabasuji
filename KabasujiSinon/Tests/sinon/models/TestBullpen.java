@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import sinon.models.data.BullPenData;
-import sinon.models.data.HexominoCode;
 
 public class TestBullpen {
 

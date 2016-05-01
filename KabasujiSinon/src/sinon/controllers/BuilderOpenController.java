@@ -100,7 +100,6 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 		bMenuBar.mntmSave.setEnabled(true);
 		bMenuBar.mntmUndo.setEnabled(true);
 		bMenuBar.mntmRedo.setEnabled(true);
-		bMenuBar.mntmClearBoard.setEnabled(true);
 		this.builderMenuBar.mntmSave.setEnabled(true);
 	}
 }

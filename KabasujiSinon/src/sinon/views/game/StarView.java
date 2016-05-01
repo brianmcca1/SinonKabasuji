@@ -11,7 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import sinon.models.Level;
-import sinon.views.Observer;
 
 /**
  * The view for the stars that the player earns when playing the Game.

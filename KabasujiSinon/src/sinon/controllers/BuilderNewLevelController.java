@@ -30,7 +30,6 @@ public abstract class BuilderNewLevelController implements ActionListener {
 		bMenuBar.mntmSave.setEnabled(false);
 		bMenuBar.mntmUndo.setEnabled(true);
 		bMenuBar.mntmRedo.setEnabled(true);
-		bMenuBar.mntmClearBoard.setEnabled(true);
 	}
 
 }
