@@ -102,5 +102,9 @@ public class ReleaseLevel extends Level {
 	public ReleaseNumber getSelectedReleaseNumber() {
 		return this.selectedReleaseNumber.get();
 	}
+	
+    public boolean incrementMoves(){
+    	return false;
+    }
 
 }

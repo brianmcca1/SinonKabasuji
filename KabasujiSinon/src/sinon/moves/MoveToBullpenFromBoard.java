@@ -35,6 +35,8 @@ public class MoveToBullpenFromBoard extends BoardMove {
 	public boolean doMove() {
 		if (!valid())
 			return false;
+		
+		level.incrementMoves();
 		level.getBullpen().addHexomino(hex.get());
 		level.getBoard().removeHexomino(hex.get());
 		level.deselect();

@@ -45,6 +45,8 @@ public class MoveInBoard extends BoardMove {
         if (!valid())
             return false;
         
+        level.incrementMoves();
+        
         //remove the hexomino from the board.
         level.getBoard().removeHexomino(hex.get());
         

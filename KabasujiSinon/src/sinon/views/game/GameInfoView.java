@@ -85,6 +85,9 @@ public class GameInfoView extends InfoPanel implements Observer {
 		}
 		this.starView = sv;
 		this.add(this.starView);
+		this.starView.starLabel.repaint();
+		this.starView.starLabel.revalidate();
+		this.repaint();
 		this.revalidate();
 	}
 	public void setStars(int starsEarned) {

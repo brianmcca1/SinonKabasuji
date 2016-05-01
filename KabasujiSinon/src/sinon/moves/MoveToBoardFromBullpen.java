@@ -44,9 +44,9 @@ public class MoveToBoardFromBullpen extends BoardMove {
             return false;
         }
 
-        if (level instanceof PuzzleLevel) {
-            ((PuzzleLevel) level).incrementMoves();
-        }
+        
+        level.incrementMoves();
+        
 
         level.getBullpen().removeHexomino(hex.get());
         level.getBoard().addHexomino(new Point(destAnchorRow, destAnchorColumn),

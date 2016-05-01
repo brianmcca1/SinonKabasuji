@@ -103,5 +103,9 @@ public class LightningLevel extends Level {
         return true;
 
     }
+    
+    public boolean incrementMoves(){
+    	return false;
+    }
 
 }

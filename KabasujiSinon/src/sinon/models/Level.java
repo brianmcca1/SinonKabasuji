@@ -227,4 +227,8 @@ public class Level implements Observable {
         undo.push(move);
         this.update();
     }
+    
+    public boolean incrementMoves(){
+    	return false;
+    }
 }
