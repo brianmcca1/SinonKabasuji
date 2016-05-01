@@ -64,30 +64,28 @@ public class FileHandler {
 	public static Level[] loadAllLevels() {
 		Level[] levels = new Level[3];
 
-		File levelFile = new File("level1.dat");
-		Deserializer deserializer = new Deserializer(levelFile);
-		LevelData levelData = deserializer.deserializeFile();
-
-		Level levelOne = new PuzzleLevel(new Level(levelData));
-
-		levels[0] = levelOne;
+		File levelFile;
+		Deserializer deserializer;
+		LevelData levelData;
+		Level level;
+		
+		levelFile = new File("level1.dat");
+		deserializer = new Deserializer(levelFile);
+		levelData = deserializer.deserializeFile();
+		level = new PuzzleLevel(new Level(levelData));
+		levels[0] = level;
 
 		levelFile = new File("level2.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
-
-		Level levelTwo = new LightningLevel(new Level(levelData));
-
-		levels[1] = levelTwo;
-		
+		level = new LightningLevel(new Level(levelData));
+		levels[1] = level;
 		
 		levelFile = new File("level3.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
-		
-		Level levelThree = new ReleaseLevel(new Level(levelData));
-		
-		levels[2] = levelThree;
+		level = new ReleaseLevel(new Level(levelData));
+		levels[2] = level;
 
 		return levels;
 	}
