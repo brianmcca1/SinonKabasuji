@@ -72,10 +72,14 @@ public class ReleaseBuilderTileController extends BuilderTileController {
 				System.out.println("The move couldn't be completed!");
 			}
 
+		} else if (this.tileView.getTile().hasHex()) {
+			level.select(this.tileView.getTile().getHexomino().get());
 		} else {
-			if (this.tileView.getTile().hasHex()) {
-				level.select(this.tileView.getTile().getHexomino().get());
+			ReleaseTile releaseTile = (ReleaseTile) this.tileView.getTile();
+			if (releaseTile.hasReleaseNumber()) {
+				releaseTile.removeReleaseNumber();
 			}
+
 		}
 	}
 }

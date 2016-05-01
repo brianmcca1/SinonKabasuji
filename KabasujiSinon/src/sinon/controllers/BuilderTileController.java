@@ -1,7 +1,6 @@
 package sinon.controllers;
 
 import sinon.models.Level;
-import sinon.models.ReleaseTile;
 import sinon.views.MainView;
 import sinon.views.TileView;
 
@@ -22,12 +21,9 @@ public class BuilderTileController extends TileController {
 
 	@Override
 	public void handleRightClick() {
-		ReleaseTile releaseTile = (ReleaseTile) tileView.getTile();
-		if (releaseTile.hasReleaseNumber()) {
-			releaseTile.removeReleaseNumber();
-		} else {
-			tileView.getTile().setPlayable(!tileView.getTile().isPlayable());
-		}
+
+		tileView.getTile().setPlayable(!tileView.getTile().isPlayable());
+
 	}
 
 }
