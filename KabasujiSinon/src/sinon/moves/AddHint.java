@@ -19,12 +19,14 @@ public class AddHint extends Move{
 	@Override
 	public boolean doMove() {
 		level.getBoard().addHint(this.hint);
+		level.getBoard().update();
 		return true;
 	}
 
 	@Override
 	public boolean undo() {
 		level.getBoard().removeHint(this.hint);
+		level.getBoard().update();
 		return true;
 	}
 

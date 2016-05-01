@@ -29,6 +29,7 @@ public class BoardView extends JPanel implements Observer{
 
 	public BoardView(Board board) {
 		this.board = Objects.requireNonNull(board);
+		this.board.registerObserver(this);
 		this.boardPanel = new JPanel();
 		this.boardPanel.setLayout(new GridLayout(12, 12));
 		this.boardPanel.setBounds(80, 26, 300, 300);
@@ -97,11 +98,11 @@ public class BoardView extends JPanel implements Observer{
 			}
 		}
 		
-		this.updated();
 	}
 
 	@Override
 	public void updated() {
+		updateHints();
 		for(TileView tv : tileViews) {
 			tv.updated();
 		}

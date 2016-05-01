@@ -2,6 +2,7 @@ package sinon.controllers;
 
 import java.awt.Point;
 
+import sinon.models.Hexomino;
 import sinon.models.Hint;
 import sinon.models.Level;
 import sinon.moves.AddHint;
@@ -28,10 +29,11 @@ public class BuilderTileController extends TileController {
 	public void handleRightClick() {
 
 		if(tileView.getTile().hasHex()) {
-			Hint toBeAdded = new Hint(tileView.getTile().getHexomino().get(), new Point(tileView.getRow(), tileView.getColumn()));
+			Hexomino hex = tileView.getTile().getHexomino().get();
+			Point anchor = new Point(tileView.getRow(), tileView.getColumn());
+			Hint toBeAdded = new Hint(hex, anchor);
 			Move AddHint = new AddHint(this.level, toBeAdded);
 			AddHint.doMove();
-			this.mainView.getBoardView().updateHints();
 			this.level.pushMove(AddHint);
 		} else {
 			tileView.getTile().setPlayable(!tileView.getTile().isPlayable());
