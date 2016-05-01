@@ -24,6 +24,17 @@ public final class HexominoCode implements Serializable {
 	public HexominoCode() {
 		points = new Point[6];
 	}
+	
+	public HexominoCode(List<Point> points) {
+		
+		this.points = new Point[6];
+		int i = 0;
+		for(Point p : points) {
+			this.points[i] = p;
+			i++;
+		}
+		
+	}
 
 	/** Creates a HexominoCode from a given Hexomino */
 	public HexominoCode(Hexomino hexomino) {

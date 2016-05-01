@@ -11,7 +11,7 @@ import sinon.models.data.HexominoCode;
 public class Hint implements Serializable {
 
 	Point anchorPos;
-	HexominoNumberSet hexominoNumberSet;
+	HexominoCode pointSet;
 
 	public Hint(Hexomino hex, Point anchor) {
 		Objects.requireNonNull(hex);
@@ -23,7 +23,7 @@ public class Hint implements Serializable {
 			points.add(new Point(p.x, p.y));
 		}
 		
-		this.hexominoNumberSet = new HexominoNumberSet(points);
+		this.pointSet = new HexominoCode(points);
 	}
 
 	/**
@@ -32,7 +32,7 @@ public class Hint implements Serializable {
 	 * @return HexominoNumberSet
 	 */
 	public HexominoNumberSet getHexominoNumberSet() {
-		return this.hexominoNumberSet;
+		return new HexominoNumberSet(this.pointSet.getPoints());
 	}
 
 	public Point getAnchor() {
