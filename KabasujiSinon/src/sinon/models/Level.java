@@ -12,8 +12,8 @@ import sinon.moves.Move;
 import sinon.views.Observer;
 
 /**
- * This is the main model class that holds 
- * all the information associated with a level. 
+ * This is the main model class that holds all the information associated with a
+ * level.
  *
  */
 public class Level implements Observable {
@@ -193,10 +193,23 @@ public class Level implements Observable {
     }
 
     /**
+     * Determines if the game has reached a failure state.
+     * 
+     * This could be whether the timer has reached zero, or if there are no
+     * possible moves even remaining. Controllers which are observing level can
+     * call this method whenever level is updated to know when to handle failed
+     * games.
+     * 
+     * @return True if the game has reached a failure state.
+     */
+    public boolean hasLost() {
+        return false;
+    }
+
+    /**
      * Attempts to pop the last move off the stack redo and (re)do it does
      * nothing if redo is empty
      */
-
     public void redo() {
         if (redo.empty())
             return;
@@ -212,7 +225,6 @@ public class Level implements Observable {
      * @param move
      *            to be pushed
      */
-
     public void pushMove(Move move) {
         undo.push(move);
         this.update();
