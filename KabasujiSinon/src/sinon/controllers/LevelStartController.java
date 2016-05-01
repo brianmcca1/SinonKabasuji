@@ -57,7 +57,7 @@ public class LevelStartController implements ActionListener {
 					(PuzzleLevel) this.game.getLevel(levelNum));
 			break;
 		case LIGHTNING:
-			lvlTypeInfoView = new LightningInfoView(this.game.getLevel().getLevelData().getLevelProperty().getMaxTime(),
+			lvlTypeInfoView = new LightningInfoView(this.game, this.game.getLevel().getLevelData().getLevelProperty().getMaxTime(),
 					(LightningLevel) this.game.getLevel(this.levelNum));
 			LightningTimerController l = new LightningTimerController(
 					(LightningLevel) this.game.getLevel(this.levelNum), (LightningInfoView) lvlTypeInfoView);

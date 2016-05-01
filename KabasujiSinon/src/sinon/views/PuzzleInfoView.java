@@ -76,8 +76,7 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer{
 		
 		if(this.level.getMovesLeft() <= 0){
 			game.loadAllLevels();
-			LevelSelectView lsv = new LevelSelectView(this.game);
-			this.game.levelSelectView = lsv;
+			this.game.levelSelectView = new LevelSelectView(this.game);
 			game.startNextPanel(this.game.getMainView(), this.game.levelSelectView);
 		}
 	}

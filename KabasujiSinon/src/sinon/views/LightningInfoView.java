@@ -5,7 +5,9 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import sinon.main.Game;
 import sinon.models.LightningLevel;
+import sinon.views.game.LevelSelectView;
 
 /**
  * The InfoView for a lightning level
@@ -19,6 +21,7 @@ public class LightningInfoView extends LevelTypeInfoView {
 	public JLabel infoLabel;
 	public JTextField timeLeftField;
 	public LightningLevel level;
+	public Game game;
 
 	public LightningInfoView(boolean editable, LightningLevel level) {
 		this.level = level;
@@ -36,7 +39,7 @@ public class LightningInfoView extends LevelTypeInfoView {
 		this.add(timeLeftField);
 	}
 
-	public LightningInfoView(int time, LightningLevel lightningLevel) {
+	public LightningInfoView(Game g, int time, LightningLevel lightningLevel) {
 		setLayout(new GridLayout(1, 1));
 		this.infoLabel = new JLabel("Time:");
 		this.timeLeftField = new JTextField();
@@ -48,6 +51,8 @@ public class LightningInfoView extends LevelTypeInfoView {
 
 		this.add(infoLabel);
 		this.add(timeLeftField);
+		
+		this.game = g;
 	}
 
 	@Override
@@ -63,6 +68,12 @@ public class LightningInfoView extends LevelTypeInfoView {
 	 */
 	public void updateTimeLeft() {
 		this.timeLeftField.setText(((Integer) level.getTimeLeft()).toString());
+		
+		if(this.level.getTimeLeft() <= 0){
+			this.game.loadAllLevels();
+			this.game.levelSelectView = new LevelSelectView(this.game);
+			game.startNextPanel(this.game.getMainView(), this.game.levelSelectView);
+		}
 	}
 
 }
