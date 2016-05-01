@@ -12,6 +12,7 @@ import javax.swing.SwingUtilities;
 
 import sinon.models.Level;
 import sinon.models.Tile;
+import sinon.models.data.LevelType.Types;
 import sinon.moves.MoveInBoard;
 import sinon.moves.MoveToBoardFromBullpen;
 import sinon.views.MainView;
@@ -99,8 +100,11 @@ public abstract class TileController implements MouseListener, MouseMotionListen
 						this.tileView.getColumn());
 
 				if (move.doMove()) {
-					this.tile.getHexomino().get()
-							.setAnchor(new Point(this.tileView.getRow(), this.tileView.getColumn()));
+					if (this.level.getLevelData().getLevelType() != Types.LIGHTNING) {
+						this.tile.getHexomino().get()
+								.setAnchor(new Point(this.tileView.getRow(), this.tileView.getColumn()));
+					}
+
 					level.pushMove(move);
 					System.out.println("Move successfully completed!");
 					level.deselect();
@@ -117,8 +121,10 @@ public abstract class TileController implements MouseListener, MouseMotionListen
 				MoveInBoard move = new MoveInBoard(level, x, y, this.tileView.getRow(), this.tileView.getColumn());
 
 				if (move.doMove()) {
-					this.tile.getHexomino().get()
-							.setAnchor(new Point(this.tileView.getRow(), this.tileView.getColumn()));
+					if (this.level.getLevelData().getLevelType() != Types.LIGHTNING) {
+						this.tile.getHexomino().get()
+								.setAnchor(new Point(this.tileView.getRow(), this.tileView.getColumn()));
+					}
 					level.pushMove(move);
 					System.out.println("The move was successfully completed!");
 					level.deselect();
