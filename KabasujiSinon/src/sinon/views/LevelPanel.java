@@ -9,8 +9,9 @@ import javax.swing.JPanel;
 
 public class LevelPanel extends JPanel {
 
+	private static final long serialVersionUID = -4267458674387942331L;
 
-    /**
+	/**
      * Create the panel.
      * @param gameAreaPanel
      * @param bullpenView

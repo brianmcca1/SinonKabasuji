@@ -16,6 +16,7 @@ import sinon.models.data.HexominoCode;
  */
 public class Hint implements Serializable {
 
+	private static final long serialVersionUID = -202111253704126873L;
 	Point anchorPos;
 	HexominoCode pointSet;
 

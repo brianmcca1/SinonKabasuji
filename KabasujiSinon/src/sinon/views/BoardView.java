@@ -23,6 +23,7 @@ import sinon.models.Hint;
  */
 public class BoardView extends JPanel implements Observer{
 
+	private static final long serialVersionUID = -5335188988716751398L;
 	JPanel boardPanel;
 	private Board board;
 	Collection<TileView> tileViews;
