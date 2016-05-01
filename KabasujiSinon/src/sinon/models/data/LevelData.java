@@ -15,131 +15,135 @@ import sinon.models.data.LevelType.Types;
  */
 public final class LevelData implements Serializable {
 
-	private static final long serialVersionUID = -7014637350059511767L;
-	/** Type of level (PUZZLE/LIGHTNING/RELEASE) */
-	Types levelType;
-	/** BoardData has the 2-D array of booleans for the playable tiles. */
-	BoardData boardData;
-	/**
-	 * BullpenData has the list of hexominos that are in the bullpen for this
-	 * level.
-	 */
-	BullPenData bullpenData;
-	/** Highest number of stars reached on this level */
-	int starRecord;
-	/**
-	 * Holds the info regarding number of moves/time/locations of number tiles.
-	 */
-	LevelProperty levelProperty;
+    private static final long serialVersionUID = -7014637350059511767L;
+    /** Type of level (PUZZLE/LIGHTNING/RELEASE) */
+    Types levelType;
+    /** BoardData has the 2-D array of booleans for the playable tiles. */
+    BoardData boardData;
+    /**
+     * BullpenData has the list of hexominos that are in the bullpen for this
+     * level.
+     */
+    BullPenData bullpenData;
+    /** Highest number of stars reached on this level */
+    int starRecord;
+    /**
+     * Holds the info regarding number of moves/time/locations of number tiles.
+     */
+    LevelProperty levelProperty;
 
-	public LevelData(Types t, BoardData bData, BullPenData bpData) {
-		this.levelType = t;
-		this.boardData = bData;
-		this.bullpenData = bpData;
-	}
+    public LevelData(Types t, BoardData bData, BullPenData bpData) {
+        this.levelType = t;
+        this.boardData = bData;
+        this.bullpenData = bpData;
+    }
 
-	/** Used when creating a new Level to set this level type. */
-	public LevelData(Types type) {
-		this.levelType = type;
-		this.starRecord = 0;
-		if (type == Types.RELEASE) {
-			this.levelProperty = new LevelProperty(new ArrayList<ReleaseNumber>(), type);
-		} else {
-			this.levelProperty = new LevelProperty(0, type);
-		}
-	}
+    /** Used when creating a new Level to set this level type. */
+    public LevelData(Types type) {
+        this.levelType = type;
+        this.starRecord = 0;
+        if (type == Types.RELEASE) {
+            this.levelProperty = new LevelProperty(
+                    new ArrayList<ReleaseNumber>(), type);
+        } else {
+            this.levelProperty = new LevelProperty(10, type);
+        }
+    }
 
-	/**
-	 * @return an empty board which is ready for game play based on the data
-	 *         stored in this object.
-	 */
-	public BoardData getBoardData() {
-		return this.boardData;
-	}
+    /**
+     * @return an empty board which is ready for game play based on the data
+     *         stored in this object.
+     */
+    public BoardData getBoardData() {
+        return this.boardData;
+    }
 
-	/**
-	 * @return a BullPen which is ready for game play based on the data stored
-	 *         in this object.
-	 */
-	public BullPenData getBullpenData() {
-		return this.bullpenData;
-	}
+    /**
+     * @return a BullPen which is ready for game play based on the data stored
+     *         in this object.
+     */
+    public BullPenData getBullpenData() {
+        return this.bullpenData;
+    }
 
-	/** @return This level's star record. */
-	public int getStarRecord() {
-		return this.starRecord;
-	}
+    /** @return This level's star record. */
+    public int getStarRecord() {
+        return this.starRecord;
+    }
 
-	/**
-	 * @param s
-	 *            The star record to set.
-	 */
-	public void setStarRecord(int s) {
-		this.starRecord = s;
-	}
+    /**
+     * @param s
+     *            The star record to set.
+     */
+    public void setStarRecord(int s) {
+        this.starRecord = s;
+    }
 
-	/** @return The type of level. */
-	public Types getLevelType() {
-		return this.levelType;
-	}
+    /** @return The type of level. */
+    public Types getLevelType() {
+        return this.levelType;
+    }
 
-	/**
-	 * Sets the BullPenData field.
-	 * 
-	 * @param bpData
-	 *            The BullPenData to set.
-	 */
-	public void setBullpenData(BullPenData bpData) {
-		this.bullpenData = bpData;
-	}
+    /**
+     * Sets the BullPenData field.
+     * 
+     * @param bpData
+     *            The BullPenData to set.
+     */
+    public void setBullpenData(BullPenData bpData) {
+        this.bullpenData = bpData;
+    }
 
-	/**
-	 * Sets the BoardData field.
-	 * 
-	 * @param bData
-	 *            The BoardData to set.
-	 */
-	public void setBoardData(BoardData bData) {
-		this.boardData = bData;
-	}
+    /**
+     * Sets the BoardData field.
+     * 
+     * @param bData
+     *            The BoardData to set.
+     */
+    public void setBoardData(BoardData bData) {
+        this.boardData = bData;
+    }
 
-	/** @return This level's LevelProperty. */
-	public LevelProperty getLevelProperty() {
-		return this.levelProperty;
-	}
+    /** @return This level's LevelProperty. */
+    public LevelProperty getLevelProperty() {
+        return this.levelProperty;
+    }
 
-	/**
-	 * Sets this level's LevelProperty.
-	 * 
-	 * @param l
-	 *            LevelProperty to set.
-	 */
-	public void setLevelProperty(LevelProperty l) {
-		this.levelProperty = l;
-	}
+    /**
+     * Sets this level's LevelProperty.
+     * 
+     * @param l
+     *            LevelProperty to set.
+     */
+    public void setLevelProperty(LevelProperty l) {
+        this.levelProperty = l;
+    }
 
-	@Override
-	public String toString() {
-		String strLevelData = "";
+    @Override
+    public String toString() {
+        String strLevelData = "";
 
-		strLevelData += this.boardData.toString();
-		strLevelData += this.bullpenData.toString();
-		strLevelData += "\r\n";
-		strLevelData += ("LEVEL TYPE: " + this.levelType);
-		strLevelData += "\r\n";
-		switch (this.levelType) {
-		case PUZZLE:
-			strLevelData += ("LEVEL PROPERTY: ") + this.levelProperty.getMaxMoves();
-		case LIGHTNING:
-			strLevelData += ("LEVEL PROPERTY: ") + this.levelProperty.getMaxTime();
-		case RELEASE:
-			strLevelData += ("LEVEL PROPERTY: ") + this.levelProperty.getReleaseSet().toString();
+        strLevelData += this.boardData.toString();
+        strLevelData += this.bullpenData.toString();
+        strLevelData += "\r\n";
+        strLevelData += ("LEVEL TYPE: " + this.levelType);
+        strLevelData += "\r\n";
+        switch (this.levelType) {
+        case PUZZLE:
+            strLevelData += ("LEVEL PROPERTY: ")
+                    + this.levelProperty.getMaxMoves();
+        case LIGHTNING:
+            strLevelData += ("LEVEL PROPERTY: ")
+                    + this.levelProperty.getMaxTime();
+        case RELEASE:
+            strLevelData += ("LEVEL PROPERTY: ")
+                    + this.levelProperty.getReleaseSet().toString();
 
-		}
-		strLevelData += "\r\n";
-		strLevelData += ("STAR RECORD: ") + this.starRecord;
+        }
+        strLevelData += "\r\n";
+        strLevelData += ("STAR RECORD: ") + this.starRecord;
 
-		return strLevelData;
-	}
+        return strLevelData;
+    }
 
 }
