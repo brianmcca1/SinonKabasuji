@@ -1,7 +1,10 @@
 package sinon.controllers;
 
+import java.awt.Point;
+
 import sinon.models.ReleaseLevel;
 import sinon.models.ReleaseTile;
+import sinon.models.data.LevelType.Types;
 import sinon.moves.AddReleaseNumberMove;
 import sinon.moves.MoveInBoard;
 import sinon.moves.MoveToBoardFromBullpen;
@@ -39,6 +42,10 @@ public class ReleaseBuilderTileController extends BuilderTileController {
 						this.tileView.getColumn());
 
 				if (move.doMove()) {
+					if (this.level.getLevelData().getLevelType() != Types.LIGHTNING) {
+						this.tile.getHexomino().get()
+								.setAnchor(new Point(this.tileView.getRow(), this.tileView.getColumn()));
+					}
 					level.pushMove(move);
 					System.out.println("Move successfully completed!");
 					level.deselect();

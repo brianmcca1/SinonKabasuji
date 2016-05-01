@@ -30,8 +30,6 @@ public class BuilderTileController extends TileController {
 
 		if (tileView.getTile().hasHex()) {
 			Hexomino hex = tileView.getTile().getHexomino().get();
-			// Point anchor = new Point(tileView.getRow(),
-			// tileView.getColumn());
 			Point anchor = hex.getAnchor();
 			Hint toBeAdded = new Hint(hex, anchor);
 			Move AddHint = new AddHint(this.level, toBeAdded);
