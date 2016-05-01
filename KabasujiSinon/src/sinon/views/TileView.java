@@ -32,6 +32,17 @@ public class TileView extends JPanel implements Observer {
 		this.column = tile.getLocation().y;
 		this.tile.registerObserver(this);
 		isShadow = false;
+
+		if (tile instanceof ReleaseTile) {
+			ReleaseTile releaseTile = (ReleaseTile) tile;
+			if (releaseTile.hasReleaseNumber()) {
+				System.out.println("A tile has a ReleaseNumber");
+				ReleaseNumber releaseNumber = releaseTile.getReleaseNumber().get();
+				JLabel number = new JLabel(Integer.toString(releaseNumber.getNumber()));
+				number.setForeground(releaseNumber.getColor());
+				this.add(number);
+			}
+		}
 	}
 
 	/**

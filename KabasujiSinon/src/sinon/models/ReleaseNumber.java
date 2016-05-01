@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Point;
 import java.util.Optional;
 
+import sinon.models.data.ReleaseNumberData;
+
 /**
  * A ReleaseNumber is part of the Release Number sets. It has a Color, a number,
  * and a location on the board
@@ -12,6 +14,12 @@ import java.util.Optional;
  *
  */
 public class ReleaseNumber {
+
+	Color color;
+	int number;
+	Optional<Point> location;
+	boolean collected;
+
 	public ReleaseNumber(Color color, int number, Point location) {
 		super();
 		this.color = color;
@@ -39,10 +47,12 @@ public class ReleaseNumber {
 		this.location = Optional.empty();
 	}
 
-	Color color;
-	int number;
-	Optional<Point> location;
-	boolean collected;
+	public ReleaseNumber(ReleaseNumberData releaseNumberData) {
+		this.color = releaseNumberData.getColor();
+		this.number = releaseNumberData.getNumber();
+		this.location = Optional.of(releaseNumberData.getLocation());
+		this.collected = releaseNumberData.isCollected();
+	}
 
 	/**
 	 * Set the location of the ReleaseNumber
@@ -114,6 +124,10 @@ public class ReleaseNumber {
 	 */
 	public int getNumber() {
 		return this.number;
+	}
+
+	public boolean hasLocation() {
+		return this.location.isPresent();
 	}
 
 }

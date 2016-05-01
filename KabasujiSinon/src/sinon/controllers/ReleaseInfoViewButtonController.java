@@ -26,8 +26,9 @@ public class ReleaseInfoViewButtonController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("I AM A RELEASE NUMBER BUTTON AND I WAS JUST CLICKED ON!");
-		this.level.selectReleaseNumber(this.releaseNumber);
+		
+		ReleaseNumber 
+		this.level.selectReleaseNumber(new ReleaseNumber(this.releaseNumber.getColor(),);
 		System.out.println(this.level.getSelectedReleaseNumber().toString());
 	}
 

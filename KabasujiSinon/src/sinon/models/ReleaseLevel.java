@@ -21,11 +21,13 @@ public class ReleaseLevel extends Level {
 	public ReleaseLevel(Board b, BullPen bp, List<ReleaseNumber> releaseSets) {
 		super(Types.RELEASE, b, bp);
 		this.releaseSets = releaseSets;
+		((ReleaseBoard) this.getBoard()).addReleaseSet(this.releaseSets);
 	}
 
 	public ReleaseLevel(Level level) {
 		super(Types.RELEASE, level.getBoard(), level.getBullpen());
 		this.releaseSets = level.getLevelData().getLevelProperty().getReleaseSet();
+		((ReleaseBoard) this.getBoard()).addReleaseSet(this.releaseSets);
 	}
 
 	@Override

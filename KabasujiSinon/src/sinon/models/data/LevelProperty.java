@@ -11,7 +11,7 @@ public class LevelProperty implements Serializable {
 	private static final long serialVersionUID = -166019953009468288L;
 	Integer maxTime;
 	Integer maxMoves;
-	ArrayList<ReleaseNumber> releaseSet;
+	ArrayList<ReleaseNumberData> releaseSet;
 
 	public LevelProperty(int levelProperty, Types t) {
 
@@ -26,7 +26,11 @@ public class LevelProperty implements Serializable {
 
 	public LevelProperty(ArrayList<ReleaseNumber> levelProperty, Types t) {
 		if (t == Types.RELEASE) {
-			this.releaseSet = levelProperty;
+			ArrayList<ReleaseNumberData> releaseSet = new ArrayList<ReleaseNumberData>();
+			for (ReleaseNumber r : levelProperty) {
+				releaseSet.add(new ReleaseNumberData(r));
+			}
+			this.releaseSet = releaseSet;
 		} else {
 			throw new IllegalArgumentException();
 		}
@@ -50,7 +54,11 @@ public class LevelProperty implements Serializable {
 
 	public ArrayList<ReleaseNumber> getReleaseSet() {
 		if (this.releaseSet != null) {
-			return this.releaseSet;
+			ArrayList<ReleaseNumber> releaseSetNumbers = new ArrayList<ReleaseNumber>();
+			for (ReleaseNumberData r : this.releaseSet) {
+				releaseSetNumbers.add(new ReleaseNumber(r));
+			}
+			return releaseSetNumbers;
 		} else {
 			throw new IllegalArgumentException();
 		}

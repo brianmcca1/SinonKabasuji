@@ -5,10 +5,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import sinon.main.Builder;
+import sinon.models.ReleaseBoard;
 import sinon.models.ReleaseNumber;
 import sinon.models.data.LevelProperty;
 import sinon.models.data.LevelType.Types;
-import sinon.views.ReleaseInfoView;
 
 /**
  * This is the controller responsible for saving a file that already 
@@ -32,23 +32,23 @@ public class BuilderSaveController implements ActionListener {
 			LevelProperty levelProp = null;
 
 			switch (thisLevelsType) {
-				case PUZZLE:
-					int propertyValuePuzzle = this.builder.getMainView().getLevelTypeInfoView().getValue();
-					levelProp = new LevelProperty(propertyValuePuzzle, Types.PUZZLE);
-					this.builder.getLevel().getLevelData().setLevelProperty(levelProp);
-					break;
-				case LIGHTNING:
-					int propertyValueLightning = this.builder.getMainView().getLevelTypeInfoView().getValue();
-					levelProp = new LevelProperty(propertyValueLightning, Types.LIGHTNING);
-					this.builder.getLevel().getLevelData().setLevelProperty(levelProp);
-					break;
-				case RELEASE:
-					// TODO: Is there a more elegant way to do this?
-					ArrayList<ReleaseNumber> propertyValueRelease = ((ReleaseInfoView) this.builder.getMainView().getLevelTypeInfoView()).getReleaseSets();
-					levelProp = new LevelProperty(propertyValueRelease, Types.RELEASE);
-					break;
-			}
+			case PUZZLE:
+				int propertyValuePuzzle = this.builder.getMainView().getLevelTypeInfoView().getValue();
+				levelProp = new LevelProperty(propertyValuePuzzle, Types.PUZZLE);
+				break;
+			case LIGHTNING:
+				int propertyValueLightning = this.builder.getMainView().getLevelTypeInfoView().getValue();
+				levelProp = new LevelProperty(propertyValueLightning, Types.LIGHTNING);
 
+				break;
+			case RELEASE:
+				ReleaseBoard releaseBoard = (ReleaseBoard) this.builder.getLevel().getBoard();
+				ArrayList<ReleaseNumber> propertyValueRelease = releaseBoard.getReleaseSet();
+				levelProp = new LevelProperty(propertyValueRelease, Types.RELEASE);
+
+				break;
+			}
+			this.builder.getLevel().getLevelData().setLevelProperty(levelProp);
 			FileHandler.builderSaveLevelToFile(FileHandler.currentFile, this.builder.getLevel());
 		}
 	}
