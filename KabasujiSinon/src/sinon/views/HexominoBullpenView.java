@@ -9,63 +9,73 @@ import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import sinon.models.Hexomino;
 
 /** GUI element representing one of the Hexominos in the Bullpen. */
 @SuppressWarnings("serial")
-public class HexominoBullpenView extends JPanel implements Observer{
+public class HexominoBullpenView extends JPanel implements Observer {
 
-    /** The hexomino model object associated with this view */
-    Hexomino hex;
+	/** The hexomino model object associated with this view */
+	Hexomino hex;
 
-    public HexominoBullpenView(Hexomino h) {
-        this.hex = h;
-        this.setLayout(new GridLayout(6, 6));
-        this.setMinimumSize(new Dimension(150, 150));
-        this.setMaximumSize(new Dimension(150, 150));
-        this.setHexominoOnGrid();
-        hex.registerObserver(this);
-        
-    }
+	public HexominoBullpenView(Hexomino h) {
+		this.setBackground(UIManager.getColor("Panel.background"));
+		this.hex = h;
+		this.setLayout(new GridLayout(6, 6));
+		this.setMinimumSize(new Dimension(150, 150));
+		this.setMaximumSize(new Dimension(150, 150));
+		this.setHexominoOnGrid();
+		hex.registerObserver(this);
 
-    /** @return Hexomino model associated with this view. */
-    public Hexomino getHexomino() {
-        return this.hex;
-    }
+	}
 
-    public HexominoBullpenView setHexominoOnGrid() {
-        List<Point> normalizedPoints = this.hex.getNormalizedPoints();
+	/** @return Hexomino model associated with this view. */
+	public Hexomino getHexomino() {
+		return this.hex;
+	}
 
-        Integer indexForHexJPanel;
-        ArrayList<Integer> indexList = new ArrayList<Integer>();
+	public HexominoBullpenView setHexominoOnGrid() {
+		List<Point> normalizedPoints = this.hex.getNormalizedPoints();
 
-        for (Point p : normalizedPoints) {
-            indexForHexJPanel = (p.x * 6) + p.y;
-            indexList.add(indexForHexJPanel);
-        }
+		Integer indexForHexJPanel;
+		ArrayList<Integer> indexList = new ArrayList<Integer>();
 
-        JPanel tempHexPanel;
-        for (int i = 0; i < 36; i++) {
-            tempHexPanel = new JPanel();
-            tempHexPanel.setMaximumSize(new Dimension(10, 10));
-            tempHexPanel.setMinimumSize(new Dimension(10, 10));
-            tempHexPanel.setPreferredSize(new Dimension(10, 10));
-            this.setBorder(new EmptyBorder(10, 0, 10, 0));
-            if (indexList.contains(i)) {
+		for (Point p : normalizedPoints) {
+			indexForHexJPanel = (p.x * 6) + p.y;
+			indexList.add(indexForHexJPanel);
+		}
 
-                tempHexPanel.setBackground(hex.getColor());
-                tempHexPanel.setBorder(
-                        BorderFactory.createLineBorder(Color.lightGray));
-                this.add(tempHexPanel);
-            } else {
-                this.add(tempHexPanel);
-            }
-        }
-        this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        return this;
-    }
+		JPanel tempHexPanel;
+		for (int i = 0; i < 36; i++) {
+			tempHexPanel = new JPanel();
+			tempHexPanel.setBackground(UIManager.getColor("Panel.background"));
+			tempHexPanel.setMaximumSize(new Dimension(10, 10));
+			tempHexPanel.setMinimumSize(new Dimension(10, 10));
+			tempHexPanel.setPreferredSize(new Dimension(10, 10));
+			this.setBorder(new EmptyBorder(10, 0, 10, 0));
+			if (indexList.contains(i)) {
+
+				tempHexPanel.setBackground(hex.getColor());
+				tempHexPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+				this.add(tempHexPanel);
+			} else {
+				this.add(tempHexPanel);
+			}
+		}
+		this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		return this;
+	}
+
+	public void select() {
+		this.setBackground(Color.cyan);
+	}
+
+	public void deselect() {
+		this.setBackground(UIManager.getColor("Panel.background"));
+	}
 
 	@Override
 	public void updated() {

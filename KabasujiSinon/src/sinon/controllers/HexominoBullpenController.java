@@ -30,10 +30,12 @@ public class HexominoBullpenController extends AbstractHexStashController {
 				}
 			} else {
 				level.deselect();
+				this.hex.deselect();
 			}
 
 			System.out.println("SELECTED HEXOMINO HAS BEEN DESELECTED");
 		} else {
+			this.hex.select();
 			level.select(hex.getHexomino());
 			System.out.println("NEWLY SELECTED HEXOMINO: " + level.getSelectedHexomino().toString());
 		}
