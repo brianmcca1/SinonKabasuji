@@ -3,8 +3,11 @@ package sinon.models.data;
 import java.awt.Point;
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 import sinon.models.Board;
+import sinon.models.Hint;
 import sinon.models.Tile;
 
 /**
@@ -21,6 +24,8 @@ public final class BoardData implements Serializable {
      * not. playable[0] represents (0,0); playable[12] represents (0,1);
      */
     boolean[][] playable;
+    
+    LinkedList<Hint> hints;
 
     /** Length and width of the Board */
     private static final int SIZE = 12;
@@ -28,6 +33,7 @@ public final class BoardData implements Serializable {
     /** Creates a new BoardData where all tiles are unplayable */
     public BoardData() {
         playable = new boolean[SIZE][SIZE];
+        this.hints = new LinkedList<Hint> ();
     }
 
     /**
@@ -47,6 +53,12 @@ public final class BoardData implements Serializable {
             Point p = t.getLocation();
             playable[p.x][p.y] = t.isPlayable();
         }
+        
+        this.hints = new LinkedList<Hint> ();
+        for(Hint h : board.getHints()) {
+        	this.hints.add(h);
+        }
+        
     }
 
     /**
@@ -55,6 +67,10 @@ public final class BoardData implements Serializable {
      */
     public boolean[][] getPlayableArray() {
         return playable;
+    }
+    
+    public List<Hint> getHints() {
+    	return this.hints;
     }
 
     /*

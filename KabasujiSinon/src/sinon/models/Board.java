@@ -115,8 +115,9 @@ public class Board implements Observable {
 				initializeTiles(p, playable);
 			}
 		}
-		this.hints = new LinkedList<Hint> ();
 		initializeObserverList();
+		this.hints = boardData.getHints();
+		update();
 	}
 
 	protected void initializeTiles(Point p, boolean playable) {

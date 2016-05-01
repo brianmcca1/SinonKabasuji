@@ -62,7 +62,7 @@ public class FileHandler {
 	 * @return Returns Level[].
 	 */
 	public static Level[] loadAllLevels() {
-		Level[] levels = new Level[3];
+		Level[] levels = new Level[1];
 
 		File levelFile;
 		Deserializer deserializer;
@@ -75,6 +75,7 @@ public class FileHandler {
 		level = new PuzzleLevel(new Level(levelData));
 		levels[0] = level;
 
+		/**
 		levelFile = new File("level2.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
@@ -86,7 +87,13 @@ public class FileHandler {
 		levelData = deserializer.deserializeFile();
 		level = new ReleaseLevel(new Level(levelData));
 		levels[2] = level;
-
+		
+		levelFile = new File("level5.dat");
+		deserializer = new Deserializer(levelFile);
+		levelData = deserializer.deserializeFile();
+		level = new PuzzleLevel(new Level(levelData));
+		levels[3] = level;
+	*/
 		return levels;
 	}
 
