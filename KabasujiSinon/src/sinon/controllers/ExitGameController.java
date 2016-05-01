@@ -24,7 +24,10 @@ public class ExitGameController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		handleExit();
+	}
+	
+	public void handleExit(){
 		this.game.determineCurrentGameLevelFile();
 
 		FileHandler.setStarsOnExit(this.game.getLevel());
@@ -39,7 +42,6 @@ public class ExitGameController implements ActionListener {
 			case RELEASE:
 				break;
 		}
-		
 		
 		game.loadAllLevels();
 		game.startNextPanel(this.game.getMainView(), new LevelSelectView(this.game));

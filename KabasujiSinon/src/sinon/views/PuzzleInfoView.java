@@ -24,6 +24,11 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer{
 	public PuzzleLevel level;
 	public Game game;
 
+	/**
+	 * Used by Builder only.
+	 * @param editable If this text field should be editable or not.
+	 * @param level Current level in the builder.
+	 */
 	public PuzzleInfoView(boolean editable, PuzzleLevel level) {
 		this.level = level;
 		setLayout(new GridLayout(1, 1));
@@ -42,6 +47,12 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer{
 		this.level.registerObserver(this);
 	}
 
+	/**
+	 * Used by Game only.
+	 * @param g Game object.
+	 * @param numMoves Number of moves this level stars with
+	 * @param level current PuzzleLevel
+	 */
 	public PuzzleInfoView(Game g, int numMoves, PuzzleLevel level) {
 		setLayout(new GridLayout(1, 1));
 		this.infoLabel = new JLabel("Moves:");
@@ -59,6 +70,9 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer{
 		this.game = g;
 	}
 
+	/**
+	 * @return The number of moves in the movesLeftField.
+	 */
 	@Override
 	public int getValue() {
 		if (this.movesLeftField.getText().compareTo("") == 0) {
