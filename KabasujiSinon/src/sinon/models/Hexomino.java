@@ -69,6 +69,8 @@ public class Hexomino implements Observable {
 	/** Random for use with random */
 	private static final Random RANDOM = new Random();
 
+	Point anchorPoint;
+
 	/**
 	 * Is a convenience constructor for quickly building a Hexomino.
 	 * 
@@ -134,6 +136,18 @@ public class Hexomino implements Observable {
 		// constructor:
 		Color randomColor = new Color(r, g, b);
 		return randomColor;
+	}
+
+	public Point getAnchor() {
+		if (this.anchorPoint == null) {
+			throw new IllegalArgumentException("Anchor is null");
+		} else {
+			return this.anchorPoint;
+		}
+	}
+
+	public void setAnchor(Point point) {
+		this.anchorPoint = point;
 	}
 
 	/**
