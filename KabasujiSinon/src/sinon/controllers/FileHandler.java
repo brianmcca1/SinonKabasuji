@@ -94,4 +94,17 @@ public class FileHandler {
 		String fileString = "/images/" + Integer.toString(starsEarned) + "star.png";
 		return fileString;
 	}
+
+	public static void setStarsOnExit(Level level) {
+		int newStarRecord = level.countStars();
+		int knownStarRecord = level.getLevelData().getStarRecord();
+		if(newStarRecord > knownStarRecord)
+			level.getLevelData().setStarRecord(newStarRecord);
+		
+		Serializer serializer = new Serializer(currentFile, level.getLevelData());
+		serializer.serializeFile();
+		
+		System.out.println("EARNED STARS: " + level.getLevelData().getStarRecord());
+		
+	}
 }

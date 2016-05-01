@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import sinon.controllers.FileHandler;
 import sinon.main.Game;
 import sinon.models.LightningLevel;
 import sinon.views.game.LevelSelectView;
@@ -70,6 +71,7 @@ public class LightningInfoView extends LevelTypeInfoView {
 		this.timeLeftField.setText(((Integer) level.getTimeLeft()).toString());
 		
 		if(this.level.getTimeLeft() <= 0){
+			FileHandler.setStarsOnExit(this.game.getLevel());
 			this.game.loadAllLevels();
 			this.game.levelSelectView = new LevelSelectView(this.game);
 			game.startNextPanel(this.game.getMainView(), this.game.levelSelectView);

@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import sinon.main.Game;
 import sinon.models.data.LevelType.Types;
-import sinon.serial.Serializer;
 import sinon.views.game.LevelSelectView;
 
 /**
@@ -28,13 +27,7 @@ public class ExitGameController implements ActionListener {
 		
 		this.game.determineCurrentGameLevelFile();
 
-		int newStarRecord = this.game.getLevel().countStars();
-		int knownStarRecord = this.game.getLevel().getLevelData().getStarRecord();
-		if(newStarRecord > knownStarRecord)
-			this.game.getLevel().getLevelData().setStarRecord(newStarRecord);
-
-		Serializer serializer = new Serializer(FileHandler.currentFile, this.game.getLevel().getLevelData());
-		serializer.serializeFile();
+		FileHandler.setStarsOnExit(this.game.getLevel());
 
 		Types currentLevelType = this.game.getLevel().getLevelData().getLevelType();
 		switch(currentLevelType){

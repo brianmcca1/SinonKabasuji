@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import sinon.controllers.FileHandler;
 import sinon.main.Game;
 import sinon.models.PuzzleLevel;
 import sinon.views.game.LevelSelectView;
@@ -75,6 +76,7 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer{
 		this.movesLeftField.setText(((Integer) level.getMovesLeft()).toString());
 		
 		if(this.level.getMovesLeft() <= 0){
+			FileHandler.setStarsOnExit(this.game.getLevel());
 			game.loadAllLevels();
 			this.game.levelSelectView = new LevelSelectView(this.game);
 			game.startNextPanel(this.game.getMainView(), this.game.levelSelectView);
