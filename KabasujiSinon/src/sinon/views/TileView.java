@@ -36,7 +36,6 @@ public class TileView extends JPanel implements Observer {
 		if (tile instanceof ReleaseTile) {
 			ReleaseTile releaseTile = (ReleaseTile) tile;
 			if (releaseTile.hasReleaseNumber()) {
-				System.out.println("A tile has a ReleaseNumber");
 				ReleaseNumber releaseNumber = releaseTile.getReleaseNumber().get();
 				JLabel number = new JLabel(Integer.toString(releaseNumber.getNumber()));
 
@@ -81,7 +80,6 @@ public class TileView extends JPanel implements Observer {
 		if (tile instanceof ReleaseTile) {
 			ReleaseTile releaseTile = (ReleaseTile) tile;
 			if (releaseTile.hasReleaseNumber()) {
-				System.out.println("A tile has a ReleaseNumber");
 				ReleaseNumber releaseNumber = releaseTile.getReleaseNumber().get();
 				JLabel number = new JLabel(Integer.toString(releaseNumber.getNumber()));
 				if (releaseNumber.getColor() == Color.YELLOW) {
