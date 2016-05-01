@@ -42,9 +42,4 @@ public class RotateHexominoCounterClockwiseMove extends BullPenMove {
         return true;
     }
 
-	@Override
-	public boolean redo() {
-		return this.doMove();
-	}
-
 }

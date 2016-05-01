@@ -52,20 +52,12 @@ public class MoveToBullpenFromBoard extends BoardMove {
 
 	@Override
 	public boolean valid() {
-		if (!level.hasSelected())
+		if (!hex.isPresent())
 			return false;
 		if (!level.getBoard().hasHex(hex.get()))
 			return false;
 		return true;
 	}
 
-	@Override
-	public boolean redo() {
-		level.incrementMoves();
-		level.getBullpen().addHexomino(hex.get());
-		level.getBoard().removeHexomino(hex.get());
-		level.deselect();
-		return true;
-	}
 
 }

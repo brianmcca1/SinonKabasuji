@@ -213,7 +213,7 @@ public class Level implements Observable {
             return;
         Move move;
         move = redo.pop();
-        move.redo();
+        move.doMove();
         this.pushMove(move);
         
     }

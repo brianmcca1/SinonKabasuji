@@ -22,11 +22,5 @@ public abstract class Move {
 	 */
 	public abstract boolean undo();
 	
-	/**
-	 * Redoes the undone move
-	 * Generally calls this.do, however some of the board move classes need to bypass valid()
-	 * @return returns the status of the redo
-	 */
-	public abstract boolean redo();
 	
 }

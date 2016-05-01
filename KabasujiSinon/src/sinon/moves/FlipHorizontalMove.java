@@ -34,9 +34,6 @@ public class FlipHorizontalMove extends BullPenMove {
 		return true;
 	}
 
-	@Override
-	public boolean redo() {
-		return this.doMove();
-	}
+
 
 }

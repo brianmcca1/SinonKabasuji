@@ -53,10 +53,4 @@ public class AddReleaseNumberMove extends Move {
 		return true;
 	}
 
-	@Override
-	public boolean redo() {
-		releaseTile.addReleaseNumber(releaseNumber);
-		this.level.deselectReleaseNumber();
-		return true;
-	}
 }
