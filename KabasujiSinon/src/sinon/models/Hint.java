@@ -11,12 +11,12 @@ import sinon.models.data.HexominoCode;
 public class Hint implements Serializable {
 
 	Point anchorPos;
-	HexominoCode hexominoCode;
+	HexominoNumberSet hexominoNumberSet;
 
 	public Hint(Hexomino hex, Point anchor) {
 		Objects.requireNonNull(hex);
 		this.anchorPos = Objects.requireNonNull(anchor);
-		this.hexominoCode = new HexominoCode(hex);
+		this.hexominoNumberSet = hex.getHexominoNumberSet();
 	}
 
 	/**
@@ -25,16 +25,9 @@ public class Hint implements Serializable {
 	 * @return HexominoNumberSet
 	 */
 	public HexominoNumberSet getHexominoNumberSet() {
-		return NumberSetFactory.getByCode(hexominoCode);
+		return this.hexominoNumberSet;
 	}
 
-	/**
-	 * @return the hexominoCode
-	 */
-	public HexominoCode getHexominoCode() {
-		return hexominoCode;
-	}
-	
 	public Point getAnchor() {
 		return this.anchorPos;
 	}
