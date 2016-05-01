@@ -150,7 +150,14 @@ public class HexViewStash implements Observer {
      *            Hexomino to render it's view as selected.
      */
     private void renderHexominoAsSelected(Hexomino selectedHex) {
-
+        System.out.println("-----------------xxxxxxxxxxxxx rendering");
+        for (HexominoBullpenView v : this.hexominosList) {
+            if (v.getHexomino().equals(selectedHex)) {
+                v.select();
+            } else {
+                v.deselect();
+            }
+        }
     }
 
     /**
@@ -167,6 +174,7 @@ public class HexViewStash implements Observer {
      */
     @Override
     public void updated() {
+        System.out.println("-----------------xxxxxxxxxxxxx refreshing");
         this.refresh();
     }
 }
