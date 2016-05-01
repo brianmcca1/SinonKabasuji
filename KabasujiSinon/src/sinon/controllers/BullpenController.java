@@ -29,7 +29,6 @@ public class BullpenController implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		System.out.println("I AM A BULLPEN AND I JUST GOT CLICKED ON!");
 		handleClick();
 	}
 

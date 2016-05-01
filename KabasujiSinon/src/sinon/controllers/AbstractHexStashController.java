@@ -40,15 +40,12 @@ public abstract class AbstractHexStashController implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		System.out.println("clicked");
-		
 		if(SwingUtilities.isLeftMouseButton(e)){
 			handleLeftClicked();
 		}
 		else{
 			handleRightClicked();
 		}
-		
 	}
 
 	/**

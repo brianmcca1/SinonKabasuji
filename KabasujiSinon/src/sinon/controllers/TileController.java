@@ -89,7 +89,6 @@ public abstract class TileController implements MouseListener, MouseMotionListen
 	public abstract void handleRightClick();
 
 	public void handleLeftClick() {
-		System.out.println("I AM A TILE AND I WAS JUST CLICKED ON!");
 
 		if (level.hasSelected()) {
 
