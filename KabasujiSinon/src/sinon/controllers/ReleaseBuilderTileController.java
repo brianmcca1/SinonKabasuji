@@ -30,8 +30,7 @@ public class ReleaseBuilderTileController extends BuilderTileController {
 
 	@Override
 	public void handleLeftClick() {
-		System.out.println("I AM A RELEASE TILE AND I WAS JUST CLICKED ON!");
-
+		
 		if (level.hasSelected()) {
 
 			if (level.getBullpen().containsHexID(level.getSelectedHexomino().get().getID())) {

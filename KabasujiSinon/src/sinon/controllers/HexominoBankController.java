@@ -15,16 +15,12 @@ import sinon.views.MainView;
  */
 public class HexominoBankController extends AbstractHexStashController {
 
-	public HexominoBankController(Level level, MainView mainView,
-			HexominoBullpenView hex) {
+	public HexominoBankController(Level level, MainView mainView, HexominoBullpenView hex) {
 		super(level, mainView, hex);
 	}
 
 	@Override
 	protected void handleLeftClicked() {
-		System.out.println("I AM A BANK HEXOMINO AND I GOT CLICKED ON");
-
-
 		Hexomino hexomino = new Hexomino(hex.getHexomino().getHexominoNumberSet());
 		BankToBullpenMove move = new BankToBullpenMove(level.getBullpen(), hexomino);
 

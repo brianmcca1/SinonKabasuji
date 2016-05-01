@@ -43,8 +43,6 @@ public class LevelStartController implements ActionListener {
 	 * the MainView
 	 */
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("STARTING LEVEL #" + (levelNum + 1));
-
 		this.game.setCurrentLevelNumber(this.levelNum);
 		this.game.setLevel(this.game.getLevel(this.levelNum));
 

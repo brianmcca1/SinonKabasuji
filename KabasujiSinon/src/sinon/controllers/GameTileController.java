@@ -1,11 +1,7 @@
 package sinon.controllers;
 
-import java.awt.event.MouseEvent;
-
 import sinon.models.Board;
 import sinon.models.Level;
-import sinon.moves.MoveInBoard;
-import sinon.moves.MoveToBoardFromBullpen;
 import sinon.views.MainView;
 import sinon.views.TileView;
 

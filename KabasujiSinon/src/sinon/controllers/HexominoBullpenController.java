@@ -17,44 +17,35 @@ public class HexominoBullpenController extends AbstractHexStashController {
 
 	@Override
 	protected void handleLeftClicked() {
-		System.out
-		.println("I AM A BULLPEN HEXOMINO AND I JUST GOT CLICKED ON!");
 
 		if (level.hasSelected()) {
 			// compare this.hex to level.selectedHexomino.get()
-			if (this.level.getBullpen().containsHexID(
-					level.getSelectedHexomino().get().getID())) {
+			if (this.level.getBullpen().containsHexID(level.getSelectedHexomino().get().getID())) {
 				System.out.println("THIS HEXOMINO IS ALREADY SELECTED");
 				return;
 			}
 
 			int x, y;
 			if (level.getBoard().hasHex(level.getSelectedHexomino().get())) {
-				x = level.getBoard().getHexominoLocation(
-						level.getSelectedHexomino().get()).x;
-				y = level.getBoard().getHexominoLocation(
-						level.getSelectedHexomino().get()).y;
-				MoveToBullpenFromBoard move = new MoveToBullpenFromBoard(level,
-						x, y);
-				if (move.doMove()){
+				x = level.getBoard().getHexominoLocation(level.getSelectedHexomino().get()).x;
+				y = level.getBoard().getHexominoLocation(level.getSelectedHexomino().get()).y;
+				MoveToBullpenFromBoard move = new MoveToBullpenFromBoard(level, x, y);
+				if (move.doMove()) {
 					level.pushMove(move);
 				}
 			} else {
-				level.getBullpen().addHexomino(
-						level.getSelectedHexomino().get());
+				level.getBullpen().addHexomino(level.getSelectedHexomino().get());
 			}
 
 			System.out.println("SELECTED HEXOMINO HAS BEEN DESELECTED");
 		} else {
 			level.select(hex.getHexomino());
-			System.out.println("NEWLY SELECTED HEXOMINO: "
-					+ level.getSelectedHexomino().toString());
+			System.out.println("NEWLY SELECTED HEXOMINO: " + level.getSelectedHexomino().toString());
 		}
 	}
-	
-	
+
 	@Override
 	protected void handleRightClicked() {
-		
+
 	}
 }
