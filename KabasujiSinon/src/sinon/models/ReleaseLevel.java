@@ -26,6 +26,7 @@ public class ReleaseLevel extends Level {
 
 	public ReleaseLevel(Level level) {
 		super(Types.RELEASE, level.getBoard(), level.getBullpen());
+		this.levelData = level.getLevelData();
 		this.releaseSets = level.getLevelData().getLevelProperty().getReleaseSet();
 		((ReleaseBoard) this.getBoard()).addReleaseSet(this.releaseSets);
 	}

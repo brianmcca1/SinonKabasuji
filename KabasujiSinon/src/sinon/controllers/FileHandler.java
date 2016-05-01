@@ -5,6 +5,7 @@ import java.io.File;
 import sinon.models.Level;
 import sinon.models.LightningLevel;
 import sinon.models.PuzzleLevel;
+import sinon.models.ReleaseLevel;
 import sinon.models.data.BoardData;
 import sinon.models.data.BullPenData;
 import sinon.models.data.LevelData;
@@ -61,7 +62,7 @@ public class FileHandler {
 	 * @return Returns Level[].
 	 */
 	public static Level[] loadAllLevels() {
-		Level[] levels = new Level[2];
+		Level[] levels = new Level[3];
 
 		File levelFile = new File("level1.dat");
 		Deserializer deserializer = new Deserializer(levelFile);
@@ -78,6 +79,15 @@ public class FileHandler {
 		Level levelTwo = new LightningLevel(new Level(levelData));
 
 		levels[1] = levelTwo;
+		
+		
+		levelFile = new File("level3.dat");
+		deserializer = new Deserializer(levelFile);
+		levelData = deserializer.deserializeFile();
+		
+		Level levelThree = new ReleaseLevel(new Level(levelData));
+		
+		levels[2] = levelThree;
 
 		return levels;
 	}
