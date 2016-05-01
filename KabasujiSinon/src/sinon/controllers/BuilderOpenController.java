@@ -21,8 +21,8 @@ import sinon.views.ReleaseInfoView;
 import sinon.views.builder.BuilderMenuBar;
 
 /**
- * This is the controller that handles opening up an existing level
- * in the builder.
+ * This is the controller that handles opening up an existing level in the
+ * builder.
  *
  */
 public class BuilderOpenController extends BuilderNewLevelController implements ActionListener {
@@ -46,47 +46,51 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 
 			File file = fc.getSelectedFile();
+			openFile(file);
 
-			if (FileHandler.currentFile != null) {
-				if (file.compareTo(FileHandler.currentFile) == 0) {
-					System.out.println("FILE IS ALREADY OPEN!");
-					return;
-				}
-			}
-
-			FileHandler.currentFile = file;
-
-			Deserializer deserializer = new Deserializer(file);
-			LevelData levelData = deserializer.deserializeFile();
-
-			// CREATE levelFromFile FROM levelData HERE
-			Level levelFromFile = new Level(levelData);
-
-			// FIND OUT WHICH LevelTypeInfoView TO GIVE TO MAINVIEW
-			LevelTypeInfoView lvlTypeInfoView = null;
-			Types thisLevelsType = levelData.getLevelType();
-
-			switch (thisLevelsType) {
-				case PUZZLE:
-					PuzzleLevel puzzleLevel = new PuzzleLevel(levelFromFile);
-					lvlTypeInfoView = new PuzzleInfoView(true, puzzleLevel);
-					this.builder.setLevel(puzzleLevel);
-					break;
-				case LIGHTNING:
-					LightningLevel lightningLevel = new LightningLevel(levelFromFile);
-					lvlTypeInfoView = new LightningInfoView(true, lightningLevel);
-					this.builder.setLevel(lightningLevel);
-					break;
-				case RELEASE:
-					ReleaseLevel releaseLevel = new ReleaseLevel(levelFromFile);
-					lvlTypeInfoView = new ReleaseInfoView();
-					this.builder.setLevel(releaseLevel);
-					break;
-			}
-
-			this.builder.initializeMainView(lvlTypeInfoView);
-			this.handleOpenLevel(this.builderMenuBar);
 		}
+	}
+
+	public void openFile(File file) {
+		if (FileHandler.currentFile != null) {
+			if (file.compareTo(FileHandler.currentFile) == 0) {
+				System.out.println("FILE IS ALREADY OPEN!");
+				return;
+			}
+		}
+
+		FileHandler.currentFile = file;
+
+		Deserializer deserializer = new Deserializer(file);
+		LevelData levelData = deserializer.deserializeFile();
+
+		// CREATE levelFromFile FROM levelData HERE
+		Level levelFromFile = new Level(levelData);
+
+		// FIND OUT WHICH LevelTypeInfoView TO GIVE TO MAINVIEW
+		LevelTypeInfoView lvlTypeInfoView = null;
+		Types thisLevelsType = levelData.getLevelType();
+
+		switch (thisLevelsType) {
+		case PUZZLE:
+			PuzzleLevel puzzleLevel = new PuzzleLevel(levelFromFile);
+			lvlTypeInfoView = new PuzzleInfoView(true, puzzleLevel);
+			this.builder.setLevel(puzzleLevel);
+			break;
+		case LIGHTNING:
+			LightningLevel lightningLevel = new LightningLevel(levelFromFile);
+			lvlTypeInfoView = new LightningInfoView(true, lightningLevel);
+			this.builder.setLevel(lightningLevel);
+			break;
+		case RELEASE:
+			ReleaseLevel releaseLevel = new ReleaseLevel(levelFromFile);
+			lvlTypeInfoView = new ReleaseInfoView();
+			this.builder.setLevel(releaseLevel);
+			break;
+		}
+
+		this.builder.initializeMainView(lvlTypeInfoView);
+		this.handleOpenLevel(this.builderMenuBar);
 	}
 
 	/**
