@@ -96,6 +96,7 @@ public class Level implements Observable {
         // Only called when a move is done?
         // Otherwise we need to go to every doMove and reset redo
         // redo = new Stack<Move>();
+        update();
     }
 
     /**
@@ -106,6 +107,7 @@ public class Level implements Observable {
      */
     public void select(Hexomino hex) {
         this.selectedHexomino = Optional.of(hex);
+        update();
     }
 
     /**
@@ -228,9 +230,9 @@ public class Level implements Observable {
         undo.push(move);
         this.update();
     }
-    
-    public boolean incrementMoves(){
-    	return false;
+
+    public boolean incrementMoves() {
+        return false;
     }
     
     public Move peekRedo(){
