@@ -39,7 +39,12 @@ public class TileView extends JPanel implements Observer {
 				System.out.println("A tile has a ReleaseNumber");
 				ReleaseNumber releaseNumber = releaseTile.getReleaseNumber().get();
 				JLabel number = new JLabel(Integer.toString(releaseNumber.getNumber()));
-				number.setForeground(releaseNumber.getColor());
+
+				if (releaseNumber.getColor() == Color.YELLOW) {
+					number.setForeground(Color.BLUE);
+				} else {
+					number.setForeground(releaseNumber.getColor());
+				}
 				this.add(number);
 			}
 		}
@@ -79,7 +84,11 @@ public class TileView extends JPanel implements Observer {
 				System.out.println("A tile has a ReleaseNumber");
 				ReleaseNumber releaseNumber = releaseTile.getReleaseNumber().get();
 				JLabel number = new JLabel(Integer.toString(releaseNumber.getNumber()));
-				number.setForeground(releaseNumber.getColor());
+				if (releaseNumber.getColor() == Color.YELLOW) {
+					number.setForeground(Color.ORANGE);
+				} else {
+					number.setForeground(releaseNumber.getColor());
+				}
 				this.add(number);
 			}
 		}
@@ -141,9 +150,9 @@ public class TileView extends JPanel implements Observer {
 	}
 
 	public boolean setShadow(boolean isShadow) {
-			boolean returnValue = this.isShadow != isShadow;
-			this.isShadow = isShadow;
-			return returnValue;
+		boolean returnValue = this.isShadow != isShadow;
+		this.isShadow = isShadow;
+		return returnValue;
 	}
 
 	@Override
