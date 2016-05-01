@@ -11,8 +11,8 @@ import sinon.views.game.GameInfoView;
 import sinon.views.game.LevelSelectView;
 
 /**
- * This is the main application class for the Game that extends 
- * the superclass {@link Kabasuji}. Therefore it is a JFrame.
+ * This is the main application class for the Game that extends the superclass
+ * {@link Kabasuji}. Therefore it is a JFrame.
  *
  */
 @SuppressWarnings("serial")
@@ -21,10 +21,13 @@ public class Game extends Kabasuji {
 	/** Holds all the levels for the game. */
 	public Level[] allLevels = new Level[15];
 
+	public LevelSelectView levelSelectView;
+
 	public Game() {
 		super();
 		loadAllLevels();
-		startSplash("Kabasuji", new LevelSelectView(this));
+		this.levelSelectView = new LevelSelectView(this);
+		startSplash("Kabasuji", this.levelSelectView);
 	}
 
 	/** Will pull every level from file and reset it. */
@@ -40,14 +43,16 @@ public class Game extends Kabasuji {
 	 * @param levelSelectView
 	 *            LevelSelectView to remove from the frame.
 	 */
-	public void initializeMainView(LevelSelectView levelSelectView,
-			LevelTypeInfoView lvlTypeInfoView) {
+	public void initializeMainView(LevelSelectView levelSelectView, LevelTypeInfoView lvlTypeInfoView) {
+		if(this.levelSelectView != null){
+			this.remove(this.levelSelectView);
+			this.revalidate();
+		}
 		if (this.mainView != null) {
 			this.remove(this.mainView);
 			this.revalidate();
 		}
-		this.setMainView(new MainView(this.getLevel(), new GameInfoView(this
-				.getLevel()), lvlTypeInfoView));
+		this.setMainView(new MainView(this.getLevel(), new GameInfoView(this.getLevel()), lvlTypeInfoView));
 		this.startNextPanel(levelSelectView, this.getMainView());
 	}
 
@@ -58,8 +63,7 @@ public class Game extends Kabasuji {
 		this.tileRegistrator = new TileRegistrator(getLevel(), mainView);
 		this.tileRegistrator.setToGameType();
 		registerBoardViewControllers();
-		getMainView().getBullpenView().setRegistrator(
-				new HexStashRegistrator(getLevel(), getMainView(), false));
+		getMainView().getBullpenView().setRegistrator(new HexStashRegistrator(getLevel(), getMainView(), false));
 
 		registerBullpenController();
 	}

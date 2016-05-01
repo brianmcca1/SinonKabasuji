@@ -52,7 +52,9 @@ public class LevelStartController implements ActionListener {
 
 		switch (thisLevelsType) {
 		case PUZZLE:
-			lvlTypeInfoView = new PuzzleInfoView(this.game.getLevel().getLevelData().getLevelProperty().getMaxMoves(), (PuzzleLevel)this.game.getLevel(levelNum));
+			lvlTypeInfoView = new PuzzleInfoView(this.game,
+					this.game.getLevel().getLevelData().getLevelProperty().getMaxMoves(),
+					(PuzzleLevel) this.game.getLevel(levelNum));
 			break;
 		case LIGHTNING:
 			lvlTypeInfoView = new LightningInfoView(this.game.getLevel().getLevelData().getLevelProperty().getMaxTime(),

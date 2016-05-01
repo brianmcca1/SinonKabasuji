@@ -5,7 +5,9 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import sinon.main.Game;
 import sinon.models.PuzzleLevel;
+import sinon.views.game.LevelSelectView;
 
 /**
  * The InfoView for a puzzle level
@@ -19,6 +21,7 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer{
 	public JLabel infoLabel;
 	public JTextField movesLeftField;
 	public PuzzleLevel level;
+	public Game game;
 
 	public PuzzleInfoView(boolean editable, PuzzleLevel level) {
 		this.level = level;
@@ -38,7 +41,7 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer{
 		this.level.registerObserver(this);
 	}
 
-	public PuzzleInfoView(int numMoves, PuzzleLevel level) {
+	public PuzzleInfoView(Game g, int numMoves, PuzzleLevel level) {
 		setLayout(new GridLayout(1, 1));
 		this.infoLabel = new JLabel("Moves:");
 		this.movesLeftField = new JTextField();
@@ -51,6 +54,8 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer{
 		
 		this.level = level;
 		this.level.registerObserver(this);
+		
+		this.game = g;
 	}
 
 	@Override
@@ -68,6 +73,13 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer{
 	public void updateMovesMade() {
 		System.out.println("UPDATING MOVES MADE");
 		this.movesLeftField.setText(((Integer) level.getMovesLeft()).toString());
+		
+		if(this.level.getMovesLeft() <= 0){
+			game.loadAllLevels();
+			LevelSelectView lsv = new LevelSelectView(this.game);
+			this.game.levelSelectView = lsv;
+			game.startNextPanel(this.game.getMainView(), this.game.levelSelectView);
+		}
 	}
 
 	@Override
