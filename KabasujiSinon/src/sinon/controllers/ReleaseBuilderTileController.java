@@ -9,8 +9,8 @@ import sinon.views.MainView;
 import sinon.views.TileView;
 
 /**
- * This is the tile controller that is exclusively responsible for 
- * handling interactions with the tiles in a release level.
+ * This is the tile controller that is exclusively responsible for handling
+ * interactions with the tiles in a release level.
  *
  */
 public class ReleaseBuilderTileController extends BuilderTileController {
@@ -30,7 +30,7 @@ public class ReleaseBuilderTileController extends BuilderTileController {
 
 	@Override
 	public void handleLeftClick() {
-		
+
 		if (level.hasSelected()) {
 
 			if (level.getBullpen().containsHexID(level.getSelectedHexomino().get().getID())) {
@@ -63,7 +63,7 @@ public class ReleaseBuilderTileController extends BuilderTileController {
 				}
 
 			}
-		} else if (this.level.hasSelectedReleaseNumber()) {
+		} else if (this.level.hasSelectedReleaseNumber() && this.tile.isPlayable()) {
 			AddReleaseNumberMove move = new AddReleaseNumberMove(this.level, this.tile);
 			if (move.doMove()) {
 				level.pushMove(move);

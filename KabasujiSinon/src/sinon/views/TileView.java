@@ -88,6 +88,8 @@ public class TileView extends JPanel implements Observer {
 					number.setForeground(releaseNumber.getColor());
 				}
 				this.add(number);
+			} else {
+				this.removeAll();
 			}
 		}
 

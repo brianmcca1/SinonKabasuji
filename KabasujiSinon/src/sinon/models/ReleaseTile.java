@@ -49,6 +49,7 @@ public class ReleaseTile extends Tile {
 		}
 		this.releaseNumber.get().removeLocation();
 		this.releaseNumber = Optional.empty();
+		update();
 		return true;
 	}
 
