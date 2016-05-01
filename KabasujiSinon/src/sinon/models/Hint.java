@@ -16,7 +16,14 @@ public class Hint implements Serializable {
 	public Hint(Hexomino hex, Point anchor) {
 		Objects.requireNonNull(hex);
 		this.anchorPos = Objects.requireNonNull(anchor);
-		this.hexominoNumberSet = hex.getHexominoNumberSet();
+		
+		//we need to create a new list of points to avoid association with hex
+		List<Point> points = new LinkedList<Point> ();
+		for(Point p : hex.getHexominoNumberSet().getPoints()) {
+			points.add(new Point(p.x, p.y));
+		}
+		
+		this.hexominoNumberSet = new HexominoNumberSet(points);
 	}
 
 	/**
