@@ -29,7 +29,6 @@ public class NextLevelController implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("(TEMP) ADVANCING TO NEXT LEVEL . . .");
 	}
 
 }

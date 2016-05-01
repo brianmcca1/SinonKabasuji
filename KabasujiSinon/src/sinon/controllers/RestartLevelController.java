@@ -24,6 +24,5 @@ public class RestartLevelController implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("(TEMP) RESETTING LEVEL. . .");
 	}
 }

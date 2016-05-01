@@ -31,7 +31,6 @@ public class BuilderNewLightningLevelController extends BuilderNewLevelControlle
 		LightningBoard board = new LightningBoard();
 		BullPen bullpen = new BullPen(new BullPenData());
 		LightningLevel level = new LightningLevel(board, bullpen, 60);
-		System.out.println("CREATING NEW LIGHTNING LEVEL");
 		this.builder.setLevel(level);
 		this.handleNewLevel(this.builder, this.builderMenuBar, new LightningInfoView(true, level));
 	}
