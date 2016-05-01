@@ -27,10 +27,11 @@ public class TestMoveToBullpenFromBoard {
 	MoveToBullpenFromBoard move5;
 	MoveToBullpenFromBoard move6;
 	MoveToBullpenFromBoard move7;
+	Hexomino hex1;
 
 	@Before
 	public void setUp() {
-		Hexomino hex1 = new Hexomino(NumberSetFactory.getByNumbers(0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0));
+		hex1 = new Hexomino(NumberSetFactory.getByNumbers(0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0));
 
 		Hexomino hex2 = new Hexomino(NumberSetFactory.getByNumbers(0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0));
 		// hex2.flipHorizontally();
@@ -76,9 +77,15 @@ public class TestMoveToBullpenFromBoard {
 		assertTrue(move1.undo());
 		// Bullpen should be empty again
 		assertEquals(testLevel.getBullpen().hexominoCount(), 0);
+		// Board should have piece 
+		assertTrue(testLevel.getBoard().hasHex(hex1));
 		// Trying to do move 2 should return false, since it's invalid (no hex
 		// selected)
 		assertFalse(move2.doMove());
 
+	}
+	
+	@Test
+	public void testUndo(){
 	}
 }

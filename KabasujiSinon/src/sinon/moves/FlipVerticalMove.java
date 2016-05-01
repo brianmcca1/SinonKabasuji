@@ -35,4 +35,9 @@ public class FlipVerticalMove extends BullPenMove {
 		return true;
 	}
 
+	@Override
+	public boolean redo() {
+		return this.doMove();
+	}
+
 }

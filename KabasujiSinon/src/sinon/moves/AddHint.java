@@ -30,4 +30,9 @@ public class AddHint extends Move{
 		return true;
 	}
 
+	@Override
+	public boolean redo() {
+		return this.doMove();
+	}
+
 }

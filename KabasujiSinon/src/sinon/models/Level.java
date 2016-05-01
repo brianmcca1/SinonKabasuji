@@ -213,8 +213,9 @@ public class Level implements Observable {
             return;
         Move move;
         move = redo.pop();
-        move.doMove();
+        move.redo();
         this.pushMove(move);
+        
     }
 
     /**
@@ -230,5 +231,9 @@ public class Level implements Observable {
     
     public boolean incrementMoves(){
     	return false;
+    }
+    
+    public Move peekRedo(){
+    	return redo.peek();
     }
 }

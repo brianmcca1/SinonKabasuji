@@ -91,4 +91,18 @@ public class MoveToBoardFromBullpen extends BoardMove {
         return this.destAnchorColumn;
     }
 
+	@Override
+	public boolean redo() {
+level.incrementMoves();
+        
+
+        level.getBullpen().removeHexomino(hex.get());
+        level.getBoard().addHexomino(new Point(destAnchorRow, destAnchorColumn),
+                hex.get());
+        if (level.getLevelData().getLevelType() == Types.LIGHTNING) {
+            level.getBullpen().addRandomHexomino();
+        }
+        return true;
+	}
+
 }

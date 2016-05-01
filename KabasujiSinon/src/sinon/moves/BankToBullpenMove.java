@@ -47,4 +47,9 @@ public class BankToBullpenMove extends Move{
 	public boolean undo() {
 		return bp.removeHexomino(hex);
 	}
+
+	@Override
+	public boolean redo() {
+		return this.doMove();
+	}
 }

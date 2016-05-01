@@ -80,4 +80,17 @@ public class MoveInBoard extends BoardMove {
 		return true;
 	}
 
+	@Override
+	public boolean redo() {
+		level.incrementMoves();
+
+		// remove the hexomino from the board.
+		level.getBoard().removeHexomino(hex.get());
+
+		// add the same hexomino at the new position.
+		level.getBoard().addHexomino(new Point(destAnchorRow, destAnchorColumn), hex.get());
+		level.deselect();
+		return true;
+	}
+
 }
