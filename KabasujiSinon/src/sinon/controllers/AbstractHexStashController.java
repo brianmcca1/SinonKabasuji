@@ -40,28 +40,27 @@ public abstract class AbstractHexStashController implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(SwingUtilities.isLeftMouseButton(e)){
-			handleLeftClicked();
-		}
-		else{
-			handleRightClicked();
-		}
 	}
 
 	/**
-	 * This method should contain the logic for handling a left mouse click on the
-	 * HexominoPanel in the stash.
+	 * This method should contain the logic for handling a left mouse click on
+	 * the HexominoPanel in the stash.
 	 */
 	protected abstract void handleLeftClicked();
-	
+
 	/**
-	 * This method should contain the logic for handling a right mouse click on the
-	 * HexominoPanel in the stash.
+	 * This method should contain the logic for handling a right mouse click on
+	 * the HexominoPanel in the stash.
 	 */
 	protected abstract void handleRightClicked();
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		if (SwingUtilities.isLeftMouseButton(e)) {
+			handleLeftClicked();
+		} else {
+			handleRightClicked();
+		}
 	};
 
 	@Override

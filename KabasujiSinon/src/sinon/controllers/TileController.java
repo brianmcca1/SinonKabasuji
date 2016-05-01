@@ -45,16 +45,16 @@ public abstract class TileController implements MouseListener, MouseMotionListen
 	@Override
 	public void mouseClicked(MouseEvent e) {
 
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
 		if (SwingUtilities.isRightMouseButton(e)) {
 			handleRightClick();
 
 		} else {
 			handleLeftClick();
 		}
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
 	}
 
 	@Override
