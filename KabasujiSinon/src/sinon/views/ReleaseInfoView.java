@@ -49,7 +49,7 @@ public class ReleaseInfoView extends LevelTypeInfoView implements Observer {
 				if (j == 1)
 					nextButton.setForeground(Color.green);
 				if (j == 2)
-					nextButton.setForeground(Color.yellow);
+					nextButton.setForeground(Color.ORANGE);
 
 				this.add(nextButton);
 				this.buttons.add(nextButton);
