@@ -81,6 +81,7 @@ public class Board implements Observable {
 	/** Maps every Hexomino to the tile of its anchor location. */
 	Map<Hexomino, Point> hexominoLocations;
 
+	List<Hint> hints;
 	/**
 	 * Creates a 12 by 12 Board with tiles initialized to all playable tiles.
 	 */
@@ -93,7 +94,7 @@ public class Board implements Observable {
 				initializeTiles(p, true);
 			}
 		}
-
+		this.hints = new LinkedList<Hint> ();
 		initializeObserverList();
 	}
 
@@ -114,7 +115,7 @@ public class Board implements Observable {
 				initializeTiles(p, playable);
 			}
 		}
-
+		this.hints = new LinkedList<Hint> ();
 		initializeObserverList();
 	}
 
@@ -314,9 +315,36 @@ public class Board implements Observable {
 			}
 
 		}
-
 	}
-
+	
+	/**
+	 * Adds a hint to the list of hints.
+	 * @param hint
+	 */
+	public void addHint(Hint hint) {
+		this.hints.add(hint);
+		update();
+	}
+	
+	public void removeHint(Hint hint) {
+		this.hints.remove(hint);
+		update();
+	}
+	
+	public List<Hint> getHints() {
+		return this.hints;
+	}
+	
+	public List<Point> getPoints(Point anchor, HexominoNumberSet numSet) {
+		List<Point> returnPoints = new LinkedList<Point> ();
+		
+		for(Point p : numSet.getPoints()) {
+			returnPoints.add(new Point(anchor.x + p.x, anchor.y + p.y));
+		}
+		
+		return returnPoints;
+	}
+	
 	@Override
 	public void registerObserver(Observer observer) {
 		this.observers.add(observer);

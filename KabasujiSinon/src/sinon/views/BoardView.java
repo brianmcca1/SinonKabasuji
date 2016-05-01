@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,6 +13,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import sinon.models.Board;
+import sinon.models.Hint;
 
 /**
  * View in charge of displaying the board
@@ -19,7 +21,7 @@ import sinon.models.Board;
  * @author Brian
  *
  */
-public class BoardView extends JPanel {
+public class BoardView extends JPanel implements Observer{
 
 	JPanel boardPanel;
 	private Board board;
@@ -72,25 +74,36 @@ public class BoardView extends JPanel {
 		return tileViews;
 	}
 
-	/**
-	 * Redraw all the tiles with the appropriate colors
-	 */
-	public void redrawTiles() {
-		for (TileView tv : this.tileViews) {
-			if (board.getTile(new Point(tv.row, tv.column)).hasHex()) {
-				tv.setColor(Color.blue);
-			} else if (board.getTile(new Point(tv.row, tv.column)).isPlayable()) {
-				tv.setColor(Color.white);
-			} else {
-				tv.setColor(Color.black);
-			}
-		}
-	}
-
 	public void setShadow(List<Point> pointsToShadow) {
 		for (TileView tv : this.tileViews) {
 			if(tv.setShadow(pointsToShadow.contains(new Point(tv.row, tv.column))))
 				tv.updated();
+		}
+	}
+	
+	public void updateHints() {
+		List<Hint> hints = this.board.getHints(); 
+		List<Point> absoluteHintLocations = new LinkedList<Point> ();
+		
+		for(Hint h : hints) {
+			absoluteHintLocations.addAll(this.board.getPoints(h.getAnchor(), h.getHexominoNumberSet()));
+		}
+		
+		for(TileView tv : this.tileViews) {
+			if(absoluteHintLocations.contains(new Point(tv.getRow(), tv.getColumn()))) {
+				tv.setHint(true);
+			} else {
+				tv.setHint(false);
+			}
+		}
+		
+		this.updated();
+	}
+
+	@Override
+	public void updated() {
+		for(TileView tv : tileViews) {
+			tv.updated();
 		}
 	}
 }

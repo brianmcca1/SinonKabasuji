@@ -5,6 +5,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.swing.SwingUtilities;
 
@@ -75,12 +77,10 @@ public abstract class TileController implements MouseListener, MouseMotionListen
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		ArrayList<Point> points = new ArrayList<Point>();
+		List<Point> points = new LinkedList<Point>();
 		if (level.hasSelected()) {
-			for (Point p : level.getSelectedHexomino().get().getHexominoNumberSet().getPoints()) {
-				points.add(new Point(tileView.getRow() + p.x, tileView.getColumn() + p.y));
-				this.mainView.getBoardView().setShadow(points);
-			}
+			points = level.getBoard().getPoints(new Point(tileView.getRow(), tileView.getColumn()), level.getSelectedHexomino().get().getHexominoNumberSet());
+			this.mainView.getBoardView().setShadow(points);
 		} else {
 			this.mainView.getBoardView().setShadow(points);
 		}

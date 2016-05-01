@@ -11,7 +11,7 @@ import sinon.models.ReleaseTile;
 import sinon.models.Tile;
 
 /**
- * The view for a tile on the board
+ * The view for a tile on the board.
  * 
  * @author Brian
  *
@@ -23,6 +23,7 @@ public class TileView extends JPanel implements Observer {
 	int row, column;
 	Color color;
 	boolean isShadow;
+	private boolean isHint;
 
 	TileView(Tile tile) {
 		this.tile = tile;
@@ -31,8 +32,9 @@ public class TileView extends JPanel implements Observer {
 		this.row = tile.getLocation().x;
 		this.column = tile.getLocation().y;
 		this.tile.registerObserver(this);
-		isShadow = false;
-
+		this.isShadow = false;
+		this.isHint = false;
+		
 		if (tile instanceof ReleaseTile) {
 			ReleaseTile releaseTile = (ReleaseTile) tile;
 			if (releaseTile.hasReleaseNumber()) {
@@ -106,6 +108,10 @@ public class TileView extends JPanel implements Observer {
 		if (this.isShadow) {
 			this.setColor(color.darker());
 		}
+		
+		if(this.isHint) {
+			this.setColor(color.darker());
+		}
 
 		this.repaint();
 		this.revalidate();
@@ -153,6 +159,10 @@ public class TileView extends JPanel implements Observer {
 		boolean returnValue = this.isShadow != isShadow;
 		this.isShadow = isShadow;
 		return returnValue;
+	}
+	
+	public void setHint(boolean isHint) {
+		this.isHint = isHint;
 	}
 
 	@Override
