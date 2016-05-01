@@ -12,8 +12,8 @@ import sinon.views.BullpenView;
 
 /**
  * This controller responds to mouse interactions with the BullpenView.
- * Primarily this controller merely handles dropping a piece from the board
- * to the bullpen.
+ * Primarily this controller merely handles dropping a piece from the board to
+ * the bullpen.
  */
 public class BullpenController implements MouseListener {
 
@@ -35,14 +35,20 @@ public class BullpenController implements MouseListener {
 	protected void handleClick() {
 		if (level.hasSelected()) {
 			Hexomino hex = level.getSelectedHexomino().get();
-			int srcAnchorRow, srcAnchorColumn;
-			srcAnchorRow = level.getBoard().getHexominoLocation(hex).x;
-			srcAnchorColumn = level.getBoard().getHexominoLocation(hex).y;
-			MoveToBullpenFromBoard move = new MoveToBullpenFromBoard(level, srcAnchorRow, srcAnchorColumn);
-			move.doMove();
-			level.pushMove(move);
-			level.deselect();
-			System.out.println("SELECTED HEXOMINO HAS BEEN DESELECTED");
+			if (level.getBoard().hasHex(hex)) {
+				int srcAnchorRow, srcAnchorColumn;
+				srcAnchorRow = level.getBoard().getHexominoLocation(hex).x;
+				srcAnchorColumn = level.getBoard().getHexominoLocation(hex).y;
+				MoveToBullpenFromBoard move = new MoveToBullpenFromBoard(level, srcAnchorRow, srcAnchorColumn);
+				move.doMove();
+				level.pushMove(move);
+				level.deselect();
+				System.out.println("SELECTED HEXOMINO HAS BEEN DESELECTED");
+			} else {
+				level.deselect();
+				System.out.println("SELECTED HEXOMINO HAS BEEN DESELECTED");
+			}
+
 		}
 
 	}
