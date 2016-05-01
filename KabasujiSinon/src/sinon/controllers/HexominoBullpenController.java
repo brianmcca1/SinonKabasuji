@@ -19,11 +19,6 @@ public class HexominoBullpenController extends AbstractHexStashController {
 	protected void handleLeftClicked() {
 
 		if (level.hasSelected()) {
-			// compare this.hex to level.selectedHexomino.get()
-			if (this.hex.getHexomino().equals(level.getSelectedHexomino().get())) {
-				System.out.println("THIS HEXOMINO IS ALREADY SELECTED");
-				return;
-			}
 
 			int x, y;
 			if (level.getBoard().hasHex(level.getSelectedHexomino().get())) {
@@ -35,7 +30,6 @@ public class HexominoBullpenController extends AbstractHexStashController {
 				}
 			} else {
 				level.deselect();
-				// level.getBullpen().addHexomino(level.getSelectedHexomino().get());
 			}
 
 			System.out.println("SELECTED HEXOMINO HAS BEEN DESELECTED");
