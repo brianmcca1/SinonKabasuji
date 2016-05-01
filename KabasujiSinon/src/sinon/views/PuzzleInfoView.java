@@ -72,14 +72,15 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer{
 	 * Update the view to show how many moves the player can make
 	 */
 	public void updateMovesMade() {
-		System.out.println("UPDATING MOVES MADE");
-		this.movesLeftField.setText(((Integer) level.getMovesLeft()).toString());
+		if(this.game != null){
+			this.movesLeftField.setText(((Integer) level.getMovesLeft()).toString());
 		
-		if(this.level.getMovesLeft() <= 0){
-			FileHandler.setStarsOnExit(this.game.getLevel());
-			game.loadAllLevels();
-			this.game.levelSelectView = new LevelSelectView(this.game);
-			game.startNextPanel(this.game.getMainView(), this.game.levelSelectView);
+			if(this.level.getMovesLeft() <= 0){
+				FileHandler.setStarsOnExit(this.game.getLevel());
+				game.loadAllLevels();
+				this.game.levelSelectView = new LevelSelectView(this.game);
+				game.startNextPanel(this.game.getMainView(), this.game.levelSelectView);
+			}
 		}
 	}
 
