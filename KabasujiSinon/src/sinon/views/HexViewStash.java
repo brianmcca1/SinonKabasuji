@@ -105,10 +105,6 @@ public class HexViewStash {
 	 * Re renders the Stash it is observing.
 	 */
 	public void update() {
-		if (hexominosList.size() != bullpen.getPieces().size()) {
-			System.out.println("Sizes are different");
-		}
-
 		this.refresh();
 	}
 }

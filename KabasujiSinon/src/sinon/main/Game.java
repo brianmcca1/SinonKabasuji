@@ -32,9 +32,6 @@ public class Game extends Kabasuji {
 		Level[] levels;
 		levels = FileHandler.loadAllLevels();
 		allLevels = levels.clone();
-
-		System.out
-		.println("GAME HAS LOADED ALL LEVELS INTO ARRAY FROM FILES");
 	}
 
 	/**

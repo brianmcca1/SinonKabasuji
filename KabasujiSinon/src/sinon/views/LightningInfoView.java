@@ -62,7 +62,6 @@ public class LightningInfoView extends LevelTypeInfoView {
 	 * Update the view to show how much time is left
 	 */
 	public void updateTimeLeft() {
-		System.out.println(level);
 		this.timeLeftField.setText(((Integer) level.getTimeLeft()).toString());
 	}
 

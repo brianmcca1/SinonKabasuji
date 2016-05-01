@@ -178,13 +178,11 @@ public class Level implements Observable {
      */
 
     public void undo() {
-        System.out.println("Hit undo");
         int sizePre = undo.size();
         if (undo.empty())
             return;
         Move move;
         move = undo.pop();
-        System.out.println(undo.size() + "Pre size ->" + sizePre);
         if (move.undo()) {
             redo.push(move);
         } else
@@ -228,6 +226,5 @@ public class Level implements Observable {
     public void pushMove(Move move) {
         undo.push(move);
         this.update();
-        System.out.println(this.undo.size());
     }
 }
