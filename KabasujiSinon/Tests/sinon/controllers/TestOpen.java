@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import sinon.main.Builder;
 import sinon.models.Level;
+import sinon.models.data.LevelType.Types;
 import sinon.views.builder.BuilderMenuBar;
 
 public class TestOpen {
@@ -21,6 +22,7 @@ public class TestOpen {
 		BuilderOpenController controller = new BuilderOpenController(builder, new BuilderMenuBar(builder));
 		assertTrue(controller.openFile(new File("level1.dat")));
 		assertFalse(controller.openFile(new File("level1.dat")));
+		assertEquals(builder.getLevel().getLevelData().getLevelType(), Types.PUZZLE);
 
 	}
 

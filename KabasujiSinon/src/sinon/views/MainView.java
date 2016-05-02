@@ -93,7 +93,13 @@ public class MainView extends JPanel {
         return this.bullpenView;
     }
 
-    /** @return This MainView's InfoPanel. */
+    /**
+     * Returns the InfoPanel associated with this MainView.
+     * 
+     * Don't confuse this with {@link #getLevelTypeInfoView()}.
+     * 
+     * @return This MainView's InfoPanel.
+     */
     public InfoPanel getInfoPanel() {
         return infoPanel;
     }
@@ -103,7 +109,13 @@ public class MainView extends JPanel {
         return levelPanel;
     }
 
-    /** @return This MainView's LevelTypeInfoView. */
+    /**
+     * Returns the LevelTypeInfoView associated with this MainView.
+     * 
+     * Don't confuse this with {@link #getInfoPanel()}.
+     * 
+     * @return This MainView's LevelTypeInfoView.
+     */
     public LevelTypeInfoView getLevelTypeInfoView() {
         return this.levelTypeInfoView;
     }

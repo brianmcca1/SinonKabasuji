@@ -25,7 +25,7 @@ public class TileView extends JPanel implements Observer {
 	boolean isShadow;
 	private boolean isHint;
 
-	TileView(Tile tile) {
+	public TileView(Tile tile) {
 		this.tile = tile;
 		this.color = Color.white;
 		this.setBackground(color);
@@ -34,7 +34,7 @@ public class TileView extends JPanel implements Observer {
 		this.tile.registerObserver(this);
 		this.isShadow = false;
 		this.isHint = false;
-		
+
 		if (tile instanceof ReleaseTile) {
 			ReleaseTile releaseTile = (ReleaseTile) tile;
 			if (releaseTile.hasReleaseNumber()) {
@@ -108,8 +108,8 @@ public class TileView extends JPanel implements Observer {
 		if (this.isShadow) {
 			this.setColor(color.darker());
 		}
-		
-		if(this.isHint) {
+
+		if (this.isHint) {
 			this.setColor(color.darker());
 		}
 
@@ -160,7 +160,7 @@ public class TileView extends JPanel implements Observer {
 		this.isShadow = isShadow;
 		return returnValue;
 	}
-	
+
 	public void setHint(boolean isHint) {
 		this.isHint = isHint;
 	}

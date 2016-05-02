@@ -40,13 +40,13 @@ public class TestMoveToBoardFromBullpen {
 
 		testLevel = new Level(LevelType.Types.PUZZLE, new Board(), bullpen);
 		testLevel.select(hex1);
-		mtbfbp1 = new MoveToBoardFromBullpen(testLevel, 11, 11);
-		mtbfbp2 = new MoveToBoardFromBullpen(testLevel, 0, 0);
+		mtbfbp1 = new MoveToBoardFromBullpen(testLevel, 11, 0);
+		mtbfbp2 = new MoveToBoardFromBullpen(testLevel, 11, 11);
 		mtbfbp3 = new MoveToBoardFromBullpen(testLevel, -3, -3);
-		mtbfbp6 = new MoveToBoardFromBullpen(testLevel, 11, 0);
+		mtbfbp6 = new MoveToBoardFromBullpen(testLevel, 0, 11);
 		testLevel.select(hex2);
 		mtbfbp4 = new MoveToBoardFromBullpen(testLevel, 5, 5);
-		mtbfbp7 = new MoveToBoardFromBullpen(testLevel, 0, 11);
+		mtbfbp7 = new MoveToBoardFromBullpen(testLevel, 11, 0);
 		mtbfbp5 = new MoveToBoardFromBullpen(testLevel, 11, 11);
 
 	}
@@ -77,7 +77,7 @@ public class TestMoveToBoardFromBullpen {
 
 		mtbfbp5.hex.get().flipHorizontally();
 		mtbfbp5.level.select(mtbfbp5.hex.get());
-		fixSelected(mtbfbp2);
+		mtbfbp2.level.select(mtbfbp2.hex.get());
 		assertFalse(mtbfbp2.doMove());
 		assertFalse(mtbfbp5.doMove());
 		mtbfbp5.hex.get().flipHorizontally();
@@ -97,8 +97,5 @@ public class TestMoveToBoardFromBullpen {
 		// assertFalse(mtbfbp1.undo());
 	}
 
-	public void fixSelected(MoveToBoardFromBullpen m) {
-		m.level.select(m.hex.get());
-	}
 
 }

@@ -18,6 +18,7 @@ public class TestBoard {
 		Board board = new Board();
 		board.getTile(new Point(0, 0)).setPlayable(false);
 		BoardData data1 = new BoardData(board);
+		BoardData data = new BoardData(board);
 		testBoard = new Board(data1);
 		board.getTile(new Point(1, 0)).setPlayable(false);
 		BoardData data2 = new BoardData(board);
@@ -27,9 +28,15 @@ public class TestBoard {
 		data1.hashCode();
 		BoardData data3 = new BoardData();
 		Board testBoard2 = new Board(data3);
+		data3.equals(data3);
 		for (Tile t : testBoard2.getTiles()){
 			assertFalse(t.isPlayable());
 		}
+		BoardData data5 = null;
+		data3.equals(data5);
+		data3.equals(board);
+		data.equals(data1);
+		
 		
 		
 	}
