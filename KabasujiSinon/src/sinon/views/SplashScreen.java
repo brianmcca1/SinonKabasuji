@@ -41,7 +41,6 @@ public class SplashScreen extends JPanel {
 	 * Sets up all the information to be displayed on the SplashScreen.
 	 */
 	private void initializePanel() {
-		// Initialize the frame
 		this.setBounds(100, 100, 800, 600);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 196, 392, 0 };
@@ -51,7 +50,6 @@ public class SplashScreen extends JPanel {
 				Double.MIN_VALUE };
 		this.setLayout(gridBagLayout);
 
-		// Initialize the labels
 		JLabel lblNewLabel = new JLabel(labelText);
 		lblNewLabel.setForeground(new Color(51, 102, 255));
 		lblNewLabel.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 50));

@@ -49,14 +49,17 @@ public class LevelSelectButtonView extends JPanel {
 		this.level = level;
 		this.starView = new StarView(starImageFilePath, this.level);
 		imagePanel.add(starView);
-		
 		this.add(imagePanel);
 		JButton selectbtn = makeButton(Integer.toString(num));
 		
-		if(this.level.getLevelData().getUnlocked() == false)
+		if(this.level.getLevelData().getUnlocked() == false){
 			this.selectbtn.setEnabled(false);
-		else
+			this.selectbtn.setBackground(new Color(0, 0, 0));
+		}
+		else{
 			this.selectbtn.setEnabled(true);
+			selectbtn.setBackground(new Color(0, 100, 255));
+		}
 		
 		add(selectbtn);
 	}
@@ -70,8 +73,7 @@ public class LevelSelectButtonView extends JPanel {
 	 */
 	public JButton makeButton(String num) {
 		selectbtn = new JButton(num);
-		selectbtn.setBackground(new Color(0, 0, 255));
-		selectbtn.setForeground(new Color(127, 255, 0));
+		selectbtn.setForeground(new Color(255, 255, 255));
 		this.levelNum = Integer.parseInt(num);
 		return selectbtn;
 	}
