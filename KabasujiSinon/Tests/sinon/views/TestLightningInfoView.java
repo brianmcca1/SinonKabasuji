@@ -36,13 +36,14 @@ public class TestLightningInfoView {
     }
 
     @Test
-    public void testRegistersObservable() {
-        // Test that lightning is being observed.
+    public void testRendersTime() {
+        // Test that time is being rendered properly.
         LightningInfoView v = new LightningInfoView(false, level);
         level.update();
         assertTrue(v.timeLeftField.getText().contains("30"));
         level.tickTimeLeft();
         level.tickTimeLeft();
+        v.updateTimeLeft();
         assertTrue(v.timeLeftField.getText().contains("28"));
     }
 
