@@ -1,32 +1,56 @@
 package sinon.controllers;
 
-import java.awt.Point;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import sinon.models.Board;
+import sinon.models.BullPen;
 import sinon.models.Hexomino;
-import sinon.models.Level;
+import sinon.models.PuzzleLevel;
 import sinon.models.Tile;
-import sinon.models.data.LevelData;
-import sinon.models.data.LevelType.Types;
+import sinon.models.data.BullPenData;
+import sinon.views.InfoPanel;
 import sinon.views.MainView;
+import sinon.views.PuzzleInfoView;
 import sinon.views.TileView;
 
 public class TestTileController {
 
 	@Test
-	public void testBuilder() {
-		Level level = new Level(new LevelData(Types.PUZZLE));
-		Tile tile = new Tile(new Point(0, 0), true);
-		TileView tileView = new TileView(tile);
+	public void testBuilderPuzzle() {
+		PuzzleLevel level = new PuzzleLevel(new Board(), new BullPen(new BullPenData()), 10);
+
+		Tile tile1 = level.getBoard().getTile(0, 0);
+		Tile tile2 = level.getBoard().getTile(5, 5);
+		TileView tileView1 = new TileView(tile1);
+		TileView tileView2 = new TileView(tile2);
+		InfoPanel infoPanel = new InfoPanel();
+		PuzzleInfoView puzzleInfoView = new PuzzleInfoView(true, level);
 
 		Hexomino hex = Hexomino.getExampleHexomino();
-		MainView mainView = new MainView(level, null, null);
-		BuilderTileController tileController = new BuilderTileController(level, tileView, mainView);
+		level.getBullpen().addHexomino(hex);
+		MainView mainView = new MainView(level, infoPanel, puzzleInfoView);
+		BuilderTileController tileController1 = new BuilderTileController(level, tileView1, mainView);
+		BuilderTileController tileController2 = new BuilderTileController(level, tileView2, mainView);
 		level.select(hex);
+		assertTrue(level.hasSelected());
+		tileController1.handleLeftClick();
+		assertFalse(level.hasSelected());
+		assertTrue(tileController1.tile.hasHex());
 
-		// tileController.mousePressed(new MouseEvent(tileController, 0, 0, 0,
-		// ));
+		level.select(hex);
+		assertTrue(level.hasSelected());
+		tileController2.handleLeftClick();
+		assertFalse(level.hasSelected());
+		assertTrue(tileController2.tile.hasHex());
+
+		tileController2.handleLeftClick();
+		assertTrue(level.hasSelected());
+		assertEquals(level.getSelectedHexomino().get(), hex);
+
 	}
 
 }
