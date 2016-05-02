@@ -1,7 +1,6 @@
 package sinon.models;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.awt.Point;
@@ -52,45 +51,6 @@ public class HexominoTest {
                 hex.getNormalizedPoints());
     }
 
-    @Test
-    public void testNormalEquality() {
-        Hexomino hex1 = buildExampleHexomino();
-        Hexomino hex2 = buildExampleHexomino();
-        assertFalse(hex1.equals(hex2));
-    }
-
-    @Test
-    public void testVerticleFlipEquality() {
-        Hexomino hex1 = new Hexomino(0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5);
-        Hexomino hex2 = new Hexomino(0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5);
-
-        hex1.flipVertically();
-        hex2.flipVertically();
-
-        boolean value = hex1.equals(hex2);
-
-        // FIXME move to numberset test.
-        System.out.println(value);
-        assertEquals(
-                "Hexominos should still be equal after both flipping vertically",
-                hex1, hex2);
-    }
-
-    @Test
-    public void testDifferentAnchors() {
-        // FIXME move to numberset test.
-        Hexomino hex = buildExampleHexomino();
-        Hexomino shiftedAnchor = new Hexomino(0, -1, 0, 0, 0, 1, 0, 2, 0, 3, 1,
-                3);
-        assertEquals(hex, shiftedAnchor);
-        shiftedAnchor.rotateC();
-        shiftedAnchor.flipHorizontally();
-        hex.rotateC();
-        hex.flipHorizontally();
-        assertEquals(hex.getNormalizedPoints(),
-                shiftedAnchor.getNormalizedPoints());
-    }
-
     @Test(expected = IllegalArgumentException.class)
     public void testNullConstructor() {
 
@@ -132,7 +92,7 @@ public class HexominoTest {
         Hexomino hex = buildExampleHexomino();
         Tile t = new Tile(new Point(0, 0), true);
         assertTrue(hex.addToTile(t));
-        assertFalse(hex.addToTile(t));
+        assertTrue(t.hasHex());
     }
 
     @Test
@@ -148,26 +108,4 @@ public class HexominoTest {
         HexominoNumberSet hexominoNumberSet = new HexominoNumberSet(points);
         assertEquals(hex.getHexominoNumberSet(), hexominoNumberSet);
     }
-
-    @Test
-    public void testMakingWackyHexomino() {
-        // TODO not really sure what's going on here. Kinda too lazy to deal
-        // with this.
-        HexominoNumberSet s = NumberSetFactory.getByNumbers(0, 0, 0, 1, 0, 2,
-                -1, 1, 1, 0, 1, 1);
-
-        HexominoNumberSet sFlipped = NumberSetFactory.getByNumbers(0, 0, 0, 1,
-                0, 2, -1, 1, 1, 1, 1, 2);
-        // . x x
-        // x x x
-        // . x .
-        Hexomino h = new Hexomino(s);
-        h.flipVertically();
-        Hexomino hFlipped = new Hexomino(sFlipped);
-
-        assertEquals(h.getHexominoNumberSet().getNormalizedPoints(),
-                (hFlipped.getHexominoNumberSet().getNormalizedPoints()));
-
-    }
-
 }

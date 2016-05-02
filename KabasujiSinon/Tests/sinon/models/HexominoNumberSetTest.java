@@ -96,12 +96,41 @@ public class HexominoNumberSetTest {
     }
 
     @Test
+    public void testVerticleFlipEquality() {
+        HexominoNumberSet hex1 = NumberSetFactory.getByNumbers(0, 0, 0, 1, 0, 2,
+                0, 3, 0, 4, 0, 5);
+        HexominoNumberSet hex2 = NumberSetFactory.getByNumbers(0, 0, 0, 1, 0, 2,
+                0, 3, 0, 4, 0, 5);
+
+        hex1.flipVertically();
+        hex2.flipVertically();
+
+        assertEquals(
+                "Hexominos should still be equal after both flipping vertically",
+                hex1, hex2);
+    }
+
+    @Test
     public void testUnorderedEquality() {
         HexominoNumberSet hex1 = NumberSetFactory.getByNumbers(0, 0, 0, 1, 0, 2,
                 0, 3, 0, 4, 0, 5);
         HexominoNumberSet hex2 = NumberSetFactory.getByNumbers(0, 0, 0, 1, 0, 2,
                 0, 3, 0, 5, 0, 4);
         assertEquals(hex1, hex2);
+    }
+
+    @Test
+    public void testDifferentAnchors() {
+        HexominoNumberSet hex = buildExampleHexomino();
+        HexominoNumberSet shiftedAnchor = NumberSetFactory.getByNumbers(0, -1,
+                0, 0, 0, 1, 0, 2, 0, 3, 1, 3);
+        assertEquals(hex, shiftedAnchor);
+        shiftedAnchor.rotateC();
+        shiftedAnchor.flipHorizontally();
+        hex.rotateC();
+        hex.flipHorizontally();
+        assertEquals(hex.getNormalizedPoints(),
+                shiftedAnchor.getNormalizedPoints());
     }
 
     @Test(expected = IllegalArgumentException.class)
