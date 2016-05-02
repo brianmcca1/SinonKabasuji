@@ -2,10 +2,12 @@ package sinon.models;
 
 import java.awt.Color;
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+import sinon.models.data.BullPenData;
 import sinon.models.data.LevelType.Types;
 
 /**
@@ -29,6 +31,13 @@ public class ReleaseLevel extends Level {
 		this.levelData = level.getLevelData();
 		this.releaseSets = level.getLevelData().getLevelProperty().getReleaseSet();
 		((ReleaseBoard) this.getBoard()).addReleaseSet(this.releaseSets);
+	}
+
+	public static ReleaseLevel getExampleReleaseLevel() {
+		Board board = new Board();
+		BullPen bullpen = new BullPen(new BullPenData());
+		ArrayList<ReleaseNumber> releaseNumbers = new ArrayList<ReleaseNumber>();
+		return new ReleaseLevel(board, bullpen, releaseNumbers);
 	}
 
 	@Override
@@ -102,9 +111,10 @@ public class ReleaseLevel extends Level {
 	public ReleaseNumber getSelectedReleaseNumber() {
 		return this.selectedReleaseNumber.get();
 	}
-	
-    public boolean incrementMoves(){
-    	return false;
-    }
+
+	@Override
+	public boolean incrementMoves() {
+		return false;
+	}
 
 }
