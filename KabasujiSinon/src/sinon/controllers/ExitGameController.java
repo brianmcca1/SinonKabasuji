@@ -44,6 +44,7 @@ public class ExitGameController implements ActionListener {
 		}
 		
 		game.loadAllLevels();
+		game.determineUnlocking();
 		game.startNextPanel(this.game.getMainView(), new LevelSelectView(this.game));
 	}
 
