@@ -22,11 +22,14 @@ public class StarView extends JPanel{
 	private BufferedImage image;
 	/** JLabel on which the image is placed. */
 	public JLabel starLabel;
-	
+	/** Level to keep track of stars for. */
 	public Level level;
 	
+
 	/**
-	 * @param filePath File path to get the stars image from. MUST be in form "/images/x.y"
+	 * Creates the in-game stars.
+	 * @param filePath filePath File path to get the stars image from. MUST be in form "/images/x.y".
+	 * @param level Level to keep track of stars for. 
 	 */
 	public StarView(String filePath, Level level){
 		try {                

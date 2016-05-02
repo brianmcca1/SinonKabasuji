@@ -19,15 +19,21 @@ import sinon.models.Level;
 @SuppressWarnings("serial")
 public class LevelSelectButtonView extends JPanel {
 
+	/** Button to select the level. */
 	JButton selectbtn;
+	/** JPanel for the stars earned. */
 	JPanel imagePanel;
+	/** level number tied to this button. */
 	public int levelNum;
+	/** StarView that shows the earned stars for this level. */
 	StarView starView;
+	/** The level that this button interacts with. */
 	public Level level;
 	
 	
 	/**
-	 * Create the panel, takes the number of the level as an argument
+	 * @param num level number tied to this button.
+	 * @param level The level that this button interacts with.
 	 */
 	public LevelSelectButtonView(int num, Level level) {
 		setLayout(new GridLayout(2, 1, 0, 0));

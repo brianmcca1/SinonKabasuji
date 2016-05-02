@@ -11,16 +11,17 @@ import sinon.models.Level;
 import sinon.views.InfoPanel;
 import sinon.views.Observer;
 
+/**
+ * The JPanel that appears on the right side only in Game mode.
+ */
 @SuppressWarnings("serial")
 public class GameInfoView extends InfoPanel implements Observer {
 
 	/** Top level game object to manipulate. */
 	Level level;
-
-	/** Button objects that appear on the panel. */
+	/** Button to exit the level. */
 	JButton exitButton;
-	JButton restartButton;
-	JButton nextLevelButton;
+	/** This level's StarView to represent the earned stars. */
 	StarView starView;
 
 	/**
@@ -31,16 +32,6 @@ public class GameInfoView extends InfoPanel implements Observer {
 		super();
 
 		this.level = Objects.requireNonNull(l);
-
-		JButton btnRestart = new JButton("Restart level\r\n");
-		btnRestart.setPreferredSize(new Dimension(120, 30));
-		this.add(btnRestart);
-		this.restartButton = btnRestart;
-
-		JButton btnNextLevel = new JButton("Next Level\r\n");
-		btnNextLevel.setPreferredSize(new Dimension(120, 30));
-		this.add(btnNextLevel);
-		this.nextLevelButton = btnNextLevel;
 
 		JButton btnExit = new JButton("Exit Level\r\n");
 		btnExit.setPreferredSize(new Dimension(120, 30));
@@ -55,16 +46,6 @@ public class GameInfoView extends InfoPanel implements Observer {
 	/** @return Returns the JButton object for the exit button. */
 	public JButton getExitButton() {
 		return this.exitButton;
-	}
-
-	/** @return Returns the JButton object for the restart button. */
-	public JButton getRestartButton() {
-		return this.restartButton;
-	}
-
-	/** @return Returns the JButton object for the next level button. */
-	public JButton getNextLevelButton() {
-		return this.nextLevelButton;
 	}
 
 	/** @return Returns the StarView object. */
@@ -90,6 +71,11 @@ public class GameInfoView extends InfoPanel implements Observer {
 		this.repaint();
 		this.revalidate();
 	}
+
+	/**
+	 * Creates a new StarView to represent the number of stars this level has currently earned.
+	 * @param starsEarned The number of stars this level has currently earned.
+	 */
 	public void setStars(int starsEarned) {
 		StarView sv = new StarView(FileHandler.determineFileStringForStars(starsEarned), this.level);
 		this.addNewStarView(sv);

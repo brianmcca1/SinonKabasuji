@@ -10,6 +10,9 @@ import javax.swing.JPanel;
 import sinon.controllers.LevelStartController;
 import sinon.main.Game;
 
+/**
+ * Creates the view that holds all of the level select buttons and stars earned for that level.
+ */
 @SuppressWarnings("serial")
 public class LevelSelectView extends JPanel {
 	
@@ -19,7 +22,7 @@ public class LevelSelectView extends JPanel {
     Game game;
 
     /**
-     * Create the application.
+     * @param g overall Game.
      */
     public LevelSelectView(Game g) {
         this.game = g;
@@ -27,7 +30,7 @@ public class LevelSelectView extends JPanel {
     }
 
     /**
-     * Initialize the contents of the frame.
+     * Creates all the necessary LevelSelectButtonViews and sets controllers to them.
      */
     private void initialize() {
         this.setBackground(new Color(135, 206, 235));
@@ -60,6 +63,10 @@ public class LevelSelectView extends JPanel {
         titlePanel.add(lblLevelSelect);
     }
 
+    /**
+     * @param index location of button.
+     * @return LevelSelectButtonView at location index.
+     */
     public LevelSelectButtonView getButton(int index) {
         return this.buttonPanels[index];
     }

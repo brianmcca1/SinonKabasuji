@@ -12,31 +12,49 @@ import sinon.controllers.BuilderSaveController;
 import sinon.main.Builder;
 
 /**
- * The BuilderMenuBar is the JMenuBar that is on the top of the Builder Frame.
+ * A JMenuBar that is on the top of the Builder Frame.
  */
 @SuppressWarnings("serial")
 public class BuilderMenuBar extends JMenuBar {
 
+	/** Top-level File menu. */
 	public JMenu mnFile;
+	/** Top-level Edit menu. */
 	public JMenu mnEdit;
-	public JMenu mntmNewLevel;
-	public JMenuItem mntmOpen;
-	public JMenuItem mntmSave;
-	public JMenuItem mntmSaveAs;
+	/** New Level option. */
+	public JMenu mntmNewLevel;	
+	/** New puzzle level option. */
 	public JMenuItem mntmNewPuzzleLevel;
+	/** New lightning level option. */
 	public JMenuItem mntmNewLightningLevel;
+	/** New release level option. */
 	public JMenuItem mntmNewReleaseLevel;
+	/** Open level option. */
+	public JMenuItem mntmOpen;
+	/** Save level option. */
+	public JMenuItem mntmSave;
+	/** Save level As option. */
+	public JMenuItem mntmSaveAs;
+	/** Undo option. */
 	public JMenuItem mntmUndo;
+	/** Redo option. */
 	public JMenuItem mntmRedo;
-	
+	/** Overall Builder. */
 	private Builder builder;
 
+	/**
+	 * Creates the BuilderMenuBar.
+	 * @param b Overall Builder.
+	 */
 	public BuilderMenuBar(Builder b) {
 		this.builder = b;
 		initFileMenu();
 		initEditMenu();
 	}
 
+	/**
+	 * Sets up all necessary options in the Edit menu.
+	 */
 	private void initEditMenu() {
 		mnEdit = new JMenu("Edit");
 		this.add(mnEdit);
@@ -51,7 +69,10 @@ public class BuilderMenuBar extends JMenuBar {
 		mntmRedo.setEnabled(false);
 		
 	}
-
+	 
+	/**
+	 * Sets up all necessary options in the File menu and applies their controllers.
+	 */
 	private void initFileMenu() {
 		mnFile = new JMenu("File");
 		mntmOpen = new JMenuItem("Open");
