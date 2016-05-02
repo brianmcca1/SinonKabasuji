@@ -180,7 +180,7 @@ public class Level implements Observable {
      */
 
     public void undo() {
-        int sizePre = undo.size();
+    	int sizePre = undo.size();
         if (undo.empty())
             return;
         Move move;

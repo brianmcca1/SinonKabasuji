@@ -29,6 +29,9 @@ public class AddHint extends Move{
 		level.getBoard().update();
 		return true;
 	}
+	
+
+	
 
 
 }

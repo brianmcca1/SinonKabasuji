@@ -220,10 +220,7 @@ public class Board implements Observable {
     public void removeHexomino(Hexomino hex) {
         for (Tile t : getTiles()) {
             if (t.getHexomino().isPresent()) {
-                if (t.getHexomino().get().getID().equals(hex.getID())) { // TODO
-                    // is
-                    // this
-                    // correct
+                if (t.getHexomino().get().getID().equals(hex.getID())) { 
                     t.removeHex();
                 }
             }
