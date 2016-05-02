@@ -13,8 +13,8 @@ import sinon.models.data.LevelData;
 import sinon.moves.MoveToBoardFromBullpen;
 import sinon.serial.Deserializer;
 
-public class PuzzleIntegrationTest {
-	PuzzleLevel level;
+public class ReleaseIntegrationTest {
+	ReleaseLevel level;
 	int movesLeft;
 	private ModelIntegrationTest m;
 
@@ -42,11 +42,11 @@ public class PuzzleIntegrationTest {
 		assertEquals(this.level.countStars(), 3);
 	}
 
-	private PuzzleLevel openLevel() {
-		File levelFile = new File("testpuzzle");
+	private ReleaseLevel openLevel() {
+		File levelFile = new File("testrelease");
 		Deserializer deserializer = new Deserializer(levelFile);
 		LevelData levelData = deserializer.deserializeFile();
-		PuzzleLevel level = new PuzzleLevel(new Level(levelData));
+		ReleaseLevel level = new ReleaseLevel(new Level(levelData));
 		return level;
 	}
 }
