@@ -12,6 +12,98 @@ import sinon.models.data.HexominoCode;
 
 public class HexominoNumberSetTest {
 
+    /**
+     * 
+     * @return {[0,0],[0,1],[0,2],[0,3],[0,4],[1,4]}
+     */
+    private static HexominoNumberSet buildExampleHexomino() {
+        return NumberSetFactory.getByNumbers(0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 1,
+                4);
+    }
+
+    @Test
+    public void testFlipHorizontally() {
+        HexominoNumberSet hex = buildExampleHexomino();
+        hex.flipHorizontally();
+        HexominoNumberSet expectedFlippedHex = NumberSetFactory.getByNumbers(0,
+                0, 0, -1, 0, -2, 0, -3, 0, -4, 1, -4);
+        assertEquals(expectedFlippedHex, hex);
+    }
+
+    @Test
+    public void testBothFlips() {
+        HexominoNumberSet hex = buildExampleHexomino();
+        hex.flipHorizontally();
+        HexominoNumberSet expectedFlippedHex = NumberSetFactory.getByNumbers(0,
+                0, 0, -1, 0, -2, 0, -3, 0, -4, 1, -4);
+        assertEquals(expectedFlippedHex, hex);
+    }
+
+    @Test
+    public void testRotateC() {
+        HexominoNumberSet hex = buildExampleHexomino();
+        hex.rotateC();
+        HexominoNumberSet expectedRotatedHex = NumberSetFactory.getByNumbers(0,
+                0, 1, 0, 2, 0, 3, 0, 4, 0, 4, -1);
+        assertEquals(expectedRotatedHex, hex);
+    }
+
+    @Test
+    public void testRotateCC() {
+        HexominoNumberSet hex = buildExampleHexomino();
+        hex.rotateCC();
+        HexominoNumberSet expectedRotatedHex = NumberSetFactory.getByNumbers(0,
+                0, -1, 0, -2, 0, -3, 0, -4, 0, -4, 1);
+        assertEquals(expectedRotatedHex, hex);
+    }
+
+    @Test
+    public void testFlippingEquailityWithOutOfOrderConstructor() {
+        HexominoNumberSet hex1 = NumberSetFactory.getByNumbers(0, 0, 0, 1, 0, 2,
+                0, 3, 0, 4, 0, 5);
+        HexominoNumberSet hex2 = NumberSetFactory.getByNumbers(0, 0, 0, 1, 0, 2,
+                0, 3, 0, 5, 0, 4);
+
+        assertEquals("Hexominos should be equal before flipping", hex1, hex2);
+        hex1.flipHorizontally();
+        hex1.flipHorizontally();
+        assertEquals(
+                "Hexominos should still be equal after flipping horizontally",
+                hex1, hex2);
+        hex2.flipVertically();
+        hex2.flipHorizontally();
+        hex1.flipHorizontally();
+        hex1.flipVertically();
+        assertEquals(
+                "Hexominos should still be equal after flipping twice in different orders",
+                hex1, hex2);
+    }
+
+    @Test
+    public void testHorizontalFlipEquality() {
+        HexominoNumberSet hex1 = NumberSetFactory.getByNumbers(0, 0, 0, 1, 0, 2,
+                0, 3, 0, 4, 0, 5);
+        HexominoNumberSet hex2 = NumberSetFactory.getByNumbers(0, 0, 0, 1, 0, 2,
+                0, 3, 0, 4, 0, 5);
+
+        // FIXME move to numberset.
+        hex1.flipHorizontally();
+        hex2.flipHorizontally();
+
+        assertEquals(
+                "Hexominos should still be equal after both flipping horizontally",
+                hex1, hex2);
+    }
+
+    @Test
+    public void testUnorderedEquality() {
+        HexominoNumberSet hex1 = NumberSetFactory.getByNumbers(0, 0, 0, 1, 0, 2,
+                0, 3, 0, 4, 0, 5);
+        HexominoNumberSet hex2 = NumberSetFactory.getByNumbers(0, 0, 0, 1, 0, 2,
+                0, 3, 0, 5, 0, 4);
+        assertEquals(hex1, hex2);
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void testCreateNullSet() {
         List<Point> points = null;
