@@ -23,6 +23,7 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer{
 	public JTextField movesLeftField;
 	public PuzzleLevel level;
 	public Game game;
+	private boolean wasCalled;
 
 	/**
 	 * Used by Builder only.
@@ -65,9 +66,11 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer{
 		this.add(movesLeftField);
 		
 		this.level = level;
-		this.level.registerObserver(this);
-		
+	
 		this.game = g;
+		
+		this.level.registerObserver(this);
+		wasCalled = false;
 	}
 
 	/**
@@ -89,7 +92,10 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer{
 		if(this.game != null){
 			this.movesLeftField.setText(((Integer) level.getMovesLeft()).toString());
 		
+			if(wasCalled) return;
 			if(this.level.getMovesLeft() <= 0){
+				wasCalled = true;
+				System.out.println("ENTERED*************************");
 				FileHandler.setStarsOnExit(this.game.getLevel());
 				this.game.loadAllLevels();
 				this.game.determineUnlocking();
