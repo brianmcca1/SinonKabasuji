@@ -54,7 +54,7 @@ public class SplashScreen extends JPanel {
 		// Initialize the labels
 		JLabel lblNewLabel = new JLabel(labelText);
 		lblNewLabel.setForeground(new Color(51, 102, 255));
-		lblNewLabel.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 60));
+		lblNewLabel.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 50));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
 		gbc_lblNewLabel.fill = GridBagConstraints.VERTICAL;
