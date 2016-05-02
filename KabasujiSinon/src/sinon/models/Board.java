@@ -192,7 +192,9 @@ public class Board implements Observable {
      * 
      */
     public void addHexomino(Point anchorLocation, Hexomino hex) {
-        HexominoNumberSet hexominoNumberSet = hex.getHexominoNumberSet();
+        if (!canAddHexomino(anchorLocation, hex))
+        	throw new IllegalArgumentException();
+    	HexominoNumberSet hexominoNumberSet = hex.getHexominoNumberSet();
 
         hexominoLocations.put(hex, anchorLocation.getLocation());
 
