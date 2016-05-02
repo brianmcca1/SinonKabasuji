@@ -63,9 +63,9 @@ public class Tile implements Observable {
 		// FIXME probably shouldn't be throwing an error but maybe just
 		// returning false.
 		if (this.hex.isPresent()) {
-			throw new RuntimeException("Tile already contains a Hexomino");
+			throw new IllegalArgumentException("Tile already contains a Hexomino");
 		} else if (this.playable == false) {
-			throw new RuntimeException("Tile is not playable");
+			throw new IllegalArgumentException("Tile is not playable");
 		}
 
 		this.hex = Optional.of(hex);

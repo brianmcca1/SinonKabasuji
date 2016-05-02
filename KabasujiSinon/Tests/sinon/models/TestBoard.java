@@ -12,12 +12,13 @@ public class TestBoard {
 	@Test
 	public void testAddHex() {
 		Hexomino hex = new Hexomino(0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 1, 4);
+		Hexomino hex1 = new Hexomino(0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 1, 4);
 		Board board = new Board();
 		assertFalse(board.hasHex(1, 1));
 		assertTrue(board.canAddHexomino(new Point(1, 1), hex));
 		board.addHexomino(new Point(1, 1), hex);
 		assertTrue(board.hasHex(1, 1));
-		assertFalse(board.canAddHexomino(new Point(1, 1), hex));
+		assertFalse(board.canAddHexomino(new Point(1, 1), hex1));
 		board.removeHexomino(hex);
 		assertFalse(board.hasHex(1, 1));
 	}
