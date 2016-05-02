@@ -14,7 +14,9 @@ import sinon.models.BullPen;
 import sinon.models.Level;
 
 /**
- * This is the boundary object that is in charge of displaying the bullpen.
+ * The boundary class that is associated with the BullPen Entity class.
+ * It is a JPanel therefore it can be drawn (or added to) the main
+ * Kabasuji JFrame graphic object.
  * 
  * @author kartik
  *
@@ -22,12 +24,18 @@ import sinon.models.Level;
 @SuppressWarnings("serial")
 public class BullpenView extends JPanel implements StashView, Observer {
 
+	/** This is the scrolling pane that is responsible for the scrolling functionality in the bullpen. */
     public JScrollPane scrollPanel;
+    
+    /** This is the JPanel that holds all the contents of the bullpen. */
     public JPanel contentPanel;
 
     HexViewStash stash;
+    
+    /**The bullpen model that is associated with this class. */
     private BullPen bullpen;
 
+    /** The main constructor that is used to construct a bullpenView. */
     public BullpenView(Level level) {
         Objects.requireNonNull(level);
         this.bullpen = level.getBullpen();
@@ -40,6 +48,7 @@ public class BullpenView extends JPanel implements StashView, Observer {
         this.validate();
     }
 
+    /** Helper function to initialize the scroll panel in the bullpen. */
     private void initBullpenViewScrollPanel() {
         scrollPanel = new JScrollPane();
         JScrollBar scrollBar = new JScrollBar(JScrollBar.HORIZONTAL);
@@ -51,6 +60,7 @@ public class BullpenView extends JPanel implements StashView, Observer {
         scrollPanel.setViewportView(contentPanel);
     }
 
+    /**helper function called from the constructor to initialize the content panel graphic. */
     private void initContentPanel() {
         this.contentPanel = new JPanel();
         contentPanel.setBackground(Color.gray);
