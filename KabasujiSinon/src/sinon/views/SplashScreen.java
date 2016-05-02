@@ -10,11 +10,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.Timer;
-
+import javax.swing.ImageIcon;
+/**
+ * A SplashScreen for both the Game and Builder applications.
+ * @author Kyle
+ */
 @SuppressWarnings("serial")
 public class SplashScreen extends JPanel {
+	
+	/** Timer for the SplashScreen to exist. */ 
 	public static Timer timer;
+	/** Loading progress displayed on the SplashScreen. */
 	public static JProgressBar progressBar;
+	/** Used to count the load progress for the progressBar. */
 	public static int count;
 
 	/** "Kabasuji" or "Kabasuji Builder" */
@@ -29,6 +37,9 @@ public class SplashScreen extends JPanel {
 		initializePanel();
 	}
 
+	/**
+	 * Sets up all the information to be displayed on the SplashScreen.
+	 */
 	private void initializePanel() {
 		// Initialize the frame
 		this.setBounds(100, 100, 800, 600);
@@ -43,13 +54,21 @@ public class SplashScreen extends JPanel {
 		// Initialize the labels
 		JLabel lblNewLabel = new JLabel(labelText);
 		lblNewLabel.setForeground(new Color(51, 102, 255));
-		lblNewLabel.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 50));
+		lblNewLabel.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 60));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
 		gbc_lblNewLabel.fill = GridBagConstraints.VERTICAL;
 		gbc_lblNewLabel.gridx = 1;
 		gbc_lblNewLabel.gridy = 1;
 		this.add(lblNewLabel, gbc_lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(SplashScreen.class.getResource("/images/wpi.png")));
+		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 0);
+		gbc_lblNewLabel_1.gridx = 1;
+		gbc_lblNewLabel_1.gridy = 2;
+		add(lblNewLabel_1, gbc_lblNewLabel_1);
 
 		JLabel lblGroupSinonSoftware = new JLabel("Software Engineering D2016");
 		lblGroupSinonSoftware.setFont(new Font("Century Gothic", Font.BOLD, 25));
@@ -68,7 +87,7 @@ public class SplashScreen extends JPanel {
 		this.add(lblSinon, gbc_lblSinon);
 
 		JLabel lblKyleSposato = new JLabel("Kyle Sposato");
-		lblKyleSposato.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblKyleSposato.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GridBagConstraints gbc_lblKyleSposato = new GridBagConstraints();
 		gbc_lblKyleSposato.insets = new Insets(0, 0, 5, 0);
 		gbc_lblKyleSposato.gridx = 1;
@@ -76,7 +95,7 @@ public class SplashScreen extends JPanel {
 		this.add(lblKyleSposato, gbc_lblKyleSposato);
 
 		JLabel lblKartik = new JLabel("Kartik Thooppal Vasu");
-		lblKartik.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblKartik.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GridBagConstraints gbc_lblKartik = new GridBagConstraints();
 		gbc_lblKartik.insets = new Insets(0, 0, 5, 0);
 		gbc_lblKartik.gridx = 1;
@@ -84,7 +103,7 @@ public class SplashScreen extends JPanel {
 		this.add(lblKartik, gbc_lblKartik);
 
 		JLabel lblJosh = new JLabel("Josh Desmond");
-		lblJosh.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblJosh.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GridBagConstraints gbc_lblJosh = new GridBagConstraints();
 		gbc_lblJosh.insets = new Insets(0, 0, 5, 0);
 		gbc_lblJosh.gridx = 1;
@@ -92,7 +111,7 @@ public class SplashScreen extends JPanel {
 		this.add(lblJosh, gbc_lblJosh);
 
 		JLabel lblBrian = new JLabel("Brian McCarthy");
-		lblBrian.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblBrian.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GridBagConstraints gbc_lblBrian = new GridBagConstraints();
 		gbc_lblBrian.insets = new Insets(0, 0, 5, 0);
 		gbc_lblBrian.gridx = 1;
@@ -100,7 +119,7 @@ public class SplashScreen extends JPanel {
 		this.add(lblBrian, gbc_lblBrian);
 
 		JLabel lblPeter = new JLabel("Peter DeBrine");
-		lblPeter.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblPeter.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GridBagConstraints gbc_lblPeter = new GridBagConstraints();
 		gbc_lblPeter.insets = new Insets(0, 0, 5, 0);
 		gbc_lblPeter.gridx = 1;
