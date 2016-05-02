@@ -24,7 +24,7 @@ public class FlipVerticalMove extends BullPenMove {
 
 	@Override
 	public boolean undo() {
-		nullCheck();
+		this.nullCheck();
 
 		hex.flipVertically();
 		return true;

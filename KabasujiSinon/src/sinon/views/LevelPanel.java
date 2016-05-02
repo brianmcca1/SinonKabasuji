@@ -7,6 +7,13 @@ import java.awt.Insets;
 
 import javax.swing.JPanel;
 
+/** This is the left part of the screen that is common to both
+ * builder and game. It is used to render the bullpenView and the 
+ * boardView. 
+ * 
+ * @author kartik
+ *
+ */
 public class LevelPanel extends JPanel {
 
 	private static final long serialVersionUID = -4267458674387942331L;

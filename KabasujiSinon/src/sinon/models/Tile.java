@@ -57,19 +57,18 @@ public class Tile implements Observable {
 	 * @param hex
 	 *            The Hexomino to be added. Can't be null.
 	 */
-	public void addHexomino(Hexomino hex) {
+	public boolean addHexomino(Hexomino hex) {
 		if (hex == null)
 			throw new NullPointerException();
-		// FIXME probably shouldn't be throwing an error but maybe just
-		// returning false.
-		if (this.hex.isPresent()) {
-			throw new IllegalArgumentException("Tile already contains a Hexomino");
-		} else if (this.playable == false) {
-			throw new IllegalArgumentException("Tile is not playable");
+		
+		
+		else if (this.canAddHex(hex) == false) {
+			return false;
 		}
 
 		this.hex = Optional.of(hex);
 		update();
+		return true;
 	}
 
 	/**

@@ -131,8 +131,7 @@ public class Hexomino implements Observable {
         if (t.canAddHex(this) == false) {
             return false;
         }
-        t.addHexomino(this);
-        return true;
+        return t.addHexomino(this);
     }
 
     /**

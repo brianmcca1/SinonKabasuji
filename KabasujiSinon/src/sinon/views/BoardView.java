@@ -16,7 +16,10 @@ import sinon.models.Board;
 import sinon.models.Hint;
 
 /**
- * View in charge of displaying the board
+ * Class that is linked to the Board Entity. It maintains
+ * the information required for representing a board class
+ * in the Kabasuji class JFrame. It extends JPanel 
+ * which makes it drawable on JFrame.
  * 
  * @author Brian
  *
@@ -24,10 +27,22 @@ import sinon.models.Hint;
 public class BoardView extends JPanel implements Observer {
 
     private static final long serialVersionUID = -5335188988716751398L;
+    
+    /** This is the panel on which the tiles are drawn. */
     JPanel boardPanel;
+    
+    /** This is the board entity class that this class is associated with. */
     private Board board;
+    
+    /** This is the collection of tile views that the board view must contain. */
     Collection<TileView> tileViews;
 
+    /**
+     * Constructor for BoardView. It only takes in a board
+     * and extracts all other information from the Board object
+     * that is passed in.
+     * @param board
+     */
     public BoardView(Board board) {
         this.board = Objects.requireNonNull(board);
 
@@ -48,12 +63,13 @@ public class BoardView extends JPanel implements Observer {
     }
 
     /**
-     * Initialize a TileView
+     * Initialize a TileView. This is a helper function that is
+     * called from the constructor of this class.
      * 
      * @param row
-     *            The row the tile is on
+     *            The row the tile is on.
      * @param column
-     *            The column the tile is on
+     *            The column the tile is on.
      */
     private void initializeTile(int row, int column) {
         TileView tileView = new TileView(board.getTile(row, column));
@@ -70,9 +86,9 @@ public class BoardView extends JPanel implements Observer {
     }
 
     /**
-     * Gives the collection of all TileViews that make up the BoardView
+     * Gives the collection of all TileViews that make up the BoardView.
      * 
-     * @return The TileViews as a Collection
+     * @return The TileViews as a Collection.
      */
     public Collection<TileView> getTileViews() {
         return tileViews;
@@ -86,6 +102,12 @@ public class BoardView extends JPanel implements Observer {
         }
     }
 
+    /**
+     * Function that updates all the tileViews that this 
+     * BoardView class has. It is called from the updated()
+     * method of this class when a change is made to the model
+     * so that the view gets repainted accordingly.
+     */
     public void updateHints() {
         List<Hint> hints = this.board.getHints();
         List<Point> absoluteHintLocations = new LinkedList<Point>();

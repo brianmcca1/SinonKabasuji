@@ -17,12 +17,12 @@ public abstract class BullPenMove extends Move {
 	Hexomino hex;
 
 	/**
-	 * TODO
+	 * Throws a Null Pointer Exception if the hex is null
 	 */
 	
 	public void nullCheck() {
-		if (hex == null) { // TODO move to super class this logic.
-			// https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
+		if (hex == null) { // 
+			System.out.println(hex);
 			throw new NullPointerException();
 		}
 	}

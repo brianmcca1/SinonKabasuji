@@ -26,8 +26,9 @@ public abstract class BoardMove extends Move {
 	public abstract boolean valid();
 	
 	/**
-	 * TODO
+	 * Throws a Null Pointer Exception if the hex is null
 	 */
+	
 	public void nullCheck() {
 		if (hex == null) { 
 			throw new NullPointerException();

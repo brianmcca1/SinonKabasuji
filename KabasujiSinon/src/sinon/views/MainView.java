@@ -24,14 +24,23 @@ public class MainView extends JPanel {
      * is on the left side of the screen.
      */
     private LevelPanel levelPanel;
+    
     /** Contains GridView and the Optional ReleaseButtonView. */
     private JPanel gameAreaPanel;
+    
+    /** This is the field responsible for holding information specific to each type of level. */
     private LevelTypeInfoView levelTypeInfoView;
+    
     /** BankView/GameInfoView. */
     InfoPanel infoPanel;
+    
     /** The level associated with this MainView. */
     Level level;
+    
+    /** The bullpenView object that mainView uses to render the bullpen. */
     BullpenView bullpenView;
+    
+    /** The BoardView object that mainView uses to render the board. */
     private BoardView boardView;
 
     /**
@@ -120,6 +129,10 @@ public class MainView extends JPanel {
         return this.levelTypeInfoView;
     }
 
+    /**
+     * Returns the boardView that exists in the mainView. 
+     * @return This MainView's BoardView.
+     */
     public BoardView getBoardView() {
         return this.boardView;
     }

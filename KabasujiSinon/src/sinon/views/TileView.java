@@ -1,6 +1,7 @@
 package sinon.views;
 
 import java.awt.Color;
+import java.awt.Point;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -35,82 +36,86 @@ public class TileView extends JPanel implements Observer {
 	 * @param tile
 	 *            Tile to create a view for.
 	 */
-	public TileView(Tile tile) {
-		this.tile = tile;
-		this.color = Color.white;
-		this.setBackground(color);
-		this.row = tile.getLocation().x;
-		this.column = tile.getLocation().y;
-		this.tile.registerObserver(this);
-		this.isShadow = false;
-		this.isHint = false;
+    public TileView(Tile tile) {
+        this.tile = tile;
+        this.color = Color.white;
+        this.setBackground(color);
+        this.row = tile.getLocation().x;
+        this.column = tile.getLocation().y;
+        this.tile.registerObserver(this);
+        this.isShadow = false;
+        this.isHint = false;
 
-		if (tile instanceof ReleaseTile) {
-			ReleaseTile releaseTile = (ReleaseTile) tile;
-			if (releaseTile.hasReleaseNumber()) {
-				ReleaseNumber releaseNumber = releaseTile.getReleaseNumber().get();
-				JLabel number = new JLabel(Integer.toString(releaseNumber.getNumber()));
+        if (tile instanceof ReleaseTile) {
+            ReleaseTile releaseTile = (ReleaseTile) tile;
+            if (releaseTile.hasReleaseNumber()) {
+                ReleaseNumber releaseNumber = releaseTile.getReleaseNumber()
+                        .get();
+                JLabel number = new JLabel(
+                        Integer.toString(releaseNumber.getNumber()));
 
-				if (releaseNumber.getColor() == Color.YELLOW) {
-					number.setForeground(Color.BLUE);
-				} else {
-					number.setForeground(releaseNumber.getColor());
-				}
-				this.add(number);
-			}
-		}
-	}
+                if (releaseNumber.getColor() == Color.YELLOW) {
+                    number.setForeground(Color.BLUE);
+                } else {
+                    number.setForeground(releaseNumber.getColor());
+                }
+                this.add(number);
+            }
+        }
+    }
 
-	/**
-	 * Sets this tiles color to the proper color based on the tile it's viewing,
-	 * and repaints the panel.
-	 */
-	protected void redraw() {
-		assert this.tile != null;
+    /**
+     * Sets this tiles color to the proper color based on the tile it's viewing,
+     * and repaints the panel.
+     */
+    protected void redraw() {
+        assert this.tile != null;
 
-		if (!tile.isPlayable()) {
-			this.setColor(color.black);
-		} else {
-			this.setColor(color.WHITE);
-		}
+        if (!tile.isPlayable()) {
+            this.setColor(color.black);
+        } else {
+            this.setColor(color.WHITE);
+        }
 
-		if (tile instanceof ReleaseTile) {
-			ReleaseTile releaseTile = (ReleaseTile) tile;
-			if (releaseTile.hasReleaseNumber()) {
-				ReleaseNumber releaseNumber = releaseTile.getReleaseNumber().get();
-				JLabel number = new JLabel(Integer.toString(releaseNumber.getNumber()));
-				if (releaseNumber.getColor() == Color.YELLOW) {
-					number.setForeground(Color.ORANGE);
-				} else {
-					number.setForeground(releaseNumber.getColor());
-				}
-				this.add(number);
-			} else {
-				this.removeAll();
-			}
-		}
+        if (tile instanceof ReleaseTile) {
+            ReleaseTile releaseTile = (ReleaseTile) tile;
+            if (releaseTile.hasReleaseNumber()) {
+                ReleaseNumber releaseNumber = releaseTile.getReleaseNumber()
+                        .get();
+                JLabel number = new JLabel(
+                        Integer.toString(releaseNumber.getNumber()));
+                if (releaseNumber.getColor() == Color.YELLOW) {
+                    number.setForeground(Color.ORANGE);
+                } else {
+                    number.setForeground(releaseNumber.getColor());
+                }
+                this.add(number);
+            } else {
+                this.removeAll();
+            }
+        }
 
-		if (tile.hasHex()) {
-			this.setColor(tile.getHexomino().get().getColor());
-		}
+        if (tile.hasHex()) {
+            this.setColor(tile.getHexomino().get().getColor());
+        }
 
-		else if (tile instanceof LightningTile) {
-			if (((LightningTile) tile).isLightninged()) {
-				this.setColor(Color.CYAN);
-			}
-		}
+        else if (tile instanceof LightningTile) {
+            if (((LightningTile) tile).isLightninged()) {
+                this.setColor(Color.CYAN);
+            }
+        }
 
-		if (this.isShadow) {
-			this.setColor(color.darker());
-		}
+        if (this.isShadow) {
+            this.setColor(color.darker());
+        }
 
-		if (this.isHint) {
-			this.setColor(color.darker());
-		}
+        if (this.isHint) {
+            this.setColor(color.darker());
+        }
 
-		this.repaint();
-		this.revalidate();
-	}
+        this.repaint();
+        this.revalidate();
+    }
 
 	/**
 	 * Get the row this tile is on.
@@ -139,16 +144,16 @@ public class TileView extends JPanel implements Observer {
 		return this.tile;
 	}
 
-	/**
-	 * Set the color of the tile
-	 * 
-	 * @param c
-	 *            The color to set
-	 */
-	public void setColor(Color c) {
-		this.color = c;
-		this.setBackground(c);
-	}
+    /**
+     * Set the color of the tile
+     * 
+     * @param c
+     *            The color to set
+     */
+    public void setColor(Color c) {
+        this.color = c;
+        this.setBackground(c);
+    }
 
 	/**
 	 * Sets a shadow on this TileView.
@@ -169,9 +174,13 @@ public class TileView extends JPanel implements Observer {
 		this.isHint = isHint;
 	}
 
-	@Override
-	public void updated() {
-		this.redraw();
-	}
+    @Override
+    public void updated() {
+        this.redraw();
+    }
+
+    public Point getPosition() {
+        return new Point(this.row, this.column);
+    }
 
 }
