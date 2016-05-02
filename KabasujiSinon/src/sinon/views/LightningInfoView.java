@@ -11,7 +11,8 @@ import sinon.models.LightningLevel;
 import sinon.views.game.LevelSelectView;
 
 /**
- * The InfoView for a lightning level
+ * Class that encapsulates the specific graphic elements
+ * that are exclusive to a lightning level like the timeLeft.
  * 
  * @author Brian
  *
@@ -19,11 +20,24 @@ import sinon.views.game.LevelSelectView;
 public class LightningInfoView extends LevelTypeInfoView {
 
 	private static final long serialVersionUID = 6687905039046766060L;
+	
+	/** The label that describes the graphic. */
 	public JLabel infoLabel;
+	
+	/** Text field for displaying/inputting the time left. */
 	public JTextField timeLeftField;
+	
+	/** Lightning level object associated with this view. */
 	public LightningLevel level;
+	
+	/** The game that is associated with this particular infoView. */
 	public Game game;
 
+	/** Constructor for lightning infoView. It has to take in a boolean
+	 * indicating whether it is editable and a lightning level model object.
+	 * @param editable
+	 * @param level
+	 */
 	public LightningInfoView(boolean editable, LightningLevel level) {
 		this.level = level;
 		setLayout(new GridLayout(1, 1));
@@ -40,6 +54,12 @@ public class LightningInfoView extends LevelTypeInfoView {
 		this.add(timeLeftField);
 	}
 
+	/** This is constructor used for instantiating the lightning info View
+	 * in a game. 
+	 * @param g The game that is associated with this particular infoView.
+	 * @param time The time that is left in the level.
+	 * @param lightningLevel The lightning level class.
+	 */
 	public LightningInfoView(Game g, int time, LightningLevel lightningLevel) {
 		setLayout(new GridLayout(1, 1));
 		this.infoLabel = new JLabel("Time:");

@@ -91,11 +91,13 @@ public class HexViewStash implements Observer {
 		return hexominosList;
 	}
 
+	/** Setting the registrator of this class. */
 	public void setRegistrator(HexStashRegistrator registrator) {
 		Objects.requireNonNull(registrator);
 		this.registrator = Optional.of(registrator);
 	}
 
+	/** Register all the hexominos with appropriate registrators. */
 	private void registerHexominos() {
 		assert this.hexominosList != null;
 		if (!this.registrator.isPresent())
@@ -106,6 +108,7 @@ public class HexViewStash implements Observer {
 		}
 	}
 
+	/** Refresh all the views. Called after a change has been made. */
 	public void refresh() {
 		if (this.contentPanel == null) {
 			throw new NullPointerException("content panel was null when adding Hexominos.");
