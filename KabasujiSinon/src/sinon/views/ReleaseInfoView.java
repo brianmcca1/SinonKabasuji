@@ -104,13 +104,11 @@ public class ReleaseInfoView extends LevelTypeInfoView implements Observer {
 
 	private JButton getButton(ReleaseNumber releaseNumber) {
 
-		System.out.println("Release Number color: " + releaseNumber.getColor().toString());
 		for (JButton j : this.buttons) {
 			if (j.getText().equals(Integer.toString(releaseNumber.getNumber()))) {
-				System.out.println("Found number");
 
 				if (j.getForeground().equals(releaseNumber.getColor())) {
-					System.out.println("Found color");
+
 					return j;
 				} else if (j.getForeground().equals(Color.ORANGE) && releaseNumber.getColor().equals(Color.YELLOW)) {
 					return j;
