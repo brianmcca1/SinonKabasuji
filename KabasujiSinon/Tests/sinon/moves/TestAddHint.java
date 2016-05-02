@@ -19,11 +19,6 @@ import sinon.models.PuzzleLevel;
 public class TestAddHint {
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	public void testBasicHint() {
 		Board board = new Board() ;
 		List<Hexomino> hexList = new LinkedList<Hexomino> ();
@@ -35,6 +30,6 @@ public class TestAddHint {
 		AddHint.doMove();
 		assertEquals(board.getHints().get(0), firstHint);
 		AddHint.undo();
-		assertEquals(board.getHints().get(0), firstHint);
+		assertEquals(board.getHints().size(), 0);
 	}
 }
