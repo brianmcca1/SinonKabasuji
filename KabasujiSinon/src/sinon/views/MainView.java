@@ -96,7 +96,7 @@ public class MainView extends JPanel {
     /**
      * Returns the InfoPanel associated with this MainView.
      * 
-     * @see InfoPanel.
+     * @see sinon.views.InfoPanel
      * @return This MainView's InfoPanel.
      */
     public InfoPanel getInfoPanel() {
