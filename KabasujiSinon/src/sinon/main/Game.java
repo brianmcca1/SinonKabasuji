@@ -74,6 +74,7 @@ public class Game extends Kabasuji {
 	}
 	
 	public void determineUnlocking(){
+		if(this.getCurrentLevelNumber() == 14) return;
 		if(this.getLevel().getLevelData().getStarRecord() >= 1){
 			this.getLevel(this.getCurrentLevelNumber() + 1).getLevelData().setUnlocked(true);
 		}
