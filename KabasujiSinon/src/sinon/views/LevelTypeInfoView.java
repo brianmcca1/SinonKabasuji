@@ -17,15 +17,16 @@ import sinon.models.Level;
  */
 @SuppressWarnings("serial")
 public abstract class LevelTypeInfoView extends JPanel {
-    Level level;
+	Level level;
 
-    public LevelTypeInfoView() {
+	public LevelTypeInfoView(Level level) {
 
-        this.setBounds(450, 26, 130, 300);
-        this.setBorder(new LineBorder(new Color(0, 0, 0)));
-        this.setBackground(Color.LIGHT_GRAY);
-    }
+		this.level = level;
+		this.setBounds(450, 26, 130, 300);
+		this.setBorder(new LineBorder(new Color(0, 0, 0)));
+		this.setBackground(Color.LIGHT_GRAY);
+	}
 
-    public abstract int getValue();
+	public abstract int getValue();
 
 }

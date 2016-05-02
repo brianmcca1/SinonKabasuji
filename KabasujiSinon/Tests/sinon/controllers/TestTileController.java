@@ -72,7 +72,7 @@ public class TestTileController {
 		TileView tileView2 = new TileView(tile2);
 		InfoPanel infoPanel = new InfoPanel();
 
-		ReleaseInfoView releaseInfoView = new ReleaseInfoView();
+		ReleaseInfoView releaseInfoView = new ReleaseInfoView(level);
 		Hexomino hex = Hexomino.getExampleHexomino();
 		level.getBullpen().addHexomino(hex);
 		MainView mainView = new MainView(level, infoPanel, releaseInfoView);
@@ -110,7 +110,7 @@ public class TestTileController {
 		TileView tileView2 = new TileView(tile2);
 		InfoPanel infoPanel = new InfoPanel();
 
-		ReleaseInfoView releaseInfoView = new ReleaseInfoView();
+		ReleaseInfoView releaseInfoView = new ReleaseInfoView(level);
 		Hexomino hex = Hexomino.getExampleHexomino();
 		level.getBullpen().addHexomino(hex);
 		MainView mainView = new MainView(level, infoPanel, releaseInfoView);

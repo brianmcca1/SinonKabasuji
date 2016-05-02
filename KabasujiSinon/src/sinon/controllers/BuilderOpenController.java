@@ -83,7 +83,7 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 			break;
 		case RELEASE:
 			ReleaseLevel releaseLevel = new ReleaseLevel(levelFromFile);
-			lvlTypeInfoView = new ReleaseInfoView();
+			lvlTypeInfoView = new ReleaseInfoView(releaseLevel);
 			this.builder.setLevel(releaseLevel);
 			break;
 		}

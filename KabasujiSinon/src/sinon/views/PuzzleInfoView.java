@@ -16,22 +16,26 @@ import sinon.views.game.LevelSelectView;
  * @author Brian
  *
  */
-public class PuzzleInfoView extends LevelTypeInfoView implements Observer{
+public class PuzzleInfoView extends LevelTypeInfoView implements Observer {
 
 	private static final long serialVersionUID = -6047685525063166167L;
 	public JLabel infoLabel;
 	public JTextField movesLeftField;
-	public PuzzleLevel level;
+	public PuzzleLevel puzzleLevel;
 	public Game game;
 	private boolean wasCalled;
 
 	/**
 	 * Used by Builder only.
-	 * @param editable If this text field should be editable or not.
-	 * @param level Current level in the builder.
+	 * 
+	 * @param editable
+	 *            If this text field should be editable or not.
+	 * @param level
+	 *            Current level in the builder.
 	 */
 	public PuzzleInfoView(boolean editable, PuzzleLevel level) {
-		this.level = level;
+		super(level);
+		this.puzzleLevel = (PuzzleLevel) this.level;
 		setLayout(new GridLayout(1, 1));
 		this.infoLabel = new JLabel("Moves:");
 		this.movesLeftField = new JTextField();
@@ -44,17 +48,22 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer{
 		this.movesLeftField.setText(Integer.toString(level.getMaxMoves()));
 		this.add(infoLabel);
 		this.add(movesLeftField);
-		
+
 		this.level.registerObserver(this);
 	}
 
 	/**
 	 * Used by Game only.
-	 * @param g Game object.
-	 * @param numMoves Number of moves this level stars with
-	 * @param level current PuzzleLevel
+	 * 
+	 * @param g
+	 *            Game object.
+	 * @param numMoves
+	 *            Number of moves this level stars with
+	 * @param level
+	 *            current PuzzleLevel
 	 */
 	public PuzzleInfoView(Game g, int numMoves, PuzzleLevel level) {
+		super(level);
 		setLayout(new GridLayout(1, 1));
 		this.infoLabel = new JLabel("Moves:");
 		this.movesLeftField = new JTextField();
@@ -64,11 +73,11 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer{
 
 		this.add(infoLabel);
 		this.add(movesLeftField);
-		
+
 		this.level = level;
-	
+
 		this.game = g;
-		
+
 		this.level.registerObserver(this);
 		wasCalled = false;
 	}
@@ -89,11 +98,12 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer{
 	 * Update the view to show how many moves the player can make
 	 */
 	public void updateMovesMade() {
-		if(this.game != null){
-			this.movesLeftField.setText(((Integer) level.getMovesLeft()).toString());
-		
-			if(wasCalled) return;
-			if(this.level.getMovesLeft() <= 0){
+		if (this.game != null) {
+			this.movesLeftField.setText(((Integer) puzzleLevel.getMovesLeft()).toString());
+
+			if (wasCalled)
+				return;
+			if (this.puzzleLevel.getMovesLeft() <= 0) {
 				wasCalled = true;
 				System.out.println("ENTERED*************************");
 				FileHandler.setStarsOnExit(this.game.getLevel());

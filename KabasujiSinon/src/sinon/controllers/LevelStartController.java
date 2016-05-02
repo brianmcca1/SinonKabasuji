@@ -44,14 +44,14 @@ public class LevelStartController implements ActionListener {
 	 * the MainView
 	 */
 	public void actionPerformed(ActionEvent e) {
-		if(this.game.getLevel(this.levelNum).getLevelData().getUnlocked() == false){
+		if (this.game.getLevel(this.levelNum).getLevelData().getUnlocked() == false) {
 			System.out.println("LEVEL IS LOCKED");
 			return;
 		}
-		
+
 		this.game.setCurrentLevelNumber(this.levelNum);
 		this.game.setLevel(this.game.getLevel(this.levelNum));
-		
+
 		FileHandler.determineCurrentGameLevelFile(this.game.getCurrentLevelNumber());
 
 		LevelTypeInfoView lvlTypeInfoView = null;
@@ -72,7 +72,7 @@ public class LevelStartController implements ActionListener {
 			break;
 		case RELEASE:
 			lvlTypeInfoView = new ReleaseInfoView(
-					this.game.getLevel().getLevelData().getLevelProperty().getReleaseSet());
+					this.game.getLevel().getLevelData().getLevelProperty().getReleaseSet(), this.game.getLevel());
 			break;
 		}
 

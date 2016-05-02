@@ -39,7 +39,7 @@ public class LightningInfoView extends LevelTypeInfoView {
 	 * @param level
 	 */
 	public LightningInfoView(boolean editable, LightningLevel level) {
-		this.level = level;
+		super(level);
 		setLayout(new GridLayout(1, 1));
 		this.infoLabel = new JLabel("Time:");
 		this.timeLeftField = new JTextField();
@@ -61,6 +61,7 @@ public class LightningInfoView extends LevelTypeInfoView {
 	 * @param lightningLevel The lightning level class.
 	 */
 	public LightningInfoView(Game g, int time, LightningLevel lightningLevel) {
+		super(lightningLevel);
 		setLayout(new GridLayout(1, 1));
 		this.infoLabel = new JLabel("Time:");
 		this.timeLeftField = new JTextField();
@@ -68,11 +69,9 @@ public class LightningInfoView extends LevelTypeInfoView {
 		this.timeLeftField.setEditable(false);
 		this.timeLeftField.setText(Integer.toString(time));
 
-		this.level = lightningLevel;
-
 		this.add(infoLabel);
 		this.add(timeLeftField);
-		
+
 		this.game = g;
 	}
 
@@ -89,8 +88,8 @@ public class LightningInfoView extends LevelTypeInfoView {
 	 */
 	public void updateTimeLeft() {
 		this.timeLeftField.setText(((Integer) level.getTimeLeft()).toString());
-		
-		if(this.level.getTimeLeft() <= 0){
+
+		if (this.level.getTimeLeft() <= 0) {
 			FileHandler.setStarsOnExit(this.game.getLevel());
 			this.game.loadAllLevels();
 			this.game.determineUnlocking();

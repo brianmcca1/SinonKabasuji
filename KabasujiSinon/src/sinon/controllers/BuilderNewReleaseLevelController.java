@@ -13,8 +13,8 @@ import sinon.views.ReleaseInfoView;
 import sinon.views.builder.BuilderMenuBar;
 
 /**
- * This is the controller associated with starting a new 
- * release level in the builder.
+ * This is the controller associated with starting a new release level in the
+ * builder.
  *
  */
 public class BuilderNewReleaseLevelController extends BuilderNewLevelController {
@@ -32,6 +32,6 @@ public class BuilderNewReleaseLevelController extends BuilderNewLevelController 
 	public void actionPerformed(ActionEvent e) {
 		this.builder.setLevel(
 				new ReleaseLevel(new ReleaseBoard(), new BullPen(new BullPenData()), new ArrayList<ReleaseNumber>()));
-		this.handleNewLevel(this.builder, this.builderMenuBar, new ReleaseInfoView());
+		this.handleNewLevel(this.builder, this.builderMenuBar, new ReleaseInfoView(this.builder.getLevel()));
 	}
 }
