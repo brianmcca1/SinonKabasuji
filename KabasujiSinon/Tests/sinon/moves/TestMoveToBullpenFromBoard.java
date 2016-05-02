@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -48,7 +49,7 @@ public class TestMoveToBullpenFromBoard {
 		moveToBoard2 = new MoveToBoardFromBullpen(testLevel, 6, 2);
 
 		testLevel.select(hex1);
-		move1 = new MoveToBullpenFromBoard(testLevel, 2, 2);
+		move1 = new MoveToBullpenFromBoard(testLevel, 0, 11);
 		move2 = new MoveToBullpenFromBoard(testLevel, 6, 2);
 		// move3 = new MoveToBullpenFromBoard(testLevel, -3, -3);
 		// move4 = new MoveToBullpenFromBoard(testLevel, 11, 0);
@@ -81,6 +82,7 @@ public class TestMoveToBullpenFromBoard {
 		assertTrue(testLevel.getBoard().hasHex(hex1));
 		// Trying to do move 2 should return false, since it's invalid (no hex
 		// selected)
+		move2.hex = Optional.empty();
 		assertFalse(move2.doMove());
 
 	}
