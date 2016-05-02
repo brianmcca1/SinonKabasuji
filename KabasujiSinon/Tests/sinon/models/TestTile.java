@@ -15,6 +15,7 @@ public class TestTile {
 	public void testAddNormal() {
 		Point p = new Point(0, 0);
 		Tile t1 = new Tile(p, true);
+		Hexomino hex = Hexomino.getExampleHexomino();
 		Hexomino hex2 = new Hexomino(0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 1);
 		assertEquals(t1.canAddHex(hex2), true);
 
@@ -24,7 +25,7 @@ public class TestTile {
 
 		assertEquals(t1.getLocation(), new Point(0, 0));
 
-		assertEquals(t1.canAddHex(hex2), false);
+		assertEquals(t1.canAddHex(hex), false);
 
 		assertEquals(t1.hasHex(), true);
 

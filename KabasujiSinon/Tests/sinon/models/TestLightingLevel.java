@@ -1,6 +1,8 @@
 package sinon.models;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -16,26 +18,27 @@ public class TestLightingLevel {
 		Hexomino hex2 = new Hexomino(NumberSetFactory.getByNumbers(0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0));
 		bpList.add(hex1);
 		bpList.add(hex2);
-		
-		Board b = new Board();
+
+		LightningBoard b = new LightningBoard();
 		BullPen bp = new BullPen(bpList);
 		LightningLevel level = new LightningLevel(b, bp, 1);
 		assertEquals(level.getTimeLeft(), 1);
 		assertEquals(level.getMaxTime(), 1);
-		//assertFalse(level.hasWon());
-		for(Tile t : level.getBoard().getTiles()){
+		assertFalse(level.hasWon());
+		for (Tile t : level.getBoard().getTiles()) {
 			t.addHexomino(hex1);
 		}
-		//assertTrue(level.hasWon());
-		for (int i = 0; i < 2; i++){
-			for (int j = 0; j < 2; j++){
-				level.board.getTile(new Point(i ,j)).removeHex();
+		assertTrue(level.hasWon());
+		for (int i = 0; i < 2; i++) {
+			for (int j = 0; j < 2; j++) {
+				assertTrue(level.board.getTile(i, j).hasHex());
+				assertTrue(level.board.getTile(i, j).removeHex());
 			}
 		}
 		assertEquals(level.countStars(), 2);
-		for (int i = 2; i < 4; i++){
-			for (int j = 2; j < 4; j++){
-				level.board.getTile(new Point(i ,j)).removeHex();
+		for (int i = 2; i < 4; i++) {
+			for (int j = 2; j < 4; j++) {
+				level.board.getTile(new Point(i, j)).removeHex();
 			}
 		}
 		assertEquals(level.countStars(), 1);

@@ -1,6 +1,8 @@
 package sinon.models;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -13,14 +15,14 @@ import sinon.moves.MoveToBoardFromBullpen;
 public class LightningIntegrationTest {
 
 	LightningLevel exampleLevel;
-	Board board;
+	LightningBoard board;
 	BullPen bullpen;
 
 	@Before
 	public void setup() {
 		// Set up the board for the game.
 		// It will be a 6x6 set of playable tiles in the top left.
-		board = new Board();
+		board = new LightningBoard();
 		for (Tile t : board.getTiles()) {
 			t.setPlayable(false);
 		}
