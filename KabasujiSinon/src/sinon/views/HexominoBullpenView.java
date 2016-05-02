@@ -14,13 +14,24 @@ import javax.swing.border.EmptyBorder;
 
 import sinon.models.Hexomino;
 
-/** GUI element representing one of the Hexominos in the Bullpen. */
+/**
+ * View associated with each one of the hexominos in a bullpen.
+ * It has a hexomino in order to render the hexomino accurately in
+ * both the bullpenView and the bankView.
+ * 
+ * @author kartik
+ *
+ */
 @SuppressWarnings("serial")
 public class HexominoBullpenView extends JPanel implements Observer {
 
 	/** The hexomino model object associated with this view */
 	Hexomino hex;
 
+	/** Constructor for generating a HexominoBullpenView in the
+	 * bullpen and the bank.
+	 * @param h Hexomino that is associated with this view class.
+	 */
 	public HexominoBullpenView(Hexomino h) {
 		this.setBackground(UIManager.getColor("Panel.background"));
 		this.hex = h;
@@ -37,6 +48,15 @@ public class HexominoBullpenView extends JPanel implements Observer {
 		return this.hex;
 	}
 
+	/**
+	 * Function that is used to set a hexomino on a grid in the bullpen.
+	 * Hexominos are rendered in the bullpen in such a way that they
+	 * are placed as squares in a 6x6 grid. What happens when there are negative
+	 * relative positions? It gets the set of normalized points from the hexomino
+	 * class in order to position the squares accurately on the 6x6 GUI grid.
+	 * 
+	 * @return BullpenView that is created.
+	 */
 	public HexominoBullpenView setHexominoOnGrid() {
 		List<Point> normalizedPoints = this.hex.getNormalizedPoints();
 
@@ -69,10 +89,14 @@ public class HexominoBullpenView extends JPanel implements Observer {
 		return this;
 	}
 
+	/** Sets the color of the background of the bullpenView to if hexomino
+	 * is selected.
+	 */
 	public void select() {
 		this.setBackground(Color.cyan);
 	}
 
+	/** Resets the color of the bullpenview when hexomino is deselected. */
 	public void deselect() {
 		this.setBackground(UIManager.getColor("Panel.background"));
 	}
