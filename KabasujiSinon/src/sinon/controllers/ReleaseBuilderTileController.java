@@ -47,10 +47,7 @@ public class ReleaseBuilderTileController extends BuilderTileController {
 								.setAnchor(new Point(this.tileView.getRow(), this.tileView.getColumn()));
 					}
 					level.pushMove(move);
-					System.out.println("Move successfully completed!");
 					level.deselect();
-				} else {
-					System.out.println("There was some error doing the move.");
 				}
 			}
 
@@ -63,10 +60,7 @@ public class ReleaseBuilderTileController extends BuilderTileController {
 
 				if (move.doMove()) {
 					level.pushMove(move);
-					System.out.println("The move was successfully completed!");
 					level.deselect();
-				} else {
-					System.out.println("The move couldn't be completed!");
 				}
 
 			}
@@ -74,9 +68,6 @@ public class ReleaseBuilderTileController extends BuilderTileController {
 			AddReleaseNumberMove move = new AddReleaseNumberMove(this.level, this.tile);
 			if (move.doMove()) {
 				level.pushMove(move);
-				System.out.println("The ReleaseNumber was successfully added!");
-			} else {
-				System.out.println("The move couldn't be completed!");
 			}
 
 		} else if (this.tileView.getTile().hasHex()) {

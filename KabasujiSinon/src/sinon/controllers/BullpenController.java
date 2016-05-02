@@ -43,10 +43,8 @@ public class BullpenController implements MouseListener {
 				move.doMove();
 				level.pushMove(move);
 				level.deselect();
-				System.out.println("SELECTED HEXOMINO HAS BEEN DESELECTED");
 			} else {
 				level.deselect();
-				System.out.println("SELECTED HEXOMINO HAS BEEN DESELECTED");
 			}
 
 		}

@@ -43,10 +43,7 @@ public class GameTileController extends TileController {
 
 				if (move.doMove()) {
 					level.pushMove(move);
-					System.out.println("Move successfully completed!");
 					level.deselect();
-				} else {
-					System.out.println("There was some error doing the move.");
 				}
 			}
 
@@ -59,10 +56,7 @@ public class GameTileController extends TileController {
 
 				if (move.doMove()) {
 					level.pushMove(move);
-					System.out.println("The move was successfully completed!");
 					level.deselect();
-				} else {
-					System.out.println("The move couldn't be completed!");
 				}
 
 			}

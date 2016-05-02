@@ -106,10 +106,7 @@ public abstract class TileController implements MouseListener, MouseMotionListen
 					}
 
 					level.pushMove(move);
-					System.out.println("Move successfully completed!");
 					level.deselect();
-				} else {
-					System.out.println("There was some error doing the move.");
 				}
 			}
 
@@ -126,10 +123,7 @@ public abstract class TileController implements MouseListener, MouseMotionListen
 								.setAnchor(new Point(this.tileView.getRow(), this.tileView.getColumn()));
 					}
 					level.pushMove(move);
-					System.out.println("The move was successfully completed!");
 					level.deselect();
-				} else {
-					System.out.println("The move couldn't be completed!");
 				}
 
 			}
