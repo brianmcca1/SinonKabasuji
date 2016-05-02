@@ -41,7 +41,6 @@ public class LightningLevel extends Level {
 		LinkedList<Tile> tiles = (LinkedList<Tile>) this.board.getTiles();
 		ArrayList<LightningTile> lightningTiles = new ArrayList<LightningTile>(tiles.size());
 
-		// FIXME this is really broken lmao
 		for (Tile t : tiles) {
 			if (t instanceof LightningTile) {
 				LightningTile lightningTile = (LightningTile) t;

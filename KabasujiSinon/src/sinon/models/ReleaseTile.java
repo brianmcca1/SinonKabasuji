@@ -72,11 +72,11 @@ public class ReleaseTile extends Tile {
 	}
 
 	@Override
-	public void addHexomino(Hexomino hex) {
+	public boolean addHexomino(Hexomino hex) {
 		if (this.releaseNumber.isPresent()) {
 			this.releaseNumber.get().collect();
 		}
-		super.addHexomino(hex);
+		return super.addHexomino(hex);
 	}
 
 	@Override

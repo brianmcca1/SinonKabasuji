@@ -27,9 +27,13 @@ public class LightningTile extends Tile {
 	}
 
 	@Override
-	public void addHexomino(Hexomino hex) {
+	public boolean addHexomino(Hexomino hex) {
+		if (hex == null){
+			return false;
+		}
 		this.lightninged = true;
 		update();
+		return true;
 	}
 
 	/**

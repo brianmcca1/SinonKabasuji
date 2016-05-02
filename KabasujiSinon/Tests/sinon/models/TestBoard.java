@@ -10,7 +10,7 @@ import sinon.models.data.BoardData;
 
 public class TestBoard {
 
-	// TODO: test constructor with BoardData
+	
 	
 	@Test
 	public void testBoardStuff(){

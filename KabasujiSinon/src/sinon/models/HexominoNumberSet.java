@@ -250,7 +250,7 @@ public class HexominoNumberSet {
             for (Point neighbor : surroundingPoints) {
                 if (list.contains(neighbor)) {
                     hasFoundNeighbor = true;
-                    break; // FIXME test this logic I think this is wrong.
+                    break; 
                 }
             }
 
