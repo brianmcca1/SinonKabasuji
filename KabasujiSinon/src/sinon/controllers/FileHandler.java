@@ -37,6 +37,7 @@ public class FileHandler {
 		level.getLevelData().setBoardData(levelBoardData);
 
 		level.getLevelData().setStarRecord(0);
+		level.getLevelData().setUnlocked(false);
 
 		Serializer serializer = new Serializer(fileToSaveTo, level.getLevelData());
 		serializer.serializeFile();
@@ -55,7 +56,7 @@ public class FileHandler {
 		String fileString = "level" + levelNumString + ".dat";
 		setCurrentFile(new File(fileString));
 	}
-
+	
 	/**
 	 * Will load all levels from the local project directory files.
 	 * 
@@ -72,6 +73,7 @@ public class FileHandler {
 		levelFile = new File("level1.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
+		levelData.setUnlocked(true);
 		level = new PuzzleLevel(new Level(levelData));
 		levels[0] = level;
 

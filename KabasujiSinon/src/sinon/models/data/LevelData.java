@@ -31,6 +31,9 @@ public final class LevelData implements Serializable {
      * Holds the info regarding number of moves/time/locations of number tiles.
      */
     LevelProperty levelProperty;
+    
+    /** Whether or not this level is locked.  TRUE = unlocked FALSE = locked. */
+    boolean unlocked;
 
     public LevelData(Types t, BoardData bData, BullPenData bpData) {
         this.levelType = t;
@@ -48,6 +51,14 @@ public final class LevelData implements Serializable {
         } else {
             this.levelProperty = new LevelProperty(10, type);
         }
+    }
+    
+    public void setUnlocked(boolean b){
+    	this.unlocked = b;
+    }
+    
+    public boolean getUnlocked(){
+    	return this.unlocked;
     }
 
     /**
