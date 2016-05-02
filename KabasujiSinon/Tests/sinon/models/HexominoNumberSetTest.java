@@ -20,6 +20,12 @@ public class HexominoNumberSetTest {
         return NumberSetFactory.getByNumbers(0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 1,
                 4);
     }
+    
+    @Test
+    public void testHashCode(){
+    	HexominoNumberSet hex = buildExampleHexomino();
+    	assertEquals(hex.hashCode(), -2013381792);
+    }
 
     @Test
     public void testFlipHorizontally() {

@@ -43,8 +43,14 @@ public class LightningLevel extends Level {
         ArrayList<LightningTile> lightningTiles = new ArrayList<LightningTile>(
                 tiles.size());
 
-        for (int i = 0; i < tiles.size(); i++) {
-            lightningTiles.add(((LightningTile) tiles.get(i)));
+        //FIXME this is really broken lmao
+        for (Tile t : tiles) {
+        	int dongle = 5;
+        	dongle++;
+        	System.out.println("Gotem kun " + t.location);
+        	dongle++;
+        	LightningTile tempTile = (LightningTile) t;
+            lightningTiles.add(tempTile);
         }
 
         for (LightningTile t : lightningTiles) {
