@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.awt.Point;
 import java.util.ArrayList;
 
 import org.junit.Test;
@@ -25,23 +24,29 @@ public class TestLightingLevel {
 		assertEquals(level.getTimeLeft(), 1);
 		assertEquals(level.getMaxTime(), 1);
 		assertFalse(level.hasWon());
-		for (Tile t : level.getBoard().getTiles()) {
-			t.addHexomino(hex1);
-		}
-		assertTrue(level.hasWon());
-		for (int i = 0; i < 2; i++) {
-			for (int j = 0; j < 2; j++) {
-				assertTrue(level.board.getTile(i, j).hasHex());
-				assertTrue(level.board.getTile(i, j).removeHex());
-			}
-		}
-		assertEquals(level.countStars(), 2);
-		for (int i = 2; i < 4; i++) {
-			for (int j = 2; j < 4; j++) {
-				level.board.getTile(new Point(i, j)).removeHex();
+		assertEquals(level.countStars(), 0);
+		for (int i = 0; i < 12; i++) {
+			for (int j = 0; j < 11; j++) {
+				LightningTile tile = (LightningTile) b.getTile(i, j);
+				tile.addHexomino(hex1);
+				assertTrue(tile.isLightninged());
 			}
 		}
 		assertEquals(level.countStars(), 1);
+
+		for (int i = 0; i < 6; i++) {
+			b.getTile(i, 11).addHexomino(hex1);
+		}
+
+		assertEquals(level.countStars(), 2);
+
+		for (int i = 6; i < 12; i++) {
+			b.getTile(i, 11).addHexomino(hex1);
+		}
+
+		assertEquals(level.countStars(), 3);
+		assertTrue(level.hasWon());
+
 	}
 
 }
