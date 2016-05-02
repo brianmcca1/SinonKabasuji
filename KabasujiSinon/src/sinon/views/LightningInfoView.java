@@ -72,9 +72,10 @@ public class LightningInfoView extends LevelTypeInfoView {
 		
 		if(this.level.getTimeLeft() <= 0){
 			FileHandler.setStarsOnExit(this.game.getLevel());
+			this.game.determineUnlocking();
 			this.game.loadAllLevels();
 			this.game.levelSelectView = new LevelSelectView(this.game);
-			game.startNextPanel(this.game.getMainView(), this.game.levelSelectView);
+			this.game.startNextPanel(this.game.getMainView(), this.game.levelSelectView);
 		}
 	}
 

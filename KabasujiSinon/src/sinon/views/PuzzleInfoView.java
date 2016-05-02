@@ -91,9 +91,10 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer{
 		
 			if(this.level.getMovesLeft() <= 0){
 				FileHandler.setStarsOnExit(this.game.getLevel());
-				game.loadAllLevels();
+				this.game.determineUnlocking();
+				this.game.loadAllLevels();
 				this.game.levelSelectView = new LevelSelectView(this.game);
-				game.startNextPanel(this.game.getMainView(), this.game.levelSelectView);
+				this.game.startNextPanel(this.game.getMainView(), this.game.levelSelectView);
 			}
 		}
 	}
