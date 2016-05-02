@@ -17,7 +17,7 @@ public abstract class BullPenMove extends Move {
 	Hexomino hex;
 
 	/**
-	 * TODO
+	 * Throws a Null Pointer Exception if the hex is null
 	 */
 	
 	public void nullCheck() {
