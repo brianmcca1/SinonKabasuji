@@ -10,8 +10,9 @@ import org.junit.Test;
 
 import sinon.moves.MoveToBoardFromBullpen;
 
+@Deprecated // DON'T WORRY ABOUT THIS CLASS FOR A LITTLE BIT. LETS BUILD THE
+            // BOARD AND SETUP THE BULLPEN VIA THE BUILDER APPLICATION AYE?
 public class PuzzleIntegrationTest {
-
     PuzzleLevel level;
     int movesLeft;
     private ModelIntegrationTest m;
