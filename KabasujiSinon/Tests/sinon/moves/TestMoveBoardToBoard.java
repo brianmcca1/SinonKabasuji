@@ -37,16 +37,16 @@ public class TestMoveBoardToBoard {
 		BullPen bullpen = new BullPen(bpList);
 
 		testLevel = new Level(LevelType.Types.PUZZLE, new Board(), bullpen);
-		testLevel.getBoard().addHexomino(new Point(11, 11), hex1);
+		testLevel.getBoard().addHexomino(new Point(11, 0), hex1);
 		testLevel.getBoard().addHexomino(new Point(3, 3), hex2);
 		
 		testLevel.select(hex1);
-		mib1 = new MoveInBoard(testLevel, 11, 11, 10, 10);
+		mib1 = new MoveInBoard(testLevel, 11, 0, 10, 0);
 		mib3 = new MoveInBoard(testLevel, -3, -3, 5, 5);
 		testLevel.select(hex2);
-		mib5 = new MoveInBoard(testLevel, 5, 5, 5, 5);
+		mib5 = new MoveInBoard(testLevel, 6, 6, 6, 6);
 		testLevel.select(hex2);
-		mib4 = new MoveInBoard(testLevel, 11, 0, 3, 5);
+		mib4 = new MoveInBoard(testLevel, 6, 6, 5, 5);
 		testLevel.select(hex3);
 		mib2 = new MoveInBoard(testLevel, 0, 0, 11, 11);
 	}
@@ -71,6 +71,7 @@ public class TestMoveBoardToBoard {
 		
 		
 	}
+	
 	
 	@Test
 	public void testUndo(){

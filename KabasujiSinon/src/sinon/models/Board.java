@@ -266,7 +266,7 @@ public class Board implements Observable {
      * @param column
      * @return True if the location is in bounds
      */
-    private boolean isInBounds(int row, int column) {
+    public boolean isInBounds(int row, int column) {
         if (row > HEIGHT_BY_ZERO || column > WIDTH_BY_ZERO) {
             return false;
         } else if (row < 0 || column < 0) {

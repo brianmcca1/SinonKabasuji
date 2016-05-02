@@ -77,6 +77,8 @@ public class MoveInBoard extends BoardMove {
 		if (!level.getBoard().hasHex(hex.get()))
 			return false;
 
+		// Should be able to add the piece back to where it came
+		if (!this.level.getBoard().isInBounds(srcAnchorRow, srcAnchorColumn)) return false;
 		return true;
 	}
 
