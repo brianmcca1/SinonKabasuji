@@ -51,11 +51,10 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 		}
 	}
 
-	public void openFile(File file) {
+	public boolean openFile(File file) {
 		if (FileHandler.currentFile != null) {
 			if (file.compareTo(FileHandler.currentFile) == 0) {
-				System.out.println("FILE IS ALREADY OPEN!");
-				return;
+				return false;
 			}
 		}
 
@@ -91,6 +90,7 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 
 		this.builder.initializeMainView(lvlTypeInfoView);
 		this.handleOpenLevel(this.builderMenuBar);
+		return true;
 	}
 
 	/**

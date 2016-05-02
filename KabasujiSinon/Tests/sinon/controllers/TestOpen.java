@@ -1,8 +1,11 @@
 package sinon.controllers;
 
 import static org.junit.Assert.assertEquals;
-import java.awt.event.ActionEvent;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import java.io.File;
+
 import org.junit.Test;
 
 import sinon.main.Builder;
@@ -15,12 +18,9 @@ public class TestOpen {
 	public void testOpen() {
 		// TODO: How to automate navigating the JFileChooser?
 		Builder builder = new Builder();
-		BuilderMenuBar builderMenuBar = new BuilderMenuBar(builder);
-		BuilderOpenController controller = new BuilderOpenController(builder,
-				new BuilderMenuBar(builder));
-		ActionEvent e = new ActionEvent(builderMenuBar, 0, "Test");
-		FileHandler.setCurrentFile(new File("/level1.dat"));
-		controller.actionPerformed(e);
+		BuilderOpenController controller = new BuilderOpenController(builder, new BuilderMenuBar(builder));
+		assertTrue(controller.openFile(new File("level1.dat")));
+		assertFalse(controller.openFile(new File("level1.dat")));
 
 	}
 
