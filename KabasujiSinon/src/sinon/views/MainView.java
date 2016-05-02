@@ -98,7 +98,6 @@ public class MainView extends JPanel {
      * 
      * Don't confuse this with {@link #getLevelTypeInfoView()}.
      * 
-     * @see sinon.views.InfoPanel
      * @return This MainView's InfoPanel.
      */
     public InfoPanel getInfoPanel() {
@@ -115,7 +114,6 @@ public class MainView extends JPanel {
      * 
      * Don't confuse this with {@link #getInfoPanel()}.
      * 
-     * @See sinon.views.LevelTypeInfoView
      * @return This MainView's LevelTypeInfoView.
      */
     public LevelTypeInfoView getLevelTypeInfoView() {
