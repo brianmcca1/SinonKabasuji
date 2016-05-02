@@ -72,8 +72,9 @@ public class LightningInfoView extends LevelTypeInfoView {
 		
 		if(this.level.getTimeLeft() <= 0){
 			FileHandler.setStarsOnExit(this.game.getLevel());
-			this.game.determineUnlocking();
 			this.game.loadAllLevels();
+			//FIXME ONLY DO THIS IF THE CURRENT LEVEL HAS EARNED >= 1 STAR!!!
+			this.game.determineUnlocking();
 			this.game.levelSelectView = new LevelSelectView(this.game);
 			this.game.startNextPanel(this.game.getMainView(), this.game.levelSelectView);
 		}

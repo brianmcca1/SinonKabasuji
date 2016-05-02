@@ -46,6 +46,14 @@ public class LevelSelectButtonView extends JPanel {
 		
 		this.add(imagePanel);
 		JButton selectbtn = makeButton(Integer.toString(num));
+		/*
+		if(this.level.getLevelData().getUnlocked() == false){
+			this.selectbtn.setEnabled(false);
+		}
+		else{
+			this.selectbtn.setEnabled(true);
+		}*/
+		
 		add(selectbtn);
 	}
 

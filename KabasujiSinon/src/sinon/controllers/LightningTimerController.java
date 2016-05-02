@@ -34,10 +34,6 @@ public class LightningTimerController {
 				if(level.getTimeLeft() > 0){
 					level.tickTimeLeft();
 					infoView.updateTimeLeft();
-					
-				}
-				if(level.getTimeLeft() == 0){
-					
 				}
 			}
 		};
