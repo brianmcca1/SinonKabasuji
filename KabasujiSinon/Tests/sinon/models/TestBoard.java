@@ -43,11 +43,7 @@ public class TestBoard {
 		assertTrue(board.canAddHexomino(new Point(1, 1), hex));
 		board.addHexomino(new Point(1, 1), hex);
 		assertTrue(board.hasHex(1, 1));
-<<<<<<< Updated upstream
-		assertFalse(board.canAddHexomino(new Point(1, 1), hex1));
-=======
 		assertTrue(board.canAddHexomino(new Point(1, 1), hex));
->>>>>>> Stashed changes
 		board.removeHexomino(hex);
 		assertFalse(board.hasHex(1, 1));
 	}
