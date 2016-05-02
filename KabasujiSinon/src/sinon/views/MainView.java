@@ -93,7 +93,12 @@ public class MainView extends JPanel {
         return this.bullpenView;
     }
 
-    /** @return This MainView's InfoPanel. */
+    /**
+     * Returns the InfoPanel associated with this MainView.
+     * 
+     * @see InfoPanel.
+     * @return This MainView's InfoPanel.
+     */
     public InfoPanel getInfoPanel() {
         return infoPanel;
     }
