@@ -45,6 +45,7 @@ public class MoveToBullpenFromBoard extends BoardMove {
 
 	@Override
 	public boolean undo() {
+		this.nullCheck();
 		level.getBoard().addHexomino(new Point(srcAnchorRow, srcAnchorColumn), hex.get());
 		level.getBullpen().removeHexomino(hex.get());
 		return true;
@@ -52,6 +53,7 @@ public class MoveToBullpenFromBoard extends BoardMove {
 
 	@Override
 	public boolean valid() {
+		this.nullCheck();
 		if (!hex.isPresent())
 			return false;
 		if (!level.getBoard().hasHex(hex.get()))

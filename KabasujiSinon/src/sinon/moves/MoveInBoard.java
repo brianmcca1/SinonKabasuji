@@ -58,6 +58,7 @@ public class MoveInBoard extends BoardMove {
 
 	@Override
 	public boolean undo() {
+		this.nullCheck();
 		level.getBoard().removeHexomino(hex.get());
 		level.getBoard().addHexomino(new Point(srcAnchorRow, srcAnchorColumn), hex.get());
 		return true;
@@ -65,6 +66,7 @@ public class MoveInBoard extends BoardMove {
 
 	@Override
 	public boolean valid() {
+		this.nullCheck();
 		// if the level doesn't have something selected, then move is invalid.
 		if (!level.hasSelected())
 			return false;
@@ -81,6 +83,5 @@ public class MoveInBoard extends BoardMove {
 		if (!this.level.getBoard().isInBounds(srcAnchorRow, srcAnchorColumn)) return false;
 		return true;
 	}
-
-
+	
 }

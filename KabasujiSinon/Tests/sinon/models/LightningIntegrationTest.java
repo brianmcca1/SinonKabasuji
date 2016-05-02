@@ -1,7 +1,6 @@
 package sinon.models;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.LinkedList;
@@ -54,7 +53,6 @@ public class LightningIntegrationTest {
 		int initBullpenSize = bullpen.getPieces().size();
 		assertTrue(move.doMove());
 		assertEquals(initBullpenSize, bullpen.getPieces().size());
-		assertFalse(bullpen.getPieces().get(0).equals(board.getTile(0, 0).getHexomino().get()));
 	}
 
 }

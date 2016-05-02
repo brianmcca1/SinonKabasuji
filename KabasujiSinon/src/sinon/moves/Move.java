@@ -6,7 +6,7 @@ import sinon.models.Hexomino;
 
 public abstract class Move {
 
-	public Optional<Hexomino> hex;
+	public Hexomino hex;
 	
 	/**
 	 * This is the move operation where a move is being made.
@@ -21,6 +21,8 @@ public abstract class Move {
 	 * @return Returns true if undo has been successfully completed.
 	 */
 	public abstract boolean undo();
+	
+	
 	
 	
 }

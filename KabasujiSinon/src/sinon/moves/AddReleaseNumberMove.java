@@ -52,5 +52,17 @@ public class AddReleaseNumberMove extends Move {
 
 		return true;
 	}
+	
+	/**
+	 * Checks to see if the release Tile is null
+	 * Throws a null pointer exception if the tile is null
+	 */
+	
+	private void nullCheck() {
+		if (releaseTile == null) { 
+			throw new NullPointerException();
+		}
+	}
+	
 
 }

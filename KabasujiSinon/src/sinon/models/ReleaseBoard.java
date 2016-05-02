@@ -46,11 +46,10 @@ public class ReleaseBoard extends Board {
 	}
 
 	/**
-	 * TODO
-	 * 
+	 * Adds the release set to the release board
 	 * Must be a valid release set to be added to a board.
 	 * 
-	 * @param releaseSet
+	 * @param releaseSet the set being added
 	 */
 	public void addReleaseSet(List<ReleaseNumber> releaseSet) {
 

@@ -66,9 +66,9 @@ public class Hexomino implements Observable {
     }
 
     /**
-     * TODO
+     * Creates a new hexomino using information from the hexominoNumberSet
      * 
-     * @param hexominoNumberSet
+     * @param hexominoNumberSet the number set being used
      */
     public Hexomino(HexominoNumberSet hexominoNumberSet) {
         Objects.requireNonNull(hexominoNumberSet);
