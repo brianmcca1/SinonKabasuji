@@ -22,7 +22,7 @@ public abstract class BullPenMove extends Move {
 	
 	public void nullCheck() {
 		if (hex == null) { // TODO move to super class this logic.
-			// https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
+			System.out.println(hex);
 			throw new NullPointerException();
 		}
 	}

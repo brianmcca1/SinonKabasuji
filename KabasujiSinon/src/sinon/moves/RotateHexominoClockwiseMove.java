@@ -11,17 +11,13 @@ import sinon.models.Hexomino;
 public class RotateHexominoClockwiseMove extends BullPenMove {
 
     public RotateHexominoClockwiseMove(Hexomino hex) {
-        this.nullCheck();
         this.hex = hex;
+        this.nullCheck();
     }
 
     @Override
     public boolean doMove() {
-        if (hex == null) {
-            return false;
-            // For testing
-            // throw new NullPointerException();
-        }
+    	this.nullCheck();
 
         hex.rotateC();
         return true;
@@ -29,10 +25,7 @@ public class RotateHexominoClockwiseMove extends BullPenMove {
 
     @Override
     public boolean undo() {
-        if (hex == null) {
-            return false; // for testing
-           // this.nullCheck();
-        }
+        this.nullCheck();
 
         hex.rotateCC();
         return true;

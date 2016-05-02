@@ -12,8 +12,8 @@ import sinon.views.HexominoBullpenView;
 public class RotateHexominoAnticlockwiseController extends
 AlterHexominoController {
 
-	public RotateHexominoAnticlockwiseController(Level level, HexominoBullpenView hexomino) {
-		super(level, hexomino);
+	public RotateHexominoAnticlockwiseController(Level level, HexominoBullpenView hexominoView) {
+		super(level, hexominoView);
 	}
 
 	@Override
