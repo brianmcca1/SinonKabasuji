@@ -77,9 +77,13 @@ public class TestMainView {
         assertNotNull(m.getBullpenView());
         assertNotNull(m.getBoardView());
         InfoPanel i = m.getInfoPanel();
-        // We created the mainView with a bankView.
+        // We created the mainView with a GameInfoView.
         assertTrue(i instanceof GameInfoView);
         assertNotNull(m.level);
+        LevelTypeInfoView v = m.getLevelTypeInfoView();
+        assertTrue(v instanceof ReleaseInfoView);
+        ReleaseInfoView rv = (ReleaseInfoView) v;
+        assertTrue(rv.buttons.size() > 1);
     }
 
 }
