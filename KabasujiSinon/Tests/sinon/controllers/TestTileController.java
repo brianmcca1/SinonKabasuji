@@ -100,4 +100,35 @@ public class TestTileController {
 		assertEquals(tile1.getReleaseNumber().get(), releaseNumber);
 	}
 
+	@Test
+	public void testGame() {
+		PuzzleLevel level = new PuzzleLevel(new Board(), new BullPen(new BullPenData()), 10);
+		Tile tile1 = level.getBoard().getTile(0, 0);
+		Tile tile2 = level.getBoard().getTile(5, 5);
+
+		TileView tileView1 = new TileView(tile1);
+		TileView tileView2 = new TileView(tile2);
+		InfoPanel infoPanel = new InfoPanel();
+
+		ReleaseInfoView releaseInfoView = new ReleaseInfoView();
+		Hexomino hex = Hexomino.getExampleHexomino();
+		level.getBullpen().addHexomino(hex);
+		MainView mainView = new MainView(level, infoPanel, releaseInfoView);
+		GameTileController tileController1 = new GameTileController(level, tileView1, mainView);
+		GameTileController tileController2 = new GameTileController(level, tileView2, mainView);
+
+		level.select(hex);
+		assertTrue(level.hasSelected());
+		tileController1.handleLeftClick();
+		assertFalse(level.hasSelected());
+		assertTrue(tileController1.tile.hasHex());
+
+		tileController1.handleLeftClick();
+		assertTrue(level.hasSelected());
+		tileController2.handleLeftClick();
+		assertFalse(level.hasSelected());
+		assertTrue(tileController2.tile.hasHex());
+
+	}
+
 }
