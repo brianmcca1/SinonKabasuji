@@ -3,6 +3,7 @@ package sinon.controllers;
 import sinon.models.Hexomino;
 import sinon.models.Level;
 import sinon.moves.BankToBullpenMove;
+import sinon.moves.BullpenToBankMove;
 import sinon.views.HexominoBullpenView;
 import sinon.views.MainView;
 
@@ -21,12 +22,23 @@ public class HexominoBankController extends AbstractHexStashController {
 
 	@Override
 	protected void handleLeftClicked() {
-		Hexomino hexomino = new Hexomino(hex.getHexomino().getHexominoNumberSet());
-		BankToBullpenMove move = new BankToBullpenMove(level.getBullpen(), hexomino);
+		if (!this.level.hasSelected()) {
+			Hexomino hexomino = new Hexomino(hex.getHexomino().getHexominoNumberSet());
+			BankToBullpenMove move = new BankToBullpenMove(level.getBullpen(), hexomino);
 
-		if (move.doMove()) {
-			level.pushMove(move);
-			assert level.getBullpen().getPieces().contains(hexomino);
+			if (move.doMove()) {
+				level.pushMove(move);
+				assert level.getBullpen().getPieces().contains(hexomino);
+			}
+		} else {
+			if (this.level.getBullpen().containsHexID(this.level.getSelectedHexomino().get().getID())) {
+
+				BullpenToBankMove move = new BullpenToBankMove(this.level);
+				if (move.doMove()) {
+					level.pushMove(move);
+
+				}
+			}
 		}
 	}
 
