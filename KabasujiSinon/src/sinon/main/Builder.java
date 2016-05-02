@@ -1,5 +1,7 @@
 package sinon.main;
 
+import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -20,8 +22,8 @@ import sinon.views.builder.BankView;
 import sinon.views.builder.BuilderMenuBar;
 
 /**
- * This is the main builder "application" class that extends the
- * superclass {@link Kabasuji}. Therefore it is a JFrame.
+ * This is the main builder "application" class that extends the superclass
+ * {@link Kabasuji}. Therefore it is a JFrame.
  *
  */
 @SuppressWarnings("serial")
@@ -64,7 +66,12 @@ public class Builder extends Kabasuji {
 
 			ReleaseInfoView infoView = (ReleaseInfoView) this.getMainView().getLevelTypeInfoView();
 			for (JButton j : infoView.getAllButtons()) {
-				ReleaseNumber releaseNumber = new ReleaseNumber(j.getForeground(), Integer.parseInt(j.getText()));
+				ReleaseNumber releaseNumber;
+				if (j.getForeground() == Color.ORANGE) {
+					releaseNumber = new ReleaseNumber(Color.YELLOW, Integer.parseInt(j.getText()));
+				} else {
+					releaseNumber = new ReleaseNumber(j.getForeground(), Integer.parseInt(j.getText()));
+				}
 				ReleaseInfoViewButtonController buttonController = new ReleaseInfoViewButtonController(
 						(ReleaseLevel) this.getLevel(), infoView, releaseNumber);
 				j.addActionListener(buttonController);
