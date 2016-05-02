@@ -180,7 +180,7 @@ public class Level implements Observable {
      */
 
     public void undo() {
-    	int sizePre = undo.size();
+        int sizePre = undo.size();
         if (undo.empty())
             return;
         Move move;
@@ -217,7 +217,7 @@ public class Level implements Observable {
         move = redo.pop();
         move.doMove();
         this.pushMove(move);
-        
+
     }
 
     /**
@@ -232,10 +232,13 @@ public class Level implements Observable {
     }
 
     public boolean incrementMoves() {
+        // TODO again delete this or something?
+        // needs a method signature as well not sure what to do for that. Unsure
+        // when this is being called.
         return false;
     }
-    
-    public Move peekRedo(){
-    	return redo.peek();
+
+    public Move peekRedo() {
+        return redo.peek();
     }
 }
