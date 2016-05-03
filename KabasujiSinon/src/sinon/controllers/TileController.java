@@ -7,9 +7,11 @@ import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.swing.SwingUtilities;
 
+import sinon.models.Hexomino;
 import sinon.models.Level;
 import sinon.models.Tile;
 import sinon.models.data.LevelType.Types;
@@ -115,10 +117,10 @@ public abstract class TileController implements MouseListener, MouseMotionListen
 				MoveToBoardFromBullpen move = new MoveToBoardFromBullpen(this.level, this.tileView.getRow(),
 						this.tileView.getColumn());
 
+				Optional<Hexomino> hexSelected = level.getSelectedHexomino();
 				if (move.doMove()) {
 					if (this.level.getLevelData().getLevelType() != Types.LIGHTNING) {
-						this.tile.getHexomino().get()
-								.setAnchor(new Point(this.tileView.getRow(), this.tileView.getColumn()));
+						hexSelected.get().setAnchor(new Point(this.tileView.getRow(), this.tileView.getColumn()));
 					}
 
 					level.pushMove(move);
@@ -133,10 +135,11 @@ public abstract class TileController implements MouseListener, MouseMotionListen
 				y = level.getBoard().getHexominoLocation(level.getSelectedHexomino().get()).y;
 				MoveInBoard move = new MoveInBoard(level, x, y, this.tileView.getRow(), this.tileView.getColumn());
 
+				Optional<Hexomino> hexSelected = level.getSelectedHexomino();
+				
 				if (move.doMove()) {
 					if (this.level.getLevelData().getLevelType() != Types.LIGHTNING) {
-						this.tile.getHexomino().get()
-								.setAnchor(new Point(this.tileView.getRow(), this.tileView.getColumn()));
+						hexSelected.get().setAnchor(new Point(this.tileView.getRow(), this.tileView.getColumn()));
 					}
 					level.pushMove(move);
 					level.deselect();

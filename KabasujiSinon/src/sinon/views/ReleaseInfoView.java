@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 
+import sinon.main.Builder;
 import sinon.models.Level;
 import sinon.models.ReleaseLevel;
 import sinon.models.ReleaseNumber;
@@ -25,15 +26,29 @@ public class ReleaseInfoView extends LevelTypeInfoView implements Observer {
 	/** The list of 15 buttons */
 	ArrayList<JButton> buttons = new ArrayList<JButton>(18);
 
-	public ReleaseInfoView(Level level) {
+	Builder builder;
+
+	/**
+	 * Used when opening or making a level in the builder
+	 * 
+	 * @param level
+	 */
+	public ReleaseInfoView(Level level, Builder builder) {
 		super(level);
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setLayout(new GridLayout(6, 3, 2, 2));
 		addButtons();
+		this.builder = builder;
 		this.level.registerObserver(this);
 		this.level.getBoard().registerObserver(this);
 	}
 
+	/**
+	 * Used when starting a level in the game
+	 * 
+	 * @param releaseNumbers
+	 * @param level
+	 */
 	public ReleaseInfoView(ArrayList<ReleaseNumber> releaseNumbers, Level level) {
 		super(level);
 		setLayout(new GridLayout(6, 3, 2, 2));
@@ -67,6 +82,9 @@ public class ReleaseInfoView extends LevelTypeInfoView implements Observer {
 	}
 
 	public boolean makeCollected(ReleaseNumber releaseNumber) {
+		if (builder == null) {
+			return false;
+		}
 		JButton selected = getButton(releaseNumber);
 		if (selected == null) {
 			return false;

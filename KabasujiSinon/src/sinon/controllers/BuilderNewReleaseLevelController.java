@@ -40,6 +40,7 @@ public class BuilderNewReleaseLevelController extends BuilderNewLevelController 
 	public void actionPerformed(ActionEvent e) {
 		this.builder.setLevel(
 				new ReleaseLevel(new ReleaseBoard(), new BullPen(new BullPenData()), new ArrayList<ReleaseNumber>()));
-		this.handleNewLevel(this.builder, this.builderMenuBar, new ReleaseInfoView(this.builder.getLevel()));
+		this.handleNewLevel(this.builder, this.builderMenuBar,
+				new ReleaseInfoView(this.builder.getLevel(), this.builder));
 	}
 }

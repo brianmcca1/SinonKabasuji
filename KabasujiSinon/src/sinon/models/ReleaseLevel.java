@@ -33,6 +33,10 @@ public class ReleaseLevel extends Level {
 		((ReleaseBoard) this.getBoard()).addReleaseSet(this.releaseSets);
 	}
 
+	/**
+	 * @return An example release level, with the default board and an empty
+	 *         bullpen and ReleaseNumbers list
+	 */
 	public static ReleaseLevel getExampleReleaseLevel() {
 		ReleaseBoard board = new ReleaseBoard();
 		BullPen bullpen = new BullPen(new BullPenData());
@@ -88,6 +92,12 @@ public class ReleaseLevel extends Level {
 		return list;
 	}
 
+	/**
+	 * Collect the ReleaseNumber at a specific location
+	 * 
+	 * @param location
+	 *            The location of the tile to collect
+	 */
 	public void collectReleaseSet(Point location) {
 		for (ReleaseNumber r : this.releaseSets) {
 			if (r.getLocation().equals(location)) {
@@ -96,22 +106,40 @@ public class ReleaseLevel extends Level {
 		}
 	}
 
+	/**
+	 * @return True if the level has a ReleaseNumber selected, False otherwise
+	 */
 	public boolean hasSelectedReleaseNumber() {
 		return this.selectedReleaseNumber.isPresent();
 	}
 
+	/**
+	 * Select a ReleaseNumber
+	 * 
+	 * @param releaseNumber
+	 *            The ReleaseNumber to select
+	 */
 	public void selectReleaseNumber(ReleaseNumber releaseNumber) {
 		this.selectedReleaseNumber = Optional.of(releaseNumber);
 	}
 
+	/**
+	 * Deselects the currently selected ReleaseNumber
+	 */
 	public void deselectReleaseNumber() {
 		this.selectedReleaseNumber = Optional.empty();
 	}
 
+	/**
+	 * @return The ReleaseNumber currently selected
+	 */
 	public ReleaseNumber getSelectedReleaseNumber() {
 		return this.selectedReleaseNumber.get();
 	}
 
+	/**
+	 * @return The list of Collected Release Numbers
+	 */
 	public List<ReleaseNumber> collectedReleaseNumbers() {
 		ArrayList<ReleaseNumber> collectedReleaseNumbers = new ArrayList<ReleaseNumber>();
 		for (ReleaseNumber r : this.releaseSets) {
