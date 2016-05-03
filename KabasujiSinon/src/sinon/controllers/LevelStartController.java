@@ -46,7 +46,6 @@ public class LevelStartController implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if (this.game.getLevel(this.levelNum).getLevelData().getUnlocked() == false) {
-			System.out.println("LEVEL IS LOCKED");
 			return;
 		}
 

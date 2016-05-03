@@ -210,8 +210,5 @@ public class FileHandler {
 
 		Serializer serializer = new Serializer(currentFile, level.getLevelData());
 		serializer.serializeFile();
-
-		System.out.println("EARNED STARS: " + level.getLevelData().getStarRecord());
-
 	}
 }

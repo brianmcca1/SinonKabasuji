@@ -69,12 +69,10 @@ public class ReleaseInfoView extends LevelTypeInfoView implements Observer {
 	public boolean makeCollected(ReleaseNumber releaseNumber) {
 		JButton selected = getButton(releaseNumber);
 		if (selected == null) {
-			System.out.println("Button was null");
 			return false;
 
 		}
 		selected.setEnabled(false);
-		System.out.println("Disabled button");
 		return true;
 	}
 
@@ -139,7 +137,6 @@ public class ReleaseInfoView extends LevelTypeInfoView implements Observer {
 				.collectedReleaseNumbers();
 
 		for (ReleaseNumber r : collectedReleaseNumbers) {
-			System.out.println("Collected release Number");
 			makeCollected(r);
 		}
 

@@ -36,7 +36,6 @@ public class Serializer {
 			ObjectOutputStream oos = new ObjectOutputStream(fout);   
 			oos.writeObject(this.levelData);
 			oos.close();
-			System.out.println("SERIALIZING FILE: " + this.fileToSave.getName() + " SUCCESSFUL");
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}

@@ -33,7 +33,6 @@ public class Deserializer {
 	    	levelData = (LevelData) ois.readObject();
 	    	ois.close();
 	    	fin.close();
-	    	System.out.println("DESERIALIZING FILE: " + this.fileToOpen.getName() + " SUCCESSFUL");
 	    	return levelData;
 	    }catch(Exception ex){
 	    	ex.printStackTrace();

@@ -71,8 +71,6 @@ public abstract class AbstractHexStashController implements MouseListener {
     };
 
     private void handleCtrlClick() {
-        System.out.println(
-                "fewafewaf;ewoif;woaijfe;owij;ecccccc//cewa/fewacewaoi;f\\cewaewfewa.");
     }
 
     @Override

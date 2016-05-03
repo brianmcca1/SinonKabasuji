@@ -104,7 +104,6 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer {
 				return;
 			if (this.puzzleLevel.getMovesLeft() <= 0) {
 				wasCalled = true;
-				System.out.println("ENTERED*************************");
 				FileHandler.setStarsOnExit(this.game.getLevel());
 				this.game.loadAllLevels();
 				this.game.determineUnlocking();

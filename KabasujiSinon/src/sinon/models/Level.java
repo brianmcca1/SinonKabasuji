@@ -186,8 +186,7 @@ public class Level implements Observable {
        move = undo.pop();
        if (move.undo()) {
     	   redo.push(move);
-       } else
-    	   System.out.println("Undo failed");
+       }
        // TODO error checking n' stuff. Tidy this up.
     }
 
