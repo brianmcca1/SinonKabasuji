@@ -79,105 +79,91 @@ public class FileHandler {
 		levelFile = new File("level1.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
-		//levelData.setUnlocked(true);
+		levelData.setUnlocked(true);
 		level = new PuzzleLevel(new Level(levelData));
 		levels[0] = level;
 
 		levelFile = new File("level2.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
-		//levelData.setUnlocked(true);
 		level = new LightningLevel(new Level(levelData));
 		levels[1] = level;
 
 		levelFile = new File("level3.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
-		//levelData.setUnlocked(true);
 		level = new ReleaseLevel(new Level(levelData));
 		levels[2] = level;
 
 		levelFile = new File("level4.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
-		//levelData.setUnlocked(true);
 		level = new PuzzleLevel(new Level(levelData));
 		levels[3] = level;
 
 		levelFile = new File("level5.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
-		//levelData.setUnlocked(true);
 		level = new LightningLevel(new Level(levelData));
 		levels[4] = level;
 
 		levelFile = new File("level6.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
-		//levelData.setUnlocked(true);
 		level = new ReleaseLevel(new Level(levelData));
 		levels[5] = level;
 
 		levelFile = new File("level7.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
-		//levelData.setUnlocked(true);
 		level = new PuzzleLevel(new Level(levelData));
 		levels[6] = level;
 
 		levelFile = new File("level8.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
-		//levelData.setUnlocked(true);
 		level = new LightningLevel(new Level(levelData));
 		levels[7] = level;
 
 		levelFile = new File("level9.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
-		//levelData.setUnlocked(true);
 		level = new ReleaseLevel(new Level(levelData));
 		levels[8] = level;
 
 		levelFile = new File("level10.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
-		//levelData.setUnlocked(true);
 		level = new PuzzleLevel(new Level(levelData));
 		levels[9] = level;
 
 		levelFile = new File("level11.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
-		//levelData.setUnlocked(true);
 		level = new LightningLevel(new Level(levelData));
 		levels[10] = level;
 
 		levelFile = new File("level12.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
-		//levelData.setUnlocked(true);
 		level = new ReleaseLevel(new Level(levelData));
 		levels[11] = level;
 
 		levelFile = new File("level13.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
-		//levelData.setUnlocked(true);
 		level = new PuzzleLevel(new Level(levelData));
 		levels[12] = level;
 
 		levelFile = new File("level14.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
-		//levelData.setUnlocked(true);
 		level = new LightningLevel(new Level(levelData));
 		levels[13] = level;
 
 		levelFile = new File("level15.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
-		//levelData.setUnlocked(true);
 		level = new ReleaseLevel(new Level(levelData));
 		levels[14] = level;
 

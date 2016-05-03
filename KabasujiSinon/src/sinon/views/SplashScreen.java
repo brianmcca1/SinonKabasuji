@@ -24,6 +24,8 @@ public class SplashScreen extends JPanel {
 	public static JProgressBar progressBar;
 	/** Used to count the load progress for the progressBar. */
 	public static int count;
+	
+	public static JLabel theGoods;
 
 	/** "Kabasuji" or "Kabasuji Builder" */
 	private String labelText;
@@ -59,6 +61,17 @@ public class SplashScreen extends JPanel {
 		gbc_lblNewLabel.gridx = 1;
 		gbc_lblNewLabel.gridy = 1;
 		this.add(lblNewLabel, gbc_lblNewLabel);
+		
+		JLabel lblTheGoods = new JLabel("");
+		lblTheGoods.setIcon(new ImageIcon(SplashScreen.class.getResource("/images/theGoods.png")));
+		GridBagConstraints gbc_lblTheGoods = new GridBagConstraints();
+		gbc_lblTheGoods.fill = GridBagConstraints.VERTICAL;
+		gbc_lblTheGoods.insets = new Insets(0, 0, 5, 5);
+		gbc_lblTheGoods.gridx = 0;
+		gbc_lblTheGoods.gridy = 2;
+		add(lblTheGoods, gbc_lblTheGoods);
+		
+		theGoods = lblTheGoods;
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(SplashScreen.class.getResource("/images/wpi.png")));

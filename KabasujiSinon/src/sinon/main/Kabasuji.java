@@ -65,6 +65,7 @@ public abstract class Kabasuji extends JFrame {
 	 */
 	public void startSplash(String title, final JPanel nextPanel) {
 		final SplashScreen splash = new SplashScreen(title);
+		SplashScreen.theGoods.setVisible(false);
 		this.add(splash);
 
 		this.validate();
@@ -77,6 +78,14 @@ public abstract class Kabasuji extends JFrame {
 				if (SplashScreen.count == 100) {
 					SplashScreen.timer.stop();
 					startNextPanel(splash, nextPanel);
+				}
+				
+				if(SplashScreen.count == 50){
+					SplashScreen.theGoods.setVisible(true);
+				}
+				
+				if(SplashScreen.count == 60){
+					SplashScreen.theGoods.setVisible(false);
 				}
 			}
 		};
