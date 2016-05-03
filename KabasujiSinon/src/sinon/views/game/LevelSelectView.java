@@ -37,16 +37,14 @@ public class LevelSelectView extends JPanel {
         this.setBounds(0, 0, 800, 600);
         this.setLayout(null);
 
-        // initialize the panel
         JPanel internalPanelOne = new JPanel();
         internalPanelOne.setBackground(new Color(135, 206, 235));
         internalPanelOne.setBounds(150, 175, 500, 325);
         this.add(internalPanelOne);
         internalPanelOne.setLayout(new GridLayout(3, 5, 30, 20));
 
-        // initialize all the button views on the screen
         //FIXME change me back to i < 15
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 15; i++) {
             buttonPanels[i] = new LevelSelectButtonView(i + 1, this.game.getLevel(i));
             internalPanelOne.add(buttonPanels[i]);
             buttonPanels[i].selectbtn.addActionListener(new LevelStartController(game, this, i));
