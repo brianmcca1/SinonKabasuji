@@ -15,17 +15,22 @@ public class ReleaseTile extends Tile {
 
 	Optional<ReleaseNumber> releaseNumber = Optional.empty();
 
+	/**
+	 * Creates a new tile with the given parameters.
+	 * @param location the point location of this tile.
+	 * @param playable boolean determining whether the tile is playable.
+	 */
 	public ReleaseTile(Point location, boolean playable) {
 		super(location, playable);
 	}
 
 	/**
-	 * Add a Release Number to the tile
+	 * Add a Release Number to the tile.
 	 * 
 	 * @param releaseNumber
-	 *            the Release Number to be added
+	 *            the Release Number to be added.
 	 * @return True if the Release Number was added successfully, false
-	 *         otherwise
+	 *         otherwise.
 	 */
 	public boolean addReleaseNumber(ReleaseNumber releaseNumber) {
 		if (this.releaseNumber.isPresent()) {
@@ -38,10 +43,10 @@ public class ReleaseTile extends Tile {
 	}
 
 	/**
-	 * Removes the Release Number from the tile
+	 * Removes the Release Number from the tile.
 	 * 
 	 * @return True if the Release Number was removed successfully, false
-	 *         otherwise
+	 *         otherwise.
 	 */
 	public boolean removeReleaseNumber() {
 		if (!this.releaseNumber.isPresent()) {
@@ -54,18 +59,18 @@ public class ReleaseTile extends Tile {
 	}
 
 	/**
-	 * Get the ReleaseNumber currently on this tile
+	 * Get the ReleaseNumber currently on this tile.
 	 * 
-	 * @return The ReleaseNumber occupying this tile
+	 * @return The ReleaseNumber occupying this tile.
 	 */
 	public Optional<ReleaseNumber> getReleaseNumber() {
 		return this.releaseNumber;
 	}
 
 	/**
-	 * Determines if the tile is currently occupied by a ReleaseNumber
+	 * Determines if the tile is currently occupied by a ReleaseNumber.
 	 * 
-	 * @return True if the tile is occupied by a ReleaseNumber, False otherwise
+	 * @return True if the tile is occupied by a ReleaseNumber, False otherwise.
 	 */
 	public boolean hasReleaseNumber() {
 		return this.releaseNumber.isPresent();

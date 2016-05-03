@@ -20,12 +20,24 @@ public class ReleaseLevel extends Level {
 	Optional<ReleaseNumber> selectedReleaseNumber = Optional.empty();
 	List<ReleaseNumber> releaseSets;
 
+	/**
+	 * Contructs a new Release level with the given parameters.
+	 * @param b the board to be added.
+	 * @param bp the bullpen to be added.
+	 * @param releaseSets the release sets to be added.
+	 */
+	
 	public ReleaseLevel(Board b, BullPen bp, List<ReleaseNumber> releaseSets) {
 		super(Types.RELEASE, b, bp);
 		this.releaseSets = releaseSets;
 		((ReleaseBoard) this.getBoard()).addReleaseSet(this.releaseSets);
 	}
 
+	/**
+	 * Constructs a new release level with a given level's data.
+	 * @param level the level being converted into a release level.
+	 */
+	
 	public ReleaseLevel(Level level) {
 		super(Types.RELEASE, level.getBoard(), level.getBullpen());
 		this.levelData = level.getLevelData();
@@ -34,8 +46,8 @@ public class ReleaseLevel extends Level {
 	}
 
 	/**
-	 * @return An example release level, with the default board and an empty
-	 *         bullpen and ReleaseNumbers list
+	 * @return An example release level, with the default board and an empty.
+	 *         bullpen and ReleaseNumbers list.
 	 */
 	public static ReleaseLevel getExampleReleaseLevel() {
 		ReleaseBoard board = new ReleaseBoard();
@@ -93,10 +105,10 @@ public class ReleaseLevel extends Level {
 	}
 
 	/**
-	 * Collect the ReleaseNumber at a specific location
+	 * Collect the ReleaseNumber at a specific location.
 	 * 
 	 * @param location
-	 *            The location of the tile to collect
+	 *            The location of the tile to collect.
 	 */
 	public void collectReleaseSet(Point location) {
 		for (ReleaseNumber r : this.releaseSets) {
@@ -107,38 +119,38 @@ public class ReleaseLevel extends Level {
 	}
 
 	/**
-	 * @return True if the level has a ReleaseNumber selected, False otherwise
+	 * @return True if the level has a ReleaseNumber selected, False otherwise.
 	 */
 	public boolean hasSelectedReleaseNumber() {
 		return this.selectedReleaseNumber.isPresent();
 	}
 
 	/**
-	 * Select a ReleaseNumber
+	 * Select a ReleaseNumber.
 	 * 
 	 * @param releaseNumber
-	 *            The ReleaseNumber to select
+	 *            The ReleaseNumber to select.
 	 */
 	public void selectReleaseNumber(ReleaseNumber releaseNumber) {
 		this.selectedReleaseNumber = Optional.of(releaseNumber);
 	}
 
 	/**
-	 * Deselects the currently selected ReleaseNumber
+	 * Deselects the currently selected ReleaseNumber.
 	 */
 	public void deselectReleaseNumber() {
 		this.selectedReleaseNumber = Optional.empty();
 	}
 
 	/**
-	 * @return The ReleaseNumber currently selected
+	 * @return The ReleaseNumber currently selected.
 	 */
 	public ReleaseNumber getSelectedReleaseNumber() {
 		return this.selectedReleaseNumber.get();
 	}
 
 	/**
-	 * @return The list of Collected Release Numbers
+	 * @return The list of Collected Release Numbers.
 	 */
 	public List<ReleaseNumber> collectedReleaseNumbers() {
 		ArrayList<ReleaseNumber> collectedReleaseNumbers = new ArrayList<ReleaseNumber>();

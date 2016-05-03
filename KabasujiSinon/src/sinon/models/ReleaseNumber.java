@@ -8,7 +8,7 @@ import sinon.models.data.ReleaseNumberData;
 
 /**
  * A ReleaseNumber is part of the Release Number sets. It has a Color, a number,
- * and a location on the board
+ * and a location on the board.
  * 
  * @author Brian
  *
@@ -20,6 +20,13 @@ public class ReleaseNumber {
     Optional<Point> location;
     boolean collected;
 
+    /**
+     * Creates a new Release Number with the given parameters.
+     * @param color the color of this number.
+     * @param number this number itself.
+     * @param location the location on the board of this number.
+     */
+    
     public ReleaseNumber(Color color, int number, Point location) {
         super();
         this.color = color;
@@ -39,6 +46,12 @@ public class ReleaseNumber {
                 + ", location=" + location + ", collected=" + collected + "]";
     }
 
+    /**
+     * Creates a new Release Number with the given parameters.
+     * @param color the color of this number.
+     * @param number this number itself.
+     */
+    
     public ReleaseNumber(Color color, int number) {
         super();
         this.color = color;
@@ -47,6 +60,10 @@ public class ReleaseNumber {
         this.location = Optional.empty();
     }
 
+    /**
+     * Creates a new Release number from the given parameters.
+     * @param releaseNumberData Data to be used for this new level.
+     */
     public ReleaseNumber(ReleaseNumberData releaseNumberData) {
         this.color = releaseNumberData.getColor();
         this.number = releaseNumberData.getNumber();
@@ -55,54 +72,54 @@ public class ReleaseNumber {
     }
 
     /**
-     * Set the location of the ReleaseNumber
+     * Set the location of the ReleaseNumber.
      * 
      * @param location
-     *            Location of the ReleaseNumber as a Point
+     *            Location of the ReleaseNumber as a Point.
      */
     public void setLocation(Point location) {
         this.location = Optional.of(location);
     }
 
     /**
-     * Remove the associated location
+     * Remove the associated location.
      * 
      * This would be used if a number set is removed from the board, to avoid an
-     * inaccurate or misleading location
+     * inaccurate or misleading location.
      */
     public void removeLocation() {
         this.location = Optional.empty();
     }
 
     /**
-     * Returns whether or not the ReleaseNumber has been collected
+     * Returns whether or not the ReleaseNumber has been collected.
      * 
-     * @return Whether the ReleaseNumber has been collected
+     * @return Whether the ReleaseNumber has been collected.
      */
     public boolean isCollected() {
         return this.collected;
     }
 
     /**
-     * Gets the location of the ReleaseNumber on the board
+     * Gets the location of the ReleaseNumber on the board.
      * 
-     * @return The location of the ReleaseNumber as a Point
+     * @return The location of the ReleaseNumber as a Point.
      */
     public Optional<Point> getLocation() {
         return this.location;
     }
 
     /**
-     * Collect the ReleaseNumber
+     * Collect the ReleaseNumber.
      */
     public void collect() {
         collected = true;
     }
 
     /**
-     * Uncollect the ReleaseNumber
+     * Uncollect the ReleaseNumber.
      * 
-     * This is used when a Hexomino is removed from a tile
+     * This is used when a Hexomino is removed from a tile.
      */
     public void uncollect() {
         collected = false;
@@ -118,14 +135,19 @@ public class ReleaseNumber {
     }
 
     /**
-     * Get the number associated with the ReleaseNumber
+     * Get the number associated with the ReleaseNumber.
      * 
-     * @return The number associated with the ReleaseNumber
+     * @return The number associated with the ReleaseNumber.
      */
     public int getNumber() {
         return this.number;
     }
 
+    /**
+     * Checks to see if this number has a location.
+     * @return True if this number does, false otherwise.
+     */
+    
     public boolean hasLocation() {
         return this.location.isPresent();
     }

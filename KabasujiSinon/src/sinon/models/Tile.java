@@ -24,6 +24,11 @@ public class Tile implements Observable {
 	Point location;
 	Optional<Observer> observer;
 
+	/**
+	 * Creates a new tile with the given parameters
+	 * @param location the point location of this tile
+	 * @param playable boolean determining whether the tile is playable
+	 */
 	public Tile(Point location, boolean playable) {
 		this.playable = playable;
 		this.location = Objects.requireNonNull(location);
