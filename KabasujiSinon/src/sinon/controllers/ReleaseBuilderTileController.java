@@ -1,7 +1,9 @@
 package sinon.controllers;
 
 import java.awt.Point;
+import java.util.Optional;
 
+import sinon.models.Hexomino;
 import sinon.models.ReleaseLevel;
 import sinon.models.ReleaseTile;
 import sinon.models.data.LevelType.Types;
@@ -45,16 +47,18 @@ public class ReleaseBuilderTileController extends BuilderTileController {
 	public void handleLeftClick() {
 
 		if (level.hasSelected()) {
-
+			
 			if (level.getBullpen().containsHexID(level.getSelectedHexomino().get().getID())) {
 				// else move from bullpen to board
 				MoveToBoardFromBullpen move = new MoveToBoardFromBullpen(this.level, this.tileView.getRow(),
 						this.tileView.getColumn());
 
+				Optional<Hexomino> hexSelected = level.getSelectedHexomino(); 
+				
+				
 				if (move.doMove()) {
 					if (this.level.getLevelData().getLevelType() != Types.LIGHTNING) {
-						this.tile.getHexomino().get()
-								.setAnchor(new Point(this.tileView.getRow(), this.tileView.getColumn()));
+						hexSelected.get().setAnchor(new Point(this.tileView.getRow(), this.tileView.getColumn()));
 					}
 					level.pushMove(move);
 					level.deselect();
