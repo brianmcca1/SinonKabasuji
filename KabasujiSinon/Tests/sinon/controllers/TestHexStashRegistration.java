@@ -46,7 +46,7 @@ public class TestHexStashRegistration {
 		BankToBullpenMove move2 = new BankToBullpenMove(bullpen, Hexomino.getExampleHexomino());
 		assertTrue(move2.doMove());
 
-		bullpenView
+		// still working on this TODO
 	}
 
 }
