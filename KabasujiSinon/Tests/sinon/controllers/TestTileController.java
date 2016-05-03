@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import sinon.main.Builder;
 import sinon.models.Board;
 import sinon.models.BullPen;
 import sinon.models.Hexomino;
@@ -70,6 +71,7 @@ public class TestTileController {
 
 	@Test
 	public void testBuilderRelease() {
+		Builder builder = new Builder();
 		ArrayList<ReleaseNumber> releaseNumbers = new ArrayList<ReleaseNumber>();
 		ReleaseLevel level = new ReleaseLevel(new ReleaseBoard(), new BullPen(new BullPenData()), releaseNumbers);
 		ReleaseTile tile1 = (ReleaseTile) level.getBoard().getTile(0, 0);
@@ -79,7 +81,7 @@ public class TestTileController {
 		TileView tileView2 = new TileView(tile2);
 		InfoPanel infoPanel = new InfoPanel();
 
-		ReleaseInfoView releaseInfoView = new ReleaseInfoView(level);
+		ReleaseInfoView releaseInfoView = new ReleaseInfoView(level, builder);
 		Hexomino hex = Hexomino.getExampleHexomino();
 		level.getBullpen().addHexomino(hex);
 		MainView mainView = new MainView(level, infoPanel, releaseInfoView);

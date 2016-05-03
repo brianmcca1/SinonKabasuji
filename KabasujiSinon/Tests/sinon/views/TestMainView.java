@@ -9,6 +9,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import sinon.main.Builder;
 import sinon.models.Board;
 import sinon.models.BullPen;
 import sinon.models.Hexomino;
@@ -43,6 +44,7 @@ public class TestMainView {
 
 	@Before
 	public void setUp() throws Exception {
+		Builder builder = new Builder();
 		Board board = new Board();
 		board.getTile(1, 1).setPlayable(false);
 		List<Hexomino> bullpenList = new ArrayList<Hexomino>();
@@ -52,7 +54,7 @@ public class TestMainView {
 		releaseLevel = ReleaseLevel.getExampleReleaseLevel();
 		editablePuzzleInfoView = new PuzzleInfoView(true, level);
 
-		releaseInfoView = new ReleaseInfoView(releaseLevel);
+		releaseInfoView = new ReleaseInfoView(releaseLevel, builder);
 		releaseInGameInfoView = new GameInfoView(releaseLevel);
 		bankView = new BankView();
 	}
