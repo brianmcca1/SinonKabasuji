@@ -21,8 +21,10 @@ public class Game extends Kabasuji {
 	/** Holds all the levels for the game. */
 	public Level[] allLevels = new Level[15];
 
+	/** The level select view to choose a level to play. */
 	public LevelSelectView levelSelectView;
 
+	/** Main constructor for the game application. */
 	public Game() {
 		super();
 		loadAllLevels();
@@ -57,7 +59,7 @@ public class Game extends Kabasuji {
 	}
 
 	/**
-	 * Initialize the controllers for the game
+	 * Initialize the controllers for the game.
 	 */
 	public void initializeControllers() {
 		GameInfoView gameInfoView = (GameInfoView) this.mainView.getInfoPanel();
@@ -76,7 +78,7 @@ public class Game extends Kabasuji {
 	}
 
 	/**
-	 * Determine which levels to unlock
+	 * Determine which levels to unlock.
 	 */
 	public void determineUnlocking() {
 		if (this.getCurrentLevelNumber() == 14)
@@ -86,6 +88,7 @@ public class Game extends Kabasuji {
 		}
 	}
 
+	/** The main function that is called when running a game. */
 	public static void main(String args[]) {
 		@SuppressWarnings("unused")
 		Game game = new Game();

@@ -135,14 +135,17 @@ public abstract class Kabasuji extends JFrame {
 		FileHandler.determineCurrentGameLevelFile(this.currentLevelNumber);
 	}
 
+	/** Set the current level. */
 	public void setCurrentLevelNumber(int n) {
 		this.currentLevelNumber = n;
 	}
 
+	/** Get the current level number. */
 	public int getCurrentLevelNumber() {
 		return this.currentLevelNumber;
 	}
 
+	/** Revalidate the mainView. */
 	public void revalidateMainView() {
 		this.mainView.revalidate();
 	}
@@ -165,13 +168,14 @@ public abstract class Kabasuji extends JFrame {
 		}
 	}
 
+	/** Getter for the tileRegistrator object. */
 	protected TileRegistrator getTileRegistrator() {
 		return this.tileRegistrator;
 	}
 
 	/**
 	 * Adds the registrator to the bullpen, and adds the overall bullpen
-	 * controller
+	 * controller.
 	 */
 	protected void registerBullpenController() {
 		this.getMainView().getBullpenView().setRegistrator(

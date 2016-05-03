@@ -18,7 +18,7 @@ import sinon.views.Observer;
  **/
 public class Board implements Observable {
 
-	/** The list of observers which are watching for updates on the board */
+	/** The list of observers which are watching for updates on the board. */
 	List<Observer> observers;
 
 	/*
@@ -72,9 +72,13 @@ public class Board implements Observable {
 		return true;
 	}
 
+	/** The width of the board. */
 	private final static int WIDTH = 12;
+	/** The height of the board. */
 	private final static int HEIGHT = 12;
+	/** The maximum row-index of the the board tiles. */
 	private final static int WIDTH_BY_ZERO = WIDTH - 1;
+	/** The maximum column-index of the board tiles. */
 	private final static int HEIGHT_BY_ZERO = HEIGHT - 1;
 	/** Maps every Tile to its point location. */
 	Map<Point, Tile> tilesViaPoints;
@@ -144,7 +148,7 @@ public class Board implements Observable {
 	 * 
 	 * @param row
 	 * @param column
-	 * @return True if there is a hexomino on this tile
+	 * @return True if there is a hexomino on this tile.
 	 */
 	public boolean hasHex(int row, int column) {
 		return getTile(row, column).hasHex();
@@ -156,7 +160,7 @@ public class Board implements Observable {
 	 * @param anchorLocation
 	 *            Location of where the anchor of the hexomino will go.
 	 * @param hex
-	 *            The Hexomino to be added
+	 *            The Hexomino to be added.
 	 * @return True if the move if possible, false otherwise.
 	 */
 	public boolean canAddHexomino(Point anchorLocation, Hexomino hex) {
@@ -323,12 +327,12 @@ public class Board implements Observable {
 	}
 
 	/**
-	 * Sets a rectangle of tiles, with the given corners, to unplayable
+	 * Sets a rectangle of tiles, with the given corners, to unplayable.
 	 * 
 	 * @param topLeft
-	 *            The top left corner
+	 *            The top left corner.
 	 * @param bottomRight
-	 *            The bottom right corner
+	 *            The bottom right corner.
 	 */
 	public void setUnplayableRectangle(Point topLeft, Point bottomRight) {
 
@@ -353,10 +357,10 @@ public class Board implements Observable {
 	}
 
 	/**
-	 * Remove a hint from the list of hints
+	 * Remove a hint from the list of hints.
 	 * 
 	 * @param hint
-	 *            The hint to remove
+	 *            The hint to remove.
 	 */
 	public void removeHint(Hint hint) {
 		this.hints.remove(hint);
@@ -364,22 +368,22 @@ public class Board implements Observable {
 	}
 
 	/**
-	 * Get the list of hints
+	 * Get the list of hints.
 	 * 
-	 * @return the list of hints
+	 * @return the list of hints.
 	 */
 	public List<Hint> getHints() {
 		return this.hints;
 	}
 
 	/**
-	 * Get the list of points for a HexominoNumberSet placed at a specific point
+	 * Get the list of points for a HexominoNumberSet placed at a specific point.
 	 * 
 	 * @param anchor
-	 *            The anchor point that the Number set is placed at
+	 *            The anchor point that the Number set is placed at.
 	 * @param numSet
-	 *            The HexominoNumberSet being placed
-	 * @return The list of points
+	 *            The HexominoNumberSet being placed.
+	 * @return The list of points.
 	 */
 	public List<Point> getPoints(Point anchor, HexominoNumberSet numSet) {
 		List<Point> returnPoints = new LinkedList<Point>();

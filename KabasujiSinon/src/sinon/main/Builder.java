@@ -34,6 +34,7 @@ public class Builder extends Kabasuji {
 	/** BullPen containing all 35 hexominos. */
 	BullPen bullpen = new BullPen(HexominoBankData.getHexominos());
 
+	/** Construct the builder. */
 	public Builder() {
 
 		super();
@@ -44,10 +45,10 @@ public class Builder extends Kabasuji {
 	}
 
 	/**
-	 * Initialize the main view for the builder
+	 * Initialize the main view for the builder.
 	 * 
 	 * @param lvlTypeInfoView
-	 *            The levelType info view associated with the MainView
+	 *            The levelType info view associated with the MainView.
 	 */
 	public void initializeMainView(LevelTypeInfoView lvlTypeInfoView) {
 		if (this.mainView != null) {
@@ -61,7 +62,7 @@ public class Builder extends Kabasuji {
 		initializeControllers();
 	}
 
-	/** Registers all of the controllers to the already initialized mainView */
+	/** Registers all of the controllers to the already initialized mainView. */
 	private void initializeControllers() {
 		// Sets the type of tile register to a builder specific type.
 		this.tileRegistrator = new TileRegistrator(getLevel(), mainView);
@@ -92,23 +93,24 @@ public class Builder extends Kabasuji {
 	}
 
 	/**
-	 * Get the Builder's bullpen
+	 * Get the Builder's bullpen.
 	 * 
-	 * @return The Bullpen
+	 * @return The Bullpen.
 	 */
 	public BullPen getBullpen() {
 		return this.bullpen;
 	}
 
+	/** Main function that is called for the builder application. */
 	public static void main(String args[]) {
 		@SuppressWarnings("unused")
 		Builder builder = new Builder();
 	}
 
 	/**
-	 * Get the Builder's BankView
+	 * Get the Builder's BankView.
 	 * 
-	 * @return The BankView
+	 * @return The BankView.
 	 */
 	private BankView getBankView() {
 		assert this.getMainView() != null;
