@@ -115,9 +115,6 @@ public class LightningLevel extends Level {
 
     @Override
     public boolean incrementMoves() {
-        // TODO what's going on with this. I just noticed this method here and
-        // am wondering why this is like, a thing at all. Shouldn't this just
-        // not be overriden and not be called? Or like? Hmmm?
         return false;
     }
 
