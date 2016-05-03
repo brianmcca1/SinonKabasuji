@@ -19,17 +19,19 @@ import sinon.views.builder.BuilderMenuBar;
  */
 public class BuilderNewReleaseLevelController extends BuilderNewLevelController {
 
+	/** The main builder application that is associated with this controller. */
 	private Builder builder;
 
+	/** the menu bar associated with this controller. */
 	private BuilderMenuBar builderMenuBar;
 
 	/**
-	 * Controller for starting a Release Level in the builder
+	 * Controller for starting a Release Level in the builder.
 	 * 
 	 * @param b
-	 *            The Builder object
+	 *            The Builder object.
 	 * @param bMenuBar
-	 *            The Menu Bar that the new level is created from
+	 *            The Menu Bar that the new level is created from.
 	 */
 	public BuilderNewReleaseLevelController(Builder b, BuilderMenuBar bMenuBar) {
 		this.builder = b;

@@ -18,13 +18,13 @@ public abstract class AbstractHexStashController implements MouseListener {
 
     /** Current level that the game/builder is in. */
     Level level;
-    /** MainView associated with the current level */
+    /** MainView associated with the current level. */
     MainView mainView;
     /** HexominoView associated with this controller. */
     HexominoBullpenView hex;
 
     /**
-     * Creates a new HexominoStashController
+     * Creates a new HexominoStashController.
      * 
      * @param level
      *            Level for access to the applications model.
@@ -70,6 +70,7 @@ public abstract class AbstractHexStashController implements MouseListener {
         }
     };
 
+    /** Used to handle the control click operation. */
     private void handleCtrlClick() {
     }
 

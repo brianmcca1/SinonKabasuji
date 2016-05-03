@@ -20,16 +20,18 @@ public abstract class AlterHexominoController implements ActionListener {
 
 	/** This is the hexomino view that is being flipped. */
 	HexominoBullpenView hexView;
-	/** This is the level for the move to be pushed to */
+	
+	/** This is the level for the move to be pushed to. */
 	Level level;
-	/** Hexomino being edited */
+	
+	/** Hexomino being edited. */
 	protected Hexomino hexomino;
 
 	/**
-	 * Creates a new Flip Hexomino Controller
+	 * Creates a new Flip Hexomino Controller.
 	 * 
 	 * @param hexomino
-	 *            Hexomino view to be registered
+	 *            Hexomino view to be registered.
 	 */
 	public AlterHexominoController(Level level, HexominoBullpenView hexomino) {
 		Objects.requireNonNull(hexomino);

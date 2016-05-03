@@ -13,6 +13,7 @@ import sinon.models.Level;
  */
 public class BuilderUndoController implements ActionListener {
 
+	/** The main level model associated with the undoing in the builder. */
 	private Level level;
 
 	/**

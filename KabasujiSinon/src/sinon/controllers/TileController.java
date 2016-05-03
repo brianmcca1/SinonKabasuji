@@ -32,20 +32,27 @@ import sinon.views.TileView;
  */
 public abstract class TileController implements MouseListener, MouseMotionListener {
 
+	/** The main high level model class. */
 	protected Level level;
+	
+	/** The tileView being controller by this controller. */
 	protected TileView tileView;
+	
+	/** The mainView object associated with this controller. */
 	protected MainView mainView;
+	
+	/** The tile model object associated with this tileController. */
 	protected Tile tile;
 
 	/**
-	 * Mouse listener for a TileView
+	 * Mouse listener for a TileView.
 	 * 
 	 * @param level
-	 *            The level the tile is a part of
+	 *            The level the tile is a part of.
 	 * @param tileView
-	 *            The TileView associated with the controller
+	 *            The TileView associated with the controller.
 	 * @param mainView
-	 *            The MainView object
+	 *            The MainView object.
 	 */
 	public TileController(Level level, TileView tileView, MainView mainView) {
 		this.level = level;
@@ -101,12 +108,12 @@ public abstract class TileController implements MouseListener, MouseMotionListen
 	}
 
 	/**
-	 * Handle right clicks on the TileView
+	 * Handle right clicks on the TileView.
 	 */
 	public abstract void handleRightClick();
 
 	/**
-	 * Handle left clicks on the TileView
+	 * Handle left clicks on the TileView.
 	 */
 	public void handleLeftClick() {
 

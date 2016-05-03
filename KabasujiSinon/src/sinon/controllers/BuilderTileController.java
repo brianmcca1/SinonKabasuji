@@ -25,14 +25,14 @@ import sinon.views.TileView;
 public class BuilderTileController extends TileController {
 
 	/**
-	 * Controller for tiles in the builder
+	 * Controller for tiles in the builder.
 	 * 
 	 * @param level
-	 *            The level containing the tiles
+	 *            The level containing the tiles.
 	 * @param tileView
-	 *            The TileView associated with the tile
+	 *            The TileView associated with the tile.
 	 * @param mainView
-	 *            The MainView object
+	 *            The MainView object.
 	 */
 	public BuilderTileController(Level level, TileView tileView, MainView mainView) {
 		super(level, tileView, mainView);

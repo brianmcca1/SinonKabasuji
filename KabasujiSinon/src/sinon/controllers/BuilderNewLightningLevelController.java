@@ -17,17 +17,19 @@ import sinon.views.builder.BuilderMenuBar;
  */
 public class BuilderNewLightningLevelController extends BuilderNewLevelController {
 
+	/** This is the main builder application associated with the controller. */
 	private Builder builder;
 
+	/** The menu bar for builder. */
 	private BuilderMenuBar builderMenuBar;
 
 	/**
-	 * Controller for starting a Lightning Level in the builder
+	 * Controller for starting a Lightning Level in the builder.
 	 * 
 	 * @param b
-	 *            The Builder object
+	 *            The Builder object.
 	 * @param bMenuBar
-	 *            The Menu Bar that the new level is created from
+	 *            The Menu Bar that the new level is created from.
 	 */
 	public BuilderNewLightningLevelController(Builder b, BuilderMenuBar bMenuBar) {
 		this.builder = b;

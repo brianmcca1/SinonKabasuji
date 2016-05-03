@@ -22,12 +22,12 @@ public class LightningTimerController {
 	public static Timer timer;
 
 	/**
-	 * The controller for handling the time left in a lightning level
+	 * The controller for handling the time left in a lightning level.
 	 * 
 	 * @param level
-	 *            The level the timer is contained in
+	 *            The level the timer is contained in.
 	 * @param infoView
-	 *            The Lightning info view associated with the timer
+	 *            The Lightning info view associated with the timer.
 	 */
 	public LightningTimerController(LightningLevel level, LightningInfoView infoView) {
 		this.level = level;
@@ -36,12 +36,12 @@ public class LightningTimerController {
 	}
 
 	/**
-	 * Start the timer
+	 * Start the timer.
 	 * 
 	 * @param level
-	 *            The level the timer is contained in
+	 *            The level the timer is contained in.
 	 * @param infoView
-	 *            The Lightning info view the timer is associated with
+	 *            The Lightning info view the timer is associated with.
 	 */
 	public void startTimer(LightningLevel level, LightningInfoView infoView) {
 		int delay = 1000;

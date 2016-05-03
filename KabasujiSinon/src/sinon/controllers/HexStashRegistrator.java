@@ -25,11 +25,11 @@ import sinon.views.MainView;
  */
 public class HexStashRegistrator {
 
-	/** True if this should be registering bank controllers */
+	/** True if this should be registering bank controllers. */
 	boolean isBankType;
 	/** Model which is associated with the controllers which are to be built. */
 	Level level;
-	/** View which is associated with the controllers which are to be built */
+	/** View which is associated with the controllers which are to be built. */
 	MainView mainView;
 
 	/**
@@ -54,7 +54,7 @@ public class HexStashRegistrator {
 	}
 
 	/**
-	 * Registers a Hexomino using this classes
+	 * Registers a Hexomino using this classes.
 	 * 
 	 * @param hexBPView
 	 */

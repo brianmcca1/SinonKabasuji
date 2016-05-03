@@ -12,6 +12,9 @@ import sinon.models.data.LevelData;
 import sinon.serial.Deserializer;
 import sinon.serial.Serializer;
 
+/** 
+ * Main class in charge of handling files. 
+ */
 public class FileHandler {
 
 	/** Current File being handled. */
@@ -44,10 +47,10 @@ public class FileHandler {
 	}
 
 	/**
-	 * Set the current file
+	 * Set the current file.
 	 * 
 	 * @param f
-	 *            The file being set
+	 *            The file being set.
 	 */
 	public static void setCurrentFile(File f) {
 		FileHandler.currentFile = f;
@@ -171,11 +174,11 @@ public class FileHandler {
 	}
 
 	/**
-	 * Find the appropriate image for a certain number of stars
+	 * Find the appropriate image for a certain number of stars.
 	 * 
 	 * @param starsEarned
-	 *            The number of stars earned
-	 * @return The file string for the image
+	 *            The number of stars earned.
+	 * @return The file string for the image.
 	 */
 	public static String determineFileStringForStars(int starsEarned) {
 		String fileString = "/images/" + Integer.toString(starsEarned) + "star.png";
@@ -183,10 +186,10 @@ public class FileHandler {
 	}
 
 	/**
-	 * Sets the number of stars for a given level when the level is exited
+	 * Sets the number of stars for a given level when the level is exited.
 	 * 
 	 * @param level
-	 *            The level being exited
+	 *            The level being exited.
 	 */
 	public static void setStarsOnExit(Level level) {
 		int newStarRecord = level.countStars();

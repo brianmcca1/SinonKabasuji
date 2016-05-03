@@ -22,20 +22,21 @@ import sinon.views.builder.BuilderMenuBar;
  */
 public class BuilderSaveAsController implements ActionListener {
 
-	/** Overall Builder object */
+	/** Overall Builder object. */
 	private Builder builder;
 
+	/** The built-in function for choosing the file. */
 	final JFileChooser fc = new JFileChooser();
 
 	private BuilderMenuBar builderMenuBar;
 
 	/**
-	 * Controller for saving a level as a specific file in the builder
+	 * Controller for saving a level as a specific file in the builder.
 	 * 
 	 * @param b
-	 *            The Builder object
+	 *            The Builder object.
 	 * @param bMenuBar
-	 *            The Menu Bar that the level is saved from
+	 *            The Menu Bar that the level is saved from.
 	 */
 	public BuilderSaveAsController(Builder b, BuilderMenuBar bMenuBar) {
 		this.builder = b;

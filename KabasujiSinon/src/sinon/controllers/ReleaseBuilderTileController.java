@@ -20,20 +20,27 @@ import sinon.views.TileView;
  */
 public class ReleaseBuilderTileController extends BuilderTileController {
 
+	/** The main release level model associated with this controller. */
 	ReleaseLevel level;
+	
+	/** The tileView that the controller is registered to. */
 	TileView tileView;
+	
+	/** The mainView object. */
 	MainView mainView;
+	
+	/** The entity tile that this controller is associated with. */
 	ReleaseTile tile;
 
 	/**
-	 * The controller which handles Release tiles in the builder
+	 * The controller which handles Release tiles in the builder.
 	 * 
 	 * @param level
-	 *            ReleaseLevel the tiles are contained in
+	 *            ReleaseLevel the tiles are contained in.
 	 * @param tileView
-	 *            The TileView the tile is associated with
+	 *            The TileView the tile is associated with.
 	 * @param mainView
-	 *            The MainView object
+	 *            The MainView object.
 	 */
 	public ReleaseBuilderTileController(ReleaseLevel level, TileView tileView, MainView mainView) {
 		super(level, tileView, mainView);

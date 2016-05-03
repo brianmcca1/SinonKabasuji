@@ -19,12 +19,12 @@ public class RestartLevelController implements ActionListener {
 	JPanel mainView;
 
 	/**
-	 * Controller for restarting the level
+	 * Controller for restarting the level.
 	 * 
 	 * @param g
-	 *            The game object
+	 *            The game object.
 	 * @param mv
-	 *            The MainView object
+	 *            The MainView object.
 	 */
 	public RestartLevelController(Game g, MainView mv) {
 		this.game = g;

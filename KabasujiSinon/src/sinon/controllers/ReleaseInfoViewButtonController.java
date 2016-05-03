@@ -8,7 +8,7 @@ import sinon.models.ReleaseNumber;
 import sinon.views.ReleaseInfoView;
 
 /**
- * Controller for adding Release numbers to a release level
+ * Controller for adding Release numbers to a release level.
  * 
  * @author Brian
  *
@@ -19,14 +19,14 @@ public class ReleaseInfoViewButtonController implements ActionListener {
 	ReleaseNumber releaseNumber;
 
 	/**
-	 * Controller for adding ReleaseNumbers to a release level
+	 * Controller for adding ReleaseNumbers to a release level.
 	 * 
 	 * @param level
-	 *            The release level
+	 *            The release level.
 	 * @param infoView
-	 *            The ReleaseInfoView associated with the controller
+	 *            The ReleaseInfoView associated with the controller.
 	 * @param releaseNumber
-	 *            The ReleaseNumber associated with the controller
+	 *            The ReleaseNumber associated with the controller.
 	 */
 	public ReleaseInfoViewButtonController(ReleaseLevel level, ReleaseInfoView infoView, ReleaseNumber releaseNumber) {
 		this.level = level;

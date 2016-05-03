@@ -15,10 +15,13 @@ import sinon.views.TileView;
  */
 public class TileRegistrator {
 
+	/** The high level model object associated with the registrator. */
 	private Level level;
 
+	/** The mainView object. */
 	private MainView mainView;
 
+	/** The flag for determining if registering for builder or game. */
 	private boolean isBuilderType;
 
 	/**
@@ -37,10 +40,10 @@ public class TileRegistrator {
 	}
 
 	/**
-	 * Register the TileView
+	 * Register the TileView.
 	 * 
 	 * @param tileView
-	 *            the TileView being registered
+	 *            the TileView being registered.
 	 */
 	public void register(TileView tileView) {
 		assert tileView != null;
@@ -69,7 +72,6 @@ public class TileRegistrator {
 	/**
 	 * Sets the registrator to register Builder type tile controllers.
 	 * 
-	 * @return
 	 */
 	public void setToBuilderType() {
 		this.isBuilderType = true;

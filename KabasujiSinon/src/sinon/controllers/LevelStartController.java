@@ -29,9 +29,9 @@ public class LevelStartController implements ActionListener {
 
 	/**
 	 * @param g
-	 *            Top level Game/Builder object
+	 *            Top level Game/Builder object.
 	 * @param view
-	 *            LevelSelectView to be removed from the frame
+	 *            LevelSelectView to be removed from the frame.
 	 */
 	public LevelStartController(Game g, LevelSelectView v, int num) {
 		this.levelSelectView = v;
@@ -42,7 +42,7 @@ public class LevelStartController implements ActionListener {
 	@Override
 	/**
 	 * Response to a LevelSelectButtonView being clicked Calls on Game to start
-	 * the MainView
+	 * the MainView.
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if (this.game.getLevel(this.levelNum).getLevelData().getUnlocked() == false) {

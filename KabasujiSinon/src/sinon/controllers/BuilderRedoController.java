@@ -11,13 +11,14 @@ import sinon.models.Level;
  */
 public class BuilderRedoController implements ActionListener {
 
+	/** The level object associated with the redo.  */
 	private Level level;
 
 	/**
-	 * Controller for redoing moves in the builder
+	 * Controller for redoing moves in the builder.
 	 * 
 	 * @param level
-	 *            The level moves are being redone in
+	 *            The level moves are being redone in.
 	 */
 	public BuilderRedoController(Level level) {
 		this.level = level;

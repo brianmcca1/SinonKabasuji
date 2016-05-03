@@ -20,14 +20,14 @@ import sinon.views.MainView;
 public class HexominoBankController extends AbstractHexStashController {
 
 	/**
-	 * Controller for a Hexomino in the Bank in a builder
+	 * Controller for a Hexomino in the Bank in a builder.
 	 * 
 	 * @param level
-	 *            The level the Bank is contained in
+	 *            The level the Bank is contained in.
 	 * @param mainView
-	 *            The MainView object
+	 *            The MainView object.
 	 * @param hex
-	 *            The HexominoBullpenView associated with the controller
+	 *            The HexominoBullpenView associated with the controller.
 	 */
 	public HexominoBankController(Level level, MainView mainView, HexominoBullpenView hex) {
 		super(level, mainView, hex);

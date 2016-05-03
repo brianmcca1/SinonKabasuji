@@ -17,17 +17,19 @@ import sinon.views.builder.BuilderMenuBar;
  */
 public class BuilderNewPuzzleLevelController extends BuilderNewLevelController {
 
+	/** The main builder application associated with the puzzle level. */
 	private Builder builder;
 
+	/** The menu bar associated with this puzzle level. */
 	private BuilderMenuBar builderMenuBar;
 
 	/**
-	 * Controller for starting a Puzzle Level in the builder
+	 * Controller for starting a Puzzle Level in the builder.
 	 * 
 	 * @param b
-	 *            The Builder object
+	 *            The Builder object.
 	 * @param bMenuBar
-	 *            The Menu Bar that the new level is created from
+	 *            The Menu Bar that the new level is created from.
 	 */
 	public BuilderNewPuzzleLevelController(Builder b, BuilderMenuBar bMenuBar) {
 		this.builder = b;

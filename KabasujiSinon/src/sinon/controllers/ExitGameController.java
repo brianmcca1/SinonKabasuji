@@ -29,7 +29,7 @@ public class ExitGameController implements ActionListener {
 	}
 
 	/**
-	 * Handles exiting a game
+	 * Handles exiting a game.
 	 */
 	public void handleExit() {
 		this.game.determineCurrentGameLevelFile();

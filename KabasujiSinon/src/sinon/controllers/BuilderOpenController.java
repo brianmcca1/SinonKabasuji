@@ -27,20 +27,22 @@ import sinon.views.builder.BuilderMenuBar;
  */
 public class BuilderOpenController extends BuilderNewLevelController implements ActionListener {
 
-	/** Overall Builder object */
+	/** Overall Builder object. */
 	private Builder builder;
 
+	/** Used for choosing the file. */
 	final JFileChooser fc = new JFileChooser();
 
+	/** The menu bar associated with the controller.  */
 	private BuilderMenuBar builderMenuBar;
 
 	/**
-	 * Controller for opening a level in the builder
+	 * Controller for opening a level in the builder.
 	 * 
 	 * @param b
-	 *            The Builder object
+	 *            The Builder object.
 	 * @param bMenuBar
-	 *            The Menu Bar that the new level is opened from
+	 *            The Menu Bar that the new level is opened from.
 	 */
 	public BuilderOpenController(Builder b, BuilderMenuBar bMenuBar) {
 		this.builder = b;
@@ -60,11 +62,11 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 	}
 
 	/**
-	 * Open a file in the builder
+	 * Open a file in the builder.
 	 * 
 	 * @param file
-	 *            The level file to open
-	 * @return True if the file was opened successfully, false otherwise
+	 *            The level file to open.
+	 * @return True if the file was opened successfully, false otherwise.
 	 */
 	public boolean openFile(File file) {
 		if (FileHandler.currentFile != null) {

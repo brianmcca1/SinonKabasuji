@@ -12,12 +12,12 @@ import sinon.views.HexominoBullpenView;
 public class FlipHexominoHorizontallyController extends AlterHexominoController {
 
 	/**
-	 * Controller for flipping Hexominos horizontally
+	 * Controller for flipping Hexominos horizontally.
 	 * 
 	 * @param level
-	 *            The level object containing the hexominos
+	 *            The level object containing the hexominos.
 	 * @param hexomino
-	 *            The HexominoBullpenView being flipped
+	 *            The HexominoBullpenView being flipped.
 	 */
 	public FlipHexominoHorizontallyController(Level level, HexominoBullpenView hexomino) {
 		super(level, hexomino);

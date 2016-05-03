@@ -17,15 +17,16 @@ import sinon.models.data.LevelType.Types;
  */
 public class BuilderSaveController implements ActionListener {
 
+	/** The main high level builder application associated with this controller. */
 	private Builder builder;
 
 	/**
-	 * Controller for saving a level which has been modified
+	 * Controller for saving a level which has been modified.
 	 * 
 	 * @param b
-	 *            The Builder object
+	 *            The Builder object.
 	 * @param bMenuBar
-	 *            The Menu Bar that the level is saved from
+	 *            The Menu Bar that the level is saved from.
 	 */
 	public BuilderSaveController(Builder b) {
 		this.builder = b;
