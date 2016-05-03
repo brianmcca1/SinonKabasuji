@@ -31,8 +31,10 @@ public class ReleaseInfoView extends LevelTypeInfoView implements Observer {
 	/**
 	 * Used when opening or making a level in the builder
 	 * 
-	 * @param level The ReleaseLevel associated with this ReleaseView.
-	 * @param builder Top level Builder.
+	 * @param level
+	 *            The ReleaseLevel associated with this ReleaseView.
+	 * @param builder
+	 *            Top level Builder.
 	 */
 	public ReleaseInfoView(Level level, Builder builder) {
 		super(level);
@@ -90,7 +92,7 @@ public class ReleaseInfoView extends LevelTypeInfoView implements Observer {
 	 * @return True if the view was updated correctly, false otherwise.
 	 */
 	public boolean makeCollected(ReleaseNumber releaseNumber) {
-		if (builder == null) {
+		if (builder != null) {
 			return false;
 		}
 		JButton selected = getButton(releaseNumber);
