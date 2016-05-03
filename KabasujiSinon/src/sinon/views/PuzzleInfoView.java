@@ -14,15 +14,19 @@ import sinon.views.game.LevelSelectView;
  * The InfoView for a puzzle level
  * 
  * @author Brian
- *
  */
 public class PuzzleInfoView extends LevelTypeInfoView implements Observer {
 
 	private static final long serialVersionUID = -6047685525063166167L;
+	/** Label containing "Moves:". */
 	public JLabel infoLabel;
+	/** Text Field for entering/displaying moves left. */
 	public JTextField movesLeftField;
+	/** The PuzzleLevel associated with this view. */
 	public PuzzleLevel puzzleLevel;
+	/** Top level Game. */
 	public Game game;
+	/** Fix for a problem with updateMovesMade being called 4 times. */
 	private boolean wasCalled;
 
 	/**

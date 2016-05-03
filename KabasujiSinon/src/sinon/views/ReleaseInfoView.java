@@ -25,7 +25,7 @@ public class ReleaseInfoView extends LevelTypeInfoView implements Observer {
 	private static final long serialVersionUID = -7158712755823785281L;
 	/** The list of 15 buttons */
 	ArrayList<JButton> buttons = new ArrayList<JButton>(18);
-
+	/** Top level Builder. */
 	Builder builder;
 
 	/**
