@@ -31,6 +31,14 @@ public class NumberSetFactory {
 	 *            Point2.x.
 	 * @param b1
 	 *            Point2.y.
+	 * @param c Point3.x.
+	 * @param c1 Point3.y.
+	 * @param d Point4.x.
+	 * @param d1 Point4.y.
+	 * @param e Point5.x.
+	 * @param e1 Point5.y.
+	 * @param f Point6.x.
+	 * @param f1 Point6.y.
 	 * @return New HexominoNumberSet.
 	 */
 	public static HexominoNumberSet getByNumbers(int a, int a1, int b, int b1, int c, int c1, int d, int d1, int e,
@@ -58,6 +66,7 @@ public class NumberSetFactory {
 	 *            Set of six points which specifies the shape and position of a
 	 *            Hexomino. The set must contain exactly six elements, and one
 	 *            element must be (0,0).
+	 * @return returns a new hexomino number set. 
 	 */
 	public static HexominoNumberSet getByList(List<Point> points) {
 		if (points == null)
@@ -78,6 +87,7 @@ public class NumberSetFactory {
 	 * 
 	 * @param code
 	 *            The immutable data object representing a HexominoNumberSet.
+	 * @return returns a new hexomino number set 
 	 */
 	public static HexominoNumberSet getByCode(HexominoCode code) {
 		if (code == null)
