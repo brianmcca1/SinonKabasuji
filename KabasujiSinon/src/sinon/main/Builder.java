@@ -43,6 +43,12 @@ public class Builder extends Kabasuji {
 		startSplash("Kabasuji Builder", this.blankPanel);
 	}
 
+	/**
+	 * Initialize the main view for the builder
+	 * 
+	 * @param lvlTypeInfoView
+	 *            The levelType info view associated with the MainView
+	 */
 	public void initializeMainView(LevelTypeInfoView lvlTypeInfoView) {
 		if (this.mainView != null) {
 			this.remove(this.mainView);
@@ -85,6 +91,11 @@ public class Builder extends Kabasuji {
 		this.getJMenuBar().getMenu(1).getItem(1).addActionListener(new BuilderRedoController(currentLevel));
 	}
 
+	/**
+	 * Get the Builder's bullpen
+	 * 
+	 * @return The Bullpen
+	 */
 	public BullPen getBullpen() {
 		return this.bullpen;
 	}
@@ -94,6 +105,11 @@ public class Builder extends Kabasuji {
 		Builder builder = new Builder();
 	}
 
+	/**
+	 * Get the Builder's BankView
+	 * 
+	 * @return The BankView
+	 */
 	private BankView getBankView() {
 		assert this.getMainView() != null;
 		return (BankView) this.mainView.getInfoPanel();

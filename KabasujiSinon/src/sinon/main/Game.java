@@ -44,7 +44,7 @@ public class Game extends Kabasuji {
 	 *            LevelSelectView to remove from the frame.
 	 */
 	public void initializeMainView(LevelSelectView levelSelectView, LevelTypeInfoView lvlTypeInfoView) {
-		if(this.levelSelectView != null){
+		if (this.levelSelectView != null) {
 			this.remove(this.levelSelectView);
 			this.revalidate();
 		}
@@ -56,10 +56,12 @@ public class Game extends Kabasuji {
 		this.startNextPanel(levelSelectView, this.getMainView());
 	}
 
+	/**
+	 * Initialize the controllers for the game
+	 */
 	public void initializeControllers() {
 		GameInfoView gameInfoView = (GameInfoView) this.mainView.getInfoPanel();
-		gameInfoView.getExitButton().addActionListener(
-				new ExitGameController(this));
+		gameInfoView.getExitButton().addActionListener(new ExitGameController(this));
 		this.tileRegistrator = new TileRegistrator(getLevel(), mainView);
 		this.tileRegistrator.setToGameType();
 		registerBoardViewControllers();
@@ -72,10 +74,14 @@ public class Game extends Kabasuji {
 	public Level getLevel(int index) {
 		return this.allLevels[index];
 	}
-	
-	public void determineUnlocking(){
-		if(this.getCurrentLevelNumber() == 14) return;
-		if(this.getLevel().getLevelData().getStarRecord() >= 1){
+
+	/**
+	 * Determine which levels to unlock
+	 */
+	public void determineUnlocking() {
+		if (this.getCurrentLevelNumber() == 14)
+			return;
+		if (this.getLevel().getLevelData().getStarRecord() >= 1) {
 			this.getLevel(this.getCurrentLevelNumber() + 1).getLevelData().setUnlocked(true);
 		}
 	}
