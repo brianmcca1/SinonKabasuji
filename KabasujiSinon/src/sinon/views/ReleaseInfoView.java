@@ -81,6 +81,13 @@ public class ReleaseInfoView extends LevelTypeInfoView implements Observer {
 		}
 	}
 
+	/**
+	 * Set the Button of a specific Release Number to disabled.
+	 * 
+	 * @param releaseNumber
+	 *            The ReleaseNumber to be collected.
+	 * @return True if the view was updated correctly, false otherwise.
+	 */
 	public boolean makeCollected(ReleaseNumber releaseNumber) {
 		if (builder == null) {
 			return false;
@@ -94,6 +101,13 @@ public class ReleaseInfoView extends LevelTypeInfoView implements Observer {
 		return true;
 	}
 
+	/**
+	 * Updates the view to show a specific ReleaseNumber as selected.
+	 * 
+	 * @param releaseNumber
+	 *            The selected ReleaseNumber.
+	 * @return True if the view was updated correctly, false otherwise.
+	 */
 	public boolean select(ReleaseNumber releaseNumber) {
 		JButton selected = getButton(releaseNumber);
 		if (selected == null) {
@@ -103,6 +117,13 @@ public class ReleaseInfoView extends LevelTypeInfoView implements Observer {
 		return true;
 	}
 
+	/**
+	 * Updates to show the ReleaseNumber as deselected.
+	 * 
+	 * @param releaseNumber
+	 *            The ReleaseNumber being deselected.
+	 * @return True if the view was updated correctly, false otherwise.
+	 */
 	public boolean deselect(ReleaseNumber releaseNumber) {
 		JButton selected = getButton(releaseNumber);
 		if (selected == null) {
@@ -112,11 +133,25 @@ public class ReleaseInfoView extends LevelTypeInfoView implements Observer {
 		return true;
 	}
 
+	/**
+	 * Updates to show a JButton as disabled.
+	 * 
+	 * @param button
+	 *            The Button to disable.
+	 * @return True if the view was updated correctly, false otherwise.
+	 */
 	public boolean deselect(JButton button) {
 		button.setBackground(UIManager.getColor("Panel.background"));
 		return true;
 	}
 
+	/**
+	 * Get the JButton associated with a releaseNumber.
+	 * 
+	 * @param releaseNumber
+	 *            The ReleaseNumber to find.
+	 * @return The associated JButton.
+	 */
 	private JButton getButton(ReleaseNumber releaseNumber) {
 
 		for (JButton j : this.buttons) {
@@ -160,6 +195,10 @@ public class ReleaseInfoView extends LevelTypeInfoView implements Observer {
 
 	}
 
+	/**
+	 * @return A collection of all of the JButtons that make up the
+	 *         ReleaseInfoView.
+	 */
 	public Iterable<JButton> getAllButtons() {
 
 		return buttons;

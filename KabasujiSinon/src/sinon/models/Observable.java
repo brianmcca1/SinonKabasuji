@@ -2,6 +2,12 @@ package sinon.models;
 
 import sinon.views.Observer;
 
+/**
+ * Observable objects, to be observed by Observer objects.
+ * 
+ * @author Brian
+ *
+ */
 public interface Observable {
 
 	/**
