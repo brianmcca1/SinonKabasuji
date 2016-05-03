@@ -35,7 +35,7 @@ public abstract class AlterHexominoController implements ActionListener {
 		Objects.requireNonNull(hexomino);
 		Objects.requireNonNull(level);
 		this.hexView = hexomino;
-		this.hexomino = hexomino.getHexomino();
+		this.hexomino = new Hexomino(hexomino.getHexomino().getHexominoNumberSet());
 		this.level = level;
 	}
 

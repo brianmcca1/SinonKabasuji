@@ -11,8 +11,8 @@ import sinon.models.LightningLevel;
 import sinon.views.game.LevelSelectView;
 
 /**
- * Class that encapsulates the specific graphic elements
- * that are exclusive to a lightning level like the timeLeft.
+ * Class that encapsulates the specific graphic elements that are exclusive to a
+ * lightning level like the timeLeft.
  * 
  * @author Brian
  *
@@ -20,26 +20,29 @@ import sinon.views.game.LevelSelectView;
 public class LightningInfoView extends LevelTypeInfoView {
 
 	private static final long serialVersionUID = 6687905039046766060L;
-	
+
 	/** The label that describes the graphic. */
 	public JLabel infoLabel;
-	
+
 	/** Text field for displaying/inputting the time left. */
 	public JTextField timeLeftField;
-	
+
 	/** Lightning level object associated with this view. */
-	public LightningLevel level;
-	
+	public LightningLevel lightningLevel;
+
 	/** The game that is associated with this particular infoView. */
 	public Game game;
 
-	/** Constructor for lightning infoView. It has to take in a boolean
+	/**
+	 * Constructor for lightning infoView. It has to take in a boolean
 	 * indicating whether it is editable and a lightning level model object.
+	 * 
 	 * @param editable
 	 * @param level
 	 */
-	public LightningInfoView(boolean editable, LightningLevel level) {
-		super(level);
+	public LightningInfoView(boolean editable, LightningLevel lightningLevel) {
+		super(lightningLevel);
+		this.lightningLevel = lightningLevel;
 		setLayout(new GridLayout(1, 1));
 		this.infoLabel = new JLabel("Time:");
 		this.timeLeftField = new JTextField();
@@ -49,19 +52,25 @@ public class LightningInfoView extends LevelTypeInfoView {
 		else
 			this.timeLeftField.setEditable(true);
 
-		this.timeLeftField.setText(Integer.toString(level.getMaxTime()));
+		this.timeLeftField.setText(Integer.toString(lightningLevel.getMaxTime()));
 		this.add(infoLabel);
 		this.add(timeLeftField);
 	}
 
-	/** This is constructor used for instantiating the lightning info View
-	 * in a game. 
-	 * @param g The game that is associated with this particular infoView.
-	 * @param time The time that is left in the level.
-	 * @param lightningLevel The lightning level class.
+	/**
+	 * This is constructor used for instantiating the lightning info View in a
+	 * game.
+	 * 
+	 * @param g
+	 *            The game that is associated with this particular infoView.
+	 * @param time
+	 *            The time that is left in the level.
+	 * @param lightningLevel
+	 *            The lightning level class.
 	 */
 	public LightningInfoView(Game g, int time, LightningLevel lightningLevel) {
 		super(lightningLevel);
+		this.lightningLevel = lightningLevel;
 		setLayout(new GridLayout(1, 1));
 		this.infoLabel = new JLabel("Time:");
 		this.timeLeftField = new JTextField();
@@ -87,9 +96,9 @@ public class LightningInfoView extends LevelTypeInfoView {
 	 * Update the view to show how much time is left
 	 */
 	public void updateTimeLeft() {
-		this.timeLeftField.setText(((Integer) level.getTimeLeft()).toString());
+		this.timeLeftField.setText(((Integer) lightningLevel.getTimeLeft()).toString());
 
-		if (this.level.getTimeLeft() <= 0) {
+		if (this.lightningLevel.getTimeLeft() <= 0) {
 			FileHandler.setStarsOnExit(this.game.getLevel());
 			this.game.loadAllLevels();
 			this.game.determineUnlocking();
