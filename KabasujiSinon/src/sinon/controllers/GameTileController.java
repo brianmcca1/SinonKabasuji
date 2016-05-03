@@ -1,6 +1,5 @@
 package sinon.controllers;
 
-import sinon.models.Board;
 import sinon.models.Level;
 import sinon.models.data.LevelType.Types;
 import sinon.moves.MoveInBoard;
@@ -19,11 +18,6 @@ public class GameTileController extends TileController {
 
 	public GameTileController(Level level, TileView view, MainView mainView) {
 		super(level, view, mainView);
-	}
-
-	/** Accesses the board from the fields this class has */
-	private Board getBoard() {
-		return level.getBoard();
 	}
 
 	@Override

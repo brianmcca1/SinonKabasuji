@@ -180,7 +180,6 @@ public class Level implements Observable {
      */
 
     public void undo() {
-       int sizePre = undo.size();
        if (undo.empty())
     	   return;
        Move move;
@@ -231,13 +230,20 @@ public class Level implements Observable {
         this.update();
     }
 
+    /**
+     * Increments the moves counter in the level, currently only applicable in a puzzle level
+     * @return returns true if the moves are incremented (and it has moves to increment), otherwise returns false
+     */
+    
     public boolean incrementMoves() {
-        // TODO again delete this or something?
-        // needs a method signature as well not sure what to do for that. Unsure
-        // when this is being called.
         return false;
     }
 
+    /**
+     * Peeks at the top move of the redo stack
+     * @return returns the top move of redo
+     */
+    
     public Move peekRedo() {
         return redo.peek();
     }

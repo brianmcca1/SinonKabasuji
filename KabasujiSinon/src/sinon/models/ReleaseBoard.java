@@ -1,6 +1,7 @@
 package sinon.models;
 
 import java.awt.Point;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,6 @@ public class ReleaseBoard extends Board {
 
 	@Override
 	protected void initializeTiles(Point p, boolean playable) {
-		ReleaseTile tile = new ReleaseTile(p, playable);
 
 		tilesViaPoints.put(p, new ReleaseTile(p, playable));
 

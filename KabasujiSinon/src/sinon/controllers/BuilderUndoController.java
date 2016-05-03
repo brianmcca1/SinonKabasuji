@@ -1,10 +1,10 @@
 package sinon.controllers;
 
 import java.awt.event.ActionEvent;
+
 import java.awt.event.ActionListener;
 
 import sinon.models.Level;
-import sinon.views.MainView;
 
 /**
  * This is the controller in charge of undoing moves in the builder.

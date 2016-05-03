@@ -72,9 +72,9 @@ public class TileView extends JPanel implements Observer {
         assert this.tile != null;
 
         if (!tile.isPlayable()) {
-            this.setColor(color.black);
+            this.setColor(Color.black);
         } else {
-            this.setColor(color.WHITE);
+            this.setColor(Color.WHITE);
         }
 
         if (tile instanceof ReleaseTile) {

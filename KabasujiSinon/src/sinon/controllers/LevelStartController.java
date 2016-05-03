@@ -1,6 +1,7 @@
 package sinon.controllers;
 
 import java.awt.event.ActionEvent;
+
 import java.awt.event.ActionListener;
 
 import sinon.main.Game;
@@ -67,8 +68,6 @@ public class LevelStartController implements ActionListener {
 			lvlTypeInfoView = new LightningInfoView(this.game,
 					this.game.getLevel().getLevelData().getLevelProperty().getMaxTime(),
 					(LightningLevel) this.game.getLevel(this.levelNum));
-			LightningTimerController l = new LightningTimerController(
-					(LightningLevel) this.game.getLevel(this.levelNum), (LightningInfoView) lvlTypeInfoView);
 			break;
 		case RELEASE:
 			lvlTypeInfoView = new ReleaseInfoView(
