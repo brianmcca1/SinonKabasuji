@@ -34,8 +34,8 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer {
 	 * 
 	 * @param editable
 	 *            If this text field should be editable or not.
-	 * @param level
-	 *            Current level in the builder.
+	 * @param puzzleLevel
+	 *            Current puzzle level in the builder.
 	 */
 	public PuzzleInfoView(boolean editable, PuzzleLevel puzzleLevel) {
 		super(puzzleLevel);
@@ -63,7 +63,7 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer {
 	 *            Game object.
 	 * @param numMoves
 	 *            Number of moves this level stars with
-	 * @param level
+	 * @param puzzleLevel
 	 *            current PuzzleLevel
 	 */
 	public PuzzleInfoView(Game g, int numMoves, PuzzleLevel puzzleLevel) {

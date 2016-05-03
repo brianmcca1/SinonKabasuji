@@ -73,7 +73,7 @@ public class HexViewStash implements Observer {
 	 * you aren't creating a bankView then make sure that you are using the
 	 * other constructor {@link #HexViewStash(Level, JPanel)}.
 	 * 
-	 * @param bullpen
+	 * @param bullPen
 	 *            Bullpen which the HexViewStash is associated with.
 	 * @param contentPanel
 	 *            The JPanel where HexominoBullpenViews are to be added. Note

@@ -44,10 +44,12 @@ public class MainView extends JPanel {
     private BoardView boardView;
 
     /**
-     * @param k
-     *            Top level Game/Builder object.
+     * @param level
+     *            Top level model object.
      * @param infoPanel
      *            The InfoPanel to be displayed.
+     * @param lvlTypeInfoView 
+     * The infoView holding the information for the level type.
      */
     public MainView(Level level, InfoPanel infoPanel,
             LevelTypeInfoView lvlTypeInfoView) {

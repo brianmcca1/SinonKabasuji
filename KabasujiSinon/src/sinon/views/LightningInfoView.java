@@ -38,7 +38,7 @@ public class LightningInfoView extends LevelTypeInfoView {
 	 * indicating whether it is editable and a lightning level model object.
 	 * 
 	 * @param editable
-	 * @param level
+	 * @param lightningLevel
 	 */
 	public LightningInfoView(boolean editable, LightningLevel lightningLevel) {
 		super(lightningLevel);
