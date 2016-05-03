@@ -16,9 +16,11 @@ import sinon.views.LightningInfoView;
  *
  */
 public class LightningTimerController {
-
+	/** The Level the timer is a part of */
 	LightningLevel level;
+	/** The InfoView that the timer is displayed in */
 	LightningInfoView infoView;
+	/** The Timer object */
 	public static Timer timer;
 
 	/**
