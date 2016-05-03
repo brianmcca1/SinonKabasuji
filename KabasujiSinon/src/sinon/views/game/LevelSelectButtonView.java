@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -49,6 +50,7 @@ public class LevelSelectButtonView extends JPanel {
 		this.level = level;
 		this.starView = new StarView(starImageFilePath, this.level);
 		imagePanel.add(starView);
+		imagePanel.setBorder(BorderFactory.createBevelBorder(1));
 		this.add(imagePanel);
 		JButton selectbtn = makeButton(Integer.toString(num));
 		
