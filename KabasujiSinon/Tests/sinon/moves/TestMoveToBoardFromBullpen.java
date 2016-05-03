@@ -4,6 +4,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -59,6 +60,7 @@ public class TestMoveToBoardFromBullpen {
 		mtbfbp1.level.select(mtbfbp1.hex.get());
 		// You can't make the same move twice
 		assertFalse(mtbfbp1.doMove());
+		assertTrue(mtbfbp1.undo());
 		// Can't add to the same place
 		assertFalse(mtbfbp5.doMove());
 		while (mtbfbp4.level.getBullpen().getPieces().size() > 0) {
@@ -69,6 +71,8 @@ public class TestMoveToBoardFromBullpen {
 		mtbfbp5.level.deselect();
 		// Nothing selected
 		assertFalse(mtbfbp5.doMove());
+		mtbfbp4.hex = Optional.empty();
+		assertFalse(mtbfbp4.valid());
 
 	}
 
@@ -88,14 +92,5 @@ public class TestMoveToBoardFromBullpen {
 		// can't add to -3, -3
 		assertFalse(mtbfbp3.doMove());
 	}
-
-	@Test
-	public void testUndos() {
-		// Undoing a valid move
-		assertTrue(mtbfbp1.undo());
-		// Undo's are not finished, no testing to see if can undo
-		// assertFalse(mtbfbp1.undo());
-	}
-
 
 }
