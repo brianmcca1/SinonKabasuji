@@ -1,7 +1,5 @@
 package sinon.moves;
 
-import java.util.Optional;
-
 import sinon.models.Hexomino;
 
 public abstract class Move {

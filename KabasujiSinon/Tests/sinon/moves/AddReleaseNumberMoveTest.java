@@ -2,13 +2,13 @@ package sinon.moves;
 
 import static org.junit.Assert.*;
 
+
 import java.awt.Color;
 import java.awt.Point;
 import java.util.ArrayList;
 
 import org.junit.Test;
 
-import sinon.models.Board;
 import sinon.models.BullPen;
 import sinon.models.Hexomino;
 import sinon.models.Level;

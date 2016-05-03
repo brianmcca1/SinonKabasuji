@@ -16,12 +16,10 @@ import sinon.serial.Deserializer;
 public class ReleaseIntegrationTest {
 	ReleaseLevel level;
 	int movesLeft;
-	private ModelIntegrationTest m;
 
 	@Before
 	public void setUp() {
 		movesLeft = 8;
-		m = new ModelIntegrationTest();
 		level = this.openLevel();
 	}
 

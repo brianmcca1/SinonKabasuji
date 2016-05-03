@@ -153,7 +153,7 @@ public class FileHandler {
 		levelData.setUnlocked(true);
 		level = new ReleaseLevel(new Level(levelData));
 		levels[11] = level;
-		
+		 
 		levelFile = new File("level13.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
@@ -173,7 +173,7 @@ public class FileHandler {
 		levelData = deserializer.deserializeFile();
 		levelData.setUnlocked(true);
 		level = new ReleaseLevel(new Level(levelData));
-		levels[15] = level;
+		levels[14] = level;
 		 
 		return levels;
 	}

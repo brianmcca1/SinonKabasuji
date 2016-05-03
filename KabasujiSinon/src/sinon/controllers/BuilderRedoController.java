@@ -4,8 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import sinon.models.Level;
-import sinon.moves.Move;
-import sinon.views.MainView;
 
 /**
  * This is the controller that is responsible for redoing moves in 

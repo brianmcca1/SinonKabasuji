@@ -50,7 +50,6 @@ public class ReleaseInfoView extends LevelTypeInfoView implements Observer {
 		for (int j = 0; j < 3; j++) {
 			for (int i = 1; i <= 6; i++) {
 				JButton nextButton = new JButton(Integer.toString(i));
-				int index;
 				if (j == 0)
 					nextButton.setForeground(Color.RED);
 
