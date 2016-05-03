@@ -80,7 +80,7 @@ public abstract class Kabasuji extends JFrame {
 				}
 			}
 		};
-		SplashScreen.timer = new Timer(25, al);
+		SplashScreen.timer = new Timer(35, al);
 		SplashScreen.timer.start();
 	}
 
