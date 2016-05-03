@@ -54,6 +54,13 @@ public class TestTileController {
 		tileController2.handleLeftClick();
 		assertFalse(level.hasSelected());
 		assertTrue(tileController2.tile.hasHex());
+		assertFalse(tileController1.tile.hasHex());
+
+		tileController1.handleRightClick();
+		assertFalse(tileController1.tile.isPlayable());
+
+		tileController2.handleRightClick();
+		assertEquals(level.getBoard().getHints().size(), 1);
 
 		tileController2.handleLeftClick();
 		assertTrue(level.hasSelected());
@@ -110,10 +117,10 @@ public class TestTileController {
 		TileView tileView2 = new TileView(tile2);
 		InfoPanel infoPanel = new InfoPanel();
 
-		PuzzleInfoView releaseInfoView = new PuzzleInfoView(false, level);
+		PuzzleInfoView puzzleInfoView = new PuzzleInfoView(false, level);
 		Hexomino hex = Hexomino.getExampleHexomino();
 		level.getBullpen().addHexomino(hex);
-		MainView mainView = new MainView(level, infoPanel, releaseInfoView);
+		MainView mainView = new MainView(level, infoPanel, puzzleInfoView);
 		GameTileController tileController1 = new GameTileController(level, tileView1, mainView);
 		GameTileController tileController2 = new GameTileController(level, tileView2, mainView);
 
