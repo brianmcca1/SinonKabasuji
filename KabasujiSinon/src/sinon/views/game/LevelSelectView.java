@@ -38,8 +38,9 @@ public class LevelSelectView extends JPanel {
         this.setLayout(null);
 
         JPanel internalPanelOne = new JPanel();
+        internalPanelOne.setForeground(Color.BLUE);
         internalPanelOne.setBackground(new Color(135, 206, 235));
-        internalPanelOne.setBounds(150, 175, 500, 325);
+        internalPanelOne.setBounds(140, 179, 518, 325);
         this.add(internalPanelOne);
         internalPanelOne.setLayout(new GridLayout(3, 5, 30, 20));
 
@@ -54,8 +55,8 @@ public class LevelSelectView extends JPanel {
         titlePanel.setBounds(140, 63, 518, 45);
         this.add(titlePanel);
 
-        JLabel lblLevelSelect = new JLabel("KABASUJI | LEVEL SELECT\n");
-        lblLevelSelect.setFont(new Font("DejaVu Sans", Font.BOLD, 20));
+        JLabel lblLevelSelect = new JLabel("Level Select\r\n");
+        lblLevelSelect.setFont(new Font("SansSerif", Font.PLAIN, 35));
         lblLevelSelect.setForeground(new Color(0, 0, 128));
         titlePanel.add(lblLevelSelect);
     }
