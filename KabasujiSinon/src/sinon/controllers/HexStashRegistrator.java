@@ -25,81 +25,86 @@ import sinon.views.MainView;
  */
 public class HexStashRegistrator {
 
-    /** True if this should be registering bank controllers */
-    boolean isBankType;
-    /** Model which is associated with the controllers which are to be built. */
-    Level level;
-    /** View which is associated with the controllers which are to be built */
-    MainView mainView;
+	/** True if this should be registering bank controllers */
+	boolean isBankType;
+	/** Model which is associated with the controllers which are to be built. */
+	Level level;
+	/** View which is associated with the controllers which are to be built */
+	MainView mainView;
 
-    /**
-     * Creates a new HexStashRegistrator.
-     * 
-     * @param level
-     *            Model which is associated with the controllers which are to be
-     *            built.
-     * @param mainView
-     *            View which is associated with the controllers which are to be
-     *            built.
-     * @param isBankType
-     *            True if the registrator should be registering bank
-     *            controllers. False if it should be registering Bullpen
-     *            controllers.
-     */
-    public HexStashRegistrator(Level level, MainView mainView,
-            boolean isBankType) {
-        this.level = Objects.requireNonNull(level);
-        this.mainView = Objects.requireNonNull(mainView);
-        this.isBankType = isBankType;
-    }
+	/**
+	 * Creates a new HexStashRegistrator.
+	 * 
+	 * @param level
+	 *            Model which is associated with the controllers which are to be
+	 *            built.
+	 * @param mainView
+	 *            View which is associated with the controllers which are to be
+	 *            built.
+	 * @param isBankType
+	 *            True if the registrator should be registering bank
+	 *            controllers. False if it should be registering Bullpen
+	 *            controllers.
+	 */
+	public HexStashRegistrator(Level level, MainView mainView,
+			boolean isBankType) {
+		this.level = Objects.requireNonNull(level);
+		this.mainView = Objects.requireNonNull(mainView);
+		this.isBankType = isBankType;
+	}
 
-    /**
-     * Registers a Hexomino using this classes
-     * 
-     * @param hexBPView
-     */
-    public void registerHexominoView(HexominoBullpenView hexBPView) {
-        assert hexBPView != null;
-        assert level != null;
-        assert mainView != null;
+	/**
+	 * Registers a Hexomino using this classes
+	 * 
+	 * @param hexBPView
+	 */
+	public void registerHexominoView(HexominoBullpenView hexBPView) {
+		assert hexBPView != null;
+		assert level != null;
+		assert mainView != null;
 
-        if (isBankType) {
-            MouseListener m = new HexominoBankController(level, mainView,
-                    hexBPView);
-            hexBPView.addMouseListener(m);
-        }
+		if (hexBPView.getComponentListeners().length != 0) {
+			throw new IllegalStateException(
+					"Registering a controller to a bullpen view which already has a mouse listener on it.");
+		}
 
-        else {
-            MouseListener m = new HexominoBullpenController(level, mainView,
-                    hexBPView);
-            hexBPView.addMouseListener(m);
+		if (isBankType) {
+			MouseListener m = new HexominoBankController(level, mainView,
+					hexBPView);
+			hexBPView.addMouseListener(m);
+		}
 
-            JMenuItem flipVMenuItem = new JMenuItem("Flip Vertically");
-            JMenuItem flipHMenuItem = new JMenuItem("Flip Horizontally");
-            JMenuItem rotateCMenuItem = new JMenuItem("Rotate Clockwise");
-            JMenuItem rotateCCMenuItem = new JMenuItem(
-                    "Rotate Counter-Clockwise");
+		else {
+			MouseListener m = new HexominoBullpenController(level, mainView,
+					hexBPView);
+			hexBPView.addMouseListener(m);
 
-            JPopupMenu popupMenu = new JPopupMenu();
-            popupMenu.add(flipVMenuItem);
-            popupMenu.add(flipHMenuItem);
-            popupMenu.add(rotateCMenuItem);
-            popupMenu.add(rotateCCMenuItem);
+			JMenuItem flipVMenuItem = new JMenuItem("Flip Vertically");
+			JMenuItem flipHMenuItem = new JMenuItem("Flip Horizontally");
+			JMenuItem rotateCMenuItem = new JMenuItem("Rotate Clockwise");
+			JMenuItem rotateCCMenuItem = new JMenuItem(
+					"Rotate Counter-Clockwise");
 
-            hexBPView.setComponentPopupMenu(popupMenu);
+			JPopupMenu popupMenu = new JPopupMenu();
+			popupMenu.add(flipVMenuItem);
+			popupMenu.add(flipHMenuItem);
+			popupMenu.add(rotateCMenuItem);
+			popupMenu.add(rotateCCMenuItem);
 
-            rotateCMenuItem.addActionListener(
-                    new RotateHexominoClockwiseController(this.level,
-                            hexBPView));
-            rotateCCMenuItem.addActionListener(
-                    new RotateHexominoAnticlockwiseController(this.level,
-                            hexBPView));
-            flipHMenuItem.addActionListener(
-                    new FlipHexominoHorizontallyController(this.level,
-                            hexBPView));
-            flipVMenuItem.addActionListener(
-                    new FlipHexominoVerticalController(this.level, hexBPView));
+			hexBPView.setComponentPopupMenu(popupMenu);
 
-        }
-    }
+			rotateCMenuItem
+			.addActionListener(new RotateHexominoClockwiseController(
+					this.level, hexBPView));
+			rotateCCMenuItem
+			.addActionListener(new RotateHexominoAnticlockwiseController(
+					this.level, hexBPView));
+			flipHMenuItem
+			.addActionListener(new FlipHexominoHorizontallyController(
+					this.level, hexBPView));
+			flipVMenuItem.addActionListener(new FlipHexominoVerticalController(
+					this.level, hexBPView));
+
+		}
+	}
 }
