@@ -21,6 +21,16 @@ public class BullpenController implements MouseListener {
 	BullPen bullpen;
 	BullpenView bullpenView;
 
+	/**
+	 * The controller associated with a bullpen
+	 * 
+	 * @param bullpen
+	 *            The bullpen object this controller is associated with
+	 * @param view
+	 *            The bullpen view this controller is associated with
+	 * @param level
+	 *            The level this bullpen is in
+	 */
 	public BullpenController(BullPen bullpen, BullpenView view, Level level) {
 		this.bullpen = Objects.requireNonNull(bullpen);
 		this.bullpenView = Objects.requireNonNull(view);
@@ -32,6 +42,9 @@ public class BullpenController implements MouseListener {
 		handleClick();
 	}
 
+	/**
+	 * Handles behavior for a click occurring in the Bullpen
+	 */
 	protected void handleClick() {
 		if (level.hasSelected()) {
 			Hexomino hex = level.getSelectedHexomino().get();

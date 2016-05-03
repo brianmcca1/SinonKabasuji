@@ -23,6 +23,14 @@ public class BuilderNewReleaseLevelController extends BuilderNewLevelController 
 
 	private BuilderMenuBar builderMenuBar;
 
+	/**
+	 * Controller for starting a Release Level in the builder
+	 * 
+	 * @param b
+	 *            The Builder object
+	 * @param bMenuBar
+	 *            The Menu Bar that the new level is created from
+	 */
 	public BuilderNewReleaseLevelController(Builder b, BuilderMenuBar bMenuBar) {
 		this.builder = b;
 		this.builderMenuBar = bMenuBar;

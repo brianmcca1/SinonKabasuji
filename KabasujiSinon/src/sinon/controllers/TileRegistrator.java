@@ -9,8 +9,8 @@ import sinon.views.MainView;
 import sinon.views.TileView;
 
 /**
- * This is the class responsible for registering tiles with appropriate
- * tiles when registering views with controllers. 
+ * This is the class responsible for registering tiles with appropriate tiles
+ * when registering views with controllers.
  *
  */
 public class TileRegistrator {
@@ -36,6 +36,12 @@ public class TileRegistrator {
 		this.mainView = Objects.requireNonNull(mainView);
 	}
 
+	/**
+	 * Register the TileView
+	 * 
+	 * @param tileView
+	 *            the TileView being registered
+	 */
 	public void register(TileView tileView) {
 		assert tileView != null;
 		assert level != null;

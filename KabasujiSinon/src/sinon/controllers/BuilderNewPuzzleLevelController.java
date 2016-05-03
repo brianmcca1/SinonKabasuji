@@ -11,17 +11,24 @@ import sinon.views.PuzzleInfoView;
 import sinon.views.builder.BuilderMenuBar;
 
 /**
- * This is the controller associated with starting up a new 
- * puzzle level in the builder. 
+ * This is the controller associated with starting up a new puzzle level in the
+ * builder.
  *
  */
-public class BuilderNewPuzzleLevelController extends BuilderNewLevelController
-{
+public class BuilderNewPuzzleLevelController extends BuilderNewLevelController {
 
 	private Builder builder;
 
 	private BuilderMenuBar builderMenuBar;
 
+	/**
+	 * Controller for starting a Puzzle Level in the builder
+	 * 
+	 * @param b
+	 *            The Builder object
+	 * @param bMenuBar
+	 *            The Menu Bar that the new level is created from
+	 */
 	public BuilderNewPuzzleLevelController(Builder b, BuilderMenuBar bMenuBar) {
 		this.builder = b;
 		this.builderMenuBar = bMenuBar;
@@ -33,7 +40,6 @@ public class BuilderNewPuzzleLevelController extends BuilderNewLevelController
 		BullPen bullpen = new BullPen(new BullPenData());
 		PuzzleLevel level = new PuzzleLevel(board, bullpen, 10);
 		this.builder.setLevel(level);
-		this.handleNewLevel(this.builder, this.builderMenuBar,
-				new PuzzleInfoView(true, level));
+		this.handleNewLevel(this.builder, this.builderMenuBar, new PuzzleInfoView(true, level));
 	}
 }

@@ -6,18 +6,23 @@ import java.awt.event.ActionListener;
 import sinon.models.Level;
 
 /**
- * This is the controller that is responsible for redoing moves in 
- * the builder.
+ * This is the controller that is responsible for redoing moves in the builder.
  *
  */
 public class BuilderRedoController implements ActionListener {
 
 	private Level level;
-	
-	public BuilderRedoController(Level level){
+
+	/**
+	 * Controller for redoing moves in the builder
+	 * 
+	 * @param level
+	 *            The level moves are being redone in
+	 */
+	public BuilderRedoController(Level level) {
 		this.level = level;
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		level.redo();

@@ -23,6 +23,16 @@ public class ReleaseBuilderTileController extends BuilderTileController {
 	MainView mainView;
 	ReleaseTile tile;
 
+	/**
+	 * The controller which handles Release tiles in the builder
+	 * 
+	 * @param level
+	 *            ReleaseLevel the tiles are contained in
+	 * @param tileView
+	 *            The TileView the tile is associated with
+	 * @param mainView
+	 *            The MainView object
+	 */
 	public ReleaseBuilderTileController(ReleaseLevel level, TileView tileView, MainView mainView) {
 		super(level, tileView, mainView);
 		this.level = level;

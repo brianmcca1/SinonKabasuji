@@ -11,6 +11,17 @@ import sinon.views.MainView;
  */
 public class HexominoBullpenController extends AbstractHexStashController {
 
+	/**
+	 * Controller for Hexominos in the Bullpen
+	 * 
+	 * @param level
+	 *            The level the Bullpen is in
+	 * @param mainView
+	 *            The MainView object
+	 * @param hex
+	 *            The HexominoBullpenView associated with the
+	 *            HexominoBullpenController
+	 */
 	public HexominoBullpenController(Level level, MainView mainView, HexominoBullpenView hex) {
 		super(level, mainView, hex);
 	}

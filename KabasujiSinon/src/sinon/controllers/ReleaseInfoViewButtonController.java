@@ -18,6 +18,16 @@ public class ReleaseInfoViewButtonController implements ActionListener {
 	ReleaseInfoView infoView;
 	ReleaseNumber releaseNumber;
 
+	/**
+	 * Controller for adding ReleaseNumbers to a release level
+	 * 
+	 * @param level
+	 *            The release level
+	 * @param infoView
+	 *            The ReleaseInfoView associated with the controller
+	 * @param releaseNumber
+	 *            The ReleaseNumber associated with the controller
+	 */
 	public ReleaseInfoViewButtonController(ReleaseLevel level, ReleaseInfoView infoView, ReleaseNumber releaseNumber) {
 		this.level = level;
 		this.infoView = infoView;

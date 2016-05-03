@@ -2,6 +2,7 @@ package sinon.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import sinon.main.Game;
 import sinon.models.data.LevelType.Types;
 import sinon.views.game.LevelSelectView;
@@ -26,23 +27,26 @@ public class ExitGameController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		handleExit();
 	}
-	
-	public void handleExit(){
+
+	/**
+	 * Handles exiting a game
+	 */
+	public void handleExit() {
 		this.game.determineCurrentGameLevelFile();
 
 		FileHandler.setStarsOnExit(this.game.getLevel());
 
 		Types currentLevelType = this.game.getLevel().getLevelData().getLevelType();
-		switch(currentLevelType){
-			case PUZZLE:
-				break;
-			case LIGHTNING:
-				LightningTimerController.timer.stop();
-				break;
-			case RELEASE:
-				break;
+		switch (currentLevelType) {
+		case PUZZLE:
+			break;
+		case LIGHTNING:
+			LightningTimerController.timer.stop();
+			break;
+		case RELEASE:
+			break;
 		}
-		
+
 		game.loadAllLevels();
 		game.determineUnlocking();
 		game.startNextPanel(this.game.getMainView(), new LevelSelectView(this.game));

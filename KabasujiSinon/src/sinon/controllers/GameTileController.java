@@ -16,6 +16,16 @@ import sinon.views.TileView;
  */
 public class GameTileController extends TileController {
 
+	/**
+	 * Tile controller for a tile in a game
+	 * 
+	 * @param level
+	 *            The level this tile is contained in
+	 * @param view
+	 *            The TileView associated with the tile controller
+	 * @param mainView
+	 *            The MainView object
+	 */
 	public GameTileController(Level level, TileView view, MainView mainView) {
 		super(level, view, mainView);
 	}

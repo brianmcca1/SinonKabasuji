@@ -11,8 +11,8 @@ import sinon.views.LightningInfoView;
 import sinon.views.builder.BuilderMenuBar;
 
 /**
- * This is the controller that is responsible for starting up a 
- * new lightning level in the builder. 
+ * This is the controller that is responsible for starting up a new lightning
+ * level in the builder.
  *
  */
 public class BuilderNewLightningLevelController extends BuilderNewLevelController {
@@ -21,6 +21,14 @@ public class BuilderNewLightningLevelController extends BuilderNewLevelControlle
 
 	private BuilderMenuBar builderMenuBar;
 
+	/**
+	 * Controller for starting a Lightning Level in the builder
+	 * 
+	 * @param b
+	 *            The Builder object
+	 * @param bMenuBar
+	 *            The Menu Bar that the new level is created from
+	 */
 	public BuilderNewLightningLevelController(Builder b, BuilderMenuBar bMenuBar) {
 		this.builder = b;
 		this.builderMenuBar = bMenuBar;

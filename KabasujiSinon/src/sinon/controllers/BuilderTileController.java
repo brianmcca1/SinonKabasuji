@@ -24,47 +24,56 @@ import sinon.views.TileView;
  */
 public class BuilderTileController extends TileController {
 
-    public BuilderTileController(Level level, TileView tileView,
-            MainView mainView) {
-        super(level, tileView, mainView);
-    }
+	/**
+	 * Controller for tiles in the builder
+	 * 
+	 * @param level
+	 *            The level containing the tiles
+	 * @param tileView
+	 *            The TileView associated with the tile
+	 * @param mainView
+	 *            The MainView object
+	 */
+	public BuilderTileController(Level level, TileView tileView, MainView mainView) {
+		super(level, tileView, mainView);
+	}
 
-    @Override
-    public void handleRightClick() {
-        // First let's check out if the tile we clicked on has a hint.
-        // This is slightly round about logic because a tile does not contain a
-        // hint, a board does.
-        boolean hasHint = false;
-        Hint toRemove = null;
-        Board b = level.getBoard();
-        for (Hint h : b.getHints()) {
-            HexominoNumberSet set = h.getHexominoNumberSet();
-            for (Point p : b.getPoints(h.getAnchor(), set)) {
-                Tile t = b.getTile(p);
-                if (t.getLocation().equals(tileView.getPosition())) {
-                    // Then we know that the tile contains a hint.
-                    hasHint = true;
-                    toRemove = h;
-                    break;
-                }
-            }
-        }
+	@Override
+	public void handleRightClick() {
+		// First let's check out if the tile we clicked on has a hint.
+		// This is slightly round about logic because a tile does not contain a
+		// hint, a board does.
+		boolean hasHint = false;
+		Hint toRemove = null;
+		Board b = level.getBoard();
+		for (Hint h : b.getHints()) {
+			HexominoNumberSet set = h.getHexominoNumberSet();
+			for (Point p : b.getPoints(h.getAnchor(), set)) {
+				Tile t = b.getTile(p);
+				if (t.getLocation().equals(tileView.getPosition())) {
+					// Then we know that the tile contains a hint.
+					hasHint = true;
+					toRemove = h;
+					break;
+				}
+			}
+		}
 
-        if (hasHint) {
-            assert toRemove != null;
-            b.removeHint(toRemove);
-        }
+		if (hasHint) {
+			assert toRemove != null;
+			b.removeHint(toRemove);
+		}
 
-        if (tileView.getTile().hasHex()) {
-            Hexomino hex = tileView.getTile().getHexomino().get();
-            Point anchor = hex.getAnchor();
-            Hint toBeAdded = new Hint(hex, anchor);
-            Move AddHint = new AddHint(this.level, toBeAdded);
-            AddHint.doMove();
-            this.level.pushMove(AddHint);
-        } else {
-            tileView.getTile().setPlayable(!tileView.getTile().isPlayable());
-        }
-    }
+		if (tileView.getTile().hasHex()) {
+			Hexomino hex = tileView.getTile().getHexomino().get();
+			Point anchor = hex.getAnchor();
+			Hint toBeAdded = new Hint(hex, anchor);
+			Move AddHint = new AddHint(this.level, toBeAdded);
+			AddHint.doMove();
+			this.level.pushMove(AddHint);
+		} else {
+			tileView.getTile().setPlayable(!tileView.getTile().isPlayable());
+		}
+	}
 
 }

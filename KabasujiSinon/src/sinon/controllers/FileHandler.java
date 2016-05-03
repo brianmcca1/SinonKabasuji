@@ -43,6 +43,12 @@ public class FileHandler {
 		serializer.serializeFile();
 	}
 
+	/**
+	 * Set the current file
+	 * 
+	 * @param f
+	 *            The file being set
+	 */
 	public static void setCurrentFile(File f) {
 		FileHandler.currentFile = f;
 	}
@@ -56,7 +62,7 @@ public class FileHandler {
 		String fileString = "level" + levelNumString + ".dat";
 		setCurrentFile(new File(fileString));
 	}
-	
+
 	/**
 	 * Will load all levels from the local project directory files.
 	 * 
@@ -69,7 +75,7 @@ public class FileHandler {
 		Deserializer deserializer;
 		LevelData levelData;
 		Level level;
-		
+
 		levelFile = new File("level1.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
@@ -83,116 +89,129 @@ public class FileHandler {
 		levelData.setUnlocked(true);
 		level = new LightningLevel(new Level(levelData));
 		levels[1] = level;
-		
+
 		levelFile = new File("level3.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
 		levelData.setUnlocked(true);
 		level = new ReleaseLevel(new Level(levelData));
 		levels[2] = level;
-		
+
 		levelFile = new File("level4.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
 		levelData.setUnlocked(true);
 		level = new PuzzleLevel(new Level(levelData));
 		levels[3] = level;
-		
+
 		levelFile = new File("level5.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
 		levelData.setUnlocked(true);
 		level = new LightningLevel(new Level(levelData));
 		levels[4] = level;
-		
+
 		levelFile = new File("level6.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
 		levelData.setUnlocked(true);
 		level = new ReleaseLevel(new Level(levelData));
 		levels[5] = level;
-		
+
 		levelFile = new File("level7.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
 		levelData.setUnlocked(true);
 		level = new PuzzleLevel(new Level(levelData));
 		levels[6] = level;
-		
+
 		levelFile = new File("level8.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
 		levelData.setUnlocked(true);
 		level = new LightningLevel(new Level(levelData));
 		levels[7] = level;
-		
+
 		levelFile = new File("level9.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
 		levelData.setUnlocked(true);
 		level = new ReleaseLevel(new Level(levelData));
 		levels[8] = level;
-		
+
 		levelFile = new File("level10.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
 		levelData.setUnlocked(true);
 		level = new PuzzleLevel(new Level(levelData));
 		levels[9] = level;
-		
+
 		levelFile = new File("level11.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
 		levelData.setUnlocked(true);
 		level = new LightningLevel(new Level(levelData));
 		levels[10] = level;
-		
+
 		levelFile = new File("level12.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
 		levelData.setUnlocked(true);
 		level = new ReleaseLevel(new Level(levelData));
 		levels[11] = level;
-		 
+
 		levelFile = new File("level13.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
 		levelData.setUnlocked(true);
 		level = new PuzzleLevel(new Level(levelData));
 		levels[12] = level;
-		
+
 		levelFile = new File("level14.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
 		levelData.setUnlocked(true);
 		level = new LightningLevel(new Level(levelData));
 		levels[13] = level;
-		
+
 		levelFile = new File("level15.dat");
 		deserializer = new Deserializer(levelFile);
 		levelData = deserializer.deserializeFile();
 		levelData.setUnlocked(true);
 		level = new ReleaseLevel(new Level(levelData));
 		levels[14] = level;
-		 
+
 		return levels;
 	}
 
+	/**
+	 * Find the appropriate image for a certain number of stars
+	 * 
+	 * @param starsEarned
+	 *            The number of stars earned
+	 * @return The file string for the image
+	 */
 	public static String determineFileStringForStars(int starsEarned) {
 		String fileString = "/images/" + Integer.toString(starsEarned) + "star.png";
 		return fileString;
 	}
 
+	/**
+	 * Sets the number of stars for a given level when the level is exited
+	 * 
+	 * @param level
+	 *            The level being exited
+	 */
 	public static void setStarsOnExit(Level level) {
 		int newStarRecord = level.countStars();
 		int knownStarRecord = level.getLevelData().getStarRecord();
-		if(newStarRecord > knownStarRecord)
+		if (newStarRecord > knownStarRecord)
 			level.getLevelData().setStarRecord(newStarRecord);
-		
+
 		Serializer serializer = new Serializer(currentFile, level.getLevelData());
 		serializer.serializeFile();
-		
+
 		System.out.println("EARNED STARS: " + level.getLevelData().getStarRecord());
-		
+
 	}
 }

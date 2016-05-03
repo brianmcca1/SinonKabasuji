@@ -35,6 +35,16 @@ public abstract class TileController implements MouseListener, MouseMotionListen
 	protected MainView mainView;
 	protected Tile tile;
 
+	/**
+	 * Mouse listener for a TileView
+	 * 
+	 * @param level
+	 *            The level the tile is a part of
+	 * @param tileView
+	 *            The TileView associated with the controller
+	 * @param mainView
+	 *            The MainView object
+	 */
 	public TileController(Level level, TileView tileView, MainView mainView) {
 		this.level = level;
 		this.mainView = mainView;
@@ -88,8 +98,14 @@ public abstract class TileController implements MouseListener, MouseMotionListen
 		}
 	}
 
+	/**
+	 * Handle right clicks on the TileView
+	 */
 	public abstract void handleRightClick();
 
+	/**
+	 * Handle left clicks on the TileView
+	 */
 	public void handleLeftClick() {
 
 		if (level.hasSelected()) {

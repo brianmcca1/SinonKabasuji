@@ -11,14 +11,22 @@ import sinon.models.data.LevelProperty;
 import sinon.models.data.LevelType.Types;
 
 /**
- * This is the controller responsible for saving a file that already 
- * exists but has been modified in the builder.
+ * This is the controller responsible for saving a file that already exists but
+ * has been modified in the builder.
  *
  */
 public class BuilderSaveController implements ActionListener {
 
 	private Builder builder;
 
+	/**
+	 * Controller for saving a level which has been modified
+	 * 
+	 * @param b
+	 *            The Builder object
+	 * @param bMenuBar
+	 *            The Menu Bar that the level is saved from
+	 */
 	public BuilderSaveController(Builder b) {
 		this.builder = b;
 	}

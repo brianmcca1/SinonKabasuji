@@ -34,6 +34,14 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 
 	private BuilderMenuBar builderMenuBar;
 
+	/**
+	 * Controller for opening a level in the builder
+	 * 
+	 * @param b
+	 *            The Builder object
+	 * @param bMenuBar
+	 *            The Menu Bar that the new level is opened from
+	 */
 	public BuilderOpenController(Builder b, BuilderMenuBar bMenuBar) {
 		this.builder = b;
 		this.builderMenuBar = bMenuBar;
@@ -51,6 +59,13 @@ public class BuilderOpenController extends BuilderNewLevelController implements 
 		}
 	}
 
+	/**
+	 * Open a file in the builder
+	 * 
+	 * @param file
+	 *            The level file to open
+	 * @return True if the file was opened successfully, false otherwise
+	 */
 	public boolean openFile(File file) {
 		if (FileHandler.currentFile != null) {
 			if (file.compareTo(FileHandler.currentFile) == 0) {
