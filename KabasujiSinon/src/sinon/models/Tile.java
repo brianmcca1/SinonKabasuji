@@ -61,6 +61,7 @@ public class Tile implements Observable {
 	 * 
 	 * @param hex
 	 *            The Hexomino to be added. Can't be null.
+	 * @return whether or not the hexomino was added.
 	 */
 	public boolean addHexomino(Hexomino hex) {
 		if (hex == null)
@@ -104,7 +105,7 @@ public class Tile implements Observable {
 	/**
 	 * Changes the playability of the tile.
 	 * 
-	 * @param bool
+	 * @param playability
 	 *            True implies making the tile playable.
 	 */
 	public void setPlayable(boolean playability) {

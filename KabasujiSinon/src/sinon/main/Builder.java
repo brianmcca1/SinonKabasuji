@@ -101,7 +101,9 @@ public class Builder extends Kabasuji {
 		return this.bullpen;
 	}
 
-	/** Main function that is called for the builder application. */
+	/** Main function that is called for the builder application. 
+	 * @param args
+	 */
 	public static void main(String args[]) {
 		@SuppressWarnings("unused")
 		Builder builder = new Builder();

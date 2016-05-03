@@ -41,7 +41,9 @@ public class BullpenView extends JPanel implements StashView, Observer {
 	/** The bullpen model that is associated with this class. */
 	private BullPen bullpen;
 
-	/** The main constructor that is used to construct a bullpenView. */
+	/** The main constructor that is used to construct a bullpenView. 
+	 * @param level The level associated with this BullpenView.
+	 */
 	public BullpenView(Level level) {
 		Objects.requireNonNull(level);
 		this.bullpen = level.getBullpen();

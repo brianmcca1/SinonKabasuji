@@ -23,7 +23,7 @@ import sinon.views.Observer;
  */
 public class Hexomino implements Observable {
 
-	/** @see HexominoNumberSet. */
+	/** @see HexominoNumberSet */
 	HexominoNumberSet hexominoNumberSet;
 	/** List of observers to notify after changes. */
 	List<Observer> observers;

@@ -222,6 +222,8 @@ public class Board implements Observable {
 	 * Note that this removes the Hexomino only if it is the exact same
 	 * instance. If the Hexomino given is .equals() but not ==, it doesn't
 	 * matter, it won't be removed.
+	 * 
+	 * @param hex The Hexomino to remove.
 	 */
 	public void removeHexomino(Hexomino hex) {
 		for (Tile t : getTiles()) {

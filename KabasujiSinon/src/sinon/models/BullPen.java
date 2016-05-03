@@ -119,6 +119,8 @@ public class BullPen implements Observable {
 
 	/**
 	 * Determines if any hexomino with the passed in ID exists in the bullpen.
+	 * @param id ID of hexomino.
+	 * @return id whether or not this Bullpen contains the hexomino.
 	 */
 	public boolean containsHexID(UUID id) {
 

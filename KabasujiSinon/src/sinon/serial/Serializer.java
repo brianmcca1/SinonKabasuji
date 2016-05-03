@@ -28,7 +28,6 @@ public class Serializer {
 	/**
 	 * Serializes levelData to fileToSave.
 	 * NOTE: this function also takes into account the selected directory from the JFileChooser.
-	 * @return indicates success or failure of serialization
 	 */
 	public void serializeFile(){
 		try{

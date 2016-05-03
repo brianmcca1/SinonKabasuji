@@ -72,7 +72,9 @@ public class Game extends Kabasuji {
 		registerBullpenController();
 	}
 
-	/** @return Level object from the specified index in the allLevels array. */
+	/** @return Level object from the specified index in the allLevels array. 
+	 * @param index location of level 0-14
+	 */
 	public Level getLevel(int index) {
 		return this.allLevels[index];
 	}
@@ -88,7 +90,9 @@ public class Game extends Kabasuji {
 		}
 	}
 
-	/** The main function that is called when running a game. */
+	/** The main function that is called when running a game. 
+	 * @param args
+	 */
 	public static void main(String args[]) {
 		@SuppressWarnings("unused")
 		Game game = new Game();

@@ -13,7 +13,7 @@ public interface Observable {
 	/**
 	 * Registers this observer.
 	 * 
-	 * @param observer.
+	 * @param observer The observer to register to this Observable.
 	 */
 	public void registerObserver(Observer observer);
 

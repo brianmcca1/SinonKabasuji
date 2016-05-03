@@ -140,7 +140,9 @@ public abstract class Kabasuji extends JFrame {
 		this.currentLevelNumber = n;
 	}
 
-	/** Get the current level number. */
+	/**
+	 * @return the current level number.
+	 */
 	public int getCurrentLevelNumber() {
 		return this.currentLevelNumber;
 	}

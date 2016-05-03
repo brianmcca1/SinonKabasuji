@@ -20,7 +20,10 @@ public class AddHint extends Move{
 	/** The actual hint that is involved in the move. */
 	Hint hint;
 	
-	/** Constructor that takes the main level object and hint associated with the move. */
+	/** Constructor that takes the main level object and hint associated with the move. 
+	 * @param level Level to add hint to.
+	 * @param hint Hint to add to level.
+	 */
 	public AddHint(Level level, Hint hint) {
 		this.level = Objects.requireNonNull(level);
 		this.hint = Objects.requireNonNull(hint);

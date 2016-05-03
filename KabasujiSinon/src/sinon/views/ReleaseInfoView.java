@@ -31,7 +31,8 @@ public class ReleaseInfoView extends LevelTypeInfoView implements Observer {
 	/**
 	 * Used when opening or making a level in the builder
 	 * 
-	 * @param level
+	 * @param level The ReleaseLevel associated with this ReleaseView.
+	 * @param builder Top level Builder.
 	 */
 	public ReleaseInfoView(Level level, Builder builder) {
 		super(level);
