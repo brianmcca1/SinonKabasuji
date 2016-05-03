@@ -14,7 +14,9 @@ public class TestStart {
 
 	@Test
 	public void test() {
+
 		Game game = new Game();
+
 		LevelSelectView levelSelectView = new LevelSelectView(game);
 		LevelStartController startLevel1 = new LevelStartController(game, levelSelectView, 0);
 		ActionEvent e = new ActionEvent(startLevel1, 0, "Test");
