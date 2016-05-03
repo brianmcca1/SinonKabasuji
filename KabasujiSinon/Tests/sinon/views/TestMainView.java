@@ -51,7 +51,8 @@ public class TestMainView {
 		level = new PuzzleLevel(board, bullpen, 10);
 		releaseLevel = ReleaseLevel.getExampleReleaseLevel();
 		editablePuzzleInfoView = new PuzzleInfoView(true, level);
-		releaseInfoView = new ReleaseInfoView(level);
+
+		releaseInfoView = new ReleaseInfoView(releaseLevel);
 		releaseInGameInfoView = new GameInfoView(releaseLevel);
 		bankView = new BankView();
 	}
