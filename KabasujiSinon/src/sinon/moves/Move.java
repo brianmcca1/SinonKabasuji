@@ -2,6 +2,12 @@ package sinon.moves;
 
 import sinon.models.Hexomino;
 
+/**
+ * The abstract class that is the parent for all other move classes
+ * in this package. 
+ * @author kartik
+ *
+ */
 public abstract class Move {
 
 	public Hexomino hex;
