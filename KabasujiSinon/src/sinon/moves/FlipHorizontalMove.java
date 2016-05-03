@@ -30,6 +30,4 @@ public class FlipHorizontalMove extends BullPenMove {
 		return true;
 	}
 
-
-
 }

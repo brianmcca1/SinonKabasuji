@@ -8,6 +8,7 @@ import sinon.models.Level;
 /**
  * BoardMove abstract class that is used when extending each 
  * individual move.
+ * 
  * @author kartik
  *
  */

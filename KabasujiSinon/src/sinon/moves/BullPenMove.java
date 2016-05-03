@@ -20,7 +20,6 @@ public abstract class BullPenMove extends Move {
     /**
      * Throws a Null Pointer Exception if the hex is null
      */
-
     public void nullCheck() {
         if (hex == null) {
             throw new NullPointerException();
