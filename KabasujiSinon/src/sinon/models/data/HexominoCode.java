@@ -21,10 +21,17 @@ public final class HexominoCode implements Serializable {
 	/** Array of six points representing a HexominoNumberSet */
 	Point[] points;
 
+	/**
+	 * Constructs a empty hexomino code.
+	 */
 	public HexominoCode() {
 		points = new Point[6];
 	}
 	
+	/**
+	 * Constructs a new hexomino code with the give points.
+	 * @param points the points to be added.
+	 */
 	public HexominoCode(List<Point> points) {
 		
 		this.points = new Point[6];

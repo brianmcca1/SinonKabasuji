@@ -4,6 +4,11 @@ import javax.swing.JPanel;
 
 import sinon.controllers.HexStashRegistrator;
 
+/**
+ * The interface used to stash views.
+ * @author PDeBrine.
+ *
+ */
 public interface StashView {
 
 	/**

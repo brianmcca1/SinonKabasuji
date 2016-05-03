@@ -179,6 +179,10 @@ public class TileView extends JPanel implements Observer {
         this.redraw();
     }
 
+    /**
+     * Gets the position of this view.
+     * @return returns this view location point.
+     */
     public Point getPosition() {
         return new Point(this.row, this.column);
     }

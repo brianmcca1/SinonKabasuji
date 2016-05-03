@@ -33,6 +33,10 @@ public class InfoPanel extends JPanel {
         this.setBorder(new LineBorder(new Color(0, 0, 0)));
     }
 
+    /**
+     * Sets the stars of this view.
+     * @param s the amount of stars to be set.
+     */
     public void setStars(int s) {
 
     }

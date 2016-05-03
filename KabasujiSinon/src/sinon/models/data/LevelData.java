@@ -35,6 +35,12 @@ public final class LevelData implements Serializable {
 	/** Whether or not this level is locked. TRUE = unlocked FALSE = locked. */
 	boolean unlocked;
 
+	/**
+	 * Constructs a new level data with the given parameters
+	 * @param t the type of level being created (PUZZLE, LIGHTNING, RELEASE).
+	 * @param bData the board data for the level.
+	 * @param bpData the bullpen data for the bullpen.
+	 */
 	public LevelData(Types t, BoardData bData, BullPenData bpData) {
 		this.levelType = t;
 		this.boardData = bData;

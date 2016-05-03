@@ -24,7 +24,7 @@ public class SplashScreen extends JPanel {
 	public static JProgressBar progressBar;
 	/** Used to count the load progress for the progressBar. */
 	public static int count;
-	
+	/** The goods */
 	public static JLabel theGoods;
 
 	/** "Kabasuji" or "Kabasuji Builder" */

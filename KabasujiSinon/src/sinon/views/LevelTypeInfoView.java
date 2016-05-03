@@ -19,6 +19,10 @@ import sinon.models.Level;
 public abstract class LevelTypeInfoView extends JPanel {
 	Level level;
 
+	/**
+	 * Constructs a new level type info view wit the given level.
+	 * @param level the level to be viewed.
+	 */
 	public LevelTypeInfoView(Level level) {
 
 		this.level = level;
@@ -27,6 +31,10 @@ public abstract class LevelTypeInfoView extends JPanel {
 		this.setBackground(Color.LIGHT_GRAY);
 	}
 
+	/**
+	 * gets the value of level type info.
+	 * @return returns the value of this object.
+	 */
 	public abstract int getValue();
 
 }
