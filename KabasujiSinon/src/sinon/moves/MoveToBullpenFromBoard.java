@@ -31,11 +31,14 @@ public class MoveToBullpenFromBoard extends BoardMove {
 
 	}
 
+	/**
+	 * Perform the move
+	 */
 	@Override
 	public boolean doMove() {
 		if (!valid())
 			return false;
-		
+
 		level.incrementMoves();
 		level.getBullpen().addHexomino(hex.get());
 		level.getBoard().removeHexomino(hex.get());
@@ -43,6 +46,9 @@ public class MoveToBullpenFromBoard extends BoardMove {
 		return true;
 	}
 
+	/**
+	 * Undoes the move
+	 */
 	@Override
 	public boolean undo() {
 		this.nullCheck();
@@ -52,6 +58,9 @@ public class MoveToBullpenFromBoard extends BoardMove {
 	}
 
 	@Override
+	/**
+	 * Check if the move is valid
+	 */
 	public boolean valid() {
 		this.nullCheck();
 		if (!hex.isPresent())
@@ -60,6 +69,5 @@ public class MoveToBullpenFromBoard extends BoardMove {
 			return false;
 		return true;
 	}
-
 
 }

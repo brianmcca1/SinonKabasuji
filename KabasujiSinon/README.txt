@@ -127,7 +127,12 @@ Our Kabasuji DOES NOT use dragging of any sort.
 	DELETING HINTS:
 		- RIGHT click on the hint you wish to delete.
 			
-	
+NOTE ON TEST COVERAGE:
+	In our testing, we found that certain test cases would not be reached when running coverage for the first time.
+	While the tests would all pass without errors, certain tests would simply not perform their instructions.
+	The Overall test coverage for the Source package should be 80.5% (2,338 missed instructions). If the coverage is 
+	lower than this when checking coverage for the first time, try running it again. That should cover the missing
+	instructions.
 	
 			
 			
