@@ -10,6 +10,9 @@ import sinon.models.Hexomino;
  */
 public abstract class Move {
 
+	/**
+	 * The hexomino being moved.
+	 */
 	public Hexomino hex;
 	
 	/**

@@ -22,6 +22,12 @@ public class MoveToBullpenFromBoard extends BoardMove {
 	 */
 	int srcAnchorColumn;
 
+	/**
+	 * 
+	 * @param level
+	 * @param srcAnchorRow
+	 * @param srcAnchorColumn
+	 */
 	public MoveToBullpenFromBoard(Level level, int srcAnchorRow, int srcAnchorColumn) {
 
 		this.level = level;

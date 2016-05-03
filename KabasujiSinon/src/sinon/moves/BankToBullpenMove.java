@@ -18,10 +18,15 @@ public class BankToBullpenMove extends Move{
 	BullPen bp;
 	
 	/**
-	 * Hexomino that we are moving to the bullpen
+	 * Hexomino that we are moving to the bullpen.
 	 */
 	Hexomino hex;
 	
+	/**
+	 * Constructs a new Bank to bullpen move with the given parameters.
+	 * @param bp the bullpen being used.
+	 * @param hex the hex being moved.
+	 */
 	public BankToBullpenMove(BullPen bp, Hexomino hex) {
 		
 		this.bp = bp;
@@ -31,7 +36,7 @@ public class BankToBullpenMove extends Move{
 	
 	/**
 	 * Operation that adds the hexomino to the bank.
-	 * @return boolean that says if the move was successful
+	 * @return boolean that says if the move was successful.
 	 */
 	public boolean doMove() {
 		
@@ -42,7 +47,7 @@ public class BankToBullpenMove extends Move{
 	
 	/**
 	 * Operation that undoes the move.
-	 * @return boolean that says if undo was successful
+	 * @return boolean that says if undo was successful.
 	 */
 	public boolean undo() {
 		return bp.removeHexomino(hex);

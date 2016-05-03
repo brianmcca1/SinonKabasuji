@@ -24,10 +24,13 @@ public abstract class BoardMove extends Move {
 	
 	public abstract boolean undo();
 	
+	/**
+	 * @return True if this move is valid, false otherwise.
+	 */
 	public abstract boolean valid();
 	
 	/**
-	 * Throws a Null Pointer Exception if the hex is null
+	 * Throws a Null Pointer Exception if the hex is null.
 	 */
 	
 	public void nullCheck() {

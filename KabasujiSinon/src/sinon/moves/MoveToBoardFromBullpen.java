@@ -24,6 +24,12 @@ public class MoveToBoardFromBullpen extends BoardMove {
 	 */
 	int destAnchorColumn;
 
+	/**
+	 * Constructs a new to board from bullpen move with the given parameters
+	 * @param level the level being moved in
+	 * @param destAnchorRow the destination anchor row
+	 * @param destAnchorColumn the destination anchor column
+	 */
 	public MoveToBoardFromBullpen(Level level, int destAnchorRow, int destAnchorColumn) {
 
 		this.level = Objects.requireNonNull(level);
@@ -74,14 +80,6 @@ public class MoveToBoardFromBullpen extends BoardMove {
 			return false;
 		}
 
-	}
-
-	public int getDestRow() {
-		return this.destAnchorRow;
-	}
-
-	public int getDestColumn() {
-		return this.destAnchorColumn;
 	}
 
 }

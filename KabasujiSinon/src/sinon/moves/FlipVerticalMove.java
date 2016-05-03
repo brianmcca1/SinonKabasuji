@@ -10,6 +10,10 @@ import sinon.models.Hexomino;
  */
 public class FlipVerticalMove extends BullPenMove {
 
+	/**
+	 * Constructs a new flip vertical move.
+	 * @param hex the hex being moved.
+	 */
 	public FlipVerticalMove(Hexomino hex) {
 		this.hex = hex;
 	}

@@ -24,6 +24,14 @@ public class MoveInBoard extends BoardMove {
 	/** The destination anchor column to which the hexomino is being moved. */
 	int destAnchorColumn;
 
+	/**
+	 * Constructs a new move in board with the given parameters.
+	 * @param level the level being moved in.
+	 * @param srcAnchorRow the source anchor row.
+	 * @param srcAnchorColumn the source anchor column.
+	 * @param destAnchorRow the destination anchor row.
+	 * @param destAnchorColumn the destination anchor column.
+	 */
 	public MoveInBoard(Level level, int srcAnchorRow, int srcAnchorColumn, int destAnchorRow, int destAnchorColumn) {
 
 		this.level = level;
