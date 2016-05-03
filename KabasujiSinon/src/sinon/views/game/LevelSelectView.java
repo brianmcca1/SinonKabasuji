@@ -43,7 +43,6 @@ public class LevelSelectView extends JPanel {
         this.add(internalPanelOne);
         internalPanelOne.setLayout(new GridLayout(3, 5, 30, 20));
 
-        //FIXME change me back to i < 15
         for (int i = 0; i < 15; i++) {
             buttonPanels[i] = new LevelSelectButtonView(i + 1, this.game.getLevel(i));
             internalPanelOne.add(buttonPanels[i]);

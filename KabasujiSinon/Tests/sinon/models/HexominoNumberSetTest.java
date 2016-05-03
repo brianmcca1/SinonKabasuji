@@ -92,7 +92,6 @@ public class HexominoNumberSetTest {
         HexominoNumberSet hex2 = NumberSetFactory.getByNumbers(0, 0, 0, 1, 0, 2,
                 0, 3, 0, 4, 0, 5);
 
-        // FIXME move to numberset.
         hex1.flipHorizontally();
         hex2.flipHorizontally();
 
