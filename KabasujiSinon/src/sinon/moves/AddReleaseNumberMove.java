@@ -24,7 +24,10 @@ public class AddReleaseNumberMove extends Move {
 	/** The main release level. */
 	ReleaseLevel level;
 
-	/** Constructor takes in a level and the release tile. */
+	/** Constructor takes in a level and the release tile.
+	 * @param level The ReleaseLevel to add a number move for.
+	 * @param releaseTile The ReleaseTile to add a number move for.
+	 */
 	public AddReleaseNumberMove(ReleaseLevel level, ReleaseTile releaseTile) {
 		this.level = Objects.requireNonNull(level);
 		this.releaseNumber = level.getSelectedReleaseNumber();
@@ -50,7 +53,9 @@ public class AddReleaseNumberMove extends Move {
 		return true;
 	}
 
-	/** Determine if the move is valid */ 
+	/**
+	 * @return if this move is valid.
+	 */ 
 	public boolean valid() {
 		if (releaseTile.hasReleaseNumber()) {
 			return false;

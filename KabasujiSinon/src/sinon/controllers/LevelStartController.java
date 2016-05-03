@@ -30,8 +30,9 @@ public class LevelStartController implements ActionListener {
 	/**
 	 * @param g
 	 *            Top level Game/Builder object.
-	 * @param view
+	 * @param v
 	 *            LevelSelectView to be removed from the frame.
+	 * @param num This level's number.
 	 */
 	public LevelStartController(Game g, LevelSelectView v, int num) {
 		this.levelSelectView = v;

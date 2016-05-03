@@ -47,7 +47,9 @@ public final class LevelData implements Serializable {
 		this.bullpenData = bpData;
 	}
 
-	/** Used when creating a new Level to set this level type. */
+	/** Used when creating a new Level to set this level type. 
+	 * @param type This level's type.
+	 */
 	public LevelData(Types type) {
 		this.levelType = type;
 		this.starRecord = 0;

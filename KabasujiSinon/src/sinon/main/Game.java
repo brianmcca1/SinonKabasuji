@@ -44,6 +44,7 @@ public class Game extends Kabasuji {
 	 * 
 	 * @param levelSelectView
 	 *            LevelSelectView to remove from the frame.
+	 * @param lvlTypeInfoView the LevelTypeInfoView to add to this MainView.
 	 */
 	public void initializeMainView(LevelSelectView levelSelectView, LevelTypeInfoView lvlTypeInfoView) {
 		if (this.levelSelectView != null) {

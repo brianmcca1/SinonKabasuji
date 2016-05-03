@@ -64,6 +64,7 @@ public final class BoardData implements Serializable {
 	/**
 	 * This array should only ever be accessed for the purposes of reading and
 	 * writing a level to disk.
+	 * @return 2 dimensional boolean array of playable.
 	 */
 	public boolean[][] getPlayableArray() {
 		return playable;

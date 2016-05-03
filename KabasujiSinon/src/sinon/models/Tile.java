@@ -38,7 +38,7 @@ public class Tile implements Observable {
 
 	/**
 	 * Determines if it is possible to add a Hexomino to the given tile
-	 * 
+	 * @param hex Hexomino to check if can be added
 	 * @return True if you can add the hex, False if you cannot
 	 */
 	public boolean canAddHex(Hexomino hex) {

@@ -43,7 +43,9 @@ public final class HexominoCode implements Serializable {
 		
 	}
 
-	/** Creates a HexominoCode from a given Hexomino */
+	/** Creates a HexominoCode from a given Hexomino 
+	 * @param hexomino Hexomino to turn into a HexominoCode.
+	 */
 	public HexominoCode(Hexomino hexomino) {
 		if (hexomino == null)
 			throw new IllegalArgumentException("Hexomino can't be null");

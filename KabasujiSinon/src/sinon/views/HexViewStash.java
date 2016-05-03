@@ -95,7 +95,9 @@ public class HexViewStash implements Observer {
 		return hexominosList;
 	}
 
-	/** Setting the registrator of this class. */
+	/** Setting the registrator of this class. 
+	 * @param registrator The HexStashRegistrator.
+	 */
 	public void setRegistrator(HexStashRegistrator registrator) {
 		Objects.requireNonNull(registrator);
 		this.registrator = Optional.of(registrator);

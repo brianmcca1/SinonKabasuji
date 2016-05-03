@@ -59,6 +59,7 @@ public class FileHandler {
 	/**
 	 * Will determine which file to set for the Game based on the currently open
 	 * level.
+	 * @param currentLevelNumber current level number. 
 	 */
 	public static void determineCurrentGameLevelFile(int currentLevelNumber) {
 		String levelNumString = Integer.toString(currentLevelNumber + 1);

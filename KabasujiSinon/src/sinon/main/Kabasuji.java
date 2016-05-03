@@ -112,7 +112,9 @@ public abstract class Kabasuji extends JFrame {
 		return this.mainView;
 	}
 
-	/** Sets the MainView object. */
+	/** Sets the MainView object. 
+	 * @param m MainView to set.
+	 */
 	public void setMainView(MainView m) {
 		this.mainView = m;
 	}
@@ -122,7 +124,9 @@ public abstract class Kabasuji extends JFrame {
 		return this.currentLevel;
 	}
 
-	/** Sets the Level object. */
+	/** Sets the Level object. 
+	 * @param l level to set.
+	 */
 	public void setLevel(Level l) {
 		this.currentLevel = l;
 	}
@@ -135,7 +139,9 @@ public abstract class Kabasuji extends JFrame {
 		FileHandler.determineCurrentGameLevelFile(this.currentLevelNumber);
 	}
 
-	/** Set the current level. */
+	/**
+	 * @param n current level number to set.
+	 */
 	public void setCurrentLevelNumber(int n) {
 		this.currentLevelNumber = n;
 	}

@@ -17,8 +17,7 @@ public abstract class BuilderNewLevelController implements ActionListener {
 	 * Used by all the New Level Controllers, starts the MainView and handles
 	 * enabling/disabling of menu bar items.
 	 * 
-	 * @param blankPanel
-	 *            The blank panel to remove from the builder.
+	 * @param lvlTypeInfoView The LevelTypeInfoView to add to this new level.
 	 * @param builder
 	 *            Overall Builder object.
 	 * @param bMenuBar

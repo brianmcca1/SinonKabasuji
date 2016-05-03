@@ -22,7 +22,9 @@ public class BullpenToBankMove extends Move {
 	/** The optional hexomino that is being moved to the bank. */
 	Optional<Hexomino> hex;
 
-	/** Constructor for the move that takes the level. */
+	/** Constructor for the move that takes the level. 
+	 * @param level Level to construct a move on. 
+	 */
 	public BullpenToBankMove(Level level) {
 		this.level = Objects.requireNonNull(level);
 		this.hex = this.level.getSelectedHexomino();
@@ -46,7 +48,9 @@ public class BullpenToBankMove extends Move {
 		return true;
 	}
 
-	/** Check if this move is valid. */
+	/**
+	 * @return if this move is valid. 
+	 */
 	public boolean valid() {
 		if (!this.level.hasSelected()) {
 			return false;

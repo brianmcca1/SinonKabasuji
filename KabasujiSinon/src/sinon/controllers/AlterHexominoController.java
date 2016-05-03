@@ -30,6 +30,7 @@ public abstract class AlterHexominoController implements ActionListener {
 	/**
 	 * Creates a new Flip Hexomino Controller.
 	 * 
+	 * @param level Level to alter the hexomino of.
 	 * @param hexomino
 	 *            Hexomino view to be registered.
 	 */
