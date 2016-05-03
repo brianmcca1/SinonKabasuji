@@ -33,9 +33,9 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer {
 	 * @param level
 	 *            Current level in the builder.
 	 */
-	public PuzzleInfoView(boolean editable, PuzzleLevel level) {
-		super(level);
-		this.puzzleLevel = (PuzzleLevel) this.level;
+	public PuzzleInfoView(boolean editable, PuzzleLevel puzzleLevel) {
+		super(puzzleLevel);
+		this.puzzleLevel = puzzleLevel;
 		setLayout(new GridLayout(1, 1));
 		this.infoLabel = new JLabel("Moves:");
 		this.movesLeftField = new JTextField();
@@ -45,7 +45,7 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer {
 		else
 			this.movesLeftField.setEditable(true);
 
-		this.movesLeftField.setText(Integer.toString(level.getMaxMoves()));
+		this.movesLeftField.setText(Integer.toString(puzzleLevel.getMaxMoves()));
 		this.add(infoLabel);
 		this.add(movesLeftField);
 
@@ -62,8 +62,9 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer {
 	 * @param level
 	 *            current PuzzleLevel
 	 */
-	public PuzzleInfoView(Game g, int numMoves, PuzzleLevel level) {
-		super(level);
+	public PuzzleInfoView(Game g, int numMoves, PuzzleLevel puzzleLevel) {
+		super(puzzleLevel);
+		this.puzzleLevel = puzzleLevel;
 		setLayout(new GridLayout(1, 1));
 		this.infoLabel = new JLabel("Moves:");
 		this.movesLeftField = new JTextField();
@@ -73,8 +74,6 @@ public class PuzzleInfoView extends LevelTypeInfoView implements Observer {
 
 		this.add(infoLabel);
 		this.add(movesLeftField);
-
-		this.level = level;
 
 		this.game = g;
 
