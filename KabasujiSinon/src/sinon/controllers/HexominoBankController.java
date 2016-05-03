@@ -1,7 +1,10 @@
 package sinon.controllers;
 
 import sinon.models.Hexomino;
+import sinon.models.HexominoNumberSet;
 import sinon.models.Level;
+import sinon.models.NumberSetFactory;
+import sinon.models.data.HexominoCode;
 import sinon.moves.BankToBullpenMove;
 import sinon.moves.BullpenToBankMove;
 import sinon.views.HexominoBullpenView;
@@ -33,7 +36,9 @@ public class HexominoBankController extends AbstractHexStashController {
 	@Override
 	protected void handleLeftClicked() {
 		if (!this.level.hasSelected()) {
-			Hexomino hexomino = new Hexomino(hex.getHexomino().getHexominoNumberSet());
+			// Create a copy of the hexomino set to avoid duplicates.
+			HexominoNumberSet s = NumberSetFactory.getByCode(new HexominoCode(hex.getHexomino()));
+			Hexomino hexomino = new Hexomino(s);
 			BankToBullpenMove move = new BankToBullpenMove(level.getBullpen(), hexomino);
 
 			if (move.doMove()) {
