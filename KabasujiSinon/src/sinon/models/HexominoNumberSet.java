@@ -39,7 +39,7 @@ public class HexominoNumberSet {
 	};
 
 	/**
-	 * Main Constructor for creating a HexominoNumberSet
+	 * Main Constructor for creating a HexominoNumberSet.
 	 * 
 	 * @param points
 	 *            Set of six points which specifies the shape and position of a
@@ -57,17 +57,17 @@ public class HexominoNumberSet {
 	}
 
 	/**
-	 * @return The list of points that make up the NumberSet
+	 * @return The list of points that make up the NumberSet.
 	 */
 	public List<Point> getPoints() {
 		return this.points;
 	}
 
 	/**
-	 * Flip the HexominoNumberSet horizontally
+	 * Flip the HexominoNumberSet horizontally.
 	 * 
 	 * This means the Y values of every point in the HexominoNumberSet will be
-	 * negated
+	 * negated.
 	 * 
 	 */
 	void flipHorizontally() {
@@ -79,7 +79,7 @@ public class HexominoNumberSet {
 	}
 
 	/**
-	 * Re-sort the points in the HexominoNumberSet
+	 * Re-sort the points in the HexominoNumberSet.
 	 */
 	private void resortPoints() {
 		points.sort(COMP);
@@ -87,10 +87,10 @@ public class HexominoNumberSet {
 	}
 
 	/**
-	 * Flip the HexominoNumberSet vertically
+	 * Flip the HexominoNumberSet vertically.
 	 * 
 	 * This means the X values of every point in the HexominoNumberSet will be
-	 * negated
+	 * negated.
 	 */
 	void flipVertically() {
 		for (Point p : points) {
@@ -101,7 +101,7 @@ public class HexominoNumberSet {
 	}
 
 	/**
-	 * Rotate the HexominoNumberSet clockwise
+	 * Rotate the HexominoNumberSet clockwise.
 	 */
 	void rotateC() {
 		for (Point p : points) {
@@ -113,9 +113,9 @@ public class HexominoNumberSet {
 	}
 
 	/**
-	 * Rotate the HexominoNumberSet CounterClockwise
+	 * Rotate the HexominoNumberSet CounterClockwise.
 	 * 
-	 * This is equivalent to 3 clockwise rotations
+	 * This is equivalent to 3 clockwise rotations.
 	 */
 	void rotateCC() {
 		rotateC();
@@ -131,7 +131,7 @@ public class HexominoNumberSet {
 	 * 6x6 grid. Points are in the order specified by Point. The unmodifiable
 	 * list means that any attempt to alter the list will throw an error.
 	 * 
-	 * @return Returns a set of points that describes the Hexomino
+	 * @return Returns a set of points that describes the Hexomino.
 	 */
 	public List<Point> getNormalizedPoints() {
 		resortPoints();
@@ -236,7 +236,7 @@ public class HexominoNumberSet {
 	 * Validates that the list of points has no duplicates.
 	 * 
 	 * @param list
-	 *            List of points to test
+	 *            List of points to test.
 	 * @return True if the list has no duplicates.
 	 */
 	private static boolean validateUniquePoints(List<? extends Point> list) {
@@ -255,7 +255,7 @@ public class HexominoNumberSet {
 	 * Determines if a set of points is connected.
 	 * 
 	 * @param list
-	 *            The set of points to test
+	 *            The set of points to test.
 	 * @return True if the points are connected.
 	 */
 	private static boolean validateConnected(List<? extends Point> list) {

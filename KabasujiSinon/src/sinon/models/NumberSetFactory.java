@@ -21,20 +21,20 @@ import sinon.models.data.HexominoCode;
 public class NumberSetFactory {
 
 	/**
-	 * Creates a HexominoNumberSet with the given points
+	 * Creates a HexominoNumberSet with the given points.
 	 * 
 	 * @param a
-	 *            Point1.x
+	 *            Point1.x.
 	 * @param a1
-	 *            Point1.y
+	 *            Point1.y.
 	 * @param b
-	 *            Point2.x
+	 *            Point2.x.
 	 * @param b1
-	 *            Point2.y
-	 * @return New HexominoNumberSet
+	 *            Point2.y.
+	 * @return New HexominoNumberSet.
 	 */
-	public static HexominoNumberSet getByNumbers(int a, int a1, int b, int b1,
-			int c, int c1, int d, int d1, int e, int e1, int f, int f1) {
+	public static HexominoNumberSet getByNumbers(int a, int a1, int b, int b1, int c, int c1, int d, int d1, int e,
+			int e1, int f, int f1) {
 		List<Point> points = new LinkedList<Point>();
 		points.add(new Point(a, a1));
 		points.add(new Point(b, b1));

@@ -14,11 +14,22 @@ import sinon.models.data.LevelType.Types;
  */
 public class LightningLevel extends Level {
 
-	/** Maximum amount of time allowed, in seconds */
+	/** Maximum amount of time allowed, in seconds. */
 	int maxTime;
-	/** Time left, in seconds */
+	/** Time left, in seconds. */
 	int timeLeft;
 
+	/**
+	 * Creates a Lightning Level with the given Board, Bullpen, and Maximum time
+	 * allowed.
+	 * 
+	 * @param b
+	 *            The level's board.
+	 * @param bp
+	 *            The level's Bullpen.
+	 * @param maxTime
+	 *            The Maximum time allowed in the level, in seconds.
+	 */
 	public LightningLevel(Board b, BullPen bp, int maxTime) {
 		super(Types.LIGHTNING, b, bp);
 		if (maxTime < 0) {
@@ -29,6 +40,12 @@ public class LightningLevel extends Level {
 		this.timeLeft = maxTime;
 	}
 
+	/**
+	 * Creates a Lightning Level, based off a generic level.
+	 * 
+	 * @param level
+	 *            The generic level that the Lightning Level is created from.
+	 */
 	public LightningLevel(Level level) {
 		super(Types.LIGHTNING, level.getBoard(), level.getBullpen());
 		this.levelData = level.levelData;
@@ -86,14 +103,14 @@ public class LightningLevel extends Level {
 	}
 
 	/**
-	 * @return The MaxTime allowed in the Lightning level
+	 * @return The MaxTime allowed in the Lightning level.
 	 */
 	public int getMaxTime() {
 		return this.maxTime;
 	}
 
 	/**
-	 * @return The time left in the Lightning level
+	 * @return The time left in the Lightning level.
 	 */
 	public int getTimeLeft() {
 		if (this.timeLeft < 0) {
@@ -103,9 +120,9 @@ public class LightningLevel extends Level {
 	}
 
 	/**
-	 * Decrement the time left by 1 second
+	 * Decrement the time left by 1 second.
 	 * 
-	 * @return True if the time was decremented successfully, False if not
+	 * @return True if the time was decremented successfully, False if not.
 	 */
 	public boolean tickTimeLeft() {
 		if (this.timeLeft <= 0) {

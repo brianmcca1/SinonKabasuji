@@ -18,232 +18,252 @@ import sinon.views.Observer;
  */
 public class Level implements Observable {
 
-    /** Board model for this level. */
-    Board board;
-    /** Bullpen model for this level. */
-    BullPen bullpen;
-    /** The stars currently unlocked on this level, out of 3 */
-    int stars;
-    /**
-     * This is used for Serializing and Deserializing data relevant to the
-     * Level. @see LevelData
-     */
-    LevelData levelData;
+	/** Board model for this level. */
+	Board board;
+	/** Bullpen model for this level. */
+	BullPen bullpen;
+	/** The stars currently unlocked on this level, out of 3. */
+	int stars;
+	/**
+	 * This is used for Serializing and Deserializing data relevant to the
+	 * Level. @see LevelData
+	 */
+	LevelData levelData;
 
-    /** The Hexomino model that is currently selected. */
-    Optional<Hexomino> selectedHexomino;
-    /** Observers of the level */
-    List<Observer> observers;
+	/** The Hexomino model that is currently selected. */
+	Optional<Hexomino> selectedHexomino;
+	/** Observers of the level. */
+	List<Observer> observers;
 
-    /**
-     * Stack of Moves to undo
-     */
-    Stack<Move> undo;
+	/**
+	 * Stack of Moves to undo.
+	 */
+	Stack<Move> undo;
 
-    /**
-     * Stack of Moves to redo
-     */
-    Stack<Move> redo;
+	/**
+	 * Stack of Moves to redo.
+	 */
+	Stack<Move> redo;
 
-    public Level(Types type, Board board, BullPen bullpen) {
-        this.board = Objects.requireNonNull(board);
-        this.bullpen = Objects.requireNonNull(bullpen);
-        Objects.requireNonNull(type);
-        this.levelData = new LevelData(type);
-        observers = new LinkedList<Observer>();
-        selectedHexomino = Optional.empty();
-        undo = new Stack<Move>();
-        redo = new Stack<Move>();
-    }
+	/**
+	 * Creates a level with the given type, board, and bullpen
+	 * 
+	 * @param type
+	 *            The Type of level
+	 * @param board
+	 *            The level's board
+	 * @param bullpen
+	 *            The level's bullpen
+	 */
+	public Level(Types type, Board board, BullPen bullpen) {
+		this.board = Objects.requireNonNull(board);
+		this.bullpen = Objects.requireNonNull(bullpen);
+		Objects.requireNonNull(type);
+		this.levelData = new LevelData(type);
+		observers = new LinkedList<Observer>();
+		selectedHexomino = Optional.empty();
+		undo = new Stack<Move>();
+		redo = new Stack<Move>();
+	}
 
-    public Level(LevelData levelData) {
-        switch (levelData.getLevelType()) {
-        case PUZZLE:
-            this.board = new Board(levelData.getBoardData());
-            break;
-        case LIGHTNING:
-            this.board = new LightningBoard(levelData.getBoardData());
-            break;
-        case RELEASE:
-            this.board = new ReleaseBoard(levelData.getBoardData());
-            break;
-        }
+	/**
+	 * Creates a level from Level Data
+	 * 
+	 * @param levelData
+	 *            The LevelData to create the Level from
+	 */
+	public Level(LevelData levelData) {
+		switch (levelData.getLevelType()) {
+		case PUZZLE:
+			this.board = new Board(levelData.getBoardData());
+			break;
+		case LIGHTNING:
+			this.board = new LightningBoard(levelData.getBoardData());
+			break;
+		case RELEASE:
+			this.board = new ReleaseBoard(levelData.getBoardData());
+			break;
+		}
 
-        this.bullpen = new BullPen(levelData.getBullpenData());
-        this.levelData = levelData;
-        observers = new LinkedList<Observer>();
-        selectedHexomino = Optional.empty();
-    }
+		this.bullpen = new BullPen(levelData.getBullpenData());
+		this.levelData = levelData;
+		observers = new LinkedList<Observer>();
+		selectedHexomino = Optional.empty();
+	}
 
-    /** @return BullPen model of this level. */
-    public BullPen getBullpen() {
-        return this.bullpen;
-    }
+	/** @return BullPen model of this level. */
+	public BullPen getBullpen() {
+		return this.bullpen;
+	}
 
-    /** @return Board model of this level. */
-    public Board getBoard() {
-        return board;
-    }
+	/** @return Board model of this level. */
+	public Board getBoard() {
+		return board;
+	}
 
-    /** @return this level's LevelData. */
-    public LevelData getLevelData() {
-        return this.levelData;
-    }
+	/** @return this level's LevelData. */
+	public LevelData getLevelData() {
+		return this.levelData;
+	}
 
-    /** Sets the selected hexomino to empty. */
-    public void deselect() {
-        this.selectedHexomino = Optional.empty();
-        // Only called when a move is done?
-        // Otherwise we need to go to every doMove and reset redo
-        // redo = new Stack<Move>();
-        update();
-    }
+	/** Sets the selected hexomino to empty. */
+	public void deselect() {
+		this.selectedHexomino = Optional.empty();
+		// Only called when a move is done?
+		// Otherwise we need to go to every doMove and reset redo
+		// redo = new Stack<Move>();
+		update();
+	}
 
-    /**
-     * Sets the selected hexomino
-     * 
-     * @param hex
-     *            The Hexomino model to select.
-     */
-    public void select(Hexomino hex) {
-        this.selectedHexomino = Optional.of(hex);
-        update();
-    }
+	/**
+	 * Sets the selected hexomino
+	 * 
+	 * @param hex
+	 *            The Hexomino model to select.
+	 */
+	public void select(Hexomino hex) {
+		this.selectedHexomino = Optional.of(hex);
+		update();
+	}
 
-    /**
-     * Determines if there is a selected hexomino.
-     * 
-     * @return True if there is currently a hexomino selected.
-     */
-    public boolean hasSelected() {
-        return this.selectedHexomino.isPresent();
-    }
+	/**
+	 * Determines if there is a selected hexomino.
+	 * 
+	 * @return True if there is currently a hexomino selected.
+	 */
+	public boolean hasSelected() {
+		return this.selectedHexomino.isPresent();
+	}
 
-    /**
-     * Determines whether this level is completed.
-     * 
-     * @return Returns true if the level has been won (Three stars have been
-     *         attained), otherwise returns false
-     * @author PDeBrine
-     */
+	/**
+	 * Determines whether this level is completed.
+	 * 
+	 * @return Returns true if the level has been won (Three stars have been
+	 *         attained), otherwise returns false
+	 * @author PDeBrine
+	 */
 
-    public boolean hasWon() {
-        if (this.countStars() == 3) {
-            return true;
-        }
-        return false;
-    }
+	public boolean hasWon() {
+		if (this.countStars() == 3) {
+			return true;
+		}
+		return false;
+	}
 
-    /**
-     * Counts the number of stars earned for this level.
-     * 
-     * This method should be overriden for every type of Level there is.
-     * 
-     * @return Returns the number of stars earned, the max being 3, and the min
-     *         being 0
-     * @author PDeBrine
-     */
-    public int countStars() {
-        return 0;
-    }
+	/**
+	 * Counts the number of stars earned for this level.
+	 * 
+	 * This method should be overriden for every type of Level there is.
+	 * 
+	 * @return Returns the number of stars earned, the max being 3, and the min
+	 *         being 0
+	 * @author PDeBrine
+	 */
+	public int countStars() {
+		return 0;
+	}
 
-    @Override
-    public void registerObserver(Observer observer) {
-        this.observers.add(observer);
-    }
+	@Override
+	public void registerObserver(Observer observer) {
+		this.observers.add(observer);
+	}
 
-    /**
-     * Pops the last move off the stack undo and undoes it, then pushes it to
-     * redo does nothing if undo is empty
-     */
+	/**
+	 * Pops the last move off the stack undo and undoes it, then pushes it to
+	 * redo does nothing if undo is empty
+	 */
 
-    @Override
-    public void update() {
-        for (Observer o : observers) {
-            o.updated();
-        }
-    }
+	@Override
+	public void update() {
+		for (Observer o : observers) {
+			o.updated();
+		}
+	}
 
-    /**
-     * Gets the selected hexomino.
-     * 
-     * @return The optional with either the selected hexomino if there is one,
-     *         or null.
-     */
-    public Optional<Hexomino> getSelectedHexomino() {
-        return this.selectedHexomino;
-    }
+	/**
+	 * Gets the selected hexomino.
+	 * 
+	 * @return The optional with either the selected hexomino if there is one,
+	 *         or null.
+	 */
+	public Optional<Hexomino> getSelectedHexomino() {
+		return this.selectedHexomino;
+	}
 
-    /**
-     * Pops the last move off the stack undo and undoes it, then pushes it to
-     * redo does nothing if undo is empty
-     */
+	/**
+	 * Pops the last move off the stack undo and undoes it, then pushes it to
+	 * redo does nothing if undo is empty
+	 */
 
-    public void undo() {
-       if (undo.empty())
-    	   return;
-       Move move;
-       move = undo.pop();
-       if (move.undo()) {
-    	   redo.push(move);
-       }
-       // TODO error checking n' stuff. Tidy this up.
-    }
+	public void undo() {
+		if (undo.empty())
+			return;
+		Move move;
+		move = undo.pop();
+		if (move.undo()) {
+			redo.push(move);
+		}
+		// TODO error checking n' stuff. Tidy this up.
+	}
 
-    /**
-     * Determines if the game has reached a failure state.
-     * 
-     * This could be whether the timer has reached zero, or if there are no
-     * possible moves even remaining. Controllers which are observing level can
-     * call this method whenever level is updated to know when to handle failed
-     * games.
-     * 
-     * @return True if the game has reached a failure state.
-     */
-    public boolean hasLost() {
-        return false;
-    }
+	/**
+	 * Determines if the game has reached a failure state.
+	 * 
+	 * This could be whether the timer has reached zero, or if there are no
+	 * possible moves even remaining. Controllers which are observing level can
+	 * call this method whenever level is updated to know when to handle failed
+	 * games.
+	 * 
+	 * @return True if the game has reached a failure state.
+	 */
+	public boolean hasLost() {
+		return false;
+	}
 
-    /**
-     * Attempts to pop the last move off the stack redo and (re)do it does
-     * nothing if redo is empty
-     */
-    public void redo() {
-        if (redo.empty())
-            return;
-        Move move;
-        move = redo.pop();
-        move.doMove();
-        this.pushMove(move);
+	/**
+	 * Attempts to pop the last move off the stack redo and (re)do it does
+	 * nothing if redo is empty
+	 */
+	public void redo() {
+		if (redo.empty())
+			return;
+		Move move;
+		move = redo.pop();
+		move.doMove();
+		this.pushMove(move);
 
-    }
+	}
 
-    /**
-     * Pushes the move onto the stack undo
-     * 
-     * @param move
-     *            to be pushed
-     */
-    public void pushMove(Move move) {
-        undo.push(move);
-        this.update();
-    }
+	/**
+	 * Pushes the move onto the stack undo
+	 * 
+	 * @param move
+	 *            to be pushed
+	 */
+	public void pushMove(Move move) {
+		undo.push(move);
+		this.update();
+	}
 
-    /**
-     * Increments the moves counter in the level, currently only applicable in a puzzle level
-     * @return returns true if the moves are incremented (and it has moves to increment), otherwise returns false
-     */
-    
-    public boolean incrementMoves() {
-        return false;
-    }
+	/**
+	 * Increments the moves counter in the level, currently only applicable in a
+	 * puzzle level
+	 * 
+	 * @return returns true if the moves are incremented (and it has moves to
+	 *         increment), otherwise returns false
+	 */
 
-    /**
-     * Peeks at the top move of the redo stack
-     * @return returns the top move of redo
-     */
-    
-    public Move peekRedo() {
-        return redo.peek();
-    }
+	public boolean incrementMoves() {
+		return false;
+	}
+
+	/**
+	 * Peeks at the top move of the redo stack
+	 * 
+	 * @return returns the top move of redo
+	 */
+
+	public Move peekRedo() {
+		return redo.peek();
+	}
 }

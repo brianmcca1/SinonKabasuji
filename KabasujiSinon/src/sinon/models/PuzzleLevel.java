@@ -8,18 +8,35 @@ import sinon.models.data.LevelType.Types;
  *
  */
 public class PuzzleLevel extends Level {
-	/** The maximum number of moves allowed */
+	/** The maximum number of moves allowed. */
 	int maxMoves;
 
-	/** The number of moves made so far */
+	/** The number of moves made so far. */
 	int moves;
 
+	/**
+	 * Creates a PuzzleLevel with the given board, bullpen, and max moves
+	 * allowed.
+	 * 
+	 * @param b
+	 *            The level's board.
+	 * @param bp
+	 *            The bullpen's board.
+	 * @param maxMoves
+	 *            The maximum moves allowed.
+	 */
 	public PuzzleLevel(Board b, BullPen bp, int maxMoves) {
 		super(Types.PUZZLE, b, bp);
 		this.maxMoves = maxMoves;
 		this.moves = 0;
 	}
 
+	/**
+	 * Creates a PuzzleLevel based off a generic level.
+	 * 
+	 * @param level
+	 *            The generic level the PuzzleLevel is based off of.
+	 */
 	public PuzzleLevel(Level level) {
 		super(Types.PUZZLE, level.getBoard(), level.getBullpen());
 		this.maxMoves = level.getLevelData().getLevelProperty().getMaxMoves();
@@ -27,9 +44,9 @@ public class PuzzleLevel extends Level {
 	}
 
 	/**
-	 * Increments the moves made so far
+	 * Increments the moves made so far.
 	 * 
-	 * @return True if the move limit has not been met, False otherwise
+	 * @return True if the move limit has not been met, False otherwise.
 	 */
 	@Override
 	public boolean incrementMoves() {
@@ -39,9 +56,9 @@ public class PuzzleLevel extends Level {
 	}
 
 	/**
-	 * Get the moves made so far
+	 * Get the moves made so far.
 	 * 
-	 * @return the number of moves made so far
+	 * @return the number of moves made so far.
 	 */
 	public int getMovesLeft() {
 		int movesLeft = (this.maxMoves - this.moves);
@@ -52,18 +69,18 @@ public class PuzzleLevel extends Level {
 	}
 
 	/**
-	 * Get the maximum number of moves
+	 * Get the maximum number of moves.
 	 * 
-	 * @return the maximum number of moves
+	 * @return the maximum number of moves.
 	 */
 	public int getMaxMoves() {
 		return this.maxMoves;
 	}
 
 	/**
-	 * Increment the moves made in the puzzle level
+	 * Increment the moves made in the puzzle level.
 	 * 
-	 * @return True if the increment was valid, false otherwise
+	 * @return True if the increment was valid, false otherwise.
 	 */
 	public boolean incrementMovesMade() {
 		if (this.moves < this.maxMoves) {

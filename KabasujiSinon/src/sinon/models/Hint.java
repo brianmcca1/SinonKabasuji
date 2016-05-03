@@ -16,11 +16,21 @@ import sinon.models.data.HexominoCode;
  *
  */
 public class Hint implements Serializable {
-
+	/** The Serializer ID. */
 	private static final long serialVersionUID = -202111253704126873L;
+	/** The Hint's anchor position. */
 	Point anchorPos;
+	/** The points the Hint consists of. */
 	HexominoCode pointSet;
 
+	/**
+	 * Creates a Hint based off a given Hexomino, at a given anchor point.
+	 * 
+	 * @param hex
+	 *            The Hexomino the Hint is based off of.
+	 * @param anchor
+	 *            The anchor point to place the Hint.
+	 */
 	public Hint(Hexomino hex, Point anchor) {
 		Objects.requireNonNull(hex);
 		this.anchorPos = Objects.requireNonNull(anchor);
@@ -37,14 +47,14 @@ public class Hint implements Serializable {
 	/**
 	 * Creates a new HexominoNumberSet which represents this hint.
 	 * 
-	 * @return HexominoNumberSet
+	 * @return HexominoNumberSet.
 	 */
 	public HexominoNumberSet getHexominoNumberSet() {
 		return new HexominoNumberSet(this.pointSet.getPoints());
 	}
 
 	/**
-	 * @return The anchor of the hint
+	 * @return The anchor of the hint.
 	 */
 	public Point getAnchor() {
 		return this.anchorPos;

@@ -14,9 +14,9 @@ import sinon.models.BullPen;
 import sinon.models.Level;
 
 /**
- * The boundary class that is associated with the BullPen Entity class.
- * It is a JPanel therefore it can be drawn (or added to) the main
- * Kabasuji JFrame graphic object.
+ * The boundary class that is associated with the BullPen Entity class. It is a
+ * JPanel therefore it can be drawn (or added to) the main Kabasuji JFrame
+ * graphic object.
  * 
  * @author kartik
  *
@@ -24,62 +24,69 @@ import sinon.models.Level;
 @SuppressWarnings("serial")
 public class BullpenView extends JPanel implements StashView, Observer {
 
-	/** This is the scrolling pane that is responsible for the scrolling functionality in the bullpen. */
-    public JScrollPane scrollPanel;
-    
-    /** This is the JPanel that holds all the contents of the bullpen. */
-    public JPanel contentPanel;
+	/**
+	 * This is the scrolling pane that is responsible for the scrolling
+	 * functionality in the bullpen.
+	 */
+	public JScrollPane scrollPanel;
 
-    HexViewStash stash;
-    
-    /**The bullpen model that is associated with this class. */
-    private BullPen bullpen;
+	/** This is the JPanel that holds all the contents of the bullpen. */
+	public JPanel contentPanel;
+	/**
+	 * The HexViewStash which encapsulates shared behavior for BullpenViews and
+	 * BoardViews.
+	 */
+	HexViewStash stash;
 
-    /** The main constructor that is used to construct a bullpenView. */
-    public BullpenView(Level level) {
-        Objects.requireNonNull(level);
-        this.bullpen = level.getBullpen();
-        initContentPanel();
-        initBullpenViewScrollPanel();
-        this.setLayout(new GridLayout(1, 1));
-        this.add(scrollPanel);
-        bullpen.registerObserver(this);
-        this.stash = new HexViewStash(level, contentPanel);
-        this.validate();
-    }
+	/** The bullpen model that is associated with this class. */
+	private BullPen bullpen;
 
-    /** Helper function to initialize the scroll panel in the bullpen. */
-    private void initBullpenViewScrollPanel() {
-        scrollPanel = new JScrollPane();
-        JScrollBar scrollBar = new JScrollBar(JScrollBar.HORIZONTAL);
-        scrollPanel.setHorizontalScrollBarPolicy(
-                JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        scrollPanel.add(scrollBar);
-        scrollPanel.setVerticalScrollBarPolicy(
-                JScrollPane.VERTICAL_SCROLLBAR_NEVER);
-        scrollPanel.setViewportView(contentPanel);
-    }
+	/** The main constructor that is used to construct a bullpenView. */
+	public BullpenView(Level level) {
+		Objects.requireNonNull(level);
+		this.bullpen = level.getBullpen();
+		initContentPanel();
+		initBullpenViewScrollPanel();
+		this.setLayout(new GridLayout(1, 1));
+		this.add(scrollPanel);
+		bullpen.registerObserver(this);
+		this.stash = new HexViewStash(level, contentPanel);
+		this.validate();
+	}
 
-    /**helper function called from the constructor to initialize the content panel graphic. */
-    private void initContentPanel() {
-        this.contentPanel = new JPanel();
-        contentPanel.setBackground(Color.gray);
-        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.X_AXIS));
-    }
+	/** Helper function to initialize the scroll panel in the bullpen. */
+	private void initBullpenViewScrollPanel() {
+		scrollPanel = new JScrollPane();
+		JScrollBar scrollBar = new JScrollBar(JScrollBar.HORIZONTAL);
+		scrollPanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrollPanel.add(scrollBar);
+		scrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		scrollPanel.setViewportView(contentPanel);
+	}
 
-    @Override
-    public void setRegistrator(HexStashRegistrator hexStashRegistrator) {
-        stash.setRegistrator(Objects.requireNonNull(hexStashRegistrator));
-        updated();
-    }
+	/**
+	 * helper function called from the constructor to initialize the content
+	 * panel graphic.
+	 */
+	private void initContentPanel() {
+		this.contentPanel = new JPanel();
+		contentPanel.setBackground(Color.gray);
+		contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.X_AXIS));
+	}
 
-    @Override
-    public void updated() {
-        stash.updated();
-    }
+	@Override
+	public void setRegistrator(HexStashRegistrator hexStashRegistrator) {
+		stash.setRegistrator(Objects.requireNonNull(hexStashRegistrator));
+		updated();
+	}
 
-    @Override
-    public JPanel getPanelToRegisterController() {
-        return contentPanel;
-    }
+	@Override
+	public void updated() {
+		stash.updated();
+	}
+
+	@Override
+	public JPanel getPanelToRegisterController() {
+		return contentPanel;
+	}
 }

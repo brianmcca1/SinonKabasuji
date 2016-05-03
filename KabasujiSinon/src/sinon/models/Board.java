@@ -76,11 +76,11 @@ public class Board implements Observable {
 	private final static int HEIGHT = 12;
 	private final static int WIDTH_BY_ZERO = WIDTH - 1;
 	private final static int HEIGHT_BY_ZERO = HEIGHT - 1;
-
+	/** Maps every Tile to its point location. */
 	Map<Point, Tile> tilesViaPoints;
 	/** Maps every Hexomino to the tile of its anchor location. */
 	Map<Hexomino, Point> hexominoLocations;
-
+	/** List of the Hexominos contained by the board. */
 	List<Hint> hints;
 
 	/**
@@ -122,18 +122,18 @@ public class Board implements Observable {
 	}
 
 	/**
-	 * Initialize the tile at a given point
+	 * Initialize the tile at a given point.
 	 * 
 	 * @param p
-	 *            The point the tile is at
+	 *            The point the tile is at.
 	 * @param playable
-	 *            Whether the tile is playable or not
+	 *            Whether the tile is playable or not.
 	 */
 	protected void initializeTiles(Point p, boolean playable) {
 		tilesViaPoints.put(p, new Tile(p, playable));
 	}
 
-	/** Every constructor should call this */
+	/** Every constructor should call this. */
 	private void initializeObserverList() {
 		assert observers == null; // Why would you call this again?
 		observers = new LinkedList<Observer>();
@@ -192,7 +192,7 @@ public class Board implements Observable {
 	 * @param anchorLocation
 	 *            Location of where the anchor of the hexomino will go.
 	 * @param hex
-	 *            The Hexomino to be added
+	 *            The Hexomino to be added.
 	 * 
 	 */
 	public void addHexomino(Point anchorLocation, Hexomino hex) {
@@ -233,7 +233,7 @@ public class Board implements Observable {
 	}
 
 	/**
-	 * Gets the Tile at the specified position
+	 * Gets the Tile at the specified position.
 	 * 
 	 * @param row
 	 * @param column
@@ -244,7 +244,7 @@ public class Board implements Observable {
 	}
 
 	/**
-	 * Gets the Tile at the specified position
+	 * Gets the Tile at the specified position.
 	 * 
 	 * @param p
 	 *            Point to get tile at.
@@ -263,7 +263,7 @@ public class Board implements Observable {
 	 * 
 	 * @param row
 	 * @param column
-	 * @return True if the location is in bounds
+	 * @return True if the location is in bounds.
 	 */
 	public boolean isInBounds(int row, int column) {
 		if (row > HEIGHT_BY_ZERO || column > WIDTH_BY_ZERO) {
@@ -292,22 +292,22 @@ public class Board implements Observable {
 	}
 
 	/**
-	 * Determines if this board has the hexomino hex played on it
+	 * Determines if this board has the hexomino hex played on it.
 	 * 
 	 * @param hex
-	 *            the hex to be looked for
-	 * @return True if hex is found, otherwise false
+	 *            the hex to be looked for.
+	 * @return True if hex is found, otherwise false.
 	 */
 	public boolean hasHex(Hexomino hex) {
 		return this.containsHexID(hex.getID());
 	}
 
 	/**
-	 * See if the Board contains a Hexomino with the given ID
+	 * See if the Board contains a Hexomino with the given ID.
 	 * 
 	 * @param id
-	 *            The ID to check
-	 * @return True if the board contains the Hexomino, False otherwise
+	 *            The ID to check.
+	 * @return True if the board contains the Hexomino, False otherwise.
 	 */
 	public boolean containsHexID(UUID id) {
 

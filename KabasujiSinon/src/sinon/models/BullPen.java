@@ -23,13 +23,26 @@ public class BullPen implements Observable {
 
 	/** ArrayList of all the hexominos that will be in this level's bullpen. */
 	List<Hexomino> pieces;
+	/** The observer which is observing this Observable object. */
 	Optional<Observer> observer;
 
+	/**
+	 * Creates a Bullpen containing the given pieces.
+	 * 
+	 * @param pieces
+	 *            The Hexominos the Bullpen will contain.
+	 */
 	public BullPen(List<Hexomino> pieces) {
 		this.pieces = pieces;
 		this.observer = Optional.empty();
 	}
 
+	/**
+	 * Creates a Bullpen from the given BullpenData.
+	 * 
+	 * @param bullPenData
+	 *            The BullpenData to create the Bullpen from.
+	 */
 	public BullPen(BullPenData bullPenData) {
 		pieces = new LinkedList<Hexomino>();
 		for (HexominoCode code : bullPenData.getHexominos()) {
@@ -41,7 +54,7 @@ public class BullPen implements Observable {
 	/**
 	 * Getter that returns a copy of all the hexominos in the bullpen.
 	 * 
-	 * @return List of all Hexominos
+	 * @return List of all Hexominos.
 	 */
 	public List<Hexomino> getPieces() {
 
@@ -96,16 +109,16 @@ public class BullPen implements Observable {
 	}
 
 	/**
-	 * Gives the number of Hexominos in the bullpen
+	 * Gives the number of Hexominos in the bullpen.
 	 * 
-	 * @return The number of Hexominos
+	 * @return The number of Hexominos.
 	 */
 	public int hexominoCount() {
 		return this.pieces.size();
 	}
 
 	/**
-	 * Determines if any hexomino with the passed in ID exists in the bullpen
+	 * Determines if any hexomino with the passed in ID exists in the bullpen.
 	 */
 	public boolean containsHexID(UUID id) {
 
@@ -124,12 +137,11 @@ public class BullPen implements Observable {
 	}
 
 	/**
-	 * Searches through this bullpen looking for the hexomino hex
+	 * Searches through this bullpen looking for the hexomino hex.
 	 * 
 	 * @param hex
 	 *            the Hexomino being searched for
-	 * @return True if the hexomino is in this bullpen, otherwise false
-	 * @author PDeBrine
+	 * @return True if the hexomino is in this bullpen, otherwise false.
 	 */
 
 	public boolean hasHex(Hexomino hex) {
@@ -153,10 +165,10 @@ public class BullPen implements Observable {
 	}
 
 	/**
-	 * Ensures that there are no duplicate Hexominos in the bullpen
+	 * Ensures that there are no duplicate Hexominos in the bullpen.
 	 * 
 	 * Note: Duplicate Hexominos refer to Hexominos with the same ID, NOT
-	 * Hexominos that are visually the same
+	 * Hexominos that are visually the same.
 	 * 
 	 */
 	private void validateState() {

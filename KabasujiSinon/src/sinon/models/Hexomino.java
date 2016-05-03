@@ -23,26 +23,26 @@ import sinon.views.Observer;
  */
 public class Hexomino implements Observable {
 
-	/** @see HexominoNumberSet */
+	/** @see HexominoNumberSet. */
 	HexominoNumberSet hexominoNumberSet;
 	/** List of observers to notify after changes. */
 	List<Observer> observers;
 	/** Unique number to ID hexominoes in the board and the bullpen. **/
 	UUID id;
-	/** Color of the hexomino */
+	/** Color of the hexomino. */
 	Color color;
-	/** Random for use with random */
+	/** Random for use with random. */
 	private static final Random RANDOM = new Random();
-
+	/** The anchor of the Hexomino. */
 	Point anchorPoint;
 
 	/**
 	 * Is a convenience constructor for quickly building a Hexomino.
 	 * 
 	 * @param a
-	 *            The x component of the first coordinate point
+	 *            The x component of the first coordinate point.
 	 * @param a1
-	 *            the y component of the first coordinate point
+	 *            the y component of the first coordinate point.
 	 */
 	protected Hexomino(int a, int a1, int b, int b1, int c, int c1, int d, int d1, int e, int e1, int f, int f1) {
 
@@ -52,6 +52,12 @@ public class Hexomino implements Observable {
 		this.color = createRandomColor();
 	}
 
+	/**
+	 * Constructs a Hexomino from a Set of points.
+	 * 
+	 * @param points
+	 *            The Points to create a Hexomino from.
+	 */
 	public Hexomino(Set<Point> points) {
 		if (points == null) {
 			throw new IllegalArgumentException("Points can't be null");
@@ -64,10 +70,10 @@ public class Hexomino implements Observable {
 	}
 
 	/**
-	 * Creates a new hexomino using information from the hexominoNumberSet
+	 * Creates a new hexomino using information from the hexominoNumberSet.
 	 * 
 	 * @param hexominoNumberSet
-	 *            the number set being used
+	 *            the number set being used.
 	 */
 	public Hexomino(HexominoNumberSet hexominoNumberSet) {
 		Objects.requireNonNull(hexominoNumberSet);
@@ -92,9 +98,9 @@ public class Hexomino implements Observable {
 	}
 
 	/**
-	 * Create a random color
+	 * Create a random color.
 	 * 
-	 * @return the color generated
+	 * @return the color generated.
 	 */
 	private static Color createRandomColor() {
 		// Code taken from Greg at:
@@ -110,7 +116,7 @@ public class Hexomino implements Observable {
 	}
 
 	/**
-	 * @return The anchor of the Hexomino, as a point
+	 * @return The anchor of the Hexomino, as a point.
 	 */
 	public Point getAnchor() {
 		if (this.anchorPoint == null) {
@@ -122,18 +128,18 @@ public class Hexomino implements Observable {
 
 	/**
 	 * @param point
-	 *            Set the anchor of the hexomino to the given point
+	 *            Set the anchor of the hexomino to the given point.
 	 */
 	public void setAnchor(Point point) {
 		this.anchorPoint = point;
 	}
 
 	/**
-	 * Adds this hexomino to the given tile
+	 * Adds this hexomino to the given tile.
 	 * 
 	 * @param t
-	 *            Tile to add the hexomino to
-	 * @return True if the Hexomino was added, otherwise False
+	 *            Tile to add the hexomino to.
+	 * @return True if the Hexomino was added, otherwise False.
 	 */
 	boolean addToTile(Tile t) {
 		if (t == null) {
@@ -146,7 +152,7 @@ public class Hexomino implements Observable {
 	}
 
 	/**
-	 * Flip the Hexomino horizontally (over the y-axis)
+	 * Flip the Hexomino horizontally (over the y-axis).
 	 */
 	public void flipHorizontally() {
 		hexominoNumberSet.flipHorizontally();
@@ -154,7 +160,7 @@ public class Hexomino implements Observable {
 	}
 
 	/**
-	 * Flip the Hexomino vertically (over the x-axis)
+	 * Flip the Hexomino vertically (over the x-axis).
 	 */
 	public void flipVertically() {
 		hexominoNumberSet.flipVertically();
@@ -162,7 +168,7 @@ public class Hexomino implements Observable {
 	}
 
 	/**
-	 * Rotate the Hexomino Clockwise
+	 * Rotate the Hexomino Clockwise.
 	 */
 	public void rotateC() {
 		hexominoNumberSet.rotateC();
@@ -170,7 +176,7 @@ public class Hexomino implements Observable {
 	}
 
 	/**
-	 * Rotate the Hexomino Counter-Clockwise
+	 * Rotate the Hexomino Counter-Clockwise.
 	 */
 	public void rotateCC() {
 		hexominoNumberSet.rotateCC();
@@ -178,18 +184,18 @@ public class Hexomino implements Observable {
 	}
 
 	/**
-	 * Get the Hexomino's Hexomino Number Set
+	 * Get the Hexomino's Hexomino Number Set.
 	 * 
-	 * @return The Hexomino Number Set
+	 * @return The Hexomino Number Set.
 	 */
 	public HexominoNumberSet getHexominoNumberSet() {
 		return this.hexominoNumberSet;
 	}
 
 	/**
-	 * Get this Hexomino's color
+	 * Get this Hexomino's color.
 	 * 
-	 * @return The color of this Hexomino
+	 * @return The color of this Hexomino.
 	 */
 	public Color getColor() {
 		return this.color;
@@ -199,7 +205,7 @@ public class Hexomino implements Observable {
 	 * Returns the translated set of points, such that every point is positive,
 	 * and within the bounds of a 6x6 grid.
 	 * 
-	 * @return Returns a set of points that describes the Hexomino
+	 * @return Returns a set of points that describes the Hexomino.
 	 */
 	public List<Point> getNormalizedPoints() {
 		return this.hexominoNumberSet.getNormalizedPoints();
@@ -213,7 +219,7 @@ public class Hexomino implements Observable {
 	}
 
 	/**
-	 * @return The ID of the hexomino
+	 * @return The ID of the hexomino.
 	 */
 	public UUID getID() {
 		return this.id;
